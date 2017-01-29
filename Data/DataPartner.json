@@ -1,0 +1,16 @@
+{
+  "venue": {
+    "id":  "0424006070",
+    "name": "DataPartner i Helsingborg AB",
+    "exits": [
+      {
+        "name": "Entrén",
+        "entrance_beacon_major": 200,
+        "entrance_beacon_minor": 1,
+        "exit_beacon_major": 200,
+        "exit_beacon_minor": 1,
+        "mode": "door"
+      }
+    ]
+  }
+}
