@@ -69,8 +69,7 @@ namespace WayfindR
         {
             try
             {
-                //string folder = @"C:\Users\karl-otto\Documents\Dropbox\src\WayfindR\Data";
-                string folder = @"C:\Users\Karl-otto\Dropbox\src\Wayfindr\Data";
+                string folder = @"C:\Users\Karl-otto\Dropbox\src\Wayfindr\graphmltest\Data";
 
                 /*
                 if (OpenGraphMLDialog.ShowDialog() != DialogResult.OK)
