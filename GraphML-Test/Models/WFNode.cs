@@ -70,7 +70,20 @@ namespace WayfindR.Models
             set { SetHeadingInfo(4, value); }
         }
 
+        [XmlAttribute("in_range_message")]
+        public string InRangeMessage { get; set; }
 
+        [XmlAttribute("out_of_range_message")]
+        public string OutOfRangeMessage { get; set; }
+
+        [XmlAttribute("touch_message")]
+        public string TouchMessage { get; set; }
+
+        [XmlAttribute("close_by_accuracy")]
+        public double CloseByAccuracy { get; set; }
+
+        [XmlAttribute("close_by_message")]
+        public string CloseByMessage { get; set; }
 
 
         public WFHeadingInfo[] HeadingInfos
@@ -83,6 +96,7 @@ namespace WayfindR.Models
             {
                 hinfos = value.ToList();
             }
+
         } // HeadingInfos
 
 
@@ -116,7 +130,7 @@ namespace WayfindR.Models
 
         }
 
-        public void SetHeadingInfo(int idx, string data)
+        private void SetHeadingInfo(int idx, string data)
         {
             WFHeadingInfo hi = new WFHeadingInfo(data);
             while (idx >= hinfos.Count)
