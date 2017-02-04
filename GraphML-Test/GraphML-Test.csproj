@@ -78,6 +78,7 @@
     <Compile Include="Helpers\HeadingHelper.cs" />
     <Compile Include="Models\BLEBeacon.cs" />
     <Compile Include="Models\DirectionsList.cs" />
+    <Compile Include="Models\WFHeadingInfo.cs" />
     <Compile Include="Models\WFNodeBeacon.cs" />
     <Compile Include="Models\WFEdge.cs" />
     <Compile Include="Models\WFExit.cs" />

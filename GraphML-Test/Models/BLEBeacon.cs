@@ -1,5 +1,5 @@
 ﻿using System;
-using CoreLocation;
+//using CoreLocation;
 //using GimbalFramework;
 
 namespace WayfindR.Models
@@ -14,8 +14,9 @@ namespace WayfindR.Models
 		}
 
 
-		public static double CalculateDistance(nint txPower, nint rssi)
-		{
+        //public static double CalculateDistance(nint txPower, nint rssi)
+        public static double CalculateDistance(int txPower, int rssi)
+        {
 			double result = -1.0;
 
 			if (rssi == 0)
@@ -40,7 +41,7 @@ namespace WayfindR.Models
 
 
 
-
+        /* tmp
 		public void Update(CLBeacon aBeacon)
 		{
 			try
@@ -82,6 +83,7 @@ namespace WayfindR.Models
 
 		} // Update iBeacon
 
+        tmp */
 
 		/*
 		public void Update(GMBLBeaconSighting aSighting)
@@ -127,9 +129,10 @@ namespace WayfindR.Models
 		// Gimbal
 		public string Name { get; set; }
 		public string Id { get; set; }
-		public nint Rssi { get; set; }
-		public double Accuracy { get; set; }
-		public CLProximity Proximity { get; set; }
+        //tmp public nint Rssi { get; set; }
+        public int Rssi { get; set; }
+        public double Accuracy { get; set; }
+		//tmp public CLProximity Proximity { get; set; }
 		public DateTime LastUpdated { get; set; }
 
 		public double Distance
@@ -140,6 +143,7 @@ namespace WayfindR.Models
 			}
 		}
 
+        /* tmp
 		public CLProximity Proximity_Fast
 		{
 			get
@@ -165,6 +169,7 @@ namespace WayfindR.Models
 			}
 		}
 
+        tmp */
 
 		public event EventHandler<EventArgs> OnUpdated;
 

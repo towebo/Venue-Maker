@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using CoreLocation;
+//using CoreLocation;
 using WayfindR.Models;
 //using GimbalFramework;
 
@@ -38,6 +38,7 @@ namespace WayfindR.Controllers
             
         }
 
+        /* tmp
 		public void UpdateBeacon(CLBeacon aBeacon)
 		{
 			try
@@ -98,6 +99,7 @@ namespace WayfindR.Controllers
 			}
 		} // Update iBeacon
 
+        tmp */
 		/* Gimbal
 		public void UpdateBeacon (GMBLBeaconSighting aSighting)
 		{
