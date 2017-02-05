@@ -88,14 +88,6 @@
     <Compile Include="Models\WFVenue.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QuickGraph\Serialization\GraphMLDeserializer.cs" />
-    <Compile Include="QuickGraph\Serialization\GraphMLExtensions.cs" />
-    <Compile Include="QuickGraph\Serialization\GraphMLSerializer.cs" />
-    <Compile Include="QuickGraph\Serialization\GraphMLXmlResolver.cs" />
-    <Compile Include="QuickGraph\Serialization\SerializationExtensions.cs" />
-    <Compile Include="QuickGraph\Serialization\SerializationHelper.cs" />
-    <Compile Include="QuickGraph\Serialization\SerializerBase.cs" />
-    <Compile Include="QuickGraph\Serialization\XmlSerializableGraphBase.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -118,12 +110,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="QuickGraph\Serialization\graphml-structure.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="QuickGraph\Serialization\graphml.xsd">
-      <SubType>Designer</SubType>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
