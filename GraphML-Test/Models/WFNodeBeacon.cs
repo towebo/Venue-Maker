@@ -10,6 +10,7 @@ namespace WayfindR.Models
 		public double? Distance { get; set; }
 
         public string GraphId { get; set; }
+        public string VenueId { get; set; }
 
 
 
