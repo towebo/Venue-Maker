@@ -69,38 +69,23 @@ namespace WayfindR
         {
             try
             {
-                string folder = @"C:\Users\Karl-otto\Dropbox\src\Wayfindr\graphmltest\Data";
 
-                /*
-                VenueController.Me.Current = VenueController.Me.Add(
-                    OpenGraphMLDialog.FileName
-                    );                                                                
-                    */
-
-                SQLiteConnection db = SQLiteController.Me.Db;
-
-
-                VenueController.Me.AddFromFolder(folder, true);
-                GraphController.Me.AddFromFolder(folder, false);
-                GraphController.Me.BuildNodeCache();
-
-                VenueController.Me.Current = VenueController.Me.Venues.FirstOrDefault();
+                VenueController.Me.Current = VenueController.Me.FindVenue(
+                    "0424006070"
+                    );
                 this.Text = VenueController.Me.Current.Name;
-
-
-
+                
                 WFGraph[] venugraphs = GraphController.Me.RelatedToVenue(
                     VenueController.Me.Current.Id
                     );
                 VenueController.Me.Current.NodesGraph = venugraphs.FirstOrDefault();
-
-
-
+                
                 NodesBS.DataSource = VenueController.Me.Current.NodesGraph.GetNodesAlphabetical();
                 TargetNodesBS.DataSource = VenueController.Me.Current.NodesGraph.GetNodesAlphabetical();
 
                 InitUI();
 
+                System.Media.SystemSounds.Asterisk.Play();
                 
             }
             catch (Exception ex)
@@ -137,7 +122,26 @@ namespace WayfindR
             }
 
         }
-        
+
+        private void BuildCacheButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string folder = @"C:\Users\Karl-otto\Dropbox\src\Wayfindr\graphmltest\Data";
+                
+                VenueController.Me.AddFromFolder(folder, true);
+                GraphController.Me.AddFromFolder(folder, false);
+                GraphController.Me.BuildNodeCache();
+
+                System.Media.SystemSounds.Asterisk.Play();
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+        }
     }
 
 }

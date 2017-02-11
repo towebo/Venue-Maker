@@ -14,6 +14,8 @@ namespace WayfindR.Controllers
         private static GraphController me;
         private List<WFGraph> graphs;
 
+        public const string GraphMLFileExt = ".graphml";
+
 
         public GraphController()
         {
@@ -21,8 +23,7 @@ namespace WayfindR.Controllers
 
         }
 
-
-        
+                
         public void AddFromFolder(string folder, bool clearCache)
         {
             try
@@ -36,7 +37,7 @@ namespace WayfindR.Controllers
 
                 string[] files = Directory.GetFiles(
                     folder,
-                    "*.graphml"
+                    "*" + GraphMLFileExt
                     );
 
                 foreach (string fname in files)
@@ -55,8 +56,7 @@ namespace WayfindR.Controllers
 
             }
         }
-
-
+        
         public WFGraph Add(string fileName)
         {
             try
@@ -77,7 +77,8 @@ namespace WayfindR.Controllers
                             if (rec == null)
                             {
                                 CacheFile cif = new CacheFile();
-                                cif.FileId = grph.GraphId;
+                                cif.GraphId = grph.GraphId;
+                                cif.VenueId = grph.VenueId;
                                 cif.FileName = fileName;
                                 cif.FileExt = Path.GetExtension(fileName);
 
@@ -121,17 +122,14 @@ namespace WayfindR.Controllers
             }
 
         }
-
-
+        
         public void BuildNodeCache()
         {
             try
             {
                 SQLiteConnection db = SQLiteController.Me.Db;
-                db.CreateTable<CacheNodeBeacon>();
                 db.DeleteAll<CacheNodeBeacon>();
                 
-
                 foreach (WFGraph g in Graphs)
                 {
                     foreach (WFNode n in g.Vertices)
@@ -159,17 +157,52 @@ namespace WayfindR.Controllers
 
         }
 
+        public WFGraph FindGraph(string graphId)
+        {
+            if (string.IsNullOrEmpty(graphId))
+            {
+                return null;
+
+            } // no id
+
+            WFGraph result = graphs.Where(w => w.GraphId == graphId).FirstOrDefault();
+            if (result == null)
+            {
+                var rec = SQLiteController.Me.Db.Table<CacheFile>()
+                    .Where(w => w.GraphId == graphId && w.FileExt == GraphMLFileExt)
+                    .FirstOrDefault();
+                if (rec != null)
+                {
+                    result = Add(rec.FileName);
+
+                } // if not null                
+
+            } // graph not in memory
+
+
+            return result;
+
+        }
+        
         public WFGraph[] RelatedToVenue(string venueId)
         {
             try
             {
-                WFGraph[] result = (
-                    from x in this.Graphs.ToList()
-                    where x.VenueId == venueId
-                    select x
-                    ).ToArray();
+                List<WFGraph> result = new List<WFGraph>();
 
-                return result;
+                // Look in cache
+                var recs = SQLiteController.Me.Db.Table<CacheFile>()
+                    .Where(w => w.VenueId == venueId && w.FileExt == GraphMLFileExt);
+
+                foreach (CacheFile cf in recs)
+                {
+                    result.Add(
+                        Add(cf.FileName)
+                        );
+
+                } // foreach
+
+                return result.ToArray();
 
             }
             catch
@@ -179,8 +212,7 @@ namespace WayfindR.Controllers
             }
 
         }
-
-        
+                
 
 
         // Properties

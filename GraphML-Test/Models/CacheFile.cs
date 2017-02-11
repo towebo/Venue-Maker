@@ -2,12 +2,14 @@
 
 namespace WayfindR.Models
 {
-    [Table("CIFiles")]
+    [Table("CacheFiles")]
     public class CacheFile
     {
 
         [Indexed]
-        public string FileId { get; set; }
+        public string GraphId { get; set; }
+        [Indexed]
+        public string VenueId { get; set; }
 
         public string FileName { get; set; }
 

@@ -13,6 +13,8 @@ namespace WayfindR.Controllers
 
         private List<WFVenue> venues;
 
+        public const string VenueFileExt = ".json";
+
 
         public VenueController()
         {
@@ -20,8 +22,7 @@ namespace WayfindR.Controllers
 
         }
 
-
-
+        
         public void AddFromFolder(string folder, bool clearCache)
         {
             try
@@ -55,7 +56,6 @@ namespace WayfindR.Controllers
             }
         }
         
-
         public WFVenue Add(string fileName)
         {
             try
@@ -73,9 +73,9 @@ namespace WayfindR.Controllers
                         if (rec == null)
                         {
                             CacheFile cif = new CacheFile();
-                            cif.FileId = v.Id;
+                            cif.VenueId = v.Id;
                             cif.FileName = fileName;
-                            cif.FileExt = Path.GetExtension(fileName);
+                            cif.FileExt = Path.GetExtension(fileName).ToLower();
 
                             db.Insert(cif);
 
@@ -115,6 +115,37 @@ namespace WayfindR.Controllers
         }
 
 
+
+        public WFVenue FindVenue(string venueId)
+        {
+            if (string.IsNullOrEmpty(venueId))
+            {
+                return null;
+
+            } // no id
+
+            WFVenue result = Venues.Where(w => w.Id == venueId).FirstOrDefault();
+            if (result == null)
+            {
+                var rec = SQLiteController.Me.Db.Table<CacheFile>()
+                    .Where(w => w.VenueId == venueId && w.FileExt == VenueFileExt)
+                    .FirstOrDefault();
+                if (rec != null)
+                {
+                    result = Add(rec.FileName);
+
+                } // if
+
+            } // not in memory
+
+            return result;
+
+        }
+
+
+
+
+        // Properties
         public WFVenue[] Venues
         {
             get
@@ -130,8 +161,7 @@ namespace WayfindR.Controllers
 
         } // Venues
         public WFVenue Current { get; set; }
-
-
+        
         public static VenueController Me
         {
             get

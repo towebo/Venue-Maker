@@ -38,6 +38,7 @@
             this.PathBS = new System.Windows.Forms.BindingSource(this.components);
             this.RouteLB = new System.Windows.Forms.ListBox();
             this.TargetNodesBS = new System.Windows.Forms.BindingSource(this.components);
+            this.BuildCacheButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.NodesBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PathBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TargetNodesBS)).BeginInit();
@@ -93,11 +94,22 @@
             this.RouteLB.Size = new System.Drawing.Size(289, 147);
             this.RouteLB.TabIndex = 4;
             // 
+            // BuildCacheButton
+            // 
+            this.BuildCacheButton.Location = new System.Drawing.Point(186, 34);
+            this.BuildCacheButton.Name = "BuildCacheButton";
+            this.BuildCacheButton.Size = new System.Drawing.Size(75, 23);
+            this.BuildCacheButton.TabIndex = 5;
+            this.BuildCacheButton.Text = "&Build Cache";
+            this.BuildCacheButton.UseVisualStyleBackColor = true;
+            this.BuildCacheButton.Click += new System.EventHandler(this.BuildCacheButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(518, 309);
+            this.Controls.Add(this.BuildCacheButton);
             this.Controls.Add(this.RouteLB);
             this.Controls.Add(this.CalcRouteButton);
             this.Controls.Add(this.TargetCB);
@@ -124,6 +136,7 @@
         private System.Windows.Forms.BindingSource PathBS;
         private System.Windows.Forms.ListBox RouteLB;
         private System.Windows.Forms.BindingSource TargetNodesBS;
+        private System.Windows.Forms.Button BuildCacheButton;
     }
 }
 

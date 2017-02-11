@@ -389,6 +389,22 @@ namespace WayfindR.Models
 
         }
 
+
+        public WFNode FindNode(CacheNodeBeacon cnb)
+        {
+            if (cnb == null)
+            {
+                return null;
+
+            } // cnb is null
+
+            WFNode result = this.Vertices.Where(w => w.Major == cnb.Major && w.Minor == cnb.Minor).FirstOrDefault();
+
+            return result;
+
+        }
+
+
     } // class WFGraph
 
 
