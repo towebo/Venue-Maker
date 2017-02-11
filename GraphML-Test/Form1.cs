@@ -16,7 +16,7 @@ using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Serialization;
 using WayfindR.Controllers;
-
+using SQLite;
 
 namespace WayfindR
 {
@@ -72,30 +72,17 @@ namespace WayfindR
                 string folder = @"C:\Users\Karl-otto\Dropbox\src\Wayfindr\graphmltest\Data";
 
                 /*
-                if (OpenGraphMLDialog.ShowDialog() != DialogResult.OK)
-                {
-                    return;
-
-                }                
-
                 VenueController.Me.Current = VenueController.Me.Add(
                     OpenGraphMLDialog.FileName
-                    );                                
-                
-                if (OpenGraphMLDialog.ShowDialog() != DialogResult.OK)
-                {
-                    return;
-
-                }
-                                
-                GraphController.Me.Add(
-                    OpenGraphMLDialog.FileName
-                    );
+                    );                                                                
                     */
+
+                SQLiteConnection db = SQLiteController.Me.Db;
 
 
                 VenueController.Me.AddFromFolder(folder);
                 GraphController.Me.AddFromFolder(folder);
+                GraphController.Me.BuildNodeCache();
 
                 VenueController.Me.Current = VenueController.Me.Venues.FirstOrDefault();
                 this.Text = VenueController.Me.Current.Name;

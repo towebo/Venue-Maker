@@ -1,8 +1,10 @@
-﻿using System;
+﻿using SQLite;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using WayfindR.Models;
+
 
 namespace WayfindR.Controllers
 {
@@ -98,6 +100,41 @@ namespace WayfindR.Controllers
         }
 
 
+        public void BuildNodeCache()
+        {
+            try
+            {
+                SQLiteConnection db = SQLiteController.Me.Db;
+                db.CreateTable<WFNodeBeacon>();
+                db.DeleteAll<WFNodeBeacon>();
+                
+                foreach (WFGraph g in Graphs)
+                {
+                    foreach (WFNode n in g.Vertices)
+                    {
+                        WFNodeBeacon nb = new WFNodeBeacon();
+                        nb.Major = n.Major;
+                        nb.Minor = n.Minor;
+                        //nb.Distance = n.Accuracy;
+
+                        nb.GraphId = g.Id;
+                        nb.VenueId = g.VenueId;
+
+                        db.Insert(nb);
+
+                    } // foreach node
+
+                } // foreach graph
+
+            }
+            catch
+            {
+                throw;
+
+            }
+
+        }
+
         public WFGraph[] RelatedToVenue(string venueId)
         {
             try
@@ -120,6 +157,7 @@ namespace WayfindR.Controllers
         }
 
 
+        // Properties
         public WFGraph[] Graphs
         {
             get
