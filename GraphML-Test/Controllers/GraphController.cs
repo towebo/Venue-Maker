@@ -6,6 +6,7 @@ using System.Linq;
 using WayfindR.Models;
 
 
+
 namespace WayfindR.Controllers
 {
     public class GraphController
@@ -21,10 +22,18 @@ namespace WayfindR.Controllers
         }
 
 
-        public void AddFromFolder(string folder)
+        
+        public void AddFromFolder(string folder, bool clearCache)
         {
             try
-            {
+            {                
+                if (clearCache)
+                {
+                    SQLiteConnection db = SQLiteController.Me.Db;
+                    db.DeleteAll<CacheFile>();
+
+                } // clearCahce
+
                 string[] files = Directory.GetFiles(
                     folder,
                     "*.graphml"
@@ -62,6 +71,20 @@ namespace WayfindR.Controllers
 
                         if (grph != null)
                         {
+                            SQLiteConnection db = SQLiteController.Me.Db;
+
+                            var rec = db.Table<CacheFile>().Where(w => w.FileName == fileName).FirstOrDefault();
+                            if (rec == null)
+                            {
+                                CacheFile cif = new CacheFile();
+                                cif.FileId = grph.GraphId;
+                                cif.FileName = fileName;
+                                cif.FileExt = Path.GetExtension(fileName);
+
+                                db.Insert(cif);
+                            
+                            } // rec not found
+
                             return Add(grph);
 
                         } // not null
@@ -105,14 +128,15 @@ namespace WayfindR.Controllers
             try
             {
                 SQLiteConnection db = SQLiteController.Me.Db;
-                db.CreateTable<WFNodeBeacon>();
-                db.DeleteAll<WFNodeBeacon>();
+                db.CreateTable<CacheNodeBeacon>();
+                db.DeleteAll<CacheNodeBeacon>();
                 
+
                 foreach (WFGraph g in Graphs)
                 {
                     foreach (WFNode n in g.Vertices)
                     {
-                        WFNodeBeacon nb = new WFNodeBeacon();
+                        CacheNodeBeacon nb = new CacheNodeBeacon();
                         nb.Major = n.Major;
                         nb.Minor = n.Minor;
                         //nb.Distance = n.Accuracy;
@@ -155,6 +179,8 @@ namespace WayfindR.Controllers
             }
 
         }
+
+        
 
 
         // Properties

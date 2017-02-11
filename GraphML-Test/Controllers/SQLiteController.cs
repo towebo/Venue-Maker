@@ -1,5 +1,5 @@
 ﻿using SQLite;
-
+using WayfindR.Models;
 
 namespace WayfindR.Controllers
 {
@@ -14,6 +14,10 @@ namespace WayfindR.Controllers
             db = new SQLiteConnection(
                 @"C:\Users\karl-otto\Dropbox\src\Wayfindr\graphmltest\Data\Data.db3"
                 );
+
+            db.CreateTable<CacheFile>();
+            db.CreateTable<CacheNodeBeacon>();
+
         }
 
 

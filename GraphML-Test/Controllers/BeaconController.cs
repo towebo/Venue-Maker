@@ -3,6 +3,7 @@ using System.Collections.Generic;
 //using CoreLocation;
 using WayfindR.Models;
 //using GimbalFramework;
+using System.Linq;
 
 namespace WayfindR.Controllers
 {
@@ -20,14 +21,18 @@ namespace WayfindR.Controllers
 
 
 
-        public WFNodeBeacon FindNodeBeacon(BLEBeacon bcn)
+        public CacheNodeBeacon[] FindNodeBeacon(BLEBeacon bcn)
         {
             try
             {
-                WFNodeBeacon result = null;
+                var result = (
+                    from x in SQLiteController.Me.Db.Table<CacheNodeBeacon>()
+                    where x.Major == bcn.Major && x.Minor == bcn.Minor
+                    orderby x.GraphLevel descending
+                    select x
+                    );
 
-
-                return result;
+                return result.ToArray();
 
             }
             catch (Exception ex)

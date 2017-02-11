@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using WayfindR.Models;
+using SQLite;
 
 namespace WayfindR.Controllers
 {
@@ -21,10 +22,17 @@ namespace WayfindR.Controllers
 
 
 
-        public void AddFromFolder(string folder)
+        public void AddFromFolder(string folder, bool clearCache)
         {
             try
             {
+                if (clearCache)
+                {
+                    SQLiteConnection db = SQLiteController.Me.Db;
+                    db.DeleteAll<CacheFile>();
+
+                } // clearCache
+
                 string[] files = Directory.GetFiles(
                     folder,
                     "*.json"
@@ -59,6 +67,20 @@ namespace WayfindR.Controllers
                         );
                     if (v != null)
                     {
+                        SQLiteConnection db = SQLiteController.Me.Db;
+
+                        var rec = db.Table<CacheFile>().Where(w => w.FileName == fileName).FirstOrDefault();
+                        if (rec == null)
+                        {
+                            CacheFile cif = new CacheFile();
+                            cif.FileId = v.Id;
+                            cif.FileName = fileName;
+                            cif.FileExt = Path.GetExtension(fileName);
+
+                            db.Insert(cif);
+
+                        } // rec not found
+
                         return Add(v);
 
                     } // not null

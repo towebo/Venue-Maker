@@ -80,8 +80,8 @@ namespace WayfindR
                 SQLiteConnection db = SQLiteController.Me.Db;
 
 
-                VenueController.Me.AddFromFolder(folder);
-                GraphController.Me.AddFromFolder(folder);
+                VenueController.Me.AddFromFolder(folder, true);
+                GraphController.Me.AddFromFolder(folder, false);
                 GraphController.Me.BuildNodeCache();
 
                 VenueController.Me.Current = VenueController.Me.Venues.FirstOrDefault();

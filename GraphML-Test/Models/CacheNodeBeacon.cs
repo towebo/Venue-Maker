@@ -2,8 +2,8 @@
 
 namespace WayfindR.Models
 {
-    [Table("WFNodeBeacons")]
-	public class WFNodeBeacon
+    [Table("CacheNodeBeacons")]
+	public class CacheNodeBeacon
 	{		
         [Indexed(Name = "MajorMinor", Order = 1)]
         public int Major { get; set; }
@@ -12,6 +12,7 @@ namespace WayfindR.Models
 		public double? Distance { get; set; }
 
         public string GraphId { get; set; }
+        public int GraphLevel { get; set; }
         public string VenueId { get; set; }
 
 

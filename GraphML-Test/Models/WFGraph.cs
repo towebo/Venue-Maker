@@ -19,6 +19,9 @@ namespace WayfindR.Models
 
         public string Id { get; set; }
 
+        [XmlAttribute("graph_id")]
+        public string GraphId { get; set; }
+
         [XmlAttribute("venue_id")]
         public string VenueId { get; set; }
 
@@ -279,7 +282,7 @@ namespace WayfindR.Models
                 if (xgraph != null)
                 {
                     result = new WFGraph();
-
+                    
                     // Graph properties
                     var xgdata = xgraph.Elements(ns + "data");
                     SetPropertyValues(result, MakeDictionaryOfTheseElements(xgdata, gklist));

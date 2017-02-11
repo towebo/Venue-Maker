@@ -10,79 +10,83 @@
   <key attr.name="level" attr.type="int" for="graph" id="d2">
     <default>3</default>
   </key>
-  <key for="port" id="d3" yfiles.type="portgraphics"/>
-  <key for="port" id="d4" yfiles.type="portgeometry"/>
-  <key for="port" id="d5" yfiles.type="portuserdata"/>
-  <key attr.name="major" attr.type="int" for="node" id="d6"/>
-  <key attr.name="minor" attr.type="int" for="node" id="d7"/>
-  <key attr.name="name" attr.type="string" for="node" id="d8"/>
-  <key attr.name="waypoint_type" attr.type="string" for="node" id="d9"/>
-  <key attr.name="accuracy" attr.type="double" for="node" id="d10">
+  <key attr.name="graph_id" attr.type="string" for="graph" id="d3">
+    <default/>
+  </key>
+  <key for="port" id="d4" yfiles.type="portgraphics"/>
+  <key for="port" id="d5" yfiles.type="portgeometry"/>
+  <key for="port" id="d6" yfiles.type="portuserdata"/>
+  <key attr.name="major" attr.type="int" for="node" id="d7"/>
+  <key attr.name="minor" attr.type="int" for="node" id="d8"/>
+  <key attr.name="name" attr.type="string" for="node" id="d9"/>
+  <key attr.name="waypoint_type" attr.type="string" for="node" id="d10"/>
+  <key attr.name="accuracy" attr.type="double" for="node" id="d11">
     <default>4.0</default>
   </key>
-  <key attr.name="name_descriptive" attr.type="string" for="node" id="d11">
+  <key attr.name="name_descriptive" attr.type="string" for="node" id="d12">
     <default/>
   </key>
-  <key attr.name="heading1info" attr.type="string" for="node" id="d12">
+  <key attr.name="heading1info" attr.type="string" for="node" id="d13">
     <default/>
   </key>
-  <key attr.name="heading2info" attr.type="string" for="node" id="d13">
+  <key attr.name="heading2info" attr.type="string" for="node" id="d14">
     <default/>
   </key>
-  <key attr.name="heading3info" attr.type="string" for="node" id="d14">
+  <key attr.name="heading3info" attr.type="string" for="node" id="d15">
     <default/>
   </key>
-  <key attr.name="heading4info" attr.type="string" for="node" id="d15">
+  <key attr.name="heading4info" attr.type="string" for="node" id="d16">
     <default/>
   </key>
-  <key attr.name="heading5info" attr.type="string" for="node" id="d16">
+  <key attr.name="heading5info" attr.type="string" for="node" id="d17">
     <default/>
   </key>
-  <key attr.name="in_range_message" attr.type="string" for="node" id="d17">
+  <key attr.name="in_range_message" attr.type="string" for="node" id="d18">
     <default/>
   </key>
-  <key attr.name="touch_message" attr.type="string" for="node" id="d18">
+  <key attr.name="touch_message" attr.type="string" for="node" id="d19">
     <default/>
   </key>
-  <key attr.name="out_of_range_message" attr.type="string" for="node" id="d19">
+  <key attr.name="out_of_range_message" attr.type="string" for="node" id="d20">
     <default/>
   </key>
-  <key attr.name="close_by_accuracy" attr.type="double" for="node" id="d20">
+  <key attr.name="close_by_accuracy" attr.type="double" for="node" id="d21">
     <default>0.0</default>
   </key>
-  <key attr.name="close_by_message" attr.type="string" for="node" id="d21">
+  <key attr.name="close_by_message" attr.type="string" for="node" id="d22">
     <default/>
   </key>
-  <key attr.name="url" attr.type="string" for="node" id="d22"/>
-  <key attr.name="description" attr.type="string" for="node" id="d23"/>
-  <key for="node" id="d24" yfiles.type="nodegraphics"/>
-  <key for="graphml" id="d25" yfiles.type="resources"/>
-  <key attr.name="travel_time" attr.type="double" for="edge" id="d26"/>
-  <key attr.name="language" attr.type="string" for="edge" id="d27"/>
-  <key attr.name="beginning" attr.type="string" for="edge" id="d28"/>
-  <key attr.name="middle" attr.type="string" for="edge" id="d29"/>
-  <key attr.name="end" attr.type="string" for="edge" id="d30"/>
-  <key attr.name="starting_only" attr.type="string" for="edge" id="d31"/>
-  <key attr.name="start_heading" attr.type="int" for="edge" id="d32">
+  <key attr.name="url" attr.type="string" for="node" id="d23"/>
+  <key attr.name="description" attr.type="string" for="node" id="d24"/>
+  <key for="node" id="d25" yfiles.type="nodegraphics"/>
+  <key for="graphml" id="d26" yfiles.type="resources"/>
+  <key attr.name="travel_time" attr.type="double" for="edge" id="d27"/>
+  <key attr.name="language" attr.type="string" for="edge" id="d28"/>
+  <key attr.name="beginning" attr.type="string" for="edge" id="d29"/>
+  <key attr.name="middle" attr.type="string" for="edge" id="d30"/>
+  <key attr.name="end" attr.type="string" for="edge" id="d31"/>
+  <key attr.name="starting_only" attr.type="string" for="edge" id="d32"/>
+  <key attr.name="start_heading" attr.type="int" for="edge" id="d33">
     <default>-1</default>
   </key>
-  <key attr.name="end_heading" attr.type="int" for="edge" id="d33">
+  <key attr.name="end_heading" attr.type="int" for="edge" id="d34">
     <default>-1</default>
   </key>
-  <key attr.name="url" attr.type="string" for="edge" id="d34"/>
-  <key attr.name="description" attr.type="string" for="edge" id="d35"/>
-  <key for="edge" id="d36" yfiles.type="edgegraphics"/>
+  <key attr.name="url" attr.type="string" for="edge" id="d35"/>
+  <key attr.name="description" attr.type="string" for="edge" id="d36"/>
+  <key for="edge" id="d37" yfiles.type="edgegraphics"/>
   <graph edgedefault="directed" id="G">
     <data key="d0"><![CDATA[0424006070]]></data>
     <data key="d1"><![CDATA[DataPartner]]></data>
+    <data key="d3"><![CDATA[0424006070]]></data>
     <node id="n0">
-      <data key="d6">200</data>
-      <data key="d7">7</data>
-      <data key="d8"><![CDATA[Vid Mickes kontor]]></data>
-      <data key="d9"><![CDATA[ Entrance ]]></data>
-      <data key="d10">3.0</data>
-      <data key="d11"><![CDATA[Vid Micke och Staffans kontor]]></data>
-      <data key="d24">
+      <data key="d7">200</data>
+      <data key="d8">7</data>
+      <data key="d9"><![CDATA[Vid Mickes kontor]]></data>
+      <data key="d10"><![CDATA[ Entrance ]]></data>
+      <data key="d11">3.0</data>
+      <data key="d12"><![CDATA[Vid Micke och Staffans kontor]]></data>
+      <data key="d25">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="32.0" y="-260.0"/>
           <y:Fill color="#FFCC00" transparent="false"/>
@@ -99,13 +103,13 @@
       </data>
     </node>
     <node id="n1">
-      <data key="d6">200</data>
-      <data key="d7">6</data>
-      <data key="d8"><![CDATA[Vid Maria]]></data>
-      <data key="d9"><![CDATA[ TicketBarrier ]]></data>
-      <data key="d10">4.5</data>
-      <data key="d11"><![CDATA[Vid Maria och Alessandros kontor]]></data>
-      <data key="d24">
+      <data key="d7">200</data>
+      <data key="d8">6</data>
+      <data key="d9"><![CDATA[Vid Maria]]></data>
+      <data key="d10"><![CDATA[ TicketBarrier ]]></data>
+      <data key="d11">4.5</data>
+      <data key="d12"><![CDATA[Vid Maria och Alessandros kontor]]></data>
+      <data key="d25">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="0.0" y="-54.0"/>
           <y:Fill color="#FFCC00" transparent="false"/>
@@ -123,13 +127,13 @@
       </data>
     </node>
     <node id="n2">
-      <data key="d6">200</data>
-      <data key="d7">3</data>
-      <data key="d8"><![CDATA[Köket]]></data>
-      <data key="d9"><![CDATA[ TicketBarrier ]]></data>
-      <data key="d10">3.0</data>
-      <data key="d11"><![CDATA[Utanför köket vid Björns kontor]]></data>
-      <data key="d24">
+      <data key="d7">200</data>
+      <data key="d8">3</data>
+      <data key="d9"><![CDATA[Köket]]></data>
+      <data key="d10"><![CDATA[ TicketBarrier ]]></data>
+      <data key="d11">3.0</data>
+      <data key="d12"><![CDATA[Utanför köket vid Björns kontor]]></data>
+      <data key="d25">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-323.0" y="-26.0"/>
           <y:Fill color="#FFCC00" transparent="false"/>
@@ -147,13 +151,13 @@
       </data>
     </node>
     <node id="n3">
-      <data key="d6">200</data>
-      <data key="d7">2</data>
-      <data key="d8"><![CDATA[Receptionen]]></data>
-      <data key="d9"><![CDATA[bench]]></data>
-      <data key="d10">2.5</data>
-      <data key="d11"><![CDATA[Här sitter Barbro]]></data>
-      <data key="d24">
+      <data key="d7">200</data>
+      <data key="d8">2</data>
+      <data key="d9"><![CDATA[Receptionen]]></data>
+      <data key="d10"><![CDATA[bench]]></data>
+      <data key="d11">2.5</data>
+      <data key="d12"><![CDATA[Här sitter Barbro]]></data>
+      <data key="d25">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-451.0" y="-14.0"/>
           <y:Fill color="#FFCC00" transparent="false"/>
@@ -171,22 +175,22 @@
       </data>
     </node>
     <node id="n4">
-      <data key="d6">200</data>
-      <data key="d7">1</data>
-      <data key="d8"><![CDATA[Entré, DataPartner]]></data>
-      <data key="d9"><![CDATA[exit]]></data>
-      <data key="d10">2.5</data>
-      <data key="d11"><![CDATA[Vid entrén]]></data>
-      <data key="d12"><![CDATA[100;Dörren är rakt fram]]></data>
-      <data key="d13"><![CDATA[190;Dörren är till vänster]]></data>
-      <data key="d14"><![CDATA[280;Trapporna är snett fram till höger och dörren är bakom dig]]></data>
-      <data key="d15"><![CDATA[10;Dörren är till höger]]></data>
-      <data key="d17"><![CDATA[Välkommen till DataPartner!]]></data>
-      <data key="d18"><![CDATA[Pling!]]></data>
-      <data key="d19"><![CDATA[Välkommen åter]]></data>
-      <data key="d20">6.0</data>
-      <data key="d21"><![CDATA[Du närmar dig.]]></data>
-      <data key="d24">
+      <data key="d7">200</data>
+      <data key="d8">1</data>
+      <data key="d9"><![CDATA[Entré, DataPartner]]></data>
+      <data key="d10"><![CDATA[exit]]></data>
+      <data key="d11">2.5</data>
+      <data key="d12"><![CDATA[Vid entrén]]></data>
+      <data key="d13"><![CDATA[100;Dörren är rakt fram]]></data>
+      <data key="d14"><![CDATA[190;Dörren är till vänster]]></data>
+      <data key="d15"><![CDATA[280;Trapporna är snett fram till höger och dörren är bakom dig]]></data>
+      <data key="d16"><![CDATA[10;Dörren är till höger]]></data>
+      <data key="d18"><![CDATA[Välkommen till DataPartner!]]></data>
+      <data key="d19"><![CDATA[Pling!]]></data>
+      <data key="d20"><![CDATA[Välkommen åter]]></data>
+      <data key="d21">6.0</data>
+      <data key="d22"><![CDATA[Du närmar dig.]]></data>
+      <data key="d25">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-677.0" y="40.0"/>
           <y:Fill color="#FFCC00" transparent="false"/>
@@ -204,12 +208,12 @@
       </data>
     </node>
     <node id="n5">
-      <data key="d6">200</data>
-      <data key="d7">8</data>
-      <data key="d8"><![CDATA[Nödutgång]]></data>
-      <data key="d9"><![CDATA[ Entrance ]]></data>
-      <data key="d11"><![CDATA[Nödutgången inne på Alessandros kontor]]></data>
-      <data key="d24">
+      <data key="d7">200</data>
+      <data key="d8">8</data>
+      <data key="d9"><![CDATA[Nödutgång]]></data>
+      <data key="d10"><![CDATA[ Entrance ]]></data>
+      <data key="d12"><![CDATA[Nödutgången inne på Alessandros kontor]]></data>
+      <data key="d25">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="126.0" y="-59.0"/>
           <y:Fill color="#FFCC00" transparent="false"/>
@@ -226,13 +230,13 @@
       </data>
     </node>
     <node id="n6">
-      <data key="d6">200</data>
-      <data key="d7">4</data>
-      <data key="d8"><![CDATA[Toaletterna]]></data>
-      <data key="d9"><![CDATA[ Escalator ]]></data>
-      <data key="d10">2.5</data>
-      <data key="d11"><![CDATA[I kapprummet med toaletter till höger och vänster.]]></data>
-      <data key="d24">
+      <data key="d7">200</data>
+      <data key="d8">4</data>
+      <data key="d9"><![CDATA[Toaletterna]]></data>
+      <data key="d10"><![CDATA[ Escalator ]]></data>
+      <data key="d11">2.5</data>
+      <data key="d12"><![CDATA[I kapprummet med toaletter till höger och vänster.]]></data>
+      <data key="d25">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-371.0" y="-136.0"/>
           <y:Fill color="#FFCC00" transparent="false"/>
@@ -250,13 +254,13 @@
       </data>
     </node>
     <node id="n7">
-      <data key="d6">200</data>
-      <data key="d7">5</data>
-      <data key="d8"><![CDATA[Köket, vid Marinela]]></data>
-      <data key="d9"><![CDATA[ Platform ]]></data>
-      <data key="d10">3.5</data>
-      <data key="d11"><![CDATA[Utanför köket vid Marinelas kontor]]></data>
-      <data key="d24">
+      <data key="d7">200</data>
+      <data key="d8">5</data>
+      <data key="d9"><![CDATA[Köket, vid Marinela]]></data>
+      <data key="d10"><![CDATA[ Platform ]]></data>
+      <data key="d11">3.5</data>
+      <data key="d12"><![CDATA[Utanför köket vid Marinelas kontor]]></data>
+      <data key="d25">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-292.5" y="-260.0"/>
           <y:Fill color="#FFCC00" transparent="false"/>
@@ -273,15 +277,15 @@
       </data>
     </node>
     <edge id="e0" source="n0" target="n1">
-      <data key="d26">10.0</data>
-      <data key="d27"><![CDATA[en-GB]]></data>
-      <data key="d28"><![CDATA[Gå rakt fram med kontoren till vänster och den öppna ytan till höger.]]></data>
-      <data key="d29"/>
+      <data key="d27">10.0</data>
+      <data key="d28"><![CDATA[en-GB]]></data>
+      <data key="d29"><![CDATA[Gå rakt fram med kontoren till vänster och den öppna ytan till höger.]]></data>
       <data key="d30"/>
       <data key="d31"/>
-      <data key="d32">210</data>
+      <data key="d32"/>
       <data key="d33">210</data>
-      <data key="d36">
+      <data key="d34">210</data>
+      <data key="d37">
         <y:PolyLineEdge>
           <y:Path sx="-4.430298678475523" sy="0.7889572989066096" tx="-4.430298678475523" ty="0.7889572989066096"/>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
@@ -291,15 +295,15 @@
       </data>
     </edge>
     <edge id="e1" source="n1" target="n0">
-      <data key="d26">15.0</data>
-      <data key="d27"><![CDATA[en-GB]]></data>
-      <data key="d28"><![CDATA[Gå rakt fram med kontoren till höger och den öppna ytan till vänster.]]></data>
-      <data key="d29"/>
+      <data key="d27">15.0</data>
+      <data key="d28"><![CDATA[en-GB]]></data>
+      <data key="d29"><![CDATA[Gå rakt fram med kontoren till höger och den öppna ytan till vänster.]]></data>
       <data key="d30"/>
       <data key="d31"/>
-      <data key="d32">30</data>
+      <data key="d32"/>
       <data key="d33">30</data>
-      <data key="d36">
+      <data key="d34">30</data>
+      <data key="d37">
         <y:PolyLineEdge>
           <y:Path sx="4.570797923486289" sy="0.0" tx="4.570797923486296" ty="0.0"/>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
@@ -309,15 +313,15 @@
       </data>
     </edge>
     <edge id="e2" source="n1" target="n2">
-      <data key="d26">15.0</data>
-      <data key="d27"><![CDATA[en-GB]]></data>
-      <data key="d28"><![CDATA[Gå rakt fram mot köket och se till att ha kontoren till vänster.]]></data>
-      <data key="d29"/>
+      <data key="d27">15.0</data>
+      <data key="d28"><![CDATA[en-GB]]></data>
+      <data key="d29"><![CDATA[Gå rakt fram mot köket och se till att ha kontoren till vänster.]]></data>
       <data key="d30"/>
       <data key="d31"/>
-      <data key="d32">300</data>
+      <data key="d32"/>
       <data key="d33">300</data>
-      <data key="d36">
+      <data key="d34">300</data>
+      <data key="d37">
         <y:PolyLineEdge>
           <y:Path sx="-3.3514522331238084" sy="-2.1835219094594436" tx="-3.3514522331238084" ty="-2.1835219094594436"/>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
@@ -327,15 +331,15 @@
       </data>
     </edge>
     <edge id="e3" source="n1" target="n5">
-      <data key="d26">25.0</data>
-      <data key="d27"><![CDATA[en-GB]]></data>
-      <data key="d28"><![CDATA[Gå in på Alessandros kontor så finns nödutången rakt fram.]]></data>
-      <data key="d29"/>
+      <data key="d27">25.0</data>
+      <data key="d28"><![CDATA[en-GB]]></data>
+      <data key="d29"><![CDATA[Gå in på Alessandros kontor så finns nödutången rakt fram.]]></data>
       <data key="d30"/>
       <data key="d31"/>
-      <data key="d32">120</data>
+      <data key="d32"/>
       <data key="d33">120</data>
-      <data key="d36">
+      <data key="d34">120</data>
+      <data key="d37">
         <y:PolyLineEdge>
           <y:Path sx="0.3636714094472495" sy="4.485280716516058" tx="0.3636714094472495" ty="4.485280716516058"/>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
@@ -345,15 +349,15 @@
       </data>
     </edge>
     <edge id="e4" source="n2" target="n1">
-      <data key="d26">15.0</data>
-      <data key="d27"><![CDATA[en-GB]]></data>
-      <data key="d28"><![CDATA[Gå rakt fram med kontoren till höger och den öppna ytan till vänster.]]></data>
-      <data key="d29"/>
+      <data key="d27">15.0</data>
+      <data key="d28"><![CDATA[en-GB]]></data>
+      <data key="d29"><![CDATA[Gå rakt fram med kontoren till höger och den öppna ytan till vänster.]]></data>
       <data key="d30"/>
       <data key="d31"/>
-      <data key="d32">120</data>
+      <data key="d32"/>
       <data key="d33">120</data>
-      <data key="d36">
+      <data key="d34">120</data>
+      <data key="d37">
         <y:PolyLineEdge>
           <y:Path sx="4.774049840801936" sy="0.0" tx="4.774049840801936" ty="0.0"/>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
@@ -363,15 +367,15 @@
       </data>
     </edge>
     <edge id="e5" source="n2" target="n3">
-      <data key="d26">10.0</data>
-      <data key="d27"><![CDATA[en-GB]]></data>
-      <data key="d28"><![CDATA[Gå genom dörråhlet och fortsätt rakt fram]]></data>
-      <data key="d29"/>
+      <data key="d27">10.0</data>
+      <data key="d28"><![CDATA[en-GB]]></data>
+      <data key="d29"><![CDATA[Gå genom dörråhlet och fortsätt rakt fram]]></data>
       <data key="d30"/>
       <data key="d31"/>
-      <data key="d32">300</data>
+      <data key="d32"/>
       <data key="d33">300</data>
-      <data key="d36">
+      <data key="d34">300</data>
+      <data key="d37">
         <y:PolyLineEdge>
           <y:Path sx="-4.148490045027842" sy="1.7435682797943173" tx="-4.148490045027842" ty="1.7435682797943173"/>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
@@ -381,15 +385,15 @@
       </data>
     </edge>
     <edge id="e6" source="n2" target="n6">
-      <data key="d26">10.0</data>
-      <data key="d27"><![CDATA[en-GB]]></data>
-      <data key="d28"><![CDATA[Gå in i köket och sväng vänster till kapprummet]]></data>
-      <data key="d29"/>
-      <data key="d30"><![CDATA[I kapprummet. Stor toalett till höger, liten toalett i andra dörren till vänster och rockhängare rakt fram.]]></data>
-      <data key="d31"/>
-      <data key="d32">30</data>
-      <data key="d33">300</data>
-      <data key="d36">
+      <data key="d27">10.0</data>
+      <data key="d28"><![CDATA[en-GB]]></data>
+      <data key="d29"><![CDATA[Gå in i köket och sväng vänster till kapprummet]]></data>
+      <data key="d30"/>
+      <data key="d31"><![CDATA[I kapprummet. Stor toalett till höger, liten toalett i andra dörren till vänster och rockhängare rakt fram.]]></data>
+      <data key="d32"/>
+      <data key="d33">30</data>
+      <data key="d34">300</data>
+      <data key="d37">
         <y:PolyLineEdge>
           <y:Path sx="-0.17985617256992192" sy="-4.496404314248053" tx="-0.17985617256992725" ty="-4.496404314248053">
             <y:Point x="-282.5" y="-107.5"/>
@@ -401,15 +405,15 @@
       </data>
     </edge>
     <edge id="e7" source="n3" target="n2">
-      <data key="d26">10.0</data>
-      <data key="d27"><![CDATA[en-GB]]></data>
-      <data key="d28"><![CDATA[Passera till höger om receptionsdisken]]></data>
-      <data key="d29"/>
-      <data key="d30"><![CDATA[Köket är till vänster]]></data>
-      <data key="d31"/>
-      <data key="d32">120</data>
+      <data key="d27">10.0</data>
+      <data key="d28"><![CDATA[en-GB]]></data>
+      <data key="d29"><![CDATA[Passera till höger om receptionsdisken]]></data>
+      <data key="d30"/>
+      <data key="d31"><![CDATA[Köket är till vänster]]></data>
+      <data key="d32"/>
       <data key="d33">120</data>
-      <data key="d36">
+      <data key="d34">120</data>
+      <data key="d37">
         <y:PolyLineEdge>
           <y:Path sx="4.881294104651538" sy="-1.4210854715202004E-14" tx="4.881294104651544" ty="0.0">
             <y:Point x="-367.5" y="9.0"/>
@@ -421,15 +425,15 @@
       </data>
     </edge>
     <edge id="e8" source="n3" target="n4">
-      <data key="d26">30.0</data>
-      <data key="d27"><![CDATA[en-GB]]></data>
-      <data key="d28"><![CDATA[Gå rakt fram mot entrén]]></data>
-      <data key="d29"/>
-      <data key="d30"><![CDATA[Trapporna är en bit fram till höger]]></data>
-      <data key="d31"/>
-      <data key="d32">280</data>
+      <data key="d27">30.0</data>
+      <data key="d28"><![CDATA[en-GB]]></data>
+      <data key="d29"><![CDATA[Gå rakt fram mot entrén]]></data>
+      <data key="d30"/>
+      <data key="d31"><![CDATA[Trapporna är en bit fram till höger]]></data>
+      <data key="d32"/>
       <data key="d33">280</data>
-      <data key="d36">
+      <data key="d34">280</data>
+      <data key="d37">
         <y:PolyLineEdge>
           <y:Path sx="-4.230857810960025" sy="1.5329194967246451" tx="-4.230857810960032" ty="1.5329194967246451"/>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
@@ -439,15 +443,15 @@
       </data>
     </edge>
     <edge id="e9" source="n4" target="n3">
-      <data key="d26">30.0</data>
-      <data key="d27"><![CDATA[en-GB]]></data>
-      <data key="d28"><![CDATA[Öppna dörren och gå rakt fram mot receptionen]]></data>
-      <data key="d29"/>
+      <data key="d27">30.0</data>
+      <data key="d28"><![CDATA[en-GB]]></data>
+      <data key="d29"><![CDATA[Öppna dörren och gå rakt fram mot receptionen]]></data>
       <data key="d30"/>
       <data key="d31"/>
-      <data key="d32">100</data>
+      <data key="d32"/>
       <data key="d33">100</data>
-      <data key="d36">
+      <data key="d34">100</data>
+      <data key="d37">
         <y:PolyLineEdge>
           <y:Path sx="4.786263425715333" sy="0.0" tx="4.786263425715333" ty="0.0">
             <y:Point x="-566.0" y="-16.0"/>
@@ -459,15 +463,15 @@
       </data>
     </edge>
     <edge id="e10" source="n5" target="n1">
-      <data key="d26">25.0</data>
-      <data key="d27"><![CDATA[en-GB]]></data>
-      <data key="d28"><![CDATA[Gå ut från kontoret.]]></data>
-      <data key="d29"/>
+      <data key="d27">25.0</data>
+      <data key="d28"><![CDATA[en-GB]]></data>
+      <data key="d29"><![CDATA[Gå ut från kontoret.]]></data>
       <data key="d30"/>
       <data key="d31"/>
-      <data key="d32">300</data>
+      <data key="d32"/>
       <data key="d33">300</data>
-      <data key="d36">
+      <data key="d34">300</data>
+      <data key="d37">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="-4.514767587552342" tx="0.0" ty="-4.514767587552257"/>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
@@ -477,15 +481,15 @@
       </data>
     </edge>
     <edge id="e11" source="n6" target="n2">
-      <data key="d26">10.0</data>
-      <data key="d27"><![CDATA[en-GB]]></data>
-      <data key="d28"><![CDATA[Gå in i köket och sväng höger]]></data>
-      <data key="d29"/>
+      <data key="d27">10.0</data>
+      <data key="d28"><![CDATA[en-GB]]></data>
+      <data key="d29"><![CDATA[Gå in i köket och sväng höger]]></data>
       <data key="d30"/>
       <data key="d31"/>
-      <data key="d32">120</data>
-      <data key="d33">210</data>
-      <data key="d36">
+      <data key="d32"/>
+      <data key="d33">120</data>
+      <data key="d34">210</data>
+      <data key="d37">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="4.503598561150852" tx="0.0" ty="4.503598561150852">
             <y:Point x="-284.0" y="-101.0"/>
@@ -497,15 +501,15 @@
       </data>
     </edge>
     <edge id="e12" source="n6" target="n7">
-      <data key="d26">30.0</data>
-      <data key="d27"><![CDATA[en-GB]]></data>
-      <data key="d28"><![CDATA[Gå in i köket och sväng vänster.]]></data>
-      <data key="d29"/>
-      <data key="d30"><![CDATA[Korridoren löper åt höger.]]></data>
-      <data key="d31"/>
-      <data key="d32">120</data>
-      <data key="d33">30</data>
-      <data key="d36">
+      <data key="d27">30.0</data>
+      <data key="d28"><![CDATA[en-GB]]></data>
+      <data key="d29"><![CDATA[Gå in i köket och sväng vänster.]]></data>
+      <data key="d30"/>
+      <data key="d31"><![CDATA[Korridoren löper åt höger.]]></data>
+      <data key="d32"/>
+      <data key="d33">120</data>
+      <data key="d34">30</data>
+      <data key="d37">
         <y:PolyLineEdge>
           <y:Path sx="-0.34513424498130973" sy="-4.486745184757126" tx="-0.34513424498132395" ty="-4.486745184757126">
             <y:Point x="-277.8451342449813" y="-138.5"/>
@@ -517,15 +521,15 @@
       </data>
     </edge>
     <edge id="e13" source="n7" target="n6">
-      <data key="d26">30.0</data>
-      <data key="d27"><![CDATA[en-GB]]></data>
-      <data key="d28"><![CDATA[Gå in i köket och sväng till höger genom dörren]]></data>
-      <data key="d29"/>
-      <data key="d30"><![CDATA[I kapprummet. Stor toalett till höger, liten toalett i andra dörren till vänster och rockhängare rakt fram.]]></data>
-      <data key="d31"/>
-      <data key="d32">210</data>
-      <data key="d33">300</data>
-      <data key="d36">
+      <data key="d27">30.0</data>
+      <data key="d28"><![CDATA[en-GB]]></data>
+      <data key="d29"><![CDATA[Gå in i köket och sväng till höger genom dörren]]></data>
+      <data key="d30"/>
+      <data key="d31"><![CDATA[I kapprummet. Stor toalett till höger, liten toalett i andra dörren till vänster och rockhängare rakt fram.]]></data>
+      <data key="d32"/>
+      <data key="d33">210</data>
+      <data key="d34">300</data>
+      <data key="d37">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="4.513293972832599" tx="0.0" ty="4.513293972832599">
             <y:Point x="-269.5" y="-132.0"/>
@@ -537,15 +541,15 @@
       </data>
     </edge>
     <edge id="e14" source="n7" target="n0">
-      <data key="d26">10.0</data>
-      <data key="d27"/>
-      <data key="d28"><![CDATA[Gå rakt fram med kontoren till vänster om dig]]></data>
-      <data key="d29"/>
+      <data key="d27">10.0</data>
+      <data key="d28"/>
+      <data key="d29"><![CDATA[Gå rakt fram med kontoren till vänster om dig]]></data>
       <data key="d30"/>
       <data key="d31"/>
-      <data key="d32">120</data>
+      <data key="d32"/>
       <data key="d33">120</data>
-      <data key="d36">
+      <data key="d34">120</data>
+      <data key="d37">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
             <y:Point x="-224.5" y="-245.0"/>
@@ -557,15 +561,15 @@
       </data>
     </edge>
     <edge id="e15" source="n0" target="n7">
-      <data key="d26">10.0</data>
-      <data key="d27"/>
-      <data key="d28"><![CDATA[Gå rakt fram med kontoren till höger om dig]]></data>
-      <data key="d29"/>
+      <data key="d27">10.0</data>
+      <data key="d28"/>
+      <data key="d29"><![CDATA[Gå rakt fram med kontoren till höger om dig]]></data>
       <data key="d30"/>
       <data key="d31"/>
-      <data key="d32">300</data>
+      <data key="d32"/>
       <data key="d33">300</data>
-      <data key="d36">
+      <data key="d34">300</data>
+      <data key="d37">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="7.836734693877588" ty="-10.301020408163367">
             <y:Point x="-261.6632653061224" y="-256.80102040816337"/>
@@ -577,14 +581,14 @@
       </data>
     </edge>
     <edge id="e16" source="n2" target="n7">
-      <data key="d27"/>
-      <data key="d28"><![CDATA[Gå rakt genom köket]]></data>
-      <data key="d29"/>
+      <data key="d28"/>
+      <data key="d29"><![CDATA[Gå rakt genom köket]]></data>
       <data key="d30"/>
       <data key="d31"/>
-      <data key="d32">30</data>
+      <data key="d32"/>
       <data key="d33">30</data>
-      <data key="d36">
+      <data key="d34">30</data>
+      <data key="d37">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
@@ -594,14 +598,14 @@
       </data>
     </edge>
     <edge id="e17" source="n7" target="n2">
-      <data key="d27"/>
-      <data key="d28"><![CDATA[Gå rakt genom köket]]></data>
-      <data key="d29"/>
+      <data key="d28"/>
+      <data key="d29"><![CDATA[Gå rakt genom köket]]></data>
       <data key="d30"/>
       <data key="d31"/>
-      <data key="d32">210</data>
+      <data key="d32"/>
       <data key="d33">210</data>
-      <data key="d36">
+      <data key="d34">210</data>
+      <data key="d37">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
             <y:Point x="-256.0" y="-113.0"/>
@@ -613,7 +617,7 @@
       </data>
     </edge>
   </graph>
-  <data key="d25">
+  <data key="d26">
     <y:Resources/>
   </data>
 </graphml>
