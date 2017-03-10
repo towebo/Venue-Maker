@@ -12,7 +12,7 @@ namespace WayfindR.Controllers
         public SQLiteController()
         {
             db = new SQLiteConnection(
-                @"C:\Users\karl-otto\Dropbox\src\Wayfindr\graphmltest\Data\Data.db3"
+                @"C:\Users\karl-otto\Documents\src\graphmltest\Data\Data.db3"
                 );
 
             db.CreateTable<CacheFile>();

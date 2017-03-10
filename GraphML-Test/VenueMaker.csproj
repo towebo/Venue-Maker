@@ -118,6 +118,8 @@
     <Compile Include="Models\WFGraph.cs" />
     <Compile Include="Models\WFNode.cs" />
     <Compile Include="Models\WFPlattform.cs" />
+    <Compile Include="Models\WFPOIInformation.cs" />
+    <Compile Include="Models\WFPointOfInterest.cs" />
     <Compile Include="Models\WFVenue.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

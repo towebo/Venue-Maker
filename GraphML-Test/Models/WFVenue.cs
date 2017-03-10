@@ -16,7 +16,7 @@ namespace WayfindR.Models
         public string Address { get; set; }
         public string City { get; set; }
         public string Zip { get; set; }
-        public string County { get; set; }
+        public string Country { get; set; }
         public string Web { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }
@@ -26,6 +26,8 @@ namespace WayfindR.Models
         public WFPlatform[] Platforms { get; set; }
 
         public WFExit[] Exits { get; set; }
+
+        public WFPointOfInterest[] PointsOfInterest { get; set; }
 
         public WFGraph NodesGraph { get; set; }
 
@@ -87,6 +89,62 @@ namespace WayfindR.Models
                 catch
                 {
                     // No exits
+                }
+
+                
+                try
+                {
+                    var jpois = jo["venue"]["pointsofinterest"].Children();
+                    List<WFPointOfInterest> wfpois = new List<WFPointOfInterest>();
+                    foreach (var jpoi in jpois)
+                    {
+                        WFPointOfInterest wfpoi = new WFPointOfInterest();                        
+                        wfpoi.Name = (string)jpoi["name"];
+                        wfpoi.DescriptiveName = (string)jpoi["descriptive_name"];
+
+                        wfpoi.BeaconUuid = (string)jpoi["beacon_uuid"];
+                        wfpoi.BeaconMajor = (int)jpoi["beacon_major"];
+                        wfpoi.BeaconMinor = (int)jpoi["beacon_minor"];
+
+                        string cat = (string)jpoi["category"];
+
+
+                        try
+                        {
+                            var jinfos = jpoi["information"].Children();
+                            List<WFPOIInformation> wfinfos = new List<WFPOIInformation>();
+                            foreach (var jinfo in jinfos)
+                            {
+                                WFPOIInformation wfinfo = new WFPOIInformation();
+
+                                wfinfo.Information = (string)jinfo["information"];
+                                wfinfo.Category = wfinfo.CategoryFromString(
+                                    (string)jinfo["category"]
+                                    );
+
+                                wfinfos.Add(wfinfo);
+
+                            } // foreach jinfo
+
+                            wfpoi.Information = wfinfos.ToArray();
+
+                        }
+                        catch
+                        {
+                            // No info attached to this poi.
+                        }
+
+
+
+                        wfpois.Add(wfpoi);
+
+                    } // foreach pointofinterest
+                    result.PointsOfInterest = wfpois.ToArray();
+
+                }
+                catch
+                {
+                    // No points of interest
                 }
 
 

@@ -11,6 +11,24 @@
         "exit_beacon_minor": 1,
         "mode": "door"
       }
+    ],
+    "pointsofinterest": [
+      {
+        "name": "Intressepunkt 1",
+        "beacon_major": 200,
+        "beacon_minor": 3,
+        "information": [
+          {
+            "information": "Första meddelandet",
+            "category": "general"
+          },
+          {
+            "information": "Andra meddelandet",
+            "category":  "general"
+          }
+        ]
+
+      }
     ]
   }
 }
