@@ -1,6 +1,6 @@
 ﻿namespace WayfindR
 {
-    partial class Form1
+    partial class RouteTestForm
     {
         /// <summary>
         /// Required designer variable.

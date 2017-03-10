@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("GraphML-Test")]
+[assembly: AssemblyTitle("Venue Maker")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("GraphML-Test")]
-[assembly: AssemblyCopyright("Copyright ©  2016")]
+[assembly: AssemblyCompany("Mawingu")]
+[assembly: AssemblyProduct("Venue Maker")]
+[assembly: AssemblyCopyright("Copyright ©  2017 Mawingu")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

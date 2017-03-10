@@ -21,11 +21,11 @@ using SQLite;
 namespace WayfindR
 {
 
-    public partial class Form1 : Form
+    public partial class RouteTestForm : Form
     {
         
 
-        public Form1()
+        public RouteTestForm()
         {
             InitializeComponent();
         }

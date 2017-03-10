@@ -130,7 +130,7 @@
       </data>
     </node>
     <node id="n2">
-      <data key="d7">200</data>
+      <data key="d7">100</data>
       <data key="d8">3</data>
       <data key="d9"><![CDATA[Köket]]></data>
       <data key="d10"><![CDATA[ TicketBarrier ]]></data>
@@ -154,7 +154,7 @@
       </data>
     </node>
     <node id="n3">
-      <data key="d7">200</data>
+      <data key="d7">100</data>
       <data key="d8">2</data>
       <data key="d9"><![CDATA[Receptionen]]></data>
       <data key="d10"><![CDATA[bench]]></data>
@@ -178,7 +178,7 @@
       </data>
     </node>
     <node id="n4">
-      <data key="d7">200</data>
+      <data key="d7">100</data>
       <data key="d8">1</data>
       <data key="d9"><![CDATA[Entré, DataPartner]]></data>
       <data key="d10"><![CDATA[exit]]></data>
@@ -233,8 +233,8 @@
       </data>
     </node>
     <node id="n6">
-      <data key="d7">200</data>
-      <data key="d8">4</data>
+      <data key="d7">45002</data>
+      <data key="d8">5914</data>
       <data key="d9"><![CDATA[Toaletterna]]></data>
       <data key="d10"><![CDATA[ Escalator ]]></data>
       <data key="d11">2.5</data>
