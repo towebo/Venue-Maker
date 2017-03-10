@@ -8,7 +8,7 @@ namespace WayfindR.Models
 {
     public class WFPointOfInterest
     {
-        public enum Category
+        public enum POICategory
         {
             General,
             WC,
@@ -22,27 +22,28 @@ namespace WayfindR.Models
         public string BeaconUuid { get; set; }
         public int BeaconMajor { get; set; }
         public int BeaconMinor { get; set; }
-
+        
+        public POICategory Category { get; set; }
 
         public WFPOIInformation[] Information { get; set; }
 
 
-        public Category CategoryFromString(string catName)
+        public POICategory CategoryFromString(string catName)
         {
             if ("general" == catName.ToLower())
             {
-                return Category.General;
+                return POICategory.General;
             }
             else if ("wc" == catName.ToLower())
             {
-                return Category.WC;
+                return POICategory.WC;
             }
             else if ("hwc" == catName.ToLower())
             {
-                return Category.HWC;
+                return POICategory.HWC;
             }
 
-            return Category.General;
+            return POICategory.General;
 
         }
 

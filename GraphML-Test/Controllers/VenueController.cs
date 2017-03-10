@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using WayfindR.Models;
 using SQLite;
+using System.Text;
 
 namespace WayfindR.Controllers
 {
@@ -62,9 +63,7 @@ namespace WayfindR.Controllers
             {
                 if (File.Exists(fileName))
                 {
-                    WFVenue v = WFVenue.FromJson(
-                        File.ReadAllText(fileName)
-                        );
+                    WFVenue v = WFVenue.LoadFromFile(fileName);                    
                     if (v != null)
                     {
                         SQLiteConnection db = SQLiteController.Me.Db;

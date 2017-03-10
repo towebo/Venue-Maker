@@ -248,6 +248,34 @@ namespace WayfindR.Models
 
         }
 
+        public static WFGraph LoadFromGraphML(string fileName)
+        {
+            try
+            {
+                if (File.Exists(fileName))
+                {
+                    using (MemoryStream ms = new MemoryStream(
+                        File.ReadAllBytes(fileName)
+                        ))
+                    {
+                        WFGraph grph = WFGraph.LoadFromGraphML(ms);
+
+                        return grph;
+                        
+                    } // using
+                    
+                } // File Exists
+
+                return null;
+
+            }
+            catch
+            {
+                return null;
+
+
+            }
+        }
 
         public static WFGraph LoadFromGraphML(Stream stream)
         {

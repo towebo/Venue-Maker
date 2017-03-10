@@ -25,7 +25,7 @@ namespace WayfindR.Models
         {
             try
             {
-                if ("sescription" == catName.ToLower())
+                if ("description" == catName.ToLower())
                 {
                     return InfoCategory.Description;
                 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Media;
 using System.Text;
@@ -84,9 +85,19 @@ namespace VenueMaker.Dialogs
 
                 SaveVenueDialog.FileName = OpenVenueDialog.FileName;
 
-                Venue = VenueController.Me.Add(OpenVenueDialog.FileName);
+                Venue = WFVenue.LoadFromFile(OpenVenueDialog.FileName);
+                string graphfile = Path.ChangeExtension(
+                    OpenVenueDialog.FileName,
+                    OpenGraphMLDialog.DefaultExt
+                    );                
+                if (File.Exists(graphfile))
+                {                    
+                    WFGraph g = WFGraph.LoadFromGraphML(graphfile);
+                    Venue.NodesGraph = g;
+                    Venue.AddPOIsFromGraph();
 
-                
+                }
+                                
                 VenueBS.DataSource = Venue;
 
                 SystemSounds.Asterisk.Play();
@@ -109,7 +120,9 @@ namespace VenueMaker.Dialogs
 
                 }
 
-                // Save the shit here
+                Venue.SaveToFile(SaveVenueDialog.FileName);
+                SystemSounds.Asterisk.Play();
+
 
             }
             catch (Exception ex)

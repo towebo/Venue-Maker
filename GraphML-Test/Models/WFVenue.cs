@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json.Linq;
 using System.IO;
+using Newtonsoft.Json;
+using System.Text;
 
 namespace WayfindR.Models
 {
@@ -158,6 +160,172 @@ namespace WayfindR.Models
             }
         }
 
+        public static WFVenue LoadFromFile(string fileName)
+        {
+            if (File.Exists(fileName))
+            {
+                WFVenue v = WFVenue.FromJson(
+                        File.ReadAllText(fileName, Encoding.UTF8)
+                        );
+
+                return v;
+
+            } // file exists
+
+            return null;
+            
+        }
+        
+        public string ToJson()
+        {
+            try
+            {
+                StringBuilder sb = new StringBuilder();
+                StringWriter sw = new StringWriter(sb);
+
+                using (JsonWriter writer = new JsonTextWriter(sw))
+                {
+                    writer.Formatting = Formatting.Indented;
+                    writer.WriteStartObject();
+                    writer.WritePropertyName("venue");
+                    writer.WriteStartObject();
+
+                    writer.WritePropertyName("id");
+                    writer.WriteValue(Id);
+                    writer.WritePropertyName("name");
+                    writer.WriteValue(Name);
+
+
+                    if (Platforms != null &&
+                        Platforms.Length > 0)
+                    {
+                        writer.WritePropertyName("platforms");
+                        writer.WriteStartArray();
+                        foreach (WFPlatform pf in Platforms)
+                        {
+                            writer.WriteStartObject(); // Platform
+
+                            writer.WritePropertyName("name");
+                            writer.WriteValue(pf.Name);
+                            writer.WritePropertyName("entrance_beacon_major");
+                            writer.WriteValue(pf.EntranceBeaconMajor);
+                            writer.WritePropertyName("entrance_beacon_minor");
+                            writer.WriteValue(pf.EntranceBeaconMinor);
+                            writer.WritePropertyName("exit_beacon_major");
+                            writer.WriteValue(pf.ExitBeaconMajor);
+                            writer.WritePropertyName("exit_beacon_minor");
+                            writer.WriteValue(pf.ExitBeaconMinor);
+
+                            writer.WritePropertyName("destinations");
+                            writer.WriteStartArray(); // Destinations
+                            foreach (string dest in pf.Destinations)
+                            {
+                                writer.WriteValue(dest);
+
+                            } // foreach destination
+                            writer.WriteEnd(); // Destinations
+
+                            writer.WriteEndObject(); // Platform
+
+                        } // foreach platform
+                        writer.WriteEnd(); // Platform
+
+                    } // Has platforms
+
+
+                    if (Exits != null &&
+                        Exits.Length > 0)
+                    {
+                        writer.WritePropertyName("exits");
+                        writer.WriteStartArray();
+                        foreach (WFExit wfe in Exits)
+                        {
+                            writer.WriteStartObject();
+
+                            writer.WritePropertyName("name");
+                            writer.WriteValue(wfe.Name);
+                            writer.WritePropertyName("entrance_beacon_major");
+                            writer.WriteValue(wfe.EntranceBeaconMajor);
+                            writer.WritePropertyName("entrance_beacon_minor");
+                            writer.WriteValue(wfe.EntranceBeaconMinor);
+                            writer.WritePropertyName("exit_beacon_major");
+                            writer.WriteValue(wfe.ExitBeaconMajor);
+                            writer.WritePropertyName("exit_beacon_minor");
+                            writer.WriteValue(wfe.ExitBeaconMinor);
+                            writer.WritePropertyName("mode");
+                            writer.WriteValue(wfe.Mode);
+
+                            writer.WriteEndObject();
+
+                        } // foreach exit
+                        writer.WriteEnd();
+
+                    } // Has exits
+
+                    if (PointsOfInterest != null &&
+                        PointsOfInterest.Length > 0)
+                    {
+                        writer.WritePropertyName("pointsofinterest");
+                        writer.WriteStartArray();
+                        foreach (WFPointOfInterest wfpoi in PointsOfInterest)
+                        {
+                            writer.WriteStartObject();
+
+                            writer.WritePropertyName("name");
+                            writer.WriteValue(wfpoi.Name);
+                            writer.WritePropertyName("descriptive_name");
+                            writer.WriteValue(wfpoi.DescriptiveName);
+                            writer.WritePropertyName("beacon_uuid");
+                            writer.WriteValue(wfpoi.BeaconUuid);
+                            writer.WritePropertyName("eacon_major");
+                            writer.WriteValue(wfpoi.BeaconMajor);
+                            writer.WritePropertyName("beacon_minor");
+                            writer.WriteValue(wfpoi.BeaconMinor);
+                            writer.WritePropertyName("category");
+                            writer.WriteValue(wfpoi.Category.ToString().ToLower());
+
+                            if (wfpoi.Information != null &&
+                                wfpoi.Information.Length > 0)
+                            {
+                                writer.WritePropertyName("information");
+                                writer.WriteStartArray();
+                                foreach (WFPOIInformation wfpoinfo in wfpoi.Information)
+                                {
+                                    writer.WriteStartObject();
+
+                                    writer.WritePropertyName("information");
+                                    writer.WriteValue(wfpoinfo.Information);
+                                    writer.WritePropertyName("category");
+                                    writer.WriteValue(wfpoinfo.Category.ToString().ToLower());
+
+                                    writer.WriteEndObject();
+
+                                } // foreach wfpoinfo
+                                writer.WriteEnd();
+
+                            } // Has information
+
+                            writer.WriteEndObject();
+
+                        } // foreach pointofinterest
+                        writer.WriteEnd();
+
+                    } // Has points of interest
+
+                    writer.WriteEndObject(); // venue
+                    writer.WriteEndObject();
+
+                } // using
+
+                return sb.ToString();
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
 
         public void LoadNodesGraph(Stream stream)
         {
@@ -171,6 +339,88 @@ namespace WayfindR.Models
 
             }
         }
+
+        public void SaveToFile(string fileName)
+        {
+            try
+            {
+                string data = ToJson();
+                File.WriteAllText(fileName, data, Encoding.UTF8);
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+
+            }
+        }
+
+
+        public WFPointOfInterest POIFromBeacon(int major, int minor)
+        {
+            try
+            {
+                WFPointOfInterest poi = (
+                    from x in PointsOfInterest
+                    where x.BeaconMajor == major && x.BeaconMinor == minor
+                    select x
+                    ).FirstOrDefault();
+
+                return poi;
+
+            }
+            catch
+            {
+                throw;
+
+            }
+
+        }
+
+        public void AddPOIsFromGraph()
+        {
+            try
+            {
+                if (NodesGraph == null)
+                {
+                    return;
+                } // No graph
+
+                List<WFPointOfInterest> newpois = new List<WFPointOfInterest>();
+                foreach (WFNode node in NodesGraph.Vertices)
+                {
+                    WFPointOfInterest poi = POIFromBeacon(
+                        node.Major,
+                        node.Minor
+                        );
+
+                    if (poi == null)
+                    {
+                        poi = new WFPointOfInterest();
+                        poi.BeaconMajor = node.Major;
+                        poi.BeaconMinor = node.Minor;
+
+                        newpois.Add(poi);
+
+                    }
+
+                    poi.Name = node.Name;
+                    poi.DescriptiveName = node.DescriptiveName;
+                    
+                } // foreach graph.node
+
+                List<WFPointOfInterest> allpois = PointsOfInterest.ToList();
+                allpois.AddRange(newpois);
+                PointsOfInterest = allpois.ToArray();
+            }
+            catch
+            {
+                throw;
+
+            }
+
+        }
+
 
     }
 }
