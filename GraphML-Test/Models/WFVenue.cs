@@ -44,6 +44,15 @@ namespace WayfindR.Models
                 WFVenue result = new WFVenue();
                 result.Id = (string)jo["venue"]["id"];
                 result.Name = (string)jo["venue"]["name"];
+                result.Description = (string)jo["venue"]["description"];
+                result.Address = (string)jo["venue"]["address"];
+                result.Zip = (string)jo["venue"]["zip"];
+                result.City = (string)jo["venue"]["city"];
+                result.Country = (string)jo["venue"]["country"];
+                result.Phone = (string)jo["venue"]["phone"];
+                result.Email = (string)jo["venue"]["email"];result.Address = (string)jo["venue"]["address"];
+                result.Web = (string)jo["venue"]["web"];
+                
 
                 try
                 {
@@ -194,6 +203,30 @@ namespace WayfindR.Models
                     writer.WriteValue(Id);
                     writer.WritePropertyName("name");
                     writer.WriteValue(Name);
+                    writer.WritePropertyName("description");
+                    writer.WriteValue(Description);
+
+                    writer.WritePropertyName("address");
+                    writer.WriteValue(Address);
+                    writer.WritePropertyName("zip");
+                    writer.WriteValue(Zip);
+                    writer.WritePropertyName("city");
+                    writer.WriteValue(City);
+                    writer.WritePropertyName("country");
+                    writer.WriteValue(Country);
+
+                    writer.WritePropertyName("phone");
+                    writer.WriteValue(Phone);
+                    writer.WritePropertyName("email");
+                    writer.WriteValue(Email);
+                    writer.WritePropertyName("web");
+                    writer.WriteValue(Web);
+
+
+
+
+
+
 
 
                     if (Platforms != null &&
@@ -277,7 +310,7 @@ namespace WayfindR.Models
                             writer.WriteValue(wfpoi.DescriptiveName);
                             writer.WritePropertyName("beacon_uuid");
                             writer.WriteValue(wfpoi.BeaconUuid);
-                            writer.WritePropertyName("eacon_major");
+                            writer.WritePropertyName("beacon_major");
                             writer.WriteValue(wfpoi.BeaconMajor);
                             writer.WritePropertyName("beacon_minor");
                             writer.WriteValue(wfpoi.BeaconMinor);

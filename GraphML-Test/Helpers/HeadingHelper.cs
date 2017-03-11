@@ -1,9 +1,16 @@
-﻿using System;
+﻿//using CoreLocation;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace WayfindR.Helpers
 {
     public class HeadingHelper
     {
+        //private static CLLocationManager locmgr;
+
         public enum ClockwizeDirection
         {
             TwelveOClock = 0,
@@ -36,7 +43,6 @@ namespace WayfindR.Helpers
 
             TurnAround = 180
         } // NaturalDirection
-
 
 
         public static string ClockwizeDirectionName(ClockwizeDirection direction)
@@ -89,7 +95,6 @@ namespace WayfindR.Helpers
 
         }
 
-
         public static string NaturalDirectionName(NaturalDirection direction)
         {
             switch (direction)
@@ -128,10 +133,8 @@ namespace WayfindR.Helpers
         }
 
 
-
         public const int ClockwizeSector = 15;
         public const int NaturalSector = 23;
-
 
 
         public static int TurnHeading(int incomming, int outgoing)
@@ -253,7 +256,6 @@ namespace WayfindR.Helpers
 
         } // ClockwizeTurn
 
-
         public static bool InNaturalSector(int value, NaturalDirection direction)
         {
             return value >= ((int)direction - NaturalSector) &&
@@ -302,5 +304,51 @@ namespace WayfindR.Helpers
                 ));
 
         } // NaturalTurn
+
+
+        public static int CurrentHeading()
+        {
+            /*
+            if (CLLocationManager.HeadingAvailable)
+            {
+                if (locmgr == null)
+                {
+                    locmgr = new CLLocationManager();
+                    locmgr.StartUpdatingHeading();
+
+                }
+
+                return Convert.ToInt16(
+                    Math.Round(locmgr.Heading.MagneticHeading)
+                );
+
+            }
+            */
+
+            return 0;
+
+
+
+
+        }
+
+        public static int ValidHeading(int heading)
+        {
+            int result = heading;
+            if (result < 0)
+            {
+                result += 360;
+
+            }
+            else if (result >= 360)
+            {
+                result -= 360;
+
+            }
+
+            return result;
+
+        }
+
     }
 }

@@ -10,13 +10,21 @@ namespace WayfindR.Models
         [Indexed(Name = "MajorMinor", Order = 2)]
         public int Minor { get; set; }
 		public double? Distance { get; set; }
-
+        
         public string GraphId { get; set; }
         public int GraphLevel { get; set; }
         public string VenueId { get; set; }
 
 
+        [Ignore]
+        public WFNode Node { get; set; }
+        [Ignore]
+        public WFGraph Graph { get; set; }
+        [Ignore]
+        public WFVenue Venue { get; set; }
 
 
-	}
+
+
+    }
 }

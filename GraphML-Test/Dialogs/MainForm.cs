@@ -33,11 +33,62 @@ namespace VenueMaker.Dialogs
         {
             try
             {
-                VenueBS.DataSource = Venue;
+                VenueBS.DataSource = new WFVenue();
+                VenueBS.CurrentChanged += (s1, e1) =>
+                {
+                    WFVenue v = VenueBS.Current as WFVenue;
+                    if (v != null)
+                    {
+                        POIsBS.DataSource = v.PointsOfInterest;
+
+                    }
+                    else
+                    {
+                        POIsBS.DataSource = new WFPointOfInterest[] { };
+
+                    }
+
+                };
+
 
                 VenueNameTB.DataBindings.Add("Text", VenueBS, "Name");
                 VenueIDTB.DataBindings.Add("Text", VenueBS, "Id");
+                AddressTB.DataBindings.Add("Text", VenueBS, "Address");
+                ZipTB.DataBindings.Add("Text", VenueBS, "Zip");
+                CityTB.DataBindings.Add("Text", VenueBS, "City");
+                CountryTB.DataBindings.Add("Text", VenueBS, "Country");
 
+
+                POIsBS.DataSource = new WFPointOfInterest[] { };
+                POIsBS.CurrentChanged += (s2, e2) =>
+                {
+                    WFPointOfInterest p = POIsBS.Current as WFPointOfInterest;
+                    if (p != null &&
+                    p.Information != null)
+                    {
+                        POIInfosBS.DataSource = p.Information;
+
+                    }
+                    else
+                    {
+                        POIInfosBS.DataSource = new WFPOIInformation[] { };
+
+                    }
+
+                };
+
+                POIsLB.DataSource = POIsBS;
+                POIsLB.DisplayMember = "Name";
+                POIsLB.ValueMember = "Name";
+
+
+                POIInfosBS.DataSource = new WFPOIInformation[] { };
+                
+
+                POIInfosLB.DataSource = POIInfosBS;
+                POIInfosLB.DisplayMember = "Information";
+                POIInfosLB.ValueMember = "Information";
+                POIInformationTB.DataBindings.Add("Text", POIInfosBS, "Information");
 
 
 

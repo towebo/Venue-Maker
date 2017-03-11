@@ -1,4 +1,4 @@
-﻿using CoreLocation;
+﻿//using CoreLocation;
 using System;
 using System.Linq;
 using System.Text;
@@ -22,14 +22,14 @@ namespace WayfindR.Models
         public const double TouchAccuracy = 0.2;
 
 
-
+        /*
         public BLEBeacon(CLBeacon aBeacon)            : this()
         {            
             this.Major = (int)aBeacon.Major;
             this.Minor = (int)aBeacon.Minor;
             
         }
-
+        */
         private void InitHeadingInfos()
         {
             CacheNodeBeacon cnb = this.Nodes.FirstOrDefault();

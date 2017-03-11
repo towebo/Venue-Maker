@@ -68,8 +68,14 @@ namespace WayfindR.Models
             set { SetHeadingInfo(4, value); }
         }
 
+
+        [XmlAttribute("in_range_accuracy")]
+        public double? InRangeAccuracy { get; set; }
+        
+
         [XmlAttribute("in_range_message")]
         public string InRangeMessage { get; set; }
+        
 
         [XmlAttribute("out_of_range_message")]
         public string OutOfRangeMessage { get; set; }
