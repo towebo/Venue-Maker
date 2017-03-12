@@ -132,6 +132,8 @@ namespace WayfindR.Models
                                 wfinfo.Category = wfinfo.CategoryFromString(
                                     (string)jinfo["category"]
                                     );
+                                wfinfo.StartsAt = (DateTime?)jinfo["starts_at"];
+                                wfinfo.EndsAt = (DateTime?)jinfo["ends_at"];
 
                                 wfinfos.Add(wfinfo);
 
@@ -331,6 +333,11 @@ namespace WayfindR.Models
                                     writer.WritePropertyName("category");
                                     writer.WriteValue(wfpoinfo.Category.ToString().ToLower());
 
+                                    writer.WritePropertyName("starts_at");
+                                    writer.WriteValue(wfpoinfo.StartsAt);
+                                    writer.WritePropertyName("ends_at");
+                                    writer.WriteValue(wfpoinfo.EndsAt);
+                                    
                                     writer.WriteEndObject();
 
                                 } // foreach wfpoinfo

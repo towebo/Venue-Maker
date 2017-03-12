@@ -19,6 +19,8 @@ namespace WayfindR.Models
 
         public string Information { get; set; }
         public InfoCategory Category { get; set; }
+        public DateTime? StartsAt { get; set; }
+        public DateTime? EndsAt { get; set; }
 
 
         public InfoCategory CategoryFromString(string catName)
