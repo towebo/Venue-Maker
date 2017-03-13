@@ -53,6 +53,10 @@
             this.CountryTB = new System.Windows.Forms.TextBox();
             this.Tabs = new System.Windows.Forms.TabControl();
             this.PoiTabPage = new System.Windows.Forms.TabPage();
+            this.POIInfoEndsTB = new System.Windows.Forms.TextBox();
+            this.POIInfoEndsLabel = new System.Windows.Forms.Label();
+            this.POIInfoStartsTB = new System.Windows.Forms.TextBox();
+            this.POIInfoStartsLabel = new System.Windows.Forms.Label();
             this.POIInfoCatCombo = new System.Windows.Forms.ComboBox();
             this.POIInfoCatLabel = new System.Windows.Forms.Label();
             this.POIInformationTB = new System.Windows.Forms.TextBox();
@@ -63,6 +67,8 @@
             this.ExitsTabPabe = new System.Windows.Forms.TabPage();
             this.POIsBS = new System.Windows.Forms.BindingSource(this.components);
             this.POIInfosBS = new System.Windows.Forms.BindingSource(this.components);
+            this.AddPOIInfoButton = new System.Windows.Forms.Button();
+            this.RemovePOIInfoButton = new System.Windows.Forms.Button();
             this.MainMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VenueBS)).BeginInit();
             this.Tabs.SuspendLayout();
@@ -258,6 +264,12 @@
             // 
             // PoiTabPage
             // 
+            this.PoiTabPage.Controls.Add(this.RemovePOIInfoButton);
+            this.PoiTabPage.Controls.Add(this.AddPOIInfoButton);
+            this.PoiTabPage.Controls.Add(this.POIInfoEndsTB);
+            this.PoiTabPage.Controls.Add(this.POIInfoEndsLabel);
+            this.PoiTabPage.Controls.Add(this.POIInfoStartsTB);
+            this.PoiTabPage.Controls.Add(this.POIInfoStartsLabel);
             this.PoiTabPage.Controls.Add(this.POIInfoCatCombo);
             this.PoiTabPage.Controls.Add(this.POIInfoCatLabel);
             this.PoiTabPage.Controls.Add(this.POIInformationTB);
@@ -272,6 +284,38 @@
             this.PoiTabPage.TabIndex = 0;
             this.PoiTabPage.Text = "POI";
             this.PoiTabPage.UseVisualStyleBackColor = true;
+            // 
+            // POIInfoEndsTB
+            // 
+            this.POIInfoEndsTB.Location = new System.Drawing.Point(350, 362);
+            this.POIInfoEndsTB.Name = "POIInfoEndsTB";
+            this.POIInfoEndsTB.Size = new System.Drawing.Size(100, 23);
+            this.POIInfoEndsTB.TabIndex = 10;
+            // 
+            // POIInfoEndsLabel
+            // 
+            this.POIInfoEndsLabel.AutoSize = true;
+            this.POIInfoEndsLabel.Location = new System.Drawing.Point(347, 344);
+            this.POIInfoEndsLabel.Name = "POIInfoEndsLabel";
+            this.POIInfoEndsLabel.Size = new System.Drawing.Size(100, 15);
+            this.POIInfoEndsLabel.TabIndex = 9;
+            this.POIInfoEndsLabel.Text = "Aktiv till och med";
+            // 
+            // POIInfoStartsTB
+            // 
+            this.POIInfoStartsTB.Location = new System.Drawing.Point(175, 362);
+            this.POIInfoStartsTB.Name = "POIInfoStartsTB";
+            this.POIInfoStartsTB.Size = new System.Drawing.Size(170, 23);
+            this.POIInfoStartsTB.TabIndex = 8;
+            // 
+            // POIInfoStartsLabel
+            // 
+            this.POIInfoStartsLabel.AutoSize = true;
+            this.POIInfoStartsLabel.Location = new System.Drawing.Point(172, 344);
+            this.POIInfoStartsLabel.Name = "POIInfoStartsLabel";
+            this.POIInfoStartsLabel.Size = new System.Drawing.Size(108, 15);
+            this.POIInfoStartsLabel.TabIndex = 7;
+            this.POIInfoStartsLabel.Text = "Aktiv från och med";
             // 
             // POIInfoCatCombo
             // 
@@ -344,6 +388,26 @@
             this.ExitsTabPabe.TabIndex = 1;
             this.ExitsTabPabe.Text = "Utgångar";
             this.ExitsTabPabe.UseVisualStyleBackColor = true;
+            // 
+            // AddPOIInfoButton
+            // 
+            this.AddPOIInfoButton.Location = new System.Drawing.Point(496, 23);
+            this.AddPOIInfoButton.Name = "AddPOIInfoButton";
+            this.AddPOIInfoButton.Size = new System.Drawing.Size(75, 23);
+            this.AddPOIInfoButton.TabIndex = 11;
+            this.AddPOIInfoButton.Text = "&Lägg till";
+            this.AddPOIInfoButton.UseVisualStyleBackColor = true;
+            this.AddPOIInfoButton.Click += new System.EventHandler(this.AddPOIInfoButton_Click);
+            // 
+            // RemovePOIInfoButton
+            // 
+            this.RemovePOIInfoButton.Location = new System.Drawing.Point(496, 63);
+            this.RemovePOIInfoButton.Name = "RemovePOIInfoButton";
+            this.RemovePOIInfoButton.Size = new System.Drawing.Size(75, 23);
+            this.RemovePOIInfoButton.TabIndex = 12;
+            this.RemovePOIInfoButton.Text = "&Ta bort";
+            this.RemovePOIInfoButton.UseVisualStyleBackColor = true;
+            this.RemovePOIInfoButton.Click += new System.EventHandler(this.RemovePOIInfoButton_Click);
             // 
             // MainForm
             // 
@@ -418,5 +482,11 @@
         private System.Windows.Forms.ComboBox POIInfoCatCombo;
         private System.Windows.Forms.BindingSource POIsBS;
         private System.Windows.Forms.BindingSource POIInfosBS;
+        private System.Windows.Forms.Label POIInfoStartsLabel;
+        private System.Windows.Forms.TextBox POIInfoStartsTB;
+        private System.Windows.Forms.Label POIInfoEndsLabel;
+        private System.Windows.Forms.TextBox POIInfoEndsTB;
+        private System.Windows.Forms.Button AddPOIInfoButton;
+        private System.Windows.Forms.Button RemovePOIInfoButton;
     }
 }

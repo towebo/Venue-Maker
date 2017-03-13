@@ -89,6 +89,8 @@ namespace VenueMaker.Dialogs
                 POIInfosLB.DisplayMember = "Information";
                 POIInfosLB.ValueMember = "Information";
                 POIInformationTB.DataBindings.Add("Text", POIInfosBS, "Information");
+                POIInfoStartsTB.DataBindings.Add("Text", POIInfosBS, "StartsAt");
+                POIInfoEndsTB.DataBindings.Add("Text", POIInfosBS, "EndsAt");
 
 
 
@@ -198,6 +200,86 @@ namespace VenueMaker.Dialogs
 
             }
 
+        }
+
+        private void AddPOIInfoButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                WFPointOfInterest p = POIsBS.Current as WFPointOfInterest;
+                if (p == null)
+                {
+                    return;
+
+                }
+
+                WFPOIInformation newinfo = new WFPOIInformation();
+
+                List<WFPOIInformation> poiis;
+                if (p.Information != null)
+                {
+                    poiis = p.Information.ToList();
+
+                }
+                else
+                {
+                    poiis = new List<WFPOIInformation>();
+
+                }
+
+                poiis.Add(newinfo);
+
+                p.Information = poiis.ToArray();
+
+                POIsBS.ResetBindings(false);
+
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+        }
+
+        private void RemovePOIInfoButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                WFPointOfInterest p = POIsBS.Current as WFPointOfInterest;
+                if (p == null)
+                {
+                    return;
+
+                }
+
+                WFPOIInformation poii = POIInfosBS.Current as WFPOIInformation;
+                if (poii == null)
+                {
+                    return;
+
+                }
+
+
+                if (p.Information == null)
+                {
+                    return;
+
+                }
+
+                List<WFPOIInformation> poiis;
+                poiis = p.Information.ToList();
+                poiis.Remove(poii);
+                p.Information = poiis.ToArray();
+                POIsBS.ResetBindings(false);
+            
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
         }
     }
 }
