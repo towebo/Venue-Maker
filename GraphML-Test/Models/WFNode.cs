@@ -10,6 +10,7 @@ namespace WayfindR.Models
     {
         private List<WFHeadingInfo> hinfos;
 
+        [XmlAttribute("id")]
         public string Id { get; set; }
 
         [XmlAttribute("venue_id")]

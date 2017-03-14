@@ -47,6 +47,28 @@ namespace WayfindR.Models
 
         }
 
+        public WFPOIInformation[] GetCurrentInformation(DateTime theDate)
+        {
+            WFPOIInformation[] result = this.Information;
+
+            if (result != null)
+            {
+                result = (
+                    from x in this.Information
+                    where (
+                        (x.StartsAt == null && x.EndsAt == null) ||
+                        (x.StartsAt <= theDate && x.EndsAt == null) ||
+                        (x.StartsAt <= theDate && x.EndsAt >= theDate) ||
+                        (x.StartsAt == null && x.EndsAt >= theDate)
+                    )
+                    select x
+                    ).ToArray();
+
+            }
+
+            return result;
+
+        }
 
     }
 }

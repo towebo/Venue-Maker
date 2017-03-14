@@ -53,6 +53,8 @@
             this.CountryTB = new System.Windows.Forms.TextBox();
             this.Tabs = new System.Windows.Forms.TabControl();
             this.PoiTabPage = new System.Windows.Forms.TabPage();
+            this.RemovePOIInfoButton = new System.Windows.Forms.Button();
+            this.AddPOIInfoButton = new System.Windows.Forms.Button();
             this.POIInfoEndsTB = new System.Windows.Forms.TextBox();
             this.POIInfoEndsLabel = new System.Windows.Forms.Label();
             this.POIInfoStartsTB = new System.Windows.Forms.TextBox();
@@ -67,8 +69,6 @@
             this.ExitsTabPabe = new System.Windows.Forms.TabPage();
             this.POIsBS = new System.Windows.Forms.BindingSource(this.components);
             this.POIInfosBS = new System.Windows.Forms.BindingSource(this.components);
-            this.AddPOIInfoButton = new System.Windows.Forms.Button();
-            this.RemovePOIInfoButton = new System.Windows.Forms.Button();
             this.MainMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VenueBS)).BeginInit();
             this.Tabs.SuspendLayout();
@@ -285,6 +285,26 @@
             this.PoiTabPage.Text = "POI";
             this.PoiTabPage.UseVisualStyleBackColor = true;
             // 
+            // RemovePOIInfoButton
+            // 
+            this.RemovePOIInfoButton.Location = new System.Drawing.Point(496, 55);
+            this.RemovePOIInfoButton.Name = "RemovePOIInfoButton";
+            this.RemovePOIInfoButton.Size = new System.Drawing.Size(75, 23);
+            this.RemovePOIInfoButton.TabIndex = 12;
+            this.RemovePOIInfoButton.Text = "&Ta bort";
+            this.RemovePOIInfoButton.UseVisualStyleBackColor = true;
+            this.RemovePOIInfoButton.Click += new System.EventHandler(this.RemovePOIInfoButton_Click);
+            // 
+            // AddPOIInfoButton
+            // 
+            this.AddPOIInfoButton.Location = new System.Drawing.Point(496, 23);
+            this.AddPOIInfoButton.Name = "AddPOIInfoButton";
+            this.AddPOIInfoButton.Size = new System.Drawing.Size(75, 23);
+            this.AddPOIInfoButton.TabIndex = 11;
+            this.AddPOIInfoButton.Text = "&Lägg till";
+            this.AddPOIInfoButton.UseVisualStyleBackColor = true;
+            this.AddPOIInfoButton.Click += new System.EventHandler(this.AddPOIInfoButton_Click);
+            // 
             // POIInfoEndsTB
             // 
             this.POIInfoEndsTB.Location = new System.Drawing.Point(350, 362);
@@ -388,26 +408,6 @@
             this.ExitsTabPabe.TabIndex = 1;
             this.ExitsTabPabe.Text = "Utgångar";
             this.ExitsTabPabe.UseVisualStyleBackColor = true;
-            // 
-            // AddPOIInfoButton
-            // 
-            this.AddPOIInfoButton.Location = new System.Drawing.Point(496, 23);
-            this.AddPOIInfoButton.Name = "AddPOIInfoButton";
-            this.AddPOIInfoButton.Size = new System.Drawing.Size(75, 23);
-            this.AddPOIInfoButton.TabIndex = 11;
-            this.AddPOIInfoButton.Text = "&Lägg till";
-            this.AddPOIInfoButton.UseVisualStyleBackColor = true;
-            this.AddPOIInfoButton.Click += new System.EventHandler(this.AddPOIInfoButton_Click);
-            // 
-            // RemovePOIInfoButton
-            // 
-            this.RemovePOIInfoButton.Location = new System.Drawing.Point(496, 63);
-            this.RemovePOIInfoButton.Name = "RemovePOIInfoButton";
-            this.RemovePOIInfoButton.Size = new System.Drawing.Size(75, 23);
-            this.RemovePOIInfoButton.TabIndex = 12;
-            this.RemovePOIInfoButton.Text = "&Ta bort";
-            this.RemovePOIInfoButton.UseVisualStyleBackColor = true;
-            this.RemovePOIInfoButton.Click += new System.EventHandler(this.RemovePOIInfoButton_Click);
             // 
             // MainForm
             // 

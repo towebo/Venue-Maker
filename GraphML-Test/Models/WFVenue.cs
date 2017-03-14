@@ -34,7 +34,6 @@ namespace WayfindR.Models
         public WFGraph NodesGraph { get; set; }
 
 
-
         public static WFVenue FromJson(string jsonData)
         {
             try
@@ -365,7 +364,6 @@ namespace WayfindR.Models
                 throw new Exception(ex.Message);
             }
         }
-
 
         public void LoadNodesGraph(Stream stream)
         {

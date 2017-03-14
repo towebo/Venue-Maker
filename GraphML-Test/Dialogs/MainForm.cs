@@ -89,8 +89,8 @@ namespace VenueMaker.Dialogs
                 POIInfosLB.DisplayMember = "Information";
                 POIInfosLB.ValueMember = "Information";
                 POIInformationTB.DataBindings.Add("Text", POIInfosBS, "Information");
-                POIInfoStartsTB.DataBindings.Add("Text", POIInfosBS, "StartsAt");
-                POIInfoEndsTB.DataBindings.Add("Text", POIInfosBS, "EndsAt");
+                POIInfoStartsTB.DataBindings.Add("Text", POIInfosBS, "StartsAt", true);
+                POIInfoEndsTB.DataBindings.Add("Text", POIInfosBS, "EndsAt", true);
 
 
 
@@ -254,6 +254,7 @@ namespace VenueMaker.Dialogs
 
                 }
 
+                
                 WFPOIInformation poii = POIInfosBS.Current as WFPOIInformation;
                 if (poii == null)
                 {
