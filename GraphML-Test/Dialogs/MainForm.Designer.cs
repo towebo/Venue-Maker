@@ -69,6 +69,8 @@
             this.ExitsTabPabe = new System.Windows.Forms.TabPage();
             this.POIsBS = new System.Windows.Forms.BindingSource(this.components);
             this.POIInfosBS = new System.Windows.Forms.BindingSource(this.components);
+            this.MoveInfoUpButton = new System.Windows.Forms.Button();
+            this.MoveInfoDownButton = new System.Windows.Forms.Button();
             this.MainMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VenueBS)).BeginInit();
             this.Tabs.SuspendLayout();
@@ -264,6 +266,8 @@
             // 
             // PoiTabPage
             // 
+            this.PoiTabPage.Controls.Add(this.MoveInfoDownButton);
+            this.PoiTabPage.Controls.Add(this.MoveInfoUpButton);
             this.PoiTabPage.Controls.Add(this.RemovePOIInfoButton);
             this.PoiTabPage.Controls.Add(this.AddPOIInfoButton);
             this.PoiTabPage.Controls.Add(this.POIInfoEndsTB);
@@ -409,6 +413,26 @@
             this.ExitsTabPabe.Text = "Utgångar";
             this.ExitsTabPabe.UseVisualStyleBackColor = true;
             // 
+            // MoveInfoUpButton
+            // 
+            this.MoveInfoUpButton.Location = new System.Drawing.Point(496, 100);
+            this.MoveInfoUpButton.Name = "MoveInfoUpButton";
+            this.MoveInfoUpButton.Size = new System.Drawing.Size(75, 23);
+            this.MoveInfoUpButton.TabIndex = 13;
+            this.MoveInfoUpButton.Text = "Flytta upp";
+            this.MoveInfoUpButton.UseVisualStyleBackColor = true;
+            this.MoveInfoUpButton.Click += new System.EventHandler(this.MoveInfoUpButton_Click);
+            // 
+            // MoveInfoDownButton
+            // 
+            this.MoveInfoDownButton.Location = new System.Drawing.Point(496, 129);
+            this.MoveInfoDownButton.Name = "MoveInfoDownButton";
+            this.MoveInfoDownButton.Size = new System.Drawing.Size(75, 23);
+            this.MoveInfoDownButton.TabIndex = 14;
+            this.MoveInfoDownButton.Text = "Flytta ner";
+            this.MoveInfoDownButton.UseVisualStyleBackColor = true;
+            this.MoveInfoDownButton.Click += new System.EventHandler(this.MoveInfoUpButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -488,5 +512,7 @@
         private System.Windows.Forms.TextBox POIInfoEndsTB;
         private System.Windows.Forms.Button AddPOIInfoButton;
         private System.Windows.Forms.Button RemovePOIInfoButton;
+        private System.Windows.Forms.Button MoveInfoUpButton;
+        private System.Windows.Forms.Button MoveInfoDownButton;
     }
 }

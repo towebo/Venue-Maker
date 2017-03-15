@@ -282,5 +282,70 @@ namespace VenueMaker.Dialogs
 
             }
         }
+
+        private void MoveInfoUpButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                WFPOIInformation selone = POIInfosBS.Current as WFPOIInformation;
+                if (selone == null)
+                {
+                    return;
+
+                }
+
+                int selidx = POIInfosBS.IndexOf(selone);
+                WFPOIInformation[] items = POIInfosBS.DataSource as WFPOIInformation[];
+                if (items == null)
+                {
+                    return;
+
+                }
+
+                int swapidx;
+                
+                if (sender == MoveInfoUpButton)
+                {
+                    swapidx = selidx - 1;
+                                        
+                }
+                else
+                {
+                    swapidx = selidx + 1;
+
+                }
+
+
+                if (swapidx < 0 ||
+                    swapidx > items.Length)
+                {
+                    return;
+
+                }
+
+                WFPOIInformation swapone = items[swapidx];
+                items[swapidx] = selone;
+                items[selidx] = swapone;
+                
+                POIInfosBS.ResetBindings(false);
+                if (sender == MoveInfoUpButton)
+                {
+                    POIInfosBS.MovePrevious();
+
+                }
+                else
+                {
+                    POIInfosBS.MoveNext();
+
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+        }
     }
 }
