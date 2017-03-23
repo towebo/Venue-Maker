@@ -1,0 +1,32 @@
+﻿{
+  "venue": {
+    "id": "747",
+    "name": "Maria Thorstenssons fyrar",
+    "description": null,
+    "address": null,
+    "zip": null,
+    "city": null,
+    "country": null,
+    "phone": null,
+    "email": null,
+    "web": null,
+    "pointsofinterest": [
+      {
+        "name": "Köket",
+        "descriptive_name": "Sovrum för värdparet.",
+        "beacon_uuid": null,
+        "beacon_major": 100,
+        "beacon_minor": 101,
+        "category": "general"
+      },
+      {
+        "name": "Brevlådan",
+        "descriptive_name": null,
+        "beacon_uuid": null,
+        "beacon_major": 100,
+        "beacon_minor": 102,
+        "category": "general"
+      }
+    ]
+  }
+}

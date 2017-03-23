@@ -1,0 +1,2 @@
+origin	https://karl-otto_towebo_se@bitbucket.org/towebo/graphmltest.git (fetch)
+origin	https://karl-otto_towebo_se@bitbucket.org/towebo/graphmltest.git (push)

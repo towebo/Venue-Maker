@@ -113,10 +113,18 @@ namespace VenueMaker.Dialogs
 
         private void newVenueToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            CreateNewVenue();
+
+        }
+
+        private void CreateNewVenue()
+        {
             try
             {
                 Venue = new WFVenue();
                 SaveVenueDialog.FileName = "";
+
+                VenueBS.DataSource = Venue;
 
             }
             catch (Exception ex)
@@ -172,8 +180,8 @@ namespace VenueMaker.Dialogs
                     return;
 
                 }
-
                 Venue.SaveToFile(SaveVenueDialog.FileName);
+
                 SystemSounds.Asterisk.Play();
 
 
@@ -189,9 +197,10 @@ namespace VenueMaker.Dialogs
         {
             try
             {
-                Venue = new WFVenue();
-
                 InitUI();
+
+                CreateNewVenue();
+
 
             }
             catch (Exception ex)

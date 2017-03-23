@@ -398,6 +398,13 @@ namespace WayfindR.Models
         {
             try
             {
+                if (PointsOfInterest == null ||
+                    PointsOfInterest.Length == 0)
+                {
+                    return null;
+
+                }
+
                 WFPointOfInterest poi = (
                     from x in PointsOfInterest
                     where x.BeaconMajor == major && x.BeaconMinor == minor
@@ -447,9 +454,19 @@ namespace WayfindR.Models
                     
                 } // foreach graph.node
 
-                List<WFPointOfInterest> allpois = PointsOfInterest.ToList();
-                allpois.AddRange(newpois);
-                PointsOfInterest = allpois.ToArray();
+                if (PointsOfInterest != null)
+                {
+                    List<WFPointOfInterest> allpois = PointsOfInterest.ToList();
+                    allpois.AddRange(newpois);
+                    PointsOfInterest = allpois.ToArray();
+
+                }
+                else
+                {
+                    PointsOfInterest = newpois.ToArray();
+
+                }
+                
             }
             catch
             {

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:java="http://www.yworks.com/xml/yfiles-common/1.0/java" xmlns:sys="http://www.yworks.com/xml/yfiles-common/markup/primitives/2.0" xmlns:x="http://www.yworks.com/xml/yfiles-common/markup/2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:y="http://www.yworks.com/xml/graphml" xmlns:yed="http://www.yworks.com/xml/yed/3" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://www.yworks.com/xml/schema/graphml/1.1/ygraphml.xsd">
+  <!--Created by yEd 3.16.2.1-->
+  <key attr.name="venue_id" attr.type="string" for="graph" id="d0">
+    <default/>
+  </key>
+  <key attr.name="venue_name" attr.type="string" for="graph" id="d1">
+    <default/>
+  </key>
+  <key attr.name="level" attr.type="int" for="graph" id="d2">
+    <default>3</default>
+  </key>
+  <key attr.name="graph_id" attr.type="string" for="graph" id="d3">
+    <default/>
+  </key>
+  <key for="port" id="d4" yfiles.type="portgraphics"/>
+  <key for="port" id="d5" yfiles.type="portgeometry"/>
+  <key for="port" id="d6" yfiles.type="portuserdata"/>
+  <key attr.name="major" attr.type="int" for="node" id="d7"/>
+  <key attr.name="minor" attr.type="int" for="node" id="d8"/>
+  <key attr.name="name" attr.type="string" for="node" id="d9"/>
+  <key attr.name="waypoint_type" attr.type="string" for="node" id="d10"/>
+  <key attr.name="accuracy" attr.type="double" for="node" id="d11">
+    <default>4.0</default>
+  </key>
+  <key attr.name="name_descriptive" attr.type="string" for="node" id="d12">
+    <default/>
+  </key>
+  <key attr.name="heading1info" attr.type="string" for="node" id="d13">
+    <default/>
+  </key>
+  <key attr.name="heading2info" attr.type="string" for="node" id="d14">
+    <default/>
+  </key>
+  <key attr.name="heading3info" attr.type="string" for="node" id="d15">
+    <default/>
+  </key>
+  <key attr.name="heading4info" attr.type="string" for="node" id="d16">
+    <default/>
+  </key>
+  <key attr.name="heading5info" attr.type="string" for="node" id="d17">
+    <default/>
+  </key>
+  <key attr.name="in_range_message" attr.type="string" for="node" id="d18">
+    <default/>
+  </key>
+  <key attr.name="touch_message" attr.type="string" for="node" id="d19">
+    <default/>
+  </key>
+  <key attr.name="out_of_range_message" attr.type="string" for="node" id="d20">
+    <default/>
+  </key>
+  <key attr.name="close_by_accuracy" attr.type="double" for="node" id="d21">
+    <default>0.0</default>
+  </key>
+  <key attr.name="close_by_message" attr.type="string" for="node" id="d22">
+    <default/>
+  </key>
+  <key attr.name="in_range_accuracy" attr.type="double" for="node" id="d23">
+    <default>60.0</default>
+  </key>
+  <key attr.name="floor" attr.type="string" for="node" id="d24">
+    <default/>
+  </key>
+  <key attr.name="url" attr.type="string" for="node" id="d25"/>
+  <key attr.name="description" attr.type="string" for="node" id="d26"/>
+  <key for="node" id="d27" yfiles.type="nodegraphics"/>
+  <key for="graphml" id="d28" yfiles.type="resources"/>
+  <key attr.name="travel_time" attr.type="double" for="edge" id="d29"/>
+  <key attr.name="language" attr.type="string" for="edge" id="d30"/>
+  <key attr.name="beginning" attr.type="string" for="edge" id="d31"/>
+  <key attr.name="middle" attr.type="string" for="edge" id="d32"/>
+  <key attr.name="end" attr.type="string" for="edge" id="d33"/>
+  <key attr.name="starting_only" attr.type="string" for="edge" id="d34"/>
+  <key attr.name="start_heading" attr.type="int" for="edge" id="d35">
+    <default>-1</default>
+  </key>
+  <key attr.name="end_heading" attr.type="int" for="edge" id="d36">
+    <default>-1</default>
+  </key>
+  <key attr.name="url" attr.type="string" for="edge" id="d37"/>
+  <key attr.name="description" attr.type="string" for="edge" id="d38"/>
+  <key for="edge" id="d39" yfiles.type="edgegraphics"/>
+  <graph edgedefault="directed" id="G">
+    <data key="d0"><![CDATA[46708971785]]></data>
+    <data key="d1"><![CDATA[Maria Thorstenssons fyrar]]></data>
+    <data key="d3"><![CDATA[46708971785-01]]></data>
+    <node id="n2">
+      <data key="d7">100</data>
+      <data key="d8">101</data>
+      <data key="d9"><![CDATA[Köket]]></data>
+      <data key="d10"><![CDATA[room]]></data>
+      <data key="d11">3.0</data>
+      <data key="d12"><![CDATA[Sovrum för värdparet.]]></data>
+      <data key="d26"><![CDATA[I köket]]></data>
+      <data key="d27">
+        <y:ShapeNode>
+          <y:Geometry height="30.0" width="30.0" x="-4562.788916398258" y="2729.146267376128"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="10.673828125" x="9.6630859375" y="5.6494140625">4<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n3">
+      <data key="d7">100</data>
+      <data key="d8">102</data>
+      <data key="d9"><![CDATA[Brevlådan]]></data>
+      <data key="d10"/>
+      <data key="d11">2.5</data>
+      <data key="d21">7.0</data>
+      <data key="d22"><![CDATA[Du närmar dig brevlådan]]></data>
+      <data key="d27">
+        <y:ShapeNode>
+          <y:Geometry height="30.0" width="30.0" x="-4440.077738019879" y="2692.697402511263"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="10.673828125" x="9.6630859375" y="5.6494140625">5<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+  </graph>
+  <data key="d28">
+    <y:Resources/>
+  </data>
+</graphml>
