@@ -35,6 +35,7 @@
             this.openVenueFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveVenueFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeAppToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pushToCloudMenuItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.OpenVenueDialog = new System.Windows.Forms.OpenFileDialog();
             this.OpenGraphMLDialog = new System.Windows.Forms.OpenFileDialog();
             this.SaveVenueDialog = new System.Windows.Forms.SaveFileDialog();
@@ -53,6 +54,8 @@
             this.CountryTB = new System.Windows.Forms.TextBox();
             this.Tabs = new System.Windows.Forms.TabControl();
             this.PoiTabPage = new System.Windows.Forms.TabPage();
+            this.MoveInfoDownButton = new System.Windows.Forms.Button();
+            this.MoveInfoUpButton = new System.Windows.Forms.Button();
             this.RemovePOIInfoButton = new System.Windows.Forms.Button();
             this.AddPOIInfoButton = new System.Windows.Forms.Button();
             this.POIInfoEndsTB = new System.Windows.Forms.TextBox();
@@ -69,8 +72,9 @@
             this.ExitsTabPabe = new System.Windows.Forms.TabPage();
             this.POIsBS = new System.Windows.Forms.BindingSource(this.components);
             this.POIInfosBS = new System.Windows.Forms.BindingSource(this.components);
-            this.MoveInfoUpButton = new System.Windows.Forms.Button();
-            this.MoveInfoDownButton = new System.Windows.Forms.Button();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.saveVenueMenuItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MainMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VenueBS)).BeginInit();
             this.Tabs.SuspendLayout();
@@ -95,7 +99,11 @@
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newVenueToolStripMenuItem,
             this.openVenueFileToolStripMenuItem,
+            this.saveVenueMenuItemToolStripMenuItem,
             this.saveVenueFileToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.pushToCloudMenuItemToolStripMenuItem,
+            this.toolStripSeparator2,
             this.closeAppToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
@@ -104,30 +112,37 @@
             // newVenueToolStripMenuItem
             // 
             this.newVenueToolStripMenuItem.Name = "newVenueToolStripMenuItem";
-            this.newVenueToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
+            this.newVenueToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
             this.newVenueToolStripMenuItem.Text = "&Ny";
             this.newVenueToolStripMenuItem.Click += new System.EventHandler(this.newVenueToolStripMenuItem_Click);
             // 
             // openVenueFileToolStripMenuItem
             // 
             this.openVenueFileToolStripMenuItem.Name = "openVenueFileToolStripMenuItem";
-            this.openVenueFileToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
+            this.openVenueFileToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
             this.openVenueFileToolStripMenuItem.Text = "&Öppna";
             this.openVenueFileToolStripMenuItem.Click += new System.EventHandler(this.openVenueFileToolStripMenuItem_Click);
             // 
             // saveVenueFileToolStripMenuItem
             // 
             this.saveVenueFileToolStripMenuItem.Name = "saveVenueFileToolStripMenuItem";
-            this.saveVenueFileToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
+            this.saveVenueFileToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
             this.saveVenueFileToolStripMenuItem.Text = "&Spara som";
-            this.saveVenueFileToolStripMenuItem.Click += new System.EventHandler(this.saveVenueFileToolStripMenuItem_Click);
+            this.saveVenueFileToolStripMenuItem.Click += new System.EventHandler(this.SaveMenuItems_Click);
             // 
             // closeAppToolStripMenuItem
             // 
             this.closeAppToolStripMenuItem.Name = "closeAppToolStripMenuItem";
-            this.closeAppToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
+            this.closeAppToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
             this.closeAppToolStripMenuItem.Text = "&Avsluta";
             this.closeAppToolStripMenuItem.Click += new System.EventHandler(this.closeAppToolStripMenuItem_Click);
+            // 
+            // pushToCloudMenuItemToolStripMenuItem
+            // 
+            this.pushToCloudMenuItemToolStripMenuItem.Name = "pushToCloudMenuItemToolStripMenuItem";
+            this.pushToCloudMenuItemToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.pushToCloudMenuItemToolStripMenuItem.Text = "Ladda upp till molnet";
+            this.pushToCloudMenuItemToolStripMenuItem.Click += new System.EventHandler(this.pushToCloudMenuItemToolStripMenuItem_Click);
             // 
             // OpenVenueDialog
             // 
@@ -289,6 +304,26 @@
             this.PoiTabPage.Text = "POI";
             this.PoiTabPage.UseVisualStyleBackColor = true;
             // 
+            // MoveInfoDownButton
+            // 
+            this.MoveInfoDownButton.Location = new System.Drawing.Point(496, 129);
+            this.MoveInfoDownButton.Name = "MoveInfoDownButton";
+            this.MoveInfoDownButton.Size = new System.Drawing.Size(75, 23);
+            this.MoveInfoDownButton.TabIndex = 14;
+            this.MoveInfoDownButton.Text = "Flytta ner";
+            this.MoveInfoDownButton.UseVisualStyleBackColor = true;
+            this.MoveInfoDownButton.Click += new System.EventHandler(this.MoveInfoUpButton_Click);
+            // 
+            // MoveInfoUpButton
+            // 
+            this.MoveInfoUpButton.Location = new System.Drawing.Point(496, 100);
+            this.MoveInfoUpButton.Name = "MoveInfoUpButton";
+            this.MoveInfoUpButton.Size = new System.Drawing.Size(75, 23);
+            this.MoveInfoUpButton.TabIndex = 13;
+            this.MoveInfoUpButton.Text = "Flytta upp";
+            this.MoveInfoUpButton.UseVisualStyleBackColor = true;
+            this.MoveInfoUpButton.Click += new System.EventHandler(this.MoveInfoUpButton_Click);
+            // 
             // RemovePOIInfoButton
             // 
             this.RemovePOIInfoButton.Location = new System.Drawing.Point(496, 55);
@@ -413,25 +448,23 @@
             this.ExitsTabPabe.Text = "Utgångar";
             this.ExitsTabPabe.UseVisualStyleBackColor = true;
             // 
-            // MoveInfoUpButton
+            // toolStripSeparator1
             // 
-            this.MoveInfoUpButton.Location = new System.Drawing.Point(496, 100);
-            this.MoveInfoUpButton.Name = "MoveInfoUpButton";
-            this.MoveInfoUpButton.Size = new System.Drawing.Size(75, 23);
-            this.MoveInfoUpButton.TabIndex = 13;
-            this.MoveInfoUpButton.Text = "Flytta upp";
-            this.MoveInfoUpButton.UseVisualStyleBackColor = true;
-            this.MoveInfoUpButton.Click += new System.EventHandler(this.MoveInfoUpButton_Click);
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(184, 6);
             // 
-            // MoveInfoDownButton
+            // toolStripSeparator2
             // 
-            this.MoveInfoDownButton.Location = new System.Drawing.Point(496, 129);
-            this.MoveInfoDownButton.Name = "MoveInfoDownButton";
-            this.MoveInfoDownButton.Size = new System.Drawing.Size(75, 23);
-            this.MoveInfoDownButton.TabIndex = 14;
-            this.MoveInfoDownButton.Text = "Flytta ner";
-            this.MoveInfoDownButton.UseVisualStyleBackColor = true;
-            this.MoveInfoDownButton.Click += new System.EventHandler(this.MoveInfoUpButton_Click);
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(184, 6);
+            // 
+            // saveVenueMenuItemToolStripMenuItem
+            // 
+            this.saveVenueMenuItemToolStripMenuItem.Name = "saveVenueMenuItemToolStripMenuItem";
+            this.saveVenueMenuItemToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.saveVenueMenuItemToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.saveVenueMenuItemToolStripMenuItem.Text = "&Spara";
+            this.saveVenueMenuItemToolStripMenuItem.Click += new System.EventHandler(this.SaveMenuItems_Click);
             // 
             // MainForm
             // 
@@ -514,5 +547,9 @@
         private System.Windows.Forms.Button RemovePOIInfoButton;
         private System.Windows.Forms.Button MoveInfoUpButton;
         private System.Windows.Forms.Button MoveInfoDownButton;
+        private System.Windows.Forms.ToolStripMenuItem pushToCloudMenuItemToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem saveVenueMenuItemToolStripMenuItem;
     }
 }

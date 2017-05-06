@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:java="http://www.yworks.com/xml/yfiles-common/1.0/java" xmlns:sys="http://www.yworks.com/xml/yfiles-common/markup/primitives/2.0" xmlns:x="http://www.yworks.com/xml/yfiles-common/markup/2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:y="http://www.yworks.com/xml/graphml" xmlns:yed="http://www.yworks.com/xml/yed/3" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://www.yworks.com/xml/schema/graphml/1.1/ygraphml.xsd">
   <!--Created by yEd 3.16.2.1-->
   <key attr.name="venue_id" attr.type="string" for="graph" id="d0">
@@ -79,16 +79,16 @@
   <key attr.name="description" attr.type="string" for="edge" id="d37"/>
   <key for="edge" id="d38" yfiles.type="edgegraphics"/>
   <graph edgedefault="directed" id="G">
-    <data key="d0"><![CDATA[0424006070]]></data>
+    <data key="d0"><![CDATA[46424006070]]></data>
     <data key="d1"><![CDATA[DataPartner]]></data>
-    <data key="d3"><![CDATA[0424006070]]></data>
+    <data key="d3"><![CDATA[46424006070]]></data>
     <node id="n0">
       <data key="d7">200</data>
       <data key="d8">7</data>
-      <data key="d9"><![CDATA[Vid Mickes kontor]]></data>
+      <data key="d9"><![CDATA[Mikaels kontor]]></data>
       <data key="d10"><![CDATA[ Entrance ]]></data>
       <data key="d11">3.0</data>
-      <data key="d12"><![CDATA[Vid Micke och Staffans kontor]]></data>
+      <data key="d12"><![CDATA[I det sydvästra hörnet av den gemensamma ytan med ett långt bord, ett litet pingisbord och en grupp med fåtöljer.]]></data>
       <data key="d26">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="32.0" y="-260.0"/>
@@ -108,10 +108,10 @@
     <node id="n1">
       <data key="d7">200</data>
       <data key="d8">6</data>
-      <data key="d9"><![CDATA[Vid Maria]]></data>
+      <data key="d9"><![CDATA[Marias kontor]]></data>
       <data key="d10"><![CDATA[ TicketBarrier ]]></data>
       <data key="d11">4.5</data>
-      <data key="d12"><![CDATA[Vid Maria och Alessandros kontor]]></data>
+      <data key="d12"><![CDATA[I det nordvästra hörnet av den gemensamma ytan med ett långt bord, ett litet pingisbord och en grupp med fåtöljer.]]></data>
       <data key="d26">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="0.0" y="-54.0"/>
@@ -132,10 +132,10 @@
     <node id="n2">
       <data key="d7">100</data>
       <data key="d8">3</data>
-      <data key="d9"><![CDATA[Köket]]></data>
-      <data key="d10"><![CDATA[ TicketBarrier ]]></data>
+      <data key="d9"><![CDATA[Köket, nordöstra ingången]]></data>
+      <data key="d10"/>
       <data key="d11">3.0</data>
-      <data key="d12"><![CDATA[Utanför köket vid Björns kontor]]></data>
+      <data key="d12"><![CDATA[I korridoren utanför Bjönrs kontor]]></data>
       <data key="d26">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-323.0" y="-26.0"/>
@@ -159,7 +159,7 @@
       <data key="d9"><![CDATA[Receptionen]]></data>
       <data key="d10"><![CDATA[bench]]></data>
       <data key="d11">2.5</data>
-      <data key="d12"><![CDATA[Här sitter Barbro]]></data>
+      <data key="d12"><![CDATA[Receptionsdisken är hög och bakom den sitter Barbro. Till höger om disken fortsätter korridoren mot kök, toaletter och fler kontor.]]></data>
       <data key="d26">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-451.0" y="-14.0"/>
@@ -182,8 +182,8 @@
       <data key="d8">1</data>
       <data key="d9"><![CDATA[Entré, DataPartner]]></data>
       <data key="d10"><![CDATA[exit]]></data>
-      <data key="d11">2.5</data>
-      <data key="d12"><![CDATA[Vid entrén]]></data>
+      <data key="d11">3.0</data>
+      <data key="d12"><![CDATA[Till vänster om dörren finns en ringklocka.]]></data>
       <data key="d13"><![CDATA[100;Dörren är rakt fram]]></data>
       <data key="d14"><![CDATA[190;Dörren är till vänster]]></data>
       <data key="d15"><![CDATA[280;Trapporna är snett fram till höger och dörren är bakom dig]]></data>
@@ -215,7 +215,7 @@
       <data key="d8">8</data>
       <data key="d9"><![CDATA[Nödutgång]]></data>
       <data key="d10"><![CDATA[ Entrance ]]></data>
-      <data key="d12"><![CDATA[Nödutgången inne på Alessandros kontor]]></data>
+      <data key="d12"><![CDATA[Nödutgången finns rakt fram när man går genom dörren till Alessandros kontor.]]></data>
       <data key="d26">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="126.0" y="-59.0"/>
@@ -238,7 +238,7 @@
       <data key="d9"><![CDATA[Toaletterna]]></data>
       <data key="d10"><![CDATA[ Escalator ]]></data>
       <data key="d11">2.5</data>
-      <data key="d12"><![CDATA[I kapprummet med toaletter till höger och vänster.]]></data>
+      <data key="d12"><![CDATA[I kapprummet med toaletter till höger och vänster. Rakt fram finns en klädhängare på väggen.]]></data>
       <data key="d26">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-371.0" y="-136.0"/>
@@ -259,10 +259,10 @@
     <node id="n7">
       <data key="d7">200</data>
       <data key="d8">5</data>
-      <data key="d9"><![CDATA[Köket, vid Marinela]]></data>
+      <data key="d9"><![CDATA[Köket, sydöstra ingången]]></data>
       <data key="d10"><![CDATA[ Platform ]]></data>
       <data key="d11">3.5</data>
-      <data key="d12"><![CDATA[Utanför köket vid Marinelas kontor]]></data>
+      <data key="d12"><![CDATA[I korridoren vid Marinelas kontor]]></data>
       <data key="d26">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-292.5" y="-260.0"/>
@@ -281,7 +281,7 @@
     </node>
     <edge id="e0" source="n0" target="n1">
       <data key="d28">10.0</data>
-      <data key="d29"><![CDATA[en-GB]]></data>
+      <data key="d29"><![CDATA[sv-SE]]></data>
       <data key="d30"><![CDATA[Gå rakt fram med kontoren till vänster och den öppna ytan till höger.]]></data>
       <data key="d31"/>
       <data key="d32"/>
@@ -299,7 +299,7 @@
     </edge>
     <edge id="e1" source="n1" target="n0">
       <data key="d28">15.0</data>
-      <data key="d29"><![CDATA[en-GB]]></data>
+      <data key="d29"><![CDATA[sv-SE]]></data>
       <data key="d30"><![CDATA[Gå rakt fram med kontoren till höger och den öppna ytan till vänster.]]></data>
       <data key="d31"/>
       <data key="d32"/>
@@ -317,7 +317,7 @@
     </edge>
     <edge id="e2" source="n1" target="n2">
       <data key="d28">15.0</data>
-      <data key="d29"><![CDATA[en-GB]]></data>
+      <data key="d29"><![CDATA[sv-SE]]></data>
       <data key="d30"><![CDATA[Gå rakt fram mot köket och se till att ha kontoren till vänster.]]></data>
       <data key="d31"/>
       <data key="d32"/>
@@ -326,7 +326,9 @@
       <data key="d35">300</data>
       <data key="d38">
         <y:PolyLineEdge>
-          <y:Path sx="-3.3514522331238084" sy="-2.1835219094594436" tx="-3.3514522331238084" ty="-2.1835219094594436"/>
+          <y:Path sx="-3.3514522331238084" sy="-2.1835219094594436" tx="-3.3514522331238084" ty="-2.1835219094594436">
+            <y:Point x="-144.0" y="-49.5"/>
+          </y:Path>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
           <y:BendStyle smoothed="false"/>
@@ -334,8 +336,8 @@
       </data>
     </edge>
     <edge id="e3" source="n1" target="n5">
-      <data key="d28">25.0</data>
-      <data key="d29"><![CDATA[en-GB]]></data>
+      <data key="d28">5.0</data>
+      <data key="d29"><![CDATA[sv-SE]]></data>
       <data key="d30"><![CDATA[Gå in på Alessandros kontor så finns nödutången rakt fram.]]></data>
       <data key="d31"/>
       <data key="d32"/>
@@ -353,7 +355,7 @@
     </edge>
     <edge id="e4" source="n2" target="n1">
       <data key="d28">15.0</data>
-      <data key="d29"><![CDATA[en-GB]]></data>
+      <data key="d29"><![CDATA[sv-SE]]></data>
       <data key="d30"><![CDATA[Gå rakt fram med kontoren till höger och den öppna ytan till vänster.]]></data>
       <data key="d31"/>
       <data key="d32"/>
@@ -371,7 +373,7 @@
     </edge>
     <edge id="e5" source="n2" target="n3">
       <data key="d28">10.0</data>
-      <data key="d29"><![CDATA[en-GB]]></data>
+      <data key="d29"><![CDATA[sv-SE]]></data>
       <data key="d30"><![CDATA[Gå genom dörråhlet och fortsätt rakt fram]]></data>
       <data key="d31"/>
       <data key="d32"/>
@@ -389,7 +391,7 @@
     </edge>
     <edge id="e6" source="n2" target="n6">
       <data key="d28">10.0</data>
-      <data key="d29"><![CDATA[en-GB]]></data>
+      <data key="d29"><![CDATA[sv-SE]]></data>
       <data key="d30"><![CDATA[Gå in i köket och sväng vänster till kapprummet]]></data>
       <data key="d31"/>
       <data key="d32"><![CDATA[I kapprummet. Stor toalett till höger, liten toalett i andra dörren till vänster och rockhängare rakt fram.]]></data>
@@ -409,7 +411,7 @@
     </edge>
     <edge id="e7" source="n3" target="n2">
       <data key="d28">10.0</data>
-      <data key="d29"><![CDATA[en-GB]]></data>
+      <data key="d29"><![CDATA[sv-SE]]></data>
       <data key="d30"><![CDATA[Passera till höger om receptionsdisken]]></data>
       <data key="d31"/>
       <data key="d32"><![CDATA[Köket är till vänster]]></data>
@@ -428,8 +430,8 @@
       </data>
     </edge>
     <edge id="e8" source="n3" target="n4">
-      <data key="d28">30.0</data>
-      <data key="d29"><![CDATA[en-GB]]></data>
+      <data key="d28">10.0</data>
+      <data key="d29"><![CDATA[sv-SE]]></data>
       <data key="d30"><![CDATA[Gå rakt fram mot entrén]]></data>
       <data key="d31"/>
       <data key="d32"><![CDATA[Trapporna är en bit fram till höger]]></data>
@@ -447,7 +449,7 @@
     </edge>
     <edge id="e9" source="n4" target="n3">
       <data key="d28">30.0</data>
-      <data key="d29"><![CDATA[en-GB]]></data>
+      <data key="d29"><![CDATA[sv-SE]]></data>
       <data key="d30"><![CDATA[Öppna dörren och gå rakt fram mot receptionen]]></data>
       <data key="d31"/>
       <data key="d32"/>
@@ -466,8 +468,8 @@
       </data>
     </edge>
     <edge id="e10" source="n5" target="n1">
-      <data key="d28">25.0</data>
-      <data key="d29"><![CDATA[en-GB]]></data>
+      <data key="d28">5.0</data>
+      <data key="d29"><![CDATA[sv-SE]]></data>
       <data key="d30"><![CDATA[Gå ut från kontoret.]]></data>
       <data key="d31"/>
       <data key="d32"/>
@@ -485,7 +487,7 @@
     </edge>
     <edge id="e11" source="n6" target="n2">
       <data key="d28">10.0</data>
-      <data key="d29"><![CDATA[en-GB]]></data>
+      <data key="d29"><![CDATA[sv-SE]]></data>
       <data key="d30"><![CDATA[Gå in i köket och sväng höger]]></data>
       <data key="d31"/>
       <data key="d32"/>
@@ -505,7 +507,7 @@
     </edge>
     <edge id="e12" source="n6" target="n7">
       <data key="d28">30.0</data>
-      <data key="d29"><![CDATA[en-GB]]></data>
+      <data key="d29"><![CDATA[sv-SE]]></data>
       <data key="d30"><![CDATA[Gå in i köket och sväng vänster.]]></data>
       <data key="d31"/>
       <data key="d32"><![CDATA[Korridoren löper åt höger.]]></data>
@@ -525,7 +527,7 @@
     </edge>
     <edge id="e13" source="n7" target="n6">
       <data key="d28">30.0</data>
-      <data key="d29"><![CDATA[en-GB]]></data>
+      <data key="d29"><![CDATA[sv-SE]]></data>
       <data key="d30"><![CDATA[Gå in i köket och sväng till höger genom dörren]]></data>
       <data key="d31"/>
       <data key="d32"><![CDATA[I kapprummet. Stor toalett till höger, liten toalett i andra dörren till vänster och rockhängare rakt fram.]]></data>

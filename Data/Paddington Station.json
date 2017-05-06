@@ -1,0 +1,88 @@
+﻿{
+  "venue": {
+    "id": "Padd",
+    "name": "Paddington Station",
+    "description": null,
+    "address": null,
+    "zip": null,
+    "city": null,
+    "country": null,
+    "phone": null,
+    "email": null,
+    "web": null,
+    "pointsofinterest": [
+      {
+        "name": "In the forecourt outside the south entrance on the High Street",
+        "descriptive_name": null,
+        "beacon_uuid": null,
+        "beacon_major": 1,
+        "beacon_minor": 1,
+        "category": "general"
+      },
+      {
+        "name": " In the unpaid concourse in front of the ticket gates ",
+        "descriptive_name": null,
+        "beacon_uuid": null,
+        "beacon_major": 1,
+        "beacon_minor": 2,
+        "category": "general"
+      },
+      {
+        "name": " In the paid concourse in front of the ticket gates ",
+        "descriptive_name": null,
+        "beacon_uuid": null,
+        "beacon_major": 1,
+        "beacon_minor": 3,
+        "category": "general"
+      },
+      {
+        "name": " In the paid concourse in front of the west set of escalators, escalators 1 and 2 ",
+        "descriptive_name": null,
+        "beacon_uuid": null,
+        "beacon_major": 1,
+        "beacon_minor": 4,
+        "category": "general"
+      },
+      {
+        "name": "On Platform 1 in front of the escalators, escalators 1 and 2 ",
+        "descriptive_name": null,
+        "beacon_uuid": null,
+        "beacon_major": 1,
+        "beacon_minor": 5,
+        "category": "general"
+      },
+      {
+        "name": "In the forecourt outside the east entrance on the East Avenue",
+        "descriptive_name": null,
+        "beacon_uuid": null,
+        "beacon_major": 1,
+        "beacon_minor": 6,
+        "category": "general"
+      },
+      {
+        "name": " In the paid concourse in front of the north set of escalators, escalators 3 and 4 ",
+        "descriptive_name": null,
+        "beacon_uuid": null,
+        "beacon_major": 1,
+        "beacon_minor": 7,
+        "category": "general"
+      },
+      {
+        "name": "On Platform 2 in front of the escalators, escalators 3 and 4 ",
+        "descriptive_name": null,
+        "beacon_uuid": null,
+        "beacon_major": 1,
+        "beacon_minor": 8,
+        "category": "general"
+      },
+      {
+        "name": "",
+        "descriptive_name": null,
+        "beacon_uuid": null,
+        "beacon_major": 0,
+        "beacon_minor": 0,
+        "category": "general"
+      }
+    ]
+  }
+}

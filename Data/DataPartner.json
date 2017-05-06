@@ -1,6 +1,6 @@
 ﻿{
   "venue": {
-    "id": "0424006070",
+    "id": "46424006070",
     "name": "DataPartner i Helsingborg AB",
     "description": null,
     "address": null,
@@ -22,24 +22,24 @@
     ],
     "pointsofinterest": [
       {
-        "name": "Vid Mickes kontor",
-        "descriptive_name": "Vid Micke och Staffans kontor",
+        "name": "Mikaels kontor",
+        "descriptive_name": "I det sydvästra hörnet av den gemensamma ytan med ett långt bord, ett litet pingisbord och en grupp med fåtöljer.",
         "beacon_uuid": null,
         "beacon_major": 200,
         "beacon_minor": 7,
         "category": "general"
       },
       {
-        "name": "Vid Maria",
-        "descriptive_name": "Vid Maria och Alessandros kontor",
+        "name": "Marias kontor",
+        "descriptive_name": "I det nordvästra hörnet av den gemensamma ytan med ett långt bord, ett litet pingisbord och en grupp med fåtöljer.",
         "beacon_uuid": null,
         "beacon_major": 200,
         "beacon_minor": 6,
         "category": "general"
       },
       {
-        "name": "Köket",
-        "descriptive_name": "Utanför köket vid Björns kontor",
+        "name": "Köket, nordöstra ingången",
+        "descriptive_name": "I korridoren utanför Bjönrs kontor",
         "beacon_uuid": null,
         "beacon_major": 100,
         "beacon_minor": 3,
@@ -47,7 +47,7 @@
       },
       {
         "name": "Receptionen",
-        "descriptive_name": "Här sitter Barbro",
+        "descriptive_name": "Receptionsdisken är hög och bakom den sitter Barbro. Till höger om disken fortsätter korridoren mot kök, toaletter och fler kontor.",
         "beacon_uuid": null,
         "beacon_major": 100,
         "beacon_minor": 2,
@@ -55,7 +55,7 @@
       },
       {
         "name": "Entré, DataPartner",
-        "descriptive_name": "Vid entrén",
+        "descriptive_name": "Till vänster om dörren finns en ringklocka.",
         "beacon_uuid": null,
         "beacon_major": 100,
         "beacon_minor": 1,
@@ -77,7 +77,7 @@
       },
       {
         "name": "Nödutgång",
-        "descriptive_name": "Nödutgången inne på Alessandros kontor",
+        "descriptive_name": "Nödutgången finns rakt fram när man går genom dörren till Alessandros kontor.",
         "beacon_uuid": null,
         "beacon_major": 200,
         "beacon_minor": 8,
@@ -85,15 +85,15 @@
       },
       {
         "name": "Toaletterna",
-        "descriptive_name": "I kapprummet med toaletter till höger och vänster.",
+        "descriptive_name": "I kapprummet med toaletter till höger och vänster. Rakt fram finns en klädhängare på väggen.",
         "beacon_uuid": null,
         "beacon_major": 45002,
         "beacon_minor": 5914,
         "category": "general"
       },
       {
-        "name": "Köket, vid Marinela",
-        "descriptive_name": "Utanför köket vid Marinelas kontor",
+        "name": "Köket, sydöstra ingången",
+        "descriptive_name": "I korridoren vid Marinelas kontor",
         "beacon_uuid": null,
         "beacon_major": 200,
         "beacon_minor": 5,

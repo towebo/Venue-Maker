@@ -9,6 +9,7 @@ using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using VenueMaker.Utils;
 using WayfindR.Controllers;
 using WayfindR.Models;
 
@@ -171,15 +172,22 @@ namespace VenueMaker.Dialogs
             }
         }
 
-        private void saveVenueFileToolStripMenuItem_Click(object sender, EventArgs e)
+        private void SaveMenuItems_Click(object sender, EventArgs e)
         {
             try
             {
-                if (SaveVenueDialog.ShowDialog() != DialogResult.OK)
+                if (sender == saveVenueFileToolStripMenuItem ||
+                    string.IsNullOrEmpty(SaveVenueDialog.FileName))
                 {
-                    return;
+                    if (SaveVenueDialog.ShowDialog() != DialogResult.OK)
+                    {
+                        return;
 
-                }
+                    } // DialogResult = Ok
+
+                } // Save as or not saved
+
+                
                 Venue.SaveToFile(SaveVenueDialog.FileName);
 
                 SystemSounds.Asterisk.Play();
@@ -355,6 +363,67 @@ namespace VenueMaker.Dialogs
                 MessageBox.Show(ex.Message, "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
+        }
+
+        private void pushToCloudMenuItemToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SaveMenuItems_Click(sender, new EventArgs());
+
+                if (string.IsNullOrEmpty(SaveVenueDialog.FileName))
+                {
+                    MessageBox.Show("Det gick inte att ladda upp filen eftersom den inte sparats.", "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+
+                } // Has a file name
+
+
+                Cursor.Current = Cursors.WaitCursor;
+                Application.DoEvents();
+
+                string localfile = OpenVenueDialog.FileName;
+                string remotefolder = "mawingu.se/public_html/radar/";
+
+                FtpClient ftp = new FtpClient(
+                    "ftp://ftp.towebo.se/",
+                    "160040_master",
+                    "ftpATtowebo.se"
+                    );
+
+                ftp.UploadFile(
+                    localfile,
+                    remotefolder,
+                    true
+                    );
+
+                localfile = Path.ChangeExtension(localfile, ".graphml");
+                if (File.Exists(localfile))
+                {
+                    ftp.UploadFile(
+                        localfile,
+                        remotefolder,
+                        true
+                        );
+
+                }
+
+
+
+                SystemSounds.Asterisk.Play();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+
+            }
+            finally
+            {
+                Cursor.Current = Cursors.Default;
+
+            }
+
         }
     }
 }
