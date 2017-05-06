@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:java="http://www.yworks.com/xml/yfiles-common/1.0/java" xmlns:sys="http://www.yworks.com/xml/yfiles-common/markup/primitives/2.0" xmlns:x="http://www.yworks.com/xml/yfiles-common/markup/2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:y="http://www.yworks.com/xml/graphml" xmlns:yed="http://www.yworks.com/xml/yed/3" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://www.yworks.com/xml/schema/graphml/1.1/ygraphml.xsd">
   <!--Created by yEd 3.16.2.1-->
   <key attr.name="venue_id" attr.type="string" for="graph" id="d0">
@@ -91,7 +91,6 @@
       <data key="d9"><![CDATA[Köket]]></data>
       <data key="d10"><![CDATA[room]]></data>
       <data key="d11">3.0</data>
-      <data key="d12"><![CDATA[Sovrum för värdparet.]]></data>
       <data key="d26"><![CDATA[I köket]]></data>
       <data key="d27">
         <y:ShapeNode>
