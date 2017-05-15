@@ -9,6 +9,7 @@ using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using VenueMaker.Controllers;
 using VenueMaker.Utils;
 using WayfindR.Controllers;
 using WayfindR.Models;
@@ -382,33 +383,32 @@ namespace VenueMaker.Dialogs
                 Cursor.Current = Cursors.WaitCursor;
                 Application.DoEvents();
 
+
+                try
+                {
+                    string[] currentfiles = FtpController.Me.DownloadFileList();
+
+                }
+                catch (Exception dlex)
+                {
+                    Console.WriteLine(dlex.Message);
+
+                }
+                
+
                 string localfile = OpenVenueDialog.FileName;
-                string remotefolder = "mawingu.se/public_html/radar/";
-
-                FtpClient ftp = new FtpClient(
-                    "ftp://ftp.towebo.se/",
-                    "160040_master",
-                    "ftpATtowebo.se"
-                    );
-
-                ftp.UploadFile(
-                    localfile,
-                    remotefolder,
-                    true
-                    );
+                FtpController.Me.AddToUploadQueue(localfile);
 
                 localfile = Path.ChangeExtension(localfile, ".graphml");
                 if (File.Exists(localfile))
                 {
-                    ftp.UploadFile(
-                        localfile,
-                        remotefolder,
-                        true
-                        );
+                    FtpController.Me.AddToUploadQueue(localfile);
 
-                }
+                } // graphl exists
+                
 
-
+                FtpController.Me.UploadFiles();
+                
 
                 SystemSounds.Asterisk.Play();
 

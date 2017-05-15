@@ -92,6 +92,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\BeaconController.cs" />
+    <Compile Include="Controllers\FtpController.cs" />
     <Compile Include="Controllers\GraphController.cs" />
     <Compile Include="Controllers\SQLiteController.cs" />
     <Compile Include="Controllers\VenueController.cs" />
