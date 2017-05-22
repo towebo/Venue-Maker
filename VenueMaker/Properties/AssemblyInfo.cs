@@ -11,7 +11,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyCompany("Mawingu")]
 [assembly: AssemblyProduct("Venue Maker")]
 [assembly: AssemblyCopyright("Copyright ©  2017 Mawingu")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyTrademark("Venue Maker")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("d1470c8d-2693-4f45-b958-bd5300b7d413")]
+[assembly: Guid("261C8BD3-34E8-40EE-AD36-030BEF9D48EB")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.17171")]
-[assembly: AssemblyFileVersion("1.0.17171")]
+[assembly: AssemblyVersion("1.0.17211")]
+[assembly: AssemblyFileVersion("1.0.17211")]
