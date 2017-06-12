@@ -35,6 +35,9 @@ namespace VenueMaker.Dialogs
         {
             try
             {
+                this.Text = "Venue Maker 1.0.17241";
+
+
                 VenueBS.DataSource = new WFVenue();
                 VenueBS.CurrentChanged += (s1, e1) =>
                 {
@@ -157,7 +160,7 @@ namespace VenueMaker.Dialogs
                 {                    
                     WFGraph g = WFGraph.LoadFromGraphML(graphfile);
                     Venue.NodesGraph = g;
-                    Venue.AddPOIsFromGraph();
+                    Venue.AddPOIsFromGraph(true);
 
                 }
                                 

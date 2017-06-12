@@ -394,7 +394,7 @@ namespace WayfindR.Models
         }
 
 
-        public WFPointOfInterest POIFromBeacon(int major, int minor)
+        public WFPointOfInterest POIFromBeacon(string uuid, int major, int minor)
         {
             try
             {
@@ -407,7 +407,7 @@ namespace WayfindR.Models
 
                 WFPointOfInterest poi = (
                     from x in PointsOfInterest
-                    where x.BeaconMajor == major && x.BeaconMinor == minor
+                    where x.BeaconUuid == uuid && x.BeaconMajor == major && x.BeaconMinor == minor
                     select x
                     ).FirstOrDefault();
 
@@ -422,19 +422,34 @@ namespace WayfindR.Models
 
         }
 
-        public void AddPOIsFromGraph()
+        public void AddPOIsFromGraph(bool removeNonExisting)
         {
             try
             {
                 if (NodesGraph == null)
                 {
                     return;
+
                 } // No graph
+
+                // Mark all pois as not touched.
+                if (PointsOfInterest != null)
+                {
+                    foreach (WFPointOfInterest poi in PointsOfInterest)
+                    {
+                        poi.Name = "*** " + poi.Name;
+
+                    } // foreach poi
+
+                } // Has pois
+
+                        
 
                 List<WFPointOfInterest> newpois = new List<WFPointOfInterest>();
                 foreach (WFNode node in NodesGraph.Vertices)
                 {
                     WFPointOfInterest poi = POIFromBeacon(
+                        node.Uuid,
                         node.Major,
                         node.Minor
                         );
@@ -442,6 +457,7 @@ namespace WayfindR.Models
                     if (poi == null)
                     {
                         poi = new WFPointOfInterest();
+                        poi.BeaconUuid = node.Uuid;
                         poi.BeaconMajor = node.Major;
                         poi.BeaconMinor = node.Minor;
 
@@ -458,7 +474,10 @@ namespace WayfindR.Models
                 {
                     List<WFPointOfInterest> allpois = PointsOfInterest.ToList();
                     allpois.AddRange(newpois);
-                    PointsOfInterest = allpois.ToArray();
+
+                    var justtouchedones = allpois.Where(w => !w.Name.StartsWith("*** "));
+
+                    PointsOfInterest = justtouchedones.ToArray(); //allpois.ToArray();
 
                 }
                 else

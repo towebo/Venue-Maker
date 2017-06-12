@@ -16,10 +16,6 @@ namespace WayfindR.Models
         [XmlAttribute("venue_id")]
         public string VenueId { get; set; }
 
-        [XmlAttribute("uuid")]
-        public string Uuid { get; set; }
-
-
         [XmlAttribute("major")]
         public int Major { get; set; }
 
