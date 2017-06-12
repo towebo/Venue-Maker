@@ -1,4 +1,4 @@
-﻿{
+{
   "venue": {
     "id": "170511",
     "name": "Malmö Stadsbibliotek",
@@ -14,7 +14,7 @@
       {
         "name": "Ingång stadsbiblioteket Kung Oscars väg",
         "descriptive_name": null,
-        "beacon_uuid": null,
+        "beacon_uuid": "ae71fb28-6e8b-407c-b189-2e92dbf0f9e4",
         "beacon_major": 23835,
         "beacon_minor": 64452,
         "category": "general"
@@ -22,7 +22,7 @@
       {
         "name": "Stadsbibliotekets ingång Regementsgatan",
         "descriptive_name": null,
-        "beacon_uuid": null,
+        "beacon_uuid": "27c4e010-0e13-413e-a6dc-d03dd41eab81",
         "beacon_major": 62903,
         "beacon_minor": 62769,
         "category": "general"
@@ -30,23 +30,15 @@
       {
         "name": "Passagen till restaurangen och röda rummet",
         "descriptive_name": null,
-        "beacon_uuid": null,
+        "beacon_uuid": "9d81cacf-03ea-4424-be44-bd4e468c1501",
         "beacon_major": 31362,
         "beacon_minor": 28595,
         "category": "general"
       },
       {
-        "name": "Infoskärmar vid trappor",
-        "descriptive_name": null,
-        "beacon_uuid": null,
-        "beacon_major": 60775,
-        "beacon_minor": 7637,
-        "category": "general"
-      },
-      {
         "name": "Knutpunkten",
         "descriptive_name": null,
-        "beacon_uuid": null,
+        "beacon_uuid": "8aba0a7d-5aa7-4f60-9d3e-5f1d463c5158",
         "beacon_major": 36099,
         "beacon_minor": 309,
         "category": "general"
@@ -54,39 +46,31 @@
       {
         "name": "Utlåning",
         "descriptive_name": null,
-        "beacon_uuid": null,
+        "beacon_uuid": "32fe45ee-3b2c-4277-b7d2-5b805af497f4",
         "beacon_major": 25464,
         "beacon_minor": 13510,
         "category": "general"
       },
       {
-        "name": "",
-        "descriptive_name": null,
-        "beacon_uuid": null,
-        "beacon_major": 0,
-        "beacon_minor": 0,
-        "category": "general"
-      },
-      {
         "name": "Barnavdelningen",
         "descriptive_name": null,
-        "beacon_uuid": null,
+        "beacon_uuid": "400d67eb-1bb5-4109-a4a3-b25f12ade358",
         "beacon_major": 41662,
         "beacon_minor": 14753,
         "category": "general"
       },
       {
-        "name": "44173",
+        "name": "Restaurangen",
         "descriptive_name": null,
-        "beacon_uuid": null,
-        "beacon_major": 0,
-        "beacon_minor": 34810,
+        "beacon_uuid": "abd41054-392c-424f-9a75-d82d878c8353",
+        "beacon_major": 34810,
+        "beacon_minor": 44173,
         "category": "general"
       },
       {
         "name": "Röda rummet",
         "descriptive_name": null,
-        "beacon_uuid": null,
+        "beacon_uuid": "f41984dc-a9d7-4b7c-bc37-fe9e55c60536",
         "beacon_major": 10431,
         "beacon_minor": 46017,
         "category": "general"
@@ -94,7 +78,7 @@
       {
         "name": "Hiss plan 2 Ljusets kalender",
         "descriptive_name": null,
-        "beacon_uuid": null,
+        "beacon_uuid": "1d84ec26-bb4f-4178-ac6b-6c2c82f3cf83",
         "beacon_major": 2576,
         "beacon_minor": 49449,
         "category": "general"
@@ -102,7 +86,7 @@
       {
         "name": "Informationen plan 2 Ljusets kalender",
         "descriptive_name": null,
-        "beacon_uuid": null,
+        "beacon_uuid": "67b7d082-b392-472e-894f-82a40aa5d6fb",
         "beacon_major": 52743,
         "beacon_minor": 5288,
         "category": "general"
@@ -110,7 +94,7 @@
       {
         "name": "Ljusets kalender",
         "descriptive_name": null,
-        "beacon_uuid": null,
+        "beacon_uuid": "7386f404-5e57-4c65-9dac-9005b12d4794",
         "beacon_major": 32048,
         "beacon_minor": 17687,
         "category": "general"
@@ -118,7 +102,7 @@
       {
         "name": "Slottet plan 2",
         "descriptive_name": null,
-        "beacon_uuid": null,
+        "beacon_uuid": "9a7b1161-b6c6-4dfa-8aeb-ff156dc52c17",
         "beacon_major": 12992,
         "beacon_minor": 14720,
         "category": "general"
@@ -126,7 +110,7 @@
       {
         "name": "Lärcentrum",
         "descriptive_name": null,
-        "beacon_uuid": null,
+        "beacon_uuid": "2502ab3c-bb1d-45d6-bdbf-9391393f59d3",
         "beacon_major": 4408,
         "beacon_minor": 44268,
         "category": "general"
@@ -134,7 +118,7 @@
       {
         "name": "Toaletterna plan 2 Slottet",
         "descriptive_name": null,
-        "beacon_uuid": null,
+        "beacon_uuid": "8fe03703-b262-4f4f-a5cf-367bddadaa68",
         "beacon_major": 63982,
         "beacon_minor": 3079,
         "category": "general"
@@ -142,7 +126,7 @@
       {
         "name": "Tidsskriftssalen",
         "descriptive_name": null,
-        "beacon_uuid": null,
+        "beacon_uuid": "330a484d-e340-4cef-a927-683d81d1da03",
         "beacon_major": 52554,
         "beacon_minor": 38348,
         "category": "general"
@@ -150,25 +134,41 @@
       {
         "name": "Skrivare/kopiator plan 2",
         "descriptive_name": null,
-        "beacon_uuid": null,
+        "beacon_uuid": "203931d2-bcf5-497e-8f69-3023f63c3154",
         "beacon_major": 51164,
         "beacon_minor": 43139,
         "category": "general"
       },
       {
-        "name": "Talböcker",
+        "name": "Trappa till musik film konst",
         "descriptive_name": null,
-        "beacon_uuid": null,
-        "beacon_major": 14561,
-        "beacon_minor": 53797,
+        "beacon_uuid": "22a874b0-483e-4ca3-8d66-f95d616f2549",
+        "beacon_major": 2079,
+        "beacon_minor": 11170,
         "category": "general"
       },
       {
-        "name": "Trappa till musik film konst",
+        "name": "Infoskärmar vid trappor - Slottet",
         "descriptive_name": null,
-        "beacon_uuid": null,
-        "beacon_major": 2079,
-        "beacon_minor": 11170,
+        "beacon_uuid": "f7826da6-4fa2-4e98-8024-bc5b71e0893e",
+        "beacon_major": 47770,
+        "beacon_minor": 6199,
+        "category": "general"
+      },
+      {
+        "name": "Infoskärmar vid trappor - Ljusets kalender",
+        "descriptive_name": null,
+        "beacon_uuid": "f7826da6-4fa2-4e98-8024-bc5b71e0893e",
+        "beacon_major": 31564,
+        "beacon_minor": 10111,
+        "category": "general"
+      },
+      {
+        "name": "Talböcker",
+        "descriptive_name": null,
+        "beacon_uuid": "0a40a428-4638-44b4-8be9-a94502165141",
+        "beacon_major": 14561,
+        "beacon_minor": 53797,
         "category": "general"
       }
     ]

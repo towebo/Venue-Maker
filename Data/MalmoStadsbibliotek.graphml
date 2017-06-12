@@ -158,18 +158,18 @@
       </data>
     </node>
     <node id="n3">
-      <data key="d7">60775</data>
-      <data key="d8">7637</data>
-      <data key="d9"><![CDATA[Infoskärmar vid trappor]]></data>
+      <data key="d7">31564</data>
+      <data key="d8">10111</data>
+      <data key="d9"><![CDATA[Infoskärmar vid trappor - Ljusets kalender]]></data>
       <data key="d10"/>
-      <data key="d24"><![CDATA[4220af55-a879-4fcb-b1c2-8e84e1ce9378]]></data>
+      <data key="d24"><![CDATA[f7826da6-4fa2-4e98-8024-bc5b71e0893e]]></data>
       <data key="d25"><![CDATA[1]]></data>
       <data key="d28">
         <y:ShapeNode>
           <y:Geometry height="30.0" width="30.0" x="-74.5" y="-176.0"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="10.673828125" x="9.6630859375" y="5.6494140625">4<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="17.34765625" x="6.326171875" y="5.6494140625">4a<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -227,25 +227,6 @@
       </data>
     </node>
     <node id="n6">
-      <data key="d9"/>
-      <data key="d10"/>
-      <data key="d28">
-        <y:ShapeNode>
-          <y:Geometry height="30.0" width="30.0" x="-247.5" y="256.0"/>
-          <y:Fill color="#FFCC00" transparent="false"/>
-          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="10.673828125" x="9.6630859375" y="5.6494140625">7<y:LabelModel>
-              <y:SmartNodeLabelModel distance="4.0"/>
-            </y:LabelModel>
-            <y:ModelParameter>
-              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
-            </y:ModelParameter>
-          </y:NodeLabel>
-          <y:Shape type="rectangle"/>
-        </y:ShapeNode>
-      </data>
-    </node>
-    <node id="n7">
       <data key="d7">41662</data>
       <data key="d8">14753</data>
       <data key="d9"><![CDATA[Barnavdelningen]]></data>
@@ -268,10 +249,11 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n8">
-      <data key="d8">34810</data>
-      <data key="d9"><![CDATA[44173]]></data>
-      <data key="d10"><![CDATA[Restaurangen]]></data>
+    <node id="n7">
+      <data key="d7">34810</data>
+      <data key="d8">44173</data>
+      <data key="d9"><![CDATA[Restaurangen]]></data>
+      <data key="d10"/>
       <data key="d24"><![CDATA[abd41054-392c-424f-9a75-d82d878c8353]]></data>
       <data key="d25"><![CDATA[1]]></data>
       <data key="d28">
@@ -290,7 +272,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n9">
+    <node id="n8">
       <data key="d7">10431</data>
       <data key="d8">46017</data>
       <data key="d9"><![CDATA[Röda rummet]]></data>
@@ -313,7 +295,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n10">
+    <node id="n9">
       <data key="d7">2576</data>
       <data key="d8">49449</data>
       <data key="d9"><![CDATA[Hiss plan 2 Ljusets kalender]]></data>
@@ -336,7 +318,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n11">
+    <node id="n10">
       <data key="d7">52743</data>
       <data key="d8">5288</data>
       <data key="d9"><![CDATA[Informationen plan 2 Ljusets kalender]]></data>
@@ -359,7 +341,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n12">
+    <node id="n11">
       <data key="d7">32048</data>
       <data key="d8">17687</data>
       <data key="d9"><![CDATA[Ljusets kalender]]></data>
@@ -382,7 +364,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n13">
+    <node id="n12">
       <data key="d7">12992</data>
       <data key="d8">14720</data>
       <data key="d9"><![CDATA[Slottet plan 2]]></data>
@@ -405,7 +387,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n14">
+    <node id="n13">
       <data key="d7">4408</data>
       <data key="d8">44268</data>
       <data key="d9"><![CDATA[Lärcentrum]]></data>
@@ -428,7 +410,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n15">
+    <node id="n14">
       <data key="d7">63982</data>
       <data key="d8">3079</data>
       <data key="d9"><![CDATA[Toaletterna plan 2 Slottet]]></data>
@@ -451,7 +433,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n16">
+    <node id="n15">
       <data key="d7">52554</data>
       <data key="d8">38348</data>
       <data key="d9"><![CDATA[Tidsskriftssalen]]></data>
@@ -474,7 +456,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n17">
+    <node id="n16">
       <data key="d7">51164</data>
       <data key="d8">43139</data>
       <data key="d9"><![CDATA[Skrivare/kopiator plan 2]]></data>
@@ -497,7 +479,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n18">
+    <node id="n17">
       <data key="d7">14561</data>
       <data key="d8">53797</data>
       <data key="d9"><![CDATA[Talböcker]]></data>
@@ -520,7 +502,7 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n19">
+    <node id="n18">
       <data key="d7">2079</data>
       <data key="d8">11170</data>
       <data key="d9"><![CDATA[Trappa till musik film konst]]></data>
@@ -543,35 +525,19 @@
         </y:ShapeNode>
       </data>
     </node>
-    <node id="n20">
-      <data key="d9"/>
+    <node id="n19">
+      <data key="d7">47770</data>
+      <data key="d8">6199</data>
+      <data key="d9"><![CDATA[Infoskärmar vid trappor - Slottet]]></data>
       <data key="d10"/>
+      <data key="d24"><![CDATA[f7826da6-4fa2-4e98-8024-bc5b71e0893e]]></data>
+      <data key="d25"><![CDATA[1]]></data>
       <data key="d28">
         <y:ShapeNode>
-          <y:Geometry height="30.0" width="30.0" x="-931.6899563318775" y="455.41484716157197"/>
+          <y:Geometry height="30.0" width="30.0" x="-419.14661582459485" y="-176.0152526215445"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="17.34765625" x="6.326171875" y="5.6494140625">21<y:LabelModel>
-              <y:SmartNodeLabelModel distance="4.0"/>
-            </y:LabelModel>
-            <y:ModelParameter>
-              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
-            </y:ModelParameter>
-          </y:NodeLabel>
-          <y:Shape type="rectangle"/>
-        </y:ShapeNode>
-      </data>
-    </node>
-    <node id="n21">
-      <data key="d9"/>
-      <data key="d10"/>
-      <data key="d27"/>
-      <data key="d28">
-        <y:ShapeNode>
-          <y:Geometry height="30.0" width="30.0" x="-1327.513100436681" y="-113.64628820960701"/>
-          <y:Fill color="#FFCC00" transparent="false"/>
-          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="17.34765625" x="6.326171875" y="5.6494140625">22<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="17.34765625" x="6.326171875" y="5.6494140625">4b<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
