@@ -91,7 +91,7 @@
             this.MainMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.MainMenuStrip.Name = "MainMenuStrip";
             this.MainMenuStrip.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
-            this.MainMenuStrip.Size = new System.Drawing.Size(1094, 33);
+            this.MainMenuStrip.Size = new System.Drawing.Size(1094, 24);
             this.MainMenuStrip.TabIndex = 0;
             this.MainMenuStrip.Text = "menuStrip1";
             // 
@@ -107,20 +107,20 @@
             this.toolStripSeparator2,
             this.closeAppToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(64, 29);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
             this.fileToolStripMenuItem.Text = "&Arkiv";
             // 
             // newVenueToolStripMenuItem
             // 
             this.newVenueToolStripMenuItem.Name = "newVenueToolStripMenuItem";
-            this.newVenueToolStripMenuItem.Size = new System.Drawing.Size(265, 30);
+            this.newVenueToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
             this.newVenueToolStripMenuItem.Text = "&Ny";
             this.newVenueToolStripMenuItem.Click += new System.EventHandler(this.newVenueToolStripMenuItem_Click);
             // 
             // openVenueFileToolStripMenuItem
             // 
             this.openVenueFileToolStripMenuItem.Name = "openVenueFileToolStripMenuItem";
-            this.openVenueFileToolStripMenuItem.Size = new System.Drawing.Size(265, 30);
+            this.openVenueFileToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
             this.openVenueFileToolStripMenuItem.Text = "&Öppna";
             this.openVenueFileToolStripMenuItem.Click += new System.EventHandler(this.openVenueFileToolStripMenuItem_Click);
             // 
@@ -128,38 +128,38 @@
             // 
             this.saveVenueMenuItemToolStripMenuItem.Name = "saveVenueMenuItemToolStripMenuItem";
             this.saveVenueMenuItemToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.saveVenueMenuItemToolStripMenuItem.Size = new System.Drawing.Size(265, 30);
+            this.saveVenueMenuItemToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
             this.saveVenueMenuItemToolStripMenuItem.Text = "&Spara";
             this.saveVenueMenuItemToolStripMenuItem.Click += new System.EventHandler(this.SaveMenuItems_Click);
             // 
             // saveVenueFileToolStripMenuItem
             // 
             this.saveVenueFileToolStripMenuItem.Name = "saveVenueFileToolStripMenuItem";
-            this.saveVenueFileToolStripMenuItem.Size = new System.Drawing.Size(265, 30);
+            this.saveVenueFileToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
             this.saveVenueFileToolStripMenuItem.Text = "&Spara som";
             this.saveVenueFileToolStripMenuItem.Click += new System.EventHandler(this.SaveMenuItems_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(262, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(184, 6);
             // 
             // pushToCloudMenuItemToolStripMenuItem
             // 
             this.pushToCloudMenuItemToolStripMenuItem.Name = "pushToCloudMenuItemToolStripMenuItem";
-            this.pushToCloudMenuItemToolStripMenuItem.Size = new System.Drawing.Size(265, 30);
+            this.pushToCloudMenuItemToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
             this.pushToCloudMenuItemToolStripMenuItem.Text = "Ladda upp till molnet";
             this.pushToCloudMenuItemToolStripMenuItem.Click += new System.EventHandler(this.pushToCloudMenuItemToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(262, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(184, 6);
             // 
             // closeAppToolStripMenuItem
             // 
             this.closeAppToolStripMenuItem.Name = "closeAppToolStripMenuItem";
-            this.closeAppToolStripMenuItem.Size = new System.Drawing.Size(265, 30);
+            this.closeAppToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
             this.closeAppToolStripMenuItem.Text = "&Avsluta";
             this.closeAppToolStripMenuItem.Click += new System.EventHandler(this.closeAppToolStripMenuItem_Click);
             // 
@@ -177,8 +177,8 @@
             // 
             // SaveVenueDialog
             // 
-            this.SaveVenueDialog.DefaultExt = "json";
-            this.SaveVenueDialog.Filter = "Venues (*.json)|*.json";
+            this.SaveVenueDialog.DefaultExt = "venue";
+            this.SaveVenueDialog.Filter = "Venues (*.venue)|*.venue";
             // 
             // VenueNameLabel
             // 
@@ -186,7 +186,7 @@
             this.VenueNameLabel.Location = new System.Drawing.Point(14, 43);
             this.VenueNameLabel.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.VenueNameLabel.Name = "VenueNameLabel";
-            this.VenueNameLabel.Size = new System.Drawing.Size(60, 25);
+            this.VenueNameLabel.Size = new System.Drawing.Size(40, 15);
             this.VenueNameLabel.TabIndex = 1;
             this.VenueNameLabel.Text = "&Namn";
             // 
@@ -195,7 +195,7 @@
             this.VenueNameTB.Location = new System.Drawing.Point(14, 61);
             this.VenueNameTB.Margin = new System.Windows.Forms.Padding(5);
             this.VenueNameTB.Name = "VenueNameTB";
-            this.VenueNameTB.Size = new System.Drawing.Size(226, 31);
+            this.VenueNameTB.Size = new System.Drawing.Size(226, 23);
             this.VenueNameTB.TabIndex = 2;
             // 
             // VenueIDLabel
@@ -204,7 +204,7 @@
             this.VenueIDLabel.Location = new System.Drawing.Point(14, 88);
             this.VenueIDLabel.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.VenueIDLabel.Name = "VenueIDLabel";
-            this.VenueIDLabel.Size = new System.Drawing.Size(30, 25);
+            this.VenueIDLabel.Size = new System.Drawing.Size(18, 15);
             this.VenueIDLabel.TabIndex = 3;
             this.VenueIDLabel.Text = "&ID";
             // 
@@ -213,7 +213,7 @@
             this.VenueIDTB.Location = new System.Drawing.Point(14, 105);
             this.VenueIDTB.Margin = new System.Windows.Forms.Padding(5);
             this.VenueIDTB.Name = "VenueIDTB";
-            this.VenueIDTB.Size = new System.Drawing.Size(188, 31);
+            this.VenueIDTB.Size = new System.Drawing.Size(188, 23);
             this.VenueIDTB.TabIndex = 4;
             // 
             // AddressLabel
@@ -222,7 +222,7 @@
             this.AddressLabel.Location = new System.Drawing.Point(14, 130);
             this.AddressLabel.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.AddressLabel.Name = "AddressLabel";
-            this.AddressLabel.Size = new System.Drawing.Size(66, 25);
+            this.AddressLabel.Size = new System.Drawing.Size(42, 15);
             this.AddressLabel.TabIndex = 5;
             this.AddressLabel.Text = "A&dress";
             // 
@@ -231,7 +231,7 @@
             this.AddressTB.Location = new System.Drawing.Point(14, 150);
             this.AddressTB.Margin = new System.Windows.Forms.Padding(5);
             this.AddressTB.Name = "AddressTB";
-            this.AddressTB.Size = new System.Drawing.Size(188, 31);
+            this.AddressTB.Size = new System.Drawing.Size(188, 23);
             this.AddressTB.TabIndex = 6;
             // 
             // ZipLabel
@@ -240,7 +240,7 @@
             this.ZipLabel.Location = new System.Drawing.Point(16, 175);
             this.ZipLabel.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.ZipLabel.Name = "ZipLabel";
-            this.ZipLabel.Size = new System.Drawing.Size(62, 25);
+            this.ZipLabel.Size = new System.Drawing.Size(41, 15);
             this.ZipLabel.TabIndex = 7;
             this.ZipLabel.Text = "&Postnr";
             // 
@@ -249,7 +249,7 @@
             this.ZipTB.Location = new System.Drawing.Point(19, 195);
             this.ZipTB.Margin = new System.Windows.Forms.Padding(5);
             this.ZipTB.Name = "ZipTB";
-            this.ZipTB.Size = new System.Drawing.Size(72, 31);
+            this.ZipTB.Size = new System.Drawing.Size(72, 23);
             this.ZipTB.TabIndex = 8;
             // 
             // CityLabel
@@ -258,7 +258,7 @@
             this.CityLabel.Location = new System.Drawing.Point(96, 175);
             this.CityLabel.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.CityLabel.Name = "CityLabel";
-            this.CityLabel.Size = new System.Drawing.Size(38, 25);
+            this.CityLabel.Size = new System.Drawing.Size(24, 15);
             this.CityLabel.TabIndex = 9;
             this.CityLabel.Text = "&Ort";
             // 
@@ -267,7 +267,7 @@
             this.CityTB.Location = new System.Drawing.Point(96, 195);
             this.CityTB.Margin = new System.Windows.Forms.Padding(5);
             this.CityTB.Name = "CityTB";
-            this.CityTB.Size = new System.Drawing.Size(183, 31);
+            this.CityTB.Size = new System.Drawing.Size(183, 23);
             this.CityTB.TabIndex = 10;
             // 
             // CountryLabel
@@ -276,7 +276,7 @@
             this.CountryLabel.Location = new System.Drawing.Point(19, 220);
             this.CountryLabel.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.CountryLabel.Name = "CountryLabel";
-            this.CountryLabel.Size = new System.Drawing.Size(50, 25);
+            this.CountryLabel.Size = new System.Drawing.Size(33, 15);
             this.CountryLabel.TabIndex = 11;
             this.CountryLabel.Text = "&Land";
             // 
@@ -285,7 +285,7 @@
             this.CountryTB.Location = new System.Drawing.Point(19, 240);
             this.CountryTB.Margin = new System.Windows.Forms.Padding(5);
             this.CountryTB.Name = "CountryTB";
-            this.CountryTB.Size = new System.Drawing.Size(163, 31);
+            this.CountryTB.Size = new System.Drawing.Size(163, 23);
             this.CountryTB.TabIndex = 12;
             // 
             // Tabs
@@ -295,7 +295,7 @@
             this.Tabs.Location = new System.Drawing.Point(248, 43);
             this.Tabs.Name = "Tabs";
             this.Tabs.SelectedIndex = 0;
-            this.Tabs.Size = new System.Drawing.Size(595, 469);
+            this.Tabs.Size = new System.Drawing.Size(834, 469);
             this.Tabs.TabIndex = 13;
             // 
             // PoiTabPage
@@ -315,17 +315,17 @@
             this.PoiTabPage.Controls.Add(this.POIInfosLB);
             this.PoiTabPage.Controls.Add(this.POIsListLabel);
             this.PoiTabPage.Controls.Add(this.POIsLB);
-            this.PoiTabPage.Location = new System.Drawing.Point(4, 34);
+            this.PoiTabPage.Location = new System.Drawing.Point(4, 24);
             this.PoiTabPage.Name = "PoiTabPage";
             this.PoiTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.PoiTabPage.Size = new System.Drawing.Size(587, 431);
+            this.PoiTabPage.Size = new System.Drawing.Size(826, 441);
             this.PoiTabPage.TabIndex = 0;
             this.PoiTabPage.Text = "POI";
             this.PoiTabPage.UseVisualStyleBackColor = true;
             // 
             // MoveInfoDownButton
             // 
-            this.MoveInfoDownButton.Location = new System.Drawing.Point(496, 129);
+            this.MoveInfoDownButton.Location = new System.Drawing.Point(729, 127);
             this.MoveInfoDownButton.Name = "MoveInfoDownButton";
             this.MoveInfoDownButton.Size = new System.Drawing.Size(75, 23);
             this.MoveInfoDownButton.TabIndex = 14;
@@ -335,7 +335,7 @@
             // 
             // MoveInfoUpButton
             // 
-            this.MoveInfoUpButton.Location = new System.Drawing.Point(496, 100);
+            this.MoveInfoUpButton.Location = new System.Drawing.Point(729, 98);
             this.MoveInfoUpButton.Name = "MoveInfoUpButton";
             this.MoveInfoUpButton.Size = new System.Drawing.Size(75, 23);
             this.MoveInfoUpButton.TabIndex = 13;
@@ -345,7 +345,7 @@
             // 
             // RemovePOIInfoButton
             // 
-            this.RemovePOIInfoButton.Location = new System.Drawing.Point(496, 55);
+            this.RemovePOIInfoButton.Location = new System.Drawing.Point(729, 53);
             this.RemovePOIInfoButton.Name = "RemovePOIInfoButton";
             this.RemovePOIInfoButton.Size = new System.Drawing.Size(75, 23);
             this.RemovePOIInfoButton.TabIndex = 12;
@@ -355,7 +355,7 @@
             // 
             // AddPOIInfoButton
             // 
-            this.AddPOIInfoButton.Location = new System.Drawing.Point(496, 23);
+            this.AddPOIInfoButton.Location = new System.Drawing.Point(729, 21);
             this.AddPOIInfoButton.Name = "AddPOIInfoButton";
             this.AddPOIInfoButton.Size = new System.Drawing.Size(75, 23);
             this.AddPOIInfoButton.TabIndex = 11;
@@ -365,78 +365,78 @@
             // 
             // POIInfoEndsTB
             // 
-            this.POIInfoEndsTB.Location = new System.Drawing.Point(350, 362);
+            this.POIInfoEndsTB.Location = new System.Drawing.Point(504, 360);
             this.POIInfoEndsTB.Name = "POIInfoEndsTB";
-            this.POIInfoEndsTB.Size = new System.Drawing.Size(100, 31);
+            this.POIInfoEndsTB.Size = new System.Drawing.Size(100, 23);
             this.POIInfoEndsTB.TabIndex = 10;
             // 
             // POIInfoEndsLabel
             // 
             this.POIInfoEndsLabel.AutoSize = true;
-            this.POIInfoEndsLabel.Location = new System.Drawing.Point(347, 344);
+            this.POIInfoEndsLabel.Location = new System.Drawing.Point(501, 342);
             this.POIInfoEndsLabel.Name = "POIInfoEndsLabel";
-            this.POIInfoEndsLabel.Size = new System.Drawing.Size(150, 25);
+            this.POIInfoEndsLabel.Size = new System.Drawing.Size(100, 15);
             this.POIInfoEndsLabel.TabIndex = 9;
             this.POIInfoEndsLabel.Text = "Aktiv till och med";
             // 
             // POIInfoStartsTB
             // 
-            this.POIInfoStartsTB.Location = new System.Drawing.Point(175, 362);
+            this.POIInfoStartsTB.Location = new System.Drawing.Point(329, 360);
             this.POIInfoStartsTB.Name = "POIInfoStartsTB";
-            this.POIInfoStartsTB.Size = new System.Drawing.Size(170, 31);
+            this.POIInfoStartsTB.Size = new System.Drawing.Size(170, 23);
             this.POIInfoStartsTB.TabIndex = 8;
             // 
             // POIInfoStartsLabel
             // 
             this.POIInfoStartsLabel.AutoSize = true;
-            this.POIInfoStartsLabel.Location = new System.Drawing.Point(172, 344);
+            this.POIInfoStartsLabel.Location = new System.Drawing.Point(326, 342);
             this.POIInfoStartsLabel.Name = "POIInfoStartsLabel";
-            this.POIInfoStartsLabel.Size = new System.Drawing.Size(163, 25);
+            this.POIInfoStartsLabel.Size = new System.Drawing.Size(108, 15);
             this.POIInfoStartsLabel.TabIndex = 7;
             this.POIInfoStartsLabel.Text = "Aktiv från och med";
             // 
             // POIInfoCatCombo
             // 
             this.POIInfoCatCombo.FormattingEnabled = true;
-            this.POIInfoCatCombo.Location = new System.Drawing.Point(173, 318);
+            this.POIInfoCatCombo.Location = new System.Drawing.Point(327, 316);
             this.POIInfoCatCombo.Name = "POIInfoCatCombo";
-            this.POIInfoCatCombo.Size = new System.Drawing.Size(212, 33);
+            this.POIInfoCatCombo.Size = new System.Drawing.Size(212, 23);
             this.POIInfoCatCombo.TabIndex = 6;
             // 
             // POIInfoCatLabel
             // 
             this.POIInfoCatLabel.AutoSize = true;
-            this.POIInfoCatLabel.Location = new System.Drawing.Point(172, 300);
+            this.POIInfoCatLabel.Location = new System.Drawing.Point(326, 298);
             this.POIInfoCatLabel.Name = "POIInfoCatLabel";
-            this.POIInfoCatLabel.Size = new System.Drawing.Size(78, 25);
+            this.POIInfoCatLabel.Size = new System.Drawing.Size(51, 15);
             this.POIInfoCatLabel.TabIndex = 5;
             this.POIInfoCatLabel.Text = "&Kategori";
             // 
             // POIInformationTB
             // 
-            this.POIInformationTB.Location = new System.Drawing.Point(172, 199);
+            this.POIInformationTB.Location = new System.Drawing.Point(326, 197);
             this.POIInformationTB.Multiline = true;
             this.POIInformationTB.Name = "POIInformationTB";
             this.POIInformationTB.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.POIInformationTB.Size = new System.Drawing.Size(318, 98);
+            this.POIInformationTB.Size = new System.Drawing.Size(397, 98);
             this.POIInformationTB.TabIndex = 4;
             // 
             // POIInfoLabel
             // 
             this.POIInfoLabel.AutoSize = true;
-            this.POIInfoLabel.Location = new System.Drawing.Point(172, 181);
+            this.POIInfoLabel.Location = new System.Drawing.Point(326, 179);
             this.POIInfoLabel.Name = "POIInfoLabel";
-            this.POIInfoLabel.Size = new System.Drawing.Size(106, 25);
+            this.POIInfoLabel.Size = new System.Drawing.Size(70, 15);
             this.POIInfoLabel.TabIndex = 3;
             this.POIInfoLabel.Text = "&Information";
             // 
             // POIInfosLB
             // 
             this.POIInfosLB.FormattingEnabled = true;
-            this.POIInfosLB.ItemHeight = 25;
-            this.POIInfosLB.Location = new System.Drawing.Point(172, 23);
+            this.POIInfosLB.ItemHeight = 15;
+            this.POIInfosLB.Location = new System.Drawing.Point(326, 21);
             this.POIInfosLB.Name = "POIInfosLB";
-            this.POIInfosLB.Size = new System.Drawing.Size(318, 154);
+            this.POIInfosLB.Size = new System.Drawing.Size(397, 154);
             this.POIInfosLB.TabIndex = 2;
             // 
             // POIsListLabel
@@ -444,32 +444,32 @@
             this.POIsListLabel.AutoSize = true;
             this.POIsListLabel.Location = new System.Drawing.Point(6, 3);
             this.POIsListLabel.Name = "POIsListLabel";
-            this.POIsListLabel.Size = new System.Drawing.Size(149, 25);
+            this.POIsListLabel.Size = new System.Drawing.Size(98, 15);
             this.POIsListLabel.TabIndex = 1;
             this.POIsListLabel.Text = "Points Of Interest";
             // 
             // POIsLB
             // 
             this.POIsLB.FormattingEnabled = true;
-            this.POIsLB.ItemHeight = 25;
+            this.POIsLB.ItemHeight = 15;
             this.POIsLB.Location = new System.Drawing.Point(6, 21);
             this.POIsLB.Name = "POIsLB";
-            this.POIsLB.Size = new System.Drawing.Size(160, 354);
+            this.POIsLB.Size = new System.Drawing.Size(315, 349);
             this.POIsLB.TabIndex = 0;
             // 
             // ExitsTabPabe
             // 
-            this.ExitsTabPabe.Location = new System.Drawing.Point(4, 34);
+            this.ExitsTabPabe.Location = new System.Drawing.Point(4, 24);
             this.ExitsTabPabe.Name = "ExitsTabPabe";
             this.ExitsTabPabe.Padding = new System.Windows.Forms.Padding(3);
-            this.ExitsTabPabe.Size = new System.Drawing.Size(587, 431);
+            this.ExitsTabPabe.Size = new System.Drawing.Size(587, 441);
             this.ExitsTabPabe.TabIndex = 1;
             this.ExitsTabPabe.Text = "Utgångar";
             this.ExitsTabPabe.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1094, 740);
             this.Controls.Add(this.Tabs);

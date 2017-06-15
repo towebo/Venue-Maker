@@ -1,0 +1,72 @@
+﻿{
+  "venue": {
+    "id": "170615",
+    "name": "Ängelholms stadsbibliotek",
+    "description": null,
+    "address": "Stortorget",
+    "zip": null,
+    "city": "Ängelholm",
+    "country": "Sverige",
+    "phone": null,
+    "email": null,
+    "web": null,
+    "pointsofinterest": [
+      {
+        "name": "Toaletter och Galleri Moment",
+        "descriptive_name": null,
+        "beacon_uuid": "f7826da6-4fa2-4e98-8024-bc5b71e0893e",
+        "beacon_major": 31564,
+        "beacon_minor": 10111,
+        "category": "general"
+      },
+      {
+        "name": "Entré Ängelholms stadsbibliotek",
+        "descriptive_name": null,
+        "beacon_uuid": "f7826da6-4fa2-4e98-8024-bc5b71e0893e",
+        "beacon_major": 58839,
+        "beacon_minor": 12883,
+        "category": "general"
+      },
+      {
+        "name": "Ingång biblioteket och trappa till andra våningen",
+        "descriptive_name": null,
+        "beacon_uuid": "f7826da6-4fa2-4e98-8024-bc5b71e0893e",
+        "beacon_major": 45002,
+        "beacon_minor": 5914,
+        "category": "general"
+      },
+      {
+        "name": "Entré garage och hiss",
+        "descriptive_name": null,
+        "beacon_uuid": "f7826da6-4fa2-4e98-8024-bc5b71e0893e",
+        "beacon_major": 47770,
+        "beacon_minor": 6199,
+        "category": "general"
+      },
+      {
+        "name": "Utlåning och återlämning",
+        "descriptive_name": null,
+        "beacon_uuid": "f7826da6-4fa2-4e98-8024-bc5b71e0893e",
+        "beacon_major": 59879,
+        "beacon_minor": 20663,
+        "category": "general"
+      },
+      {
+        "name": "Informationsdisk",
+        "descriptive_name": null,
+        "beacon_uuid": "f7826da6-4fa2-4e98-8024-bc5b71e0893e",
+        "beacon_major": 11691,
+        "beacon_minor": 60974,
+        "category": "general"
+      },
+      {
+        "name": "Lyssnarplats",
+        "descriptive_name": null,
+        "beacon_uuid": "f7826da6-4fa2-4e98-8024-bc5b71e0893e",
+        "beacon_major": 60846,
+        "beacon_minor": 20266,
+        "category": "general"
+      }
+    ]
+  }
+}

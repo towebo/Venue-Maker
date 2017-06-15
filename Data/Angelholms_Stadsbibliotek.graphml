@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:java="http://www.yworks.com/xml/yfiles-common/1.0/java" xmlns:sys="http://www.yworks.com/xml/yfiles-common/markup/primitives/2.0" xmlns:x="http://www.yworks.com/xml/yfiles-common/markup/2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:y="http://www.yworks.com/xml/graphml" xmlns:yed="http://www.yworks.com/xml/yed/3" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://www.yworks.com/xml/schema/graphml/1.1/ygraphml.xsd">
+  <!--Created by yEd 3.16.2.1-->
+  <key attr.name="venue_id" attr.type="string" for="graph" id="d0">
+    <default/>
+  </key>
+  <key attr.name="venue_name" attr.type="string" for="graph" id="d1">
+    <default/>
+  </key>
+  <key attr.name="level" attr.type="int" for="graph" id="d2">
+    <default>3</default>
+  </key>
+  <key attr.name="graph_id" attr.type="string" for="graph" id="d3">
+    <default/>
+  </key>
+  <key for="port" id="d4" yfiles.type="portgraphics"/>
+  <key for="port" id="d5" yfiles.type="portgeometry"/>
+  <key for="port" id="d6" yfiles.type="portuserdata"/>
+  <key attr.name="major" attr.type="int" for="node" id="d7"/>
+  <key attr.name="minor" attr.type="int" for="node" id="d8"/>
+  <key attr.name="name" attr.type="string" for="node" id="d9"/>
+  <key attr.name="waypoint_type" attr.type="string" for="node" id="d10"/>
+  <key attr.name="accuracy" attr.type="double" for="node" id="d11">
+    <default>4.0</default>
+  </key>
+  <key attr.name="name_descriptive" attr.type="string" for="node" id="d12">
+    <default/>
+  </key>
+  <key attr.name="heading1info" attr.type="string" for="node" id="d13">
+    <default/>
+  </key>
+  <key attr.name="heading2info" attr.type="string" for="node" id="d14">
+    <default/>
+  </key>
+  <key attr.name="heading3info" attr.type="string" for="node" id="d15">
+    <default/>
+  </key>
+  <key attr.name="heading4info" attr.type="string" for="node" id="d16">
+    <default/>
+  </key>
+  <key attr.name="heading5info" attr.type="string" for="node" id="d17">
+    <default/>
+  </key>
+  <key attr.name="in_range_message" attr.type="string" for="node" id="d18">
+    <default/>
+  </key>
+  <key attr.name="touch_message" attr.type="string" for="node" id="d19">
+    <default/>
+  </key>
+  <key attr.name="out_of_range_message" attr.type="string" for="node" id="d20">
+    <default/>
+  </key>
+  <key attr.name="close_by_accuracy" attr.type="double" for="node" id="d21">
+    <default>0.0</default>
+  </key>
+  <key attr.name="close_by_message" attr.type="string" for="node" id="d22">
+    <default/>
+  </key>
+  <key attr.name="in_range_accuracy" attr.type="double" for="node" id="d23">
+    <default>60.0</default>
+  </key>
+  <key attr.name="uuid" attr.type="string" for="node" id="d24">
+    <default/>
+  </key>
+  <key attr.name="floor" attr.type="string" for="node" id="d25">
+    <default><![CDATA[0]]></default>
+  </key>
+  <key attr.name="url" attr.type="string" for="node" id="d26"/>
+  <key attr.name="description" attr.type="string" for="node" id="d27"/>
+  <key for="node" id="d28" yfiles.type="nodegraphics"/>
+  <key for="graphml" id="d29" yfiles.type="resources"/>
+  <key attr.name="travel_time" attr.type="double" for="edge" id="d30"/>
+  <key attr.name="language" attr.type="string" for="edge" id="d31"/>
+  <key attr.name="beginning" attr.type="string" for="edge" id="d32"/>
+  <key attr.name="middle" attr.type="string" for="edge" id="d33"/>
+  <key attr.name="end" attr.type="string" for="edge" id="d34"/>
+  <key attr.name="starting_only" attr.type="string" for="edge" id="d35"/>
+  <key attr.name="start_heading" attr.type="int" for="edge" id="d36">
+    <default>-1</default>
+  </key>
+  <key attr.name="end_heading" attr.type="int" for="edge" id="d37">
+    <default>-1</default>
+  </key>
+  <key attr.name="url" attr.type="string" for="edge" id="d38"/>
+  <key attr.name="description" attr.type="string" for="edge" id="d39"/>
+  <key for="edge" id="d40" yfiles.type="edgegraphics"/>
+  <graph edgedefault="directed" id="G">
+    <data key="d0"><![CDATA[170615]]></data>
+    <data key="d1"><![CDATA[Ängelholms stadsbibliotek]]></data>
+    <data key="d3"><![CDATA[170615-01]]></data>
+    <node id="n0">
+      <data key="d7">31564</data>
+      <data key="d8">10111</data>
+      <data key="d9"><![CDATA[Toaletter och Galleri Moment]]></data>
+      <data key="d10"/>
+      <data key="d24"><![CDATA[f7826da6-4fa2-4e98-8024-bc5b71e0893e]]></data>
+      <data key="d25"><![CDATA[1]]></data>
+      <data key="d28">
+        <y:ShapeNode>
+          <y:Geometry height="30.0" width="30.0" x="71.31096282173485" y="4.7972926596758825"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="10.673828125" x="9.6630859375" y="5.6494140625">2<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n1">
+      <data key="d7">58839</data>
+      <data key="d8">12883</data>
+      <data key="d9"><![CDATA[Entré Ängelholms stadsbibliotek]]></data>
+      <data key="d10"><![CDATA[entrance]]></data>
+      <data key="d24"><![CDATA[f7826da6-4fa2-4e98-8024-bc5b71e0893e]]></data>
+      <data key="d25"><![CDATA[1]]></data>
+      <data key="d28">
+        <y:ShapeNode>
+          <y:Geometry height="30.0" width="30.0" x="71.31096282173485" y="143.7540514775975"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="10.673828125" x="9.6630859375" y="5.6494140625">1<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n2">
+      <data key="d7">45002</data>
+      <data key="d8">5914</data>
+      <data key="d9"><![CDATA[Ingång biblioteket och trappa till andra våningen]]></data>
+      <data key="d10"/>
+      <data key="d24"><![CDATA[f7826da6-4fa2-4e98-8024-bc5b71e0893e]]></data>
+      <data key="d25"><![CDATA[1]]></data>
+      <data key="d28">
+        <y:ShapeNode>
+          <y:Geometry height="30.0" width="30.0" x="71.31096282173485" y="-296.76987607244996"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="10.673828125" x="9.6630859375" y="5.6494140625">4<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n3">
+      <data key="d7">47770</data>
+      <data key="d8">6199</data>
+      <data key="d9"><![CDATA[Entré garage och hiss]]></data>
+      <data key="d10"/>
+      <data key="d24"><![CDATA[f7826da6-4fa2-4e98-8024-bc5b71e0893e]]></data>
+      <data key="d25"><![CDATA[1]]></data>
+      <data key="d28">
+        <y:ShapeNode>
+          <y:Geometry height="30.0" width="30.0" x="312.54897998093406" y="-230.33250714966653"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="10.673828125" x="9.6630859375" y="5.6494140625">3<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n4">
+      <data key="d7">59879</data>
+      <data key="d8">20663</data>
+      <data key="d9"><![CDATA[Utlåning och återlämning]]></data>
+      <data key="d10"/>
+      <data key="d24"><![CDATA[f7826da6-4fa2-4e98-8024-bc5b71e0893e]]></data>
+      <data key="d25"><![CDATA[1]]></data>
+      <data key="d28">
+        <y:ShapeNode>
+          <y:Geometry height="30.0" width="30.0" x="265.6014489990465" y="-587.664366062917"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="10.673828125" x="9.6630859375" y="5.6494140625">4<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n5">
+      <data key="d7">11691</data>
+      <data key="d8">60974</data>
+      <data key="d9"><![CDATA[Informationsdisk]]></data>
+      <data key="d10"/>
+      <data key="d24"><![CDATA[f7826da6-4fa2-4e98-8024-bc5b71e0893e]]></data>
+      <data key="d25"><![CDATA[1]]></data>
+      <data key="d28">
+        <y:ShapeNode>
+          <y:Geometry height="30.0" width="30.0" x="-338.19836034318416" y="-579.4165490943755"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="10.673828125" x="9.6630859375" y="5.6494140625">6<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n6">
+      <data key="d7">60846</data>
+      <data key="d8">20266</data>
+      <data key="d9"><![CDATA[Lyssnarplats]]></data>
+      <data key="d10"/>
+      <data key="d24"><![CDATA[f7826da6-4fa2-4e98-8024-bc5b71e0893e]]></data>
+      <data key="d25"><![CDATA[1]]></data>
+      <data key="d28">
+        <y:ShapeNode>
+          <y:Geometry height="30.0" width="30.0" x="-217.39672068636833" y="-704.8330981887509"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="10.673828125" x="9.6630859375" y="5.6494140625">7<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+  </graph>
+  <data key="d29">
+    <y:Resources/>
+  </data>
+</graphml>
