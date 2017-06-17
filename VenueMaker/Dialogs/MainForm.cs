@@ -45,8 +45,17 @@ namespace VenueMaker.Dialogs
                     WFVenue v = VenueBS.Current as WFVenue;
                     if (v != null)
                     {
-                        POIsBS.DataSource = v.PointsOfInterest.OrderBy(w => w.Name);
+                        if (v.PointsOfInterest != null)
+                        {
+                            POIsBS.DataSource = v.PointsOfInterest.OrderBy(w => w.Name);
 
+                        }
+                        else
+                        {
+                            POIsBS.DataSource = v.PointsOfInterest;
+
+                        }
+                        
                     }
                     else
                     {
