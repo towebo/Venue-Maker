@@ -1,7 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -13,6 +13,7 @@ using VenueMaker.Controllers;
 using VenueMaker.Utils;
 using WayfindR.Controllers;
 using WayfindR.Models;
+using VenueMaker.Helpers;
 
 namespace VenueMaker.Dialogs
 {
@@ -35,7 +36,7 @@ namespace VenueMaker.Dialogs
         {
             try
             {
-                this.Text = "Venue Maker 1.0.17241";
+                this.Text = AssemblyInfo.GetProductAndVersion();
 
 
                 VenueBS.DataSource = new WFVenue();
