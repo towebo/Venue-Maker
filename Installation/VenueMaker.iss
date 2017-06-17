@@ -28,14 +28,14 @@ Name: {app}\x64
 Name: {app}\x86
 
 [Icons]
-Name: {group}\Venue Maker; Filename: {app}\VenueMaker.exe
+Name: {group}\{#AppName}; Filename: {app}\VenueMaker.exe
 
 [Setup]
 AppCopyright={#CopyrightText}
 AppName={#AppName}
 AppVerName={#AppName} {#AppVersion}
 AllowCancelDuringInstall=false
-DefaultDirName={pf}\Mawingu\VenueMaker
+DefaultDirName={pf}\{#CompanyName}\{#AppName}
 DefaultGroupName={#CompanyName}
 DisableProgramGroupPage=true
 AlwaysShowComponentsList=false
@@ -47,4 +47,11 @@ AppSupportURL=http://mawingu.se/
 AppUpdatesURL=http://mawingu.se/
 AppID={{261C8BD3-34E8-40EE-AD36-030BEF9D48EB}
 OutputBaseFilename=setup_{#AppName}_{#AppVersion}
-UninstallDisplayName=Venue Maker
+UninstallDisplayName={#AppName}
+
+[LangOptions]
+LanguageName=Swedish
+LanguageID=$041D
+
+[Languages]
+Name: Svenska; MessagesFile: compiler:Languages\Swedish.isl
