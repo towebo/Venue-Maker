@@ -72,6 +72,7 @@ namespace VenueMaker.Dialogs
                 ZipTB.DataBindings.Add("Text", VenueBS, "Zip");
                 CityTB.DataBindings.Add("Text", VenueBS, "City");
                 CountryTB.DataBindings.Add("Text", VenueBS, "Country");
+                VenueDescriptionTB.DataBindings.Add("Text", VenueBS, "Description");
 
 
                 POIsBS.DataSource = new WFPointOfInterest[] { };

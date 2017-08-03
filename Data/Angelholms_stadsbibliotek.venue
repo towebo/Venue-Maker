@@ -66,6 +66,30 @@
         "beacon_major": 60846,
         "beacon_minor": 20266,
         "category": "general"
+      },
+      {
+        "name": "Lyssnarplats",
+        "descriptive_name": null,
+        "beacon_uuid": "E2C56DB5-DFFB-48D2-B060-D0F5A71096E0",
+        "beacon_major": 100,
+        "beacon_minor": 1,
+        "category": "general"
+      },
+      {
+        "name": "Lyssnarplats barn",
+        "descriptive_name": null,
+        "beacon_uuid": "E2C56DB5-DFFB-48D2-B060-D0F5A71096E0",
+        "beacon_major": 100,
+        "beacon_minor": 2,
+        "category": "general"
+      },
+      {
+        "name": "Toalett med skötrum",
+        "descriptive_name": null,
+        "beacon_uuid": "E2C56DB5-DFFB-48D2-B060-D0F5A71096E0",
+        "beacon_major": 100,
+        "beacon_minor": 3,
+        "category": "general"
       }
     ]
   }
