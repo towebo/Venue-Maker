@@ -468,19 +468,37 @@ namespace VenueMaker.Dialogs
                 Application.DoEvents();
 
                 
-                string mediafile = Path.GetDirectoryName(SaveVenueDialog.FileName);
-                mediafile = Path.Combine(mediafile, Venue.Id);
-                Directory.CreateDirectory(mediafile);
-
+                string mediafile = Path.GetDirectoryName(SaveVenueDialog.FileName);                
                 mediafile = Path.Combine(mediafile, Path.GetFileName(OpenMediaFileDialog.FileName));
 
-                File.Copy(
+                if (File.Exists(mediafile))
+                {
+                    DialogResult dr = MessageBox.Show(
+                        string.Format("Det finns redan en fil som heter \"{0}\". Vill du ersätta den befintliga?",
+                        Path.GetFileName(mediafile)),
+                        "Ersätt befintlig fil",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Question
+                        );
+                    if (dr != DialogResult.Yes)
+                    {
+                        return;
+
+                    } // Don't replace
+
+                    File.Delete(mediafile);
+
+                } // Replace old file
+
+                    File.Copy(
                     OpenMediaFileDialog.FileName,
                     mediafile
                     );
 
                 
                 poii.MediaFile = Path.GetFileName(mediafile);
+
+                FtpController.Me.AddToUploadQueue(mediafile);
 
                 SystemSounds.Asterisk.Play();
                 

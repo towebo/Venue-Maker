@@ -307,7 +307,7 @@
             this.Tabs.Name = "Tabs";
             this.Tabs.SelectedIndex = 0;
             this.Tabs.Size = new System.Drawing.Size(834, 511);
-            this.Tabs.TabIndex = 15;
+            this.Tabs.TabIndex = 17;
             // 
             // PoiTabPage
             // 
@@ -386,7 +386,7 @@
             this.MoveInfoDownButton.Location = new System.Drawing.Point(729, 127);
             this.MoveInfoDownButton.Name = "MoveInfoDownButton";
             this.MoveInfoDownButton.Size = new System.Drawing.Size(75, 23);
-            this.MoveInfoDownButton.TabIndex = 14;
+            this.MoveInfoDownButton.TabIndex = 24;
             this.MoveInfoDownButton.Text = "Flytta ner";
             this.MoveInfoDownButton.UseVisualStyleBackColor = true;
             this.MoveInfoDownButton.Click += new System.EventHandler(this.MoveInfoUpButton_Click);
@@ -396,7 +396,7 @@
             this.MoveInfoUpButton.Location = new System.Drawing.Point(729, 98);
             this.MoveInfoUpButton.Name = "MoveInfoUpButton";
             this.MoveInfoUpButton.Size = new System.Drawing.Size(75, 23);
-            this.MoveInfoUpButton.TabIndex = 13;
+            this.MoveInfoUpButton.TabIndex = 23;
             this.MoveInfoUpButton.Text = "Flytta upp";
             this.MoveInfoUpButton.UseVisualStyleBackColor = true;
             this.MoveInfoUpButton.Click += new System.EventHandler(this.MoveInfoUpButton_Click);
@@ -406,7 +406,7 @@
             this.RemovePOIInfoButton.Location = new System.Drawing.Point(729, 53);
             this.RemovePOIInfoButton.Name = "RemovePOIInfoButton";
             this.RemovePOIInfoButton.Size = new System.Drawing.Size(75, 23);
-            this.RemovePOIInfoButton.TabIndex = 12;
+            this.RemovePOIInfoButton.TabIndex = 22;
             this.RemovePOIInfoButton.Text = "&Ta bort";
             this.RemovePOIInfoButton.UseVisualStyleBackColor = true;
             this.RemovePOIInfoButton.Click += new System.EventHandler(this.RemovePOIInfoButton_Click);
@@ -416,7 +416,7 @@
             this.AddPOIInfoButton.Location = new System.Drawing.Point(729, 21);
             this.AddPOIInfoButton.Name = "AddPOIInfoButton";
             this.AddPOIInfoButton.Size = new System.Drawing.Size(75, 23);
-            this.AddPOIInfoButton.TabIndex = 11;
+            this.AddPOIInfoButton.TabIndex = 21;
             this.AddPOIInfoButton.Text = "&Lägg till";
             this.AddPOIInfoButton.UseVisualStyleBackColor = true;
             this.AddPOIInfoButton.Click += new System.EventHandler(this.AddPOIInfoButton_Click);
@@ -550,7 +550,7 @@
             this.VisibilityLabel.Location = new System.Drawing.Point(14, 511);
             this.VisibilityLabel.Name = "VisibilityLabel";
             this.VisibilityLabel.Size = new System.Drawing.Size(157, 15);
-            this.VisibilityLabel.TabIndex = 16;
+            this.VisibilityLabel.TabIndex = 15;
             this.VisibilityLabel.Text = "Synlighet i listan över platser";
             // 
             // VisibilityCombo
@@ -560,7 +560,7 @@
             this.VisibilityCombo.Location = new System.Drawing.Point(14, 527);
             this.VisibilityCombo.Name = "VisibilityCombo";
             this.VisibilityCombo.Size = new System.Drawing.Size(177, 23);
-            this.VisibilityCombo.TabIndex = 17;
+            this.VisibilityCombo.TabIndex = 16;
             // 
             // OpenMediaFileDialog
             // 
