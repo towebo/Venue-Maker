@@ -425,7 +425,35 @@ namespace VenueMaker.Dialogs
                     FtpController.Me.AddToUploadQueue(localfile);
 
                 } // graphl exists
-                
+
+
+                string fldr = Path.GetDirectoryName(localfile);
+
+                if (Venue.PointsOfInterest != null)
+                {
+                    foreach (WFPointOfInterest poi in Venue.PointsOfInterest)
+                    {
+                        if (poi.Information != null)
+                        {
+                            foreach (WFPOIInformation poii in poi.Information)
+                            {
+                                if (!string.IsNullOrWhiteSpace(poii.MediaFile))
+                                {
+                                    FtpController.Me.AddToUploadQueue(
+                                        Path.Combine(fldr, poii.MediaFile)
+                                        );
+
+                                } // Has media file
+
+                            } // foreach poii
+
+                        } // Has infos
+
+                    } // foreach Pois
+
+                } // Has pois
+
+
 
                 FtpController.Me.UploadFiles();
                 
@@ -471,7 +499,8 @@ namespace VenueMaker.Dialogs
                 string mediafile = Path.GetDirectoryName(SaveVenueDialog.FileName);                
                 mediafile = Path.Combine(mediafile, Path.GetFileName(OpenMediaFileDialog.FileName));
 
-                if (File.Exists(mediafile))
+                if (File.Exists(mediafile) &&
+                    mediafile != OpenMediaFileDialog.FileName)
                 {
                     DialogResult dr = MessageBox.Show(
                         string.Format("Det finns redan en fil som heter \"{0}\". Vill du ersätta den befintliga?",
@@ -497,8 +526,8 @@ namespace VenueMaker.Dialogs
 
                 
                 poii.MediaFile = Path.GetFileName(mediafile);
+                MediaFileTB.Text = poii.MediaFile;
 
-                FtpController.Me.AddToUploadQueue(mediafile);
 
                 SystemSounds.Asterisk.Play();
                 
