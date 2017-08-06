@@ -58,6 +58,11 @@
             this.CountryTB = new System.Windows.Forms.TextBox();
             this.Tabs = new System.Windows.Forms.TabControl();
             this.PoiTabPage = new System.Windows.Forms.TabPage();
+            this.MediaDescrTB = new System.Windows.Forms.TextBox();
+            this.MediaDescLabel = new System.Windows.Forms.Label();
+            this.PickMediaFileButton = new System.Windows.Forms.Button();
+            this.MediaFileTB = new System.Windows.Forms.TextBox();
+            this.MediaFileLabel = new System.Windows.Forms.Label();
             this.MoveInfoDownButton = new System.Windows.Forms.Button();
             this.MoveInfoUpButton = new System.Windows.Forms.Button();
             this.RemovePOIInfoButton = new System.Windows.Forms.Button();
@@ -78,6 +83,9 @@
             this.POIInfosBS = new System.Windows.Forms.BindingSource(this.components);
             this.VenueDescriptionLabel = new System.Windows.Forms.Label();
             this.VenueDescriptionTB = new System.Windows.Forms.TextBox();
+            this.VisibilityLabel = new System.Windows.Forms.Label();
+            this.VisibilityCombo = new System.Windows.Forms.ComboBox();
+            this.OpenMediaFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.MainMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VenueBS)).BeginInit();
             this.Tabs.SuspendLayout();
@@ -94,7 +102,7 @@
             this.MainMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.MainMenuStrip.Name = "MainMenuStrip";
             this.MainMenuStrip.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
-            this.MainMenuStrip.Size = new System.Drawing.Size(1094, 24);
+            this.MainMenuStrip.Size = new System.Drawing.Size(1129, 24);
             this.MainMenuStrip.TabIndex = 0;
             this.MainMenuStrip.Text = "menuStrip1";
             // 
@@ -298,11 +306,16 @@
             this.Tabs.Location = new System.Drawing.Point(288, 43);
             this.Tabs.Name = "Tabs";
             this.Tabs.SelectedIndex = 0;
-            this.Tabs.Size = new System.Drawing.Size(834, 469);
+            this.Tabs.Size = new System.Drawing.Size(834, 511);
             this.Tabs.TabIndex = 15;
             // 
             // PoiTabPage
             // 
+            this.PoiTabPage.Controls.Add(this.MediaDescrTB);
+            this.PoiTabPage.Controls.Add(this.MediaDescLabel);
+            this.PoiTabPage.Controls.Add(this.PickMediaFileButton);
+            this.PoiTabPage.Controls.Add(this.MediaFileTB);
+            this.PoiTabPage.Controls.Add(this.MediaFileLabel);
             this.PoiTabPage.Controls.Add(this.MoveInfoDownButton);
             this.PoiTabPage.Controls.Add(this.MoveInfoUpButton);
             this.PoiTabPage.Controls.Add(this.RemovePOIInfoButton);
@@ -321,10 +334,52 @@
             this.PoiTabPage.Location = new System.Drawing.Point(4, 24);
             this.PoiTabPage.Name = "PoiTabPage";
             this.PoiTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.PoiTabPage.Size = new System.Drawing.Size(826, 441);
+            this.PoiTabPage.Size = new System.Drawing.Size(826, 483);
             this.PoiTabPage.TabIndex = 0;
             this.PoiTabPage.Text = "POI";
             this.PoiTabPage.UseVisualStyleBackColor = true;
+            // 
+            // MediaDescrTB
+            // 
+            this.MediaDescrTB.Location = new System.Drawing.Point(326, 448);
+            this.MediaDescrTB.Name = "MediaDescrTB";
+            this.MediaDescrTB.Size = new System.Drawing.Size(407, 23);
+            this.MediaDescrTB.TabIndex = 19;
+            // 
+            // MediaDescLabel
+            // 
+            this.MediaDescLabel.AutoSize = true;
+            this.MediaDescLabel.Location = new System.Drawing.Point(326, 430);
+            this.MediaDescLabel.Name = "MediaDescLabel";
+            this.MediaDescLabel.Size = new System.Drawing.Size(119, 15);
+            this.MediaDescLabel.TabIndex = 18;
+            this.MediaDescLabel.Text = "Beskrivning av media";
+            // 
+            // PickMediaFileButton
+            // 
+            this.PickMediaFileButton.Location = new System.Drawing.Point(648, 403);
+            this.PickMediaFileButton.Name = "PickMediaFileButton";
+            this.PickMediaFileButton.Size = new System.Drawing.Size(75, 23);
+            this.PickMediaFileButton.TabIndex = 17;
+            this.PickMediaFileButton.Text = "&Välj";
+            this.PickMediaFileButton.UseVisualStyleBackColor = true;
+            this.PickMediaFileButton.Click += new System.EventHandler(this.PickMediaFileButton_Click);
+            // 
+            // MediaFileTB
+            // 
+            this.MediaFileTB.Location = new System.Drawing.Point(326, 404);
+            this.MediaFileTB.Name = "MediaFileTB";
+            this.MediaFileTB.Size = new System.Drawing.Size(316, 23);
+            this.MediaFileTB.TabIndex = 16;
+            // 
+            // MediaFileLabel
+            // 
+            this.MediaFileLabel.AutoSize = true;
+            this.MediaFileLabel.Location = new System.Drawing.Point(326, 386);
+            this.MediaFileLabel.Name = "MediaFileLabel";
+            this.MediaFileLabel.Size = new System.Drawing.Size(50, 15);
+            this.MediaFileLabel.TabIndex = 15;
+            this.MediaFileLabel.Text = "&Mediafil";
             // 
             // MoveInfoDownButton
             // 
@@ -384,7 +439,7 @@
             // 
             // POIInfoStartsTB
             // 
-            this.POIInfoStartsTB.Location = new System.Drawing.Point(329, 360);
+            this.POIInfoStartsTB.Location = new System.Drawing.Point(326, 360);
             this.POIInfoStartsTB.Name = "POIInfoStartsTB";
             this.POIInfoStartsTB.Size = new System.Drawing.Size(170, 23);
             this.POIInfoStartsTB.TabIndex = 8;
@@ -401,7 +456,7 @@
             // POIInfoCatCombo
             // 
             this.POIInfoCatCombo.FormattingEnabled = true;
-            this.POIInfoCatCombo.Location = new System.Drawing.Point(327, 316);
+            this.POIInfoCatCombo.Location = new System.Drawing.Point(326, 316);
             this.POIInfoCatCombo.Name = "POIInfoCatCombo";
             this.POIInfoCatCombo.Size = new System.Drawing.Size(212, 23);
             this.POIInfoCatCombo.TabIndex = 6;
@@ -465,7 +520,7 @@
             this.ExitsTabPabe.Location = new System.Drawing.Point(4, 24);
             this.ExitsTabPabe.Name = "ExitsTabPabe";
             this.ExitsTabPabe.Padding = new System.Windows.Forms.Padding(3);
-            this.ExitsTabPabe.Size = new System.Drawing.Size(826, 441);
+            this.ExitsTabPabe.Size = new System.Drawing.Size(826, 483);
             this.ExitsTabPabe.TabIndex = 1;
             this.ExitsTabPabe.Text = "Utgångar";
             this.ExitsTabPabe.UseVisualStyleBackColor = true;
@@ -489,11 +544,36 @@
             this.VenueDescriptionTB.Size = new System.Drawing.Size(278, 222);
             this.VenueDescriptionTB.TabIndex = 14;
             // 
+            // VisibilityLabel
+            // 
+            this.VisibilityLabel.AutoSize = true;
+            this.VisibilityLabel.Location = new System.Drawing.Point(14, 511);
+            this.VisibilityLabel.Name = "VisibilityLabel";
+            this.VisibilityLabel.Size = new System.Drawing.Size(157, 15);
+            this.VisibilityLabel.TabIndex = 16;
+            this.VisibilityLabel.Text = "Synlighet i listan över platser";
+            // 
+            // VisibilityCombo
+            // 
+            this.VisibilityCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.VisibilityCombo.FormattingEnabled = true;
+            this.VisibilityCombo.Location = new System.Drawing.Point(14, 527);
+            this.VisibilityCombo.Name = "VisibilityCombo";
+            this.VisibilityCombo.Size = new System.Drawing.Size(177, 23);
+            this.VisibilityCombo.TabIndex = 17;
+            // 
+            // OpenMediaFileDialog
+            // 
+            this.OpenMediaFileDialog.Filter = "Bilder (*.jpg, *.png)|*.jpg;*.png|Alla filer (*.*)|*.*";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1094, 740);
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.ClientSize = new System.Drawing.Size(1129, 561);
+            this.Controls.Add(this.VisibilityCombo);
+            this.Controls.Add(this.VisibilityLabel);
             this.Controls.Add(this.VenueDescriptionTB);
             this.Controls.Add(this.VenueDescriptionLabel);
             this.Controls.Add(this.Tabs);
@@ -579,5 +659,13 @@
         private System.Windows.Forms.ToolStripMenuItem saveVenueMenuItemToolStripMenuItem;
         private System.Windows.Forms.Label VenueDescriptionLabel;
         private System.Windows.Forms.TextBox VenueDescriptionTB;
+        private System.Windows.Forms.Label MediaFileLabel;
+        private System.Windows.Forms.TextBox MediaFileTB;
+        private System.Windows.Forms.Button PickMediaFileButton;
+        private System.Windows.Forms.Label MediaDescLabel;
+        private System.Windows.Forms.TextBox MediaDescrTB;
+        private System.Windows.Forms.Label VisibilityLabel;
+        private System.Windows.Forms.ComboBox VisibilityCombo;
+        private System.Windows.Forms.OpenFileDialog OpenMediaFileDialog;
     }
 }

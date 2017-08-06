@@ -31,6 +31,8 @@ namespace WayfindR.Models
 
         public WFPointOfInterest[] PointsOfInterest { get; set; }
 
+        public VenueVisibillity Visibility { get; set; }
+
         public WFGraph NodesGraph { get; set; }
 
 
@@ -51,7 +53,27 @@ namespace WayfindR.Models
                 result.Phone = (string)jo["venue"]["phone"];
                 result.Email = (string)jo["venue"]["email"];result.Address = (string)jo["venue"]["address"];
                 result.Web = (string)jo["venue"]["web"];
-                
+
+                var vis_val = (string)jo["venue"]["visibility"];
+                if (string.IsNullOrEmpty(vis_val))
+                {
+                    result.Visibility = VenueVisibillity.Always;
+
+                }
+                else
+                {
+                    try
+                    {
+                        result.Visibility = (VenueVisibillity)int.Parse(vis_val);
+
+                    }
+                    catch
+                    {
+                        result.Visibility = VenueVisibillity.Always;
+                    }
+
+                }
+
 
                 try
                 {
@@ -131,6 +153,9 @@ namespace WayfindR.Models
                                 wfinfo.Category = wfinfo.CategoryFromString(
                                     (string)jinfo["category"]
                                     );
+                                wfinfo.MediaFile = (string)jinfo["mediafile"];
+                                wfinfo.MediaDescription = (string)jinfo["mediadescription"];
+
                                 wfinfo.StartsAt = (DateTime?)jinfo["starts_at"];
                                 wfinfo.EndsAt = (DateTime?)jinfo["ends_at"];
 
@@ -223,7 +248,8 @@ namespace WayfindR.Models
                     writer.WritePropertyName("web");
                     writer.WriteValue(Web);
 
-
+                    writer.WritePropertyName("visibility");
+                    writer.WriteValue(Visibility);
 
 
 
@@ -331,7 +357,11 @@ namespace WayfindR.Models
                                     writer.WriteValue(wfpoinfo.Information);
                                     writer.WritePropertyName("category");
                                     writer.WriteValue(wfpoinfo.Category.ToString().ToLower());
-
+                                    writer.WritePropertyName("mediafile");
+                                    writer.WriteValue(wfpoinfo.MediaFile);
+                                    writer.WritePropertyName("mediadescription");
+                                    writer.WriteValue(wfpoinfo.MediaDescription);
+                                    
                                     writer.WritePropertyName("starts_at");
                                     writer.WriteValue(wfpoinfo.StartsAt);
                                     writer.WritePropertyName("ends_at");
@@ -495,6 +525,14 @@ namespace WayfindR.Models
 
         }
 
+        
+    } // class
 
-    }
+    public enum VenueVisibillity
+    {
+        Never = 0,
+        Always = 1,
+        WhenNodeInRange = 2
+    } // enum
+
 }

@@ -74,6 +74,12 @@ namespace VenueMaker.Dialogs
                 CountryTB.DataBindings.Add("Text", VenueBS, "Country");
                 VenueDescriptionTB.DataBindings.Add("Text", VenueBS, "Description");
 
+                VisibilityCombo.DataSource = VenueVisibilityItem.GetPossibleVisibilities();
+                VisibilityCombo.DisplayMember = "Title";
+                VisibilityCombo.ValueMember = "Visibility";
+
+                VisibilityCombo.DataBindings.Add("SelectedValue", VenueBS, "Visibility");
+                
 
                 POIsBS.DataSource = new WFPointOfInterest[] { };
                 POIsBS.CurrentChanged += (s2, e2) =>
@@ -107,9 +113,9 @@ namespace VenueMaker.Dialogs
                 POIInformationTB.DataBindings.Add("Text", POIInfosBS, "Information");
                 POIInfoStartsTB.DataBindings.Add("Text", POIInfosBS, "StartsAt", true);
                 POIInfoEndsTB.DataBindings.Add("Text", POIInfosBS, "EndsAt", true);
-
-
-
+                MediaFileTB.DataBindings.Add("Text", POIInfosBS, "MediaFile");
+                MediaDescrTB.DataBindings.Add("Text", POIInfosBS, "MediaDescription");
+                
 
             }
             catch (Exception ex)
@@ -430,6 +436,60 @@ namespace VenueMaker.Dialogs
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+
+            }
+            finally
+            {
+                Cursor.Current = Cursors.Default;
+
+            }
+
+        }
+
+        private void PickMediaFileButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                WFPOIInformation poii = POIInfosBS.Current as WFPOIInformation;
+                if (poii == null)
+                {
+                    MessageBox.Show("Det måste finnas en Point Of Interest Information som mediafilen ska knytas till.", "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+
+                } // No poii selected
+
+                if (OpenMediaFileDialog.ShowDialog() != DialogResult.OK)
+                {
+                    return;
+
+                } // No file selected
+
+                Cursor.Current = Cursors.WaitCursor;
+                Application.DoEvents();
+
+                
+                string mediafile = Path.GetDirectoryName(SaveVenueDialog.FileName);
+                mediafile = Path.Combine(mediafile, Venue.Id);
+                Directory.CreateDirectory(mediafile);
+
+                mediafile = Path.Combine(mediafile, Path.GetFileName(OpenMediaFileDialog.FileName));
+
+                File.Copy(
+                    OpenMediaFileDialog.FileName,
+                    mediafile
+                    );
+
+                
+                poii.MediaFile = Path.GetFileName(mediafile);
+
+                SystemSounds.Asterisk.Play();
+                
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
             finally
