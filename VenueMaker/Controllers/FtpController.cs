@@ -151,7 +151,7 @@ namespace VenueMaker.Controllers
                     ftp.UploadFile(
                     ulfile,
                     remotefolder,
-                    true
+                    false
                     );
 
                 } // foreach
