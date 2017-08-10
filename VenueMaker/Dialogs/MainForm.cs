@@ -158,19 +158,40 @@ namespace VenueMaker.Dialogs
 
         private void openVenueFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
+
+            if (OpenVenueDialog.ShowDialog() != DialogResult.OK)
+            {
+                return;
+
+            }
+
             try
             {
-                if (OpenVenueDialog.ShowDialog() != DialogResult.OK)
-                {
-                    return;
+                Cursor.Current = Cursors.WaitCursor;
+                Application.DoEvents();
 
-                }
+                DoOpenVenue(OpenVenueDialog.FileName);
 
-                SaveVenueDialog.FileName = OpenVenueDialog.FileName;
+                SystemSounds.Asterisk.Play();
 
-                Venue = WFVenue.LoadFromFile(OpenVenueDialog.FileName);
+            }
+            finally
+            {
+                Cursor.Current = Cursors.Default;
+
+            }
+
+        }
+
+        private void DoOpenVenue(string fileName)
+        {
+            try
+            {
+                SaveVenueDialog.FileName = fileName;
+
+                Venue = WFVenue.LoadFromFile(fileName);
                 string graphfile = Path.ChangeExtension(
-                    OpenVenueDialog.FileName,
+                    fileName,
                     OpenGraphMLDialog.DefaultExt
                     );                
                 if (File.Exists(graphfile))
@@ -182,9 +203,7 @@ namespace VenueMaker.Dialogs
                 }
                                 
                 VenueBS.DataSource = Venue;
-
-                SystemSounds.Asterisk.Play();
-
+                
             }
             catch (Exception ex)
             {
@@ -229,6 +248,19 @@ namespace VenueMaker.Dialogs
                 InitUI();
 
                 CreateNewVenue();
+
+                string[] cmdline = Environment.GetCommandLineArgs();
+                if (cmdline.Length >= 2)
+                {
+                    string vnu = cmdline[1];
+                    if (File.Exists(vnu))
+                    {
+                        DoOpenVenue(vnu);
+
+                    } // Open it
+
+                } // Perhaps?
+
 
 
             }
