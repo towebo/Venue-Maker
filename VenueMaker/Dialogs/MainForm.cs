@@ -187,6 +187,7 @@ namespace VenueMaker.Dialogs
         {
             try
             {
+                OpenVenueDialog.FileName = fileName;
                 SaveVenueDialog.FileName = fileName;
 
                 Venue = WFVenue.LoadFromFile(fileName);
