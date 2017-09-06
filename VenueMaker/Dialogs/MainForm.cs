@@ -14,6 +14,7 @@ using VenueMaker.Utils;
 using WayfindR.Controllers;
 using WayfindR.Models;
 using VenueMaker.Helpers;
+using VenueMaker.Models;
 
 namespace VenueMaker.Dialogs
 {
@@ -77,9 +78,9 @@ namespace VenueMaker.Dialogs
                 VisibilityCombo.DataSource = VenueVisibilityItem.GetPossibleVisibilities();
                 VisibilityCombo.DisplayMember = "Title";
                 VisibilityCombo.ValueMember = "Visibility";
-
                 VisibilityCombo.DataBindings.Add("SelectedValue", VenueBS, "Visibility");
-                
+                               
+
 
                 POIsBS.DataSource = new WFPointOfInterest[] { };
                 POIsBS.CurrentChanged += (s2, e2) =>
@@ -89,13 +90,14 @@ namespace VenueMaker.Dialogs
                     p.Information != null)
                     {
                         POIInfosBS.DataSource = p.Information;
-
+                                                
                     }
                     else
                     {
                         POIInfosBS.DataSource = new WFPOIInformation[] { };
-
+                        
                     }
+                    POIInfosBS.ResetBindings(false);
 
                 };
 
@@ -115,7 +117,12 @@ namespace VenueMaker.Dialogs
                 POIInfoEndsTB.DataBindings.Add("Text", POIInfosBS, "EndsAt", true);
                 MediaFileTB.DataBindings.Add("Text", POIInfosBS, "MediaFile");
                 MediaDescrTB.DataBindings.Add("Text", POIInfosBS, "MediaDescription");
-                
+                AutoPlayMediaCB.DataBindings.Add("Checked", POIInfosBS, "AutoPlayMedia");
+
+                POIInfoCatCombo.DataSource = InfoCategoryItem.GetAll();
+                POIInfoCatCombo.DisplayMember = "Name";
+                POIInfoCatCombo.ValueMember = "Category";
+                POIInfoCatCombo.DataBindings.Add("SelectedValue", POIInfosBS, "Category");
 
             }
             catch (Exception ex)

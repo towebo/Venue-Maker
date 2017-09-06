@@ -6,52 +6,59 @@ using System.Threading.Tasks;
 
 namespace WayfindR.Models
 {
+    public enum WFInfoCategory
+    {
+        Description,
+        Interior,
+        OpeningHours,
+        Offer
+    } // enum
+
     public class WFPOIInformation
     {
-        public enum InfoCategory
-        {
-            Description,
-            Interior,
-            OpeningHours,
-            Offer
-        }
-
-
         public string Information { get; set; }
-        public InfoCategory Category { get; set; }
+        public WFInfoCategory Category { get; set; }
         public string MediaFile { get; set; }
         public string MediaDescription { get; set; }
+        public bool AutoPlayMedia { get; set; }
         public DateTime? StartsAt { get; set; }
         public DateTime? EndsAt { get; set; }
 
 
-        public InfoCategory CategoryFromString(string catName)
+
+        public WFInfoCategory[] GetAllCategories()
+        {
+            List<WFInfoCategory> result = new List<WFInfoCategory>();
+
+            result.Add(WFInfoCategory.Description);
+            result.Add(WFInfoCategory.Interior);
+            result.Add(WFInfoCategory.Offer);
+            result.Add(WFInfoCategory.OpeningHours);
+
+            return result.ToArray();
+
+        }
+
+        public WFInfoCategory CategoryFromString(string catName)
         {
             try
             {
-                if ("description" == catName.ToLower())
+                foreach (WFInfoCategory lion in GetAllCategories())
                 {
-                    return InfoCategory.Description;
-                }
-                else if ("interior" == catName.ToLower())
-                {
-                    return InfoCategory.Interior;
-                }
-                else if ("openinghours" == catName.ToLower())
-                {
-                    return InfoCategory.OpeningHours;
-                }
-                else if ("offer" == catName.ToLower())
-                {
-                    return InfoCategory.Offer;
-                }
+                    if (catName.ToLower() == lion.ToString().ToLower())
+                    {
+                        return lion;
 
-                return InfoCategory.Description;
+                    } // Match!
 
+                } // foreach
+
+                return WFInfoCategory.Description;
+                
             }
             catch
             {
-                return InfoCategory.Description;
+                return WFInfoCategory.Description;
 
             }
 

@@ -86,6 +86,7 @@
             this.VisibilityLabel = new System.Windows.Forms.Label();
             this.VisibilityCombo = new System.Windows.Forms.ComboBox();
             this.OpenMediaFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.AutoPlayMediaCB = new System.Windows.Forms.CheckBox();
             this.MainMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VenueBS)).BeginInit();
             this.Tabs.SuspendLayout();
@@ -306,11 +307,12 @@
             this.Tabs.Location = new System.Drawing.Point(288, 43);
             this.Tabs.Name = "Tabs";
             this.Tabs.SelectedIndex = 0;
-            this.Tabs.Size = new System.Drawing.Size(834, 511);
+            this.Tabs.Size = new System.Drawing.Size(834, 547);
             this.Tabs.TabIndex = 17;
             // 
             // PoiTabPage
             // 
+            this.PoiTabPage.Controls.Add(this.AutoPlayMediaCB);
             this.PoiTabPage.Controls.Add(this.MediaDescrTB);
             this.PoiTabPage.Controls.Add(this.MediaDescLabel);
             this.PoiTabPage.Controls.Add(this.PickMediaFileButton);
@@ -334,7 +336,7 @@
             this.PoiTabPage.Location = new System.Drawing.Point(4, 24);
             this.PoiTabPage.Name = "PoiTabPage";
             this.PoiTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.PoiTabPage.Size = new System.Drawing.Size(826, 483);
+            this.PoiTabPage.Size = new System.Drawing.Size(826, 519);
             this.PoiTabPage.TabIndex = 0;
             this.PoiTabPage.Text = "POI";
             this.PoiTabPage.UseVisualStyleBackColor = true;
@@ -455,6 +457,7 @@
             // 
             // POIInfoCatCombo
             // 
+            this.POIInfoCatCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.POIInfoCatCombo.FormattingEnabled = true;
             this.POIInfoCatCombo.Location = new System.Drawing.Point(326, 316);
             this.POIInfoCatCombo.Name = "POIInfoCatCombo";
@@ -566,12 +569,22 @@
             // 
             this.OpenMediaFileDialog.Filter = "Bilder (*.jpg, *.png)|*.jpg;*.png|Alla filer (*.*)|*.*";
             // 
+            // AutoPlayMediaCB
+            // 
+            this.AutoPlayMediaCB.AutoSize = true;
+            this.AutoPlayMediaCB.Location = new System.Drawing.Point(326, 477);
+            this.AutoPlayMediaCB.Name = "AutoPlayMediaCB";
+            this.AutoPlayMediaCB.Size = new System.Drawing.Size(184, 19);
+            this.AutoPlayMediaCB.TabIndex = 20;
+            this.AutoPlayMediaCB.Text = "Spela upp medua automatiskt";
+            this.AutoPlayMediaCB.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1129, 561);
+            this.ClientSize = new System.Drawing.Size(1129, 602);
             this.Controls.Add(this.VisibilityCombo);
             this.Controls.Add(this.VisibilityLabel);
             this.Controls.Add(this.VenueDescriptionTB);
@@ -667,5 +680,6 @@
         private System.Windows.Forms.Label VisibilityLabel;
         private System.Windows.Forms.ComboBox VisibilityCombo;
         private System.Windows.Forms.OpenFileDialog OpenMediaFileDialog;
+        private System.Windows.Forms.CheckBox AutoPlayMediaCB;
     }
 }

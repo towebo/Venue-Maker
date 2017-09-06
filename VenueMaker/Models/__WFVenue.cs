@@ -10,6 +10,7 @@ namespace WayfindR.Models
 {
     public class WFVenue
     {
+
         public string Id { get; set; }
         public string Name { get; set; }
 
@@ -72,8 +73,7 @@ namespace WayfindR.Models
                     }
 
                 }
-                
-                
+
 
                 try
                 {
@@ -139,7 +139,6 @@ namespace WayfindR.Models
                         wfpoi.BeaconMinor = (int)jpoi["beacon_minor"];
 
                         string cat = (string)jpoi["category"];
-						wfpoi.Category = WFPointOfInterest.CategoryFromString(cat);
 
 
                         try
@@ -153,12 +152,9 @@ namespace WayfindR.Models
                                 wfinfo.Information = (string)jinfo["information"];
                                 wfinfo.Category = wfinfo.CategoryFromString(
                                     (string)jinfo["category"]
-                                    );                                
+                                    );
                                 wfinfo.MediaFile = (string)jinfo["mediafile"];
                                 wfinfo.MediaDescription = (string)jinfo["mediadescription"];
-                                wfinfo.AutoPlayMedia = Convert.ToBoolean(
-                                    (string)jinfo["autoplaymedia"]
-                                    );
 
                                 wfinfo.StartsAt = (DateTime?)jinfo["starts_at"];
                                 wfinfo.EndsAt = (DateTime?)jinfo["ends_at"];
@@ -254,8 +250,6 @@ namespace WayfindR.Models
 
                     writer.WritePropertyName("visibility");
                     writer.WriteValue(Visibility);
-
-
 
 
 
@@ -367,10 +361,7 @@ namespace WayfindR.Models
                                     writer.WriteValue(wfpoinfo.MediaFile);
                                     writer.WritePropertyName("mediadescription");
                                     writer.WriteValue(wfpoinfo.MediaDescription);
-                                    writer.WritePropertyName("autoplaymedia");
-                                    writer.WriteValue(wfpoinfo.AutoPlayMedia);
-
-
+                                    
                                     writer.WritePropertyName("starts_at");
                                     writer.WriteValue(wfpoinfo.StartsAt);
                                     writer.WritePropertyName("ends_at");
@@ -461,7 +452,6 @@ namespace WayfindR.Models
 
         }
 
-
         public void AddPOIsFromGraph(bool removeNonExisting)
         {
             try
@@ -469,6 +459,7 @@ namespace WayfindR.Models
                 if (NodesGraph == null)
                 {
                     return;
+
                 } // No graph
 
                 // Mark all pois as not touched.
@@ -482,6 +473,7 @@ namespace WayfindR.Models
 
                 } // Has pois
 
+                        
 
                 List<WFPointOfInterest> newpois = new List<WFPointOfInterest>();
                 foreach (WFNode node in NodesGraph.Vertices)
@@ -523,9 +515,7 @@ namespace WayfindR.Models
                     PointsOfInterest = newpois.ToArray();
 
                 }
-
-
-                                
+                
             }
             catch
             {
@@ -535,7 +525,7 @@ namespace WayfindR.Models
 
         }
 
-
+        
     } // class
 
     public enum VenueVisibillity
@@ -544,4 +534,5 @@ namespace WayfindR.Models
         Always = 1,
         WhenNodeInRange = 2
     } // enum
+
 }

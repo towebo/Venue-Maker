@@ -120,6 +120,7 @@
     <Compile Include="Models\BLEBeaconwCache.cs" />
     <Compile Include="Models\CacheFile.cs" />
     <Compile Include="Models\DirectionsList.cs" />
+    <Compile Include="Models\InfoCategoryItem.cs" />
     <Compile Include="Models\VenueVisibilityItem.cs" />
     <Compile Include="Models\WFHeadingInfo.cs" />
     <Compile Include="Models\CacheNodeBeacon.cs" />

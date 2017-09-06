@@ -28,7 +28,7 @@ namespace WayfindR.Models
         public WFPOIInformation[] Information { get; set; }
 
 
-        public POICategory CategoryFromString(string catName)
+        public static POICategory CategoryFromString(string catName)
         {
             if ("general" == catName.ToLower())
             {
