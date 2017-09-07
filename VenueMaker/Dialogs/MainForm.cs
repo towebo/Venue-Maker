@@ -536,8 +536,18 @@ namespace VenueMaker.Dialogs
                 Application.DoEvents();
 
                 
-                string mediafile = Path.GetDirectoryName(SaveVenueDialog.FileName);                
-                mediafile = Path.Combine(mediafile, Path.GetFileName(OpenMediaFileDialog.FileName));
+                string mediafile = Path.GetDirectoryName(SaveVenueDialog.FileName);
+
+                string newfn = Path.GetFileName(OpenMediaFileDialog.FileName);
+                if (!newfn.StartsWith(this.Venue.Id))
+                {
+                    newfn = string.Format("{0}_{1}",
+                        Venue.Id,
+                        newfn
+                        );
+                }
+
+                mediafile = Path.Combine(mediafile, newfn);
 
                 if (File.Exists(mediafile) &&
                     mediafile != OpenMediaFileDialog.FileName)
@@ -559,20 +569,18 @@ namespace VenueMaker.Dialogs
 
                 } // Replace old file
 
-                    File.Copy(
+                File.Copy(
                     OpenMediaFileDialog.FileName,
                     mediafile
                     );
 
-                
-                poii.MediaFile = Path.GetFileName(mediafile);
+
+                poii.MediaFile = newfn;
                 MediaFileTB.Text = poii.MediaFile;
 
 
                 SystemSounds.Asterisk.Play();
                 
-
-
             }
             catch (Exception ex)
             {
