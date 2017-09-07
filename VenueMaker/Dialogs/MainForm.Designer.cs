@@ -58,6 +58,7 @@
             this.CountryTB = new System.Windows.Forms.TextBox();
             this.Tabs = new System.Windows.Forms.TabControl();
             this.PoiTabPage = new System.Windows.Forms.TabPage();
+            this.AutoPlayMediaCB = new System.Windows.Forms.CheckBox();
             this.MediaDescrTB = new System.Windows.Forms.TextBox();
             this.MediaDescLabel = new System.Windows.Forms.Label();
             this.PickMediaFileButton = new System.Windows.Forms.Button();
@@ -86,7 +87,6 @@
             this.VisibilityLabel = new System.Windows.Forms.Label();
             this.VisibilityCombo = new System.Windows.Forms.ComboBox();
             this.OpenMediaFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.AutoPlayMediaCB = new System.Windows.Forms.CheckBox();
             this.MainMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VenueBS)).BeginInit();
             this.Tabs.SuspendLayout();
@@ -134,6 +134,7 @@
             this.openVenueFileToolStripMenuItem.Name = "openVenueFileToolStripMenuItem";
             this.openVenueFileToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
             this.openVenueFileToolStripMenuItem.Text = "&Öppna";
+            this.openVenueFileToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
             this.openVenueFileToolStripMenuItem.Click += new System.EventHandler(this.openVenueFileToolStripMenuItem_Click);
             // 
             // saveVenueMenuItemToolStripMenuItem
@@ -148,7 +149,7 @@
             // 
             this.saveVenueFileToolStripMenuItem.Name = "saveVenueFileToolStripMenuItem";
             this.saveVenueFileToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
-            this.saveVenueFileToolStripMenuItem.Text = "&Spara som";
+            this.saveVenueFileToolStripMenuItem.Text = "Spara so&m";
             this.saveVenueFileToolStripMenuItem.Click += new System.EventHandler(this.SaveMenuItems_Click);
             // 
             // toolStripSeparator1
@@ -159,6 +160,7 @@
             // pushToCloudMenuItemToolStripMenuItem
             // 
             this.pushToCloudMenuItemToolStripMenuItem.Name = "pushToCloudMenuItemToolStripMenuItem";
+            this.pushToCloudMenuItemToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.U)));
             this.pushToCloudMenuItemToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
             this.pushToCloudMenuItemToolStripMenuItem.Text = "Ladda upp till molnet";
             this.pushToCloudMenuItemToolStripMenuItem.Click += new System.EventHandler(this.pushToCloudMenuItemToolStripMenuItem_Click);
@@ -340,6 +342,16 @@
             this.PoiTabPage.TabIndex = 0;
             this.PoiTabPage.Text = "POI";
             this.PoiTabPage.UseVisualStyleBackColor = true;
+            // 
+            // AutoPlayMediaCB
+            // 
+            this.AutoPlayMediaCB.AutoSize = true;
+            this.AutoPlayMediaCB.Location = new System.Drawing.Point(326, 477);
+            this.AutoPlayMediaCB.Name = "AutoPlayMediaCB";
+            this.AutoPlayMediaCB.Size = new System.Drawing.Size(184, 19);
+            this.AutoPlayMediaCB.TabIndex = 20;
+            this.AutoPlayMediaCB.Text = "Spela upp medua automatiskt";
+            this.AutoPlayMediaCB.UseVisualStyleBackColor = true;
             // 
             // MediaDescrTB
             // 
@@ -523,7 +535,7 @@
             this.ExitsTabPabe.Location = new System.Drawing.Point(4, 24);
             this.ExitsTabPabe.Name = "ExitsTabPabe";
             this.ExitsTabPabe.Padding = new System.Windows.Forms.Padding(3);
-            this.ExitsTabPabe.Size = new System.Drawing.Size(826, 483);
+            this.ExitsTabPabe.Size = new System.Drawing.Size(826, 519);
             this.ExitsTabPabe.TabIndex = 1;
             this.ExitsTabPabe.Text = "Utgångar";
             this.ExitsTabPabe.UseVisualStyleBackColor = true;
@@ -567,17 +579,9 @@
             // 
             // OpenMediaFileDialog
             // 
-            this.OpenMediaFileDialog.Filter = "Bilder (*.jpg, *.png)|*.jpg;*.png|Alla filer (*.*)|*.*";
-            // 
-            // AutoPlayMediaCB
-            // 
-            this.AutoPlayMediaCB.AutoSize = true;
-            this.AutoPlayMediaCB.Location = new System.Drawing.Point(326, 477);
-            this.AutoPlayMediaCB.Name = "AutoPlayMediaCB";
-            this.AutoPlayMediaCB.Size = new System.Drawing.Size(184, 19);
-            this.AutoPlayMediaCB.TabIndex = 20;
-            this.AutoPlayMediaCB.Text = "Spela upp medua automatiskt";
-            this.AutoPlayMediaCB.UseVisualStyleBackColor = true;
+            this.OpenMediaFileDialog.Filter = "|*.jpg;*.jpeg;*.png;*.pgif;*.wav;*.m4a;**.mp3|relifaideMBilder (*.jpg, *.jpeg, *." +
+    "png)|*.jpg;*.jpeg;*.png|Ljudfiler (*.wav, *.mp3, *.m4a)|*.wav;*.m4a;*.mp3|Alla f" +
+    "iler (*.*)|*.*";
             // 
             // MainForm
             // 
