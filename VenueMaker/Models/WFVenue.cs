@@ -505,6 +505,7 @@ namespace WayfindR.Models
 
                     poi.Name = node.Name;
                     poi.DescriptiveName = node.DescriptiveName;
+                    poi.Floor = node.Floor;
                     
                 } // foreach graph.node
 

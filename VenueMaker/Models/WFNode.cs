@@ -94,6 +94,17 @@ namespace WayfindR.Models
         [XmlAttribute("close_by_message")]
         public string CloseByMessage { get; set; }
 
+        [XmlAttribute("floor")]
+        public string Floor { get; set; }
+
+        [XmlAttribute("id_tag")]
+        public string IdTag { get; set; }
+
+
+		[XmlAttribute("active")]
+		public string Active { get; set; }
+
+
 
         public WFHeadingInfo[] HeadingInfos
         {

@@ -48,7 +48,7 @@ namespace VenueMaker.Dialogs
                     {
                         if (v.PointsOfInterest != null)
                         {
-                            POIsBS.DataSource = v.PointsOfInterest.OrderBy(w => w.Name);
+                            POIsBS.DataSource = v.PointsOfInterest.OrderBy(w => w.TextInList);
 
                         }
                         else
@@ -102,7 +102,7 @@ namespace VenueMaker.Dialogs
                 };
 
                 POIsLB.DataSource = POIsBS;
-                POIsLB.DisplayMember = "Name";
+                POIsLB.DisplayMember = "TextInList";
                 POIsLB.ValueMember = "Name";
 
 

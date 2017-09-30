@@ -22,6 +22,28 @@ namespace WayfindR.Models
         public string BeaconUuid { get; set; }
         public int BeaconMajor { get; set; }
         public int BeaconMinor { get; set; }
+        public string Floor { get; set; }
+
+        public string TextInList
+        {
+            get
+            {
+                if (!string.IsNullOrWhiteSpace(Floor))
+                {
+                    return string.Format("{0} - {1}",
+                        Floor,
+                        Name
+                        );
+
+                }
+
+                return string.Format("{0} ({1})",
+                    Name,
+                    BeaconMinor
+                    );
+            }
+        }
+
         
         public POICategory Category { get; set; }
 
