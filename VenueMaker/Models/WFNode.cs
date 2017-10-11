@@ -10,6 +10,7 @@ namespace WayfindR.Models
     {
         private List<WFHeadingInfo> hinfos;
 
+        
         [XmlAttribute("id")]
         public string Id { get; set; }
 
@@ -105,6 +106,26 @@ namespace WayfindR.Models
 		public string Active { get; set; }
 
 
+        public string TextInList
+        {
+            get
+            {
+                if (!string.IsNullOrWhiteSpace(this.Floor))
+                {
+                    return string.Format("{0} - {1}",
+                        this.Floor,
+                        this.Name
+                        );
+                }
+                else
+                {
+                    return this.Name;
+
+                }
+            }
+
+
+        }
 
         public WFHeadingInfo[] HeadingInfos
         {

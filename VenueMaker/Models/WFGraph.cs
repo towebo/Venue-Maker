@@ -1,4 +1,5 @@
 ﻿using QuickGraph;
+using QuickGraph.Serialization;
 using System;
 using System.IO;
 using System.Xml;
@@ -362,6 +363,18 @@ namespace WayfindR.Models
             }
 
         }
+
+
+        public void Save(string fileName)
+        {
+            using (var xwriter = XmlWriter.Create(fileName))
+            {
+                this.SerializeToGraphML<WFNode, WFEdge<WFNode>, WFGraph>(xwriter);
+
+            } // using
+
+        }
+
 
         public WFNode[] GetNodesAlphabetical()
         {

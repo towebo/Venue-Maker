@@ -115,7 +115,9 @@
       <DependentUpon>RouteTestForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Helpers\AssemblyInfo.cs" />
+    <Compile Include="Helpers\FloorComparer.cs" />
     <Compile Include="Helpers\HeadingHelper.cs" />
+    <Compile Include="Helpers\NumericStringHelper.cs" />
     <Compile Include="Models\BLEBeacon.cs" />
     <Compile Include="Models\BLEBeaconwCache.cs" />
     <Compile Include="Models\CacheFile.cs" />

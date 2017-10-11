@@ -79,7 +79,6 @@
             this.POIInfosLB = new System.Windows.Forms.ListBox();
             this.POIsListLabel = new System.Windows.Forms.Label();
             this.POIsLB = new System.Windows.Forms.ListBox();
-            this.ExitsTabPabe = new System.Windows.Forms.TabPage();
             this.POIsBS = new System.Windows.Forms.BindingSource(this.components);
             this.POIInfosBS = new System.Windows.Forms.BindingSource(this.components);
             this.VenueDescriptionLabel = new System.Windows.Forms.Label();
@@ -87,12 +86,19 @@
             this.VisibilityLabel = new System.Windows.Forms.Label();
             this.VisibilityCombo = new System.Windows.Forms.ComboBox();
             this.OpenMediaFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.ElevatorsTab = new System.Windows.Forms.TabPage();
+            this.ElevatorListLabel = new System.Windows.Forms.Label();
+            this.ElevatorsLB = new System.Windows.Forms.ListBox();
+            this.ElevatorsBS = new System.Windows.Forms.BindingSource(this.components);
+            this.CreateElevatorEdgesButton = new System.Windows.Forms.Button();
             this.MainMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VenueBS)).BeginInit();
             this.Tabs.SuspendLayout();
             this.PoiTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.POIsBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.POIInfosBS)).BeginInit();
+            this.ElevatorsTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ElevatorsBS)).BeginInit();
             this.SuspendLayout();
             // 
             // MainMenuStrip
@@ -125,55 +131,55 @@
             // newVenueToolStripMenuItem
             // 
             this.newVenueToolStripMenuItem.Name = "newVenueToolStripMenuItem";
-            this.newVenueToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.newVenueToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
             this.newVenueToolStripMenuItem.Text = "&Ny";
             this.newVenueToolStripMenuItem.Click += new System.EventHandler(this.newVenueToolStripMenuItem_Click);
             // 
             // openVenueFileToolStripMenuItem
             // 
             this.openVenueFileToolStripMenuItem.Name = "openVenueFileToolStripMenuItem";
-            this.openVenueFileToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
-            this.openVenueFileToolStripMenuItem.Text = "&Öppna";
             this.openVenueFileToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
+            this.openVenueFileToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
+            this.openVenueFileToolStripMenuItem.Text = "&Öppna";
             this.openVenueFileToolStripMenuItem.Click += new System.EventHandler(this.openVenueFileToolStripMenuItem_Click);
             // 
             // saveVenueMenuItemToolStripMenuItem
             // 
             this.saveVenueMenuItemToolStripMenuItem.Name = "saveVenueMenuItemToolStripMenuItem";
             this.saveVenueMenuItemToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.saveVenueMenuItemToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.saveVenueMenuItemToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
             this.saveVenueMenuItemToolStripMenuItem.Text = "&Spara";
             this.saveVenueMenuItemToolStripMenuItem.Click += new System.EventHandler(this.SaveMenuItems_Click);
             // 
             // saveVenueFileToolStripMenuItem
             // 
             this.saveVenueFileToolStripMenuItem.Name = "saveVenueFileToolStripMenuItem";
-            this.saveVenueFileToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.saveVenueFileToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
             this.saveVenueFileToolStripMenuItem.Text = "Spara so&m";
             this.saveVenueFileToolStripMenuItem.Click += new System.EventHandler(this.SaveMenuItems_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(184, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(226, 6);
             // 
             // pushToCloudMenuItemToolStripMenuItem
             // 
             this.pushToCloudMenuItemToolStripMenuItem.Name = "pushToCloudMenuItemToolStripMenuItem";
             this.pushToCloudMenuItemToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.U)));
-            this.pushToCloudMenuItemToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.pushToCloudMenuItemToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
             this.pushToCloudMenuItemToolStripMenuItem.Text = "Ladda upp till molnet";
             this.pushToCloudMenuItemToolStripMenuItem.Click += new System.EventHandler(this.pushToCloudMenuItemToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(184, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(226, 6);
             // 
             // closeAppToolStripMenuItem
             // 
             this.closeAppToolStripMenuItem.Name = "closeAppToolStripMenuItem";
-            this.closeAppToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.closeAppToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
             this.closeAppToolStripMenuItem.Text = "&Avsluta";
             this.closeAppToolStripMenuItem.Click += new System.EventHandler(this.closeAppToolStripMenuItem_Click);
             // 
@@ -305,7 +311,7 @@
             // Tabs
             // 
             this.Tabs.Controls.Add(this.PoiTabPage);
-            this.Tabs.Controls.Add(this.ExitsTabPabe);
+            this.Tabs.Controls.Add(this.ElevatorsTab);
             this.Tabs.Location = new System.Drawing.Point(288, 43);
             this.Tabs.Name = "Tabs";
             this.Tabs.SelectedIndex = 0;
@@ -340,7 +346,7 @@
             this.PoiTabPage.Padding = new System.Windows.Forms.Padding(3);
             this.PoiTabPage.Size = new System.Drawing.Size(826, 519);
             this.PoiTabPage.TabIndex = 0;
-            this.PoiTabPage.Text = "POI";
+            this.PoiTabPage.Text = "Points Of Interest";
             this.PoiTabPage.UseVisualStyleBackColor = true;
             // 
             // AutoPlayMediaCB
@@ -530,16 +536,6 @@
             this.POIsLB.Size = new System.Drawing.Size(315, 319);
             this.POIsLB.TabIndex = 0;
             // 
-            // ExitsTabPabe
-            // 
-            this.ExitsTabPabe.Location = new System.Drawing.Point(4, 24);
-            this.ExitsTabPabe.Name = "ExitsTabPabe";
-            this.ExitsTabPabe.Padding = new System.Windows.Forms.Padding(3);
-            this.ExitsTabPabe.Size = new System.Drawing.Size(826, 519);
-            this.ExitsTabPabe.TabIndex = 1;
-            this.ExitsTabPabe.Text = "Utgångar";
-            this.ExitsTabPabe.UseVisualStyleBackColor = true;
-            // 
             // VenueDescriptionLabel
             // 
             this.VenueDescriptionLabel.AutoSize = true;
@@ -583,6 +579,47 @@
     "png)|*.jpg;*.jpeg;*.png|Ljudfiler (*.wav, *.mp3, *.m4a)|*.wav;*.m4a;*.mp3|Alla f" +
     "iler (*.*)|*.*";
             // 
+            // ElevatorsTab
+            // 
+            this.ElevatorsTab.Controls.Add(this.CreateElevatorEdgesButton);
+            this.ElevatorsTab.Controls.Add(this.ElevatorsLB);
+            this.ElevatorsTab.Controls.Add(this.ElevatorListLabel);
+            this.ElevatorsTab.Location = new System.Drawing.Point(4, 24);
+            this.ElevatorsTab.Name = "ElevatorsTab";
+            this.ElevatorsTab.Padding = new System.Windows.Forms.Padding(3);
+            this.ElevatorsTab.Size = new System.Drawing.Size(826, 519);
+            this.ElevatorsTab.TabIndex = 2;
+            this.ElevatorsTab.Text = "Hissar";
+            this.ElevatorsTab.UseVisualStyleBackColor = true;
+            // 
+            // ElevatorListLabel
+            // 
+            this.ElevatorListLabel.AutoSize = true;
+            this.ElevatorListLabel.Location = new System.Drawing.Point(12, 12);
+            this.ElevatorListLabel.Name = "ElevatorListLabel";
+            this.ElevatorListLabel.Size = new System.Drawing.Size(39, 15);
+            this.ElevatorListLabel.TabIndex = 0;
+            this.ElevatorListLabel.Text = "&Hissar";
+            // 
+            // ElevatorsLB
+            // 
+            this.ElevatorsLB.FormattingEnabled = true;
+            this.ElevatorsLB.ItemHeight = 15;
+            this.ElevatorsLB.Location = new System.Drawing.Point(15, 29);
+            this.ElevatorsLB.Name = "ElevatorsLB";
+            this.ElevatorsLB.Size = new System.Drawing.Size(151, 454);
+            this.ElevatorsLB.TabIndex = 1;
+            // 
+            // CreateElevatorEdgesButton
+            // 
+            this.CreateElevatorEdgesButton.Location = new System.Drawing.Point(172, 29);
+            this.CreateElevatorEdgesButton.Name = "CreateElevatorEdgesButton";
+            this.CreateElevatorEdgesButton.Size = new System.Drawing.Size(170, 23);
+            this.CreateElevatorEdgesButton.TabIndex = 2;
+            this.CreateElevatorEdgesButton.Text = "&Skapa vägbeskrivningar";
+            this.CreateElevatorEdgesButton.UseVisualStyleBackColor = true;
+            this.CreateElevatorEdgesButton.Click += new System.EventHandler(this.CreateElevatorEdgesButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -621,6 +658,9 @@
             this.PoiTabPage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.POIsBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.POIInfosBS)).EndInit();
+            this.ElevatorsTab.ResumeLayout(false);
+            this.ElevatorsTab.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ElevatorsBS)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -652,7 +692,6 @@
         private System.Windows.Forms.TextBox CountryTB;
         private System.Windows.Forms.TabControl Tabs;
         private System.Windows.Forms.TabPage PoiTabPage;
-        private System.Windows.Forms.TabPage ExitsTabPabe;
         private System.Windows.Forms.ListBox POIsLB;
         private System.Windows.Forms.ListBox POIInfosLB;
         private System.Windows.Forms.Label POIsListLabel;
@@ -685,5 +724,10 @@
         private System.Windows.Forms.ComboBox VisibilityCombo;
         private System.Windows.Forms.OpenFileDialog OpenMediaFileDialog;
         private System.Windows.Forms.CheckBox AutoPlayMediaCB;
+        private System.Windows.Forms.TabPage ElevatorsTab;
+        private System.Windows.Forms.ListBox ElevatorsLB;
+        private System.Windows.Forms.Label ElevatorListLabel;
+        private System.Windows.Forms.BindingSource ElevatorsBS;
+        private System.Windows.Forms.Button CreateElevatorEdgesButton;
     }
 }

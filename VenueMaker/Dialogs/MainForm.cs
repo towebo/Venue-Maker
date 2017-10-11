@@ -15,11 +15,13 @@ using WayfindR.Controllers;
 using WayfindR.Models;
 using VenueMaker.Helpers;
 using VenueMaker.Models;
+using Radar;
 
 namespace VenueMaker.Dialogs
 {
     public partial class MainForm : Form
     {
+        private WFNode[] elevators;
 
 
 
@@ -48,7 +50,7 @@ namespace VenueMaker.Dialogs
                     {
                         if (v.PointsOfInterest != null)
                         {
-                            POIsBS.DataSource = v.PointsOfInterest.OrderBy(w => w.TextInList);
+                            POIsBS.DataSource = v.PointsOfInterest.ToArray().OrderBy(w => w, new FloorComparer());
 
                         }
                         else
@@ -64,8 +66,17 @@ namespace VenueMaker.Dialogs
 
                     }
 
+
+                    elevators = Venue.NodesGraph.GetNodesAlphabetical().Where(w => w.WaypointType == "elevator").OrderBy(w => w, new FloorComparer()).ToArray();
+                    ElevatorsBS.DataSource = elevators;
+                    ElevatorsLB.DataSource = ElevatorsBS;
+                    ElevatorsLB.DisplayMember = "TextInList";
+                    ElevatorsLB.ValueMember = "Name";
+
+
                 };
 
+                
 
                 VenueNameTB.DataBindings.Add("Text", VenueBS, "Name");
                 VenueIDTB.DataBindings.Add("Text", VenueBS, "Id");
@@ -123,6 +134,13 @@ namespace VenueMaker.Dialogs
                 POIInfoCatCombo.DisplayMember = "Name";
                 POIInfoCatCombo.ValueMember = "Category";
                 POIInfoCatCombo.DataBindings.Add("SelectedValue", POIInfosBS, "Category");
+
+
+                
+                
+
+
+
 
             }
             catch (Exception ex)
@@ -203,7 +221,9 @@ namespace VenueMaker.Dialogs
                     OpenGraphMLDialog.DefaultExt
                     );                
                 if (File.Exists(graphfile))
-                {                    
+                {
+                    OpenGraphMLDialog.FileName = graphfile;
+
                     WFGraph g = WFGraph.LoadFromGraphML(graphfile);
                     Venue.NodesGraph = g;
                     Venue.AddPOIsFromGraph(true);
@@ -593,6 +613,59 @@ namespace VenueMaker.Dialogs
 
             }
 
+        }
+
+        private void CreateElevatorEdgesButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Cursor.Current = Cursors.WaitCursor;
+                Application.DoEvents();
+
+                int elevid = 0;
+
+                foreach (WFNode sourceelevator in elevators)
+                {
+                    foreach (WFNode targetelevator in elevators)
+                    {
+                        if (sourceelevator == targetelevator)
+                        {
+                            continue;
+
+                        } // The same elevator
+
+                        string id = string.Format("elevator{0}",
+                            elevid
+                            );
+
+                        WFEdge<WFNode> edg = new WFEdge<WFNode>(sourceelevator, targetelevator, id);
+                        edg.Beginning = string.Format("Ta hissen till plan {0}.",
+                            targetelevator.Floor
+                            );
+                        elevid++;
+
+                        Venue.NodesGraph.AddEdge(edg);
+                        
+                    } // foreach target
+
+                } // foreach source elevator
+
+                string graphfile = OpenGraphMLDialog.FileName + " 2";
+
+                Venue.NodesGraph.Save(graphfile);
+
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            finally
+            {
+                Cursor.Current = Cursors.Default;
+
+            }
         }
     }
 }
