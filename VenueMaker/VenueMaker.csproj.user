@@ -4,6 +4,6 @@
     <StartArguments>"C:\Users\Karl-Otto\Dropbox\Towe-Otto\Kwenda\QualityHotelViewMalmo.venue"</StartArguments>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
-    <StartArguments>"C:\Users\Karl-Otto\Dropbox\Kwenda\RestaurangKwenda.venue"</StartArguments>
+    <StartArguments>"C:\Users\Karl-Otto\Dropbox\Towe-Otto\Kwenda\QualityHotelViewMalmo.venue"</StartArguments>
   </PropertyGroup>
 </Project>

@@ -22,6 +22,7 @@ namespace VenueMaker.Dialogs
     public partial class MainForm : Form
     {
         private WFNode[] elevators;
+        private const double ElevatorTravelTime = 5.0;
 
 
 
@@ -619,15 +620,36 @@ namespace VenueMaker.Dialogs
         {
             try
             {
+                if (string.IsNullOrWhiteSpace(ElevatorStartHeadingTB.Text) ||
+                    !ElevatorStartHeadingTB.Text.IsNumeric())
+                {
+                    throw new Exception("Du måste ange en kompassriktning mellan 0 och 359 för startriktningen.");
+                }
+                if (string.IsNullOrWhiteSpace(ElevatorEndHeadingTB.Text) ||
+                    !ElevatorEndHeadingTB.Text.IsNumeric())
+                {
+                    throw new Exception("Du måste ange en kompassriktning mellan 0 och 359 för slutriktningen.");
+                }
+
                 Cursor.Current = Cursors.WaitCursor;
                 Application.DoEvents();
 
+                int startheading = Convert.ToInt32(ElevatorStartHeadingTB.Text);
+                int endheading = Convert.ToInt32(ElevatorEndHeadingTB.Text);
+
                 int elevid = 0;
 
+                int idxsrc = 0;
+                
                 foreach (WFNode sourceelevator in elevators)
                 {
+                    idxsrc++;
+                    int idxdst = 0;
+
                     foreach (WFNode targetelevator in elevators)
                     {
+                        idxdst++;
+
                         if (sourceelevator == targetelevator)
                         {
                             continue;
@@ -639,7 +661,10 @@ namespace VenueMaker.Dialogs
                             );
 
                         WFEdge<WFNode> edg = new WFEdge<WFNode>(sourceelevator, targetelevator, id);
-                        edg.Beginning = string.Format("Ta hissen till plan {0}.",
+                        edg.StartHeading = startheading;
+                        edg.EndHeading = endheading;
+                        edg.TravelTime = Math.Abs(idxdst - idxsrc) * ElevatorTravelTime;
+                        edg.Beginning = string.Format(ElevatorMessageTB.Text,
                             targetelevator.Floor
                             );
                         elevid++;
@@ -647,12 +672,15 @@ namespace VenueMaker.Dialogs
                         Venue.NodesGraph.AddEdge(edg);
                         
                     } // foreach target
-
+                    
                 } // foreach source elevator
 
-                string graphfile = OpenGraphMLDialog.FileName + " 2";
+                string graphfile = OpenGraphMLDialog.FileName;
 
                 Venue.NodesGraph.Save(graphfile);
+
+                SystemSounds.Asterisk.Play();
+
 
                 
             }

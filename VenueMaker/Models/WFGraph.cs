@@ -1,5 +1,4 @@
 ﻿using QuickGraph;
-using QuickGraph.Serialization;
 using System;
 using System.IO;
 using System.Xml;
@@ -40,10 +39,21 @@ namespace WayfindR.Models
         }
 
 
-        private static Dictionary<string, string> MakeDictionaryOfTheseElements(IEnumerable<XElement> dataElements, List<GraphMLKey> gKeys)
+        private static Dictionary<string, string> MakeDictionaryOfTheseElements(IEnumerable<XElement> dataElements, List<GraphMLKey> gKeys, string forType)
         {
             Dictionary<string, string> result = new Dictionary<string, string>();
 
+            var mykeys = gKeys.Where(w => w.ForType == forType);
+            foreach (GraphMLKey gkey in mykeys)
+            {
+                if (!string.IsNullOrEmpty(gkey.DefaultValue))
+                {
+                    result[gkey.Name] = gkey.DefaultValue;
+
+                } // Has default value
+
+            } // foreach
+            
             foreach (XElement data in dataElements)
             {
                 string name = NodeAttribute(data, "key");
@@ -67,10 +77,78 @@ namespace WayfindR.Models
 
                 }
                 
-
             } // foreach
 
             return result;
+
+        }
+
+        private static void MakeXelementsOfThese(Dictionary<string,string> propValues, XElement node, List<GraphMLKey> gKeys)
+        {
+            try
+            {
+                // Get all currently set properties
+                var xdata = node.Elements(node.Name.Namespace + "data");
+
+                foreach (string propName in propValues.Keys)
+                {
+                    GraphMLKey gkey = gKeys.Where(w => 
+                        w.ForType == node.Name.LocalName &&
+                        w.Name == propName
+                        ).FirstOrDefault();
+
+                    if (gkey == null)
+                    {
+                        continue;
+
+                    } // No key present in graphml
+
+
+                    XElement xdataelement = xdata.Where(w => NodeAttribute(w, "key") == gkey.Id).FirstOrDefault();
+                    if (xdataelement != null)
+                    {
+                        if (gkey.DataType == "string")
+                        {
+                            xdataelement.ReplaceNodes(new XCData(propValues[propName]));
+                        }
+                        else
+                        {
+                            xdataelement.Value = propValues[propName];
+
+                        } // else
+
+                    }
+                    else
+                    {
+                        if (propValues[propName] != gkey.DefaultValue)
+                        {
+                            xdataelement = new XElement(node.Name.Namespace + "data");
+                            XAttribute xattr = new XAttribute("id", gkey.Id);
+                            xdataelement.Add(xattr);
+                            if (gkey.DataType == "string")
+                            {
+                                xdataelement.Add(new XCData(propValues[propName]));
+
+                            }
+                            else
+                            {
+                                xdataelement.Value = propValues[propName];
+
+                            } // else
+                            node.Add(xdataelement);
+
+                        } // Not the default value
+                        
+                    } // No data element yet
+                    
+                } // foreach prop name
+                
+            }
+            catch
+            {
+                throw;
+
+            }
 
         }
 
@@ -97,6 +175,67 @@ namespace WayfindR.Models
 
                 return true;
             }
+        }
+
+
+        private static Dictionary<string,string> GetPropertyValues(object obj)
+        {
+            try
+            {
+                Dictionary<string, string> result = new Dictionary<string, string>();
+
+                Type currentType = obj.GetType();
+
+                foreach (PropertyInfo prop in currentType.GetProperties(BindingFlags.Public | BindingFlags.Instance))
+                {
+                    if (!prop.CanWrite || prop.GetIndexParameters().Length > 0)
+                    {
+                        continue;
+
+                    }
+
+                    string propname = prop.Name;
+
+                    // Is it tagged with XmlAttributeAttribute?
+                    string xmlname;
+                    if (TryGetAttributeName(prop, out xmlname))
+                    {
+                        propname = xmlname;
+
+                    } // XmlAttr
+
+
+
+                    string sval = string.Empty;
+                    try
+                    {
+                        var val = prop.GetValue(obj);
+                        if (val != null)
+                        {
+                            sval = val.ToString();
+                        }
+                    }
+                    catch
+                    {
+                    }
+                    
+                    result.Add(
+                        propname,
+                        sval
+                        );
+                                        
+
+                } // foreach
+
+                return result;
+
+            }
+            catch (Exception ex)
+            {
+                throw;
+
+            }
+
         }
 
 
@@ -314,7 +453,13 @@ namespace WayfindR.Models
                     
                     // Graph properties
                     var xgdata = xgraph.Elements(ns + "data");
-                    SetPropertyValues(result, MakeDictionaryOfTheseElements(xgdata, gklist));
+                    SetPropertyValues(
+                        result, 
+                        MakeDictionaryOfTheseElements(
+                            xgdata, 
+                            gklist,
+                            xgraph.Name.LocalName
+                            ));
 
                     // Nodes
                     Dictionary<string, WFNode> gnodes = new Dictionary<string, WFNode>();
@@ -325,7 +470,13 @@ namespace WayfindR.Models
                         WFNode wfn = new WFNode(nid);
 
                         var xndata = xnode.Elements(ns + "data");
-                        SetPropertyValues(wfn, MakeDictionaryOfTheseElements(xndata, gklist));
+                        SetPropertyValues(
+                            wfn, 
+                            MakeDictionaryOfTheseElements(
+                                xndata, 
+                                gklist,
+                                xnode.Name.LocalName
+                                ));
 
                         result.AddVertex(wfn);
                         gnodes[nid] = wfn;
@@ -346,7 +497,13 @@ namespace WayfindR.Models
                         WFEdge<WFNode> wfe = new WFEdge<WFNode>(srcnode, tgtnode, eid);
 
                         var xedata = xedge.Elements(ns + "data");
-                        SetPropertyValues(wfe, MakeDictionaryOfTheseElements(xedata, gklist));
+                        SetPropertyValues(
+                            wfe, 
+                            MakeDictionaryOfTheseElements(
+                                xedata, 
+                                gklist,
+                                xedge.Name.LocalName
+                                ));
 
                         result.AddEdge(wfe);
 
@@ -367,11 +524,160 @@ namespace WayfindR.Models
 
         public void Save(string fileName)
         {
-            using (var xwriter = XmlWriter.Create(fileName))
+            try
             {
-                this.SerializeToGraphML<WFNode, WFEdge<WFNode>, WFGraph>(xwriter);
+                if (!File.Exists(fileName))
+                {
+                    return;
 
-            } // using
+                } // File Exists
+
+                using (MemoryStream ms = new MemoryStream(
+                        File.ReadAllBytes(fileName)
+                        ))
+                {
+                    Stream ws = SaveToGraphML(ms);
+
+                    string newfile = fileName + ".graphml";
+                    using (FileStream fs = new FileStream(newfile, FileMode.OpenOrCreate))
+                    {
+                        ws.Position = 0;
+                        ws.CopyTo(fs);
+
+                    } // using fs
+                    
+                    
+                } // using
+            }
+            catch
+            {
+                throw;
+
+            }
+
+        }
+
+
+        public Stream SaveToGraphML(Stream stream)
+        {
+            try
+            {                
+                XDocument xdoc = XDocument.Load(stream);
+                                                
+                XElement xroot = xdoc.Root;
+                XNamespace ns = xroot.GetDefaultNamespace();
+
+                List<GraphMLKey> gklist = new List<GraphMLKey>();
+
+                // Attributes
+                var attrkeys = xroot.Elements(ns + "key");
+                                
+                foreach (XElement attrkey in attrkeys)
+                {
+                    GraphMLKey gk = new GraphMLKey()
+                    {
+                        Name = NodeAttribute(attrkey, "attr.name"),
+                        DataType = NodeAttribute(attrkey, "attr.type"),
+                        Id = NodeAttribute(attrkey, "id"),
+                        ForType = NodeAttribute(attrkey, "for"),
+                        DefaultValue = NodeValue(attrkey, "default", ns)
+                    }; // new
+
+                    gklist.Add(gk);
+
+                } // foreach attribute key
+
+                XElement xgraph = xroot.Element(ns + "graph");
+                if (xgraph != null)
+                {
+                    // Graph properties
+                    Dictionary<string, string> graphprops = GetPropertyValues(this);
+                    MakeXelementsOfThese(graphprops, xgraph, gklist);
+
+
+                    // Nodes
+                    var xnodes = xgraph.Elements(ns + "node");
+                    foreach (WFNode wfn in this.Vertices)
+                    {
+                        XElement xnode = xnodes.Where(w => NodeAttribute(w, "id") == wfn.Id).FirstOrDefault();
+                        if (xnode == null)
+                        {
+                            xnode = new XElement(ns + "node");
+                            XAttribute xattr = new XAttribute("id", wfn.Id);
+                            xnode.Add(xattr);
+
+                            xgraph.Add(xnode);
+
+                        } // Node not in graphml
+                        
+                        Dictionary<string, string> nodeprops = GetPropertyValues(wfn);
+                        MakeXelementsOfThese(nodeprops, xnode, gklist);
+                        
+                    } // foreach node
+                                        
+                                        
+                    // Edges
+                    var xedges = xgraph.Elements(ns + "edge");
+                    foreach (WFEdge<WFNode> wfe in this.Edges)
+                    {
+                        XElement xedge = xedges.Where(w => NodeAttribute(w, "id") == wfe.Id).FirstOrDefault();
+                        if (xedge == null)
+                        {
+                            xedge = new XElement(ns + "edge");
+                            XAttribute xattr = new XAttribute("id", wfe.Id);
+                            xedge.Add(xattr);
+
+                            xgraph.Add(xedge);
+
+                        } // Edge not in graphml
+
+                        WFNode src = wfe.Source as WFNode;
+                        WFNode trgt = wfe.Target as WFNode;
+
+                        XAttribute attrsrc = xedge.Attribute("source");
+                        if (attrsrc != null)
+                        {
+                            attrsrc.Value = src.Id;
+
+                        }
+                        else
+                        {
+                            attrsrc = new XAttribute("source", src.Id);
+                            xedge.Add(attrsrc);
+
+                        }
+                        XAttribute attrtrgt = xedge.Attribute("target");
+                        if (attrtrgt != null)
+                        {
+                            attrtrgt.Value = trgt.Id;
+
+                        }
+                        else
+                        {
+                            attrtrgt = new XAttribute("target", trgt.Id);
+                            xedge.Add(attrtrgt);
+
+                        }
+                                                
+                        Dictionary<string, string> edgeprops = GetPropertyValues(wfe);
+                        MakeXelementsOfThese(edgeprops, xedge, gklist);
+                        
+                    } // foreach edge
+                    
+                    
+                } // if xgraph not null
+
+                // save here
+                MemoryStream result = new MemoryStream();                
+                xdoc.Save(result);
+
+                return result;
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
 
         }
 
