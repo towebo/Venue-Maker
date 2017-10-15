@@ -80,6 +80,12 @@
             this.POIsListLabel = new System.Windows.Forms.Label();
             this.POIsLB = new System.Windows.Forms.ListBox();
             this.ElevatorsTab = new System.Windows.Forms.TabPage();
+            this.ElevatorMessageTB = new System.Windows.Forms.TextBox();
+            this.ElevatorMessageLabel = new System.Windows.Forms.Label();
+            this.ElevatorEndHeadingTB = new System.Windows.Forms.TextBox();
+            this.ElevatorEndHeadingLabel = new System.Windows.Forms.Label();
+            this.ElevatorStartHeadingTB = new System.Windows.Forms.TextBox();
+            this.ElevatorStartHeadingLabel = new System.Windows.Forms.Label();
             this.CreateElevatorEdgesButton = new System.Windows.Forms.Button();
             this.ElevatorsLB = new System.Windows.Forms.ListBox();
             this.ElevatorListLabel = new System.Windows.Forms.Label();
@@ -91,12 +97,7 @@
             this.VisibilityCombo = new System.Windows.Forms.ComboBox();
             this.OpenMediaFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.ElevatorsBS = new System.Windows.Forms.BindingSource(this.components);
-            this.ElevatorStartHeadingLabel = new System.Windows.Forms.Label();
-            this.ElevatorStartHeadingTB = new System.Windows.Forms.TextBox();
-            this.ElevatorEndHeadingLabel = new System.Windows.Forms.Label();
-            this.ElevatorEndHeadingTB = new System.Windows.Forms.TextBox();
-            this.ElevatorMessageLabel = new System.Windows.Forms.Label();
-            this.ElevatorMessageTB = new System.Windows.Forms.TextBox();
+            this.POIInfosLabel = new System.Windows.Forms.Label();
             this.MainMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VenueBS)).BeginInit();
             this.Tabs.SuspendLayout();
@@ -232,7 +233,7 @@
             this.VenueIDLabel.Name = "VenueIDLabel";
             this.VenueIDLabel.Size = new System.Drawing.Size(18, 15);
             this.VenueIDLabel.TabIndex = 3;
-            this.VenueIDLabel.Text = "&ID";
+            this.VenueIDLabel.Text = "I&D";
             // 
             // VenueIDTB
             // 
@@ -326,6 +327,7 @@
             // 
             // PoiTabPage
             // 
+            this.PoiTabPage.Controls.Add(this.POIInfosLabel);
             this.PoiTabPage.Controls.Add(this.AutoPlayMediaCB);
             this.PoiTabPage.Controls.Add(this.MediaDescrTB);
             this.PoiTabPage.Controls.Add(this.MediaDescLabel);
@@ -443,7 +445,7 @@
             this.AddPOIInfoButton.Name = "AddPOIInfoButton";
             this.AddPOIInfoButton.Size = new System.Drawing.Size(75, 23);
             this.AddPOIInfoButton.TabIndex = 21;
-            this.AddPOIInfoButton.Text = "&Lägg till";
+            this.AddPOIInfoButton.Text = "L&ägg till";
             this.AddPOIInfoButton.UseVisualStyleBackColor = true;
             this.AddPOIInfoButton.Click += new System.EventHandler(this.AddPOIInfoButton_Click);
             // 
@@ -519,9 +521,9 @@
             // 
             this.POIInfosLB.FormattingEnabled = true;
             this.POIInfosLB.ItemHeight = 15;
-            this.POIInfosLB.Location = new System.Drawing.Point(326, 21);
+            this.POIInfosLB.Location = new System.Drawing.Point(326, 36);
             this.POIInfosLB.Name = "POIInfosLB";
-            this.POIInfosLB.Size = new System.Drawing.Size(397, 154);
+            this.POIInfosLB.Size = new System.Drawing.Size(397, 139);
             this.POIInfosLB.TabIndex = 2;
             // 
             // POIsListLabel
@@ -530,8 +532,8 @@
             this.POIsListLabel.Location = new System.Drawing.Point(6, 3);
             this.POIsListLabel.Name = "POIsListLabel";
             this.POIsListLabel.Size = new System.Drawing.Size(98, 15);
-            this.POIsListLabel.TabIndex = 1;
-            this.POIsListLabel.Text = "Points Of Interest";
+            this.POIsListLabel.TabIndex = 0;
+            this.POIsListLabel.Text = "Point&s Of Interest";
             // 
             // POIsLB
             // 
@@ -560,6 +562,55 @@
             this.ElevatorsTab.TabIndex = 2;
             this.ElevatorsTab.Text = "Hissar";
             this.ElevatorsTab.UseVisualStyleBackColor = true;
+            // 
+            // ElevatorMessageTB
+            // 
+            this.ElevatorMessageTB.Location = new System.Drawing.Point(191, 126);
+            this.ElevatorMessageTB.Name = "ElevatorMessageTB";
+            this.ElevatorMessageTB.Size = new System.Drawing.Size(162, 23);
+            this.ElevatorMessageTB.TabIndex = 8;
+            this.ElevatorMessageTB.Text = "Ta hissen till plan {0}";
+            // 
+            // ElevatorMessageLabel
+            // 
+            this.ElevatorMessageLabel.AutoSize = true;
+            this.ElevatorMessageLabel.Location = new System.Drawing.Point(188, 108);
+            this.ElevatorMessageLabel.Name = "ElevatorMessageLabel";
+            this.ElevatorMessageLabel.Size = new System.Drawing.Size(73, 15);
+            this.ElevatorMessageLabel.TabIndex = 7;
+            this.ElevatorMessageLabel.Text = "Meddelande\r\n";
+            // 
+            // ElevatorEndHeadingTB
+            // 
+            this.ElevatorEndHeadingTB.Location = new System.Drawing.Point(275, 78);
+            this.ElevatorEndHeadingTB.Name = "ElevatorEndHeadingTB";
+            this.ElevatorEndHeadingTB.Size = new System.Drawing.Size(78, 23);
+            this.ElevatorEndHeadingTB.TabIndex = 6;
+            // 
+            // ElevatorEndHeadingLabel
+            // 
+            this.ElevatorEndHeadingLabel.AutoSize = true;
+            this.ElevatorEndHeadingLabel.Location = new System.Drawing.Point(272, 60);
+            this.ElevatorEndHeadingLabel.Name = "ElevatorEndHeadingLabel";
+            this.ElevatorEndHeadingLabel.Size = new System.Drawing.Size(68, 15);
+            this.ElevatorEndHeadingLabel.TabIndex = 5;
+            this.ElevatorEndHeadingLabel.Text = "Slutriktning";
+            // 
+            // ElevatorStartHeadingTB
+            // 
+            this.ElevatorStartHeadingTB.Location = new System.Drawing.Point(191, 78);
+            this.ElevatorStartHeadingTB.Name = "ElevatorStartHeadingTB";
+            this.ElevatorStartHeadingTB.Size = new System.Drawing.Size(78, 23);
+            this.ElevatorStartHeadingTB.TabIndex = 4;
+            // 
+            // ElevatorStartHeadingLabel
+            // 
+            this.ElevatorStartHeadingLabel.AutoSize = true;
+            this.ElevatorStartHeadingLabel.Location = new System.Drawing.Point(188, 60);
+            this.ElevatorStartHeadingLabel.Name = "ElevatorStartHeadingLabel";
+            this.ElevatorStartHeadingLabel.Size = new System.Drawing.Size(72, 15);
+            this.ElevatorStartHeadingLabel.TabIndex = 3;
+            this.ElevatorStartHeadingLabel.Text = "Startriktning";
             // 
             // CreateElevatorEdgesButton
             // 
@@ -632,54 +683,14 @@
     "png)|*.jpg;*.jpeg;*.png|Ljudfiler (*.wav, *.mp3, *.m4a)|*.wav;*.m4a;*.mp3|Alla f" +
     "iler (*.*)|*.*";
             // 
-            // ElevatorStartHeadingLabel
+            // POIInfosLabel
             // 
-            this.ElevatorStartHeadingLabel.AutoSize = true;
-            this.ElevatorStartHeadingLabel.Location = new System.Drawing.Point(188, 60);
-            this.ElevatorStartHeadingLabel.Name = "ElevatorStartHeadingLabel";
-            this.ElevatorStartHeadingLabel.Size = new System.Drawing.Size(72, 15);
-            this.ElevatorStartHeadingLabel.TabIndex = 3;
-            this.ElevatorStartHeadingLabel.Text = "Startriktning";
-            // 
-            // ElevatorStartHeadingTB
-            // 
-            this.ElevatorStartHeadingTB.Location = new System.Drawing.Point(191, 78);
-            this.ElevatorStartHeadingTB.Name = "ElevatorStartHeadingTB";
-            this.ElevatorStartHeadingTB.Size = new System.Drawing.Size(78, 23);
-            this.ElevatorStartHeadingTB.TabIndex = 4;
-            // 
-            // ElevatorEndHeadingLabel
-            // 
-            this.ElevatorEndHeadingLabel.AutoSize = true;
-            this.ElevatorEndHeadingLabel.Location = new System.Drawing.Point(272, 60);
-            this.ElevatorEndHeadingLabel.Name = "ElevatorEndHeadingLabel";
-            this.ElevatorEndHeadingLabel.Size = new System.Drawing.Size(68, 15);
-            this.ElevatorEndHeadingLabel.TabIndex = 5;
-            this.ElevatorEndHeadingLabel.Text = "Slutriktning";
-            // 
-            // ElevatorEndHeadingTB
-            // 
-            this.ElevatorEndHeadingTB.Location = new System.Drawing.Point(275, 78);
-            this.ElevatorEndHeadingTB.Name = "ElevatorEndHeadingTB";
-            this.ElevatorEndHeadingTB.Size = new System.Drawing.Size(78, 23);
-            this.ElevatorEndHeadingTB.TabIndex = 6;
-            // 
-            // ElevatorMessageLabel
-            // 
-            this.ElevatorMessageLabel.AutoSize = true;
-            this.ElevatorMessageLabel.Location = new System.Drawing.Point(188, 108);
-            this.ElevatorMessageLabel.Name = "ElevatorMessageLabel";
-            this.ElevatorMessageLabel.Size = new System.Drawing.Size(73, 15);
-            this.ElevatorMessageLabel.TabIndex = 7;
-            this.ElevatorMessageLabel.Text = "Meddelande\r\n";
-            // 
-            // ElevatorMessageTB
-            // 
-            this.ElevatorMessageTB.Location = new System.Drawing.Point(191, 126);
-            this.ElevatorMessageTB.Name = "ElevatorMessageTB";
-            this.ElevatorMessageTB.Size = new System.Drawing.Size(162, 23);
-            this.ElevatorMessageTB.TabIndex = 8;
-            this.ElevatorMessageTB.Text = "Ta hissen till plan {0}";
+            this.POIInfosLabel.AutoSize = true;
+            this.POIInfosLabel.Location = new System.Drawing.Point(323, 21);
+            this.POIInfosLabel.Name = "POIInfosLabel";
+            this.POIInfosLabel.Size = new System.Drawing.Size(104, 15);
+            this.POIInfosLabel.TabIndex = 1;
+            this.POIInfosLabel.Text = "In&formationstexter";
             // 
             // MainForm
             // 
@@ -796,5 +807,6 @@
         private System.Windows.Forms.Label ElevatorStartHeadingLabel;
         private System.Windows.Forms.TextBox ElevatorMessageTB;
         private System.Windows.Forms.Label ElevatorMessageLabel;
+        private System.Windows.Forms.Label POIInfosLabel;
     }
 }
