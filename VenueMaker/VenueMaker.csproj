@@ -108,6 +108,12 @@
     <Compile Include="Dialogs\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\NewEdgeDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\NewEdgeDialog.Designer.cs">
+      <DependentUpon>NewEdgeDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\RouteTestForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,7 +128,9 @@
     <Compile Include="Models\BLEBeaconwCache.cs" />
     <Compile Include="Models\CacheFile.cs" />
     <Compile Include="Models\DirectionsList.cs" />
+    <Compile Include="Models\EdgeForPOI.cs" />
     <Compile Include="Models\InfoCategoryItem.cs" />
+    <Compile Include="Models\NewEdgeItem.cs" />
     <Compile Include="Models\VenueVisibilityItem.cs" />
     <Compile Include="Models\WFHeadingInfo.cs" />
     <Compile Include="Models\CacheNodeBeacon.cs" />
@@ -140,6 +148,9 @@
     <Compile Include="Utils\HttpUtil.cs" />
     <EmbeddedResource Include="Dialogs\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\NewEdgeDialog.resx">
+      <DependentUpon>NewEdgeDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\RouteTestForm.resx">
       <DependentUpon>RouteTestForm.cs</DependentUpon>

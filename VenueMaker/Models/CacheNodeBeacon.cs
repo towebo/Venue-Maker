@@ -5,6 +5,9 @@ namespace WayfindR.Models
     [Table("CacheNodeBeacons")]
 	public class CacheNodeBeacon
 	{		
+        [Indexed]
+        public string Uuid { get; set; }
+
         [Indexed(Name = "MajorMinor", Order = 1)]
         public int Major { get; set; }
         [Indexed(Name = "MajorMinor", Order = 2)]
@@ -14,6 +17,10 @@ namespace WayfindR.Models
         public string GraphId { get; set; }
         public int GraphLevel { get; set; }
         public string VenueId { get; set; }
+
+        public string VenueName { get; set; }
+        public string NodeName { get; set; }
+        public string WaypointType { get; set; }
 
 
         [Ignore]

@@ -44,7 +44,6 @@ namespace WayfindR.Helpers
             TurnAround = 180
         } // NaturalDirection
 
-
         public static string ClockwizeDirectionName(ClockwizeDirection direction)
         {
             switch (direction)
@@ -132,10 +131,8 @@ namespace WayfindR.Helpers
 
         }
 
-
         public const int ClockwizeSector = 15;
         public const int NaturalSector = 23;
-
 
         public static int TurnHeading(int incomming, int outgoing)
         {
@@ -190,8 +187,7 @@ namespace WayfindR.Helpers
 
 
         } // TurnHeading      
-
-
+        
         public static bool InClockwizeSector(int value, ClockwizeDirection direction)
         {
             return value >= ((int)direction - ClockwizeSector) &&
@@ -304,8 +300,7 @@ namespace WayfindR.Helpers
                 ));
 
         } // NaturalTurn
-
-
+        
         public static int CurrentHeading()
         {
             /*

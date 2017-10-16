@@ -16,6 +16,7 @@ using WayfindR.Models;
 using VenueMaker.Helpers;
 using VenueMaker.Models;
 using Radar;
+using WayfindR.Helpers;
 
 namespace VenueMaker.Dialogs
 {
@@ -53,10 +54,13 @@ namespace VenueMaker.Dialogs
                         {
                             POIsBS.DataSource = v.PointsOfInterest.ToArray().OrderBy(w => w, new FloorComparer());
 
+                            EdgesPOIsBS.DataSource = v.PointsOfInterest.ToArray().OrderBy(w => w, new FloorComparer());
+
                         }
                         else
                         {
                             POIsBS.DataSource = v.PointsOfInterest;
+                            EdgesPOIsBS.DataSource = v.PointsOfInterest;
 
                         }
                         
@@ -64,6 +68,7 @@ namespace VenueMaker.Dialogs
                     else
                     {
                         POIsBS.DataSource = new WFPointOfInterest[] { };
+                        EdgesPOIsBS.DataSource = new WFPointOfInterest[] { };
 
                     }
 
@@ -73,8 +78,7 @@ namespace VenueMaker.Dialogs
                     ElevatorsLB.DataSource = ElevatorsBS;
                     ElevatorsLB.DisplayMember = "TextInList";
                     ElevatorsLB.ValueMember = "Name";
-
-
+                    
                 };
 
                 
@@ -111,7 +115,7 @@ namespace VenueMaker.Dialogs
                     }
                     POIInfosBS.ResetBindings(false);
 
-                };
+                }; // Current Changed
 
                 POIsLB.DataSource = POIsBS;
                 POIsLB.DisplayMember = "TextInList";
@@ -137,9 +141,77 @@ namespace VenueMaker.Dialogs
                 POIInfoCatCombo.DataBindings.Add("SelectedValue", POIInfosBS, "Category");
 
 
-                
-                
 
+                EdgesPOIsBS.DataSource = new WFPointOfInterest[] { };
+                EdgesPOIsBS.CurrentChanged += (s3, e3) =>
+                {
+                    WFPointOfInterest p = EdgesPOIsBS.Current as WFPointOfInterest;
+                    if (p != null)
+                    {
+                        WFNode node = Venue.NodesGraph.FindNode(
+                            p.BeaconUuid,
+                            p.BeaconMajor,
+                            p.BeaconMinor
+                            );
+                        if (node != null)
+                        {
+                            var nodeedges = Venue.NodesGraph.GetEdgesFor(node);
+
+                            EdgesForPOIBS.DataSource = EdgeForPOI.EdgesFor(nodeedges);
+                                
+
+                        } // Node not null
+                        else
+                        {
+                            EdgesForPOIBS.DataSource = new EdgeForPOI[] { };
+
+                        }
+                        
+
+                    }
+                    else
+                    {
+                        EdgesForPOIBS.DataSource = new EdgeForPOI[] { };
+
+                    }
+                    EdgesForPOIBS.ResetBindings(false);
+
+                }; // Current Changed
+
+                EdgesPOIsLB.DataSource = EdgesPOIsBS;
+                EdgesPOIsLB.DisplayMember = "TextInList";
+                EdgesPOIsLB.ValueMember = "Name";
+
+                EdgesForPOIBS.DataSource = new EdgeForPOI[] { };
+                EdgesForPOIBS.CurrentChanged += (s4, e4) =>
+                {
+                    EdgeForPOI efp = EdgesForPOIBS.Current as EdgeForPOI;
+                    
+                    if (efp != null)
+                    {
+                        WFEdge<WFNode> edge = efp.Edge;
+                        EdgeBS.DataSource = edge;
+
+                    }
+                    else
+                    {
+                        EdgeBS.DataSource = new WFEdge<WFNode>(new WFNode(), new WFNode(), "");
+
+                    } // Is null
+                    EdgeBS.ResetBindings(true);
+
+                };
+
+
+                EdgesForPOILB.DataSource = EdgesForPOIBS;
+                EdgesForPOILB.DisplayMember = "TextInList";
+                EdgesForPOILB.ValueMember = "Edge";
+
+                EdgeBS.DataSource = new WFEdge<WFNode>(new WFNode(), new WFNode(), "");
+                EdgeBeginningTB.DataBindings.Add("Text", EdgeBS, "Beginning");
+                EdgeStartHeadingTB.DataBindings.Add("Text", EdgeBS, "StartHeading");
+                EdgeEndHeadingTB.DataBindings.Add("Text", EdgeBS, "EndHeading");
+                EdgeTravelTimeTB.DataBindings.Add("Text", EdgeBS, "TravelTime");
 
 
 
@@ -258,7 +330,9 @@ namespace VenueMaker.Dialogs
 
                 
                 Venue.SaveToFile(SaveVenueDialog.FileName);
-
+                                
+                Venue.NodesGraph.Save(OpenGraphMLDialog.FileName);
+                
                 SystemSounds.Asterisk.Play();
 
 
@@ -636,8 +710,7 @@ namespace VenueMaker.Dialogs
 
                 int startheading = Convert.ToInt32(ElevatorStartHeadingTB.Text);
                 int endheading = Convert.ToInt32(ElevatorEndHeadingTB.Text);
-
-                int elevid = 0;
+                
 
                 int idxsrc = 0;
                 
@@ -656,8 +729,8 @@ namespace VenueMaker.Dialogs
 
                         } // The same elevator
 
-                        string id = string.Format("elevator{0}",
-                            elevid
+                        string id = string.Format("e{0}",
+                            Venue.NodesGraph.EdgeCount
                             );
 
                         WFEdge<WFNode> edg = new WFEdge<WFNode>(sourceelevator, targetelevator, id);
@@ -667,22 +740,133 @@ namespace VenueMaker.Dialogs
                         edg.Beginning = string.Format(ElevatorMessageTB.Text,
                             targetelevator.Floor
                             );
-                        elevid++;
-
+                        
                         Venue.NodesGraph.AddEdge(edg);
                         
                     } // foreach target
                     
                 } // foreach source elevator
 
-                string graphfile = OpenGraphMLDialog.FileName;
-
-                Venue.NodesGraph.Save(graphfile);
+                //tmpstring graphfile = OpenGraphMLDialog.FileName;
+                //Venue.NodesGraph.Save(graphfile);
 
                 SystemSounds.Asterisk.Play();
 
 
                 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            finally
+            {
+                Cursor.Current = Cursors.Default;
+
+            }
+        }
+
+        private void AddEdgeButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Cursor.Current = Cursors.WaitCursor;
+                Application.DoEvents();
+
+                NewEdgeItem nei = new NewEdgeItem();
+
+                WFPointOfInterest psrc = EdgesPOIsBS.Current as WFPointOfInterest;
+                if (psrc != null)
+                {
+                    nei.Source = Venue.NodesGraph.FindNode(
+                        psrc.BeaconUuid,
+                        psrc.BeaconMajor,
+                        psrc.BeaconMinor
+                        );
+
+                } // Not null
+                                
+                nei.TravelTime = 15;
+
+                NewEdgeDialog dlg = new NewEdgeDialog();
+                dlg.Item = nei;
+                dlg.AvailibleNodes = Venue.NodesGraph.GetNodesAlphabetical().OrderBy(w => w, new FloorComparer()).ToArray();
+
+
+                if (dlg.ShowDialog() != DialogResult.OK)
+                {
+                    return;
+
+                } // User canceled
+
+                string id = string.Format("e{0}",
+                    Venue.NodesGraph.EdgeCount
+                    );
+
+                WFEdge<WFNode> edge = new WFEdge<WFNode>(
+                    nei.Source,
+                    nei.Target,
+                    id
+                    );
+                edge.TravelTime = nei.TravelTime;
+                edge.StartHeading = nei.StartHeading;
+                edge.EndHeading = nei.EndHeading;
+                edge.Beginning = nei.Beginning;
+
+                Venue.NodesGraph.AddEdge(edge);
+
+                id = string.Format("e{0}",
+                    Venue.NodesGraph.EdgeCount
+                    );
+
+                WFEdge<WFNode> returnedge = new WFEdge<WFNode>(
+                    nei.Target,
+                    nei.Source,
+                    id
+                    );
+                returnedge.TravelTime = nei.TravelTime;
+                returnedge.StartHeading = HeadingHelper.ValidHeading(nei.StartHeading - 180);
+                returnedge.EndHeading = HeadingHelper.ValidHeading(nei.EndHeading - 180);
+                returnedge.Beginning = nei.Beginning;
+
+                Venue.NodesGraph.AddEdge(returnedge);
+
+                EdgesPOIsBS.ResetBindings(false);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+
+            }
+            finally
+            {
+                Cursor.Current = Cursors.Default;
+
+            }
+
+        }
+
+        private void DeleteEdgeButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Cursor.Current = Cursors.WaitCursor;
+                Application.DoEvents();
+
+                EdgeForPOI efp = EdgesForPOIBS.Current as EdgeForPOI;
+                if (efp == null)
+                {
+                    return;
+
+                } // Is null
+
+                Venue.NodesGraph.RemoveEdge(efp.Edge);
+                EdgesPOIsBS.ResetBindings(false);
+
+
             }
             catch (Exception ex)
             {

@@ -43,7 +43,6 @@
             this.OpenVenueDialog = new System.Windows.Forms.OpenFileDialog();
             this.OpenGraphMLDialog = new System.Windows.Forms.OpenFileDialog();
             this.SaveVenueDialog = new System.Windows.Forms.SaveFileDialog();
-            this.VenueBS = new System.Windows.Forms.BindingSource(this.components);
             this.VenueNameLabel = new System.Windows.Forms.Label();
             this.VenueNameTB = new System.Windows.Forms.TextBox();
             this.VenueIDLabel = new System.Windows.Forms.Label();
@@ -58,6 +57,7 @@
             this.CountryTB = new System.Windows.Forms.TextBox();
             this.Tabs = new System.Windows.Forms.TabControl();
             this.PoiTabPage = new System.Windows.Forms.TabPage();
+            this.POIInfosLabel = new System.Windows.Forms.Label();
             this.AutoPlayMediaCB = new System.Windows.Forms.CheckBox();
             this.MediaDescrTB = new System.Windows.Forms.TextBox();
             this.MediaDescLabel = new System.Windows.Forms.Label();
@@ -89,23 +89,45 @@
             this.CreateElevatorEdgesButton = new System.Windows.Forms.Button();
             this.ElevatorsLB = new System.Windows.Forms.ListBox();
             this.ElevatorListLabel = new System.Windows.Forms.Label();
-            this.POIsBS = new System.Windows.Forms.BindingSource(this.components);
-            this.POIInfosBS = new System.Windows.Forms.BindingSource(this.components);
+            this.EdgesTab = new System.Windows.Forms.TabPage();
+            this.EdgesForPOILB = new System.Windows.Forms.ListBox();
+            this.EdgesListLabel = new System.Windows.Forms.Label();
+            this.EdgesPOIsLB = new System.Windows.Forms.ListBox();
+            this.EdgesPOIListLabel = new System.Windows.Forms.Label();
             this.VenueDescriptionLabel = new System.Windows.Forms.Label();
             this.VenueDescriptionTB = new System.Windows.Forms.TextBox();
             this.VisibilityLabel = new System.Windows.Forms.Label();
             this.VisibilityCombo = new System.Windows.Forms.ComboBox();
             this.OpenMediaFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.EdgeBeginningLabel = new System.Windows.Forms.Label();
+            this.EdgeBeginningTB = new System.Windows.Forms.TextBox();
+            this.EdgeStartHeadingLabel = new System.Windows.Forms.Label();
+            this.EdgeStartHeadingTB = new System.Windows.Forms.TextBox();
+            this.EdgeEndHeadingLabel = new System.Windows.Forms.Label();
+            this.EdgeEndHeadingTB = new System.Windows.Forms.TextBox();
+            this.EdgeTravelTimeLabel = new System.Windows.Forms.Label();
+            this.EdgeTravelTimeTB = new System.Windows.Forms.TextBox();
+            this.AddEdgeButton = new System.Windows.Forms.Button();
+            this.DeleteEdgeButton = new System.Windows.Forms.Button();
+            this.VenueBS = new System.Windows.Forms.BindingSource(this.components);
+            this.POIsBS = new System.Windows.Forms.BindingSource(this.components);
+            this.POIInfosBS = new System.Windows.Forms.BindingSource(this.components);
             this.ElevatorsBS = new System.Windows.Forms.BindingSource(this.components);
-            this.POIInfosLabel = new System.Windows.Forms.Label();
+            this.EdgesPOIsBS = new System.Windows.Forms.BindingSource(this.components);
+            this.EdgesForPOIBS = new System.Windows.Forms.BindingSource(this.components);
+            this.EdgeBS = new System.Windows.Forms.BindingSource(this.components);
             this.MainMenuStrip.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.VenueBS)).BeginInit();
             this.Tabs.SuspendLayout();
             this.PoiTabPage.SuspendLayout();
             this.ElevatorsTab.SuspendLayout();
+            this.EdgesTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.VenueBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.POIsBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.POIInfosBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ElevatorsBS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EdgesPOIsBS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EdgesForPOIBS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EdgeBS)).BeginInit();
             this.SuspendLayout();
             // 
             // MainMenuStrip
@@ -319,6 +341,7 @@
             // 
             this.Tabs.Controls.Add(this.PoiTabPage);
             this.Tabs.Controls.Add(this.ElevatorsTab);
+            this.Tabs.Controls.Add(this.EdgesTab);
             this.Tabs.Location = new System.Drawing.Point(288, 43);
             this.Tabs.Name = "Tabs";
             this.Tabs.SelectedIndex = 0;
@@ -356,6 +379,15 @@
             this.PoiTabPage.TabIndex = 0;
             this.PoiTabPage.Text = "Points Of Interest";
             this.PoiTabPage.UseVisualStyleBackColor = true;
+            // 
+            // POIInfosLabel
+            // 
+            this.POIInfosLabel.AutoSize = true;
+            this.POIInfosLabel.Location = new System.Drawing.Point(323, 21);
+            this.POIInfosLabel.Name = "POIInfosLabel";
+            this.POIInfosLabel.Size = new System.Drawing.Size(104, 15);
+            this.POIInfosLabel.TabIndex = 1;
+            this.POIInfosLabel.Text = "In&formationstexter";
             // 
             // AutoPlayMediaCB
             // 
@@ -640,6 +672,66 @@
             this.ElevatorListLabel.TabIndex = 0;
             this.ElevatorListLabel.Text = "&Hissar";
             // 
+            // EdgesTab
+            // 
+            this.EdgesTab.Controls.Add(this.DeleteEdgeButton);
+            this.EdgesTab.Controls.Add(this.AddEdgeButton);
+            this.EdgesTab.Controls.Add(this.EdgeTravelTimeTB);
+            this.EdgesTab.Controls.Add(this.EdgeTravelTimeLabel);
+            this.EdgesTab.Controls.Add(this.EdgeEndHeadingTB);
+            this.EdgesTab.Controls.Add(this.EdgeEndHeadingLabel);
+            this.EdgesTab.Controls.Add(this.EdgeStartHeadingTB);
+            this.EdgesTab.Controls.Add(this.EdgeStartHeadingLabel);
+            this.EdgesTab.Controls.Add(this.EdgeBeginningTB);
+            this.EdgesTab.Controls.Add(this.EdgeBeginningLabel);
+            this.EdgesTab.Controls.Add(this.EdgesForPOILB);
+            this.EdgesTab.Controls.Add(this.EdgesListLabel);
+            this.EdgesTab.Controls.Add(this.EdgesPOIsLB);
+            this.EdgesTab.Controls.Add(this.EdgesPOIListLabel);
+            this.EdgesTab.Location = new System.Drawing.Point(4, 24);
+            this.EdgesTab.Name = "EdgesTab";
+            this.EdgesTab.Padding = new System.Windows.Forms.Padding(3);
+            this.EdgesTab.Size = new System.Drawing.Size(826, 519);
+            this.EdgesTab.TabIndex = 3;
+            this.EdgesTab.Text = "Vägbeskrivningar";
+            this.EdgesTab.UseVisualStyleBackColor = true;
+            // 
+            // EdgesForPOILB
+            // 
+            this.EdgesForPOILB.FormattingEnabled = true;
+            this.EdgesForPOILB.ItemHeight = 15;
+            this.EdgesForPOILB.Location = new System.Drawing.Point(206, 21);
+            this.EdgesForPOILB.Name = "EdgesForPOILB";
+            this.EdgesForPOILB.Size = new System.Drawing.Size(480, 184);
+            this.EdgesForPOILB.TabIndex = 3;
+            // 
+            // EdgesListLabel
+            // 
+            this.EdgesListLabel.AutoSize = true;
+            this.EdgesListLabel.Location = new System.Drawing.Point(203, 3);
+            this.EdgesListLabel.Name = "EdgesListLabel";
+            this.EdgesListLabel.Size = new System.Drawing.Size(97, 15);
+            this.EdgesListLabel.TabIndex = 2;
+            this.EdgesListLabel.Text = "&Vägbeskrivningar";
+            // 
+            // EdgesPOIsLB
+            // 
+            this.EdgesPOIsLB.FormattingEnabled = true;
+            this.EdgesPOIsLB.ItemHeight = 15;
+            this.EdgesPOIsLB.Location = new System.Drawing.Point(6, 21);
+            this.EdgesPOIsLB.Name = "EdgesPOIsLB";
+            this.EdgesPOIsLB.Size = new System.Drawing.Size(191, 469);
+            this.EdgesPOIsLB.TabIndex = 1;
+            // 
+            // EdgesPOIListLabel
+            // 
+            this.EdgesPOIListLabel.AutoSize = true;
+            this.EdgesPOIListLabel.Location = new System.Drawing.Point(3, 3);
+            this.EdgesPOIListLabel.Name = "EdgesPOIListLabel";
+            this.EdgesPOIListLabel.Size = new System.Drawing.Size(98, 15);
+            this.EdgesPOIListLabel.TabIndex = 0;
+            this.EdgesPOIListLabel.Text = "Point&s Of Interest";
+            // 
             // VenueDescriptionLabel
             // 
             this.VenueDescriptionLabel.AutoSize = true;
@@ -683,14 +775,89 @@
     "png)|*.jpg;*.jpeg;*.png|Ljudfiler (*.wav, *.mp3, *.m4a)|*.wav;*.m4a;*.mp3|Alla f" +
     "iler (*.*)|*.*";
             // 
-            // POIInfosLabel
+            // EdgeBeginningLabel
             // 
-            this.POIInfosLabel.AutoSize = true;
-            this.POIInfosLabel.Location = new System.Drawing.Point(323, 21);
-            this.POIInfosLabel.Name = "POIInfosLabel";
-            this.POIInfosLabel.Size = new System.Drawing.Size(104, 15);
-            this.POIInfosLabel.TabIndex = 1;
-            this.POIInfosLabel.Text = "In&formationstexter";
+            this.EdgeBeginningLabel.AutoSize = true;
+            this.EdgeBeginningLabel.Location = new System.Drawing.Point(203, 219);
+            this.EdgeBeginningLabel.Name = "EdgeBeginningLabel";
+            this.EdgeBeginningLabel.Size = new System.Drawing.Size(94, 15);
+            this.EdgeBeginningLabel.TabIndex = 4;
+            this.EdgeBeginningLabel.Text = "Startinformation";
+            // 
+            // EdgeBeginningTB
+            // 
+            this.EdgeBeginningTB.Location = new System.Drawing.Point(206, 237);
+            this.EdgeBeginningTB.Name = "EdgeBeginningTB";
+            this.EdgeBeginningTB.Size = new System.Drawing.Size(480, 23);
+            this.EdgeBeginningTB.TabIndex = 5;
+            // 
+            // EdgeStartHeadingLabel
+            // 
+            this.EdgeStartHeadingLabel.AutoSize = true;
+            this.EdgeStartHeadingLabel.Location = new System.Drawing.Point(203, 274);
+            this.EdgeStartHeadingLabel.Name = "EdgeStartHeadingLabel";
+            this.EdgeStartHeadingLabel.Size = new System.Drawing.Size(72, 15);
+            this.EdgeStartHeadingLabel.TabIndex = 6;
+            this.EdgeStartHeadingLabel.Text = "Startriktning";
+            // 
+            // EdgeStartHeadingTB
+            // 
+            this.EdgeStartHeadingTB.Location = new System.Drawing.Point(206, 292);
+            this.EdgeStartHeadingTB.Name = "EdgeStartHeadingTB";
+            this.EdgeStartHeadingTB.Size = new System.Drawing.Size(100, 23);
+            this.EdgeStartHeadingTB.TabIndex = 7;
+            // 
+            // EdgeEndHeadingLabel
+            // 
+            this.EdgeEndHeadingLabel.AutoSize = true;
+            this.EdgeEndHeadingLabel.Location = new System.Drawing.Point(309, 274);
+            this.EdgeEndHeadingLabel.Name = "EdgeEndHeadingLabel";
+            this.EdgeEndHeadingLabel.Size = new System.Drawing.Size(68, 15);
+            this.EdgeEndHeadingLabel.TabIndex = 8;
+            this.EdgeEndHeadingLabel.Text = "Slutriktning";
+            // 
+            // EdgeEndHeadingTB
+            // 
+            this.EdgeEndHeadingTB.Location = new System.Drawing.Point(312, 292);
+            this.EdgeEndHeadingTB.Name = "EdgeEndHeadingTB";
+            this.EdgeEndHeadingTB.Size = new System.Drawing.Size(100, 23);
+            this.EdgeEndHeadingTB.TabIndex = 9;
+            // 
+            // EdgeTravelTimeLabel
+            // 
+            this.EdgeTravelTimeLabel.AutoSize = true;
+            this.EdgeTravelTimeLabel.Location = new System.Drawing.Point(415, 274);
+            this.EdgeTravelTimeLabel.Name = "EdgeTravelTimeLabel";
+            this.EdgeTravelTimeLabel.Size = new System.Drawing.Size(39, 15);
+            this.EdgeTravelTimeLabel.TabIndex = 10;
+            this.EdgeTravelTimeLabel.Text = "Restid";
+            // 
+            // EdgeTravelTimeTB
+            // 
+            this.EdgeTravelTimeTB.Location = new System.Drawing.Point(418, 292);
+            this.EdgeTravelTimeTB.Name = "EdgeTravelTimeTB";
+            this.EdgeTravelTimeTB.Size = new System.Drawing.Size(100, 23);
+            this.EdgeTravelTimeTB.TabIndex = 11;
+            // 
+            // AddEdgeButton
+            // 
+            this.AddEdgeButton.Location = new System.Drawing.Point(692, 21);
+            this.AddEdgeButton.Name = "AddEdgeButton";
+            this.AddEdgeButton.Size = new System.Drawing.Size(75, 23);
+            this.AddEdgeButton.TabIndex = 12;
+            this.AddEdgeButton.Text = "L&ägg till";
+            this.AddEdgeButton.UseVisualStyleBackColor = true;
+            this.AddEdgeButton.Click += new System.EventHandler(this.AddEdgeButton_Click);
+            // 
+            // DeleteEdgeButton
+            // 
+            this.DeleteEdgeButton.Location = new System.Drawing.Point(692, 50);
+            this.DeleteEdgeButton.Name = "DeleteEdgeButton";
+            this.DeleteEdgeButton.Size = new System.Drawing.Size(75, 23);
+            this.DeleteEdgeButton.TabIndex = 13;
+            this.DeleteEdgeButton.Text = "&Ta bort";
+            this.DeleteEdgeButton.UseVisualStyleBackColor = true;
+            this.DeleteEdgeButton.Click += new System.EventHandler(this.DeleteEdgeButton_Click);
             // 
             // MainForm
             // 
@@ -724,15 +891,20 @@
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.MainMenuStrip.ResumeLayout(false);
             this.MainMenuStrip.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.VenueBS)).EndInit();
             this.Tabs.ResumeLayout(false);
             this.PoiTabPage.ResumeLayout(false);
             this.PoiTabPage.PerformLayout();
             this.ElevatorsTab.ResumeLayout(false);
             this.ElevatorsTab.PerformLayout();
+            this.EdgesTab.ResumeLayout(false);
+            this.EdgesTab.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.VenueBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.POIsBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.POIInfosBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ElevatorsBS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EdgesPOIsBS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EdgesForPOIBS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EdgeBS)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -808,5 +980,23 @@
         private System.Windows.Forms.TextBox ElevatorMessageTB;
         private System.Windows.Forms.Label ElevatorMessageLabel;
         private System.Windows.Forms.Label POIInfosLabel;
+        private System.Windows.Forms.TabPage EdgesTab;
+        private System.Windows.Forms.ListBox EdgesForPOILB;
+        private System.Windows.Forms.Label EdgesListLabel;
+        private System.Windows.Forms.ListBox EdgesPOIsLB;
+        private System.Windows.Forms.Label EdgesPOIListLabel;
+        private System.Windows.Forms.BindingSource EdgesPOIsBS;
+        private System.Windows.Forms.BindingSource EdgesForPOIBS;
+        private System.Windows.Forms.TextBox EdgeTravelTimeTB;
+        private System.Windows.Forms.Label EdgeTravelTimeLabel;
+        private System.Windows.Forms.TextBox EdgeEndHeadingTB;
+        private System.Windows.Forms.Label EdgeEndHeadingLabel;
+        private System.Windows.Forms.TextBox EdgeStartHeadingTB;
+        private System.Windows.Forms.Label EdgeStartHeadingLabel;
+        private System.Windows.Forms.TextBox EdgeBeginningTB;
+        private System.Windows.Forms.Label EdgeBeginningLabel;
+        private System.Windows.Forms.Button DeleteEdgeButton;
+        private System.Windows.Forms.Button AddEdgeButton;
+        private System.Windows.Forms.BindingSource EdgeBS;
     }
 }

@@ -120,10 +120,11 @@ namespace WayfindR.Models
                     }
                     else
                     {
-                        if (propValues[propName] != gkey.DefaultValue)
+                        if (propValues[propName] != gkey.DefaultValue &&
+                            !string.IsNullOrEmpty(propValues[propName]))
                         {
                             xdataelement = new XElement(node.Name.Namespace + "data");
-                            XAttribute xattr = new XAttribute("id", gkey.Id);
+                            XAttribute xattr = new XAttribute("key", gkey.Id);
                             xdataelement.Add(xattr);
                             if (gkey.DataType == "string")
                             {
@@ -176,8 +177,7 @@ namespace WayfindR.Models
                 return true;
             }
         }
-
-
+        
         private static Dictionary<string,string> GetPropertyValues(object obj)
         {
             try
@@ -237,8 +237,7 @@ namespace WayfindR.Models
             }
 
         }
-
-
+        
         private static void SetPropertyValues(object obj, Dictionary<string, string> dataDict)
         {
             try
@@ -320,10 +319,7 @@ namespace WayfindR.Models
             }
 
         }
-
-
-
-
+        
         private static string NodeValue(XElement node, string nodeName, XNamespace ns)
         {
             if (node == null)
@@ -367,8 +363,7 @@ namespace WayfindR.Models
             return subnode.Value;
 
         }
-
-
+        
         private static string NodeAttribute(XElement node, string attribName)
         {
             if (node == null)
@@ -520,8 +515,7 @@ namespace WayfindR.Models
             }
 
         }
-
-
+        
         public void Save(string fileName)
         {
             try
@@ -536,18 +530,46 @@ namespace WayfindR.Models
                         File.ReadAllBytes(fileName)
                         ))
                 {
-                    Stream ws = SaveToGraphML(ms);
-
-                    string newfile = fileName + ".graphml";
-                    using (FileStream fs = new FileStream(newfile, FileMode.OpenOrCreate))
+                    try
                     {
-                        ws.Position = 0;
-                        ws.CopyTo(fs);
+                        using (Stream ws = SaveToGraphML(ms))
+                        {
+                            try
+                            {
 
-                    } // using fs
-                    
-                    
+                                using (FileStream fs = new FileStream(fileName, FileMode.OpenOrCreate))
+                                {
+                                    try
+                                    {
+                                        fs.SetLength(ws.Length);
+                                        ws.Position = 0;
+                                        ws.CopyTo(fs);
+                                    }
+                                    finally
+                                    {
+                                        fs.Close();
+
+                                    }
+
+                                } // using fs
+                            }
+                            finally
+                            {
+                                ws.Close();
+
+                            }
+
+                        } // using ws
+
+                    }
+                    finally
+                    {
+                        ms.Close();
+
+                    }
+                                        
                 } // using
+
             }
             catch
             {
@@ -556,8 +578,7 @@ namespace WayfindR.Models
             }
 
         }
-
-
+        
         public Stream SaveToGraphML(Stream stream)
         {
             try
@@ -596,7 +617,21 @@ namespace WayfindR.Models
 
 
                     // Nodes
-                    var xnodes = xgraph.Elements(ns + "node");
+                    var xnodes = xgraph.Elements(ns + "node").ToArray();
+                    
+                    // Remove nodes that doesn't exist anymore
+                    for (int idx = xnodes.Count() - 1; idx >= 0; idx--)
+                    {
+                        XElement xnode = xnodes[idx];
+                        var node = this.Vertices.Where(w => w.Id == NodeAttribute(xnode, "id")).FirstOrDefault();
+                        if (node == null)
+                        {
+                            xnode.Remove();
+
+                        } // Not present
+
+                    } // for
+
                     foreach (WFNode wfn in this.Vertices)
                     {
                         XElement xnode = xnodes.Where(w => NodeAttribute(w, "id") == wfn.Id).FirstOrDefault();
@@ -614,10 +649,25 @@ namespace WayfindR.Models
                         MakeXelementsOfThese(nodeprops, xnode, gklist);
                         
                     } // foreach node
-                                        
-                                        
+
+
                     // Edges
-                    var xedges = xgraph.Elements(ns + "edge");
+                    var xedges = xgraph.Elements(ns + "edge").ToArray();
+
+                    // Remove edges that doesn't exist anymore
+                    for (int idx = xedges.Count() - 1; idx >= 0; idx--)
+                    {
+
+                        XElement xedge = xedges[idx];
+                        var edg = Edges.Where(w => w.Id == NodeAttribute(xedge, "id")).FirstOrDefault();
+                        if (edg == null)
+                        {
+                            xedge.Remove();
+
+                        } // Not present
+
+                    } // foreach
+                    
                     foreach (WFEdge<WFNode> wfe in this.Edges)
                     {
                         XElement xedge = xedges.Where(w => NodeAttribute(w, "id") == wfe.Id).FirstOrDefault();
@@ -680,8 +730,7 @@ namespace WayfindR.Models
             }
 
         }
-
-
+        
         public WFNode[] GetNodesAlphabetical()
         {
             WFNode[] nodesalpha = (
@@ -692,6 +741,29 @@ namespace WayfindR.Models
             return nodesalpha;
         }
 
+        public WFEdge<WFNode>[] GetEdgesFor(WFNode node)
+        {
+            WFEdge<WFNode>[] edgesfor = (
+                from x in this.Edges
+                where x.Source == node || x.Target == node
+                select x
+                ).ToArray();
+                
+            return edgesfor;
+            
+
+            //return this.OutEdges(node).ToArray();
+        }
+
+        public string[] GetUuids()
+        {
+            string[] uuids = (
+                from x in Vertices
+                where !string.IsNullOrEmpty(x.Uuid)
+                select x.Uuid
+                ).Distinct().ToArray();
+            return uuids;
+        }
 
         public IEnumerable<WFEdge<WFNode>> CalculateRoute(WFNode source, WFNode target)
         {
@@ -736,6 +808,17 @@ namespace WayfindR.Models
 
         }
 
+        public WFNode FindNode(string uuid, int major, int minor)
+        {
+            WFNode result = this.Vertices.Where(w =>
+                w.Uuid.ToLower() == uuid.ToLower() &&
+                w.Major == major &&
+                w.Minor == minor
+                ).FirstOrDefault();
+
+            return result;
+
+        }
 
         public WFNode FindNode(CacheNodeBeacon cnb)
         {
@@ -745,13 +828,14 @@ namespace WayfindR.Models
 
             } // cnb is null
 
-            WFNode result = this.Vertices.Where(w => w.Major == cnb.Major && w.Minor == cnb.Minor).FirstOrDefault();
-
-            return result;
+            return FindNode(
+                cnb.Uuid,
+                cnb.Major,
+                cnb.Minor
+                );
 
         }
-
-
+        
     } // class WFGraph
 
 
