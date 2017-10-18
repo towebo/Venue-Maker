@@ -10,12 +10,40 @@ using QuickGraph.Algorithms.Observers;
 using System.Xml.Linq;
 using System.Reflection;
 using System.Globalization;
+using WayfindR.Helpers;
 
 namespace WayfindR.Models
 {
     [Serializable]
     public class WFGraph : AdjacencyGraph<WFNode, WFEdge<WFNode>>
-    {        
+    {
+
+        public Int64 LastEdgeId
+        {
+            get
+            {
+                Int64 result = (
+                    from x in Edges
+                    select Convert.ToInt64(x.Id.NumbersOnly())
+                    ).Max();
+                return result;
+
+            } // get
+        } // LastEdgeId
+        public Int64 LastNodeId
+        {
+            get
+            {
+                Int64 result = (
+                        from x in Vertices
+                        select Convert.ToInt64(x.Id.NumbersOnly())
+                        ).Max();
+                return result;
+                                
+            } // get
+        } // LastNodeId
+
+        
 
         public string Id { get; set; }
 
@@ -503,6 +531,9 @@ namespace WayfindR.Models
                         result.AddEdge(wfe);
 
                     } // foreach xedge
+
+                    
+                    
                     
                 } // if xgraph not null
                 
@@ -657,7 +688,6 @@ namespace WayfindR.Models
                     // Remove edges that doesn't exist anymore
                     for (int idx = xedges.Count() - 1; idx >= 0; idx--)
                     {
-
                         XElement xedge = xedges[idx];
                         var edg = Edges.Where(w => w.Id == NodeAttribute(xedge, "id")).FirstOrDefault();
                         if (edg == null)
@@ -666,7 +696,7 @@ namespace WayfindR.Models
 
                         } // Not present
 
-                    } // foreach
+                    } // for
                     
                     foreach (WFEdge<WFNode> wfe in this.Edges)
                     {

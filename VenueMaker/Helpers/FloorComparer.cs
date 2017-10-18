@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using WayfindR.Models;
 
-namespace Radar
+namespace WayfindR.Helpers
 {
     public class FloorComparer : IComparer<WFPointOfInterest>, IComparer<WFNode>, IComparer<string>
     {

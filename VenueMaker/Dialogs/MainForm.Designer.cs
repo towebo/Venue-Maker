@@ -43,19 +43,24 @@
             this.OpenVenueDialog = new System.Windows.Forms.OpenFileDialog();
             this.OpenGraphMLDialog = new System.Windows.Forms.OpenFileDialog();
             this.SaveVenueDialog = new System.Windows.Forms.SaveFileDialog();
-            this.VenueNameLabel = new System.Windows.Forms.Label();
-            this.VenueNameTB = new System.Windows.Forms.TextBox();
-            this.VenueIDLabel = new System.Windows.Forms.Label();
-            this.VenueIDTB = new System.Windows.Forms.TextBox();
-            this.AddressLabel = new System.Windows.Forms.Label();
-            this.AddressTB = new System.Windows.Forms.TextBox();
-            this.ZipLabel = new System.Windows.Forms.Label();
-            this.ZipTB = new System.Windows.Forms.TextBox();
-            this.CityLabel = new System.Windows.Forms.Label();
-            this.CityTB = new System.Windows.Forms.TextBox();
-            this.CountryLabel = new System.Windows.Forms.Label();
-            this.CountryTB = new System.Windows.Forms.TextBox();
             this.Tabs = new System.Windows.Forms.TabControl();
+            this.VenueTab = new System.Windows.Forms.TabPage();
+            this.VisibilityCombo = new System.Windows.Forms.ComboBox();
+            this.VisibilityLabel = new System.Windows.Forms.Label();
+            this.VenueDescriptionTB = new System.Windows.Forms.TextBox();
+            this.VenueDescriptionLabel = new System.Windows.Forms.Label();
+            this.CountryTB = new System.Windows.Forms.TextBox();
+            this.CountryLabel = new System.Windows.Forms.Label();
+            this.CityTB = new System.Windows.Forms.TextBox();
+            this.CityLabel = new System.Windows.Forms.Label();
+            this.ZipTB = new System.Windows.Forms.TextBox();
+            this.ZipLabel = new System.Windows.Forms.Label();
+            this.AddressTB = new System.Windows.Forms.TextBox();
+            this.AddressLabel = new System.Windows.Forms.Label();
+            this.VenueIDTB = new System.Windows.Forms.TextBox();
+            this.VenueIDLabel = new System.Windows.Forms.Label();
+            this.VenueNameTB = new System.Windows.Forms.TextBox();
+            this.VenueNameLabel = new System.Windows.Forms.Label();
             this.PoiTabPage = new System.Windows.Forms.TabPage();
             this.POIInfosLabel = new System.Windows.Forms.Label();
             this.AutoPlayMediaCB = new System.Windows.Forms.CheckBox();
@@ -79,6 +84,21 @@
             this.POIInfosLB = new System.Windows.Forms.ListBox();
             this.POIsListLabel = new System.Windows.Forms.Label();
             this.POIsLB = new System.Windows.Forms.ListBox();
+            this.EdgesTab = new System.Windows.Forms.TabPage();
+            this.DeleteEdgeButton = new System.Windows.Forms.Button();
+            this.AddEdgeButton = new System.Windows.Forms.Button();
+            this.EdgeTravelTimeTB = new System.Windows.Forms.TextBox();
+            this.EdgeTravelTimeLabel = new System.Windows.Forms.Label();
+            this.EdgeEndHeadingTB = new System.Windows.Forms.TextBox();
+            this.EdgeEndHeadingLabel = new System.Windows.Forms.Label();
+            this.EdgeStartHeadingTB = new System.Windows.Forms.TextBox();
+            this.EdgeStartHeadingLabel = new System.Windows.Forms.Label();
+            this.EdgeBeginningTB = new System.Windows.Forms.TextBox();
+            this.EdgeBeginningLabel = new System.Windows.Forms.Label();
+            this.EdgesForPOILB = new System.Windows.Forms.ListBox();
+            this.EdgesListLabel = new System.Windows.Forms.Label();
+            this.EdgesPOIsLB = new System.Windows.Forms.ListBox();
+            this.EdgesPOIListLabel = new System.Windows.Forms.Label();
             this.ElevatorsTab = new System.Windows.Forms.TabPage();
             this.ElevatorMessageTB = new System.Windows.Forms.TextBox();
             this.ElevatorMessageLabel = new System.Windows.Forms.Label();
@@ -89,26 +109,7 @@
             this.CreateElevatorEdgesButton = new System.Windows.Forms.Button();
             this.ElevatorsLB = new System.Windows.Forms.ListBox();
             this.ElevatorListLabel = new System.Windows.Forms.Label();
-            this.EdgesTab = new System.Windows.Forms.TabPage();
-            this.EdgesForPOILB = new System.Windows.Forms.ListBox();
-            this.EdgesListLabel = new System.Windows.Forms.Label();
-            this.EdgesPOIsLB = new System.Windows.Forms.ListBox();
-            this.EdgesPOIListLabel = new System.Windows.Forms.Label();
-            this.VenueDescriptionLabel = new System.Windows.Forms.Label();
-            this.VenueDescriptionTB = new System.Windows.Forms.TextBox();
-            this.VisibilityLabel = new System.Windows.Forms.Label();
-            this.VisibilityCombo = new System.Windows.Forms.ComboBox();
             this.OpenMediaFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.EdgeBeginningLabel = new System.Windows.Forms.Label();
-            this.EdgeBeginningTB = new System.Windows.Forms.TextBox();
-            this.EdgeStartHeadingLabel = new System.Windows.Forms.Label();
-            this.EdgeStartHeadingTB = new System.Windows.Forms.TextBox();
-            this.EdgeEndHeadingLabel = new System.Windows.Forms.Label();
-            this.EdgeEndHeadingTB = new System.Windows.Forms.TextBox();
-            this.EdgeTravelTimeLabel = new System.Windows.Forms.Label();
-            this.EdgeTravelTimeTB = new System.Windows.Forms.TextBox();
-            this.AddEdgeButton = new System.Windows.Forms.Button();
-            this.DeleteEdgeButton = new System.Windows.Forms.Button();
             this.VenueBS = new System.Windows.Forms.BindingSource(this.components);
             this.POIsBS = new System.Windows.Forms.BindingSource(this.components);
             this.POIInfosBS = new System.Windows.Forms.BindingSource(this.components);
@@ -116,11 +117,15 @@
             this.EdgesPOIsBS = new System.Windows.Forms.BindingSource(this.components);
             this.EdgesForPOIBS = new System.Windows.Forms.BindingSource(this.components);
             this.EdgeBS = new System.Windows.Forms.BindingSource(this.components);
+            this.actionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.testRoutsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.DeleteAllElevatorEdgesButton = new System.Windows.Forms.Button();
             this.MainMenuStrip.SuspendLayout();
             this.Tabs.SuspendLayout();
+            this.VenueTab.SuspendLayout();
             this.PoiTabPage.SuspendLayout();
-            this.ElevatorsTab.SuspendLayout();
             this.EdgesTab.SuspendLayout();
+            this.ElevatorsTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VenueBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.POIsBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.POIInfosBS)).BeginInit();
@@ -134,7 +139,8 @@
             // 
             this.MainMenuStrip.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.MainMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem});
+            this.fileToolStripMenuItem,
+            this.actionsToolStripMenuItem});
             this.MainMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.MainMenuStrip.Name = "MainMenuStrip";
             this.MainMenuStrip.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
@@ -229,124 +235,188 @@
             this.SaveVenueDialog.DefaultExt = "venue";
             this.SaveVenueDialog.Filter = "Venues (*.venue)|*.venue";
             // 
-            // VenueNameLabel
+            // Tabs
             // 
-            this.VenueNameLabel.AutoSize = true;
-            this.VenueNameLabel.Location = new System.Drawing.Point(14, 43);
-            this.VenueNameLabel.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.VenueNameLabel.Name = "VenueNameLabel";
-            this.VenueNameLabel.Size = new System.Drawing.Size(40, 15);
-            this.VenueNameLabel.TabIndex = 1;
-            this.VenueNameLabel.Text = "&Namn";
+            this.Tabs.Controls.Add(this.VenueTab);
+            this.Tabs.Controls.Add(this.PoiTabPage);
+            this.Tabs.Controls.Add(this.EdgesTab);
+            this.Tabs.Controls.Add(this.ElevatorsTab);
+            this.Tabs.Location = new System.Drawing.Point(12, 43);
+            this.Tabs.Name = "Tabs";
+            this.Tabs.SelectedIndex = 0;
+            this.Tabs.Size = new System.Drawing.Size(1110, 657);
+            this.Tabs.TabIndex = 17;
             // 
-            // VenueNameTB
+            // VenueTab
             // 
-            this.VenueNameTB.Location = new System.Drawing.Point(14, 61);
-            this.VenueNameTB.Margin = new System.Windows.Forms.Padding(5);
-            this.VenueNameTB.Name = "VenueNameTB";
-            this.VenueNameTB.Size = new System.Drawing.Size(226, 23);
-            this.VenueNameTB.TabIndex = 2;
+            this.VenueTab.Controls.Add(this.VisibilityCombo);
+            this.VenueTab.Controls.Add(this.VisibilityLabel);
+            this.VenueTab.Controls.Add(this.VenueDescriptionTB);
+            this.VenueTab.Controls.Add(this.VenueDescriptionLabel);
+            this.VenueTab.Controls.Add(this.CountryTB);
+            this.VenueTab.Controls.Add(this.CountryLabel);
+            this.VenueTab.Controls.Add(this.CityTB);
+            this.VenueTab.Controls.Add(this.CityLabel);
+            this.VenueTab.Controls.Add(this.ZipTB);
+            this.VenueTab.Controls.Add(this.ZipLabel);
+            this.VenueTab.Controls.Add(this.AddressTB);
+            this.VenueTab.Controls.Add(this.AddressLabel);
+            this.VenueTab.Controls.Add(this.VenueIDTB);
+            this.VenueTab.Controls.Add(this.VenueIDLabel);
+            this.VenueTab.Controls.Add(this.VenueNameTB);
+            this.VenueTab.Controls.Add(this.VenueNameLabel);
+            this.VenueTab.Location = new System.Drawing.Point(4, 24);
+            this.VenueTab.Name = "VenueTab";
+            this.VenueTab.Padding = new System.Windows.Forms.Padding(3);
+            this.VenueTab.Size = new System.Drawing.Size(1102, 629);
+            this.VenueTab.TabIndex = 4;
+            this.VenueTab.Text = "Platsinformation";
+            this.VenueTab.UseVisualStyleBackColor = true;
             // 
-            // VenueIDLabel
+            // VisibilityCombo
             // 
-            this.VenueIDLabel.AutoSize = true;
-            this.VenueIDLabel.Location = new System.Drawing.Point(14, 88);
-            this.VenueIDLabel.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.VenueIDLabel.Name = "VenueIDLabel";
-            this.VenueIDLabel.Size = new System.Drawing.Size(18, 15);
-            this.VenueIDLabel.TabIndex = 3;
-            this.VenueIDLabel.Text = "I&D";
+            this.VisibilityCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.VisibilityCombo.FormattingEnabled = true;
+            this.VisibilityCombo.Location = new System.Drawing.Point(8, 487);
+            this.VisibilityCombo.Name = "VisibilityCombo";
+            this.VisibilityCombo.Size = new System.Drawing.Size(177, 23);
+            this.VisibilityCombo.TabIndex = 32;
             // 
-            // VenueIDTB
+            // VisibilityLabel
             // 
-            this.VenueIDTB.Location = new System.Drawing.Point(14, 105);
-            this.VenueIDTB.Margin = new System.Windows.Forms.Padding(5);
-            this.VenueIDTB.Name = "VenueIDTB";
-            this.VenueIDTB.Size = new System.Drawing.Size(188, 23);
-            this.VenueIDTB.TabIndex = 4;
+            this.VisibilityLabel.AutoSize = true;
+            this.VisibilityLabel.Location = new System.Drawing.Point(8, 471);
+            this.VisibilityLabel.Name = "VisibilityLabel";
+            this.VisibilityLabel.Size = new System.Drawing.Size(157, 15);
+            this.VisibilityLabel.TabIndex = 31;
+            this.VisibilityLabel.Text = "Synlighet i listan över platser";
             // 
-            // AddressLabel
+            // VenueDescriptionTB
             // 
-            this.AddressLabel.AutoSize = true;
-            this.AddressLabel.Location = new System.Drawing.Point(14, 130);
-            this.AddressLabel.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.AddressLabel.Name = "AddressLabel";
-            this.AddressLabel.Size = new System.Drawing.Size(42, 15);
-            this.AddressLabel.TabIndex = 5;
-            this.AddressLabel.Text = "A&dress";
+            this.VenueDescriptionTB.AcceptsReturn = true;
+            this.VenueDescriptionTB.Location = new System.Drawing.Point(8, 246);
+            this.VenueDescriptionTB.Multiline = true;
+            this.VenueDescriptionTB.Name = "VenueDescriptionTB";
+            this.VenueDescriptionTB.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.VenueDescriptionTB.Size = new System.Drawing.Size(278, 222);
+            this.VenueDescriptionTB.TabIndex = 30;
             // 
-            // AddressTB
+            // VenueDescriptionLabel
             // 
-            this.AddressTB.Location = new System.Drawing.Point(14, 150);
-            this.AddressTB.Margin = new System.Windows.Forms.Padding(5);
-            this.AddressTB.Name = "AddressTB";
-            this.AddressTB.Size = new System.Drawing.Size(188, 23);
-            this.AddressTB.TabIndex = 6;
+            this.VenueDescriptionLabel.AutoSize = true;
+            this.VenueDescriptionLabel.Location = new System.Drawing.Point(8, 228);
+            this.VenueDescriptionLabel.Name = "VenueDescriptionLabel";
+            this.VenueDescriptionLabel.Size = new System.Drawing.Size(68, 15);
+            this.VenueDescriptionLabel.TabIndex = 29;
+            this.VenueDescriptionLabel.Text = "&Beskrivning";
             // 
-            // ZipLabel
+            // CountryTB
             // 
-            this.ZipLabel.AutoSize = true;
-            this.ZipLabel.Location = new System.Drawing.Point(14, 175);
-            this.ZipLabel.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.ZipLabel.Name = "ZipLabel";
-            this.ZipLabel.Size = new System.Drawing.Size(41, 15);
-            this.ZipLabel.TabIndex = 7;
-            this.ZipLabel.Text = "&Postnr";
-            // 
-            // ZipTB
-            // 
-            this.ZipTB.Location = new System.Drawing.Point(19, 195);
-            this.ZipTB.Margin = new System.Windows.Forms.Padding(5);
-            this.ZipTB.Name = "ZipTB";
-            this.ZipTB.Size = new System.Drawing.Size(72, 23);
-            this.ZipTB.TabIndex = 8;
-            // 
-            // CityLabel
-            // 
-            this.CityLabel.AutoSize = true;
-            this.CityLabel.Location = new System.Drawing.Point(96, 175);
-            this.CityLabel.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.CityLabel.Name = "CityLabel";
-            this.CityLabel.Size = new System.Drawing.Size(24, 15);
-            this.CityLabel.TabIndex = 9;
-            this.CityLabel.Text = "&Ort";
-            // 
-            // CityTB
-            // 
-            this.CityTB.Location = new System.Drawing.Point(96, 195);
-            this.CityTB.Margin = new System.Windows.Forms.Padding(5);
-            this.CityTB.Name = "CityTB";
-            this.CityTB.Size = new System.Drawing.Size(183, 23);
-            this.CityTB.TabIndex = 10;
+            this.CountryTB.Location = new System.Drawing.Point(13, 200);
+            this.CountryTB.Margin = new System.Windows.Forms.Padding(5);
+            this.CountryTB.Name = "CountryTB";
+            this.CountryTB.Size = new System.Drawing.Size(163, 23);
+            this.CountryTB.TabIndex = 28;
             // 
             // CountryLabel
             // 
             this.CountryLabel.AutoSize = true;
-            this.CountryLabel.Location = new System.Drawing.Point(14, 220);
+            this.CountryLabel.Location = new System.Drawing.Point(8, 180);
             this.CountryLabel.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.CountryLabel.Name = "CountryLabel";
             this.CountryLabel.Size = new System.Drawing.Size(33, 15);
-            this.CountryLabel.TabIndex = 11;
+            this.CountryLabel.TabIndex = 27;
             this.CountryLabel.Text = "&Land";
             // 
-            // CountryTB
+            // CityTB
             // 
-            this.CountryTB.Location = new System.Drawing.Point(19, 240);
-            this.CountryTB.Margin = new System.Windows.Forms.Padding(5);
-            this.CountryTB.Name = "CountryTB";
-            this.CountryTB.Size = new System.Drawing.Size(163, 23);
-            this.CountryTB.TabIndex = 12;
+            this.CityTB.Location = new System.Drawing.Point(90, 155);
+            this.CityTB.Margin = new System.Windows.Forms.Padding(5);
+            this.CityTB.Name = "CityTB";
+            this.CityTB.Size = new System.Drawing.Size(183, 23);
+            this.CityTB.TabIndex = 26;
             // 
-            // Tabs
+            // CityLabel
             // 
-            this.Tabs.Controls.Add(this.PoiTabPage);
-            this.Tabs.Controls.Add(this.ElevatorsTab);
-            this.Tabs.Controls.Add(this.EdgesTab);
-            this.Tabs.Location = new System.Drawing.Point(288, 43);
-            this.Tabs.Name = "Tabs";
-            this.Tabs.SelectedIndex = 0;
-            this.Tabs.Size = new System.Drawing.Size(834, 547);
-            this.Tabs.TabIndex = 17;
+            this.CityLabel.AutoSize = true;
+            this.CityLabel.Location = new System.Drawing.Point(90, 135);
+            this.CityLabel.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.CityLabel.Name = "CityLabel";
+            this.CityLabel.Size = new System.Drawing.Size(24, 15);
+            this.CityLabel.TabIndex = 25;
+            this.CityLabel.Text = "&Ort";
+            // 
+            // ZipTB
+            // 
+            this.ZipTB.Location = new System.Drawing.Point(13, 155);
+            this.ZipTB.Margin = new System.Windows.Forms.Padding(5);
+            this.ZipTB.Name = "ZipTB";
+            this.ZipTB.Size = new System.Drawing.Size(72, 23);
+            this.ZipTB.TabIndex = 24;
+            // 
+            // ZipLabel
+            // 
+            this.ZipLabel.AutoSize = true;
+            this.ZipLabel.Location = new System.Drawing.Point(8, 135);
+            this.ZipLabel.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.ZipLabel.Name = "ZipLabel";
+            this.ZipLabel.Size = new System.Drawing.Size(41, 15);
+            this.ZipLabel.TabIndex = 23;
+            this.ZipLabel.Text = "&Postnr";
+            // 
+            // AddressTB
+            // 
+            this.AddressTB.Location = new System.Drawing.Point(8, 110);
+            this.AddressTB.Margin = new System.Windows.Forms.Padding(5);
+            this.AddressTB.Name = "AddressTB";
+            this.AddressTB.Size = new System.Drawing.Size(188, 23);
+            this.AddressTB.TabIndex = 22;
+            // 
+            // AddressLabel
+            // 
+            this.AddressLabel.AutoSize = true;
+            this.AddressLabel.Location = new System.Drawing.Point(8, 90);
+            this.AddressLabel.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.AddressLabel.Name = "AddressLabel";
+            this.AddressLabel.Size = new System.Drawing.Size(42, 15);
+            this.AddressLabel.TabIndex = 21;
+            this.AddressLabel.Text = "A&dress";
+            // 
+            // VenueIDTB
+            // 
+            this.VenueIDTB.Location = new System.Drawing.Point(8, 65);
+            this.VenueIDTB.Margin = new System.Windows.Forms.Padding(5);
+            this.VenueIDTB.Name = "VenueIDTB";
+            this.VenueIDTB.Size = new System.Drawing.Size(116, 23);
+            this.VenueIDTB.TabIndex = 20;
+            // 
+            // VenueIDLabel
+            // 
+            this.VenueIDLabel.AutoSize = true;
+            this.VenueIDLabel.Location = new System.Drawing.Point(8, 48);
+            this.VenueIDLabel.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.VenueIDLabel.Name = "VenueIDLabel";
+            this.VenueIDLabel.Size = new System.Drawing.Size(18, 15);
+            this.VenueIDLabel.TabIndex = 19;
+            this.VenueIDLabel.Text = "I&D";
+            // 
+            // VenueNameTB
+            // 
+            this.VenueNameTB.Location = new System.Drawing.Point(11, 21);
+            this.VenueNameTB.Margin = new System.Windows.Forms.Padding(5);
+            this.VenueNameTB.Name = "VenueNameTB";
+            this.VenueNameTB.Size = new System.Drawing.Size(226, 23);
+            this.VenueNameTB.TabIndex = 18;
+            // 
+            // VenueNameLabel
+            // 
+            this.VenueNameLabel.AutoSize = true;
+            this.VenueNameLabel.Location = new System.Drawing.Point(8, 3);
+            this.VenueNameLabel.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.VenueNameLabel.Name = "VenueNameLabel";
+            this.VenueNameLabel.Size = new System.Drawing.Size(40, 15);
+            this.VenueNameLabel.TabIndex = 17;
+            this.VenueNameLabel.Text = "&Namn";
             // 
             // PoiTabPage
             // 
@@ -375,7 +445,7 @@
             this.PoiTabPage.Location = new System.Drawing.Point(4, 24);
             this.PoiTabPage.Name = "PoiTabPage";
             this.PoiTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.PoiTabPage.Size = new System.Drawing.Size(826, 519);
+            this.PoiTabPage.Size = new System.Drawing.Size(1102, 629);
             this.PoiTabPage.TabIndex = 0;
             this.PoiTabPage.Text = "Points Of Interest";
             this.PoiTabPage.UseVisualStyleBackColor = true;
@@ -383,7 +453,7 @@
             // POIInfosLabel
             // 
             this.POIInfosLabel.AutoSize = true;
-            this.POIInfosLabel.Location = new System.Drawing.Point(323, 21);
+            this.POIInfosLabel.Location = new System.Drawing.Point(330, 3);
             this.POIInfosLabel.Name = "POIInfosLabel";
             this.POIInfosLabel.Size = new System.Drawing.Size(104, 15);
             this.POIInfosLabel.TabIndex = 1;
@@ -392,7 +462,7 @@
             // AutoPlayMediaCB
             // 
             this.AutoPlayMediaCB.AutoSize = true;
-            this.AutoPlayMediaCB.Location = new System.Drawing.Point(326, 477);
+            this.AutoPlayMediaCB.Location = new System.Drawing.Point(333, 477);
             this.AutoPlayMediaCB.Name = "AutoPlayMediaCB";
             this.AutoPlayMediaCB.Size = new System.Drawing.Size(184, 19);
             this.AutoPlayMediaCB.TabIndex = 20;
@@ -401,7 +471,7 @@
             // 
             // MediaDescrTB
             // 
-            this.MediaDescrTB.Location = new System.Drawing.Point(326, 448);
+            this.MediaDescrTB.Location = new System.Drawing.Point(333, 448);
             this.MediaDescrTB.Name = "MediaDescrTB";
             this.MediaDescrTB.Size = new System.Drawing.Size(407, 23);
             this.MediaDescrTB.TabIndex = 19;
@@ -409,7 +479,7 @@
             // MediaDescLabel
             // 
             this.MediaDescLabel.AutoSize = true;
-            this.MediaDescLabel.Location = new System.Drawing.Point(326, 430);
+            this.MediaDescLabel.Location = new System.Drawing.Point(330, 430);
             this.MediaDescLabel.Name = "MediaDescLabel";
             this.MediaDescLabel.Size = new System.Drawing.Size(119, 15);
             this.MediaDescLabel.TabIndex = 18;
@@ -417,7 +487,7 @@
             // 
             // PickMediaFileButton
             // 
-            this.PickMediaFileButton.Location = new System.Drawing.Point(648, 403);
+            this.PickMediaFileButton.Location = new System.Drawing.Point(655, 403);
             this.PickMediaFileButton.Name = "PickMediaFileButton";
             this.PickMediaFileButton.Size = new System.Drawing.Size(75, 23);
             this.PickMediaFileButton.TabIndex = 17;
@@ -427,7 +497,7 @@
             // 
             // MediaFileTB
             // 
-            this.MediaFileTB.Location = new System.Drawing.Point(326, 404);
+            this.MediaFileTB.Location = new System.Drawing.Point(333, 404);
             this.MediaFileTB.Name = "MediaFileTB";
             this.MediaFileTB.Size = new System.Drawing.Size(316, 23);
             this.MediaFileTB.TabIndex = 16;
@@ -435,7 +505,7 @@
             // MediaFileLabel
             // 
             this.MediaFileLabel.AutoSize = true;
-            this.MediaFileLabel.Location = new System.Drawing.Point(326, 386);
+            this.MediaFileLabel.Location = new System.Drawing.Point(330, 386);
             this.MediaFileLabel.Name = "MediaFileLabel";
             this.MediaFileLabel.Size = new System.Drawing.Size(50, 15);
             this.MediaFileLabel.TabIndex = 15;
@@ -443,7 +513,7 @@
             // 
             // MoveInfoDownButton
             // 
-            this.MoveInfoDownButton.Location = new System.Drawing.Point(729, 127);
+            this.MoveInfoDownButton.Location = new System.Drawing.Point(736, 127);
             this.MoveInfoDownButton.Name = "MoveInfoDownButton";
             this.MoveInfoDownButton.Size = new System.Drawing.Size(75, 23);
             this.MoveInfoDownButton.TabIndex = 24;
@@ -453,7 +523,7 @@
             // 
             // MoveInfoUpButton
             // 
-            this.MoveInfoUpButton.Location = new System.Drawing.Point(729, 98);
+            this.MoveInfoUpButton.Location = new System.Drawing.Point(736, 98);
             this.MoveInfoUpButton.Name = "MoveInfoUpButton";
             this.MoveInfoUpButton.Size = new System.Drawing.Size(75, 23);
             this.MoveInfoUpButton.TabIndex = 23;
@@ -463,7 +533,7 @@
             // 
             // RemovePOIInfoButton
             // 
-            this.RemovePOIInfoButton.Location = new System.Drawing.Point(729, 53);
+            this.RemovePOIInfoButton.Location = new System.Drawing.Point(736, 53);
             this.RemovePOIInfoButton.Name = "RemovePOIInfoButton";
             this.RemovePOIInfoButton.Size = new System.Drawing.Size(75, 23);
             this.RemovePOIInfoButton.TabIndex = 22;
@@ -473,7 +543,7 @@
             // 
             // AddPOIInfoButton
             // 
-            this.AddPOIInfoButton.Location = new System.Drawing.Point(729, 21);
+            this.AddPOIInfoButton.Location = new System.Drawing.Point(736, 21);
             this.AddPOIInfoButton.Name = "AddPOIInfoButton";
             this.AddPOIInfoButton.Size = new System.Drawing.Size(75, 23);
             this.AddPOIInfoButton.TabIndex = 21;
@@ -483,7 +553,7 @@
             // 
             // POIInfoEndsTB
             // 
-            this.POIInfoEndsTB.Location = new System.Drawing.Point(504, 360);
+            this.POIInfoEndsTB.Location = new System.Drawing.Point(509, 360);
             this.POIInfoEndsTB.Name = "POIInfoEndsTB";
             this.POIInfoEndsTB.Size = new System.Drawing.Size(100, 23);
             this.POIInfoEndsTB.TabIndex = 10;
@@ -491,7 +561,7 @@
             // POIInfoEndsLabel
             // 
             this.POIInfoEndsLabel.AutoSize = true;
-            this.POIInfoEndsLabel.Location = new System.Drawing.Point(501, 342);
+            this.POIInfoEndsLabel.Location = new System.Drawing.Point(506, 342);
             this.POIInfoEndsLabel.Name = "POIInfoEndsLabel";
             this.POIInfoEndsLabel.Size = new System.Drawing.Size(100, 15);
             this.POIInfoEndsLabel.TabIndex = 9;
@@ -499,7 +569,7 @@
             // 
             // POIInfoStartsTB
             // 
-            this.POIInfoStartsTB.Location = new System.Drawing.Point(326, 360);
+            this.POIInfoStartsTB.Location = new System.Drawing.Point(333, 360);
             this.POIInfoStartsTB.Name = "POIInfoStartsTB";
             this.POIInfoStartsTB.Size = new System.Drawing.Size(170, 23);
             this.POIInfoStartsTB.TabIndex = 8;
@@ -507,7 +577,7 @@
             // POIInfoStartsLabel
             // 
             this.POIInfoStartsLabel.AutoSize = true;
-            this.POIInfoStartsLabel.Location = new System.Drawing.Point(326, 342);
+            this.POIInfoStartsLabel.Location = new System.Drawing.Point(330, 342);
             this.POIInfoStartsLabel.Name = "POIInfoStartsLabel";
             this.POIInfoStartsLabel.Size = new System.Drawing.Size(108, 15);
             this.POIInfoStartsLabel.TabIndex = 7;
@@ -517,7 +587,7 @@
             // 
             this.POIInfoCatCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.POIInfoCatCombo.FormattingEnabled = true;
-            this.POIInfoCatCombo.Location = new System.Drawing.Point(326, 316);
+            this.POIInfoCatCombo.Location = new System.Drawing.Point(333, 316);
             this.POIInfoCatCombo.Name = "POIInfoCatCombo";
             this.POIInfoCatCombo.Size = new System.Drawing.Size(212, 23);
             this.POIInfoCatCombo.TabIndex = 6;
@@ -525,7 +595,7 @@
             // POIInfoCatLabel
             // 
             this.POIInfoCatLabel.AutoSize = true;
-            this.POIInfoCatLabel.Location = new System.Drawing.Point(326, 298);
+            this.POIInfoCatLabel.Location = new System.Drawing.Point(330, 298);
             this.POIInfoCatLabel.Name = "POIInfoCatLabel";
             this.POIInfoCatLabel.Size = new System.Drawing.Size(51, 15);
             this.POIInfoCatLabel.TabIndex = 5;
@@ -533,7 +603,7 @@
             // 
             // POIInformationTB
             // 
-            this.POIInformationTB.Location = new System.Drawing.Point(326, 197);
+            this.POIInformationTB.Location = new System.Drawing.Point(333, 197);
             this.POIInformationTB.Multiline = true;
             this.POIInformationTB.Name = "POIInformationTB";
             this.POIInformationTB.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -543,7 +613,7 @@
             // POIInfoLabel
             // 
             this.POIInfoLabel.AutoSize = true;
-            this.POIInfoLabel.Location = new System.Drawing.Point(326, 179);
+            this.POIInfoLabel.Location = new System.Drawing.Point(330, 179);
             this.POIInfoLabel.Name = "POIInfoLabel";
             this.POIInfoLabel.Size = new System.Drawing.Size(70, 15);
             this.POIInfoLabel.TabIndex = 3;
@@ -553,7 +623,7 @@
             // 
             this.POIInfosLB.FormattingEnabled = true;
             this.POIInfosLB.ItemHeight = 15;
-            this.POIInfosLB.Location = new System.Drawing.Point(326, 36);
+            this.POIInfosLB.Location = new System.Drawing.Point(333, 21);
             this.POIInfosLB.Name = "POIInfosLB";
             this.POIInfosLB.Size = new System.Drawing.Size(397, 139);
             this.POIInfosLB.TabIndex = 2;
@@ -561,7 +631,7 @@
             // POIsListLabel
             // 
             this.POIsListLabel.AutoSize = true;
-            this.POIsListLabel.Location = new System.Drawing.Point(6, 3);
+            this.POIsListLabel.Location = new System.Drawing.Point(8, 3);
             this.POIsListLabel.Name = "POIsListLabel";
             this.POIsListLabel.Size = new System.Drawing.Size(98, 15);
             this.POIsListLabel.TabIndex = 0;
@@ -571,13 +641,158 @@
             // 
             this.POIsLB.FormattingEnabled = true;
             this.POIsLB.ItemHeight = 15;
-            this.POIsLB.Location = new System.Drawing.Point(6, 21);
+            this.POIsLB.Location = new System.Drawing.Point(11, 21);
             this.POIsLB.Name = "POIsLB";
             this.POIsLB.Size = new System.Drawing.Size(315, 319);
             this.POIsLB.TabIndex = 0;
             // 
+            // EdgesTab
+            // 
+            this.EdgesTab.Controls.Add(this.DeleteEdgeButton);
+            this.EdgesTab.Controls.Add(this.AddEdgeButton);
+            this.EdgesTab.Controls.Add(this.EdgeTravelTimeTB);
+            this.EdgesTab.Controls.Add(this.EdgeTravelTimeLabel);
+            this.EdgesTab.Controls.Add(this.EdgeEndHeadingTB);
+            this.EdgesTab.Controls.Add(this.EdgeEndHeadingLabel);
+            this.EdgesTab.Controls.Add(this.EdgeStartHeadingTB);
+            this.EdgesTab.Controls.Add(this.EdgeStartHeadingLabel);
+            this.EdgesTab.Controls.Add(this.EdgeBeginningTB);
+            this.EdgesTab.Controls.Add(this.EdgeBeginningLabel);
+            this.EdgesTab.Controls.Add(this.EdgesForPOILB);
+            this.EdgesTab.Controls.Add(this.EdgesListLabel);
+            this.EdgesTab.Controls.Add(this.EdgesPOIsLB);
+            this.EdgesTab.Controls.Add(this.EdgesPOIListLabel);
+            this.EdgesTab.Location = new System.Drawing.Point(4, 24);
+            this.EdgesTab.Name = "EdgesTab";
+            this.EdgesTab.Padding = new System.Windows.Forms.Padding(3);
+            this.EdgesTab.Size = new System.Drawing.Size(1102, 629);
+            this.EdgesTab.TabIndex = 3;
+            this.EdgesTab.Text = "Vägbeskrivningar";
+            this.EdgesTab.UseVisualStyleBackColor = true;
+            // 
+            // DeleteEdgeButton
+            // 
+            this.DeleteEdgeButton.Location = new System.Drawing.Point(692, 50);
+            this.DeleteEdgeButton.Name = "DeleteEdgeButton";
+            this.DeleteEdgeButton.Size = new System.Drawing.Size(75, 23);
+            this.DeleteEdgeButton.TabIndex = 13;
+            this.DeleteEdgeButton.Text = "&Ta bort";
+            this.DeleteEdgeButton.UseVisualStyleBackColor = true;
+            this.DeleteEdgeButton.Click += new System.EventHandler(this.DeleteEdgeButton_Click);
+            // 
+            // AddEdgeButton
+            // 
+            this.AddEdgeButton.Location = new System.Drawing.Point(692, 21);
+            this.AddEdgeButton.Name = "AddEdgeButton";
+            this.AddEdgeButton.Size = new System.Drawing.Size(75, 23);
+            this.AddEdgeButton.TabIndex = 12;
+            this.AddEdgeButton.Text = "L&ägg till";
+            this.AddEdgeButton.UseVisualStyleBackColor = true;
+            this.AddEdgeButton.Click += new System.EventHandler(this.AddEdgeButton_Click);
+            // 
+            // EdgeTravelTimeTB
+            // 
+            this.EdgeTravelTimeTB.Location = new System.Drawing.Point(418, 292);
+            this.EdgeTravelTimeTB.Name = "EdgeTravelTimeTB";
+            this.EdgeTravelTimeTB.Size = new System.Drawing.Size(100, 23);
+            this.EdgeTravelTimeTB.TabIndex = 11;
+            // 
+            // EdgeTravelTimeLabel
+            // 
+            this.EdgeTravelTimeLabel.AutoSize = true;
+            this.EdgeTravelTimeLabel.Location = new System.Drawing.Point(415, 274);
+            this.EdgeTravelTimeLabel.Name = "EdgeTravelTimeLabel";
+            this.EdgeTravelTimeLabel.Size = new System.Drawing.Size(39, 15);
+            this.EdgeTravelTimeLabel.TabIndex = 10;
+            this.EdgeTravelTimeLabel.Text = "&Restid";
+            // 
+            // EdgeEndHeadingTB
+            // 
+            this.EdgeEndHeadingTB.Location = new System.Drawing.Point(312, 292);
+            this.EdgeEndHeadingTB.Name = "EdgeEndHeadingTB";
+            this.EdgeEndHeadingTB.Size = new System.Drawing.Size(100, 23);
+            this.EdgeEndHeadingTB.TabIndex = 9;
+            // 
+            // EdgeEndHeadingLabel
+            // 
+            this.EdgeEndHeadingLabel.AutoSize = true;
+            this.EdgeEndHeadingLabel.Location = new System.Drawing.Point(309, 274);
+            this.EdgeEndHeadingLabel.Name = "EdgeEndHeadingLabel";
+            this.EdgeEndHeadingLabel.Size = new System.Drawing.Size(68, 15);
+            this.EdgeEndHeadingLabel.TabIndex = 8;
+            this.EdgeEndHeadingLabel.Text = "S&lutriktning";
+            // 
+            // EdgeStartHeadingTB
+            // 
+            this.EdgeStartHeadingTB.Location = new System.Drawing.Point(206, 292);
+            this.EdgeStartHeadingTB.Name = "EdgeStartHeadingTB";
+            this.EdgeStartHeadingTB.Size = new System.Drawing.Size(100, 23);
+            this.EdgeStartHeadingTB.TabIndex = 7;
+            // 
+            // EdgeStartHeadingLabel
+            // 
+            this.EdgeStartHeadingLabel.AutoSize = true;
+            this.EdgeStartHeadingLabel.Location = new System.Drawing.Point(203, 274);
+            this.EdgeStartHeadingLabel.Name = "EdgeStartHeadingLabel";
+            this.EdgeStartHeadingLabel.Size = new System.Drawing.Size(72, 15);
+            this.EdgeStartHeadingLabel.TabIndex = 6;
+            this.EdgeStartHeadingLabel.Text = "Startri&ktning";
+            // 
+            // EdgeBeginningTB
+            // 
+            this.EdgeBeginningTB.Location = new System.Drawing.Point(206, 237);
+            this.EdgeBeginningTB.Name = "EdgeBeginningTB";
+            this.EdgeBeginningTB.Size = new System.Drawing.Size(480, 23);
+            this.EdgeBeginningTB.TabIndex = 5;
+            // 
+            // EdgeBeginningLabel
+            // 
+            this.EdgeBeginningLabel.AutoSize = true;
+            this.EdgeBeginningLabel.Location = new System.Drawing.Point(203, 219);
+            this.EdgeBeginningLabel.Name = "EdgeBeginningLabel";
+            this.EdgeBeginningLabel.Size = new System.Drawing.Size(70, 15);
+            this.EdgeBeginningLabel.TabIndex = 4;
+            this.EdgeBeginningLabel.Text = "&Information";
+            // 
+            // EdgesForPOILB
+            // 
+            this.EdgesForPOILB.FormattingEnabled = true;
+            this.EdgesForPOILB.ItemHeight = 15;
+            this.EdgesForPOILB.Location = new System.Drawing.Point(206, 21);
+            this.EdgesForPOILB.Name = "EdgesForPOILB";
+            this.EdgesForPOILB.Size = new System.Drawing.Size(480, 184);
+            this.EdgesForPOILB.TabIndex = 3;
+            // 
+            // EdgesListLabel
+            // 
+            this.EdgesListLabel.AutoSize = true;
+            this.EdgesListLabel.Location = new System.Drawing.Point(203, 3);
+            this.EdgesListLabel.Name = "EdgesListLabel";
+            this.EdgesListLabel.Size = new System.Drawing.Size(97, 15);
+            this.EdgesListLabel.TabIndex = 2;
+            this.EdgesListLabel.Text = "&Vägbeskrivningar";
+            // 
+            // EdgesPOIsLB
+            // 
+            this.EdgesPOIsLB.FormattingEnabled = true;
+            this.EdgesPOIsLB.ItemHeight = 15;
+            this.EdgesPOIsLB.Location = new System.Drawing.Point(6, 21);
+            this.EdgesPOIsLB.Name = "EdgesPOIsLB";
+            this.EdgesPOIsLB.Size = new System.Drawing.Size(191, 469);
+            this.EdgesPOIsLB.TabIndex = 1;
+            // 
+            // EdgesPOIListLabel
+            // 
+            this.EdgesPOIListLabel.AutoSize = true;
+            this.EdgesPOIListLabel.Location = new System.Drawing.Point(3, 3);
+            this.EdgesPOIListLabel.Name = "EdgesPOIListLabel";
+            this.EdgesPOIListLabel.Size = new System.Drawing.Size(98, 15);
+            this.EdgesPOIListLabel.TabIndex = 0;
+            this.EdgesPOIListLabel.Text = "Point&s Of Interest";
+            // 
             // ElevatorsTab
             // 
+            this.ElevatorsTab.Controls.Add(this.DeleteAllElevatorEdgesButton);
             this.ElevatorsTab.Controls.Add(this.ElevatorMessageTB);
             this.ElevatorsTab.Controls.Add(this.ElevatorMessageLabel);
             this.ElevatorsTab.Controls.Add(this.ElevatorEndHeadingTB);
@@ -590,7 +805,7 @@
             this.ElevatorsTab.Location = new System.Drawing.Point(4, 24);
             this.ElevatorsTab.Name = "ElevatorsTab";
             this.ElevatorsTab.Padding = new System.Windows.Forms.Padding(3);
-            this.ElevatorsTab.Size = new System.Drawing.Size(826, 519);
+            this.ElevatorsTab.Size = new System.Drawing.Size(1102, 629);
             this.ElevatorsTab.TabIndex = 2;
             this.ElevatorsTab.Text = "Hissar";
             this.ElevatorsTab.UseVisualStyleBackColor = true;
@@ -672,216 +887,44 @@
             this.ElevatorListLabel.TabIndex = 0;
             this.ElevatorListLabel.Text = "&Hissar";
             // 
-            // EdgesTab
-            // 
-            this.EdgesTab.Controls.Add(this.DeleteEdgeButton);
-            this.EdgesTab.Controls.Add(this.AddEdgeButton);
-            this.EdgesTab.Controls.Add(this.EdgeTravelTimeTB);
-            this.EdgesTab.Controls.Add(this.EdgeTravelTimeLabel);
-            this.EdgesTab.Controls.Add(this.EdgeEndHeadingTB);
-            this.EdgesTab.Controls.Add(this.EdgeEndHeadingLabel);
-            this.EdgesTab.Controls.Add(this.EdgeStartHeadingTB);
-            this.EdgesTab.Controls.Add(this.EdgeStartHeadingLabel);
-            this.EdgesTab.Controls.Add(this.EdgeBeginningTB);
-            this.EdgesTab.Controls.Add(this.EdgeBeginningLabel);
-            this.EdgesTab.Controls.Add(this.EdgesForPOILB);
-            this.EdgesTab.Controls.Add(this.EdgesListLabel);
-            this.EdgesTab.Controls.Add(this.EdgesPOIsLB);
-            this.EdgesTab.Controls.Add(this.EdgesPOIListLabel);
-            this.EdgesTab.Location = new System.Drawing.Point(4, 24);
-            this.EdgesTab.Name = "EdgesTab";
-            this.EdgesTab.Padding = new System.Windows.Forms.Padding(3);
-            this.EdgesTab.Size = new System.Drawing.Size(826, 519);
-            this.EdgesTab.TabIndex = 3;
-            this.EdgesTab.Text = "Vägbeskrivningar";
-            this.EdgesTab.UseVisualStyleBackColor = true;
-            // 
-            // EdgesForPOILB
-            // 
-            this.EdgesForPOILB.FormattingEnabled = true;
-            this.EdgesForPOILB.ItemHeight = 15;
-            this.EdgesForPOILB.Location = new System.Drawing.Point(206, 21);
-            this.EdgesForPOILB.Name = "EdgesForPOILB";
-            this.EdgesForPOILB.Size = new System.Drawing.Size(480, 184);
-            this.EdgesForPOILB.TabIndex = 3;
-            // 
-            // EdgesListLabel
-            // 
-            this.EdgesListLabel.AutoSize = true;
-            this.EdgesListLabel.Location = new System.Drawing.Point(203, 3);
-            this.EdgesListLabel.Name = "EdgesListLabel";
-            this.EdgesListLabel.Size = new System.Drawing.Size(97, 15);
-            this.EdgesListLabel.TabIndex = 2;
-            this.EdgesListLabel.Text = "&Vägbeskrivningar";
-            // 
-            // EdgesPOIsLB
-            // 
-            this.EdgesPOIsLB.FormattingEnabled = true;
-            this.EdgesPOIsLB.ItemHeight = 15;
-            this.EdgesPOIsLB.Location = new System.Drawing.Point(6, 21);
-            this.EdgesPOIsLB.Name = "EdgesPOIsLB";
-            this.EdgesPOIsLB.Size = new System.Drawing.Size(191, 469);
-            this.EdgesPOIsLB.TabIndex = 1;
-            // 
-            // EdgesPOIListLabel
-            // 
-            this.EdgesPOIListLabel.AutoSize = true;
-            this.EdgesPOIListLabel.Location = new System.Drawing.Point(3, 3);
-            this.EdgesPOIListLabel.Name = "EdgesPOIListLabel";
-            this.EdgesPOIListLabel.Size = new System.Drawing.Size(98, 15);
-            this.EdgesPOIListLabel.TabIndex = 0;
-            this.EdgesPOIListLabel.Text = "Point&s Of Interest";
-            // 
-            // VenueDescriptionLabel
-            // 
-            this.VenueDescriptionLabel.AutoSize = true;
-            this.VenueDescriptionLabel.Location = new System.Drawing.Point(14, 268);
-            this.VenueDescriptionLabel.Name = "VenueDescriptionLabel";
-            this.VenueDescriptionLabel.Size = new System.Drawing.Size(68, 15);
-            this.VenueDescriptionLabel.TabIndex = 13;
-            this.VenueDescriptionLabel.Text = "&Beskrivning";
-            // 
-            // VenueDescriptionTB
-            // 
-            this.VenueDescriptionTB.AcceptsReturn = true;
-            this.VenueDescriptionTB.Location = new System.Drawing.Point(14, 286);
-            this.VenueDescriptionTB.Multiline = true;
-            this.VenueDescriptionTB.Name = "VenueDescriptionTB";
-            this.VenueDescriptionTB.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.VenueDescriptionTB.Size = new System.Drawing.Size(278, 222);
-            this.VenueDescriptionTB.TabIndex = 14;
-            // 
-            // VisibilityLabel
-            // 
-            this.VisibilityLabel.AutoSize = true;
-            this.VisibilityLabel.Location = new System.Drawing.Point(14, 511);
-            this.VisibilityLabel.Name = "VisibilityLabel";
-            this.VisibilityLabel.Size = new System.Drawing.Size(157, 15);
-            this.VisibilityLabel.TabIndex = 15;
-            this.VisibilityLabel.Text = "Synlighet i listan över platser";
-            // 
-            // VisibilityCombo
-            // 
-            this.VisibilityCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.VisibilityCombo.FormattingEnabled = true;
-            this.VisibilityCombo.Location = new System.Drawing.Point(14, 527);
-            this.VisibilityCombo.Name = "VisibilityCombo";
-            this.VisibilityCombo.Size = new System.Drawing.Size(177, 23);
-            this.VisibilityCombo.TabIndex = 16;
-            // 
             // OpenMediaFileDialog
             // 
             this.OpenMediaFileDialog.Filter = "|*.jpg;*.jpeg;*.png;*.pgif;*.wav;*.m4a;**.mp3|relifaideMBilder (*.jpg, *.jpeg, *." +
     "png)|*.jpg;*.jpeg;*.png|Ljudfiler (*.wav, *.mp3, *.m4a)|*.wav;*.m4a;*.mp3|Alla f" +
     "iler (*.*)|*.*";
             // 
-            // EdgeBeginningLabel
+            // actionsToolStripMenuItem
             // 
-            this.EdgeBeginningLabel.AutoSize = true;
-            this.EdgeBeginningLabel.Location = new System.Drawing.Point(203, 219);
-            this.EdgeBeginningLabel.Name = "EdgeBeginningLabel";
-            this.EdgeBeginningLabel.Size = new System.Drawing.Size(94, 15);
-            this.EdgeBeginningLabel.TabIndex = 4;
-            this.EdgeBeginningLabel.Text = "Startinformation";
+            this.actionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.testRoutsToolStripMenuItem});
+            this.actionsToolStripMenuItem.Name = "actionsToolStripMenuItem";
+            this.actionsToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
+            this.actionsToolStripMenuItem.Text = "&Åtgärder";
             // 
-            // EdgeBeginningTB
+            // testRoutsToolStripMenuItem
             // 
-            this.EdgeBeginningTB.Location = new System.Drawing.Point(206, 237);
-            this.EdgeBeginningTB.Name = "EdgeBeginningTB";
-            this.EdgeBeginningTB.Size = new System.Drawing.Size(480, 23);
-            this.EdgeBeginningTB.TabIndex = 5;
+            this.testRoutsToolStripMenuItem.Name = "testRoutsToolStripMenuItem";
+            this.testRoutsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.testRoutsToolStripMenuItem.Text = "&Testa rutter";
+            this.testRoutsToolStripMenuItem.Click += new System.EventHandler(this.testRoutsToolStripMenuItem_Click);
             // 
-            // EdgeStartHeadingLabel
+            // DeleteAllElevatorEdgesButton
             // 
-            this.EdgeStartHeadingLabel.AutoSize = true;
-            this.EdgeStartHeadingLabel.Location = new System.Drawing.Point(203, 274);
-            this.EdgeStartHeadingLabel.Name = "EdgeStartHeadingLabel";
-            this.EdgeStartHeadingLabel.Size = new System.Drawing.Size(72, 15);
-            this.EdgeStartHeadingLabel.TabIndex = 6;
-            this.EdgeStartHeadingLabel.Text = "Startriktning";
-            // 
-            // EdgeStartHeadingTB
-            // 
-            this.EdgeStartHeadingTB.Location = new System.Drawing.Point(206, 292);
-            this.EdgeStartHeadingTB.Name = "EdgeStartHeadingTB";
-            this.EdgeStartHeadingTB.Size = new System.Drawing.Size(100, 23);
-            this.EdgeStartHeadingTB.TabIndex = 7;
-            // 
-            // EdgeEndHeadingLabel
-            // 
-            this.EdgeEndHeadingLabel.AutoSize = true;
-            this.EdgeEndHeadingLabel.Location = new System.Drawing.Point(309, 274);
-            this.EdgeEndHeadingLabel.Name = "EdgeEndHeadingLabel";
-            this.EdgeEndHeadingLabel.Size = new System.Drawing.Size(68, 15);
-            this.EdgeEndHeadingLabel.TabIndex = 8;
-            this.EdgeEndHeadingLabel.Text = "Slutriktning";
-            // 
-            // EdgeEndHeadingTB
-            // 
-            this.EdgeEndHeadingTB.Location = new System.Drawing.Point(312, 292);
-            this.EdgeEndHeadingTB.Name = "EdgeEndHeadingTB";
-            this.EdgeEndHeadingTB.Size = new System.Drawing.Size(100, 23);
-            this.EdgeEndHeadingTB.TabIndex = 9;
-            // 
-            // EdgeTravelTimeLabel
-            // 
-            this.EdgeTravelTimeLabel.AutoSize = true;
-            this.EdgeTravelTimeLabel.Location = new System.Drawing.Point(415, 274);
-            this.EdgeTravelTimeLabel.Name = "EdgeTravelTimeLabel";
-            this.EdgeTravelTimeLabel.Size = new System.Drawing.Size(39, 15);
-            this.EdgeTravelTimeLabel.TabIndex = 10;
-            this.EdgeTravelTimeLabel.Text = "Restid";
-            // 
-            // EdgeTravelTimeTB
-            // 
-            this.EdgeTravelTimeTB.Location = new System.Drawing.Point(418, 292);
-            this.EdgeTravelTimeTB.Name = "EdgeTravelTimeTB";
-            this.EdgeTravelTimeTB.Size = new System.Drawing.Size(100, 23);
-            this.EdgeTravelTimeTB.TabIndex = 11;
-            // 
-            // AddEdgeButton
-            // 
-            this.AddEdgeButton.Location = new System.Drawing.Point(692, 21);
-            this.AddEdgeButton.Name = "AddEdgeButton";
-            this.AddEdgeButton.Size = new System.Drawing.Size(75, 23);
-            this.AddEdgeButton.TabIndex = 12;
-            this.AddEdgeButton.Text = "L&ägg till";
-            this.AddEdgeButton.UseVisualStyleBackColor = true;
-            this.AddEdgeButton.Click += new System.EventHandler(this.AddEdgeButton_Click);
-            // 
-            // DeleteEdgeButton
-            // 
-            this.DeleteEdgeButton.Location = new System.Drawing.Point(692, 50);
-            this.DeleteEdgeButton.Name = "DeleteEdgeButton";
-            this.DeleteEdgeButton.Size = new System.Drawing.Size(75, 23);
-            this.DeleteEdgeButton.TabIndex = 13;
-            this.DeleteEdgeButton.Text = "&Ta bort";
-            this.DeleteEdgeButton.UseVisualStyleBackColor = true;
-            this.DeleteEdgeButton.Click += new System.EventHandler(this.DeleteEdgeButton_Click);
+            this.DeleteAllElevatorEdgesButton.Location = new System.Drawing.Point(194, 201);
+            this.DeleteAllElevatorEdgesButton.Name = "DeleteAllElevatorEdgesButton";
+            this.DeleteAllElevatorEdgesButton.Size = new System.Drawing.Size(75, 23);
+            this.DeleteAllElevatorEdgesButton.TabIndex = 10;
+            this.DeleteAllElevatorEdgesButton.Text = "&Ta bort alla";
+            this.DeleteAllElevatorEdgesButton.UseVisualStyleBackColor = true;
+            this.DeleteAllElevatorEdgesButton.Click += new System.EventHandler(this.DeleteAllElevatorEdgesButton_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1129, 602);
-            this.Controls.Add(this.VisibilityCombo);
-            this.Controls.Add(this.VisibilityLabel);
-            this.Controls.Add(this.VenueDescriptionTB);
-            this.Controls.Add(this.VenueDescriptionLabel);
+            this.ClientSize = new System.Drawing.Size(1129, 712);
             this.Controls.Add(this.Tabs);
-            this.Controls.Add(this.CountryTB);
-            this.Controls.Add(this.CountryLabel);
-            this.Controls.Add(this.CityTB);
-            this.Controls.Add(this.CityLabel);
-            this.Controls.Add(this.ZipTB);
-            this.Controls.Add(this.ZipLabel);
-            this.Controls.Add(this.AddressTB);
-            this.Controls.Add(this.AddressLabel);
-            this.Controls.Add(this.VenueIDTB);
-            this.Controls.Add(this.VenueIDLabel);
-            this.Controls.Add(this.VenueNameTB);
-            this.Controls.Add(this.VenueNameLabel);
             this.Controls.Add(this.MainMenuStrip);
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -892,12 +935,14 @@
             this.MainMenuStrip.ResumeLayout(false);
             this.MainMenuStrip.PerformLayout();
             this.Tabs.ResumeLayout(false);
+            this.VenueTab.ResumeLayout(false);
+            this.VenueTab.PerformLayout();
             this.PoiTabPage.ResumeLayout(false);
             this.PoiTabPage.PerformLayout();
-            this.ElevatorsTab.ResumeLayout(false);
-            this.ElevatorsTab.PerformLayout();
             this.EdgesTab.ResumeLayout(false);
             this.EdgesTab.PerformLayout();
+            this.ElevatorsTab.ResumeLayout(false);
+            this.ElevatorsTab.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VenueBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.POIsBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.POIInfosBS)).EndInit();
@@ -922,18 +967,6 @@
         private System.Windows.Forms.ToolStripMenuItem closeAppToolStripMenuItem;
         private System.Windows.Forms.SaveFileDialog SaveVenueDialog;
         private System.Windows.Forms.BindingSource VenueBS;
-        private System.Windows.Forms.Label VenueNameLabel;
-        private System.Windows.Forms.TextBox VenueNameTB;
-        private System.Windows.Forms.Label VenueIDLabel;
-        private System.Windows.Forms.TextBox VenueIDTB;
-        private System.Windows.Forms.Label AddressLabel;
-        private System.Windows.Forms.TextBox AddressTB;
-        private System.Windows.Forms.Label ZipLabel;
-        private System.Windows.Forms.TextBox ZipTB;
-        private System.Windows.Forms.Label CityLabel;
-        private System.Windows.Forms.TextBox CityTB;
-        private System.Windows.Forms.Label CountryLabel;
-        private System.Windows.Forms.TextBox CountryTB;
         private System.Windows.Forms.TabControl Tabs;
         private System.Windows.Forms.TabPage PoiTabPage;
         private System.Windows.Forms.ListBox POIsLB;
@@ -957,15 +990,11 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem saveVenueMenuItemToolStripMenuItem;
-        private System.Windows.Forms.Label VenueDescriptionLabel;
-        private System.Windows.Forms.TextBox VenueDescriptionTB;
         private System.Windows.Forms.Label MediaFileLabel;
         private System.Windows.Forms.TextBox MediaFileTB;
         private System.Windows.Forms.Button PickMediaFileButton;
         private System.Windows.Forms.Label MediaDescLabel;
         private System.Windows.Forms.TextBox MediaDescrTB;
-        private System.Windows.Forms.Label VisibilityLabel;
-        private System.Windows.Forms.ComboBox VisibilityCombo;
         private System.Windows.Forms.OpenFileDialog OpenMediaFileDialog;
         private System.Windows.Forms.CheckBox AutoPlayMediaCB;
         private System.Windows.Forms.TabPage ElevatorsTab;
@@ -998,5 +1027,25 @@
         private System.Windows.Forms.Button DeleteEdgeButton;
         private System.Windows.Forms.Button AddEdgeButton;
         private System.Windows.Forms.BindingSource EdgeBS;
+        private System.Windows.Forms.TabPage VenueTab;
+        private System.Windows.Forms.ComboBox VisibilityCombo;
+        private System.Windows.Forms.Label VisibilityLabel;
+        private System.Windows.Forms.TextBox VenueDescriptionTB;
+        private System.Windows.Forms.Label VenueDescriptionLabel;
+        private System.Windows.Forms.TextBox CountryTB;
+        private System.Windows.Forms.Label CountryLabel;
+        private System.Windows.Forms.TextBox CityTB;
+        private System.Windows.Forms.Label CityLabel;
+        private System.Windows.Forms.TextBox ZipTB;
+        private System.Windows.Forms.Label ZipLabel;
+        private System.Windows.Forms.TextBox AddressTB;
+        private System.Windows.Forms.Label AddressLabel;
+        private System.Windows.Forms.TextBox VenueIDTB;
+        private System.Windows.Forms.Label VenueIDLabel;
+        private System.Windows.Forms.TextBox VenueNameTB;
+        private System.Windows.Forms.Label VenueNameLabel;
+        private System.Windows.Forms.ToolStripMenuItem actionsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem testRoutsToolStripMenuItem;
+        private System.Windows.Forms.Button DeleteAllElevatorEdgesButton;
     }
 }

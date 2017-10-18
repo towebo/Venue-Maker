@@ -15,7 +15,9 @@ using WayfindR.Controllers;
 using WayfindR.Models;
 using VenueMaker.Helpers;
 using VenueMaker.Models;
-using Radar;
+using WayfindR.Helpers;
+using WayfindR.Helpers;
+using WayfindR;
 using WayfindR.Helpers;
 
 namespace VenueMaker.Dialogs
@@ -23,7 +25,7 @@ namespace VenueMaker.Dialogs
     public partial class MainForm : Form
     {
         private WFNode[] elevators;
-        private const double ElevatorTravelTime = 5.0;
+        private const double ElevatorTravelTime = 20.0;
 
 
 
@@ -730,7 +732,7 @@ namespace VenueMaker.Dialogs
                         } // The same elevator
 
                         string id = string.Format("e{0}",
-                            Venue.NodesGraph.EdgeCount
+                            Venue.NodesGraph.LastEdgeId + 1
                             );
 
                         WFEdge<WFNode> edg = new WFEdge<WFNode>(sourceelevator, targetelevator, id);
@@ -784,6 +786,7 @@ namespace VenueMaker.Dialogs
                         psrc.BeaconMajor,
                         psrc.BeaconMinor
                         );
+                    nei.Target = nei.Source;
 
                 } // Not null
                                 
@@ -801,7 +804,7 @@ namespace VenueMaker.Dialogs
                 } // User canceled
 
                 string id = string.Format("e{0}",
-                    Venue.NodesGraph.EdgeCount
+                    Venue.NodesGraph.LastEdgeId + 1
                     );
 
                 WFEdge<WFNode> edge = new WFEdge<WFNode>(
@@ -817,7 +820,7 @@ namespace VenueMaker.Dialogs
                 Venue.NodesGraph.AddEdge(edge);
 
                 id = string.Format("e{0}",
-                    Venue.NodesGraph.EdgeCount
+                    Venue.NodesGraph.LastEdgeId + 1
                     );
 
                 WFEdge<WFNode> returnedge = new WFEdge<WFNode>(
@@ -826,8 +829,8 @@ namespace VenueMaker.Dialogs
                     id
                     );
                 returnedge.TravelTime = nei.TravelTime;
-                returnedge.StartHeading = HeadingHelper.ValidHeading(nei.StartHeading - 180);
-                returnedge.EndHeading = HeadingHelper.ValidHeading(nei.EndHeading - 180);
+                returnedge.StartHeading = HeadingHelper.ValidHeading(nei.EndHeading - 180);
+                returnedge.EndHeading = HeadingHelper.ValidHeading(nei.StartHeading - 180);
                 returnedge.Beginning = nei.Beginning;
 
                 Venue.NodesGraph.AddEdge(returnedge);
@@ -866,6 +869,60 @@ namespace VenueMaker.Dialogs
                 Venue.NodesGraph.RemoveEdge(efp.Edge);
                 EdgesPOIsBS.ResetBindings(false);
 
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            finally
+            {
+                Cursor.Current = Cursors.Default;
+
+            }
+        }
+
+        private void testRoutsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                RouteTestForm dlg = new RouteTestForm();
+                dlg.Venue = this.Venue;
+
+                dlg.ShowDialog();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+
+        }
+
+        private void DeleteAllElevatorEdgesButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Cursor.Current = Cursors.WaitCursor;
+                Application.DoEvents();
+
+                WFEdge<WFNode>[] elevedges = Venue.NodesGraph.Edges.ToArray();
+
+                for (int idx = elevedges.Count() - 1; idx >= 0; idx--)
+                {
+                    WFEdge<WFNode> edge = elevedges[idx];
+                    if (edge.Source.WaypointType == "elevator" &&
+                        edge.Target.WaypointType == "elevator")
+                    {
+                        Venue.NodesGraph.RemoveEdge(edge);
+                        
+                    } // Is elevator edge
+
+                } // for
+
+                SystemSounds.Asterisk.Play();
 
             }
             catch (Exception ex)

@@ -1,4 +1,4 @@
-﻿namespace Radar
+﻿namespace WayfindR.Helpers
 {
     using System.Text;
     using System.Text.RegularExpressions;
@@ -40,13 +40,13 @@
             return NumericRegex.IsMatch(thestring ?? string.Empty);
         }
 
-        public static string AlphaOnly(string value)
+        public static string AlphaOnly(this string value)
         {
             return NumericRegex.Replace(value, "");
             
         }
 
-        public static string NumbersOnly(string value)
+        public static string NumbersOnly(this string value)
         {
             return AlphaRegex.Replace(value, "");
 

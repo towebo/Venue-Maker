@@ -23,6 +23,8 @@ namespace WayfindR
 
     public partial class RouteTestForm : Form
     {
+
+        public WFVenue Venue { get; set; }
         
 
         public RouteTestForm()
@@ -33,7 +35,7 @@ namespace WayfindR
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //InitUI();
+            InitUI();
 
         }
 
@@ -42,6 +44,12 @@ namespace WayfindR
         {
             try
             {
+                this.Text = Venue.Name;
+
+                NodesBS.DataSource = Venue.NodesGraph.GetNodesAlphabetical();
+                TargetNodesBS.DataSource = Venue.NodesGraph.GetNodesAlphabetical();
+                                
+
                 SourceCB.DataSource = NodesBS;
                 SourceCB.DisplayMember = "Name";
                 SourceCB.ValueMember = "Id";
@@ -65,36 +73,7 @@ namespace WayfindR
 
 
 
-        private void LoadButton_Click(object sender, EventArgs e)
-        {
-            try
-            {
-
-                VenueController.Me.Current = VenueController.Me.FindVenue(
-                    "0424006070"
-                    );
-                this.Text = VenueController.Me.Current.Name;
-                
-                WFGraph[] venugraphs = GraphController.Me.RelatedToVenue(
-                    VenueController.Me.Current.Id
-                    );
-                VenueController.Me.Current.NodesGraph = venugraphs.FirstOrDefault();
-                
-                NodesBS.DataSource = VenueController.Me.Current.NodesGraph.GetNodesAlphabetical();
-                TargetNodesBS.DataSource = VenueController.Me.Current.NodesGraph.GetNodesAlphabetical();
-
-                InitUI();
-
-                System.Media.SystemSounds.Asterisk.Play();
-                
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-            }
-        }
-
+        
         private void CalcRouteButton_Click(object sender, EventArgs e)
         {
             try
@@ -103,7 +82,7 @@ namespace WayfindR
                 WFNode target = TargetNodesBS.Current as WFNode;
                                 
                 DirectionsList dl = new DirectionsList(
-                    VenueController.Me.Current.NodesGraph.CalculateRoute(
+                    Venue.NodesGraph.CalculateRoute(
                         source,
                         target
                         )

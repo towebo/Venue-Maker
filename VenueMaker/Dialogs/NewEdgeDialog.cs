@@ -30,15 +30,17 @@ namespace VenueMaker.Dialogs
             try
             {
                 InfoBS.DataSource = Item ?? new NewEdgeItem();
+                SourcesBS.DataSource = AvailibleNodes;
+                TargetsBS.DataSource = AvailibleNodes;
 
-                FromNodeCombo.DataSource = AvailibleNodes;
+                FromNodeCombo.DataSource = SourcesBS;
                 FromNodeCombo.DisplayMember = "TextInList";
-                //FromNodeCombo.ValueMember = "Name";
+                FromNodeCombo.ValueMember = "Name";
                 FromNodeCombo.DataBindings.Add("SelectedItem", InfoBS, "Source");
-                
-                ToNodeCombo.DataSource = AvailibleNodes;
+
+                ToNodeCombo.DataSource = TargetsBS;
                 ToNodeCombo.DisplayMember = "TextInList";
-                //ToNodeCombo.ValueMember = "Name";
+                ToNodeCombo.ValueMember = "Name";
                 ToNodeCombo.DataBindings.Add("SelectedItem", InfoBS, "Target");
 
                 BeginningTB.DataBindings.Add("Text", InfoBS, "Beginning");

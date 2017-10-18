@@ -44,7 +44,11 @@
             this.AddButton = new System.Windows.Forms.Button();
             this.CancelButton = new System.Windows.Forms.Button();
             this.InfoBS = new System.Windows.Forms.BindingSource(this.components);
+            this.SourcesBS = new System.Windows.Forms.BindingSource(this.components);
+            this.TargetsBS = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.InfoBS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SourcesBS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TargetsBS)).BeginInit();
             this.SuspendLayout();
             // 
             // FromEdgeLabel
@@ -106,7 +110,7 @@
             this.StartHeadingLabel.Name = "StartHeadingLabel";
             this.StartHeadingLabel.Size = new System.Drawing.Size(72, 15);
             this.StartHeadingLabel.TabIndex = 6;
-            this.StartHeadingLabel.Text = "&Startriktning";
+            this.StartHeadingLabel.Text = "Startri&ktning";
             // 
             // StartHeadingTB
             // 
@@ -120,9 +124,9 @@
             this.EndHeadingLabel.AutoSize = true;
             this.EndHeadingLabel.Location = new System.Drawing.Point(119, 144);
             this.EndHeadingLabel.Name = "EndHeadingLabel";
-            this.EndHeadingLabel.Size = new System.Drawing.Size(71, 15);
+            this.EndHeadingLabel.Size = new System.Drawing.Size(68, 15);
             this.EndHeadingLabel.TabIndex = 8;
-            this.EndHeadingLabel.Text = "S&Lutriktning";
+            this.EndHeadingLabel.Text = "S&lutriktning";
             // 
             // EndHeadingTB
             // 
@@ -171,7 +175,6 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = this.CancelButton;
             this.ClientSize = new System.Drawing.Size(336, 239);
             this.ControlBox = false;
             this.Controls.Add(this.CancelButton);
@@ -197,6 +200,8 @@
             this.Text = "Ny vägbeskrivning";
             this.Load += new System.EventHandler(this.NewEdgeDialog_Load);
             ((System.ComponentModel.ISupportInitialize)(this.InfoBS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SourcesBS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TargetsBS)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -219,5 +224,7 @@
         private System.Windows.Forms.Button AddButton;
         private System.Windows.Forms.Button CancelButton;
         private System.Windows.Forms.BindingSource InfoBS;
+        private System.Windows.Forms.BindingSource SourcesBS;
+        private System.Windows.Forms.BindingSource TargetsBS;
     }
 }
