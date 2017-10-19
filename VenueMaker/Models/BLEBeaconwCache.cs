@@ -204,7 +204,7 @@ namespace WayfindR.Models
                         } // not already read
 
 
-                        int currentheading = HeadingHelper.CurrentHeading();
+                        int currentheading = HeadingHelper.CurrentHeading() + n.MagneticOffset;
                         WFHeadingInfo hi = hinfos[currentheading];
 
                         if (hi != null)

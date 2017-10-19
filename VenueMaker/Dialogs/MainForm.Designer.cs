@@ -40,6 +40,8 @@
             this.pushToCloudMenuItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.closeAppToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.actionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.testRoutsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.OpenVenueDialog = new System.Windows.Forms.OpenFileDialog();
             this.OpenGraphMLDialog = new System.Windows.Forms.OpenFileDialog();
             this.SaveVenueDialog = new System.Windows.Forms.SaveFileDialog();
@@ -100,6 +102,7 @@
             this.EdgesPOIsLB = new System.Windows.Forms.ListBox();
             this.EdgesPOIListLabel = new System.Windows.Forms.Label();
             this.ElevatorsTab = new System.Windows.Forms.TabPage();
+            this.DeleteAllElevatorEdgesButton = new System.Windows.Forms.Button();
             this.ElevatorMessageTB = new System.Windows.Forms.TextBox();
             this.ElevatorMessageLabel = new System.Windows.Forms.Label();
             this.ElevatorEndHeadingTB = new System.Windows.Forms.TextBox();
@@ -117,9 +120,8 @@
             this.EdgesPOIsBS = new System.Windows.Forms.BindingSource(this.components);
             this.EdgesForPOIBS = new System.Windows.Forms.BindingSource(this.components);
             this.EdgeBS = new System.Windows.Forms.BindingSource(this.components);
-            this.actionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.testRoutsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.DeleteAllElevatorEdgesButton = new System.Windows.Forms.Button();
+            this.EdgeTravelTypeLabel = new System.Windows.Forms.Label();
+            this.EdgeTravelTypeCombo = new System.Windows.Forms.ComboBox();
             this.MainMenuStrip.SuspendLayout();
             this.Tabs.SuspendLayout();
             this.VenueTab.SuspendLayout();
@@ -217,6 +219,21 @@
             this.closeAppToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
             this.closeAppToolStripMenuItem.Text = "&Avsluta";
             this.closeAppToolStripMenuItem.Click += new System.EventHandler(this.closeAppToolStripMenuItem_Click);
+            // 
+            // actionsToolStripMenuItem
+            // 
+            this.actionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.testRoutsToolStripMenuItem});
+            this.actionsToolStripMenuItem.Name = "actionsToolStripMenuItem";
+            this.actionsToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
+            this.actionsToolStripMenuItem.Text = "&Åtgärder";
+            // 
+            // testRoutsToolStripMenuItem
+            // 
+            this.testRoutsToolStripMenuItem.Name = "testRoutsToolStripMenuItem";
+            this.testRoutsToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.testRoutsToolStripMenuItem.Text = "&Testa rutter";
+            this.testRoutsToolStripMenuItem.Click += new System.EventHandler(this.testRoutsToolStripMenuItem_Click);
             // 
             // OpenVenueDialog
             // 
@@ -648,6 +665,8 @@
             // 
             // EdgesTab
             // 
+            this.EdgesTab.Controls.Add(this.EdgeTravelTypeCombo);
+            this.EdgesTab.Controls.Add(this.EdgeTravelTypeLabel);
             this.EdgesTab.Controls.Add(this.DeleteEdgeButton);
             this.EdgesTab.Controls.Add(this.AddEdgeButton);
             this.EdgesTab.Controls.Add(this.EdgeTravelTimeTB);
@@ -675,7 +694,7 @@
             this.DeleteEdgeButton.Location = new System.Drawing.Point(692, 50);
             this.DeleteEdgeButton.Name = "DeleteEdgeButton";
             this.DeleteEdgeButton.Size = new System.Drawing.Size(75, 23);
-            this.DeleteEdgeButton.TabIndex = 13;
+            this.DeleteEdgeButton.TabIndex = 31;
             this.DeleteEdgeButton.Text = "&Ta bort";
             this.DeleteEdgeButton.UseVisualStyleBackColor = true;
             this.DeleteEdgeButton.Click += new System.EventHandler(this.DeleteEdgeButton_Click);
@@ -685,7 +704,7 @@
             this.AddEdgeButton.Location = new System.Drawing.Point(692, 21);
             this.AddEdgeButton.Name = "AddEdgeButton";
             this.AddEdgeButton.Size = new System.Drawing.Size(75, 23);
-            this.AddEdgeButton.TabIndex = 12;
+            this.AddEdgeButton.TabIndex = 30;
             this.AddEdgeButton.Text = "L&ägg till";
             this.AddEdgeButton.UseVisualStyleBackColor = true;
             this.AddEdgeButton.Click += new System.EventHandler(this.AddEdgeButton_Click);
@@ -810,6 +829,16 @@
             this.ElevatorsTab.Text = "Hissar";
             this.ElevatorsTab.UseVisualStyleBackColor = true;
             // 
+            // DeleteAllElevatorEdgesButton
+            // 
+            this.DeleteAllElevatorEdgesButton.Location = new System.Drawing.Point(194, 201);
+            this.DeleteAllElevatorEdgesButton.Name = "DeleteAllElevatorEdgesButton";
+            this.DeleteAllElevatorEdgesButton.Size = new System.Drawing.Size(75, 23);
+            this.DeleteAllElevatorEdgesButton.TabIndex = 10;
+            this.DeleteAllElevatorEdgesButton.Text = "&Ta bort alla";
+            this.DeleteAllElevatorEdgesButton.UseVisualStyleBackColor = true;
+            this.DeleteAllElevatorEdgesButton.Click += new System.EventHandler(this.DeleteAllElevatorEdgesButton_Click);
+            // 
             // ElevatorMessageTB
             // 
             this.ElevatorMessageTB.Location = new System.Drawing.Point(191, 126);
@@ -893,30 +922,22 @@
     "png)|*.jpg;*.jpeg;*.png|Ljudfiler (*.wav, *.mp3, *.m4a)|*.wav;*.m4a;*.mp3|Alla f" +
     "iler (*.*)|*.*";
             // 
-            // actionsToolStripMenuItem
+            // EdgeTravelTypeLabel
             // 
-            this.actionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.testRoutsToolStripMenuItem});
-            this.actionsToolStripMenuItem.Name = "actionsToolStripMenuItem";
-            this.actionsToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
-            this.actionsToolStripMenuItem.Text = "&Åtgärder";
+            this.EdgeTravelTypeLabel.AutoSize = true;
+            this.EdgeTravelTypeLabel.Location = new System.Drawing.Point(203, 327);
+            this.EdgeTravelTypeLabel.Name = "EdgeTravelTypeLabel";
+            this.EdgeTravelTypeLabel.Size = new System.Drawing.Size(49, 15);
+            this.EdgeTravelTypeLabel.TabIndex = 12;
+            this.EdgeTravelTypeLabel.Text = "&Färdsätt";
             // 
-            // testRoutsToolStripMenuItem
+            // EdgeTravelTypeCombo
             // 
-            this.testRoutsToolStripMenuItem.Name = "testRoutsToolStripMenuItem";
-            this.testRoutsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.testRoutsToolStripMenuItem.Text = "&Testa rutter";
-            this.testRoutsToolStripMenuItem.Click += new System.EventHandler(this.testRoutsToolStripMenuItem_Click);
-            // 
-            // DeleteAllElevatorEdgesButton
-            // 
-            this.DeleteAllElevatorEdgesButton.Location = new System.Drawing.Point(194, 201);
-            this.DeleteAllElevatorEdgesButton.Name = "DeleteAllElevatorEdgesButton";
-            this.DeleteAllElevatorEdgesButton.Size = new System.Drawing.Size(75, 23);
-            this.DeleteAllElevatorEdgesButton.TabIndex = 10;
-            this.DeleteAllElevatorEdgesButton.Text = "&Ta bort alla";
-            this.DeleteAllElevatorEdgesButton.UseVisualStyleBackColor = true;
-            this.DeleteAllElevatorEdgesButton.Click += new System.EventHandler(this.DeleteAllElevatorEdgesButton_Click);
+            this.EdgeTravelTypeCombo.FormattingEnabled = true;
+            this.EdgeTravelTypeCombo.Location = new System.Drawing.Point(206, 345);
+            this.EdgeTravelTypeCombo.Name = "EdgeTravelTypeCombo";
+            this.EdgeTravelTypeCombo.Size = new System.Drawing.Size(143, 23);
+            this.EdgeTravelTypeCombo.TabIndex = 13;
             // 
             // MainForm
             // 
@@ -1047,5 +1068,7 @@
         private System.Windows.Forms.ToolStripMenuItem actionsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem testRoutsToolStripMenuItem;
         private System.Windows.Forms.Button DeleteAllElevatorEdgesButton;
+        private System.Windows.Forms.ComboBox EdgeTravelTypeCombo;
+        private System.Windows.Forms.Label EdgeTravelTypeLabel;
     }
 }

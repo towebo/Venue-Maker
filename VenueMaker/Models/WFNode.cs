@@ -105,6 +105,9 @@ namespace WayfindR.Models
 		[XmlAttribute("active")]
 		public string Active { get; set; }
 
+        [XmlAttribute("magnetic_offset")]
+        public int MagneticOffset { get; set; }
+
 
         public string TextInList
         {

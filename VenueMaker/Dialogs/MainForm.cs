@@ -215,6 +215,8 @@ namespace VenueMaker.Dialogs
                 EdgeEndHeadingTB.DataBindings.Add("Text", EdgeBS, "EndHeading");
                 EdgeTravelTimeTB.DataBindings.Add("Text", EdgeBS, "TravelTime");
 
+                EdgeTravelTypeCombo.DataBindings.Add("Text", EdgeBS, "TravelType");
+
 
 
             }
@@ -739,6 +741,7 @@ namespace VenueMaker.Dialogs
                         edg.StartHeading = startheading;
                         edg.EndHeading = endheading;
                         edg.TravelTime = Math.Abs(idxdst - idxsrc) * ElevatorTravelTime;
+                        edg.TravelType = "elevator";
                         edg.Beginning = string.Format(ElevatorMessageTB.Text,
                             targetelevator.Floor
                             );
@@ -749,9 +752,7 @@ namespace VenueMaker.Dialogs
                     
                 } // foreach source elevator
 
-                //tmpstring graphfile = OpenGraphMLDialog.FileName;
-                //Venue.NodesGraph.Save(graphfile);
-
+                
                 SystemSounds.Asterisk.Play();
 
 
@@ -917,6 +918,7 @@ namespace VenueMaker.Dialogs
                         edge.Target.WaypointType == "elevator")
                     {
                         Venue.NodesGraph.RemoveEdge(edge);
+                        
                         
                     } // Is elevator edge
 

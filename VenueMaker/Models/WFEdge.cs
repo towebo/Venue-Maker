@@ -37,6 +37,8 @@ namespace WayfindR.Models
         [XmlAttribute("end_heading")]
         public int EndHeading { get; set; }
 
+        [XmlAttribute("travel_type")]
+        public string TravelType { get; set; }
 
 
         public string FullDescription
