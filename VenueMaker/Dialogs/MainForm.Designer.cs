@@ -87,6 +87,8 @@
             this.POIsListLabel = new System.Windows.Forms.Label();
             this.POIsLB = new System.Windows.Forms.ListBox();
             this.EdgesTab = new System.Windows.Forms.TabPage();
+            this.EdgeTravelTypeCombo = new System.Windows.Forms.ComboBox();
+            this.EdgeTravelTypeLabel = new System.Windows.Forms.Label();
             this.DeleteEdgeButton = new System.Windows.Forms.Button();
             this.AddEdgeButton = new System.Windows.Forms.Button();
             this.EdgeTravelTimeTB = new System.Windows.Forms.TextBox();
@@ -112,6 +114,38 @@
             this.CreateElevatorEdgesButton = new System.Windows.Forms.Button();
             this.ElevatorsLB = new System.Windows.Forms.ListBox();
             this.ElevatorListLabel = new System.Windows.Forms.Label();
+            this.NodesTab = new System.Windows.Forms.TabPage();
+            this.NodeFloorTB = new System.Windows.Forms.TextBox();
+            this.NodeFloorLabel = new System.Windows.Forms.Label();
+            this.NodeInfo5HeadingTB = new System.Windows.Forms.TextBox();
+            this.NodeInfo5HeadingLabel = new System.Windows.Forms.Label();
+            this.NodeInfo4HeadingTB = new System.Windows.Forms.TextBox();
+            this.NodeInfo4HeadingLabel = new System.Windows.Forms.Label();
+            this.NodeInfo3HeadingTB = new System.Windows.Forms.TextBox();
+            this.NodeInfo3HeadingLabel = new System.Windows.Forms.Label();
+            this.NodeInfo2HeadingTB = new System.Windows.Forms.TextBox();
+            this.NodeInfo2HeadingLabel = new System.Windows.Forms.Label();
+            this.NodeInfo1HeadingTB = new System.Windows.Forms.TextBox();
+            this.NodeInfo1HeadingLabel = new System.Windows.Forms.Label();
+            this.NodeMagneticOffsetTB = new System.Windows.Forms.TextBox();
+            this.MagneticOffsetLabel = new System.Windows.Forms.Label();
+            this.NodeAccuracyTB = new System.Windows.Forms.TextBox();
+            this.NodeAccuracyLabel = new System.Windows.Forms.Label();
+            this.NodeActiveChk = new System.Windows.Forms.CheckBox();
+            this.NodeIdTagTB = new System.Windows.Forms.TextBox();
+            this.IdTabLabel = new System.Windows.Forms.Label();
+            this.NodeWaypointTypeCombo = new System.Windows.Forms.ComboBox();
+            this.WaypointTypeLabel = new System.Windows.Forms.Label();
+            this.NodeMinorTB = new System.Windows.Forms.TextBox();
+            this.MinorLabel = new System.Windows.Forms.Label();
+            this.NodeMajorTB = new System.Windows.Forms.TextBox();
+            this.NodeMajorLabel = new System.Windows.Forms.Label();
+            this.NodeUuidTB = new System.Windows.Forms.TextBox();
+            this.UuidLabel = new System.Windows.Forms.Label();
+            this.NodeNameTB = new System.Windows.Forms.TextBox();
+            this.NodeNameLabel = new System.Windows.Forms.Label();
+            this.NodesLB = new System.Windows.Forms.ListBox();
+            this.NodesListLabel = new System.Windows.Forms.Label();
             this.OpenMediaFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.VenueBS = new System.Windows.Forms.BindingSource(this.components);
             this.POIsBS = new System.Windows.Forms.BindingSource(this.components);
@@ -120,14 +154,14 @@
             this.EdgesPOIsBS = new System.Windows.Forms.BindingSource(this.components);
             this.EdgesForPOIBS = new System.Windows.Forms.BindingSource(this.components);
             this.EdgeBS = new System.Windows.Forms.BindingSource(this.components);
-            this.EdgeTravelTypeLabel = new System.Windows.Forms.Label();
-            this.EdgeTravelTypeCombo = new System.Windows.Forms.ComboBox();
+            this.NodesBS = new System.Windows.Forms.BindingSource(this.components);
             this.MainMenuStrip.SuspendLayout();
             this.Tabs.SuspendLayout();
             this.VenueTab.SuspendLayout();
             this.PoiTabPage.SuspendLayout();
             this.EdgesTab.SuspendLayout();
             this.ElevatorsTab.SuspendLayout();
+            this.NodesTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VenueBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.POIsBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.POIInfosBS)).BeginInit();
@@ -135,6 +169,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.EdgesPOIsBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EdgesForPOIBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EdgeBS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NodesBS)).BeginInit();
             this.SuspendLayout();
             // 
             // MainMenuStrip
@@ -258,6 +293,7 @@
             this.Tabs.Controls.Add(this.PoiTabPage);
             this.Tabs.Controls.Add(this.EdgesTab);
             this.Tabs.Controls.Add(this.ElevatorsTab);
+            this.Tabs.Controls.Add(this.NodesTab);
             this.Tabs.Location = new System.Drawing.Point(12, 43);
             this.Tabs.Name = "Tabs";
             this.Tabs.SelectedIndex = 0;
@@ -689,6 +725,23 @@
             this.EdgesTab.Text = "Vägbeskrivningar";
             this.EdgesTab.UseVisualStyleBackColor = true;
             // 
+            // EdgeTravelTypeCombo
+            // 
+            this.EdgeTravelTypeCombo.FormattingEnabled = true;
+            this.EdgeTravelTypeCombo.Location = new System.Drawing.Point(206, 345);
+            this.EdgeTravelTypeCombo.Name = "EdgeTravelTypeCombo";
+            this.EdgeTravelTypeCombo.Size = new System.Drawing.Size(143, 23);
+            this.EdgeTravelTypeCombo.TabIndex = 13;
+            // 
+            // EdgeTravelTypeLabel
+            // 
+            this.EdgeTravelTypeLabel.AutoSize = true;
+            this.EdgeTravelTypeLabel.Location = new System.Drawing.Point(203, 327);
+            this.EdgeTravelTypeLabel.Name = "EdgeTravelTypeLabel";
+            this.EdgeTravelTypeLabel.Size = new System.Drawing.Size(49, 15);
+            this.EdgeTravelTypeLabel.TabIndex = 12;
+            this.EdgeTravelTypeLabel.Text = "&Färdsätt";
+            // 
             // DeleteEdgeButton
             // 
             this.DeleteEdgeButton.Location = new System.Drawing.Point(692, 50);
@@ -916,28 +969,305 @@
             this.ElevatorListLabel.TabIndex = 0;
             this.ElevatorListLabel.Text = "&Hissar";
             // 
+            // NodesTab
+            // 
+            this.NodesTab.Controls.Add(this.NodeFloorTB);
+            this.NodesTab.Controls.Add(this.NodeFloorLabel);
+            this.NodesTab.Controls.Add(this.NodeInfo5HeadingTB);
+            this.NodesTab.Controls.Add(this.NodeInfo5HeadingLabel);
+            this.NodesTab.Controls.Add(this.NodeInfo4HeadingTB);
+            this.NodesTab.Controls.Add(this.NodeInfo4HeadingLabel);
+            this.NodesTab.Controls.Add(this.NodeInfo3HeadingTB);
+            this.NodesTab.Controls.Add(this.NodeInfo3HeadingLabel);
+            this.NodesTab.Controls.Add(this.NodeInfo2HeadingTB);
+            this.NodesTab.Controls.Add(this.NodeInfo2HeadingLabel);
+            this.NodesTab.Controls.Add(this.NodeInfo1HeadingTB);
+            this.NodesTab.Controls.Add(this.NodeInfo1HeadingLabel);
+            this.NodesTab.Controls.Add(this.NodeMagneticOffsetTB);
+            this.NodesTab.Controls.Add(this.MagneticOffsetLabel);
+            this.NodesTab.Controls.Add(this.NodeAccuracyTB);
+            this.NodesTab.Controls.Add(this.NodeAccuracyLabel);
+            this.NodesTab.Controls.Add(this.NodeActiveChk);
+            this.NodesTab.Controls.Add(this.NodeIdTagTB);
+            this.NodesTab.Controls.Add(this.IdTabLabel);
+            this.NodesTab.Controls.Add(this.NodeWaypointTypeCombo);
+            this.NodesTab.Controls.Add(this.WaypointTypeLabel);
+            this.NodesTab.Controls.Add(this.NodeMinorTB);
+            this.NodesTab.Controls.Add(this.MinorLabel);
+            this.NodesTab.Controls.Add(this.NodeMajorTB);
+            this.NodesTab.Controls.Add(this.NodeMajorLabel);
+            this.NodesTab.Controls.Add(this.NodeUuidTB);
+            this.NodesTab.Controls.Add(this.UuidLabel);
+            this.NodesTab.Controls.Add(this.NodeNameTB);
+            this.NodesTab.Controls.Add(this.NodeNameLabel);
+            this.NodesTab.Controls.Add(this.NodesLB);
+            this.NodesTab.Controls.Add(this.NodesListLabel);
+            this.NodesTab.Location = new System.Drawing.Point(4, 24);
+            this.NodesTab.Name = "NodesTab";
+            this.NodesTab.Padding = new System.Windows.Forms.Padding(3);
+            this.NodesTab.Size = new System.Drawing.Size(1102, 629);
+            this.NodesTab.TabIndex = 5;
+            this.NodesTab.Text = "Noder";
+            this.NodesTab.UseVisualStyleBackColor = true;
+            // 
+            // NodeFloorTB
+            // 
+            this.NodeFloorTB.Location = new System.Drawing.Point(674, 21);
+            this.NodeFloorTB.Name = "NodeFloorTB";
+            this.NodeFloorTB.Size = new System.Drawing.Size(49, 23);
+            this.NodeFloorTB.TabIndex = 30;
+            // 
+            // NodeFloorLabel
+            // 
+            this.NodeFloorLabel.AutoSize = true;
+            this.NodeFloorLabel.Location = new System.Drawing.Point(671, 3);
+            this.NodeFloorLabel.Name = "NodeFloorLabel";
+            this.NodeFloorLabel.Size = new System.Drawing.Size(43, 15);
+            this.NodeFloorLabel.TabIndex = 29;
+            this.NodeFloorLabel.Text = "V&åning";
+            // 
+            // NodeInfo5HeadingTB
+            // 
+            this.NodeInfo5HeadingTB.Location = new System.Drawing.Point(330, 329);
+            this.NodeInfo5HeadingTB.Name = "NodeInfo5HeadingTB";
+            this.NodeInfo5HeadingTB.Size = new System.Drawing.Size(323, 23);
+            this.NodeInfo5HeadingTB.TabIndex = 28;
+            // 
+            // NodeInfo5HeadingLabel
+            // 
+            this.NodeInfo5HeadingLabel.AutoSize = true;
+            this.NodeInfo5HeadingLabel.Location = new System.Drawing.Point(327, 311);
+            this.NodeInfo5HeadingLabel.Name = "NodeInfo5HeadingLabel";
+            this.NodeInfo5HeadingLabel.Size = new System.Drawing.Size(128, 15);
+            this.NodeInfo5HeadingLabel.TabIndex = 27;
+            this.NodeInfo5HeadingLabel.Text = "Riktningsinformation &5";
+            // 
+            // NodeInfo4HeadingTB
+            // 
+            this.NodeInfo4HeadingTB.Location = new System.Drawing.Point(330, 285);
+            this.NodeInfo4HeadingTB.Name = "NodeInfo4HeadingTB";
+            this.NodeInfo4HeadingTB.Size = new System.Drawing.Size(323, 23);
+            this.NodeInfo4HeadingTB.TabIndex = 26;
+            // 
+            // NodeInfo4HeadingLabel
+            // 
+            this.NodeInfo4HeadingLabel.AutoSize = true;
+            this.NodeInfo4HeadingLabel.Location = new System.Drawing.Point(327, 267);
+            this.NodeInfo4HeadingLabel.Name = "NodeInfo4HeadingLabel";
+            this.NodeInfo4HeadingLabel.Size = new System.Drawing.Size(128, 15);
+            this.NodeInfo4HeadingLabel.TabIndex = 25;
+            this.NodeInfo4HeadingLabel.Text = "Riktningsinformation &4";
+            // 
+            // NodeInfo3HeadingTB
+            // 
+            this.NodeInfo3HeadingTB.Location = new System.Drawing.Point(330, 241);
+            this.NodeInfo3HeadingTB.Name = "NodeInfo3HeadingTB";
+            this.NodeInfo3HeadingTB.Size = new System.Drawing.Size(323, 23);
+            this.NodeInfo3HeadingTB.TabIndex = 24;
+            // 
+            // NodeInfo3HeadingLabel
+            // 
+            this.NodeInfo3HeadingLabel.AutoSize = true;
+            this.NodeInfo3HeadingLabel.Location = new System.Drawing.Point(327, 223);
+            this.NodeInfo3HeadingLabel.Name = "NodeInfo3HeadingLabel";
+            this.NodeInfo3HeadingLabel.Size = new System.Drawing.Size(128, 15);
+            this.NodeInfo3HeadingLabel.TabIndex = 23;
+            this.NodeInfo3HeadingLabel.Text = "Riktningsinformation &3";
+            // 
+            // NodeInfo2HeadingTB
+            // 
+            this.NodeInfo2HeadingTB.Location = new System.Drawing.Point(330, 197);
+            this.NodeInfo2HeadingTB.Name = "NodeInfo2HeadingTB";
+            this.NodeInfo2HeadingTB.Size = new System.Drawing.Size(323, 23);
+            this.NodeInfo2HeadingTB.TabIndex = 22;
+            // 
+            // NodeInfo2HeadingLabel
+            // 
+            this.NodeInfo2HeadingLabel.AutoSize = true;
+            this.NodeInfo2HeadingLabel.Location = new System.Drawing.Point(327, 179);
+            this.NodeInfo2HeadingLabel.Name = "NodeInfo2HeadingLabel";
+            this.NodeInfo2HeadingLabel.Size = new System.Drawing.Size(128, 15);
+            this.NodeInfo2HeadingLabel.TabIndex = 21;
+            this.NodeInfo2HeadingLabel.Text = "Riktningsinformation &2";
+            // 
+            // NodeInfo1HeadingTB
+            // 
+            this.NodeInfo1HeadingTB.Location = new System.Drawing.Point(330, 153);
+            this.NodeInfo1HeadingTB.Name = "NodeInfo1HeadingTB";
+            this.NodeInfo1HeadingTB.Size = new System.Drawing.Size(323, 23);
+            this.NodeInfo1HeadingTB.TabIndex = 20;
+            // 
+            // NodeInfo1HeadingLabel
+            // 
+            this.NodeInfo1HeadingLabel.AutoSize = true;
+            this.NodeInfo1HeadingLabel.Location = new System.Drawing.Point(327, 135);
+            this.NodeInfo1HeadingLabel.Name = "NodeInfo1HeadingLabel";
+            this.NodeInfo1HeadingLabel.Size = new System.Drawing.Size(128, 15);
+            this.NodeInfo1HeadingLabel.TabIndex = 19;
+            this.NodeInfo1HeadingLabel.Text = "Riktningsinformation &1";
+            // 
+            // NodeMagneticOffsetTB
+            // 
+            this.NodeMagneticOffsetTB.Location = new System.Drawing.Point(418, 109);
+            this.NodeMagneticOffsetTB.Name = "NodeMagneticOffsetTB";
+            this.NodeMagneticOffsetTB.Size = new System.Drawing.Size(100, 23);
+            this.NodeMagneticOffsetTB.TabIndex = 18;
+            // 
+            // MagneticOffsetLabel
+            // 
+            this.MagneticOffsetLabel.AutoSize = true;
+            this.MagneticOffsetLabel.Location = new System.Drawing.Point(415, 91);
+            this.MagneticOffsetLabel.Name = "MagneticOffsetLabel";
+            this.MagneticOffsetLabel.Size = new System.Drawing.Size(112, 15);
+            this.MagneticOffsetLabel.TabIndex = 17;
+            this.MagneticOffsetLabel.Text = "Ma&gnetisk avvikelse";
+            // 
+            // NodeAccuracyTB
+            // 
+            this.NodeAccuracyTB.Location = new System.Drawing.Point(330, 109);
+            this.NodeAccuracyTB.Name = "NodeAccuracyTB";
+            this.NodeAccuracyTB.Size = new System.Drawing.Size(77, 23);
+            this.NodeAccuracyTB.TabIndex = 16;
+            // 
+            // NodeAccuracyLabel
+            // 
+            this.NodeAccuracyLabel.AutoSize = true;
+            this.NodeAccuracyLabel.Location = new System.Drawing.Point(327, 91);
+            this.NodeAccuracyLabel.Name = "NodeAccuracyLabel";
+            this.NodeAccuracyLabel.Size = new System.Drawing.Size(80, 15);
+            this.NodeAccuracyLabel.TabIndex = 15;
+            this.NodeAccuracyLabel.Text = "Avstånd \"&Vid\"";
+            // 
+            // NodeActiveChk
+            // 
+            this.NodeActiveChk.AutoSize = true;
+            this.NodeActiveChk.Location = new System.Drawing.Point(670, 67);
+            this.NodeActiveChk.Name = "NodeActiveChk";
+            this.NodeActiveChk.Size = new System.Drawing.Size(53, 19);
+            this.NodeActiveChk.TabIndex = 14;
+            this.NodeActiveChk.Text = "A&ktiv";
+            this.NodeActiveChk.UseVisualStyleBackColor = true;
+            // 
+            // NodeIdTagTB
+            // 
+            this.NodeIdTagTB.Location = new System.Drawing.Point(594, 65);
+            this.NodeIdTagTB.Name = "NodeIdTagTB";
+            this.NodeIdTagTB.Size = new System.Drawing.Size(59, 23);
+            this.NodeIdTagTB.TabIndex = 13;
+            // 
+            // IdTabLabel
+            // 
+            this.IdTabLabel.AutoSize = true;
+            this.IdTabLabel.Location = new System.Drawing.Point(591, 47);
+            this.IdTabLabel.Name = "IdTabLabel";
+            this.IdTabLabel.Size = new System.Drawing.Size(55, 15);
+            this.IdTabLabel.TabIndex = 12;
+            this.IdTabLabel.Text = "Id/&Etikett";
+            // 
+            // NodeWaypointTypeCombo
+            // 
+            this.NodeWaypointTypeCombo.FormattingEnabled = true;
+            this.NodeWaypointTypeCombo.Location = new System.Drawing.Point(541, 21);
+            this.NodeWaypointTypeCombo.Name = "NodeWaypointTypeCombo";
+            this.NodeWaypointTypeCombo.Size = new System.Drawing.Size(127, 23);
+            this.NodeWaypointTypeCombo.TabIndex = 5;
+            // 
+            // WaypointTypeLabel
+            // 
+            this.WaypointTypeLabel.AutoSize = true;
+            this.WaypointTypeLabel.Location = new System.Drawing.Point(538, 3);
+            this.WaypointTypeLabel.Name = "WaypointTypeLabel";
+            this.WaypointTypeLabel.Size = new System.Drawing.Size(75, 15);
+            this.WaypointTypeLabel.TabIndex = 4;
+            this.WaypointTypeLabel.Text = "&Waypointtyp";
+            // 
+            // NodeMinorTB
+            // 
+            this.NodeMinorTB.Location = new System.Drawing.Point(527, 65);
+            this.NodeMinorTB.Name = "NodeMinorTB";
+            this.NodeMinorTB.Size = new System.Drawing.Size(59, 23);
+            this.NodeMinorTB.TabIndex = 10;
+            // 
+            // MinorLabel
+            // 
+            this.MinorLabel.AutoSize = true;
+            this.MinorLabel.Location = new System.Drawing.Point(524, 47);
+            this.MinorLabel.Name = "MinorLabel";
+            this.MinorLabel.Size = new System.Drawing.Size(39, 15);
+            this.MinorLabel.TabIndex = 10;
+            this.MinorLabel.Text = "&Minor";
+            // 
+            // NodeMajorTB
+            // 
+            this.NodeMajorTB.Location = new System.Drawing.Point(459, 65);
+            this.NodeMajorTB.Name = "NodeMajorTB";
+            this.NodeMajorTB.Size = new System.Drawing.Size(59, 23);
+            this.NodeMajorTB.TabIndex = 9;
+            // 
+            // NodeMajorLabel
+            // 
+            this.NodeMajorLabel.AutoSize = true;
+            this.NodeMajorLabel.Location = new System.Drawing.Point(456, 47);
+            this.NodeMajorLabel.Name = "NodeMajorLabel";
+            this.NodeMajorLabel.Size = new System.Drawing.Size(38, 15);
+            this.NodeMajorLabel.TabIndex = 8;
+            this.NodeMajorLabel.Text = "Ma&jor";
+            // 
+            // NodeUuidTB
+            // 
+            this.NodeUuidTB.Location = new System.Drawing.Point(330, 65);
+            this.NodeUuidTB.Name = "NodeUuidTB";
+            this.NodeUuidTB.Size = new System.Drawing.Size(120, 23);
+            this.NodeUuidTB.TabIndex = 7;
+            // 
+            // UuidLabel
+            // 
+            this.UuidLabel.AutoSize = true;
+            this.UuidLabel.Location = new System.Drawing.Point(327, 47);
+            this.UuidLabel.Name = "UuidLabel";
+            this.UuidLabel.Size = new System.Drawing.Size(32, 15);
+            this.UuidLabel.TabIndex = 6;
+            this.UuidLabel.Text = "&Uuid";
+            // 
+            // NodeNameTB
+            // 
+            this.NodeNameTB.Location = new System.Drawing.Point(330, 21);
+            this.NodeNameTB.Name = "NodeNameTB";
+            this.NodeNameTB.Size = new System.Drawing.Size(205, 23);
+            this.NodeNameTB.TabIndex = 3;
+            // 
+            // NodeNameLabel
+            // 
+            this.NodeNameLabel.AutoSize = true;
+            this.NodeNameLabel.Location = new System.Drawing.Point(327, 3);
+            this.NodeNameLabel.Name = "NodeNameLabel";
+            this.NodeNameLabel.Size = new System.Drawing.Size(40, 15);
+            this.NodeNameLabel.TabIndex = 2;
+            this.NodeNameLabel.Text = "&Namn";
+            // 
+            // NodesLB
+            // 
+            this.NodesLB.FormattingEnabled = true;
+            this.NodesLB.ItemHeight = 15;
+            this.NodesLB.Location = new System.Drawing.Point(11, 21);
+            this.NodesLB.Name = "NodesLB";
+            this.NodesLB.Size = new System.Drawing.Size(310, 589);
+            this.NodesLB.TabIndex = 1;
+            // 
+            // NodesListLabel
+            // 
+            this.NodesListLabel.AutoSize = true;
+            this.NodesListLabel.Location = new System.Drawing.Point(8, 3);
+            this.NodesListLabel.Name = "NodesListLabel";
+            this.NodesListLabel.Size = new System.Drawing.Size(91, 15);
+            this.NodesListLabel.TabIndex = 0;
+            this.NodesListLabel.Text = "Li&sta över noder";
+            // 
             // OpenMediaFileDialog
             // 
             this.OpenMediaFileDialog.Filter = "|*.jpg;*.jpeg;*.png;*.pgif;*.wav;*.m4a;**.mp3|relifaideMBilder (*.jpg, *.jpeg, *." +
     "png)|*.jpg;*.jpeg;*.png|Ljudfiler (*.wav, *.mp3, *.m4a)|*.wav;*.m4a;*.mp3|Alla f" +
     "iler (*.*)|*.*";
-            // 
-            // EdgeTravelTypeLabel
-            // 
-            this.EdgeTravelTypeLabel.AutoSize = true;
-            this.EdgeTravelTypeLabel.Location = new System.Drawing.Point(203, 327);
-            this.EdgeTravelTypeLabel.Name = "EdgeTravelTypeLabel";
-            this.EdgeTravelTypeLabel.Size = new System.Drawing.Size(49, 15);
-            this.EdgeTravelTypeLabel.TabIndex = 12;
-            this.EdgeTravelTypeLabel.Text = "&Färdsätt";
-            // 
-            // EdgeTravelTypeCombo
-            // 
-            this.EdgeTravelTypeCombo.FormattingEnabled = true;
-            this.EdgeTravelTypeCombo.Location = new System.Drawing.Point(206, 345);
-            this.EdgeTravelTypeCombo.Name = "EdgeTravelTypeCombo";
-            this.EdgeTravelTypeCombo.Size = new System.Drawing.Size(143, 23);
-            this.EdgeTravelTypeCombo.TabIndex = 13;
             // 
             // MainForm
             // 
@@ -964,6 +1294,8 @@
             this.EdgesTab.PerformLayout();
             this.ElevatorsTab.ResumeLayout(false);
             this.ElevatorsTab.PerformLayout();
+            this.NodesTab.ResumeLayout(false);
+            this.NodesTab.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VenueBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.POIsBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.POIInfosBS)).EndInit();
@@ -971,6 +1303,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.EdgesPOIsBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EdgesForPOIBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EdgeBS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NodesBS)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1070,5 +1403,38 @@
         private System.Windows.Forms.Button DeleteAllElevatorEdgesButton;
         private System.Windows.Forms.ComboBox EdgeTravelTypeCombo;
         private System.Windows.Forms.Label EdgeTravelTypeLabel;
+        private System.Windows.Forms.TabPage NodesTab;
+        private System.Windows.Forms.ListBox NodesLB;
+        private System.Windows.Forms.Label NodesListLabel;
+        private System.Windows.Forms.TextBox NodeNameTB;
+        private System.Windows.Forms.Label NodeNameLabel;
+        private System.Windows.Forms.BindingSource NodesBS;
+        private System.Windows.Forms.TextBox NodeUuidTB;
+        private System.Windows.Forms.Label UuidLabel;
+        private System.Windows.Forms.TextBox NodeMinorTB;
+        private System.Windows.Forms.Label MinorLabel;
+        private System.Windows.Forms.TextBox NodeMajorTB;
+        private System.Windows.Forms.Label NodeMajorLabel;
+        private System.Windows.Forms.ComboBox NodeWaypointTypeCombo;
+        private System.Windows.Forms.Label WaypointTypeLabel;
+        private System.Windows.Forms.TextBox NodeIdTagTB;
+        private System.Windows.Forms.Label IdTabLabel;
+        private System.Windows.Forms.TextBox NodeAccuracyTB;
+        private System.Windows.Forms.Label NodeAccuracyLabel;
+        private System.Windows.Forms.CheckBox NodeActiveChk;
+        private System.Windows.Forms.TextBox NodeMagneticOffsetTB;
+        private System.Windows.Forms.Label MagneticOffsetLabel;
+        private System.Windows.Forms.TextBox NodeInfo5HeadingTB;
+        private System.Windows.Forms.Label NodeInfo5HeadingLabel;
+        private System.Windows.Forms.TextBox NodeInfo4HeadingTB;
+        private System.Windows.Forms.Label NodeInfo4HeadingLabel;
+        private System.Windows.Forms.TextBox NodeInfo3HeadingTB;
+        private System.Windows.Forms.Label NodeInfo3HeadingLabel;
+        private System.Windows.Forms.TextBox NodeInfo2HeadingTB;
+        private System.Windows.Forms.Label NodeInfo2HeadingLabel;
+        private System.Windows.Forms.TextBox NodeInfo1HeadingTB;
+        private System.Windows.Forms.Label NodeInfo1HeadingLabel;
+        private System.Windows.Forms.TextBox NodeFloorTB;
+        private System.Windows.Forms.Label NodeFloorLabel;
     }
 }

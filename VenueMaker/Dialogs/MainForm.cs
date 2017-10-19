@@ -77,10 +77,12 @@ namespace VenueMaker.Dialogs
 
                     elevators = Venue.NodesGraph.GetNodesAlphabetical().Where(w => w.WaypointType == "elevator").OrderBy(w => w, new FloorComparer()).ToArray();
                     ElevatorsBS.DataSource = elevators;
-                    ElevatorsLB.DataSource = ElevatorsBS;
-                    ElevatorsLB.DisplayMember = "TextInList";
-                    ElevatorsLB.ValueMember = "Name";
+                    ElevatorsBS.ResetBindings(false);
                     
+                    NodesBS.DataSource = Venue.NodesGraph.GetNodesAlphabetical().OrderBy(w => w, new FloorComparer()).ToArray();
+                    NodesBS.ResetBindings(false);
+
+
                 };
 
                 
@@ -142,6 +144,10 @@ namespace VenueMaker.Dialogs
                 POIInfoCatCombo.ValueMember = "Category";
                 POIInfoCatCombo.DataBindings.Add("SelectedValue", POIInfosBS, "Category");
 
+                ElevatorsBS.DataSource = new WFNode[] { };
+                ElevatorsLB.DataSource = ElevatorsBS;
+                ElevatorsLB.DisplayMember = "TextInList";
+                ElevatorsLB.ValueMember = "Name";
 
 
                 EdgesPOIsBS.DataSource = new WFPointOfInterest[] { };
@@ -216,6 +222,32 @@ namespace VenueMaker.Dialogs
                 EdgeTravelTimeTB.DataBindings.Add("Text", EdgeBS, "TravelTime");
 
                 EdgeTravelTypeCombo.DataBindings.Add("Text", EdgeBS, "TravelType");
+
+
+                NodesBS.DataSource = new WFNode[] { };
+                NodesLB.DataSource = NodesBS;
+                NodesLB.DisplayMember = "TextInList";
+                NodesLB.ValueMember = "Name";
+                
+                NodeNameTB.DataBindings.Add("Text", NodesBS, "Name");
+                NodeWaypointTypeCombo.DataBindings.Add("Text", NodesBS, "WaypointType");
+                NodeFloorTB.DataBindings.Add("Text", NodesBS, "Floor");
+                NodeUuidTB.DataBindings.Add("Text", NodesBS, "Uuid");
+                NodeMajorTB.DataBindings.Add("Text", NodesBS, "Major");
+                NodeMinorTB.DataBindings.Add("Text", NodesBS, "Minor");
+                NodeIdTagTB.DataBindings.Add("Text", NodesBS, "IdTag");
+                NodeActiveChk.DataBindings.Add("Checked", NodesBS, "Active");
+                NodeAccuracyTB.DataBindings.Add("Text", NodesBS, "Accuracy");
+                NodeMagneticOffsetTB.DataBindings.Add("Text", NodesBS, "MagneticOffset");
+                NodeInfo1HeadingTB.DataBindings.Add("Text", NodesBS, "Heading1Info");
+                NodeInfo2HeadingTB.DataBindings.Add("Text", NodesBS, "Heading2Info");
+                NodeInfo3HeadingTB.DataBindings.Add("Text", NodesBS, "Heading3Info");
+                NodeInfo4HeadingTB.DataBindings.Add("Text", NodesBS, "Heading4Info");
+                NodeInfo5HeadingTB.DataBindings.Add("Text", NodesBS, "Heading5Info");
+                
+                
+                
+
 
 
 

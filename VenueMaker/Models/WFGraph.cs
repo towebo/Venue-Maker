@@ -17,6 +17,7 @@ namespace WayfindR.Models
     [Serializable]
     public class WFGraph : AdjacencyGraph<WFNode, WFEdge<WFNode>>
     {
+        private static NumberFormatInfo nfi = new NumberFormatInfo();
 
         public Int64 LastEdgeId
         {
@@ -64,6 +65,9 @@ namespace WayfindR.Models
 
         public WFGraph()
         {
+            nfi = new NumberFormatInfo();
+            nfi.NumberDecimalSeparator = ".";
+
         }
 
 
@@ -240,7 +244,17 @@ namespace WayfindR.Models
                         var val = prop.GetValue(obj);
                         if (val != null)
                         {
-                            sval = val.ToString();
+                            if (prop.PropertyType == typeof(double))
+                            {
+                                double dval = (double)val;
+                                sval = dval.ToString(WFGraph.nfi);
+
+                            } // double
+                            else
+                            {
+                                sval = val.ToString();
+
+                            } // else
                         }
                     }
                     catch

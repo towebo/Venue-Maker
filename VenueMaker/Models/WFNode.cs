@@ -163,8 +163,8 @@ namespace WayfindR.Models
 
         private string GetHeadingInfo(int idx)
         {
-            string result = "";
-            if (idx <= hinfos.Count)
+            string result = string.Empty;
+            if (idx < hinfos.Count)
             {
                 result = HeadingInfos[idx].ToString();
 
