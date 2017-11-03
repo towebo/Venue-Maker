@@ -147,7 +147,7 @@ namespace VenueMaker.Dialogs
                 ElevatorsBS.DataSource = new WFNode[] { };
                 ElevatorsLB.DataSource = ElevatorsBS;
                 ElevatorsLB.DisplayMember = "TextInList";
-                ElevatorsLB.ValueMember = "Name";
+                ElevatorsLB.ValueMember = "Id";
 
 
                 EdgesPOIsBS.DataSource = new WFPointOfInterest[] { };
@@ -227,7 +227,7 @@ namespace VenueMaker.Dialogs
                 NodesBS.DataSource = new WFNode[] { };
                 NodesLB.DataSource = NodesBS;
                 NodesLB.DisplayMember = "TextInList";
-                NodesLB.ValueMember = "Name";
+                NodesLB.ValueMember = "Id";
                 
                 NodeNameTB.DataBindings.Add("Text", NodesBS, "Name");
                 NodeWaypointTypeCombo.DataBindings.Add("Text", NodesBS, "WaypointType");
@@ -236,7 +236,7 @@ namespace VenueMaker.Dialogs
                 NodeMajorTB.DataBindings.Add("Text", NodesBS, "Major");
                 NodeMinorTB.DataBindings.Add("Text", NodesBS, "Minor");
                 NodeIdTagTB.DataBindings.Add("Text", NodesBS, "IdTag");
-                NodeActiveChk.DataBindings.Add("Checked", NodesBS, "Active");
+                NodeActiveChk.DataBindings.Add("Checked", NodesBS, "Active", true);
                 NodeAccuracyTB.DataBindings.Add("Text", NodesBS, "Accuracy");
                 NodeMagneticOffsetTB.DataBindings.Add("Text", NodesBS, "MagneticOffset");
                 NodeInfo1HeadingTB.DataBindings.Add("Text", NodesBS, "Heading1Info");
@@ -245,11 +245,6 @@ namespace VenueMaker.Dialogs
                 NodeInfo4HeadingTB.DataBindings.Add("Text", NodesBS, "Heading4Info");
                 NodeInfo5HeadingTB.DataBindings.Add("Text", NodesBS, "Heading5Info");
                 
-                
-                
-
-
-
 
             }
             catch (Exception ex)
@@ -440,10 +435,10 @@ namespace VenueMaker.Dialogs
 
                 p.Information = poiis.ToArray();
 
-                POIsBS.ResetBindings(false);
-
-
-
+                POIInfosBS.DataSource = p.Information;
+                POIInfosBS.MoveLast();
+                POIInfosBS.ResetBindings(false);
+                
             }
             catch (Exception ex)
             {
@@ -478,6 +473,14 @@ namespace VenueMaker.Dialogs
 
                 }
 
+                string msg = "Vill du ta bort den markerade informationen?";
+                DialogResult mr = MessageBox.Show(msg, "Ta bort", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                if (DialogResult.Yes != mr)
+                {
+                    return;
+
+                } // Anything but Yes
+                
                 List<WFPOIInformation> poiis;
                 poiis = p.Information.ToList();
                 poiis.Remove(poii);
@@ -899,6 +902,14 @@ namespace VenueMaker.Dialogs
 
                 } // Is null
 
+                string msg = "Vill du verkligen ta bort den valda vägbeskrivningen?";
+                DialogResult mr = MessageBox.Show(msg, "Ta bort vägbeskrivning", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                if (DialogResult.Yes != mr)
+                {
+                    return;
+
+                } // Anything but Yes
+
                 Venue.NodesGraph.RemoveEdge(efp.Edge);
                 EdgesPOIsBS.ResetBindings(false);
 
@@ -938,6 +949,14 @@ namespace VenueMaker.Dialogs
         {
             try
             {
+                string msg = "Vill du ta bort alla vägbeskrivningar mellan hissarna?";
+                DialogResult mr = MessageBox.Show(msg, "Ta bort", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                if (DialogResult.Yes != mr)
+                {
+                    return;
+
+                } // Anything but Yes
+
                 Cursor.Current = Cursors.WaitCursor;
                 Application.DoEvents();
 
@@ -969,6 +988,64 @@ namespace VenueMaker.Dialogs
                 Cursor.Current = Cursors.Default;
 
             }
+        }
+
+        private void AddNodeButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string id = string.Format("n{0}",
+                    Venue.NodesGraph.LastNodeId + 1
+                    );
+
+                WFNode n = new WFNode();
+                n.Id = id;
+                n.Name = "Ny nod";                
+                
+                Venue.NodesGraph.AddVertex(n);
+                NodesBS.DataSource = Venue.NodesGraph.GetNodesAlphabetical().OrderBy(w => w, new FloorComparer()).ToArray();
+                NodesBS.ResetBindings(false);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+
+        }
+
+        private void DeleteNodeButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                WFNode thenode = NodesBS.Current as WFNode;
+                if (thenode == null)
+                {
+                    return;
+
+                } // No node selected
+
+                string MSG = string.Format("Är du säkerk på att du vill ta bort noden \"{0}\"?",
+                    thenode.Name
+                    );
+                DialogResult mr = MessageBox.Show(MSG, "Ta bort nod", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                if (DialogResult.Yes != mr)
+                {
+                    return;
+
+                } // Anything but Yes
+                
+                Venue.NodesGraph.RemoveVertex(thenode);
+                NodesBS.DataSource = Venue.NodesGraph.GetNodesAlphabetical().OrderBy(w => w, new FloorComparer()).ToArray();
+                NodesBS.ResetBindings(false);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
     }
 }

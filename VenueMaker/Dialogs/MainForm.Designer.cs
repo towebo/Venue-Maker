@@ -63,58 +63,9 @@
             this.VenueIDLabel = new System.Windows.Forms.Label();
             this.VenueNameTB = new System.Windows.Forms.TextBox();
             this.VenueNameLabel = new System.Windows.Forms.Label();
-            this.PoiTabPage = new System.Windows.Forms.TabPage();
-            this.POIInfosLabel = new System.Windows.Forms.Label();
-            this.AutoPlayMediaCB = new System.Windows.Forms.CheckBox();
-            this.MediaDescrTB = new System.Windows.Forms.TextBox();
-            this.MediaDescLabel = new System.Windows.Forms.Label();
-            this.PickMediaFileButton = new System.Windows.Forms.Button();
-            this.MediaFileTB = new System.Windows.Forms.TextBox();
-            this.MediaFileLabel = new System.Windows.Forms.Label();
-            this.MoveInfoDownButton = new System.Windows.Forms.Button();
-            this.MoveInfoUpButton = new System.Windows.Forms.Button();
-            this.RemovePOIInfoButton = new System.Windows.Forms.Button();
-            this.AddPOIInfoButton = new System.Windows.Forms.Button();
-            this.POIInfoEndsTB = new System.Windows.Forms.TextBox();
-            this.POIInfoEndsLabel = new System.Windows.Forms.Label();
-            this.POIInfoStartsTB = new System.Windows.Forms.TextBox();
-            this.POIInfoStartsLabel = new System.Windows.Forms.Label();
-            this.POIInfoCatCombo = new System.Windows.Forms.ComboBox();
-            this.POIInfoCatLabel = new System.Windows.Forms.Label();
-            this.POIInformationTB = new System.Windows.Forms.TextBox();
-            this.POIInfoLabel = new System.Windows.Forms.Label();
-            this.POIInfosLB = new System.Windows.Forms.ListBox();
-            this.POIsListLabel = new System.Windows.Forms.Label();
-            this.POIsLB = new System.Windows.Forms.ListBox();
-            this.EdgesTab = new System.Windows.Forms.TabPage();
-            this.EdgeTravelTypeCombo = new System.Windows.Forms.ComboBox();
-            this.EdgeTravelTypeLabel = new System.Windows.Forms.Label();
-            this.DeleteEdgeButton = new System.Windows.Forms.Button();
-            this.AddEdgeButton = new System.Windows.Forms.Button();
-            this.EdgeTravelTimeTB = new System.Windows.Forms.TextBox();
-            this.EdgeTravelTimeLabel = new System.Windows.Forms.Label();
-            this.EdgeEndHeadingTB = new System.Windows.Forms.TextBox();
-            this.EdgeEndHeadingLabel = new System.Windows.Forms.Label();
-            this.EdgeStartHeadingTB = new System.Windows.Forms.TextBox();
-            this.EdgeStartHeadingLabel = new System.Windows.Forms.Label();
-            this.EdgeBeginningTB = new System.Windows.Forms.TextBox();
-            this.EdgeBeginningLabel = new System.Windows.Forms.Label();
-            this.EdgesForPOILB = new System.Windows.Forms.ListBox();
-            this.EdgesListLabel = new System.Windows.Forms.Label();
-            this.EdgesPOIsLB = new System.Windows.Forms.ListBox();
-            this.EdgesPOIListLabel = new System.Windows.Forms.Label();
-            this.ElevatorsTab = new System.Windows.Forms.TabPage();
-            this.DeleteAllElevatorEdgesButton = new System.Windows.Forms.Button();
-            this.ElevatorMessageTB = new System.Windows.Forms.TextBox();
-            this.ElevatorMessageLabel = new System.Windows.Forms.Label();
-            this.ElevatorEndHeadingTB = new System.Windows.Forms.TextBox();
-            this.ElevatorEndHeadingLabel = new System.Windows.Forms.Label();
-            this.ElevatorStartHeadingTB = new System.Windows.Forms.TextBox();
-            this.ElevatorStartHeadingLabel = new System.Windows.Forms.Label();
-            this.CreateElevatorEdgesButton = new System.Windows.Forms.Button();
-            this.ElevatorsLB = new System.Windows.Forms.ListBox();
-            this.ElevatorListLabel = new System.Windows.Forms.Label();
             this.NodesTab = new System.Windows.Forms.TabPage();
+            this.DeleteNodeButton = new System.Windows.Forms.Button();
+            this.AddNodeButton = new System.Windows.Forms.Button();
             this.NodeFloorTB = new System.Windows.Forms.TextBox();
             this.NodeFloorLabel = new System.Windows.Forms.Label();
             this.NodeInfo5HeadingTB = new System.Windows.Forms.TextBox();
@@ -146,6 +97,57 @@
             this.NodeNameLabel = new System.Windows.Forms.Label();
             this.NodesLB = new System.Windows.Forms.ListBox();
             this.NodesListLabel = new System.Windows.Forms.Label();
+            this.EdgesTab = new System.Windows.Forms.TabPage();
+            this.EdgeTravelTypeCombo = new System.Windows.Forms.ComboBox();
+            this.EdgeTravelTypeLabel = new System.Windows.Forms.Label();
+            this.DeleteEdgeButton = new System.Windows.Forms.Button();
+            this.AddEdgeButton = new System.Windows.Forms.Button();
+            this.EdgeTravelTimeTB = new System.Windows.Forms.TextBox();
+            this.EdgeTravelTimeLabel = new System.Windows.Forms.Label();
+            this.EdgeEndHeadingTB = new System.Windows.Forms.TextBox();
+            this.EdgeEndHeadingLabel = new System.Windows.Forms.Label();
+            this.EdgeStartHeadingTB = new System.Windows.Forms.TextBox();
+            this.EdgeStartHeadingLabel = new System.Windows.Forms.Label();
+            this.EdgeBeginningTB = new System.Windows.Forms.TextBox();
+            this.EdgeBeginningLabel = new System.Windows.Forms.Label();
+            this.EdgesForPOILB = new System.Windows.Forms.ListBox();
+            this.EdgesListLabel = new System.Windows.Forms.Label();
+            this.EdgesPOIsLB = new System.Windows.Forms.ListBox();
+            this.EdgesPOIListLabel = new System.Windows.Forms.Label();
+            this.PoiTabPage = new System.Windows.Forms.TabPage();
+            this.POIInfosLabel = new System.Windows.Forms.Label();
+            this.AutoPlayMediaCB = new System.Windows.Forms.CheckBox();
+            this.MediaDescrTB = new System.Windows.Forms.TextBox();
+            this.MediaDescLabel = new System.Windows.Forms.Label();
+            this.PickMediaFileButton = new System.Windows.Forms.Button();
+            this.MediaFileTB = new System.Windows.Forms.TextBox();
+            this.MediaFileLabel = new System.Windows.Forms.Label();
+            this.MoveInfoDownButton = new System.Windows.Forms.Button();
+            this.MoveInfoUpButton = new System.Windows.Forms.Button();
+            this.RemovePOIInfoButton = new System.Windows.Forms.Button();
+            this.AddPOIInfoButton = new System.Windows.Forms.Button();
+            this.POIInfoEndsTB = new System.Windows.Forms.TextBox();
+            this.POIInfoEndsLabel = new System.Windows.Forms.Label();
+            this.POIInfoStartsTB = new System.Windows.Forms.TextBox();
+            this.POIInfoStartsLabel = new System.Windows.Forms.Label();
+            this.POIInfoCatCombo = new System.Windows.Forms.ComboBox();
+            this.POIInfoCatLabel = new System.Windows.Forms.Label();
+            this.POIInformationTB = new System.Windows.Forms.TextBox();
+            this.POIInfoLabel = new System.Windows.Forms.Label();
+            this.POIInfosLB = new System.Windows.Forms.ListBox();
+            this.POIsListLabel = new System.Windows.Forms.Label();
+            this.POIsLB = new System.Windows.Forms.ListBox();
+            this.ElevatorsTab = new System.Windows.Forms.TabPage();
+            this.DeleteAllElevatorEdgesButton = new System.Windows.Forms.Button();
+            this.ElevatorMessageTB = new System.Windows.Forms.TextBox();
+            this.ElevatorMessageLabel = new System.Windows.Forms.Label();
+            this.ElevatorEndHeadingTB = new System.Windows.Forms.TextBox();
+            this.ElevatorEndHeadingLabel = new System.Windows.Forms.Label();
+            this.ElevatorStartHeadingTB = new System.Windows.Forms.TextBox();
+            this.ElevatorStartHeadingLabel = new System.Windows.Forms.Label();
+            this.CreateElevatorEdgesButton = new System.Windows.Forms.Button();
+            this.ElevatorsLB = new System.Windows.Forms.ListBox();
+            this.ElevatorListLabel = new System.Windows.Forms.Label();
             this.OpenMediaFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.VenueBS = new System.Windows.Forms.BindingSource(this.components);
             this.POIsBS = new System.Windows.Forms.BindingSource(this.components);
@@ -158,10 +160,10 @@
             this.MainMenuStrip.SuspendLayout();
             this.Tabs.SuspendLayout();
             this.VenueTab.SuspendLayout();
-            this.PoiTabPage.SuspendLayout();
-            this.EdgesTab.SuspendLayout();
-            this.ElevatorsTab.SuspendLayout();
             this.NodesTab.SuspendLayout();
+            this.EdgesTab.SuspendLayout();
+            this.PoiTabPage.SuspendLayout();
+            this.ElevatorsTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VenueBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.POIsBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.POIInfosBS)).BeginInit();
@@ -290,10 +292,10 @@
             // Tabs
             // 
             this.Tabs.Controls.Add(this.VenueTab);
-            this.Tabs.Controls.Add(this.PoiTabPage);
+            this.Tabs.Controls.Add(this.NodesTab);
             this.Tabs.Controls.Add(this.EdgesTab);
             this.Tabs.Controls.Add(this.ElevatorsTab);
-            this.Tabs.Controls.Add(this.NodesTab);
+            this.Tabs.Controls.Add(this.PoiTabPage);            
             this.Tabs.Location = new System.Drawing.Point(12, 43);
             this.Tabs.Name = "Tabs";
             this.Tabs.SelectedIndex = 0;
@@ -323,7 +325,7 @@
             this.VenueTab.Padding = new System.Windows.Forms.Padding(3);
             this.VenueTab.Size = new System.Drawing.Size(1102, 629);
             this.VenueTab.TabIndex = 4;
-            this.VenueTab.Text = "Platsinformation";
+            this.VenueTab.Text = "Plats";
             this.VenueTab.UseVisualStyleBackColor = true;
             // 
             // VisibilityCombo
@@ -471,506 +473,10 @@
             this.VenueNameLabel.TabIndex = 17;
             this.VenueNameLabel.Text = "&Namn";
             // 
-            // PoiTabPage
-            // 
-            this.PoiTabPage.Controls.Add(this.POIInfosLabel);
-            this.PoiTabPage.Controls.Add(this.AutoPlayMediaCB);
-            this.PoiTabPage.Controls.Add(this.MediaDescrTB);
-            this.PoiTabPage.Controls.Add(this.MediaDescLabel);
-            this.PoiTabPage.Controls.Add(this.PickMediaFileButton);
-            this.PoiTabPage.Controls.Add(this.MediaFileTB);
-            this.PoiTabPage.Controls.Add(this.MediaFileLabel);
-            this.PoiTabPage.Controls.Add(this.MoveInfoDownButton);
-            this.PoiTabPage.Controls.Add(this.MoveInfoUpButton);
-            this.PoiTabPage.Controls.Add(this.RemovePOIInfoButton);
-            this.PoiTabPage.Controls.Add(this.AddPOIInfoButton);
-            this.PoiTabPage.Controls.Add(this.POIInfoEndsTB);
-            this.PoiTabPage.Controls.Add(this.POIInfoEndsLabel);
-            this.PoiTabPage.Controls.Add(this.POIInfoStartsTB);
-            this.PoiTabPage.Controls.Add(this.POIInfoStartsLabel);
-            this.PoiTabPage.Controls.Add(this.POIInfoCatCombo);
-            this.PoiTabPage.Controls.Add(this.POIInfoCatLabel);
-            this.PoiTabPage.Controls.Add(this.POIInformationTB);
-            this.PoiTabPage.Controls.Add(this.POIInfoLabel);
-            this.PoiTabPage.Controls.Add(this.POIInfosLB);
-            this.PoiTabPage.Controls.Add(this.POIsListLabel);
-            this.PoiTabPage.Controls.Add(this.POIsLB);
-            this.PoiTabPage.Location = new System.Drawing.Point(4, 24);
-            this.PoiTabPage.Name = "PoiTabPage";
-            this.PoiTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.PoiTabPage.Size = new System.Drawing.Size(1102, 629);
-            this.PoiTabPage.TabIndex = 0;
-            this.PoiTabPage.Text = "Points Of Interest";
-            this.PoiTabPage.UseVisualStyleBackColor = true;
-            // 
-            // POIInfosLabel
-            // 
-            this.POIInfosLabel.AutoSize = true;
-            this.POIInfosLabel.Location = new System.Drawing.Point(330, 3);
-            this.POIInfosLabel.Name = "POIInfosLabel";
-            this.POIInfosLabel.Size = new System.Drawing.Size(104, 15);
-            this.POIInfosLabel.TabIndex = 1;
-            this.POIInfosLabel.Text = "In&formationstexter";
-            // 
-            // AutoPlayMediaCB
-            // 
-            this.AutoPlayMediaCB.AutoSize = true;
-            this.AutoPlayMediaCB.Location = new System.Drawing.Point(333, 477);
-            this.AutoPlayMediaCB.Name = "AutoPlayMediaCB";
-            this.AutoPlayMediaCB.Size = new System.Drawing.Size(184, 19);
-            this.AutoPlayMediaCB.TabIndex = 20;
-            this.AutoPlayMediaCB.Text = "Spela upp medua automatiskt";
-            this.AutoPlayMediaCB.UseVisualStyleBackColor = true;
-            // 
-            // MediaDescrTB
-            // 
-            this.MediaDescrTB.Location = new System.Drawing.Point(333, 448);
-            this.MediaDescrTB.Name = "MediaDescrTB";
-            this.MediaDescrTB.Size = new System.Drawing.Size(407, 23);
-            this.MediaDescrTB.TabIndex = 19;
-            // 
-            // MediaDescLabel
-            // 
-            this.MediaDescLabel.AutoSize = true;
-            this.MediaDescLabel.Location = new System.Drawing.Point(330, 430);
-            this.MediaDescLabel.Name = "MediaDescLabel";
-            this.MediaDescLabel.Size = new System.Drawing.Size(119, 15);
-            this.MediaDescLabel.TabIndex = 18;
-            this.MediaDescLabel.Text = "Beskrivning av media";
-            // 
-            // PickMediaFileButton
-            // 
-            this.PickMediaFileButton.Location = new System.Drawing.Point(655, 403);
-            this.PickMediaFileButton.Name = "PickMediaFileButton";
-            this.PickMediaFileButton.Size = new System.Drawing.Size(75, 23);
-            this.PickMediaFileButton.TabIndex = 17;
-            this.PickMediaFileButton.Text = "&Välj";
-            this.PickMediaFileButton.UseVisualStyleBackColor = true;
-            this.PickMediaFileButton.Click += new System.EventHandler(this.PickMediaFileButton_Click);
-            // 
-            // MediaFileTB
-            // 
-            this.MediaFileTB.Location = new System.Drawing.Point(333, 404);
-            this.MediaFileTB.Name = "MediaFileTB";
-            this.MediaFileTB.Size = new System.Drawing.Size(316, 23);
-            this.MediaFileTB.TabIndex = 16;
-            // 
-            // MediaFileLabel
-            // 
-            this.MediaFileLabel.AutoSize = true;
-            this.MediaFileLabel.Location = new System.Drawing.Point(330, 386);
-            this.MediaFileLabel.Name = "MediaFileLabel";
-            this.MediaFileLabel.Size = new System.Drawing.Size(50, 15);
-            this.MediaFileLabel.TabIndex = 15;
-            this.MediaFileLabel.Text = "&Mediafil";
-            // 
-            // MoveInfoDownButton
-            // 
-            this.MoveInfoDownButton.Location = new System.Drawing.Point(736, 127);
-            this.MoveInfoDownButton.Name = "MoveInfoDownButton";
-            this.MoveInfoDownButton.Size = new System.Drawing.Size(75, 23);
-            this.MoveInfoDownButton.TabIndex = 24;
-            this.MoveInfoDownButton.Text = "Flytta ner";
-            this.MoveInfoDownButton.UseVisualStyleBackColor = true;
-            this.MoveInfoDownButton.Click += new System.EventHandler(this.MoveInfoUpButton_Click);
-            // 
-            // MoveInfoUpButton
-            // 
-            this.MoveInfoUpButton.Location = new System.Drawing.Point(736, 98);
-            this.MoveInfoUpButton.Name = "MoveInfoUpButton";
-            this.MoveInfoUpButton.Size = new System.Drawing.Size(75, 23);
-            this.MoveInfoUpButton.TabIndex = 23;
-            this.MoveInfoUpButton.Text = "Flytta upp";
-            this.MoveInfoUpButton.UseVisualStyleBackColor = true;
-            this.MoveInfoUpButton.Click += new System.EventHandler(this.MoveInfoUpButton_Click);
-            // 
-            // RemovePOIInfoButton
-            // 
-            this.RemovePOIInfoButton.Location = new System.Drawing.Point(736, 53);
-            this.RemovePOIInfoButton.Name = "RemovePOIInfoButton";
-            this.RemovePOIInfoButton.Size = new System.Drawing.Size(75, 23);
-            this.RemovePOIInfoButton.TabIndex = 22;
-            this.RemovePOIInfoButton.Text = "&Ta bort";
-            this.RemovePOIInfoButton.UseVisualStyleBackColor = true;
-            this.RemovePOIInfoButton.Click += new System.EventHandler(this.RemovePOIInfoButton_Click);
-            // 
-            // AddPOIInfoButton
-            // 
-            this.AddPOIInfoButton.Location = new System.Drawing.Point(736, 21);
-            this.AddPOIInfoButton.Name = "AddPOIInfoButton";
-            this.AddPOIInfoButton.Size = new System.Drawing.Size(75, 23);
-            this.AddPOIInfoButton.TabIndex = 21;
-            this.AddPOIInfoButton.Text = "L&ägg till";
-            this.AddPOIInfoButton.UseVisualStyleBackColor = true;
-            this.AddPOIInfoButton.Click += new System.EventHandler(this.AddPOIInfoButton_Click);
-            // 
-            // POIInfoEndsTB
-            // 
-            this.POIInfoEndsTB.Location = new System.Drawing.Point(509, 360);
-            this.POIInfoEndsTB.Name = "POIInfoEndsTB";
-            this.POIInfoEndsTB.Size = new System.Drawing.Size(100, 23);
-            this.POIInfoEndsTB.TabIndex = 10;
-            // 
-            // POIInfoEndsLabel
-            // 
-            this.POIInfoEndsLabel.AutoSize = true;
-            this.POIInfoEndsLabel.Location = new System.Drawing.Point(506, 342);
-            this.POIInfoEndsLabel.Name = "POIInfoEndsLabel";
-            this.POIInfoEndsLabel.Size = new System.Drawing.Size(100, 15);
-            this.POIInfoEndsLabel.TabIndex = 9;
-            this.POIInfoEndsLabel.Text = "Aktiv till och med";
-            // 
-            // POIInfoStartsTB
-            // 
-            this.POIInfoStartsTB.Location = new System.Drawing.Point(333, 360);
-            this.POIInfoStartsTB.Name = "POIInfoStartsTB";
-            this.POIInfoStartsTB.Size = new System.Drawing.Size(170, 23);
-            this.POIInfoStartsTB.TabIndex = 8;
-            // 
-            // POIInfoStartsLabel
-            // 
-            this.POIInfoStartsLabel.AutoSize = true;
-            this.POIInfoStartsLabel.Location = new System.Drawing.Point(330, 342);
-            this.POIInfoStartsLabel.Name = "POIInfoStartsLabel";
-            this.POIInfoStartsLabel.Size = new System.Drawing.Size(108, 15);
-            this.POIInfoStartsLabel.TabIndex = 7;
-            this.POIInfoStartsLabel.Text = "Aktiv från och med";
-            // 
-            // POIInfoCatCombo
-            // 
-            this.POIInfoCatCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.POIInfoCatCombo.FormattingEnabled = true;
-            this.POIInfoCatCombo.Location = new System.Drawing.Point(333, 316);
-            this.POIInfoCatCombo.Name = "POIInfoCatCombo";
-            this.POIInfoCatCombo.Size = new System.Drawing.Size(212, 23);
-            this.POIInfoCatCombo.TabIndex = 6;
-            // 
-            // POIInfoCatLabel
-            // 
-            this.POIInfoCatLabel.AutoSize = true;
-            this.POIInfoCatLabel.Location = new System.Drawing.Point(330, 298);
-            this.POIInfoCatLabel.Name = "POIInfoCatLabel";
-            this.POIInfoCatLabel.Size = new System.Drawing.Size(51, 15);
-            this.POIInfoCatLabel.TabIndex = 5;
-            this.POIInfoCatLabel.Text = "&Kategori";
-            // 
-            // POIInformationTB
-            // 
-            this.POIInformationTB.Location = new System.Drawing.Point(333, 197);
-            this.POIInformationTB.Multiline = true;
-            this.POIInformationTB.Name = "POIInformationTB";
-            this.POIInformationTB.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.POIInformationTB.Size = new System.Drawing.Size(397, 98);
-            this.POIInformationTB.TabIndex = 4;
-            // 
-            // POIInfoLabel
-            // 
-            this.POIInfoLabel.AutoSize = true;
-            this.POIInfoLabel.Location = new System.Drawing.Point(330, 179);
-            this.POIInfoLabel.Name = "POIInfoLabel";
-            this.POIInfoLabel.Size = new System.Drawing.Size(70, 15);
-            this.POIInfoLabel.TabIndex = 3;
-            this.POIInfoLabel.Text = "&Information";
-            // 
-            // POIInfosLB
-            // 
-            this.POIInfosLB.FormattingEnabled = true;
-            this.POIInfosLB.ItemHeight = 15;
-            this.POIInfosLB.Location = new System.Drawing.Point(333, 21);
-            this.POIInfosLB.Name = "POIInfosLB";
-            this.POIInfosLB.Size = new System.Drawing.Size(397, 139);
-            this.POIInfosLB.TabIndex = 2;
-            // 
-            // POIsListLabel
-            // 
-            this.POIsListLabel.AutoSize = true;
-            this.POIsListLabel.Location = new System.Drawing.Point(8, 3);
-            this.POIsListLabel.Name = "POIsListLabel";
-            this.POIsListLabel.Size = new System.Drawing.Size(98, 15);
-            this.POIsListLabel.TabIndex = 0;
-            this.POIsListLabel.Text = "Point&s Of Interest";
-            // 
-            // POIsLB
-            // 
-            this.POIsLB.FormattingEnabled = true;
-            this.POIsLB.ItemHeight = 15;
-            this.POIsLB.Location = new System.Drawing.Point(11, 21);
-            this.POIsLB.Name = "POIsLB";
-            this.POIsLB.Size = new System.Drawing.Size(315, 319);
-            this.POIsLB.TabIndex = 0;
-            // 
-            // EdgesTab
-            // 
-            this.EdgesTab.Controls.Add(this.EdgeTravelTypeCombo);
-            this.EdgesTab.Controls.Add(this.EdgeTravelTypeLabel);
-            this.EdgesTab.Controls.Add(this.DeleteEdgeButton);
-            this.EdgesTab.Controls.Add(this.AddEdgeButton);
-            this.EdgesTab.Controls.Add(this.EdgeTravelTimeTB);
-            this.EdgesTab.Controls.Add(this.EdgeTravelTimeLabel);
-            this.EdgesTab.Controls.Add(this.EdgeEndHeadingTB);
-            this.EdgesTab.Controls.Add(this.EdgeEndHeadingLabel);
-            this.EdgesTab.Controls.Add(this.EdgeStartHeadingTB);
-            this.EdgesTab.Controls.Add(this.EdgeStartHeadingLabel);
-            this.EdgesTab.Controls.Add(this.EdgeBeginningTB);
-            this.EdgesTab.Controls.Add(this.EdgeBeginningLabel);
-            this.EdgesTab.Controls.Add(this.EdgesForPOILB);
-            this.EdgesTab.Controls.Add(this.EdgesListLabel);
-            this.EdgesTab.Controls.Add(this.EdgesPOIsLB);
-            this.EdgesTab.Controls.Add(this.EdgesPOIListLabel);
-            this.EdgesTab.Location = new System.Drawing.Point(4, 24);
-            this.EdgesTab.Name = "EdgesTab";
-            this.EdgesTab.Padding = new System.Windows.Forms.Padding(3);
-            this.EdgesTab.Size = new System.Drawing.Size(1102, 629);
-            this.EdgesTab.TabIndex = 3;
-            this.EdgesTab.Text = "Vägbeskrivningar";
-            this.EdgesTab.UseVisualStyleBackColor = true;
-            // 
-            // EdgeTravelTypeCombo
-            // 
-            this.EdgeTravelTypeCombo.FormattingEnabled = true;
-            this.EdgeTravelTypeCombo.Location = new System.Drawing.Point(206, 345);
-            this.EdgeTravelTypeCombo.Name = "EdgeTravelTypeCombo";
-            this.EdgeTravelTypeCombo.Size = new System.Drawing.Size(143, 23);
-            this.EdgeTravelTypeCombo.TabIndex = 13;
-            // 
-            // EdgeTravelTypeLabel
-            // 
-            this.EdgeTravelTypeLabel.AutoSize = true;
-            this.EdgeTravelTypeLabel.Location = new System.Drawing.Point(203, 327);
-            this.EdgeTravelTypeLabel.Name = "EdgeTravelTypeLabel";
-            this.EdgeTravelTypeLabel.Size = new System.Drawing.Size(49, 15);
-            this.EdgeTravelTypeLabel.TabIndex = 12;
-            this.EdgeTravelTypeLabel.Text = "&Färdsätt";
-            // 
-            // DeleteEdgeButton
-            // 
-            this.DeleteEdgeButton.Location = new System.Drawing.Point(692, 50);
-            this.DeleteEdgeButton.Name = "DeleteEdgeButton";
-            this.DeleteEdgeButton.Size = new System.Drawing.Size(75, 23);
-            this.DeleteEdgeButton.TabIndex = 31;
-            this.DeleteEdgeButton.Text = "&Ta bort";
-            this.DeleteEdgeButton.UseVisualStyleBackColor = true;
-            this.DeleteEdgeButton.Click += new System.EventHandler(this.DeleteEdgeButton_Click);
-            // 
-            // AddEdgeButton
-            // 
-            this.AddEdgeButton.Location = new System.Drawing.Point(692, 21);
-            this.AddEdgeButton.Name = "AddEdgeButton";
-            this.AddEdgeButton.Size = new System.Drawing.Size(75, 23);
-            this.AddEdgeButton.TabIndex = 30;
-            this.AddEdgeButton.Text = "L&ägg till";
-            this.AddEdgeButton.UseVisualStyleBackColor = true;
-            this.AddEdgeButton.Click += new System.EventHandler(this.AddEdgeButton_Click);
-            // 
-            // EdgeTravelTimeTB
-            // 
-            this.EdgeTravelTimeTB.Location = new System.Drawing.Point(418, 292);
-            this.EdgeTravelTimeTB.Name = "EdgeTravelTimeTB";
-            this.EdgeTravelTimeTB.Size = new System.Drawing.Size(100, 23);
-            this.EdgeTravelTimeTB.TabIndex = 11;
-            // 
-            // EdgeTravelTimeLabel
-            // 
-            this.EdgeTravelTimeLabel.AutoSize = true;
-            this.EdgeTravelTimeLabel.Location = new System.Drawing.Point(415, 274);
-            this.EdgeTravelTimeLabel.Name = "EdgeTravelTimeLabel";
-            this.EdgeTravelTimeLabel.Size = new System.Drawing.Size(39, 15);
-            this.EdgeTravelTimeLabel.TabIndex = 10;
-            this.EdgeTravelTimeLabel.Text = "&Restid";
-            // 
-            // EdgeEndHeadingTB
-            // 
-            this.EdgeEndHeadingTB.Location = new System.Drawing.Point(312, 292);
-            this.EdgeEndHeadingTB.Name = "EdgeEndHeadingTB";
-            this.EdgeEndHeadingTB.Size = new System.Drawing.Size(100, 23);
-            this.EdgeEndHeadingTB.TabIndex = 9;
-            // 
-            // EdgeEndHeadingLabel
-            // 
-            this.EdgeEndHeadingLabel.AutoSize = true;
-            this.EdgeEndHeadingLabel.Location = new System.Drawing.Point(309, 274);
-            this.EdgeEndHeadingLabel.Name = "EdgeEndHeadingLabel";
-            this.EdgeEndHeadingLabel.Size = new System.Drawing.Size(68, 15);
-            this.EdgeEndHeadingLabel.TabIndex = 8;
-            this.EdgeEndHeadingLabel.Text = "S&lutriktning";
-            // 
-            // EdgeStartHeadingTB
-            // 
-            this.EdgeStartHeadingTB.Location = new System.Drawing.Point(206, 292);
-            this.EdgeStartHeadingTB.Name = "EdgeStartHeadingTB";
-            this.EdgeStartHeadingTB.Size = new System.Drawing.Size(100, 23);
-            this.EdgeStartHeadingTB.TabIndex = 7;
-            // 
-            // EdgeStartHeadingLabel
-            // 
-            this.EdgeStartHeadingLabel.AutoSize = true;
-            this.EdgeStartHeadingLabel.Location = new System.Drawing.Point(203, 274);
-            this.EdgeStartHeadingLabel.Name = "EdgeStartHeadingLabel";
-            this.EdgeStartHeadingLabel.Size = new System.Drawing.Size(72, 15);
-            this.EdgeStartHeadingLabel.TabIndex = 6;
-            this.EdgeStartHeadingLabel.Text = "Startri&ktning";
-            // 
-            // EdgeBeginningTB
-            // 
-            this.EdgeBeginningTB.Location = new System.Drawing.Point(206, 237);
-            this.EdgeBeginningTB.Name = "EdgeBeginningTB";
-            this.EdgeBeginningTB.Size = new System.Drawing.Size(480, 23);
-            this.EdgeBeginningTB.TabIndex = 5;
-            // 
-            // EdgeBeginningLabel
-            // 
-            this.EdgeBeginningLabel.AutoSize = true;
-            this.EdgeBeginningLabel.Location = new System.Drawing.Point(203, 219);
-            this.EdgeBeginningLabel.Name = "EdgeBeginningLabel";
-            this.EdgeBeginningLabel.Size = new System.Drawing.Size(70, 15);
-            this.EdgeBeginningLabel.TabIndex = 4;
-            this.EdgeBeginningLabel.Text = "&Information";
-            // 
-            // EdgesForPOILB
-            // 
-            this.EdgesForPOILB.FormattingEnabled = true;
-            this.EdgesForPOILB.ItemHeight = 15;
-            this.EdgesForPOILB.Location = new System.Drawing.Point(206, 21);
-            this.EdgesForPOILB.Name = "EdgesForPOILB";
-            this.EdgesForPOILB.Size = new System.Drawing.Size(480, 184);
-            this.EdgesForPOILB.TabIndex = 3;
-            // 
-            // EdgesListLabel
-            // 
-            this.EdgesListLabel.AutoSize = true;
-            this.EdgesListLabel.Location = new System.Drawing.Point(203, 3);
-            this.EdgesListLabel.Name = "EdgesListLabel";
-            this.EdgesListLabel.Size = new System.Drawing.Size(97, 15);
-            this.EdgesListLabel.TabIndex = 2;
-            this.EdgesListLabel.Text = "&Vägbeskrivningar";
-            // 
-            // EdgesPOIsLB
-            // 
-            this.EdgesPOIsLB.FormattingEnabled = true;
-            this.EdgesPOIsLB.ItemHeight = 15;
-            this.EdgesPOIsLB.Location = new System.Drawing.Point(6, 21);
-            this.EdgesPOIsLB.Name = "EdgesPOIsLB";
-            this.EdgesPOIsLB.Size = new System.Drawing.Size(191, 469);
-            this.EdgesPOIsLB.TabIndex = 1;
-            // 
-            // EdgesPOIListLabel
-            // 
-            this.EdgesPOIListLabel.AutoSize = true;
-            this.EdgesPOIListLabel.Location = new System.Drawing.Point(3, 3);
-            this.EdgesPOIListLabel.Name = "EdgesPOIListLabel";
-            this.EdgesPOIListLabel.Size = new System.Drawing.Size(98, 15);
-            this.EdgesPOIListLabel.TabIndex = 0;
-            this.EdgesPOIListLabel.Text = "Point&s Of Interest";
-            // 
-            // ElevatorsTab
-            // 
-            this.ElevatorsTab.Controls.Add(this.DeleteAllElevatorEdgesButton);
-            this.ElevatorsTab.Controls.Add(this.ElevatorMessageTB);
-            this.ElevatorsTab.Controls.Add(this.ElevatorMessageLabel);
-            this.ElevatorsTab.Controls.Add(this.ElevatorEndHeadingTB);
-            this.ElevatorsTab.Controls.Add(this.ElevatorEndHeadingLabel);
-            this.ElevatorsTab.Controls.Add(this.ElevatorStartHeadingTB);
-            this.ElevatorsTab.Controls.Add(this.ElevatorStartHeadingLabel);
-            this.ElevatorsTab.Controls.Add(this.CreateElevatorEdgesButton);
-            this.ElevatorsTab.Controls.Add(this.ElevatorsLB);
-            this.ElevatorsTab.Controls.Add(this.ElevatorListLabel);
-            this.ElevatorsTab.Location = new System.Drawing.Point(4, 24);
-            this.ElevatorsTab.Name = "ElevatorsTab";
-            this.ElevatorsTab.Padding = new System.Windows.Forms.Padding(3);
-            this.ElevatorsTab.Size = new System.Drawing.Size(1102, 629);
-            this.ElevatorsTab.TabIndex = 2;
-            this.ElevatorsTab.Text = "Hissar";
-            this.ElevatorsTab.UseVisualStyleBackColor = true;
-            // 
-            // DeleteAllElevatorEdgesButton
-            // 
-            this.DeleteAllElevatorEdgesButton.Location = new System.Drawing.Point(194, 201);
-            this.DeleteAllElevatorEdgesButton.Name = "DeleteAllElevatorEdgesButton";
-            this.DeleteAllElevatorEdgesButton.Size = new System.Drawing.Size(75, 23);
-            this.DeleteAllElevatorEdgesButton.TabIndex = 10;
-            this.DeleteAllElevatorEdgesButton.Text = "&Ta bort alla";
-            this.DeleteAllElevatorEdgesButton.UseVisualStyleBackColor = true;
-            this.DeleteAllElevatorEdgesButton.Click += new System.EventHandler(this.DeleteAllElevatorEdgesButton_Click);
-            // 
-            // ElevatorMessageTB
-            // 
-            this.ElevatorMessageTB.Location = new System.Drawing.Point(191, 126);
-            this.ElevatorMessageTB.Name = "ElevatorMessageTB";
-            this.ElevatorMessageTB.Size = new System.Drawing.Size(162, 23);
-            this.ElevatorMessageTB.TabIndex = 8;
-            this.ElevatorMessageTB.Text = "Ta hissen till plan {0}";
-            // 
-            // ElevatorMessageLabel
-            // 
-            this.ElevatorMessageLabel.AutoSize = true;
-            this.ElevatorMessageLabel.Location = new System.Drawing.Point(188, 108);
-            this.ElevatorMessageLabel.Name = "ElevatorMessageLabel";
-            this.ElevatorMessageLabel.Size = new System.Drawing.Size(73, 15);
-            this.ElevatorMessageLabel.TabIndex = 7;
-            this.ElevatorMessageLabel.Text = "Meddelande\r\n";
-            // 
-            // ElevatorEndHeadingTB
-            // 
-            this.ElevatorEndHeadingTB.Location = new System.Drawing.Point(275, 78);
-            this.ElevatorEndHeadingTB.Name = "ElevatorEndHeadingTB";
-            this.ElevatorEndHeadingTB.Size = new System.Drawing.Size(78, 23);
-            this.ElevatorEndHeadingTB.TabIndex = 6;
-            // 
-            // ElevatorEndHeadingLabel
-            // 
-            this.ElevatorEndHeadingLabel.AutoSize = true;
-            this.ElevatorEndHeadingLabel.Location = new System.Drawing.Point(272, 60);
-            this.ElevatorEndHeadingLabel.Name = "ElevatorEndHeadingLabel";
-            this.ElevatorEndHeadingLabel.Size = new System.Drawing.Size(68, 15);
-            this.ElevatorEndHeadingLabel.TabIndex = 5;
-            this.ElevatorEndHeadingLabel.Text = "Slutriktning";
-            // 
-            // ElevatorStartHeadingTB
-            // 
-            this.ElevatorStartHeadingTB.Location = new System.Drawing.Point(191, 78);
-            this.ElevatorStartHeadingTB.Name = "ElevatorStartHeadingTB";
-            this.ElevatorStartHeadingTB.Size = new System.Drawing.Size(78, 23);
-            this.ElevatorStartHeadingTB.TabIndex = 4;
-            // 
-            // ElevatorStartHeadingLabel
-            // 
-            this.ElevatorStartHeadingLabel.AutoSize = true;
-            this.ElevatorStartHeadingLabel.Location = new System.Drawing.Point(188, 60);
-            this.ElevatorStartHeadingLabel.Name = "ElevatorStartHeadingLabel";
-            this.ElevatorStartHeadingLabel.Size = new System.Drawing.Size(72, 15);
-            this.ElevatorStartHeadingLabel.TabIndex = 3;
-            this.ElevatorStartHeadingLabel.Text = "Startriktning";
-            // 
-            // CreateElevatorEdgesButton
-            // 
-            this.CreateElevatorEdgesButton.Location = new System.Drawing.Point(191, 172);
-            this.CreateElevatorEdgesButton.Name = "CreateElevatorEdgesButton";
-            this.CreateElevatorEdgesButton.Size = new System.Drawing.Size(170, 23);
-            this.CreateElevatorEdgesButton.TabIndex = 9;
-            this.CreateElevatorEdgesButton.Text = "&Skapa vägbeskrivningar";
-            this.CreateElevatorEdgesButton.UseVisualStyleBackColor = true;
-            this.CreateElevatorEdgesButton.Click += new System.EventHandler(this.CreateElevatorEdgesButton_Click);
-            // 
-            // ElevatorsLB
-            // 
-            this.ElevatorsLB.FormattingEnabled = true;
-            this.ElevatorsLB.ItemHeight = 15;
-            this.ElevatorsLB.Location = new System.Drawing.Point(15, 29);
-            this.ElevatorsLB.Name = "ElevatorsLB";
-            this.ElevatorsLB.Size = new System.Drawing.Size(151, 454);
-            this.ElevatorsLB.TabIndex = 1;
-            // 
-            // ElevatorListLabel
-            // 
-            this.ElevatorListLabel.AutoSize = true;
-            this.ElevatorListLabel.Location = new System.Drawing.Point(12, 12);
-            this.ElevatorListLabel.Name = "ElevatorListLabel";
-            this.ElevatorListLabel.Size = new System.Drawing.Size(39, 15);
-            this.ElevatorListLabel.TabIndex = 0;
-            this.ElevatorListLabel.Text = "&Hissar";
-            // 
             // NodesTab
             // 
+            this.NodesTab.Controls.Add(this.DeleteNodeButton);
+            this.NodesTab.Controls.Add(this.AddNodeButton);
             this.NodesTab.Controls.Add(this.NodeFloorTB);
             this.NodesTab.Controls.Add(this.NodeFloorLabel);
             this.NodesTab.Controls.Add(this.NodeInfo5HeadingTB);
@@ -1009,6 +515,26 @@
             this.NodesTab.TabIndex = 5;
             this.NodesTab.Text = "Noder";
             this.NodesTab.UseVisualStyleBackColor = true;
+            // 
+            // DeleteNodeButton
+            // 
+            this.DeleteNodeButton.Location = new System.Drawing.Point(804, 47);
+            this.DeleteNodeButton.Name = "DeleteNodeButton";
+            this.DeleteNodeButton.Size = new System.Drawing.Size(75, 23);
+            this.DeleteNodeButton.TabIndex = 32;
+            this.DeleteNodeButton.Text = "Ta bort";
+            this.DeleteNodeButton.UseVisualStyleBackColor = true;
+            this.DeleteNodeButton.Click += new System.EventHandler(this.DeleteNodeButton_Click);
+            // 
+            // AddNodeButton
+            // 
+            this.AddNodeButton.Location = new System.Drawing.Point(804, 20);
+            this.AddNodeButton.Name = "AddNodeButton";
+            this.AddNodeButton.Size = new System.Drawing.Size(75, 23);
+            this.AddNodeButton.TabIndex = 31;
+            this.AddNodeButton.Text = "L&ägg till";
+            this.AddNodeButton.UseVisualStyleBackColor = true;
+            this.AddNodeButton.Click += new System.EventHandler(this.AddNodeButton_Click);
             // 
             // NodeFloorTB
             // 
@@ -1263,6 +789,504 @@
             this.NodesListLabel.TabIndex = 0;
             this.NodesListLabel.Text = "Li&sta över noder";
             // 
+            // EdgesTab
+            // 
+            this.EdgesTab.Controls.Add(this.EdgeTravelTypeCombo);
+            this.EdgesTab.Controls.Add(this.EdgeTravelTypeLabel);
+            this.EdgesTab.Controls.Add(this.DeleteEdgeButton);
+            this.EdgesTab.Controls.Add(this.AddEdgeButton);
+            this.EdgesTab.Controls.Add(this.EdgeTravelTimeTB);
+            this.EdgesTab.Controls.Add(this.EdgeTravelTimeLabel);
+            this.EdgesTab.Controls.Add(this.EdgeEndHeadingTB);
+            this.EdgesTab.Controls.Add(this.EdgeEndHeadingLabel);
+            this.EdgesTab.Controls.Add(this.EdgeStartHeadingTB);
+            this.EdgesTab.Controls.Add(this.EdgeStartHeadingLabel);
+            this.EdgesTab.Controls.Add(this.EdgeBeginningTB);
+            this.EdgesTab.Controls.Add(this.EdgeBeginningLabel);
+            this.EdgesTab.Controls.Add(this.EdgesForPOILB);
+            this.EdgesTab.Controls.Add(this.EdgesListLabel);
+            this.EdgesTab.Controls.Add(this.EdgesPOIsLB);
+            this.EdgesTab.Controls.Add(this.EdgesPOIListLabel);
+            this.EdgesTab.Location = new System.Drawing.Point(4, 24);
+            this.EdgesTab.Name = "EdgesTab";
+            this.EdgesTab.Padding = new System.Windows.Forms.Padding(3);
+            this.EdgesTab.Size = new System.Drawing.Size(1102, 629);
+            this.EdgesTab.TabIndex = 3;
+            this.EdgesTab.Text = "Vägbeskrivningar";
+            this.EdgesTab.UseVisualStyleBackColor = true;
+            // 
+            // EdgeTravelTypeCombo
+            // 
+            this.EdgeTravelTypeCombo.FormattingEnabled = true;
+            this.EdgeTravelTypeCombo.Location = new System.Drawing.Point(206, 345);
+            this.EdgeTravelTypeCombo.Name = "EdgeTravelTypeCombo";
+            this.EdgeTravelTypeCombo.Size = new System.Drawing.Size(143, 23);
+            this.EdgeTravelTypeCombo.TabIndex = 13;
+            // 
+            // EdgeTravelTypeLabel
+            // 
+            this.EdgeTravelTypeLabel.AutoSize = true;
+            this.EdgeTravelTypeLabel.Location = new System.Drawing.Point(203, 327);
+            this.EdgeTravelTypeLabel.Name = "EdgeTravelTypeLabel";
+            this.EdgeTravelTypeLabel.Size = new System.Drawing.Size(49, 15);
+            this.EdgeTravelTypeLabel.TabIndex = 12;
+            this.EdgeTravelTypeLabel.Text = "&Färdsätt";
+            // 
+            // DeleteEdgeButton
+            // 
+            this.DeleteEdgeButton.Location = new System.Drawing.Point(692, 50);
+            this.DeleteEdgeButton.Name = "DeleteEdgeButton";
+            this.DeleteEdgeButton.Size = new System.Drawing.Size(75, 23);
+            this.DeleteEdgeButton.TabIndex = 31;
+            this.DeleteEdgeButton.Text = "&Ta bort";
+            this.DeleteEdgeButton.UseVisualStyleBackColor = true;
+            this.DeleteEdgeButton.Click += new System.EventHandler(this.DeleteEdgeButton_Click);
+            // 
+            // AddEdgeButton
+            // 
+            this.AddEdgeButton.Location = new System.Drawing.Point(692, 21);
+            this.AddEdgeButton.Name = "AddEdgeButton";
+            this.AddEdgeButton.Size = new System.Drawing.Size(75, 23);
+            this.AddEdgeButton.TabIndex = 30;
+            this.AddEdgeButton.Text = "L&ägg till";
+            this.AddEdgeButton.UseVisualStyleBackColor = true;
+            this.AddEdgeButton.Click += new System.EventHandler(this.AddEdgeButton_Click);
+            // 
+            // EdgeTravelTimeTB
+            // 
+            this.EdgeTravelTimeTB.Location = new System.Drawing.Point(418, 292);
+            this.EdgeTravelTimeTB.Name = "EdgeTravelTimeTB";
+            this.EdgeTravelTimeTB.Size = new System.Drawing.Size(100, 23);
+            this.EdgeTravelTimeTB.TabIndex = 11;
+            // 
+            // EdgeTravelTimeLabel
+            // 
+            this.EdgeTravelTimeLabel.AutoSize = true;
+            this.EdgeTravelTimeLabel.Location = new System.Drawing.Point(415, 274);
+            this.EdgeTravelTimeLabel.Name = "EdgeTravelTimeLabel";
+            this.EdgeTravelTimeLabel.Size = new System.Drawing.Size(39, 15);
+            this.EdgeTravelTimeLabel.TabIndex = 10;
+            this.EdgeTravelTimeLabel.Text = "&Restid";
+            // 
+            // EdgeEndHeadingTB
+            // 
+            this.EdgeEndHeadingTB.Location = new System.Drawing.Point(312, 292);
+            this.EdgeEndHeadingTB.Name = "EdgeEndHeadingTB";
+            this.EdgeEndHeadingTB.Size = new System.Drawing.Size(100, 23);
+            this.EdgeEndHeadingTB.TabIndex = 9;
+            // 
+            // EdgeEndHeadingLabel
+            // 
+            this.EdgeEndHeadingLabel.AutoSize = true;
+            this.EdgeEndHeadingLabel.Location = new System.Drawing.Point(309, 274);
+            this.EdgeEndHeadingLabel.Name = "EdgeEndHeadingLabel";
+            this.EdgeEndHeadingLabel.Size = new System.Drawing.Size(68, 15);
+            this.EdgeEndHeadingLabel.TabIndex = 8;
+            this.EdgeEndHeadingLabel.Text = "S&lutriktning";
+            // 
+            // EdgeStartHeadingTB
+            // 
+            this.EdgeStartHeadingTB.Location = new System.Drawing.Point(206, 292);
+            this.EdgeStartHeadingTB.Name = "EdgeStartHeadingTB";
+            this.EdgeStartHeadingTB.Size = new System.Drawing.Size(100, 23);
+            this.EdgeStartHeadingTB.TabIndex = 7;
+            // 
+            // EdgeStartHeadingLabel
+            // 
+            this.EdgeStartHeadingLabel.AutoSize = true;
+            this.EdgeStartHeadingLabel.Location = new System.Drawing.Point(203, 274);
+            this.EdgeStartHeadingLabel.Name = "EdgeStartHeadingLabel";
+            this.EdgeStartHeadingLabel.Size = new System.Drawing.Size(72, 15);
+            this.EdgeStartHeadingLabel.TabIndex = 6;
+            this.EdgeStartHeadingLabel.Text = "Startri&ktning";
+            // 
+            // EdgeBeginningTB
+            // 
+            this.EdgeBeginningTB.Location = new System.Drawing.Point(206, 237);
+            this.EdgeBeginningTB.Name = "EdgeBeginningTB";
+            this.EdgeBeginningTB.Size = new System.Drawing.Size(480, 23);
+            this.EdgeBeginningTB.TabIndex = 5;
+            // 
+            // EdgeBeginningLabel
+            // 
+            this.EdgeBeginningLabel.AutoSize = true;
+            this.EdgeBeginningLabel.Location = new System.Drawing.Point(203, 219);
+            this.EdgeBeginningLabel.Name = "EdgeBeginningLabel";
+            this.EdgeBeginningLabel.Size = new System.Drawing.Size(70, 15);
+            this.EdgeBeginningLabel.TabIndex = 4;
+            this.EdgeBeginningLabel.Text = "&Information";
+            // 
+            // EdgesForPOILB
+            // 
+            this.EdgesForPOILB.FormattingEnabled = true;
+            this.EdgesForPOILB.ItemHeight = 15;
+            this.EdgesForPOILB.Location = new System.Drawing.Point(206, 21);
+            this.EdgesForPOILB.Name = "EdgesForPOILB";
+            this.EdgesForPOILB.Size = new System.Drawing.Size(480, 184);
+            this.EdgesForPOILB.TabIndex = 3;
+            // 
+            // EdgesListLabel
+            // 
+            this.EdgesListLabel.AutoSize = true;
+            this.EdgesListLabel.Location = new System.Drawing.Point(203, 3);
+            this.EdgesListLabel.Name = "EdgesListLabel";
+            this.EdgesListLabel.Size = new System.Drawing.Size(97, 15);
+            this.EdgesListLabel.TabIndex = 2;
+            this.EdgesListLabel.Text = "&Vägbeskrivningar";
+            // 
+            // EdgesPOIsLB
+            // 
+            this.EdgesPOIsLB.FormattingEnabled = true;
+            this.EdgesPOIsLB.ItemHeight = 15;
+            this.EdgesPOIsLB.Location = new System.Drawing.Point(6, 21);
+            this.EdgesPOIsLB.Name = "EdgesPOIsLB";
+            this.EdgesPOIsLB.Size = new System.Drawing.Size(191, 469);
+            this.EdgesPOIsLB.TabIndex = 1;
+            // 
+            // EdgesPOIListLabel
+            // 
+            this.EdgesPOIListLabel.AutoSize = true;
+            this.EdgesPOIListLabel.Location = new System.Drawing.Point(3, 3);
+            this.EdgesPOIListLabel.Name = "EdgesPOIListLabel";
+            this.EdgesPOIListLabel.Size = new System.Drawing.Size(98, 15);
+            this.EdgesPOIListLabel.TabIndex = 0;
+            this.EdgesPOIListLabel.Text = "Point&s Of Interest";
+            // 
+            // PoiTabPage
+            // 
+            this.PoiTabPage.Controls.Add(this.POIInfosLabel);
+            this.PoiTabPage.Controls.Add(this.AutoPlayMediaCB);
+            this.PoiTabPage.Controls.Add(this.MediaDescrTB);
+            this.PoiTabPage.Controls.Add(this.MediaDescLabel);
+            this.PoiTabPage.Controls.Add(this.PickMediaFileButton);
+            this.PoiTabPage.Controls.Add(this.MediaFileTB);
+            this.PoiTabPage.Controls.Add(this.MediaFileLabel);
+            this.PoiTabPage.Controls.Add(this.MoveInfoDownButton);
+            this.PoiTabPage.Controls.Add(this.MoveInfoUpButton);
+            this.PoiTabPage.Controls.Add(this.RemovePOIInfoButton);
+            this.PoiTabPage.Controls.Add(this.AddPOIInfoButton);
+            this.PoiTabPage.Controls.Add(this.POIInfoEndsTB);
+            this.PoiTabPage.Controls.Add(this.POIInfoEndsLabel);
+            this.PoiTabPage.Controls.Add(this.POIInfoStartsTB);
+            this.PoiTabPage.Controls.Add(this.POIInfoStartsLabel);
+            this.PoiTabPage.Controls.Add(this.POIInfoCatCombo);
+            this.PoiTabPage.Controls.Add(this.POIInfoCatLabel);
+            this.PoiTabPage.Controls.Add(this.POIInformationTB);
+            this.PoiTabPage.Controls.Add(this.POIInfoLabel);
+            this.PoiTabPage.Controls.Add(this.POIInfosLB);
+            this.PoiTabPage.Controls.Add(this.POIsListLabel);
+            this.PoiTabPage.Controls.Add(this.POIsLB);
+            this.PoiTabPage.Location = new System.Drawing.Point(4, 24);
+            this.PoiTabPage.Name = "PoiTabPage";
+            this.PoiTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.PoiTabPage.Size = new System.Drawing.Size(1102, 629);
+            this.PoiTabPage.TabIndex = 0;
+            this.PoiTabPage.Text = "Points Of Interest";
+            this.PoiTabPage.UseVisualStyleBackColor = true;
+            // 
+            // POIInfosLabel
+            // 
+            this.POIInfosLabel.AutoSize = true;
+            this.POIInfosLabel.Location = new System.Drawing.Point(330, 3);
+            this.POIInfosLabel.Name = "POIInfosLabel";
+            this.POIInfosLabel.Size = new System.Drawing.Size(104, 15);
+            this.POIInfosLabel.TabIndex = 1;
+            this.POIInfosLabel.Text = "In&formationstexter";
+            // 
+            // AutoPlayMediaCB
+            // 
+            this.AutoPlayMediaCB.AutoSize = true;
+            this.AutoPlayMediaCB.Location = new System.Drawing.Point(333, 477);
+            this.AutoPlayMediaCB.Name = "AutoPlayMediaCB";
+            this.AutoPlayMediaCB.Size = new System.Drawing.Size(184, 19);
+            this.AutoPlayMediaCB.TabIndex = 20;
+            this.AutoPlayMediaCB.Text = "Spela upp medua automatiskt";
+            this.AutoPlayMediaCB.UseVisualStyleBackColor = true;
+            // 
+            // MediaDescrTB
+            // 
+            this.MediaDescrTB.Location = new System.Drawing.Point(333, 448);
+            this.MediaDescrTB.Name = "MediaDescrTB";
+            this.MediaDescrTB.Size = new System.Drawing.Size(407, 23);
+            this.MediaDescrTB.TabIndex = 19;
+            // 
+            // MediaDescLabel
+            // 
+            this.MediaDescLabel.AutoSize = true;
+            this.MediaDescLabel.Location = new System.Drawing.Point(330, 430);
+            this.MediaDescLabel.Name = "MediaDescLabel";
+            this.MediaDescLabel.Size = new System.Drawing.Size(119, 15);
+            this.MediaDescLabel.TabIndex = 18;
+            this.MediaDescLabel.Text = "Beskrivning av media";
+            // 
+            // PickMediaFileButton
+            // 
+            this.PickMediaFileButton.Location = new System.Drawing.Point(655, 403);
+            this.PickMediaFileButton.Name = "PickMediaFileButton";
+            this.PickMediaFileButton.Size = new System.Drawing.Size(75, 23);
+            this.PickMediaFileButton.TabIndex = 17;
+            this.PickMediaFileButton.Text = "&Välj";
+            this.PickMediaFileButton.UseVisualStyleBackColor = true;
+            this.PickMediaFileButton.Click += new System.EventHandler(this.PickMediaFileButton_Click);
+            // 
+            // MediaFileTB
+            // 
+            this.MediaFileTB.Location = new System.Drawing.Point(333, 404);
+            this.MediaFileTB.Name = "MediaFileTB";
+            this.MediaFileTB.Size = new System.Drawing.Size(316, 23);
+            this.MediaFileTB.TabIndex = 16;
+            // 
+            // MediaFileLabel
+            // 
+            this.MediaFileLabel.AutoSize = true;
+            this.MediaFileLabel.Location = new System.Drawing.Point(330, 386);
+            this.MediaFileLabel.Name = "MediaFileLabel";
+            this.MediaFileLabel.Size = new System.Drawing.Size(50, 15);
+            this.MediaFileLabel.TabIndex = 15;
+            this.MediaFileLabel.Text = "&Mediafil";
+            // 
+            // MoveInfoDownButton
+            // 
+            this.MoveInfoDownButton.Location = new System.Drawing.Point(736, 127);
+            this.MoveInfoDownButton.Name = "MoveInfoDownButton";
+            this.MoveInfoDownButton.Size = new System.Drawing.Size(75, 23);
+            this.MoveInfoDownButton.TabIndex = 24;
+            this.MoveInfoDownButton.Text = "Flytta ner";
+            this.MoveInfoDownButton.UseVisualStyleBackColor = true;
+            this.MoveInfoDownButton.Click += new System.EventHandler(this.MoveInfoUpButton_Click);
+            // 
+            // MoveInfoUpButton
+            // 
+            this.MoveInfoUpButton.Location = new System.Drawing.Point(736, 98);
+            this.MoveInfoUpButton.Name = "MoveInfoUpButton";
+            this.MoveInfoUpButton.Size = new System.Drawing.Size(75, 23);
+            this.MoveInfoUpButton.TabIndex = 23;
+            this.MoveInfoUpButton.Text = "Flytta upp";
+            this.MoveInfoUpButton.UseVisualStyleBackColor = true;
+            this.MoveInfoUpButton.Click += new System.EventHandler(this.MoveInfoUpButton_Click);
+            // 
+            // RemovePOIInfoButton
+            // 
+            this.RemovePOIInfoButton.Location = new System.Drawing.Point(736, 53);
+            this.RemovePOIInfoButton.Name = "RemovePOIInfoButton";
+            this.RemovePOIInfoButton.Size = new System.Drawing.Size(75, 23);
+            this.RemovePOIInfoButton.TabIndex = 22;
+            this.RemovePOIInfoButton.Text = "&Ta bort";
+            this.RemovePOIInfoButton.UseVisualStyleBackColor = true;
+            this.RemovePOIInfoButton.Click += new System.EventHandler(this.RemovePOIInfoButton_Click);
+            // 
+            // AddPOIInfoButton
+            // 
+            this.AddPOIInfoButton.Location = new System.Drawing.Point(736, 21);
+            this.AddPOIInfoButton.Name = "AddPOIInfoButton";
+            this.AddPOIInfoButton.Size = new System.Drawing.Size(75, 23);
+            this.AddPOIInfoButton.TabIndex = 21;
+            this.AddPOIInfoButton.Text = "L&ägg till";
+            this.AddPOIInfoButton.UseVisualStyleBackColor = true;
+            this.AddPOIInfoButton.Click += new System.EventHandler(this.AddPOIInfoButton_Click);
+            // 
+            // POIInfoEndsTB
+            // 
+            this.POIInfoEndsTB.Location = new System.Drawing.Point(509, 360);
+            this.POIInfoEndsTB.Name = "POIInfoEndsTB";
+            this.POIInfoEndsTB.Size = new System.Drawing.Size(100, 23);
+            this.POIInfoEndsTB.TabIndex = 10;
+            // 
+            // POIInfoEndsLabel
+            // 
+            this.POIInfoEndsLabel.AutoSize = true;
+            this.POIInfoEndsLabel.Location = new System.Drawing.Point(506, 342);
+            this.POIInfoEndsLabel.Name = "POIInfoEndsLabel";
+            this.POIInfoEndsLabel.Size = new System.Drawing.Size(100, 15);
+            this.POIInfoEndsLabel.TabIndex = 9;
+            this.POIInfoEndsLabel.Text = "Aktiv till och med";
+            // 
+            // POIInfoStartsTB
+            // 
+            this.POIInfoStartsTB.Location = new System.Drawing.Point(333, 360);
+            this.POIInfoStartsTB.Name = "POIInfoStartsTB";
+            this.POIInfoStartsTB.Size = new System.Drawing.Size(170, 23);
+            this.POIInfoStartsTB.TabIndex = 8;
+            // 
+            // POIInfoStartsLabel
+            // 
+            this.POIInfoStartsLabel.AutoSize = true;
+            this.POIInfoStartsLabel.Location = new System.Drawing.Point(330, 342);
+            this.POIInfoStartsLabel.Name = "POIInfoStartsLabel";
+            this.POIInfoStartsLabel.Size = new System.Drawing.Size(108, 15);
+            this.POIInfoStartsLabel.TabIndex = 7;
+            this.POIInfoStartsLabel.Text = "Aktiv från och med";
+            // 
+            // POIInfoCatCombo
+            // 
+            this.POIInfoCatCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.POIInfoCatCombo.FormattingEnabled = true;
+            this.POIInfoCatCombo.Location = new System.Drawing.Point(333, 316);
+            this.POIInfoCatCombo.Name = "POIInfoCatCombo";
+            this.POIInfoCatCombo.Size = new System.Drawing.Size(212, 23);
+            this.POIInfoCatCombo.TabIndex = 6;
+            // 
+            // POIInfoCatLabel
+            // 
+            this.POIInfoCatLabel.AutoSize = true;
+            this.POIInfoCatLabel.Location = new System.Drawing.Point(330, 298);
+            this.POIInfoCatLabel.Name = "POIInfoCatLabel";
+            this.POIInfoCatLabel.Size = new System.Drawing.Size(51, 15);
+            this.POIInfoCatLabel.TabIndex = 5;
+            this.POIInfoCatLabel.Text = "&Kategori";
+            // 
+            // POIInformationTB
+            // 
+            this.POIInformationTB.Location = new System.Drawing.Point(333, 197);
+            this.POIInformationTB.Multiline = true;
+            this.POIInformationTB.Name = "POIInformationTB";
+            this.POIInformationTB.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.POIInformationTB.Size = new System.Drawing.Size(397, 98);
+            this.POIInformationTB.TabIndex = 4;
+            // 
+            // POIInfoLabel
+            // 
+            this.POIInfoLabel.AutoSize = true;
+            this.POIInfoLabel.Location = new System.Drawing.Point(330, 179);
+            this.POIInfoLabel.Name = "POIInfoLabel";
+            this.POIInfoLabel.Size = new System.Drawing.Size(70, 15);
+            this.POIInfoLabel.TabIndex = 3;
+            this.POIInfoLabel.Text = "&Information";
+            // 
+            // POIInfosLB
+            // 
+            this.POIInfosLB.FormattingEnabled = true;
+            this.POIInfosLB.ItemHeight = 15;
+            this.POIInfosLB.Location = new System.Drawing.Point(333, 21);
+            this.POIInfosLB.Name = "POIInfosLB";
+            this.POIInfosLB.Size = new System.Drawing.Size(397, 139);
+            this.POIInfosLB.TabIndex = 2;
+            // 
+            // POIsListLabel
+            // 
+            this.POIsListLabel.AutoSize = true;
+            this.POIsListLabel.Location = new System.Drawing.Point(8, 3);
+            this.POIsListLabel.Name = "POIsListLabel";
+            this.POIsListLabel.Size = new System.Drawing.Size(98, 15);
+            this.POIsListLabel.TabIndex = 0;
+            this.POIsListLabel.Text = "Point&s Of Interest";
+            // 
+            // POIsLB
+            // 
+            this.POIsLB.FormattingEnabled = true;
+            this.POIsLB.ItemHeight = 15;
+            this.POIsLB.Location = new System.Drawing.Point(11, 21);
+            this.POIsLB.Name = "POIsLB";
+            this.POIsLB.Size = new System.Drawing.Size(315, 319);
+            this.POIsLB.TabIndex = 0;
+            // 
+            // ElevatorsTab
+            // 
+            this.ElevatorsTab.Controls.Add(this.DeleteAllElevatorEdgesButton);
+            this.ElevatorsTab.Controls.Add(this.ElevatorMessageTB);
+            this.ElevatorsTab.Controls.Add(this.ElevatorMessageLabel);
+            this.ElevatorsTab.Controls.Add(this.ElevatorEndHeadingTB);
+            this.ElevatorsTab.Controls.Add(this.ElevatorEndHeadingLabel);
+            this.ElevatorsTab.Controls.Add(this.ElevatorStartHeadingTB);
+            this.ElevatorsTab.Controls.Add(this.ElevatorStartHeadingLabel);
+            this.ElevatorsTab.Controls.Add(this.CreateElevatorEdgesButton);
+            this.ElevatorsTab.Controls.Add(this.ElevatorsLB);
+            this.ElevatorsTab.Controls.Add(this.ElevatorListLabel);
+            this.ElevatorsTab.Location = new System.Drawing.Point(4, 24);
+            this.ElevatorsTab.Name = "ElevatorsTab";
+            this.ElevatorsTab.Padding = new System.Windows.Forms.Padding(3);
+            this.ElevatorsTab.Size = new System.Drawing.Size(1102, 629);
+            this.ElevatorsTab.TabIndex = 2;
+            this.ElevatorsTab.Text = "Hissar";
+            this.ElevatorsTab.UseVisualStyleBackColor = true;
+            // 
+            // DeleteAllElevatorEdgesButton
+            // 
+            this.DeleteAllElevatorEdgesButton.Location = new System.Drawing.Point(194, 201);
+            this.DeleteAllElevatorEdgesButton.Name = "DeleteAllElevatorEdgesButton";
+            this.DeleteAllElevatorEdgesButton.Size = new System.Drawing.Size(75, 23);
+            this.DeleteAllElevatorEdgesButton.TabIndex = 10;
+            this.DeleteAllElevatorEdgesButton.Text = "&Ta bort alla";
+            this.DeleteAllElevatorEdgesButton.UseVisualStyleBackColor = true;
+            this.DeleteAllElevatorEdgesButton.Click += new System.EventHandler(this.DeleteAllElevatorEdgesButton_Click);
+            // 
+            // ElevatorMessageTB
+            // 
+            this.ElevatorMessageTB.Location = new System.Drawing.Point(191, 126);
+            this.ElevatorMessageTB.Name = "ElevatorMessageTB";
+            this.ElevatorMessageTB.Size = new System.Drawing.Size(162, 23);
+            this.ElevatorMessageTB.TabIndex = 8;
+            this.ElevatorMessageTB.Text = "Ta hissen till plan {0}";
+            // 
+            // ElevatorMessageLabel
+            // 
+            this.ElevatorMessageLabel.AutoSize = true;
+            this.ElevatorMessageLabel.Location = new System.Drawing.Point(188, 108);
+            this.ElevatorMessageLabel.Name = "ElevatorMessageLabel";
+            this.ElevatorMessageLabel.Size = new System.Drawing.Size(73, 15);
+            this.ElevatorMessageLabel.TabIndex = 7;
+            this.ElevatorMessageLabel.Text = "Meddelande\r\n";
+            // 
+            // ElevatorEndHeadingTB
+            // 
+            this.ElevatorEndHeadingTB.Location = new System.Drawing.Point(275, 78);
+            this.ElevatorEndHeadingTB.Name = "ElevatorEndHeadingTB";
+            this.ElevatorEndHeadingTB.Size = new System.Drawing.Size(78, 23);
+            this.ElevatorEndHeadingTB.TabIndex = 6;
+            // 
+            // ElevatorEndHeadingLabel
+            // 
+            this.ElevatorEndHeadingLabel.AutoSize = true;
+            this.ElevatorEndHeadingLabel.Location = new System.Drawing.Point(272, 60);
+            this.ElevatorEndHeadingLabel.Name = "ElevatorEndHeadingLabel";
+            this.ElevatorEndHeadingLabel.Size = new System.Drawing.Size(68, 15);
+            this.ElevatorEndHeadingLabel.TabIndex = 5;
+            this.ElevatorEndHeadingLabel.Text = "Slutriktning";
+            // 
+            // ElevatorStartHeadingTB
+            // 
+            this.ElevatorStartHeadingTB.Location = new System.Drawing.Point(191, 78);
+            this.ElevatorStartHeadingTB.Name = "ElevatorStartHeadingTB";
+            this.ElevatorStartHeadingTB.Size = new System.Drawing.Size(78, 23);
+            this.ElevatorStartHeadingTB.TabIndex = 4;
+            // 
+            // ElevatorStartHeadingLabel
+            // 
+            this.ElevatorStartHeadingLabel.AutoSize = true;
+            this.ElevatorStartHeadingLabel.Location = new System.Drawing.Point(188, 60);
+            this.ElevatorStartHeadingLabel.Name = "ElevatorStartHeadingLabel";
+            this.ElevatorStartHeadingLabel.Size = new System.Drawing.Size(72, 15);
+            this.ElevatorStartHeadingLabel.TabIndex = 3;
+            this.ElevatorStartHeadingLabel.Text = "Startriktning";
+            // 
+            // CreateElevatorEdgesButton
+            // 
+            this.CreateElevatorEdgesButton.Location = new System.Drawing.Point(191, 172);
+            this.CreateElevatorEdgesButton.Name = "CreateElevatorEdgesButton";
+            this.CreateElevatorEdgesButton.Size = new System.Drawing.Size(170, 23);
+            this.CreateElevatorEdgesButton.TabIndex = 9;
+            this.CreateElevatorEdgesButton.Text = "&Skapa vägbeskrivningar";
+            this.CreateElevatorEdgesButton.UseVisualStyleBackColor = true;
+            this.CreateElevatorEdgesButton.Click += new System.EventHandler(this.CreateElevatorEdgesButton_Click);
+            // 
+            // ElevatorsLB
+            // 
+            this.ElevatorsLB.FormattingEnabled = true;
+            this.ElevatorsLB.ItemHeight = 15;
+            this.ElevatorsLB.Location = new System.Drawing.Point(15, 29);
+            this.ElevatorsLB.Name = "ElevatorsLB";
+            this.ElevatorsLB.Size = new System.Drawing.Size(151, 454);
+            this.ElevatorsLB.TabIndex = 1;
+            // 
+            // ElevatorListLabel
+            // 
+            this.ElevatorListLabel.AutoSize = true;
+            this.ElevatorListLabel.Location = new System.Drawing.Point(12, 12);
+            this.ElevatorListLabel.Name = "ElevatorListLabel";
+            this.ElevatorListLabel.Size = new System.Drawing.Size(39, 15);
+            this.ElevatorListLabel.TabIndex = 0;
+            this.ElevatorListLabel.Text = "&Hissar";
+            // 
             // OpenMediaFileDialog
             // 
             this.OpenMediaFileDialog.Filter = "|*.jpg;*.jpeg;*.png;*.pgif;*.wav;*.m4a;**.mp3|relifaideMBilder (*.jpg, *.jpeg, *." +
@@ -1288,14 +1312,14 @@
             this.Tabs.ResumeLayout(false);
             this.VenueTab.ResumeLayout(false);
             this.VenueTab.PerformLayout();
-            this.PoiTabPage.ResumeLayout(false);
-            this.PoiTabPage.PerformLayout();
-            this.EdgesTab.ResumeLayout(false);
-            this.EdgesTab.PerformLayout();
-            this.ElevatorsTab.ResumeLayout(false);
-            this.ElevatorsTab.PerformLayout();
             this.NodesTab.ResumeLayout(false);
             this.NodesTab.PerformLayout();
+            this.EdgesTab.ResumeLayout(false);
+            this.EdgesTab.PerformLayout();
+            this.PoiTabPage.ResumeLayout(false);
+            this.PoiTabPage.PerformLayout();
+            this.ElevatorsTab.ResumeLayout(false);
+            this.ElevatorsTab.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VenueBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.POIsBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.POIInfosBS)).EndInit();
@@ -1436,5 +1460,7 @@
         private System.Windows.Forms.Label NodeInfo1HeadingLabel;
         private System.Windows.Forms.TextBox NodeFloorTB;
         private System.Windows.Forms.Label NodeFloorLabel;
+        private System.Windows.Forms.Button AddNodeButton;
+        private System.Windows.Forms.Button DeleteNodeButton;
     }
 }
