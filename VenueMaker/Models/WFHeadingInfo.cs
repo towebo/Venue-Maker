@@ -7,6 +7,8 @@ namespace WayfindR.Models
         
         public int Heading { get; set; }
         public string Info { get; set; }
+        public string Image { get; set; }
+        public string ImageDescription { get; set; }
 
 
 
@@ -34,15 +36,29 @@ namespace WayfindR.Models
                 Info = parts[1];
 
             } // Info
+
+            if (parts.Length >= 3)
+            {
+                Image = parts[2];
+
+            } // Image
+
+            if (parts.Length >= 4)
+            {
+                ImageDescription = parts[3];
+
+            } // Image Description
         }
 
 
 
         public override string ToString()
         {
-            return string.Format("{0};{1}",
+            return string.Format("{0};{1};{2};{3}",
                 Heading,
-                Info
+                Info,
+                Image,
+                ImageDescription
                 );
         }
 
