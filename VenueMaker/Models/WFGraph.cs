@@ -23,10 +23,14 @@ namespace WayfindR.Models
         {
             get
             {
-                Int64 result = (
-                    from x in Edges
-                    select Convert.ToInt64(x.Id.NumbersOnly())
-                    ).Max();
+                Int64 result = 0;
+                if (Edges.Count() > 0)
+                {
+                    result = (
+                        from x in Edges
+                        select Convert.ToInt64(x.Id.NumbersOnly())
+                        ).Max();
+                } // Has edges
                 return result;
 
             } // get
@@ -35,10 +39,14 @@ namespace WayfindR.Models
         {
             get
             {
-                Int64 result = (
-                        from x in Vertices
-                        select Convert.ToInt64(x.Id.NumbersOnly())
-                        ).Max();
+                Int64 result = 0;
+                if (Vertices.Count() > 0)
+                {
+                    result = (
+                            from x in Vertices
+                            select Convert.ToInt64(x.Id.NumbersOnly())
+                            ).Max();
+                } // Has nodes
                 return result;
                                 
             } // get
