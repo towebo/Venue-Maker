@@ -18,6 +18,12 @@ namespace WayfindR.Models
     public class WFGraph : AdjacencyGraph<WFNode, WFEdge<WFNode>>
     {
         private static NumberFormatInfo nfi = new NumberFormatInfo();
+        private List<GraphMLKey> graphmlkeys;
+
+
+        public const string GraphMLNameSpace = "http://graphml.graphdrawing.org/xmlns";
+
+
 
         public Int64 LastEdgeId
         {
@@ -69,16 +75,325 @@ namespace WayfindR.Models
         public int Level { get; set; }
 
 
+        public List<GraphMLKey> GraphMLKeys
+        {
+            get { return graphmlkeys; }
+        } // GraphMLKeys
+
 
 
         public WFGraph()
         {
             nfi = new NumberFormatInfo();
             nfi.NumberDecimalSeparator = ".";
+            graphmlkeys = new List<GraphMLKey>();
+            PopulateGraphMLKeys();
 
         }
 
 
+        private void PopulateGraphMLKeys()
+        {
+            try
+            {
+                graphmlkeys.Clear();
+                int gkid = 0;
+                // Graph
+                graphmlkeys.Add(new GraphMLKey()
+                {
+                    Id = string.Format("d{0}", gkid++),
+                    Name = "venue_id",
+                    DataType = "string",
+                    ForType = "graph",
+                    DefaultValue = ""
+                });
+                graphmlkeys.Add(new GraphMLKey()
+                {
+                    Id = string.Format("d{0}", gkid++),
+                    Name = "venue_name",
+                    DataType = "string",
+                    ForType = "graph",
+                    DefaultValue = ""
+                });
+                graphmlkeys.Add(new GraphMLKey()
+                {
+                    Id = string.Format("d{0}", gkid++),
+                    Name = "level",
+                    DataType = "int",
+                    ForType = "graph",
+                    DefaultValue = "3"
+                });
+                graphmlkeys.Add(new GraphMLKey()
+                {
+                    Id = string.Format("d{0}", gkid++),
+                    Name = "graph_id",
+                    DataType = "string",
+                    ForType = "graph",
+                    DefaultValue = ""
+                });
+
+                // Nodes
+                graphmlkeys.Add(new GraphMLKey()
+                {
+                    Id = string.Format("d{0}", gkid++),
+                    Name = "uuid",
+                    DataType = "string",
+                    ForType = "node",
+                    DefaultValue = ""
+                });
+                graphmlkeys.Add(new GraphMLKey()
+                {
+                    Id = string.Format("d{0}", gkid++),
+                    Name = "major",
+                    DataType = "int",
+                    ForType = "node",
+                    DefaultValue = ""
+                });
+                graphmlkeys.Add(new GraphMLKey()
+                {
+                    Id = string.Format("d{0}", gkid++),
+                    Name = "minor",
+                    DataType = "int",
+                    ForType = "node",
+                    DefaultValue = ""
+                });
+                graphmlkeys.Add(new GraphMLKey()
+                {
+                    Id = string.Format("d{0}", gkid++),
+                    Name = "id_tag",
+                    DataType = "string",
+                    ForType = "node",
+                    DefaultValue = ""
+                });
+                graphmlkeys.Add(new GraphMLKey()
+                {
+                    Id = string.Format("d{0}", gkid++),
+                    Name = "name",
+                    DataType = "string",
+                    ForType = "node",
+                    DefaultValue = ""
+                });
+                graphmlkeys.Add(new GraphMLKey()
+                {
+                    Id = string.Format("d{0}", gkid++),
+                    Name = "waypoint_type",
+                    DataType = "string",
+                    ForType = "node",
+                    DefaultValue = ""
+                });
+                graphmlkeys.Add(new GraphMLKey()
+                {
+                    Id = string.Format("d{0}", gkid++),
+                    Name = "floor",
+                    DataType = "string",
+                    ForType = "node",
+                    DefaultValue = ""
+                });
+                graphmlkeys.Add(new GraphMLKey()
+                {
+                    Id = string.Format("d{0}", gkid++),
+                    Name = "active",
+                    DataType = "string",
+                    ForType = "node",
+                    DefaultValue = "true"
+                });
+                graphmlkeys.Add(new GraphMLKey()
+                {
+                    Id = string.Format("d{0}", gkid++),
+                    Name = "accuracy",
+                    DataType = "double",
+                    ForType = "node",
+                    DefaultValue = "3.5"
+                });
+                graphmlkeys.Add(new GraphMLKey()
+                {
+                    Id = string.Format("d{0}", gkid++),
+                    Name = "name_descriptive",
+                    DataType = "string",
+                    ForType = "node",
+                    DefaultValue = ""
+                });
+                graphmlkeys.Add(new GraphMLKey()
+                {
+                    Id = string.Format("d{0}", gkid++),
+                    Name = "heading1info",
+                    DataType = "string",
+                    ForType = "node",
+                    DefaultValue = ""
+                });
+                graphmlkeys.Add(new GraphMLKey()
+                {
+                    Id = string.Format("d{0}", gkid++),
+                    Name = "heading2info",
+                    DataType = "string",
+                    ForType = "node",
+                    DefaultValue = ""
+                });
+                graphmlkeys.Add(new GraphMLKey()
+                {
+                    Id = string.Format("d{0}", gkid++),
+                    Name = "heading3info",
+                    DataType = "string",
+                    ForType = "node",
+                    DefaultValue = ""
+                });
+                graphmlkeys.Add(new GraphMLKey()
+                {
+                    Id = string.Format("d{0}", gkid++),
+                    Name = "heading4info",
+                    DataType = "string",
+                    ForType = "node",
+                    DefaultValue = ""
+                });
+                graphmlkeys.Add(new GraphMLKey()
+                {
+                    Id = string.Format("d{0}", gkid++),
+                    Name = "heading5info",
+                    DataType = "string",
+                    ForType = "node",
+                    DefaultValue = ""
+                });
+
+                graphmlkeys.Add(new GraphMLKey()
+                {
+                    Id = string.Format("d{0}", gkid++),
+                    Name = "in_range_accuracy",
+                    DataType = "double",
+                    ForType = "node",
+                    DefaultValue = "60"
+                });
+                graphmlkeys.Add(new GraphMLKey()
+                {
+                    Id = string.Format("d{0}", gkid++),
+                    Name = "in_range_message",
+                    DataType = "string",
+                    ForType = "node",
+                    DefaultValue = ""
+                });
+                graphmlkeys.Add(new GraphMLKey()
+                {
+                    Id = string.Format("d{0}", gkid++),
+                    Name = "touch_message",
+                    DataType = "string",
+                    ForType = "node",
+                    DefaultValue = ""
+                });
+                graphmlkeys.Add(new GraphMLKey()
+                {
+                    Id = string.Format("d{0}", gkid++),
+                    Name = "out_of_range_message",
+                    DataType = "string",
+                    ForType = "node",
+                    DefaultValue = ""
+                });
+                graphmlkeys.Add(new GraphMLKey()
+                {
+                    Id = string.Format("d{0}", gkid++),
+                    Name = "close_by_accuracy",
+                    DataType = "double",
+                    ForType = "node",
+                    DefaultValue = ""
+                });
+                graphmlkeys.Add(new GraphMLKey()
+                {
+                    Id = string.Format("d{0}", gkid++),
+                    Name = "close_by_message",
+                    DataType = "string",
+                    ForType = "node",
+                    DefaultValue = ""
+                });
+                graphmlkeys.Add(new GraphMLKey()
+                {
+                    Id = string.Format("d{0}", gkid++),
+                    Name = "magnetic_offset",
+                    DataType = "int",
+                    ForType = "node",
+                    DefaultValue = "0"
+                });
+
+                // Edge
+                graphmlkeys.Add(new GraphMLKey()
+                {
+                    Id = string.Format("d{0}", gkid++),
+                    Name = "travel_time",
+                    DataType = "double",
+                    ForType = "edge",
+                    DefaultValue = "15.0"
+                });
+                graphmlkeys.Add(new GraphMLKey()
+                {
+                    Id = string.Format("d{0}", gkid++),
+                    Name = "travel_type",
+                    DataType = "string",
+                    ForType = "edge",
+                    DefaultValue = ""
+                });
+                graphmlkeys.Add(new GraphMLKey()
+                {
+                    Id = string.Format("d{0}", gkid++),
+                    Name = "language",
+                    DataType = "string",
+                    ForType = "edge",
+                    DefaultValue = ""
+                });
+                graphmlkeys.Add(new GraphMLKey()
+                {
+                    Id = string.Format("d{0}", gkid++),
+                    Name = "beginning",
+                    DataType = "string",
+                    ForType = "edge",
+                    DefaultValue = ""
+                });
+                graphmlkeys.Add(new GraphMLKey()
+                {
+                    Id = string.Format("d{0}", gkid++),
+                    Name = "middle",
+                    DataType = "string",
+                    ForType = "edge",
+                    DefaultValue = ""
+                });
+                graphmlkeys.Add(new GraphMLKey()
+                {
+                    Id = string.Format("d{0}", gkid++),
+                    Name = "end",
+                    DataType = "string",
+                    ForType = "edge",
+                    DefaultValue = ""
+                });
+                graphmlkeys.Add(new GraphMLKey()
+                {
+                    Id = string.Format("d{0}", gkid++),
+                    Name = "starting_only",
+                    DataType = "string",
+                    ForType = "edge",
+                    DefaultValue = ""
+                });
+                graphmlkeys.Add(new GraphMLKey()
+                {
+                    Id = string.Format("d{0}", gkid++),
+                    Name = "start_heading",
+                    DataType = "int",
+                    ForType = "edge",
+                    DefaultValue = "-1"
+                });
+                graphmlkeys.Add(new GraphMLKey()
+                {
+                    Id = string.Format("d{0}", gkid++),
+                    Name = "end_heading",
+                    DataType = "int",
+                    ForType = "edge",
+                    DefaultValue = "-1"
+                });
+                
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+        }
+        
         private static Dictionary<string, string> MakeDictionaryOfTheseElements(IEnumerable<XElement> dataElements, List<GraphMLKey> gKeys, string forType)
         {
             Dictionary<string, string> result = new Dictionary<string, string>();
@@ -93,31 +408,35 @@ namespace WayfindR.Models
                 } // Has default value
 
             } // foreach
-            
-            foreach (XElement data in dataElements)
+
+            if (dataElements != null)
             {
-                string name = NodeAttribute(data, "key");
-                string val = data.Value;
-
-                GraphMLKey gk = gKeys.Where(w => w.Id == name).FirstOrDefault();
-                if (gk != null)
+                foreach (XElement data in dataElements)
                 {
-                    name = gk.Name;
-                    if (string.IsNullOrEmpty(val))
+                    string name = NodeAttribute(data, "key");
+                    string val = data.Value;
+
+                    GraphMLKey gk = gKeys.Where(w => w.Id == name).FirstOrDefault();
+                    if (gk != null)
                     {
-                        val = gk.DefaultValue;
+                        name = gk.Name;
+                        if (string.IsNullOrEmpty(val))
+                        {
+                            val = gk.DefaultValue;
 
-                    } // No value
+                        } // No value
 
-                } // gk not null
+                    } // gk not null
 
-                if (!string.IsNullOrEmpty(name))
-                {
-                    result[name] = val;
+                    if (!string.IsNullOrEmpty(name))
+                    {
+                        result[name] = val;
 
-                }
-                
-            } // foreach
+                    }
+
+                } // foreach
+
+            } // if not null
 
             return result;
 
@@ -369,6 +688,52 @@ namespace WayfindR.Models
             }
 
         }
+
+        public WFEdge<WFNode> NewEdge(WFNode source, WFNode target)
+        {
+            string id = string.Format("e{0}",
+                    LastEdgeId + 1
+                    );
+
+            WFEdge<WFNode> result = new WFEdge<WFNode>(
+                source,
+                target,
+                id
+                );
+                        
+            result.Name = "New Edge";
+            SetPropertyValues(
+                            result,
+                            MakeDictionaryOfTheseElements(
+                                null,
+                                graphmlkeys,
+                                "edge"
+                                ));
+
+            return result;
+
+        }
+
+        public WFNode NewNode()
+        {
+            string id = string.Format("n{0}",
+                    LastNodeId + 1
+                    );
+
+            WFNode result = new WFNode();
+            result.Id = id;
+            result.Name = "New Node";
+            SetPropertyValues(
+                            result,
+                            MakeDictionaryOfTheseElements(
+                                null,
+                                graphmlkeys,
+                                "node"
+                                ));
+
+            return result;
+
+        }
         
         private static string NodeValue(XElement node, string nodeName, XNamespace ns)
         {
@@ -467,6 +832,7 @@ namespace WayfindR.Models
             try
             {
                 WFGraph result = null;
+
                 List<GraphMLKey> gklist = new List<GraphMLKey>();
 
                 XDocument xdoc = XDocument.Load(stream);
@@ -484,9 +850,10 @@ namespace WayfindR.Models
                         DataType = NodeAttribute(attrkey, "attr.type"),
                         Id = NodeAttribute(attrkey, "id"),
                         ForType = NodeAttribute(attrkey, "for"),
+                        yFilesType = NodeAttribute(attrkey, "yfiles.type"),
                         DefaultValue = NodeValue(attrkey, "default", ns)
                     }; // new
-
+                    
                     gklist.Add(gk);
 
                 } // foreach attribute key
@@ -495,6 +862,8 @@ namespace WayfindR.Models
                 if (xgraph != null)
                 {
                     result = new WFGraph();
+                    result.graphmlkeys = gklist;
+
                     
                     // Graph properties
                     var xgdata = xgraph.Elements(ns + "data");
@@ -573,19 +942,22 @@ namespace WayfindR.Models
         {
             try
             {
+                /*tmp
                 if (!File.Exists(fileName))
                 {
                     return;
 
                 } // File Exists
+                */
 
+                /*tmp
                 using (MemoryStream ms = new MemoryStream(
                         File.ReadAllBytes(fileName)
                         ))
-                {
+                {*/
                     try
                     {
-                        using (Stream ws = SaveToGraphML(ms))
+                        using (Stream ws = SaveToGraphML())
                         {
                             try
                             {
@@ -617,11 +989,13 @@ namespace WayfindR.Models
                     }
                     finally
                     {
-                        ms.Close();
+                        //tmp ms.Close();
 
                     }
                                         
+                /*tmp
                 } // using
+                */
 
             }
             catch
@@ -632,7 +1006,7 @@ namespace WayfindR.Models
 
         }
         
-        public Stream SaveToGraphML(Stream stream)
+        public Stream _SaveToGraphML(Stream stream)
         {
             try
             {                
@@ -782,7 +1156,150 @@ namespace WayfindR.Models
             }
 
         }
-        
+
+        public Stream SaveToGraphML()
+        {
+            try
+            {
+                XDocument xdoc = new XDocument();
+
+                XNamespace ns = XNamespace.Get(GraphMLNameSpace);
+                XElement xroot = new XElement(ns + "graphml");
+                xdoc.Add(xroot);
+
+                // Attributes
+                foreach (GraphMLKey gk in graphmlkeys)
+                {
+                    XElement xkey = new XElement(ns + "key");
+                    xkey.Add(new XAttribute(
+                        "attr.name",
+                        gk.Name
+                        ));
+                    xkey.Add(new XAttribute(
+                        "attr.type",
+                        gk.DataType
+                        ));
+                    xkey.Add(new XAttribute(
+                        "for",
+                        gk.ForType
+                        ));
+                    xkey.Add(new XAttribute(
+                        "id",
+                        gk.Id
+                        ));
+
+                    if (!string.IsNullOrWhiteSpace(gk.yFilesType))
+                    {
+                        xkey.Add(new XAttribute(
+                        "yfiles.type",
+                        gk.yFilesType
+                        ));
+                    } // Has yED stuff
+                    
+                    if (!string.IsNullOrWhiteSpace(gk.DefaultValue))
+                    {
+                        XElement xdefval = new XElement(ns + "default");
+                        xdefval.Value = gk.DefaultValue;
+                        xkey.Add(xdefval);
+                        
+                    } // Has default value
+                    
+                    xroot.Add(xkey);
+
+                } // foreach attribute key
+
+                XElement xgraph = new XElement(ns + "graph");
+                xgraph.Add(new XAttribute(
+                    "edgedefault",
+                    "directed"
+                    ));
+                xgraph.Add(new XAttribute(
+                    "id",
+                    "G"
+                    ));
+
+                  xroot.Add(xgraph);
+
+                // Graph properties
+                Dictionary<string, string> graphprops = GetPropertyValues(this);
+                MakeXelementsOfThese(graphprops, xgraph, graphmlkeys);
+
+
+                // Nodes
+
+                // Remove nodes that doesn't exist anymore
+                foreach (WFNode wfn in this.Vertices)
+                {
+                    XElement xnode = new XElement(ns + "node");
+                    XAttribute xattr = new XAttribute("id", wfn.Id);
+                    xnode.Add(xattr);
+
+                    xgraph.Add(xnode);
+
+                    Dictionary<string, string> nodeprops = GetPropertyValues(wfn);
+                    MakeXelementsOfThese(nodeprops, xnode, graphmlkeys);
+
+                } // foreach node
+
+
+                // Edges
+                foreach (WFEdge<WFNode> wfe in this.Edges)
+                {
+                    XElement xedge = new XElement(ns + "edge");
+                    XAttribute xattr = new XAttribute("id", wfe.Id);
+                    xedge.Add(xattr);
+
+                    xgraph.Add(xedge);
+
+                    WFNode src = wfe.Source as WFNode;
+                    WFNode trgt = wfe.Target as WFNode;
+
+                    XAttribute attrsrc = xedge.Attribute("source");
+                    if (attrsrc != null)
+                    {
+                        attrsrc.Value = src.Id;
+
+                    }
+                    else
+                    {
+                        attrsrc = new XAttribute("source", src.Id);
+                        xedge.Add(attrsrc);
+
+                    }
+                    XAttribute attrtrgt = xedge.Attribute("target");
+                    if (attrtrgt != null)
+                    {
+                        attrtrgt.Value = trgt.Id;
+
+                    }
+                    else
+                    {
+                        attrtrgt = new XAttribute("target", trgt.Id);
+                        xedge.Add(attrtrgt);
+
+                    }
+
+                    Dictionary<string, string> edgeprops = GetPropertyValues(wfe);
+                    MakeXelementsOfThese(edgeprops, xedge, graphmlkeys);
+
+                } // foreach edge
+
+
+
+                // save here
+                MemoryStream result = new MemoryStream();
+                xdoc.Save(result);
+
+                return result;
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
+        }
+
         public WFNode[] GetNodesAlphabetical()
         {
             WFNode[] nodesalpha = (
@@ -897,6 +1414,7 @@ namespace WayfindR.Models
         public string Name { get; set; }
         public string DataType { get; set; }
         public string ForType { get; set; }
+        public string yFilesType { get; set; }
         public string DefaultValue { get; set; }
 
 

@@ -361,7 +361,33 @@ namespace VenueMaker.Dialogs
 
                 
                 Venue.SaveToFile(SaveVenueDialog.FileName);
-                                
+
+
+                // Set properties based on venue properties.
+                Venue.NodesGraph.VenueId = Venue.Id;
+                Venue.NodesGraph.VenueName = Venue.Name;
+                Venue.NodesGraph.GraphId = string.Format("{0}-01",
+                    Venue.Id
+                    );
+                var gkuuid = Venue.NodesGraph.GraphMLKeys.Where(w =>
+                    w.ForType == "node" &&
+                    w.Name == "uuid"
+                    ).FirstOrDefault();
+                if (gkuuid != null)
+                {
+                    gkuuid.DefaultValue = "bc8c0035-823e-4948-8695-1e11a1954211";
+                    
+                } // Found
+                var gkmajor = Venue.NodesGraph.GraphMLKeys.Where(w =>
+                    w.ForType == "node" &&
+                    w.Name == "major"
+                    ).FirstOrDefault();
+                if (gkmajor != null)
+                {
+                    gkmajor.DefaultValue = Venue.Id;
+
+                } // Found
+
                 Venue.NodesGraph.Save(OpenGraphMLDialog.FileName);
                 
                 SystemSounds.Asterisk.Play();
@@ -767,12 +793,8 @@ namespace VenueMaker.Dialogs
                             continue;
 
                         } // The same elevator
-
-                        string id = string.Format("e{0}",
-                            Venue.NodesGraph.LastEdgeId + 1
-                            );
-
-                        WFEdge<WFNode> edg = new WFEdge<WFNode>(sourceelevator, targetelevator, id);
+                                                
+                        WFEdge<WFNode> edg = Venue.NodesGraph.NewEdge(sourceelevator, targetelevator);
                         edg.StartHeading = startheading;
                         edg.EndHeading = endheading;
                         edg.TravelTime = Math.Abs(idxdst - idxsrc) * ElevatorTravelTime;
@@ -839,14 +861,10 @@ namespace VenueMaker.Dialogs
 
                 } // User canceled
 
-                string id = string.Format("e{0}",
-                    Venue.NodesGraph.LastEdgeId + 1
-                    );
-
-                WFEdge<WFNode> edge = new WFEdge<WFNode>(
+                
+                WFEdge<WFNode> edge = Venue.NodesGraph.NewEdge(
                     nei.Source,
-                    nei.Target,
-                    id
+                    nei.Target
                     );
                 edge.TravelTime = nei.TravelTime;
                 edge.StartHeading = nei.StartHeading;
@@ -854,15 +872,10 @@ namespace VenueMaker.Dialogs
                 edge.Beginning = nei.Beginning;
 
                 Venue.NodesGraph.AddEdge(edge);
-
-                id = string.Format("e{0}",
-                    Venue.NodesGraph.LastEdgeId + 1
-                    );
-
-                WFEdge<WFNode> returnedge = new WFEdge<WFNode>(
+                                
+                WFEdge<WFNode> returnedge = Venue.NodesGraph.NewEdge(
                     nei.Target,
-                    nei.Source,
-                    id
+                    nei.Source
                     );
                 returnedge.TravelTime = nei.TravelTime;
                 returnedge.StartHeading = HeadingHelper.ValidHeading(nei.EndHeading - 180);
@@ -994,14 +1007,9 @@ namespace VenueMaker.Dialogs
         {
             try
             {
-                string id = string.Format("n{0}",
-                    Venue.NodesGraph.LastNodeId + 1
-                    );
 
-                WFNode n = new WFNode();
-                n.Id = id;
-                n.Name = "Ny nod";                
-                
+                WFNode n = Venue.NodesGraph.NewNode();
+                n.Name = "Ny nod";
                 Venue.NodesGraph.AddVertex(n);
                 NodesBS.DataSource = Venue.NodesGraph.GetNodesAlphabetical().OrderBy(w => w, new FloorComparer()).ToArray();
                 NodesBS.ResetBindings(false);
