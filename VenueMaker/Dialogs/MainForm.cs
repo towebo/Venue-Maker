@@ -19,6 +19,7 @@ using WayfindR.Helpers;
 using WayfindR.Helpers;
 using WayfindR;
 using WayfindR.Helpers;
+using Mawingu;
 
 namespace VenueMaker.Dialogs
 {
@@ -1062,5 +1063,88 @@ namespace VenueMaker.Dialogs
             }
 
         }
+
+        private void ImportBeaconsBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (OpenCSVFileDialog.ShowDialog() != DialogResult.OK)
+                {
+                    return;
+
+                } // User cancelled
+
+                Cursor.Current = Cursors.WaitCursor;
+                Application.DoEvents();
+
+
+                ImportBeaconsFromCSV(OpenCSVFileDialog.FileName);
+
+                NodesBS.DataSource = Venue.NodesGraph.GetNodesAlphabetical().OrderBy(w => w, new FloorComparer()).ToArray();
+                NodesBS.ResetBindings(false);
+
+                SystemSounds.Asterisk.Play();
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            finally
+            {
+                Cursor.Current = Cursors.Default;
+
+            }
+
+        }
+
+
+        private void ImportBeaconsFromCSV(string fileName)
+        {
+            try
+            {
+                string[] lines = File.ReadAllLines(fileName);
+
+                if (lines.Length < 2)
+                {
+                    return;
+
+                } // No data
+
+                string[] colnames = lines[0].Split(',');
+
+                for (long idx = 1; idx < lines.Length; idx++)
+                {
+                    string[] values = TSVHelper.SplitCSVLine(lines[idx]);
+
+                    WFNode n = Venue.NodesGraph.NewNode();
+                    n.IdTag = TSVHelper.StringByColumn(colnames, values, "uniqueId");
+                    n.Uuid = TSVHelper.StringByColumn(colnames, values, "proximity");
+                    n.Major = TSVHelper.IntByColumn(colnames, values, "major");
+                    n.Minor = TSVHelper.IntByColumn(colnames, values, "minor");
+                    n.Name = n.IdTag;
+
+                    Venue.NodesGraph.AddVertex(n);
+                    
+
+                } // for all lines
+
+            }
+            catch (Exception ex)
+            {
+                string errmsg = string.Format("ImportBeaconsFromCSV({1}): {0}",
+                    ex.Message,
+                    fileName
+                    );
+                throw new Exception(errmsg);
+            }
+
+        }
+
+
+
+
     }
 }
