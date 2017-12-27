@@ -275,6 +275,8 @@ namespace VenueMaker.Dialogs
                 Venue = new WFVenue();
                 SaveVenueDialog.FileName = "";
 
+                Venue.NodesGraph = new WFGraph();
+
                 VenueBS.DataSource = Venue;
 
             }
@@ -356,6 +358,11 @@ namespace VenueMaker.Dialogs
                         return;
 
                     } // DialogResult = Ok
+
+                    OpenGraphMLDialog.FileName = Path.ChangeExtension(
+                        SaveVenueDialog.FileName,
+                        OpenGraphMLDialog.DefaultExt
+                        );
 
                 } // Save as or not saved
 
