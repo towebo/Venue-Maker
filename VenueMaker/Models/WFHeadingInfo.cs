@@ -54,12 +54,23 @@ namespace WayfindR.Models
 
         public override string ToString()
         {
-            return string.Format("{0};{1};{2};{3}",
+            string result = string.Format("{0};{1};{2};{3}",
                 Heading,
                 Info,
                 Image,
                 ImageDescription
                 );
+
+            if (Heading == -1 &&
+                string.IsNullOrWhiteSpace(Info) &&
+                string.IsNullOrWhiteSpace(Image) &&
+                string.IsNullOrWhiteSpace(ImageDescription))
+            {
+                result = string.Empty;
+
+            } // Nothing
+
+            return result;
         }
 
     }

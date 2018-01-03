@@ -102,6 +102,12 @@
     <Compile Include="Controllers\GraphController.cs" />
     <Compile Include="Controllers\SQLiteController.cs" />
     <Compile Include="Controllers\VenueController.cs" />
+    <Compile Include="Dialogs\EditHeadingInfoDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\EditHeadingInfoDialog.Designer.cs">
+      <DependentUpon>EditHeadingInfoDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -147,6 +153,9 @@
     <Compile Include="Utils\FtpUtil.cs" />
     <Compile Include="Utils\HttpUtil.cs" />
     <Compile Include="Utils\TSVHelper.cs" />
+    <EmbeddedResource Include="Dialogs\EditHeadingInfoDialog.resx">
+      <DependentUpon>EditHeadingInfoDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>

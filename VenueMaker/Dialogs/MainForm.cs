@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿#define WITHADMINRIGHTS
+
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System;
@@ -20,6 +22,7 @@ using WayfindR.Helpers;
 using WayfindR;
 using WayfindR.Helpers;
 using Mawingu;
+
 
 namespace VenueMaker.Dialogs
 {
@@ -45,6 +48,16 @@ namespace VenueMaker.Dialogs
             try
             {
                 this.Text = AssemblyInfo.GetProductAndVersion();
+
+                // Disable stuff for nomal users
+                bool hasadminrights = false;
+#if WITHADMINRIGHTS
+                hasadminrights = true;
+#endif
+                newVenueToolStripMenuItem.Visible = hasadminrights;
+                saveVenueFileAsToolStripMenuItem.Visible = hasadminrights;
+
+
 
 
                 VenueBS.DataSource = new WFVenue();
@@ -361,7 +374,7 @@ namespace VenueMaker.Dialogs
         {
             try
             {
-                if (sender == saveVenueFileToolStripMenuItem ||
+                if (sender == saveVenueFileAsToolStripMenuItem ||
                     string.IsNullOrEmpty(SaveVenueDialog.FileName))
                 {
                     if (SaveVenueDialog.ShowDialog() != DialogResult.OK)
@@ -1166,6 +1179,51 @@ namespace VenueMaker.Dialogs
 
                 } // Nodes
                 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+        }
+
+        private void EditHeadingInfoButtonsClick(object sender, EventArgs e)
+        {
+            try
+            {
+                TextBox tb = null;
+                
+                if (sender == EditHeadingInfo1Btn)
+                {
+                    tb = NodeInfo1HeadingTB;
+                }
+                else if (sender == EditHeadingInfo2Btn)
+                {
+                    tb = NodeInfo2HeadingTB;
+                }
+                else if (sender == EditHeadingInfo3Btn)
+                {
+                    tb = NodeInfo3HeadingTB;
+                }
+                else if (sender == EditHeadingInfo4Btn)
+                {
+                    tb = NodeInfo4HeadingTB;
+                }
+                else if (sender == EditHeadingInfo5Btn)
+                {
+                    tb = NodeInfo5HeadingTB;
+                }
+                
+                EditHeadingInfoDialog dlg = new EditHeadingInfoDialog();
+                dlg.HeadingInfo = new WFHeadingInfo(tb.Text);
+                if (dlg.ShowDialog() != DialogResult.OK)
+                {
+                    return;
+
+                } // User canceled
+
+                tb.Text = dlg.HeadingInfo.ToString();
+
             }
             catch (Exception ex)
             {
