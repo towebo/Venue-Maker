@@ -51,38 +51,7 @@ namespace VenueMaker.Dialogs
                 VenueBS.CurrentChanged += (s1, e1) =>
                 {
                     WFVenue v = VenueBS.Current as WFVenue;
-                    if (v != null)
-                    {
-                        if (v.PointsOfInterest != null)
-                        {
-                            POIsBS.DataSource = v.PointsOfInterest.ToArray().OrderBy(w => w, new FloorComparer());
-
-                            EdgesPOIsBS.DataSource = v.PointsOfInterest.ToArray().OrderBy(w => w, new FloorComparer());
-
-                        }
-                        else
-                        {
-                            POIsBS.DataSource = v.PointsOfInterest;
-                            EdgesPOIsBS.DataSource = v.PointsOfInterest;
-
-                        }
-                        
-                    }
-                    else
-                    {
-                        POIsBS.DataSource = new WFPointOfInterest[] { };
-                        EdgesPOIsBS.DataSource = new WFPointOfInterest[] { };
-
-                    }
-
-
-                    elevators = Venue.NodesGraph.GetNodesAlphabetical().Where(w => w.WaypointType == "elevator").OrderBy(w => w, new FloorComparer()).ToArray();
-                    ElevatorsBS.DataSource = elevators;
-                    ElevatorsBS.ResetBindings(false);
-                    
-                    NodesBS.DataSource = Venue.NodesGraph.GetNodesAlphabetical().OrderBy(w => w, new FloorComparer()).ToArray();
-                    NodesBS.ResetBindings(false);
-
+                    RefreshUIForVenue(v);
 
                 };
 
@@ -255,7 +224,48 @@ namespace VenueMaker.Dialogs
             }
         }
 
+        private void RefreshUIForVenue(WFVenue v)
+        {
+            try
+            {
+                if (v != null)
+                {
+                    if (v.PointsOfInterest != null)
+                    {
+                        POIsBS.DataSource = v.PointsOfInterest.ToArray().OrderBy(w => w, new FloorComparer());
 
+                        EdgesPOIsBS.DataSource = v.PointsOfInterest.ToArray().OrderBy(w => w, new FloorComparer());
+
+                    }
+                    else
+                    {
+                        POIsBS.DataSource = v.PointsOfInterest;
+                        EdgesPOIsBS.DataSource = v.PointsOfInterest;
+
+                    }
+
+                }
+                else
+                {
+                    POIsBS.DataSource = new WFPointOfInterest[] { };
+                    EdgesPOIsBS.DataSource = new WFPointOfInterest[] { };
+
+                }
+
+
+                elevators = Venue.NodesGraph.GetNodesAlphabetical().Where(w => w.WaypointType == "elevator").OrderBy(w => w, new FloorComparer()).ToArray();
+                ElevatorsBS.DataSource = elevators;
+                ElevatorsBS.ResetBindings(false);
+
+                NodesBS.DataSource = Venue.NodesGraph.GetNodesAlphabetical().OrderBy(w => w, new FloorComparer()).ToArray();
+                NodesBS.ResetBindings(false);
+            }
+            catch (Exception ex)
+            {
+                throw;
+
+            }
+        }
 
 
         private void closeAppToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1143,8 +1153,25 @@ namespace VenueMaker.Dialogs
 
         }
 
+        private void Tabs_Deselecting(object sender, TabControlCancelEventArgs e)
+        {
+            try
+            {                
+                // Refresh stuff?
+                if (e.TabPage == NodesTab)
+                {
+                    Venue.AddPOIsFromGraph(true);
+                    RefreshUIForVenue(Venue);
 
 
+                } // Nodes
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
+            }
+        }
     }
 }

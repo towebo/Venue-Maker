@@ -64,6 +64,7 @@
             this.VenueNameTB = new System.Windows.Forms.TextBox();
             this.VenueNameLabel = new System.Windows.Forms.Label();
             this.NodesTab = new System.Windows.Forms.TabPage();
+            this.ImportBeaconsBtn = new System.Windows.Forms.Button();
             this.DeleteNodeButton = new System.Windows.Forms.Button();
             this.AddNodeButton = new System.Windows.Forms.Button();
             this.NodeFloorTB = new System.Windows.Forms.TextBox();
@@ -157,7 +158,6 @@
             this.EdgesForPOIBS = new System.Windows.Forms.BindingSource(this.components);
             this.EdgeBS = new System.Windows.Forms.BindingSource(this.components);
             this.NodesBS = new System.Windows.Forms.BindingSource(this.components);
-            this.ImportBeaconsBtn = new System.Windows.Forms.Button();
             this.OpenCSVFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.MainMenuStrip.SuspendLayout();
             this.Tabs.SuspendLayout();
@@ -303,6 +303,7 @@
             this.Tabs.SelectedIndex = 0;
             this.Tabs.Size = new System.Drawing.Size(1110, 657);
             this.Tabs.TabIndex = 17;
+            this.Tabs.Deselecting += new System.Windows.Forms.TabControlCancelEventHandler(this.Tabs_Deselecting);
             // 
             // VenueTab
             // 
@@ -518,6 +519,16 @@
             this.NodesTab.TabIndex = 5;
             this.NodesTab.Text = "Noder";
             this.NodesTab.UseVisualStyleBackColor = true;
+            // 
+            // ImportBeaconsBtn
+            // 
+            this.ImportBeaconsBtn.Location = new System.Drawing.Point(804, 76);
+            this.ImportBeaconsBtn.Name = "ImportBeaconsBtn";
+            this.ImportBeaconsBtn.Size = new System.Drawing.Size(75, 23);
+            this.ImportBeaconsBtn.TabIndex = 33;
+            this.ImportBeaconsBtn.Text = "Importera";
+            this.ImportBeaconsBtn.UseVisualStyleBackColor = true;
+            this.ImportBeaconsBtn.Click += new System.EventHandler(this.ImportBeaconsBtn_Click);
             // 
             // DeleteNodeButton
             // 
@@ -1283,11 +1294,13 @@
             // 
             // POIsLB
             // 
+            this.POIsLB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.POIsLB.FormattingEnabled = true;
             this.POIsLB.ItemHeight = 15;
             this.POIsLB.Location = new System.Drawing.Point(11, 21);
             this.POIsLB.Name = "POIsLB";
-            this.POIsLB.Size = new System.Drawing.Size(315, 319);
+            this.POIsLB.Size = new System.Drawing.Size(315, 589);
             this.POIsLB.TabIndex = 0;
             // 
             // OpenMediaFileDialog
@@ -1295,16 +1308,6 @@
             this.OpenMediaFileDialog.Filter = "|*.jpg;*.jpeg;*.png;*.pgif;*.wav;*.m4a;**.mp3|relifaideMBilder (*.jpg, *.jpeg, *." +
     "png)|*.jpg;*.jpeg;*.png|Ljudfiler (*.wav, *.mp3, *.m4a)|*.wav;*.m4a;*.mp3|Alla f" +
     "iler (*.*)|*.*";
-            // 
-            // ImportBeaconsBtn
-            // 
-            this.ImportBeaconsBtn.Location = new System.Drawing.Point(804, 76);
-            this.ImportBeaconsBtn.Name = "ImportBeaconsBtn";
-            this.ImportBeaconsBtn.Size = new System.Drawing.Size(75, 23);
-            this.ImportBeaconsBtn.TabIndex = 33;
-            this.ImportBeaconsBtn.Text = "Importera";
-            this.ImportBeaconsBtn.UseVisualStyleBackColor = true;
-            this.ImportBeaconsBtn.Click += new System.EventHandler(this.ImportBeaconsBtn_Click);
             // 
             // OpenCSVFileDialog
             // 

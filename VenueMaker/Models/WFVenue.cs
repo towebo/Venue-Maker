@@ -509,14 +509,13 @@ namespace WayfindR.Models
                     
                 } // foreach graph.node
 
-                if (PointsOfInterest != null)
+                if (PointsOfInterest != null &&
+                    !removeNonExisting)
                 {
                     List<WFPointOfInterest> allpois = PointsOfInterest.ToList();
                     allpois.AddRange(newpois);
 
-                    var justtouchedones = allpois.Where(w => !w.Name.StartsWith("*** "));
-
-                    PointsOfInterest = justtouchedones.ToArray(); //allpois.ToArray();
+                    PointsOfInterest = allpois.ToArray();
 
                 }
                 else
@@ -524,8 +523,6 @@ namespace WayfindR.Models
                     PointsOfInterest = newpois.ToArray();
 
                 }
-
-
                                 
             }
             catch
