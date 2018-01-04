@@ -1,4 +1,4 @@
-﻿#define WITHADMINRIGHTS
+﻿//tmp #define WITHADMINRIGHTS
 
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -28,6 +28,8 @@ namespace VenueMaker.Dialogs
 {
     public partial class MainForm : Form
     {
+        private static MainForm me;
+
         private WFNode[] elevators;
         private const double ElevatorTravelTime = 20.0;
 
@@ -36,8 +38,11 @@ namespace VenueMaker.Dialogs
         public WFVenue Venue { get; set; }
 
 
+        public static MainForm Me { get { return me; } }
+
         public MainForm()
         {
+            me = this;
             InitializeComponent();
         }
 
@@ -245,9 +250,10 @@ namespace VenueMaker.Dialogs
                 {
                     if (v.PointsOfInterest != null)
                     {
-                        POIsBS.DataSource = v.PointsOfInterest.ToArray().OrderBy(w => w, new FloorComparer());
+                        POIsBS.DataSource = v.PointsOfInterest.OrderBy(w => w, new FloorComparer()).ToArray();
+                        POIsBS.ResetBindings(false);
 
-                        EdgesPOIsBS.DataSource = v.PointsOfInterest.ToArray().OrderBy(w => w, new FloorComparer());
+                        EdgesPOIsBS.DataSource = v.PointsOfInterest.ToArray().OrderBy(w => w, new FloorComparer()).ToArray();
 
                     }
                     else
@@ -255,23 +261,28 @@ namespace VenueMaker.Dialogs
                         POIsBS.DataSource = v.PointsOfInterest;
                         EdgesPOIsBS.DataSource = v.PointsOfInterest;
 
-                    }
+                    } // Pois is null
 
-                }
+                    NodesBS.DataSource = v.NodesGraph.GetNodesAlphabetical().OrderBy(w => w, new FloorComparer()).ToArray();
+                    NodesBS.ResetBindings(false);
+
+                    elevators = v.NodesGraph.GetNodesAlphabetical().Where(w => w.WaypointType == "elevator").OrderBy(w => w, new FloorComparer()).ToArray();
+                    ElevatorsBS.DataSource = elevators;
+                    ElevatorsBS.ResetBindings(false);
+
+
+                } // v not null
                 else
                 {
                     POIsBS.DataSource = new WFPointOfInterest[] { };
                     EdgesPOIsBS.DataSource = new WFPointOfInterest[] { };
+                    NodesBS.DataSource = new WFNode[] { };
+                    ElevatorsBS.DataSource = new WFNode[] { };
+
+
 
                 }
-
-
-                elevators = Venue.NodesGraph.GetNodesAlphabetical().Where(w => w.WaypointType == "elevator").OrderBy(w => w, new FloorComparer()).ToArray();
-                ElevatorsBS.DataSource = elevators;
-                ElevatorsBS.ResetBindings(false);
-
-                NodesBS.DataSource = Venue.NodesGraph.GetNodesAlphabetical().OrderBy(w => w, new FloorComparer()).ToArray();
-                NodesBS.ResetBindings(false);
+                                
             }
             catch (Exception ex)
             {
@@ -377,6 +388,13 @@ namespace VenueMaker.Dialogs
                 if (sender == saveVenueFileAsToolStripMenuItem ||
                     string.IsNullOrEmpty(SaveVenueDialog.FileName))
                 {
+#if WITHADMINRIGHTS
+#else
+                    MessageBox.Show("Du kan bara spara ändringar om du öppnat en fil.", "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+#endif
+
+
                     if (SaveVenueDialog.ShowDialog() != DialogResult.OK)
                     {
                         return;
@@ -725,51 +743,12 @@ namespace VenueMaker.Dialogs
 
                 Cursor.Current = Cursors.WaitCursor;
                 Application.DoEvents();
-
+                                                
+                string mediafile = UseThisFile(OpenMediaFileDialog.FileName);
                 
-                string mediafile = Path.GetDirectoryName(SaveVenueDialog.FileName);
-
-                string newfn = Path.GetFileName(OpenMediaFileDialog.FileName);
-                if (!newfn.StartsWith(this.Venue.Id))
-                {
-                    newfn = string.Format("{0}_{1}",
-                        Venue.Id,
-                        newfn
-                        );
-                }
-
-                mediafile = Path.Combine(mediafile, newfn);
-
-                if (File.Exists(mediafile) &&
-                    mediafile != OpenMediaFileDialog.FileName)
-                {
-                    DialogResult dr = MessageBox.Show(
-                        string.Format("Det finns redan en fil som heter \"{0}\". Vill du ersätta den befintliga?",
-                        Path.GetFileName(mediafile)),
-                        "Ersätt befintlig fil",
-                        MessageBoxButtons.YesNo,
-                        MessageBoxIcon.Question
-                        );
-                    if (dr != DialogResult.Yes)
-                    {
-                        return;
-
-                    } // Don't replace
-
-                    File.Delete(mediafile);
-
-                } // Replace old file
-
-                File.Copy(
-                    OpenMediaFileDialog.FileName,
-                    mediafile
-                    );
-
-
-                poii.MediaFile = newfn;
+                poii.MediaFile = mediafile;
                 MediaFileTB.Text = poii.MediaFile;
-
-
+                
                 SystemSounds.Asterisk.Play();
                 
             }
@@ -1231,5 +1210,59 @@ namespace VenueMaker.Dialogs
 
             }
         }
+
+
+
+        public string UseThisFile(string src)
+        {
+            string mediafile = Path.GetDirectoryName(SaveVenueDialog.FileName);
+            string newfn = Path.GetFileName(src);
+            if (!newfn.StartsWith(this.Venue.Id))
+            {
+                newfn = string.Format("{0}_{1}",
+                    Venue.Id,
+                    newfn
+                    );
+            }
+
+            mediafile = Path.Combine(mediafile, newfn);
+
+            if (File.Exists(mediafile) &&
+                mediafile != src)
+            {
+                DialogResult dr = MessageBox.Show(
+                    string.Format("Det finns redan en fil som heter \"{0}\". Vill du ersätta den befintliga?",
+                    Path.GetFileName(mediafile)),
+                    "Ersätt befintlig fil",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                    );
+                if (dr != DialogResult.Yes)
+                {
+                    return mediafile;
+
+                } // Don't replace
+
+                File.Delete(mediafile);
+
+            } // Replace old file
+
+            if (mediafile != src)
+            {
+                File.Copy(
+                    src,
+                    mediafile
+                    );
+
+            } // Not the same file
+
+            return mediafile;
+
+        }
+
+
+
+
+
     }
 }

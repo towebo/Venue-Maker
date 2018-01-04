@@ -45,8 +45,10 @@ namespace VenueMaker.Dialogs
                     return;
 
                 } // User canceled
-
-                HeadingInfo.Image = Path.GetFileName(OpenImageDialog.FileName);
+                
+                HeadingInfo.Image = Path.GetFileName(
+                    MainForm.Me.UseThisFile(OpenImageDialog.FileName)
+                );
                 ImageTB.Text = HeadingInfo.Image;
 
             }

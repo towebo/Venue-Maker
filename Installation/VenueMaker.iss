@@ -8,7 +8,7 @@ Source: ..\VenueMaker\bin\Release\SQLitePCLRaw.batteries_green.dll; DestDir: {ap
 Source: ..\VenueMaker\bin\Release\SQLitePCLRaw.batteries_v2.dll; DestDir: {app}
 Source: ..\VenueMaker\bin\Release\SQLitePCLRaw.core.dll; DestDir: {app}
 Source: ..\VenueMaker\bin\Release\SQLitePCLRaw.provider.e_sqlite3.dll; DestDir: {app}
-Source: ..\VenueMaker\bin\Release\VenueMaker.exe; DestDir: {app}
+Source: ..\VenueMaker\bin\Release\VenueMaker.exe; DestDir: {app}; Flags: replacesameversion
 Source: ..\VenueMaker\bin\Release\Newtonsoft.Json.dll; DestDir: {app}
 Source: ..\VenueMaker\bin\Release\Newtonsoft.Json.xml; DestDir: {app}
 Source: ..\VenueMaker\bin\Release\QuickGraph.Data.dll; DestDir: {app}
