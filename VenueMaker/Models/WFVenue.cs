@@ -10,6 +10,8 @@ namespace WayfindR.Models
 {
     public class WFVenue
     {
+        private string graphml;
+
         public string Id { get; set; }
         public string Name { get; set; }
 
@@ -22,6 +24,15 @@ namespace WayfindR.Models
         public string Email { get; set; }
         public string Phone { get; set; }
 
+        public string GraphML
+        {
+            get { return this.graphml; }
+            set
+            {
+                graphml = value;
+                RegenerateGraph();
+            }
+        }
 
 
         public WFPlatform[] Platforms { get; set; }
@@ -52,7 +63,7 @@ namespace WayfindR.Models
                 result.Phone = (string)jo["venue"]["phone"];
                 result.Email = (string)jo["venue"]["email"];result.Address = (string)jo["venue"]["address"];
                 result.Web = (string)jo["venue"]["web"];
-
+                
                 var vis_val = (string)jo["venue"]["visibility"];
                 if (string.IsNullOrEmpty(vis_val))
                 {
@@ -73,6 +84,14 @@ namespace WayfindR.Models
 
                 }
                 
+                try
+                {
+                    result.GraphML = (string)jo["venue"]["graphml"];
+
+                }
+                catch
+                {
+                }
                 
 
                 try
@@ -255,11 +274,9 @@ namespace WayfindR.Models
                     writer.WritePropertyName("visibility");
                     writer.WriteValue(Visibility);
 
-
-
-
-
-
+                    writer.WritePropertyName("graphml");
+                    writer.WriteValue(GraphML);
+                    
 
 
                     if (Platforms != null &&
@@ -417,12 +434,35 @@ namespace WayfindR.Models
             }
         }
 
+        public string ToString()
+        {
+            try
+            {
+                // Keep the graph loosely coupled.
+                graphml = NodesGraph.ToString();
+
+                string data = ToJson();
+
+                return data;
+
+            }
+            catch
+            {
+                throw;
+
+            }
+
+        }
+
         public void SaveToFile(string fileName)
         {
             try
             {
-                string data = ToJson();
-                File.WriteAllText(fileName, data, Encoding.UTF8);
+                File.WriteAllText(
+                    fileName, 
+                    this.ToString(), 
+                    Encoding.UTF8
+                    );
 
             }
             catch (Exception ex)
@@ -536,6 +576,26 @@ namespace WayfindR.Models
                                 
             }
             catch
+            {
+                throw;
+
+            }
+
+        }
+
+        public void RegenerateGraph()
+        {
+            try
+            {
+                MemoryStream ms = new MemoryStream(
+                    Encoding.UTF8.GetBytes(graphml ?? "")
+                );
+                WFGraph g = WFGraph.LoadFromGraphML(ms);
+                NodesGraph = g;
+                AddPOIsFromGraph(true);
+
+            }
+            catch (Exception ex)
             {
                 throw;
 

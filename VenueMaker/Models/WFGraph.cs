@@ -11,6 +11,7 @@ using System.Xml.Linq;
 using System.Reflection;
 using System.Globalization;
 using WayfindR.Helpers;
+using System.Text;
 
 namespace WayfindR.Models
 {
@@ -1159,6 +1160,17 @@ namespace WayfindR.Models
 
         public Stream SaveToGraphML()
         {
+
+            MemoryStream result = new MemoryStream(
+                Encoding.UTF8.GetBytes(this.ToString())
+                );
+
+            return result;
+
+        }
+
+        public string ToString()
+        {
             try
             {
                 XDocument xdoc = new XDocument();
@@ -1284,14 +1296,8 @@ namespace WayfindR.Models
 
                 } // foreach edge
 
-
-
-                // save here
-                MemoryStream result = new MemoryStream();
-                xdoc.Save(result);
-
-                return result;
-
+                return xdoc.ToString();
+                
             }
             catch (Exception ex)
             {

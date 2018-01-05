@@ -360,14 +360,12 @@ namespace VenueMaker.Dialogs
                 string graphfile = Path.ChangeExtension(
                     fileName,
                     OpenGraphMLDialog.DefaultExt
-                    );                
+                    );
+                OpenGraphMLDialog.FileName = graphfile;
                 if (File.Exists(graphfile))
                 {
-                    OpenGraphMLDialog.FileName = graphfile;
-
                     WFGraph g = WFGraph.LoadFromGraphML(graphfile);
-                    Venue.NodesGraph = g;
-                    Venue.AddPOIsFromGraph(true);
+                    Venue.GraphML = g.ToString();
 
                 }
                                 
@@ -409,9 +407,6 @@ namespace VenueMaker.Dialogs
                 } // Save as or not saved
 
                 
-                Venue.SaveToFile(SaveVenueDialog.FileName);
-
-
                 // Set properties based on venue properties.
                 Venue.NodesGraph.VenueId = Venue.Id;
                 Venue.NodesGraph.VenueName = Venue.Name;
@@ -437,8 +432,11 @@ namespace VenueMaker.Dialogs
 
                 } // Found
 
+
                 Venue.NodesGraph.Save(OpenGraphMLDialog.FileName);
-                
+
+                Venue.SaveToFile(SaveVenueDialog.FileName);
+                                
                 SystemSounds.Asterisk.Play();
 
 
@@ -701,6 +699,68 @@ namespace VenueMaker.Dialogs
                     } // foreach Pois
 
                 } // Has pois
+
+                foreach (WFNode n in Venue.NodesGraph.Vertices)
+                {
+                    if (!string.IsNullOrWhiteSpace(n.Heading1Info))
+                    {
+                        WFHeadingInfo hi = new WFHeadingInfo(n.Heading1Info);
+                        if (!string.IsNullOrWhiteSpace(hi.Image))
+                        {
+                            FtpController.Me.AddToUploadQueue(
+                                            Path.Combine(fldr, hi.Image)
+                                            );
+                        } // Image assigned
+
+                    } // Has Headinginfo
+                    if (!string.IsNullOrWhiteSpace(n.Heading2Info))
+                    {
+                        WFHeadingInfo hi = new WFHeadingInfo(n.Heading2Info);
+                        if (!string.IsNullOrWhiteSpace(hi.Image))
+                        {
+                            FtpController.Me.AddToUploadQueue(
+                                            Path.Combine(fldr, hi.Image)
+                                            );
+                        } // Image assigned
+                        
+                    } // Has Headinginfo
+                    if (!string.IsNullOrWhiteSpace(n.Heading3Info))
+                    {
+                        WFHeadingInfo hi = new WFHeadingInfo(n.Heading3Info);
+                        if (!string.IsNullOrWhiteSpace(hi.Image))
+                        {
+                            FtpController.Me.AddToUploadQueue(
+                                            Path.Combine(fldr, hi.Image)
+                                            );
+                        } // Image assigned
+                        
+                    } // Has Headinginfo
+                    if (!string.IsNullOrWhiteSpace(n.Heading4Info))
+                    {
+                        WFHeadingInfo hi = new WFHeadingInfo(n.Heading4Info);
+                        if (!string.IsNullOrWhiteSpace(hi.Image))
+                        {
+                            FtpController.Me.AddToUploadQueue(
+                                            Path.Combine(fldr, hi.Image)
+                                            );
+                        } // Image assigned
+                        
+                    } // Has Headinginfo
+                    if (!string.IsNullOrWhiteSpace(n.Heading5Info))
+                    {
+                        WFHeadingInfo hi = new WFHeadingInfo(n.Heading5Info);
+                        if (!string.IsNullOrWhiteSpace(hi.Image))
+                        {
+                            FtpController.Me.AddToUploadQueue(
+                                            Path.Combine(fldr, hi.Image)
+                                            );
+                        } // Image assigned
+
+                    } // Has Headinginfo
+
+
+
+                } // foreach node
 
 
 
