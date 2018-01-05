@@ -1,4 +1,4 @@
-﻿//tmp #define WITHADMINRIGHTS
+﻿#define WITHADMINRIGHTS
 
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -313,6 +313,8 @@ namespace VenueMaker.Dialogs
                 Venue.NodesGraph = new WFGraph();
 
                 VenueBS.DataSource = Venue;
+                RefreshUIForVenue(Venue);
+                //VenueBS.ResetBindings(false);
 
             }
             catch (Exception ex)
