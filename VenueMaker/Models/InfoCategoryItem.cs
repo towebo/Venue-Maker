@@ -26,23 +26,14 @@ namespace VenueMaker.Models
         {
             List<InfoCategoryItem> result = new List<InfoCategoryItem>();
 
-            result.Add(new InfoCategoryItem(
-                WFInfoCategory.General, WFInfoCategory.General.ToString().ToLower()
+            foreach (WFInfoCategory cat in Enum.GetValues(typeof(WFInfoCategory)))
+            {
+                result.Add(new InfoCategoryItem(
+                cat, cat.ToString().ToLower()
                 ));
-            result.Add(new InfoCategoryItem(
-                WFInfoCategory.AudioDescription, WFInfoCategory.AudioDescription.ToString().ToLower()
-                ));
-            result.Add(new InfoCategoryItem(
-                WFInfoCategory.Interior, WFInfoCategory.Interior.ToString().ToLower()
-                ));
-            result.Add(new InfoCategoryItem(
-                WFInfoCategory.Offer, WFInfoCategory.Offer.ToString().ToLower()
-                ));
-            result.Add(new InfoCategoryItem(
-                WFInfoCategory.OpeningHours, WFInfoCategory.OpeningHours.ToString().ToLower()
-                ));
-            
 
+            } // foreach
+            
             return result.ToArray();
 
         }

@@ -10,9 +10,13 @@ namespace WayfindR.Models
     {
         General,
         AudioDescription,
-        Interior,
+        PositionIdentifyer,
         OpeningHours,
-        Offer
+        Offer,
+        PhoneNumber,
+        Address,
+        Url,
+        EmailAddress
     } // enum
 
     public class WFPOIInformation
@@ -27,25 +31,12 @@ namespace WayfindR.Models
 
 
 
-        public WFInfoCategory[] GetAllCategories()
-        {
-            List<WFInfoCategory> result = new List<WFInfoCategory>();
-
-            result.Add(WFInfoCategory.General);
-            result.Add(WFInfoCategory.AudioDescription);
-            result.Add(WFInfoCategory.Interior);
-            result.Add(WFInfoCategory.Offer);
-            result.Add(WFInfoCategory.OpeningHours);
-
-            return result.ToArray();
-
-        }
-
+        
         public WFInfoCategory CategoryFromString(string catName)
         {
             try
             {
-                foreach (WFInfoCategory lion in GetAllCategories())
+                foreach (WFInfoCategory lion in Enum.GetValues(typeof(WFInfoCategory)))
                 {
                     if (catName.ToLower() == lion.ToString().ToLower())
                     {
