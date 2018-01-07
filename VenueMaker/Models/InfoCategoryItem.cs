@@ -27,7 +27,10 @@ namespace VenueMaker.Models
             List<InfoCategoryItem> result = new List<InfoCategoryItem>();
 
             result.Add(new InfoCategoryItem(
-                WFInfoCategory.Description, WFInfoCategory.Description.ToString().ToLower()
+                WFInfoCategory.General, WFInfoCategory.General.ToString().ToLower()
+                ));
+            result.Add(new InfoCategoryItem(
+                WFInfoCategory.AudioDescription, WFInfoCategory.AudioDescription.ToString().ToLower()
                 ));
             result.Add(new InfoCategoryItem(
                 WFInfoCategory.Interior, WFInfoCategory.Interior.ToString().ToLower()

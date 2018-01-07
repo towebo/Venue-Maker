@@ -8,7 +8,8 @@ namespace WayfindR.Models
 {
     public enum WFInfoCategory
     {
-        Description,
+        General,
+        AudioDescription,
         Interior,
         OpeningHours,
         Offer
@@ -30,7 +31,8 @@ namespace WayfindR.Models
         {
             List<WFInfoCategory> result = new List<WFInfoCategory>();
 
-            result.Add(WFInfoCategory.Description);
+            result.Add(WFInfoCategory.General);
+            result.Add(WFInfoCategory.AudioDescription);
             result.Add(WFInfoCategory.Interior);
             result.Add(WFInfoCategory.Offer);
             result.Add(WFInfoCategory.OpeningHours);
@@ -53,12 +55,12 @@ namespace WayfindR.Models
 
                 } // foreach
 
-                return WFInfoCategory.Description;
+                return WFInfoCategory.General;
                 
             }
             catch
             {
-                return WFInfoCategory.Description;
+                return WFInfoCategory.General;
 
             }
 

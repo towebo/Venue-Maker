@@ -1,4 +1,4 @@
-﻿#define WITHADMINRIGHTS
+﻿//tmp #define WITHADMINRIGHTS
 
 using System.Collections.Generic;
 using System.ComponentModel;

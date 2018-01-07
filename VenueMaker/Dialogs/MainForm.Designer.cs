@@ -749,6 +749,31 @@
             // NodeWaypointTypeCombo
             // 
             this.NodeWaypointTypeCombo.FormattingEnabled = true;
+            this.NodeWaypointTypeCombo.Items.AddRange(new object[] {
+            "",
+            "artifact",
+            "artwork",
+            "bridge",
+            "busstop",
+            "door",
+            "elevator",
+            "emergencyexit",
+            "entrance",
+            "escalator",
+            "exit",
+            "gate",
+            "ticketgate",
+            "hwc",
+            "object",
+            "platform",
+            "reception",
+            "revolvingdoor",
+            "sculpture",
+            "slidingdoors",
+            "stairs",
+            "stop",
+            "taxistop",
+            "wc"});
             this.NodeWaypointTypeCombo.Location = new System.Drawing.Point(541, 21);
             this.NodeWaypointTypeCombo.Name = "NodeWaypointTypeCombo";
             this.NodeWaypointTypeCombo.Size = new System.Drawing.Size(127, 23);
