@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/KwendaService.Models" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/KwendaService.Models" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="CreateAccountRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Organization" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CreateAccountRequest" nillable="true" type="tns:CreateAccountRequest" />
+  <xs:complexType name="CreateAccountResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ReturnCode" type="tns:CreateAccountResult.MethodResult" />
+      <xs:element minOccurs="0" name="Success" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CreateAccountResult" nillable="true" type="tns:CreateAccountResult" />
+  <xs:simpleType name="CreateAccountResult.MethodResult">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Ok" />
+      <xs:enumeration value="UserAlreadyExists" />
+      <xs:enumeration value="RequiredInfoMissing" />
+      <xs:enumeration value="OtherError" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="CreateAccountResult.MethodResult" nillable="true" type="tns:CreateAccountResult.MethodResult" />
+  <xs:complexType name="VerifyAccountRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Code" type="xs:int" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="VerifyAccountRequest" nillable="true" type="tns:VerifyAccountRequest" />
+  <xs:complexType name="VerifyAccountResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Result" type="tns:VerifyAccountResult.MethodResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="VerifyAccountResult" nillable="true" type="tns:VerifyAccountResult" />
+  <xs:simpleType name="VerifyAccountResult.MethodResult">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Ok" />
+      <xs:enumeration value="NotFound" />
+      <xs:enumeration value="AlreadyUsed" />
+      <xs:enumeration value="Expired" />
+      <xs:enumeration value="OtherError" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="VerifyAccountResult.MethodResult" nillable="true" type="tns:VerifyAccountResult.MethodResult" />
+  <xs:complexType name="UpdateAccountRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Inactive" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Organization" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Phone" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Token" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UpdateAccountRequest" nillable="true" type="tns:UpdateAccountRequest" />
+  <xs:complexType name="UpdateAccountResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Msg" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Result" type="tns:UpdateAccountResult.MethodResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UpdateAccountResult" nillable="true" type="tns:UpdateAccountResult" />
+  <xs:simpleType name="UpdateAccountResult.MethodResult">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Ok" />
+      <xs:enumeration value="NotLoggedIn" />
+      <xs:enumeration value="OtherError" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="UpdateAccountResult.MethodResult" nillable="true" type="tns:UpdateAccountResult.MethodResult" />
+  <xs:complexType name="ChangePasswordRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ChangePasswordRequest" nillable="true" type="tns:ChangePasswordRequest" />
+  <xs:complexType name="ChangePasswordResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Msg" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Result" type="tns:ChangePasswordResult.MethodResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ChangePasswordResult" nillable="true" type="tns:ChangePasswordResult" />
+  <xs:simpleType name="ChangePasswordResult.MethodResult">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Ok" />
+      <xs:enumeration value="AccountNotFound" />
+      <xs:enumeration value="InvalidCode" />
+      <xs:enumeration value="OtherError" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ChangePasswordResult.MethodResult" nillable="true" type="tns:ChangePasswordResult.MethodResult" />
+  <xs:complexType name="LoginRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AppID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LoginRequest" nillable="true" type="tns:LoginRequest" />
+  <xs:complexType name="LoginResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Result" type="tns:LoginResult.MethodResult" />
+      <xs:element minOccurs="0" name="Token" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LoginResult" nillable="true" type="tns:LoginResult" />
+  <xs:simpleType name="LoginResult.MethodResult">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Ok" />
+      <xs:enumeration value="InvalidCridentials" />
+      <xs:enumeration value="AccountInactive" />
+      <xs:enumeration value="AccountNotVerified" />
+      <xs:enumeration value="OtherError" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="LoginResult.MethodResult" nillable="true" type="tns:LoginResult.MethodResult" />
+  <xs:complexType name="LogoutRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Token" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LogoutRequest" nillable="true" type="tns:LogoutRequest" />
+  <xs:complexType name="ValidateTokenRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Token" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ValidateTokenRequest" nillable="true" type="tns:ValidateTokenRequest" />
+  <xs:complexType name="ValidateTokenResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Result" type="tns:ValidateTokenResult.MethodResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ValidateTokenResult" nillable="true" type="tns:ValidateTokenResult" />
+  <xs:simpleType name="ValidateTokenResult.MethodResult">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Ok" />
+      <xs:enumeration value="Invalid" />
+      <xs:enumeration value="Expired" />
+      <xs:enumeration value="OtherError" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ValidateTokenResult.MethodResult" nillable="true" type="tns:ValidateTokenResult.MethodResult" />
+  <xs:complexType name="ListKwendaFilesRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="NewerThan" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Token" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ListKwendaFilesRequest" nillable="true" type="tns:ListKwendaFilesRequest" />
+  <xs:complexType name="ListKwendaFilesResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Files" nillable="true" type="tns:ArrayOfKwendaFileListItem" />
+      <xs:element minOccurs="0" name="Msg" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Result" type="tns:ListKwendaFilesResponse.MethodResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ListKwendaFilesResponse" nillable="true" type="tns:ListKwendaFilesResponse" />
+  <xs:complexType name="ArrayOfKwendaFileListItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="KwendaFileListItem" nillable="true" type="tns:KwendaFileListItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfKwendaFileListItem" nillable="true" type="tns:ArrayOfKwendaFileListItem" />
+  <xs:complexType name="KwendaFileListItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FileExt" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FileName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LastModified" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="VenueId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="KwendaFileListItem" nillable="true" type="tns:KwendaFileListItem" />
+  <xs:simpleType name="ListKwendaFilesResponse.MethodResult">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Ok" />
+      <xs:enumeration value="OtherError" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ListKwendaFilesResponse.MethodResult" nillable="true" type="tns:ListKwendaFilesResponse.MethodResult" />
+  <xs:complexType name="GetKwendaFileRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FileIds" nillable="true" type="tns:ArrayOfKwendaFileId" />
+      <xs:element minOccurs="0" name="Token" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetKwendaFileRequest" nillable="true" type="tns:GetKwendaFileRequest" />
+  <xs:complexType name="ArrayOfKwendaFileId">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="KwendaFileId" nillable="true" type="tns:KwendaFileId" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfKwendaFileId" nillable="true" type="tns:ArrayOfKwendaFileId" />
+  <xs:complexType name="KwendaFileId">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FileName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VenueId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="KwendaFileId" nillable="true" type="tns:KwendaFileId" />
+  <xs:complexType name="GetKwendaFileResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Files" nillable="true" type="tns:ArrayOfKwendaFileItem" />
+      <xs:element minOccurs="0" name="Msg" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Result" type="tns:GetKwendaFileResponse.MethodResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetKwendaFileResponse" nillable="true" type="tns:GetKwendaFileResponse" />
+  <xs:complexType name="ArrayOfKwendaFileItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="KwendaFileItem" nillable="true" type="tns:KwendaFileItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfKwendaFileItem" nillable="true" type="tns:ArrayOfKwendaFileItem" />
+  <xs:complexType name="KwendaFileItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Data" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FileExt" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FileName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LastModified" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="VenueId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="KwendaFileItem" nillable="true" type="tns:KwendaFileItem" />
+  <xs:simpleType name="GetKwendaFileResponse.MethodResult">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Ok" />
+      <xs:enumeration value="OtherError" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="GetKwendaFileResponse.MethodResult" nillable="true" type="tns:GetKwendaFileResponse.MethodResult" />
+  <xs:complexType name="UpdateKwendaFileRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Files" nillable="true" type="tns:ArrayOfKwendaFileItem" />
+      <xs:element minOccurs="0" name="InactivateAllForVenue" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Token" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UpdateKwendaFileRequest" nillable="true" type="tns:UpdateKwendaFileRequest" />
+  <xs:complexType name="UpdateKwendaFileResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Msg" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Result" type="tns:UpdateKwendaFileResponse.MethodResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UpdateKwendaFileResponse" nillable="true" type="tns:UpdateKwendaFileResponse" />
+  <xs:simpleType name="UpdateKwendaFileResponse.MethodResult">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Ok" />
+      <xs:enumeration value="NotLoggedIn" />
+      <xs:enumeration value="NoPermission" />
+      <xs:enumeration value="OtherError" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="UpdateKwendaFileResponse.MethodResult" nillable="true" type="tns:UpdateKwendaFileResponse.MethodResult" />
+  <xs:complexType name="SetKwendaPermissionsRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Items" nillable="true" type="tns:ArrayOfKwendaPermissionItem" />
+      <xs:element minOccurs="0" name="Token" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SetKwendaPermissionsRequest" nillable="true" type="tns:SetKwendaPermissionsRequest" />
+  <xs:complexType name="ArrayOfKwendaPermissionItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="KwendaPermissionItem" nillable="true" type="tns:KwendaPermissionItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfKwendaPermissionItem" nillable="true" type="tns:ArrayOfKwendaPermissionItem" />
+  <xs:complexType name="KwendaPermissionItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GrantPermission" type="xs:boolean" />
+      <xs:element minOccurs="0" name="VenueId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="KwendaPermissionItem" nillable="true" type="tns:KwendaPermissionItem" />
+  <xs:complexType name="SetKwendaPermissionsResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Result" type="tns:SetKwendaPermissionsResult.MethodResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SetKwendaPermissionsResult" nillable="true" type="tns:SetKwendaPermissionsResult" />
+  <xs:simpleType name="SetKwendaPermissionsResult.MethodResult">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Ok" />
+      <xs:enumeration value="NotLoggedIn" />
+      <xs:enumeration value="NoPermission" />
+      <xs:enumeration value="OtherError" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="SetKwendaPermissionsResult.MethodResult" nillable="true" type="tns:SetKwendaPermissionsResult.MethodResult" />
+</xs:schema>

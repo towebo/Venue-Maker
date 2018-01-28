@@ -22,7 +22,7 @@ using WayfindR.Helpers;
 using WayfindR;
 using WayfindR.Helpers;
 using Mawingu;
-
+using VenueMaker.KwendaService;
 
 namespace VenueMaker.Dialogs
 {
@@ -219,7 +219,12 @@ namespace VenueMaker.Dialogs
                 
                 NodeNameTB.DataBindings.Add("Text", NodesBS, "Name");
                 NodeWaypointTypeCombo.DataBindings.Add("Text", NodesBS, "WaypointType");
+                NodeAreaTB.DataBindings.Add("Text", NodesBS, "Area");
+                NodeBuildingTB.DataBindings.Add("Text", NodesBS, "Building");
                 NodeFloorTB.DataBindings.Add("Text", NodesBS, "Floor");
+                NodeDepartmentTB.DataBindings.Add("Text", NodesBS, "Department");
+                NodeRoomTB.DataBindings.Add("Text", NodesBS, "Room");
+                NodeSpaceTB.DataBindings.Add("Text", NodesBS, "Space");
                 NodeUuidTB.DataBindings.Add("Text", NodesBS, "Uuid");
                 NodeMajorTB.DataBindings.Add("Text", NodesBS, "Major");
                 NodeMinorTB.DataBindings.Add("Text", NodesBS, "Minor");
@@ -1322,9 +1327,30 @@ namespace VenueMaker.Dialogs
 
         }
 
+        private void loginToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (LoginDialog dlg = new LoginDialog())
+                {
+                    dlg.Item = new LoginInfoModel();
+
+                    if (dlg.ShowDialog() != DialogResult.OK)
+                    {
+
+                    } // User canceled
 
 
+                    
 
+                } // using
 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+        }
     }
 }

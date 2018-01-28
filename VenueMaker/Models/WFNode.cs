@@ -95,9 +95,25 @@ namespace WayfindR.Models
         [XmlAttribute("close_by_message")]
         public string CloseByMessage { get; set; }
 
+
+        [XmlAttribute("area")]
+        public string Area { get; set; }
+
+        [XmlAttribute("building")]
+        public string Building { get; set; }
+        
         [XmlAttribute("floor")]
         public string Floor { get; set; }
 
+        [XmlAttribute("department")]
+        public string Department { get; set; }
+
+        [XmlAttribute("room")]
+        public string Room { get; set; }
+
+        [XmlAttribute("space")]
+        public string Space { get; set; }
+        
         [XmlAttribute("id_tag")]
         public string IdTag { get; set; }
 

@@ -185,7 +185,47 @@ namespace WayfindR.Models
                 graphmlkeys.Add(new GraphMLKey()
                 {
                     Id = string.Format("d{0}", gkid++),
+                    Name = "area",
+                    DataType = "string",
+                    ForType = "node",
+                    DefaultValue = ""
+                });
+                graphmlkeys.Add(new GraphMLKey()
+                {
+                    Id = string.Format("d{0}", gkid++),
+                    Name = "building",
+                    DataType = "string",
+                    ForType = "node",
+                    DefaultValue = ""
+                });
+                graphmlkeys.Add(new GraphMLKey()
+                {
+                    Id = string.Format("d{0}", gkid++),
                     Name = "floor",
+                    DataType = "string",
+                    ForType = "node",
+                    DefaultValue = ""
+                });
+                graphmlkeys.Add(new GraphMLKey()
+                {
+                    Id = string.Format("d{0}", gkid++),
+                    Name = "department",
+                    DataType = "string",
+                    ForType = "node",
+                    DefaultValue = ""
+                });
+                graphmlkeys.Add(new GraphMLKey()
+                {
+                    Id = string.Format("d{0}", gkid++),
+                    Name = "room",
+                    DataType = "string",
+                    ForType = "node",
+                    DefaultValue = ""
+                });
+                graphmlkeys.Add(new GraphMLKey()
+                {
+                    Id = string.Format("d{0}", gkid++),
+                    Name = "space",
                     DataType = "string",
                     ForType = "node",
                     DefaultValue = ""
@@ -923,13 +963,12 @@ namespace WayfindR.Models
                         result.AddEdge(wfe);
 
                     } // foreach xedge
-
-                    
-                    
                     
                 } // if xgraph not null
-                
-                    return result;
+
+                result.PopulateGraphMLKeys();
+
+                return result;
                 
             }
             catch (Exception ex)
