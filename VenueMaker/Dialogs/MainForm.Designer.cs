@@ -40,8 +40,8 @@
             this.pushToCloudMenuItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.closeAppToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.kontoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.loginToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.OpenVenueDialog = new System.Windows.Forms.OpenFileDialog();
             this.OpenGraphMLDialog = new System.Windows.Forms.OpenFileDialog();
             this.SaveVenueDialog = new System.Windows.Forms.SaveFileDialog();
@@ -64,6 +64,16 @@
             this.VenueNameTB = new System.Windows.Forms.TextBox();
             this.VenueNameLabel = new System.Windows.Forms.Label();
             this.NodesTab = new System.Windows.Forms.TabPage();
+            this.NodeSpaceTB = new System.Windows.Forms.TextBox();
+            this.NodeSpaceLabel = new System.Windows.Forms.Label();
+            this.NodeRoomTB = new System.Windows.Forms.TextBox();
+            this.NodeRoomLabel = new System.Windows.Forms.Label();
+            this.NodeDepartmentTB = new System.Windows.Forms.TextBox();
+            this.NodeDepartmentLabel = new System.Windows.Forms.Label();
+            this.NodeBuildingTB = new System.Windows.Forms.TextBox();
+            this.NodeBuildingLabel = new System.Windows.Forms.Label();
+            this.NodeAreaTB = new System.Windows.Forms.TextBox();
+            this.NodeAreaLabel = new System.Windows.Forms.Label();
             this.EditHeadingInfo5Btn = new System.Windows.Forms.Button();
             this.EditHeadingInfo4Btn = new System.Windows.Forms.Button();
             this.EditHeadingInfo3Btn = new System.Windows.Forms.Button();
@@ -164,16 +174,14 @@
             this.EdgesForPOIBS = new System.Windows.Forms.BindingSource(this.components);
             this.EdgeBS = new System.Windows.Forms.BindingSource(this.components);
             this.NodesBS = new System.Windows.Forms.BindingSource(this.components);
-            this.NodeAreaTB = new System.Windows.Forms.TextBox();
-            this.NodeAreaLabel = new System.Windows.Forms.Label();
-            this.NodeBuildingLabel = new System.Windows.Forms.Label();
-            this.NodeBuildingTB = new System.Windows.Forms.TextBox();
-            this.NodeDepartmentLabel = new System.Windows.Forms.Label();
-            this.NodeDepartmentTB = new System.Windows.Forms.TextBox();
-            this.NodeRoomLabel = new System.Windows.Forms.Label();
-            this.NodeRoomTB = new System.Windows.Forms.TextBox();
-            this.NodeSpaceLabel = new System.Windows.Forms.Label();
-            this.NodeSpaceTB = new System.Windows.Forms.TextBox();
+            this.kontoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.createAccountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.verifyAccountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.resetPasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.updateAccountInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.loginToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.logOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.setPermissionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MainMenuStrip.SuspendLayout();
             this.Tabs.SuspendLayout();
             this.VenueTab.SuspendLayout();
@@ -196,7 +204,8 @@
             this.MainMenuStrip.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.MainMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
-            this.kontoToolStripMenuItem});
+            this.toolStripMenuItem2,
+            this.kontoToolStripMenuItem1});
             this.MainMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.MainMenuStrip.Name = "MainMenuStrip";
             this.MainMenuStrip.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
@@ -274,20 +283,12 @@
             this.closeAppToolStripMenuItem.Text = "&Avsluta";
             this.closeAppToolStripMenuItem.Click += new System.EventHandler(this.closeAppToolStripMenuItem_Click);
             // 
-            // kontoToolStripMenuItem
+            // toolStripMenuItem2
             // 
-            this.kontoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.loginToolStripMenuItem});
-            this.kontoToolStripMenuItem.Name = "kontoToolStripMenuItem";
-            this.kontoToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
-            this.kontoToolStripMenuItem.Text = "&Konto";
-            // 
-            // loginToolStripMenuItem
-            // 
-            this.loginToolStripMenuItem.Name = "loginToolStripMenuItem";
-            this.loginToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
-            this.loginToolStripMenuItem.Text = "&Logga in";
-            this.loginToolStripMenuItem.Click += new System.EventHandler(this.loginToolStripMenuItem_Click);
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(12, 20);
+
+            
             // 
             // OpenVenueDialog
             // 
@@ -549,6 +550,86 @@
             this.NodesTab.TabIndex = 5;
             this.NodesTab.Text = "Noder";
             this.NodesTab.UseVisualStyleBackColor = true;
+            // 
+            // NodeSpaceTB
+            // 
+            this.NodeSpaceTB.Location = new System.Drawing.Point(447, 109);
+            this.NodeSpaceTB.Name = "NodeSpaceTB";
+            this.NodeSpaceTB.Size = new System.Drawing.Size(111, 23);
+            this.NodeSpaceTB.TabIndex = 17;
+            // 
+            // NodeSpaceLabel
+            // 
+            this.NodeSpaceLabel.AutoSize = true;
+            this.NodeSpaceLabel.Location = new System.Drawing.Point(444, 91);
+            this.NodeSpaceLabel.Name = "NodeSpaceLabel";
+            this.NodeSpaceLabel.Size = new System.Drawing.Size(24, 15);
+            this.NodeSpaceLabel.TabIndex = 16;
+            this.NodeSpaceLabel.Text = "Yta";
+            // 
+            // NodeRoomTB
+            // 
+            this.NodeRoomTB.Location = new System.Drawing.Point(330, 109);
+            this.NodeRoomTB.Name = "NodeRoomTB";
+            this.NodeRoomTB.Size = new System.Drawing.Size(111, 23);
+            this.NodeRoomTB.TabIndex = 15;
+            // 
+            // NodeRoomLabel
+            // 
+            this.NodeRoomLabel.AutoSize = true;
+            this.NodeRoomLabel.Location = new System.Drawing.Point(327, 91);
+            this.NodeRoomLabel.Name = "NodeRoomLabel";
+            this.NodeRoomLabel.Size = new System.Drawing.Size(32, 15);
+            this.NodeRoomLabel.TabIndex = 14;
+            this.NodeRoomLabel.Text = "Rum";
+            // 
+            // NodeDepartmentTB
+            // 
+            this.NodeDepartmentTB.Location = new System.Drawing.Point(619, 65);
+            this.NodeDepartmentTB.Name = "NodeDepartmentTB";
+            this.NodeDepartmentTB.Size = new System.Drawing.Size(111, 23);
+            this.NodeDepartmentTB.TabIndex = 13;
+            // 
+            // NodeDepartmentLabel
+            // 
+            this.NodeDepartmentLabel.AutoSize = true;
+            this.NodeDepartmentLabel.Location = new System.Drawing.Point(616, 47);
+            this.NodeDepartmentLabel.Name = "NodeDepartmentLabel";
+            this.NodeDepartmentLabel.Size = new System.Drawing.Size(61, 15);
+            this.NodeDepartmentLabel.TabIndex = 12;
+            this.NodeDepartmentLabel.Text = "Avdelning";
+            // 
+            // NodeBuildingTB
+            // 
+            this.NodeBuildingTB.Location = new System.Drawing.Point(447, 65);
+            this.NodeBuildingTB.Name = "NodeBuildingTB";
+            this.NodeBuildingTB.Size = new System.Drawing.Size(111, 23);
+            this.NodeBuildingTB.TabIndex = 9;
+            // 
+            // NodeBuildingLabel
+            // 
+            this.NodeBuildingLabel.AutoSize = true;
+            this.NodeBuildingLabel.Location = new System.Drawing.Point(444, 47);
+            this.NodeBuildingLabel.Name = "NodeBuildingLabel";
+            this.NodeBuildingLabel.Size = new System.Drawing.Size(54, 15);
+            this.NodeBuildingLabel.TabIndex = 8;
+            this.NodeBuildingLabel.Text = "B&yggnad";
+            // 
+            // NodeAreaTB
+            // 
+            this.NodeAreaTB.Location = new System.Drawing.Point(330, 65);
+            this.NodeAreaTB.Name = "NodeAreaTB";
+            this.NodeAreaTB.Size = new System.Drawing.Size(111, 23);
+            this.NodeAreaTB.TabIndex = 7;
+            // 
+            // NodeAreaLabel
+            // 
+            this.NodeAreaLabel.AutoSize = true;
+            this.NodeAreaLabel.Location = new System.Drawing.Point(327, 47);
+            this.NodeAreaLabel.Name = "NodeAreaLabel";
+            this.NodeAreaLabel.Size = new System.Drawing.Size(31, 15);
+            this.NodeAreaLabel.TabIndex = 6;
+            this.NodeAreaLabel.Text = "Area";
             // 
             // EditHeadingInfo5Btn
             // 
@@ -1419,85 +1500,69 @@
             this.OpenCSVFileDialog.DefaultExt = "txt";
             this.OpenCSVFileDialog.Filter = "CSV-filer (*.csv, *.txt, *.xls)|*.csv;*.txt;*.xls|Alla filer (*)|*.*";
             // 
-            // NodeAreaTB
+            // kontoToolStripMenuItem1
             // 
-            this.NodeAreaTB.Location = new System.Drawing.Point(330, 65);
-            this.NodeAreaTB.Name = "NodeAreaTB";
-            this.NodeAreaTB.Size = new System.Drawing.Size(111, 23);
-            this.NodeAreaTB.TabIndex = 7;
+            this.kontoToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.createAccountToolStripMenuItem,
+            this.verifyAccountToolStripMenuItem,
+            this.resetPasswordToolStripMenuItem,
+            this.updateAccountInfoToolStripMenuItem,
+            this.loginToolStripMenuItem1,
+            this.logOutToolStripMenuItem,
+            this.setPermissionsToolStripMenuItem});
+            this.kontoToolStripMenuItem1.Name = "kontoToolStripMenuItem1";
+            this.kontoToolStripMenuItem1.Size = new System.Drawing.Size(61, 20);
+            this.kontoToolStripMenuItem1.Text = "&Konto";
             // 
-            // NodeAreaLabel
+            // createAccountToolStripMenuItem
             // 
-            this.NodeAreaLabel.AutoSize = true;
-            this.NodeAreaLabel.Location = new System.Drawing.Point(327, 47);
-            this.NodeAreaLabel.Name = "NodeAreaLabel";
-            this.NodeAreaLabel.Size = new System.Drawing.Size(31, 15);
-            this.NodeAreaLabel.TabIndex = 6;
-            this.NodeAreaLabel.Text = "Area";
+            this.createAccountToolStripMenuItem.Name = "createAccountToolStripMenuItem";
+            this.createAccountToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.createAccountToolStripMenuItem.Text = "Skapa konto";
+            this.createAccountToolStripMenuItem.Click += new System.EventHandler(this.createAccountToolStripMenuItem_Click);
             // 
-            // NodeBuildingLabel
+            // verifyAccountToolStripMenuItem
             // 
-            this.NodeBuildingLabel.AutoSize = true;
-            this.NodeBuildingLabel.Location = new System.Drawing.Point(444, 47);
-            this.NodeBuildingLabel.Name = "NodeBuildingLabel";
-            this.NodeBuildingLabel.Size = new System.Drawing.Size(54, 15);
-            this.NodeBuildingLabel.TabIndex = 8;
-            this.NodeBuildingLabel.Text = "B&yggnad";
+            this.verifyAccountToolStripMenuItem.Name = "verifyAccountToolStripMenuItem";
+            this.verifyAccountToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.verifyAccountToolStripMenuItem.Text = "Verifiera konto";
+            this.verifyAccountToolStripMenuItem.Click += new System.EventHandler(this.verifyAccountToolStripMenuItem_Click);
             // 
-            // NodeBuildingTB
+            // resetPasswordToolStripMenuItem
             // 
-            this.NodeBuildingTB.Location = new System.Drawing.Point(447, 65);
-            this.NodeBuildingTB.Name = "NodeBuildingTB";
-            this.NodeBuildingTB.Size = new System.Drawing.Size(111, 23);
-            this.NodeBuildingTB.TabIndex = 9;
+            this.resetPasswordToolStripMenuItem.Name = "resetPasswordToolStripMenuItem";
+            this.resetPasswordToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.resetPasswordToolStripMenuItem.Text = "Nollställ lösenord";
+            this.resetPasswordToolStripMenuItem.Click += new System.EventHandler(this.resetPasswordToolStripMenuItem_Click);
             // 
-            // NodeDepartmentLabel
+            // updateAccountInfoToolStripMenuItem
             // 
-            this.NodeDepartmentLabel.AutoSize = true;
-            this.NodeDepartmentLabel.Location = new System.Drawing.Point(616, 47);
-            this.NodeDepartmentLabel.Name = "NodeDepartmentLabel";
-            this.NodeDepartmentLabel.Size = new System.Drawing.Size(61, 15);
-            this.NodeDepartmentLabel.TabIndex = 12;
-            this.NodeDepartmentLabel.Text = "Avdelning";
+            this.updateAccountInfoToolStripMenuItem.Name = "updateAccountInfoToolStripMenuItem";
+            this.updateAccountInfoToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.updateAccountInfoToolStripMenuItem.Text = "Uppdatera kontoinformation";
+            this.updateAccountInfoToolStripMenuItem.Click += new System.EventHandler(this.updateAccountInfoToolStripMenuItem_Click);
             // 
-            // NodeDepartmentTB
+            // loginToolStripMenuItem1
             // 
-            this.NodeDepartmentTB.Location = new System.Drawing.Point(619, 65);
-            this.NodeDepartmentTB.Name = "NodeDepartmentTB";
-            this.NodeDepartmentTB.Size = new System.Drawing.Size(111, 23);
-            this.NodeDepartmentTB.TabIndex = 13;
+            this.loginToolStripMenuItem1.Name = "loginToolStripMenuItem1";
+            this.loginToolStripMenuItem1.Size = new System.Drawing.Size(178, 22);
+            this.loginToolStripMenuItem1.Text = "&Logga in";
+            this.loginToolStripMenuItem1.Click += new System.EventHandler(this.loginToolStripMenuItem1_Click);
             // 
-            // NodeRoomLabel
+            // logOutToolStripMenuItem
             // 
-            this.NodeRoomLabel.AutoSize = true;
-            this.NodeRoomLabel.Location = new System.Drawing.Point(327, 91);
-            this.NodeRoomLabel.Name = "NodeRoomLabel";
-            this.NodeRoomLabel.Size = new System.Drawing.Size(32, 15);
-            this.NodeRoomLabel.TabIndex = 14;
-            this.NodeRoomLabel.Text = "Rum";
+            this.logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
+            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.logOutToolStripMenuItem.Text = "Logga &ut";
+            this.logOutToolStripMenuItem.Click += new System.EventHandler(this.logOutToolStripMenuItem_Click);
             // 
-            // NodeRoomTB
+            // setPermissionsToolStripMenuItem
             // 
-            this.NodeRoomTB.Location = new System.Drawing.Point(330, 109);
-            this.NodeRoomTB.Name = "NodeRoomTB";
-            this.NodeRoomTB.Size = new System.Drawing.Size(111, 23);
-            this.NodeRoomTB.TabIndex = 15;
-            // 
-            // NodeSpaceLabel
-            // 
-            this.NodeSpaceLabel.AutoSize = true;
-            this.NodeSpaceLabel.Location = new System.Drawing.Point(444, 91);
-            this.NodeSpaceLabel.Name = "NodeSpaceLabel";
-            this.NodeSpaceLabel.Size = new System.Drawing.Size(24, 15);
-            this.NodeSpaceLabel.TabIndex = 16;
-            this.NodeSpaceLabel.Text = "Yta";
-            // 
-            // NodeSpaceTB
-            // 
-            this.NodeSpaceTB.Location = new System.Drawing.Point(447, 109);
-            this.NodeSpaceTB.Name = "NodeSpaceTB";
-            this.NodeSpaceTB.Size = new System.Drawing.Size(111, 23);
-            this.NodeSpaceTB.TabIndex = 17;
+            this.setPermissionsToolStripMenuItem.Name = "setPermissionsToolStripMenuItem";
+            this.setPermissionsToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.setPermissionsToolStripMenuItem.Text = "Sätt rättigheter";
+            this.setPermissionsToolStripMenuItem.Click += new System.EventHandler(this.setPermissionsToolStripMenuItem_Click);
+
             // 
             // MainForm
             // 
@@ -1685,5 +1750,16 @@
         private System.Windows.Forms.Label NodeSpaceLabel;
         private System.Windows.Forms.TextBox NodeRoomTB;
         private System.Windows.Forms.Label NodeRoomLabel;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemSetPermissions;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem kontoToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem createAccountToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem verifyAccountToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem resetPasswordToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem updateAccountInfoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem loginToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem logOutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem setPermissionsToolStripMenuItem;
     }
 }

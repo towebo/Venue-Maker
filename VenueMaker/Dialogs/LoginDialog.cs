@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using VenueMaker.KwendaService;
+using VenueMaker.Kwenda;
 using VenueMaker.Helpers;
 using VenueMaker.Controllers;
 using System.Media;
@@ -36,6 +36,10 @@ namespace VenueMaker.Dialogs
             EmailTB.DataBindings.Add("Text", InfoBS, "Email");
             PwTB.DataBindings.Add("Text", InfoBS, "Password");
 
+            VerificationCodeLabel.Visible = false;
+            VerificationCodeTB.Visible = VerificationCodeLabel.Visible;
+
+
         }
 
         private void LoginDialog_Load(object sender, EventArgs e)
@@ -45,32 +49,68 @@ namespace VenueMaker.Dialogs
 
         private void LoginBtn_Click(object sender, EventArgs e)
         {
-            
-            KwendaService.KwendaService cli = new KwendaService.KwendaService();
-            
-            LoginRequest req = new LoginRequest();
-            req.Email = Item.Email;
-            req.Password = Item.Password.Encrypt();
-            req.AppID = "se.mawingu.venuemaker";
 
-            LoginResult res = cli.Login(req);
-
-            if (res.Result == LoginResultMethodResult.Ok)
+            using (KwendaServiceClient cli = new KwendaServiceClient())
             {
-                DataController.Me.Email = Item.Email;
-                DataController.Me.Password = Item.Password;
+                if (VerificationCodeLabel.Visible)
+                {
+                    VerifyAccountRequest vreq = new VerifyAccountRequest();
+                    vreq.Email = Item.Email;
+                    vreq.Code = Convert.ToInt32(VerificationCodeTB.Text);
+                    VerifyAccountResult vres = cli.VerifyAccount(vreq);
 
-                SystemSounds.Asterisk.Play();
-                DialogResult = DialogResult.OK;
-                
-            } // Ok
-            else
-            {
-                MessageBox.Show(res.Message, "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+                    if (vres.Result == VerifyAccountResult.MethodResult.Ok)
+                    {
+                        VerificationCodeLabel.Visible = false;
+                        VerificationCodeTB.Visible = VerificationCodeLabel.Visible;
 
                     }
+                    else
+                    {
+                        MessageBox.Show(vres.Message, "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+
+                    } // Not ok
+                    
+                } // Verify account first
+                
+
+                LoginRequest req = new LoginRequest();
+                req.Email = Item.Email;
+                req.Password = Item.Password.Encrypt();
+                req.AppID = "se.mawingu.venuemaker";
+
+                LoginResult res = cli.Login(req);
+
+                if (res.Result == LoginResult.MethodResult.Ok)
+                {
+                    DataController.Me.Email = Item.Email;
+                    DataController.Me.Password = Item.Password;
+                    DataController.Me.Token = res.Token;
+
+                    SystemSounds.Asterisk.Play();
+                    DialogResult = DialogResult.OK;
+
+                } // Ok
+                else if (res.Result == LoginResult.MethodResult.AccountNotVerified)
+                {
+                    cli.RequestVerificationCode(Item.Email);
+                    MessageBox.Show(
+                        "Ditt konto behöver verifieras och en verifikationskod har nu skickats till dig.",
+                        "Information",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information
+                        );
+
+                    VerificationCodeLabel.Visible = true;
+                    VerificationCodeTB.Visible = VerificationCodeLabel.Visible;
+
+                } // Not verified
+
+
+            } // using
+
+        }
 
     }
 }

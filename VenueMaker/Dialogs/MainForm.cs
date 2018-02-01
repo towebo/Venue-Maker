@@ -22,7 +22,7 @@ using WayfindR.Helpers;
 using WayfindR;
 using WayfindR.Helpers;
 using Mawingu;
-using VenueMaker.KwendaService;
+using VenueMaker.Kwenda;
 
 namespace VenueMaker.Dialogs
 {
@@ -443,7 +443,7 @@ namespace VenueMaker.Dialogs
                 Venue.NodesGraph.Save(OpenGraphMLDialog.FileName);
 
                 Venue.SaveToFile(SaveVenueDialog.FileName);
-                                
+                
                 SystemSounds.Asterisk.Play();
 
 
@@ -668,111 +668,9 @@ namespace VenueMaker.Dialogs
                     Console.WriteLine(dlex.Message);
 
                 }
-                
-
-                string localfile = OpenVenueDialog.FileName;
-                FtpController.Me.AddToUploadQueue(localfile);
-
-                localfile = Path.ChangeExtension(localfile, ".graphml");
-                if (File.Exists(localfile))
-                {
-                    FtpController.Me.AddToUploadQueue(localfile);
-
-                } // graphl exists
 
 
-                string fldr = Path.GetDirectoryName(localfile);
-
-                if (Venue.PointsOfInterest != null)
-                {
-                    foreach (WFPointOfInterest poi in Venue.PointsOfInterest)
-                    {
-                        if (poi.Information != null)
-                        {
-                            foreach (WFPOIInformation poii in poi.Information)
-                            {
-                                if (!string.IsNullOrWhiteSpace(poii.MediaFile))
-                                {
-                                    FtpController.Me.AddToUploadQueue(
-                                        Path.Combine(fldr, poii.MediaFile)
-                                        );
-
-                                } // Has media file
-
-                            } // foreach poii
-
-                        } // Has infos
-
-                    } // foreach Pois
-
-                } // Has pois
-
-                foreach (WFNode n in Venue.NodesGraph.Vertices)
-                {
-                    if (!string.IsNullOrWhiteSpace(n.Heading1Info))
-                    {
-                        WFHeadingInfo hi = new WFHeadingInfo(n.Heading1Info);
-                        if (!string.IsNullOrWhiteSpace(hi.Image))
-                        {
-                            FtpController.Me.AddToUploadQueue(
-                                            Path.Combine(fldr, hi.Image)
-                                            );
-                        } // Image assigned
-
-                    } // Has Headinginfo
-                    if (!string.IsNullOrWhiteSpace(n.Heading2Info))
-                    {
-                        WFHeadingInfo hi = new WFHeadingInfo(n.Heading2Info);
-                        if (!string.IsNullOrWhiteSpace(hi.Image))
-                        {
-                            FtpController.Me.AddToUploadQueue(
-                                            Path.Combine(fldr, hi.Image)
-                                            );
-                        } // Image assigned
-                        
-                    } // Has Headinginfo
-                    if (!string.IsNullOrWhiteSpace(n.Heading3Info))
-                    {
-                        WFHeadingInfo hi = new WFHeadingInfo(n.Heading3Info);
-                        if (!string.IsNullOrWhiteSpace(hi.Image))
-                        {
-                            FtpController.Me.AddToUploadQueue(
-                                            Path.Combine(fldr, hi.Image)
-                                            );
-                        } // Image assigned
-                        
-                    } // Has Headinginfo
-                    if (!string.IsNullOrWhiteSpace(n.Heading4Info))
-                    {
-                        WFHeadingInfo hi = new WFHeadingInfo(n.Heading4Info);
-                        if (!string.IsNullOrWhiteSpace(hi.Image))
-                        {
-                            FtpController.Me.AddToUploadQueue(
-                                            Path.Combine(fldr, hi.Image)
-                                            );
-                        } // Image assigned
-                        
-                    } // Has Headinginfo
-                    if (!string.IsNullOrWhiteSpace(n.Heading5Info))
-                    {
-                        WFHeadingInfo hi = new WFHeadingInfo(n.Heading5Info);
-                        if (!string.IsNullOrWhiteSpace(hi.Image))
-                        {
-                            FtpController.Me.AddToUploadQueue(
-                                            Path.Combine(fldr, hi.Image)
-                                            );
-                        } // Image assigned
-
-                    } // Has Headinginfo
-
-
-
-                } // foreach node
-
-
-
-                FtpController.Me.UploadFiles();
-                
+                PushToCloud();
 
                 SystemSounds.Asterisk.Play();
 
@@ -1327,7 +1225,62 @@ namespace VenueMaker.Dialogs
 
         }
 
-        private void loginToolStripMenuItem_Click(object sender, EventArgs e)
+        
+
+        
+        private void createAccountToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (CreateAccountDialog dlg = new CreateAccountDialog())
+                {
+                    dlg.Item = new CreateAccountInfoModel();
+
+                    if (dlg.ShowDialog() != DialogResult.OK)
+                    {
+                        return;
+
+                    } // User canceled
+
+                    using (KwendaServiceClient cli = new KwendaServiceClient())
+                    {
+                        CreateAccountRequest req = new CreateAccountRequest();
+                        req.Email = dlg.Item.Email;
+                        req.Organization = dlg.Item.Organization;
+                        req.Password = dlg.Item.Password.Encrypt();
+
+                        CreateAccountResult result = cli.CreateAccount(req);
+
+                        MessageBox.Show(result.Message);
+                    } // using KwendaServiceClient 
+
+                } // using dialog
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+
+        }
+
+        private void verifyAccountToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void resetPasswordToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void updateAccountInfoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void loginToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             try
             {
@@ -1337,11 +1290,21 @@ namespace VenueMaker.Dialogs
 
                     if (dlg.ShowDialog() != DialogResult.OK)
                     {
+                        return;
 
                     } // User canceled
 
+                    SystemSounds.Asterisk.Play();
 
-                    
+                    var files = DataController.Me.ListFiles(
+                        DataController.Me.Token
+                        );
+
+                    MessageBox.Show(
+                        files.Length.ToString()
+                        );
+
+
 
                 } // using
 
@@ -1351,6 +1314,213 @@ namespace VenueMaker.Dialogs
                 MessageBox.Show(ex.Message, "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
+
         }
+
+        private void logOutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void setPermissionsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                KwendaPermissionItem item = new KwendaPermissionItem();
+                item.VenueId = Venue.Id;
+                item.Email = "gurka@mawingu.se";
+                item.GrantPermission = true;
+
+                DataController.Me.SetPermissions(
+                    DataController.Me.Token,
+                    new KwendaPermissionItem[] { item }
+                    );
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+
+        }
+
+
+
+
+        public void PushToCloud()
+        {
+            try
+            {
+                string venuefile = SaveVenueDialog.FileName;
+
+                List<KwendaFileItem> kfiles = new List<KwendaFileItem>();
+                KwendaFileItem kvenue = new KwendaFileItem();
+                kvenue.VenueId = Venue.Id;
+                kvenue.FileName = Path.GetFileName(venuefile);
+                kvenue.FileExt = Path.GetExtension(kvenue.FileName);
+                kvenue.Data = Venue.ToString();
+                kfiles.Add(kvenue);
+
+                FtpController.Me.AddToUploadQueue(venuefile);
+                
+                string graphmlfile = Path.ChangeExtension(venuefile, ".graphml");
+                if (File.Exists(graphmlfile))
+                {
+                    FtpController.Me.AddToUploadQueue(graphmlfile);
+
+                } // graphml exists
+
+                // Add the media files
+                string fldr = Path.GetDirectoryName(venuefile);
+                if (Venue.PointsOfInterest != null)
+                {
+                    foreach (WFPointOfInterest poi in Venue.PointsOfInterest)
+                    {
+                        if (poi.Information != null)
+                        {
+                            foreach (WFPOIInformation poii in poi.Information)
+                            {
+                                if (!string.IsNullOrWhiteSpace(poii.MediaFile))
+                                {
+                                    KwendaFileItem kmediafile = new KwendaFileItem();
+                                    kmediafile.VenueId = Venue.Id;
+                                    kmediafile.FileName = poii.MediaFile;
+                                    kmediafile.FileExt = Path.GetExtension(kmediafile.FileName);
+                                    kmediafile.Data = "";
+                                    kfiles.Add(kmediafile);
+
+                                    FtpController.Me.AddToUploadQueue(
+                                        Path.Combine(fldr, poii.MediaFile)
+                                        );
+
+                                } // Has media file
+
+                            } // foreach poii
+
+                        } // Has infos
+
+                    } // foreach Pois
+
+                } // Has pois
+
+                foreach (WFNode n in Venue.NodesGraph.Vertices)
+                {
+                    if (!string.IsNullOrWhiteSpace(n.Heading1Info))
+                    {
+                        WFHeadingInfo hi = new WFHeadingInfo(n.Heading1Info);
+                        if (!string.IsNullOrWhiteSpace(hi.Image))
+                        {
+                            KwendaFileItem kmediafile = new KwendaFileItem();
+                            kmediafile.VenueId = Venue.Id;
+                            kmediafile.FileName = hi.Image;
+                            kmediafile.FileExt = Path.GetExtension(kmediafile.FileName);
+                            kmediafile.Data = "";
+                            kfiles.Add(kmediafile);
+
+                            FtpController.Me.AddToUploadQueue(
+                                            Path.Combine(fldr, hi.Image)
+                                            );
+                        } // Image assigned
+
+                    } // Has Headinginfo
+                    if (!string.IsNullOrWhiteSpace(n.Heading2Info))
+                    {
+                        WFHeadingInfo hi = new WFHeadingInfo(n.Heading2Info);
+                        if (!string.IsNullOrWhiteSpace(hi.Image))
+                        {
+                            KwendaFileItem kmediafile = new KwendaFileItem();
+                            kmediafile.VenueId = Venue.Id;
+                            kmediafile.FileName = hi.Image;
+                            kmediafile.FileExt = Path.GetExtension(kmediafile.FileName);
+                            kmediafile.Data = "";
+                            kfiles.Add(kmediafile);
+
+                            FtpController.Me.AddToUploadQueue(
+                                            Path.Combine(fldr, hi.Image)
+                                            );
+                        } // Image assigned
+
+                    } // Has Headinginfo
+                    if (!string.IsNullOrWhiteSpace(n.Heading3Info))
+                    {
+                        WFHeadingInfo hi = new WFHeadingInfo(n.Heading3Info);
+                        if (!string.IsNullOrWhiteSpace(hi.Image))
+                        {
+                            KwendaFileItem kmediafile = new KwendaFileItem();
+                            kmediafile.VenueId = Venue.Id;
+                            kmediafile.FileName = hi.Image;
+                            kmediafile.FileExt = Path.GetExtension(kmediafile.FileName);
+                            kmediafile.Data = "";
+                            kfiles.Add(kmediafile);
+
+                            FtpController.Me.AddToUploadQueue(
+                                            Path.Combine(fldr, hi.Image)
+                                            );
+                        } // Image assigned
+
+                    } // Has Headinginfo
+                    if (!string.IsNullOrWhiteSpace(n.Heading4Info))
+                    {
+                        WFHeadingInfo hi = new WFHeadingInfo(n.Heading4Info);
+                        if (!string.IsNullOrWhiteSpace(hi.Image))
+                        {
+                            KwendaFileItem kmediafile = new KwendaFileItem();
+                            kmediafile.VenueId = Venue.Id;
+                            kmediafile.FileName = hi.Image;
+                            kmediafile.FileExt = Path.GetExtension(kmediafile.FileName);
+                            kmediafile.Data = "";
+                            kfiles.Add(kmediafile);
+
+                            FtpController.Me.AddToUploadQueue(
+                                            Path.Combine(fldr, hi.Image)
+                                            );
+                        } // Image assigned
+
+                    } // Has Headinginfo
+                    if (!string.IsNullOrWhiteSpace(n.Heading5Info))
+                    {
+                        WFHeadingInfo hi = new WFHeadingInfo(n.Heading5Info);
+                        if (!string.IsNullOrWhiteSpace(hi.Image))
+                        {
+                            KwendaFileItem kmediafile = new KwendaFileItem();
+                            kmediafile.VenueId = Venue.Id;
+                            kmediafile.FileName = hi.Image;
+                            kmediafile.FileExt = Path.GetExtension(kmediafile.FileName);
+                            kmediafile.Data = "";
+                            kfiles.Add(kmediafile);
+
+                            FtpController.Me.AddToUploadQueue(
+                                            Path.Combine(fldr, hi.Image)
+                                            );
+                        } // Image assigned
+
+                    } // Has Headinginfo
+                    
+                } // foreach node
+
+                DataController.Me.UpdateKwendaFiles(
+                    DataController.Me.Token,
+                    kfiles.ToArray()
+                    );
+
+                FtpController.Me.UploadFiles();
+
+            }
+            catch (Exception ex)
+            {
+                string errmsg = string.Format("PushToCloud(): {0}",
+                    ex.Message
+                    );
+                MessageBox.Show(errmsg, "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+        }
+
+
+
+
+
+
     }
 }

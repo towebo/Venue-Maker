@@ -22,15 +22,5 @@ namespace VenueMaker.Properties {
                 return defaultInstance;
             }
         }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://services.mawingu.se/kwenda/kwendaservice.svc")]
-        public string VenueMaker_KwendaService_KwendaService {
-            get {
-                return ((string)(this["VenueMaker_KwendaService_KwendaService"]));
-            }
-        }
     }
 }

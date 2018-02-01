@@ -1,6 +1,6 @@
 ﻿namespace VenueMaker.Dialogs
 {
-    partial class LoginDialog
+    partial class CreateAccountDialog
     {
         /// <summary>
         /// Required designer variable.
@@ -31,13 +31,14 @@
             this.components = new System.ComponentModel.Container();
             this.EmailLabel = new System.Windows.Forms.Label();
             this.EmailTB = new System.Windows.Forms.TextBox();
-            this.PwLabel = new System.Windows.Forms.Label();
+            this.PasswordLabel = new System.Windows.Forms.Label();
             this.PwTB = new System.Windows.Forms.TextBox();
-            this.LoginBtn = new System.Windows.Forms.Button();
+            this.VerifyPwLabel = new System.Windows.Forms.Label();
+            this.VerifyPwTB = new System.Windows.Forms.TextBox();
+            this.InfoLabel = new System.Windows.Forms.Label();
+            this.CreateBtn = new System.Windows.Forms.Button();
             this.CancelBtn = new System.Windows.Forms.Button();
             this.InfoBS = new System.Windows.Forms.BindingSource(this.components);
-            this.VerificationCodeLabel = new System.Windows.Forms.Label();
-            this.VerificationCodeTB = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.InfoBS)).BeginInit();
             this.SuspendLayout();
             // 
@@ -48,87 +49,100 @@
             this.EmailLabel.Name = "EmailLabel";
             this.EmailLabel.Size = new System.Drawing.Size(41, 15);
             this.EmailLabel.TabIndex = 0;
-            this.EmailLabel.Text = "&E-post";
+            this.EmailLabel.Text = "&E-mail";
             // 
             // EmailTB
             // 
             this.EmailTB.Location = new System.Drawing.Point(15, 30);
             this.EmailTB.Name = "EmailTB";
-            this.EmailTB.Size = new System.Drawing.Size(148, 23);
+            this.EmailTB.Size = new System.Drawing.Size(213, 23);
             this.EmailTB.TabIndex = 1;
             // 
-            // PwLabel
+            // PasswordLabel
             // 
-            this.PwLabel.AutoSize = true;
-            this.PwLabel.Location = new System.Drawing.Point(12, 56);
-            this.PwLabel.Name = "PwLabel";
-            this.PwLabel.Size = new System.Drawing.Size(56, 15);
-            this.PwLabel.TabIndex = 2;
-            this.PwLabel.Text = "L&ösenord";
+            this.PasswordLabel.AutoSize = true;
+            this.PasswordLabel.Location = new System.Drawing.Point(12, 56);
+            this.PasswordLabel.Name = "PasswordLabel";
+            this.PasswordLabel.Size = new System.Drawing.Size(57, 15);
+            this.PasswordLabel.TabIndex = 2;
+            this.PasswordLabel.Text = "&Password";
             // 
             // PwTB
             // 
             this.PwTB.Location = new System.Drawing.Point(15, 74);
             this.PwTB.Name = "PwTB";
-            this.PwTB.Size = new System.Drawing.Size(148, 23);
+            this.PwTB.Size = new System.Drawing.Size(155, 23);
             this.PwTB.TabIndex = 3;
             this.PwTB.UseSystemPasswordChar = true;
             // 
-            // LoginBtn
+            // VerifyPwLabel
             // 
-            this.LoginBtn.Location = new System.Drawing.Point(15, 174);
-            this.LoginBtn.Name = "LoginBtn";
-            this.LoginBtn.Size = new System.Drawing.Size(75, 23);
-            this.LoginBtn.TabIndex = 6;
-            this.LoginBtn.Text = "&Logga in";
-            this.LoginBtn.UseVisualStyleBackColor = true;
-            this.LoginBtn.Click += new System.EventHandler(this.LoginBtn_Click);
+            this.VerifyPwLabel.AutoSize = true;
+            this.VerifyPwLabel.Location = new System.Drawing.Point(12, 100);
+            this.VerifyPwLabel.Name = "VerifyPwLabel";
+            this.VerifyPwLabel.Size = new System.Drawing.Size(89, 15);
+            this.VerifyPwLabel.TabIndex = 4;
+            this.VerifyPwLabel.Text = "&Verify Password";
+            // 
+            // VerifyPwTB
+            // 
+            this.VerifyPwTB.Location = new System.Drawing.Point(15, 118);
+            this.VerifyPwTB.Name = "VerifyPwTB";
+            this.VerifyPwTB.Size = new System.Drawing.Size(100, 23);
+            this.VerifyPwTB.TabIndex = 5;
+            this.VerifyPwTB.UseSystemPasswordChar = true;
+            // 
+            // InfoLabel
+            // 
+            this.InfoLabel.AutoSize = true;
+            this.InfoLabel.Location = new System.Drawing.Point(12, 155);
+            this.InfoLabel.Name = "InfoLabel";
+            this.InfoLabel.Size = new System.Drawing.Size(199, 15);
+            this.InfoLabel.TabIndex = 6;
+            this.InfoLabel.Text = "Information about the information...";
+            // 
+            // CreateBtn
+            // 
+            this.CreateBtn.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.CreateBtn.Location = new System.Drawing.Point(72, 186);
+            this.CreateBtn.Name = "CreateBtn";
+            this.CreateBtn.Size = new System.Drawing.Size(75, 23);
+            this.CreateBtn.TabIndex = 7;
+            this.CreateBtn.Text = "&Create";
+            this.CreateBtn.UseVisualStyleBackColor = true;
             // 
             // CancelBtn
             // 
             this.CancelBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.CancelBtn.Location = new System.Drawing.Point(96, 174);
+            this.CancelBtn.Location = new System.Drawing.Point(153, 186);
             this.CancelBtn.Name = "CancelBtn";
             this.CancelBtn.Size = new System.Drawing.Size(75, 23);
-            this.CancelBtn.TabIndex = 7;
-            this.CancelBtn.Text = "Avbryt";
+            this.CancelBtn.TabIndex = 8;
+            this.CancelBtn.Text = "Cancel";
             this.CancelBtn.UseVisualStyleBackColor = true;
             // 
-            // VerificationCodeLabel
-            // 
-            this.VerificationCodeLabel.AutoSize = true;
-            this.VerificationCodeLabel.Location = new System.Drawing.Point(12, 100);
-            this.VerificationCodeLabel.Name = "VerificationCodeLabel";
-            this.VerificationCodeLabel.Size = new System.Drawing.Size(91, 15);
-            this.VerificationCodeLabel.TabIndex = 4;
-            this.VerificationCodeLabel.Text = "&Verifikationskod";
-            // 
-            // VerificationCodeTB
-            // 
-            this.VerificationCodeTB.Location = new System.Drawing.Point(15, 118);
-            this.VerificationCodeTB.Name = "VerificationCodeTB";
-            this.VerificationCodeTB.Size = new System.Drawing.Size(100, 23);
-            this.VerificationCodeTB.TabIndex = 5;
-            // 
-            // LoginDialog
+            // CreateAccountDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(199, 211);
-            this.Controls.Add(this.VerificationCodeTB);
-            this.Controls.Add(this.VerificationCodeLabel);
+            this.CancelButton = this.CancelBtn;
+            this.ClientSize = new System.Drawing.Size(258, 221);
             this.Controls.Add(this.CancelBtn);
-            this.Controls.Add(this.LoginBtn);
+            this.Controls.Add(this.CreateBtn);
+            this.Controls.Add(this.InfoLabel);
+            this.Controls.Add(this.VerifyPwTB);
+            this.Controls.Add(this.VerifyPwLabel);
             this.Controls.Add(this.PwTB);
-            this.Controls.Add(this.PwLabel);
+            this.Controls.Add(this.PasswordLabel);
             this.Controls.Add(this.EmailTB);
             this.Controls.Add(this.EmailLabel);
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Name = "LoginDialog";
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Name = "CreateAccountDialog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Logga in";
-            this.Load += new System.EventHandler(this.LoginDialog_Load);
+            this.Text = "Create Account";
+            this.Load += new System.EventHandler(this.CreateAccountDialog_Load);
             ((System.ComponentModel.ISupportInitialize)(this.InfoBS)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -139,12 +153,13 @@
 
         private System.Windows.Forms.Label EmailLabel;
         private System.Windows.Forms.TextBox EmailTB;
-        private System.Windows.Forms.Label PwLabel;
+        private System.Windows.Forms.Label PasswordLabel;
         private System.Windows.Forms.TextBox PwTB;
-        private System.Windows.Forms.Button LoginBtn;
+        private System.Windows.Forms.Label VerifyPwLabel;
+        private System.Windows.Forms.TextBox VerifyPwTB;
+        private System.Windows.Forms.Label InfoLabel;
+        private System.Windows.Forms.Button CreateBtn;
         private System.Windows.Forms.Button CancelBtn;
         private System.Windows.Forms.BindingSource InfoBS;
-        private System.Windows.Forms.Label VerificationCodeLabel;
-        private System.Windows.Forms.TextBox VerificationCodeTB;
     }
 }

@@ -12,7 +12,6 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ReturnCode" type="tns:CreateAccountResult.MethodResult" />
-      <xs:element minOccurs="0" name="Success" type="xs:boolean" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="CreateAccountResult" nillable="true" type="tns:CreateAccountResult" />
@@ -64,7 +63,7 @@
   <xs:element name="UpdateAccountRequest" nillable="true" type="tns:UpdateAccountRequest" />
   <xs:complexType name="UpdateAccountResult">
     <xs:sequence>
-      <xs:element minOccurs="0" name="Msg" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Result" type="tns:UpdateAccountResult.MethodResult" />
     </xs:sequence>
   </xs:complexType>
@@ -87,7 +86,7 @@
   <xs:element name="ChangePasswordRequest" nillable="true" type="tns:ChangePasswordRequest" />
   <xs:complexType name="ChangePasswordResult">
     <xs:sequence>
-      <xs:element minOccurs="0" name="Msg" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Result" type="tns:ChangePasswordResult.MethodResult" />
     </xs:sequence>
   </xs:complexType>
@@ -167,7 +166,7 @@
   <xs:complexType name="ListKwendaFilesResponse">
     <xs:sequence>
       <xs:element minOccurs="0" name="Files" nillable="true" type="tns:ArrayOfKwendaFileListItem" />
-      <xs:element minOccurs="0" name="Msg" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Result" type="tns:ListKwendaFilesResponse.MethodResult" />
     </xs:sequence>
   </xs:complexType>
@@ -217,7 +216,7 @@
   <xs:complexType name="GetKwendaFileResponse">
     <xs:sequence>
       <xs:element minOccurs="0" name="Files" nillable="true" type="tns:ArrayOfKwendaFileItem" />
-      <xs:element minOccurs="0" name="Msg" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Result" type="tns:GetKwendaFileResponse.MethodResult" />
     </xs:sequence>
   </xs:complexType>
@@ -255,7 +254,7 @@
   <xs:element name="UpdateKwendaFileRequest" nillable="true" type="tns:UpdateKwendaFileRequest" />
   <xs:complexType name="UpdateKwendaFileResponse">
     <xs:sequence>
-      <xs:element minOccurs="0" name="Msg" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Result" type="tns:UpdateKwendaFileResponse.MethodResult" />
     </xs:sequence>
   </xs:complexType>
