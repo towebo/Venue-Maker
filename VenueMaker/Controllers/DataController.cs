@@ -78,25 +78,25 @@ namespace VenueMaker.Controllers
                     req.Items = permissionItems;
                                         
 
-                    SetKwendaPermissionsResult result = cli.SetKwendaPermissions(req);
+                    SetKwendaPermissionsResponse result = cli.SetKwendaPermissions(req);
 
-                    if (result.Result == SetKwendaPermissionsResult.MethodResult.Ok)
+                    if (result.Result == SetKwendaPermissionsResponse.MethodResult.Ok)
                     {
                         throw new Exception(result.Message);
                         return;
 
                     } // Ok
-                    else if (result.Result == SetKwendaPermissionsResult.MethodResult.NoPermission)
+                    else if (result.Result == SetKwendaPermissionsResponse.MethodResult.NoPermission)
                     {
                         throw new Exception("Du har inte rättighet att utföra denna åtgärd. Logga in med en användare med tillräckliga rättigheter och försök igen.");
 
                     } // No permissions
-                    else if (result.Result == SetKwendaPermissionsResult.MethodResult.NotLoggedIn)
+                    else if (result.Result == SetKwendaPermissionsResponse.MethodResult.NotLoggedIn)
                     {
                         throw new Exception("Du är inte iloggad.");
 
                     } // Not logged in
-                    else if (result.Result == SetKwendaPermissionsResult.MethodResult.OtherError)
+                    else if (result.Result == SetKwendaPermissionsResponse.MethodResult.OtherError)
                     {
                         throw new Exception(result.Message);
 
@@ -132,8 +132,7 @@ namespace VenueMaker.Controllers
                                         
                     if (response.Result == UpdateKwendaFileResponse.MethodResult.Ok)
                     {
-                        throw new Exception(response.Message);
-                        //return;
+                        return;
 
                     } // Ok
                     else if (response.Result == UpdateKwendaFileResponse.MethodResult.NoPermission)
@@ -152,8 +151,7 @@ namespace VenueMaker.Controllers
 
 
                     } // Ok
-
-
+                    
                 } // using
 
             }
@@ -166,6 +164,49 @@ namespace VenueMaker.Controllers
 
             }
         }
+
+        public bool IsTokenValid()
+        {
+            try
+            {
+                using (KwendaServiceClient cli = new KwendaServiceClient())
+                {
+                    ValidateTokenRequest req = new ValidateTokenRequest();
+                    req.Email = Email;
+                    req.Token = Token;
+
+                    ValidateTokenResponse response = cli.ValidateToken(req);
+                    
+                    switch (response.Result)
+                    {
+                        case ValidateTokenResponse.MethodResult.Expired:
+                            return false;
+
+                        case ValidateTokenResponse.MethodResult.Invalid:
+                            return false;
+
+                        case ValidateTokenResponse.MethodResult.Ok:
+                            return true;
+
+                        case ValidateTokenResponse.MethodResult.OtherError:
+                            return false;
+
+                        default:
+                            return false;
+
+                    } // switch
+
+                } // using
+
+            }
+            catch (Exception ex)
+            {
+                throw;
+
+            }
+
+        }
+
 
 
 

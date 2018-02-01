@@ -148,6 +148,18 @@
     <Compile Include="Dialogs\RouteTestForm.Designer.cs">
       <DependentUpon>RouteTestForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\SelectVenueDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\SelectVenueDialog.Designer.cs">
+      <DependentUpon>SelectVenueDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\SetPermissionsDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\SetPermissionsDialog.Designer.cs">
+      <DependentUpon>SetPermissionsDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Helpers\AssemblyInfo.cs" />
     <Compile Include="Helpers\FloorComparer.cs" />
     <Compile Include="Helpers\HeadingHelper.cs" />
@@ -193,6 +205,12 @@
     <EmbeddedResource Include="Dialogs\RouteTestForm.resx">
       <DependentUpon>RouteTestForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\SelectVenueDialog.resx">
+      <DependentUpon>SelectVenueDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\SetPermissionsDialog.resx">
+      <DependentUpon>SetPermissionsDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -213,10 +231,10 @@
     <None Include="Connected Services\Kwenda\kwendaservice2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\Kwenda\VenueMaker.Kwenda.ChangePasswordResult.datasource">
+    <None Include="Connected Services\Kwenda\VenueMaker.Kwenda.ChangePasswordResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\Kwenda\VenueMaker.Kwenda.CreateAccountResult.datasource">
+    <None Include="Connected Services\Kwenda\VenueMaker.Kwenda.CreateAccountResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\Kwenda\VenueMaker.Kwenda.GetKwendaFileResponse.datasource">
@@ -225,22 +243,22 @@
     <None Include="Connected Services\Kwenda\VenueMaker.Kwenda.ListKwendaFilesResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\Kwenda\VenueMaker.Kwenda.LoginResult.datasource">
+    <None Include="Connected Services\Kwenda\VenueMaker.Kwenda.LoginResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\Kwenda\VenueMaker.Kwenda.SetKwendaPermissionsResult.datasource">
+    <None Include="Connected Services\Kwenda\VenueMaker.Kwenda.SetKwendaPermissionsResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\Kwenda\VenueMaker.Kwenda.UpdateAccountResult.datasource">
+    <None Include="Connected Services\Kwenda\VenueMaker.Kwenda.UpdateAccountResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\Kwenda\VenueMaker.Kwenda.UpdateKwendaFileResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\Kwenda\VenueMaker.Kwenda.ValidateTokenResult.datasource">
+    <None Include="Connected Services\Kwenda\VenueMaker.Kwenda.ValidateTokenResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\Kwenda\VenueMaker.Kwenda.VerifyAccountResult.datasource">
+    <None Include="Connected Services\Kwenda\VenueMaker.Kwenda.VerifyAccountResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="packages.config" />

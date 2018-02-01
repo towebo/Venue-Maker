@@ -92,9 +92,9 @@ namespace VenueMaker.Kwenda {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="CreateAccountResult", Namespace="http://schemas.datacontract.org/2004/07/KwendaService.Models")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CreateAccountResponse", Namespace="http://schemas.datacontract.org/2004/07/KwendaService.Models")]
     [System.SerializableAttribute()]
-    public partial class CreateAccountResult : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class CreateAccountResponse : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
@@ -103,7 +103,7 @@ namespace VenueMaker.Kwenda {
         private string MessageField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private VenueMaker.Kwenda.CreateAccountResult.MethodResult ReturnCodeField;
+        private VenueMaker.Kwenda.CreateAccountResponse.MethodResult ReturnCodeField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -129,7 +129,7 @@ namespace VenueMaker.Kwenda {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public VenueMaker.Kwenda.CreateAccountResult.MethodResult ReturnCode {
+        public VenueMaker.Kwenda.CreateAccountResponse.MethodResult ReturnCode {
             get {
                 return this.ReturnCodeField;
             }
@@ -151,7 +151,7 @@ namespace VenueMaker.Kwenda {
         }
         
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-        [System.Runtime.Serialization.DataContractAttribute(Name="CreateAccountResult.MethodResult", Namespace="http://schemas.datacontract.org/2004/07/KwendaService.Models")]
+        [System.Runtime.Serialization.DataContractAttribute(Name="CreateAccountResponse.MethodResult", Namespace="http://schemas.datacontract.org/2004/07/KwendaService.Models")]
         public enum MethodResult : int {
             
             [System.Runtime.Serialization.EnumMemberAttribute()]
@@ -231,9 +231,9 @@ namespace VenueMaker.Kwenda {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="VerifyAccountResult", Namespace="http://schemas.datacontract.org/2004/07/KwendaService.Models")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="VerifyAccountResponse", Namespace="http://schemas.datacontract.org/2004/07/KwendaService.Models")]
     [System.SerializableAttribute()]
-    public partial class VerifyAccountResult : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class VerifyAccountResponse : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
@@ -242,7 +242,7 @@ namespace VenueMaker.Kwenda {
         private string MessageField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private VenueMaker.Kwenda.VerifyAccountResult.MethodResult ResultField;
+        private VenueMaker.Kwenda.VerifyAccountResponse.MethodResult ResultField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -268,7 +268,7 @@ namespace VenueMaker.Kwenda {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public VenueMaker.Kwenda.VerifyAccountResult.MethodResult Result {
+        public VenueMaker.Kwenda.VerifyAccountResponse.MethodResult Result {
             get {
                 return this.ResultField;
             }
@@ -290,7 +290,7 @@ namespace VenueMaker.Kwenda {
         }
         
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-        [System.Runtime.Serialization.DataContractAttribute(Name="VerifyAccountResult.MethodResult", Namespace="http://schemas.datacontract.org/2004/07/KwendaService.Models")]
+        [System.Runtime.Serialization.DataContractAttribute(Name="VerifyAccountResponse.MethodResult", Namespace="http://schemas.datacontract.org/2004/07/KwendaService.Models")]
         public enum MethodResult : int {
             
             [System.Runtime.Serialization.EnumMemberAttribute()]
@@ -469,9 +469,9 @@ namespace VenueMaker.Kwenda {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="UpdateAccountResult", Namespace="http://schemas.datacontract.org/2004/07/KwendaService.Models")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="UpdateAccountResponse", Namespace="http://schemas.datacontract.org/2004/07/KwendaService.Models")]
     [System.SerializableAttribute()]
-    public partial class UpdateAccountResult : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class UpdateAccountResponse : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
@@ -480,7 +480,7 @@ namespace VenueMaker.Kwenda {
         private string MessageField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private VenueMaker.Kwenda.UpdateAccountResult.MethodResult ResultField;
+        private VenueMaker.Kwenda.UpdateAccountResponse.MethodResult ResultField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -506,7 +506,7 @@ namespace VenueMaker.Kwenda {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public VenueMaker.Kwenda.UpdateAccountResult.MethodResult Result {
+        public VenueMaker.Kwenda.UpdateAccountResponse.MethodResult Result {
             get {
                 return this.ResultField;
             }
@@ -528,7 +528,7 @@ namespace VenueMaker.Kwenda {
         }
         
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-        [System.Runtime.Serialization.DataContractAttribute(Name="UpdateAccountResult.MethodResult", Namespace="http://schemas.datacontract.org/2004/07/KwendaService.Models")]
+        [System.Runtime.Serialization.DataContractAttribute(Name="UpdateAccountResponse.MethodResult", Namespace="http://schemas.datacontract.org/2004/07/KwendaService.Models")]
         public enum MethodResult : int {
             
             [System.Runtime.Serialization.EnumMemberAttribute()]
@@ -621,9 +621,9 @@ namespace VenueMaker.Kwenda {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ChangePasswordResult", Namespace="http://schemas.datacontract.org/2004/07/KwendaService.Models")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ChangePasswordResponse", Namespace="http://schemas.datacontract.org/2004/07/KwendaService.Models")]
     [System.SerializableAttribute()]
-    public partial class ChangePasswordResult : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class ChangePasswordResponse : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
@@ -632,7 +632,7 @@ namespace VenueMaker.Kwenda {
         private string MessageField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private VenueMaker.Kwenda.ChangePasswordResult.MethodResult ResultField;
+        private VenueMaker.Kwenda.ChangePasswordResponse.MethodResult ResultField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -658,7 +658,7 @@ namespace VenueMaker.Kwenda {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public VenueMaker.Kwenda.ChangePasswordResult.MethodResult Result {
+        public VenueMaker.Kwenda.ChangePasswordResponse.MethodResult Result {
             get {
                 return this.ResultField;
             }
@@ -680,7 +680,7 @@ namespace VenueMaker.Kwenda {
         }
         
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-        [System.Runtime.Serialization.DataContractAttribute(Name="ChangePasswordResult.MethodResult", Namespace="http://schemas.datacontract.org/2004/07/KwendaService.Models")]
+        [System.Runtime.Serialization.DataContractAttribute(Name="ChangePasswordResponse.MethodResult", Namespace="http://schemas.datacontract.org/2004/07/KwendaService.Models")]
         public enum MethodResult : int {
             
             [System.Runtime.Serialization.EnumMemberAttribute()]
@@ -776,9 +776,9 @@ namespace VenueMaker.Kwenda {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="LoginResult", Namespace="http://schemas.datacontract.org/2004/07/KwendaService.Models")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="LoginResponse", Namespace="http://schemas.datacontract.org/2004/07/KwendaService.Models")]
     [System.SerializableAttribute()]
-    public partial class LoginResult : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class LoginResponse : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
@@ -787,7 +787,7 @@ namespace VenueMaker.Kwenda {
         private string MessageField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private VenueMaker.Kwenda.LoginResult.MethodResult ResultField;
+        private VenueMaker.Kwenda.LoginResponse.MethodResult ResultField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string TokenField;
@@ -816,7 +816,7 @@ namespace VenueMaker.Kwenda {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public VenueMaker.Kwenda.LoginResult.MethodResult Result {
+        public VenueMaker.Kwenda.LoginResponse.MethodResult Result {
             get {
                 return this.ResultField;
             }
@@ -851,7 +851,7 @@ namespace VenueMaker.Kwenda {
         }
         
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-        [System.Runtime.Serialization.DataContractAttribute(Name="LoginResult.MethodResult", Namespace="http://schemas.datacontract.org/2004/07/KwendaService.Models")]
+        [System.Runtime.Serialization.DataContractAttribute(Name="LoginResponse.MethodResult", Namespace="http://schemas.datacontract.org/2004/07/KwendaService.Models")]
         public enum MethodResult : int {
             
             [System.Runtime.Serialization.EnumMemberAttribute()]
@@ -995,9 +995,9 @@ namespace VenueMaker.Kwenda {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ValidateTokenResult", Namespace="http://schemas.datacontract.org/2004/07/KwendaService.Models")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ValidateTokenResponse", Namespace="http://schemas.datacontract.org/2004/07/KwendaService.Models")]
     [System.SerializableAttribute()]
-    public partial class ValidateTokenResult : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class ValidateTokenResponse : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
@@ -1006,7 +1006,7 @@ namespace VenueMaker.Kwenda {
         private string MessageField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private VenueMaker.Kwenda.ValidateTokenResult.MethodResult ResultField;
+        private VenueMaker.Kwenda.ValidateTokenResponse.MethodResult ResultField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -1032,7 +1032,7 @@ namespace VenueMaker.Kwenda {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public VenueMaker.Kwenda.ValidateTokenResult.MethodResult Result {
+        public VenueMaker.Kwenda.ValidateTokenResponse.MethodResult Result {
             get {
                 return this.ResultField;
             }
@@ -1054,7 +1054,7 @@ namespace VenueMaker.Kwenda {
         }
         
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-        [System.Runtime.Serialization.DataContractAttribute(Name="ValidateTokenResult.MethodResult", Namespace="http://schemas.datacontract.org/2004/07/KwendaService.Models")]
+        [System.Runtime.Serialization.DataContractAttribute(Name="ValidateTokenResponse.MethodResult", Namespace="http://schemas.datacontract.org/2004/07/KwendaService.Models")]
         public enum MethodResult : int {
             
             [System.Runtime.Serialization.EnumMemberAttribute()]
@@ -1927,9 +1927,9 @@ namespace VenueMaker.Kwenda {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="SetKwendaPermissionsResult", Namespace="http://schemas.datacontract.org/2004/07/KwendaService.Models")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="SetKwendaPermissionsResponse", Namespace="http://schemas.datacontract.org/2004/07/KwendaService.Models")]
     [System.SerializableAttribute()]
-    public partial class SetKwendaPermissionsResult : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class SetKwendaPermissionsResponse : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
@@ -1938,7 +1938,7 @@ namespace VenueMaker.Kwenda {
         private string MessageField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private VenueMaker.Kwenda.SetKwendaPermissionsResult.MethodResult ResultField;
+        private VenueMaker.Kwenda.SetKwendaPermissionsResponse.MethodResult ResultField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -1964,7 +1964,7 @@ namespace VenueMaker.Kwenda {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public VenueMaker.Kwenda.SetKwendaPermissionsResult.MethodResult Result {
+        public VenueMaker.Kwenda.SetKwendaPermissionsResponse.MethodResult Result {
             get {
                 return this.ResultField;
             }
@@ -1986,7 +1986,7 @@ namespace VenueMaker.Kwenda {
         }
         
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-        [System.Runtime.Serialization.DataContractAttribute(Name="SetKwendaPermissionsResult.MethodResult", Namespace="http://schemas.datacontract.org/2004/07/KwendaService.Models")]
+        [System.Runtime.Serialization.DataContractAttribute(Name="SetKwendaPermissionsResponse.MethodResult", Namespace="http://schemas.datacontract.org/2004/07/KwendaService.Models")]
         public enum MethodResult : int {
             
             [System.Runtime.Serialization.EnumMemberAttribute()]
@@ -2008,22 +2008,22 @@ namespace VenueMaker.Kwenda {
     public interface IKwendaService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKwendaService/CreateAccount", ReplyAction="http://tempuri.org/IKwendaService/CreateAccountResponse")]
-        VenueMaker.Kwenda.CreateAccountResult CreateAccount(VenueMaker.Kwenda.CreateAccountRequest aInfo);
+        VenueMaker.Kwenda.CreateAccountResponse CreateAccount(VenueMaker.Kwenda.CreateAccountRequest aInfo);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKwendaService/CreateAccount", ReplyAction="http://tempuri.org/IKwendaService/CreateAccountResponse")]
-        System.Threading.Tasks.Task<VenueMaker.Kwenda.CreateAccountResult> CreateAccountAsync(VenueMaker.Kwenda.CreateAccountRequest aInfo);
+        System.Threading.Tasks.Task<VenueMaker.Kwenda.CreateAccountResponse> CreateAccountAsync(VenueMaker.Kwenda.CreateAccountRequest aInfo);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKwendaService/VerifyAccount", ReplyAction="http://tempuri.org/IKwendaService/VerifyAccountResponse")]
-        VenueMaker.Kwenda.VerifyAccountResult VerifyAccount(VenueMaker.Kwenda.VerifyAccountRequest aRequest);
+        VenueMaker.Kwenda.VerifyAccountResponse VerifyAccount(VenueMaker.Kwenda.VerifyAccountRequest aRequest);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKwendaService/VerifyAccount", ReplyAction="http://tempuri.org/IKwendaService/VerifyAccountResponse")]
-        System.Threading.Tasks.Task<VenueMaker.Kwenda.VerifyAccountResult> VerifyAccountAsync(VenueMaker.Kwenda.VerifyAccountRequest aRequest);
+        System.Threading.Tasks.Task<VenueMaker.Kwenda.VerifyAccountResponse> VerifyAccountAsync(VenueMaker.Kwenda.VerifyAccountRequest aRequest);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKwendaService/UpdateAccount", ReplyAction="http://tempuri.org/IKwendaService/UpdateAccountResponse")]
-        VenueMaker.Kwenda.UpdateAccountResult UpdateAccount(VenueMaker.Kwenda.UpdateAccountRequest aInfo);
+        VenueMaker.Kwenda.UpdateAccountResponse UpdateAccount(VenueMaker.Kwenda.UpdateAccountRequest aInfo);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKwendaService/UpdateAccount", ReplyAction="http://tempuri.org/IKwendaService/UpdateAccountResponse")]
-        System.Threading.Tasks.Task<VenueMaker.Kwenda.UpdateAccountResult> UpdateAccountAsync(VenueMaker.Kwenda.UpdateAccountRequest aInfo);
+        System.Threading.Tasks.Task<VenueMaker.Kwenda.UpdateAccountResponse> UpdateAccountAsync(VenueMaker.Kwenda.UpdateAccountRequest aInfo);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKwendaService/RequestVerificationCode", ReplyAction="http://tempuri.org/IKwendaService/RequestVerificationCodeResponse")]
         bool RequestVerificationCode(string aEmail);
@@ -2032,16 +2032,16 @@ namespace VenueMaker.Kwenda {
         System.Threading.Tasks.Task<bool> RequestVerificationCodeAsync(string aEmail);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKwendaService/ChangePassword", ReplyAction="http://tempuri.org/IKwendaService/ChangePasswordResponse")]
-        VenueMaker.Kwenda.ChangePasswordResult ChangePassword(VenueMaker.Kwenda.ChangePasswordRequest aInfo);
+        VenueMaker.Kwenda.ChangePasswordResponse ChangePassword(VenueMaker.Kwenda.ChangePasswordRequest aInfo);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKwendaService/ChangePassword", ReplyAction="http://tempuri.org/IKwendaService/ChangePasswordResponse")]
-        System.Threading.Tasks.Task<VenueMaker.Kwenda.ChangePasswordResult> ChangePasswordAsync(VenueMaker.Kwenda.ChangePasswordRequest aInfo);
+        System.Threading.Tasks.Task<VenueMaker.Kwenda.ChangePasswordResponse> ChangePasswordAsync(VenueMaker.Kwenda.ChangePasswordRequest aInfo);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKwendaService/Login", ReplyAction="http://tempuri.org/IKwendaService/LoginResponse")]
-        VenueMaker.Kwenda.LoginResult Login(VenueMaker.Kwenda.LoginRequest aLogin);
+        VenueMaker.Kwenda.LoginResponse Login(VenueMaker.Kwenda.LoginRequest aLogin);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKwendaService/Login", ReplyAction="http://tempuri.org/IKwendaService/LoginResponse")]
-        System.Threading.Tasks.Task<VenueMaker.Kwenda.LoginResult> LoginAsync(VenueMaker.Kwenda.LoginRequest aLogin);
+        System.Threading.Tasks.Task<VenueMaker.Kwenda.LoginResponse> LoginAsync(VenueMaker.Kwenda.LoginRequest aLogin);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKwendaService/Logout", ReplyAction="http://tempuri.org/IKwendaService/LogoutResponse")]
         bool Logout(VenueMaker.Kwenda.LogoutRequest aLogout);
@@ -2050,10 +2050,10 @@ namespace VenueMaker.Kwenda {
         System.Threading.Tasks.Task<bool> LogoutAsync(VenueMaker.Kwenda.LogoutRequest aLogout);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKwendaService/ValidateToken", ReplyAction="http://tempuri.org/IKwendaService/ValidateTokenResponse")]
-        VenueMaker.Kwenda.ValidateTokenResult ValidateToken(VenueMaker.Kwenda.ValidateTokenRequest aRequest);
+        VenueMaker.Kwenda.ValidateTokenResponse ValidateToken(VenueMaker.Kwenda.ValidateTokenRequest aRequest);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKwendaService/ValidateToken", ReplyAction="http://tempuri.org/IKwendaService/ValidateTokenResponse")]
-        System.Threading.Tasks.Task<VenueMaker.Kwenda.ValidateTokenResult> ValidateTokenAsync(VenueMaker.Kwenda.ValidateTokenRequest aRequest);
+        System.Threading.Tasks.Task<VenueMaker.Kwenda.ValidateTokenResponse> ValidateTokenAsync(VenueMaker.Kwenda.ValidateTokenRequest aRequest);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKwendaService/ListKwendaFiles", ReplyAction="http://tempuri.org/IKwendaService/ListKwendaFilesResponse")]
         VenueMaker.Kwenda.ListKwendaFilesResponse ListKwendaFiles(VenueMaker.Kwenda.ListKwendaFilesRequest aRequest);
@@ -2074,10 +2074,10 @@ namespace VenueMaker.Kwenda {
         System.Threading.Tasks.Task<VenueMaker.Kwenda.UpdateKwendaFileResponse> UpdateKwendaFilesAsync(VenueMaker.Kwenda.UpdateKwendaFileRequest aRequest);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKwendaService/SetKwendaPermissions", ReplyAction="http://tempuri.org/IKwendaService/SetKwendaPermissionsResponse")]
-        VenueMaker.Kwenda.SetKwendaPermissionsResult SetKwendaPermissions(VenueMaker.Kwenda.SetKwendaPermissionsRequest req);
+        VenueMaker.Kwenda.SetKwendaPermissionsResponse SetKwendaPermissions(VenueMaker.Kwenda.SetKwendaPermissionsRequest req);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKwendaService/SetKwendaPermissions", ReplyAction="http://tempuri.org/IKwendaService/SetKwendaPermissionsResponse")]
-        System.Threading.Tasks.Task<VenueMaker.Kwenda.SetKwendaPermissionsResult> SetKwendaPermissionsAsync(VenueMaker.Kwenda.SetKwendaPermissionsRequest req);
+        System.Threading.Tasks.Task<VenueMaker.Kwenda.SetKwendaPermissionsResponse> SetKwendaPermissionsAsync(VenueMaker.Kwenda.SetKwendaPermissionsRequest req);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -2107,27 +2107,27 @@ namespace VenueMaker.Kwenda {
                 base(binding, remoteAddress) {
         }
         
-        public VenueMaker.Kwenda.CreateAccountResult CreateAccount(VenueMaker.Kwenda.CreateAccountRequest aInfo) {
+        public VenueMaker.Kwenda.CreateAccountResponse CreateAccount(VenueMaker.Kwenda.CreateAccountRequest aInfo) {
             return base.Channel.CreateAccount(aInfo);
         }
         
-        public System.Threading.Tasks.Task<VenueMaker.Kwenda.CreateAccountResult> CreateAccountAsync(VenueMaker.Kwenda.CreateAccountRequest aInfo) {
+        public System.Threading.Tasks.Task<VenueMaker.Kwenda.CreateAccountResponse> CreateAccountAsync(VenueMaker.Kwenda.CreateAccountRequest aInfo) {
             return base.Channel.CreateAccountAsync(aInfo);
         }
         
-        public VenueMaker.Kwenda.VerifyAccountResult VerifyAccount(VenueMaker.Kwenda.VerifyAccountRequest aRequest) {
+        public VenueMaker.Kwenda.VerifyAccountResponse VerifyAccount(VenueMaker.Kwenda.VerifyAccountRequest aRequest) {
             return base.Channel.VerifyAccount(aRequest);
         }
         
-        public System.Threading.Tasks.Task<VenueMaker.Kwenda.VerifyAccountResult> VerifyAccountAsync(VenueMaker.Kwenda.VerifyAccountRequest aRequest) {
+        public System.Threading.Tasks.Task<VenueMaker.Kwenda.VerifyAccountResponse> VerifyAccountAsync(VenueMaker.Kwenda.VerifyAccountRequest aRequest) {
             return base.Channel.VerifyAccountAsync(aRequest);
         }
         
-        public VenueMaker.Kwenda.UpdateAccountResult UpdateAccount(VenueMaker.Kwenda.UpdateAccountRequest aInfo) {
+        public VenueMaker.Kwenda.UpdateAccountResponse UpdateAccount(VenueMaker.Kwenda.UpdateAccountRequest aInfo) {
             return base.Channel.UpdateAccount(aInfo);
         }
         
-        public System.Threading.Tasks.Task<VenueMaker.Kwenda.UpdateAccountResult> UpdateAccountAsync(VenueMaker.Kwenda.UpdateAccountRequest aInfo) {
+        public System.Threading.Tasks.Task<VenueMaker.Kwenda.UpdateAccountResponse> UpdateAccountAsync(VenueMaker.Kwenda.UpdateAccountRequest aInfo) {
             return base.Channel.UpdateAccountAsync(aInfo);
         }
         
@@ -2139,19 +2139,19 @@ namespace VenueMaker.Kwenda {
             return base.Channel.RequestVerificationCodeAsync(aEmail);
         }
         
-        public VenueMaker.Kwenda.ChangePasswordResult ChangePassword(VenueMaker.Kwenda.ChangePasswordRequest aInfo) {
+        public VenueMaker.Kwenda.ChangePasswordResponse ChangePassword(VenueMaker.Kwenda.ChangePasswordRequest aInfo) {
             return base.Channel.ChangePassword(aInfo);
         }
         
-        public System.Threading.Tasks.Task<VenueMaker.Kwenda.ChangePasswordResult> ChangePasswordAsync(VenueMaker.Kwenda.ChangePasswordRequest aInfo) {
+        public System.Threading.Tasks.Task<VenueMaker.Kwenda.ChangePasswordResponse> ChangePasswordAsync(VenueMaker.Kwenda.ChangePasswordRequest aInfo) {
             return base.Channel.ChangePasswordAsync(aInfo);
         }
         
-        public VenueMaker.Kwenda.LoginResult Login(VenueMaker.Kwenda.LoginRequest aLogin) {
+        public VenueMaker.Kwenda.LoginResponse Login(VenueMaker.Kwenda.LoginRequest aLogin) {
             return base.Channel.Login(aLogin);
         }
         
-        public System.Threading.Tasks.Task<VenueMaker.Kwenda.LoginResult> LoginAsync(VenueMaker.Kwenda.LoginRequest aLogin) {
+        public System.Threading.Tasks.Task<VenueMaker.Kwenda.LoginResponse> LoginAsync(VenueMaker.Kwenda.LoginRequest aLogin) {
             return base.Channel.LoginAsync(aLogin);
         }
         
@@ -2163,11 +2163,11 @@ namespace VenueMaker.Kwenda {
             return base.Channel.LogoutAsync(aLogout);
         }
         
-        public VenueMaker.Kwenda.ValidateTokenResult ValidateToken(VenueMaker.Kwenda.ValidateTokenRequest aRequest) {
+        public VenueMaker.Kwenda.ValidateTokenResponse ValidateToken(VenueMaker.Kwenda.ValidateTokenRequest aRequest) {
             return base.Channel.ValidateToken(aRequest);
         }
         
-        public System.Threading.Tasks.Task<VenueMaker.Kwenda.ValidateTokenResult> ValidateTokenAsync(VenueMaker.Kwenda.ValidateTokenRequest aRequest) {
+        public System.Threading.Tasks.Task<VenueMaker.Kwenda.ValidateTokenResponse> ValidateTokenAsync(VenueMaker.Kwenda.ValidateTokenRequest aRequest) {
             return base.Channel.ValidateTokenAsync(aRequest);
         }
         
@@ -2195,11 +2195,11 @@ namespace VenueMaker.Kwenda {
             return base.Channel.UpdateKwendaFilesAsync(aRequest);
         }
         
-        public VenueMaker.Kwenda.SetKwendaPermissionsResult SetKwendaPermissions(VenueMaker.Kwenda.SetKwendaPermissionsRequest req) {
+        public VenueMaker.Kwenda.SetKwendaPermissionsResponse SetKwendaPermissions(VenueMaker.Kwenda.SetKwendaPermissionsRequest req) {
             return base.Channel.SetKwendaPermissions(req);
         }
         
-        public System.Threading.Tasks.Task<VenueMaker.Kwenda.SetKwendaPermissionsResult> SetKwendaPermissionsAsync(VenueMaker.Kwenda.SetKwendaPermissionsRequest req) {
+        public System.Threading.Tasks.Task<VenueMaker.Kwenda.SetKwendaPermissionsResponse> SetKwendaPermissionsAsync(VenueMaker.Kwenda.SetKwendaPermissionsRequest req) {
             return base.Channel.SetKwendaPermissionsAsync(req);
         }
     }

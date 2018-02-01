@@ -57,9 +57,9 @@ namespace VenueMaker.Dialogs
                     VerifyAccountRequest vreq = new VerifyAccountRequest();
                     vreq.Email = Item.Email;
                     vreq.Code = Convert.ToInt32(VerificationCodeTB.Text);
-                    VerifyAccountResult vres = cli.VerifyAccount(vreq);
+                    VerifyAccountResponse vres = cli.VerifyAccount(vreq);
 
-                    if (vres.Result == VerifyAccountResult.MethodResult.Ok)
+                    if (vres.Result == VerifyAccountResponse.MethodResult.Ok)
                     {
                         VerificationCodeLabel.Visible = false;
                         VerificationCodeTB.Visible = VerificationCodeLabel.Visible;
@@ -80,9 +80,9 @@ namespace VenueMaker.Dialogs
                 req.Password = Item.Password.Encrypt();
                 req.AppID = "se.mawingu.venuemaker";
 
-                LoginResult res = cli.Login(req);
+                LoginResponse res = cli.Login(req);
 
-                if (res.Result == LoginResult.MethodResult.Ok)
+                if (res.Result == LoginResponse.MethodResult.Ok)
                 {
                     DataController.Me.Email = Item.Email;
                     DataController.Me.Password = Item.Password;
@@ -92,7 +92,7 @@ namespace VenueMaker.Dialogs
                     DialogResult = DialogResult.OK;
 
                 } // Ok
-                else if (res.Result == LoginResult.MethodResult.AccountNotVerified)
+                else if (res.Result == LoginResponse.MethodResult.AccountNotVerified)
                 {
                     cli.RequestVerificationCode(Item.Email);
                     MessageBox.Show(

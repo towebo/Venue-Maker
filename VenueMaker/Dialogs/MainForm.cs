@@ -331,6 +331,8 @@ namespace VenueMaker.Dialogs
 
         private void openVenueFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            LoadVenueFromCloud();
+            return;
 
             if (OpenVenueDialog.ShowDialog() != DialogResult.OK)
             {
@@ -656,8 +658,7 @@ namespace VenueMaker.Dialogs
 
                 Cursor.Current = Cursors.WaitCursor;
                 Application.DoEvents();
-
-
+                
                 try
                 {
                     string[] currentfiles = FtpController.Me.DownloadFileList();
@@ -668,8 +669,7 @@ namespace VenueMaker.Dialogs
                     Console.WriteLine(dlex.Message);
 
                 }
-
-
+                
                 PushToCloud();
 
                 SystemSounds.Asterisk.Play();
@@ -1249,9 +1249,10 @@ namespace VenueMaker.Dialogs
                         req.Organization = dlg.Item.Organization;
                         req.Password = dlg.Item.Password.Encrypt();
 
-                        CreateAccountResult result = cli.CreateAccount(req);
+                        CreateAccountResponse result = cli.CreateAccount(req);
 
                         MessageBox.Show(result.Message);
+
                     } // using KwendaServiceClient 
 
                 } // using dialog
@@ -1295,17 +1296,7 @@ namespace VenueMaker.Dialogs
                     } // User canceled
 
                     SystemSounds.Asterisk.Play();
-
-                    var files = DataController.Me.ListFiles(
-                        DataController.Me.Token
-                        );
-
-                    MessageBox.Show(
-                        files.Length.ToString()
-                        );
-
-
-
+                    
                 } // using
 
             }
@@ -1326,16 +1317,31 @@ namespace VenueMaker.Dialogs
         {
             try
             {
-                KwendaPermissionItem item = new KwendaPermissionItem();
-                item.VenueId = Venue.Id;
-                item.Email = "gurka@mawingu.se";
-                item.GrantPermission = true;
+                if (!DataController.Me.IsTokenValid())
+                {
+                    using (LoginDialog dlg = new LoginDialog())
+                    {
+                        dlg.Item = new LoginInfoModel();
+                        dlg.Item.Email = DataController.Me.Email;
 
-                DataController.Me.SetPermissions(
-                    DataController.Me.Token,
-                    new KwendaPermissionItem[] { item }
-                    );
+                        if (dlg.ShowDialog() != DialogResult.OK)
+                        {
+                            return;
 
+                        } // User canceled
+
+                    } // using LoginDialog
+
+                } // Not logged in correctly
+
+                using (SetPermissionsDialog dlg = new SetPermissionsDialog())
+                {
+                    dlg.VenueId = Venue.Id;
+
+                    dlg.ShowDialog();
+
+                } // using
+                
             }
             catch (Exception ex)
             {
@@ -1513,6 +1519,31 @@ namespace VenueMaker.Dialogs
                     ex.Message
                     );
                 MessageBox.Show(errmsg, "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+        }
+
+        public void LoadVenueFromCloud()
+        {
+            try
+            {
+                using (SelectVenueDialog dlg = new SelectVenueDialog())
+                {
+                    if (dlg.ShowDialog() != DialogResult.OK)
+                    {
+                        return;
+
+                    } // User cancelled
+
+
+
+
+                } // using
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
         }

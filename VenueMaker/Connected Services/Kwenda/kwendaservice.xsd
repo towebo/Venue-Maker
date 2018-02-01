@@ -8,14 +8,14 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="CreateAccountRequest" nillable="true" type="tns:CreateAccountRequest" />
-  <xs:complexType name="CreateAccountResult">
+  <xs:complexType name="CreateAccountResponse">
     <xs:sequence>
       <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="ReturnCode" type="tns:CreateAccountResult.MethodResult" />
+      <xs:element minOccurs="0" name="ReturnCode" type="tns:CreateAccountResponse.MethodResult" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="CreateAccountResult" nillable="true" type="tns:CreateAccountResult" />
-  <xs:simpleType name="CreateAccountResult.MethodResult">
+  <xs:element name="CreateAccountResponse" nillable="true" type="tns:CreateAccountResponse" />
+  <xs:simpleType name="CreateAccountResponse.MethodResult">
     <xs:restriction base="xs:string">
       <xs:enumeration value="Ok" />
       <xs:enumeration value="UserAlreadyExists" />
@@ -23,7 +23,7 @@
       <xs:enumeration value="OtherError" />
     </xs:restriction>
   </xs:simpleType>
-  <xs:element name="CreateAccountResult.MethodResult" nillable="true" type="tns:CreateAccountResult.MethodResult" />
+  <xs:element name="CreateAccountResponse.MethodResult" nillable="true" type="tns:CreateAccountResponse.MethodResult" />
   <xs:complexType name="VerifyAccountRequest">
     <xs:sequence>
       <xs:element minOccurs="0" name="Code" type="xs:int" />
@@ -31,14 +31,14 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="VerifyAccountRequest" nillable="true" type="tns:VerifyAccountRequest" />
-  <xs:complexType name="VerifyAccountResult">
+  <xs:complexType name="VerifyAccountResponse">
     <xs:sequence>
       <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Result" type="tns:VerifyAccountResult.MethodResult" />
+      <xs:element minOccurs="0" name="Result" type="tns:VerifyAccountResponse.MethodResult" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="VerifyAccountResult" nillable="true" type="tns:VerifyAccountResult" />
-  <xs:simpleType name="VerifyAccountResult.MethodResult">
+  <xs:element name="VerifyAccountResponse" nillable="true" type="tns:VerifyAccountResponse" />
+  <xs:simpleType name="VerifyAccountResponse.MethodResult">
     <xs:restriction base="xs:string">
       <xs:enumeration value="Ok" />
       <xs:enumeration value="NotFound" />
@@ -47,7 +47,7 @@
       <xs:enumeration value="OtherError" />
     </xs:restriction>
   </xs:simpleType>
-  <xs:element name="VerifyAccountResult.MethodResult" nillable="true" type="tns:VerifyAccountResult.MethodResult" />
+  <xs:element name="VerifyAccountResponse.MethodResult" nillable="true" type="tns:VerifyAccountResponse.MethodResult" />
   <xs:complexType name="UpdateAccountRequest">
     <xs:sequence>
       <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
@@ -61,21 +61,21 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="UpdateAccountRequest" nillable="true" type="tns:UpdateAccountRequest" />
-  <xs:complexType name="UpdateAccountResult">
+  <xs:complexType name="UpdateAccountResponse">
     <xs:sequence>
       <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Result" type="tns:UpdateAccountResult.MethodResult" />
+      <xs:element minOccurs="0" name="Result" type="tns:UpdateAccountResponse.MethodResult" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="UpdateAccountResult" nillable="true" type="tns:UpdateAccountResult" />
-  <xs:simpleType name="UpdateAccountResult.MethodResult">
+  <xs:element name="UpdateAccountResponse" nillable="true" type="tns:UpdateAccountResponse" />
+  <xs:simpleType name="UpdateAccountResponse.MethodResult">
     <xs:restriction base="xs:string">
       <xs:enumeration value="Ok" />
       <xs:enumeration value="NotLoggedIn" />
       <xs:enumeration value="OtherError" />
     </xs:restriction>
   </xs:simpleType>
-  <xs:element name="UpdateAccountResult.MethodResult" nillable="true" type="tns:UpdateAccountResult.MethodResult" />
+  <xs:element name="UpdateAccountResponse.MethodResult" nillable="true" type="tns:UpdateAccountResponse.MethodResult" />
   <xs:complexType name="ChangePasswordRequest">
     <xs:sequence>
       <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
@@ -84,14 +84,14 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ChangePasswordRequest" nillable="true" type="tns:ChangePasswordRequest" />
-  <xs:complexType name="ChangePasswordResult">
+  <xs:complexType name="ChangePasswordResponse">
     <xs:sequence>
       <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Result" type="tns:ChangePasswordResult.MethodResult" />
+      <xs:element minOccurs="0" name="Result" type="tns:ChangePasswordResponse.MethodResult" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ChangePasswordResult" nillable="true" type="tns:ChangePasswordResult" />
-  <xs:simpleType name="ChangePasswordResult.MethodResult">
+  <xs:element name="ChangePasswordResponse" nillable="true" type="tns:ChangePasswordResponse" />
+  <xs:simpleType name="ChangePasswordResponse.MethodResult">
     <xs:restriction base="xs:string">
       <xs:enumeration value="Ok" />
       <xs:enumeration value="AccountNotFound" />
@@ -99,7 +99,7 @@
       <xs:enumeration value="OtherError" />
     </xs:restriction>
   </xs:simpleType>
-  <xs:element name="ChangePasswordResult.MethodResult" nillable="true" type="tns:ChangePasswordResult.MethodResult" />
+  <xs:element name="ChangePasswordResponse.MethodResult" nillable="true" type="tns:ChangePasswordResponse.MethodResult" />
   <xs:complexType name="LoginRequest">
     <xs:sequence>
       <xs:element minOccurs="0" name="AppID" nillable="true" type="xs:string" />
@@ -108,15 +108,15 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="LoginRequest" nillable="true" type="tns:LoginRequest" />
-  <xs:complexType name="LoginResult">
+  <xs:complexType name="LoginResponse">
     <xs:sequence>
       <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Result" type="tns:LoginResult.MethodResult" />
+      <xs:element minOccurs="0" name="Result" type="tns:LoginResponse.MethodResult" />
       <xs:element minOccurs="0" name="Token" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="LoginResult" nillable="true" type="tns:LoginResult" />
-  <xs:simpleType name="LoginResult.MethodResult">
+  <xs:element name="LoginResponse" nillable="true" type="tns:LoginResponse" />
+  <xs:simpleType name="LoginResponse.MethodResult">
     <xs:restriction base="xs:string">
       <xs:enumeration value="Ok" />
       <xs:enumeration value="InvalidCridentials" />
@@ -125,7 +125,7 @@
       <xs:enumeration value="OtherError" />
     </xs:restriction>
   </xs:simpleType>
-  <xs:element name="LoginResult.MethodResult" nillable="true" type="tns:LoginResult.MethodResult" />
+  <xs:element name="LoginResponse.MethodResult" nillable="true" type="tns:LoginResponse.MethodResult" />
   <xs:complexType name="LogoutRequest">
     <xs:sequence>
       <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
@@ -140,14 +140,14 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ValidateTokenRequest" nillable="true" type="tns:ValidateTokenRequest" />
-  <xs:complexType name="ValidateTokenResult">
+  <xs:complexType name="ValidateTokenResponse">
     <xs:sequence>
       <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Result" type="tns:ValidateTokenResult.MethodResult" />
+      <xs:element minOccurs="0" name="Result" type="tns:ValidateTokenResponse.MethodResult" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ValidateTokenResult" nillable="true" type="tns:ValidateTokenResult" />
-  <xs:simpleType name="ValidateTokenResult.MethodResult">
+  <xs:element name="ValidateTokenResponse" nillable="true" type="tns:ValidateTokenResponse" />
+  <xs:simpleType name="ValidateTokenResponse.MethodResult">
     <xs:restriction base="xs:string">
       <xs:enumeration value="Ok" />
       <xs:enumeration value="Invalid" />
@@ -155,7 +155,7 @@
       <xs:enumeration value="OtherError" />
     </xs:restriction>
   </xs:simpleType>
-  <xs:element name="ValidateTokenResult.MethodResult" nillable="true" type="tns:ValidateTokenResult.MethodResult" />
+  <xs:element name="ValidateTokenResponse.MethodResult" nillable="true" type="tns:ValidateTokenResponse.MethodResult" />
   <xs:complexType name="ListKwendaFilesRequest">
     <xs:sequence>
       <xs:element minOccurs="0" name="NewerThan" nillable="true" type="xs:dateTime" />
@@ -289,14 +289,14 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="KwendaPermissionItem" nillable="true" type="tns:KwendaPermissionItem" />
-  <xs:complexType name="SetKwendaPermissionsResult">
+  <xs:complexType name="SetKwendaPermissionsResponse">
     <xs:sequence>
       <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Result" type="tns:SetKwendaPermissionsResult.MethodResult" />
+      <xs:element minOccurs="0" name="Result" type="tns:SetKwendaPermissionsResponse.MethodResult" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="SetKwendaPermissionsResult" nillable="true" type="tns:SetKwendaPermissionsResult" />
-  <xs:simpleType name="SetKwendaPermissionsResult.MethodResult">
+  <xs:element name="SetKwendaPermissionsResponse" nillable="true" type="tns:SetKwendaPermissionsResponse" />
+  <xs:simpleType name="SetKwendaPermissionsResponse.MethodResult">
     <xs:restriction base="xs:string">
       <xs:enumeration value="Ok" />
       <xs:enumeration value="NotLoggedIn" />
@@ -304,5 +304,5 @@
       <xs:enumeration value="OtherError" />
     </xs:restriction>
   </xs:simpleType>
-  <xs:element name="SetKwendaPermissionsResult.MethodResult" nillable="true" type="tns:SetKwendaPermissionsResult.MethodResult" />
+  <xs:element name="SetKwendaPermissionsResponse.MethodResult" nillable="true" type="tns:SetKwendaPermissionsResponse.MethodResult" />
 </xs:schema>

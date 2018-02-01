@@ -41,6 +41,14 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.closeAppToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.kontoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.createAccountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.verifyAccountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.resetPasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.updateAccountInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.loginToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.logOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.setPermissionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.kontoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.OpenVenueDialog = new System.Windows.Forms.OpenFileDialog();
             this.OpenGraphMLDialog = new System.Windows.Forms.OpenFileDialog();
@@ -174,14 +182,6 @@
             this.EdgesForPOIBS = new System.Windows.Forms.BindingSource(this.components);
             this.EdgeBS = new System.Windows.Forms.BindingSource(this.components);
             this.NodesBS = new System.Windows.Forms.BindingSource(this.components);
-            this.kontoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.createAccountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.verifyAccountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.resetPasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.updateAccountInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.loginToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.logOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.setPermissionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MainMenuStrip.SuspendLayout();
             this.Tabs.SuspendLayout();
             this.VenueTab.SuspendLayout();
@@ -287,8 +287,74 @@
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
             this.toolStripMenuItem2.Size = new System.Drawing.Size(12, 20);
-
-            
+            // 
+            // kontoToolStripMenuItem1
+            // 
+            this.kontoToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.createAccountToolStripMenuItem,
+            this.verifyAccountToolStripMenuItem,
+            this.resetPasswordToolStripMenuItem,
+            this.updateAccountInfoToolStripMenuItem,
+            this.loginToolStripMenuItem1,
+            this.logOutToolStripMenuItem,
+            this.setPermissionsToolStripMenuItem});
+            this.kontoToolStripMenuItem1.Name = "kontoToolStripMenuItem1";
+            this.kontoToolStripMenuItem1.Size = new System.Drawing.Size(51, 20);
+            this.kontoToolStripMenuItem1.Text = "&Konto";
+            // 
+            // createAccountToolStripMenuItem
+            // 
+            this.createAccountToolStripMenuItem.Name = "createAccountToolStripMenuItem";
+            this.createAccountToolStripMenuItem.Size = new System.Drawing.Size(226, 22);
+            this.createAccountToolStripMenuItem.Text = "Skapa konto";
+            this.createAccountToolStripMenuItem.Click += new System.EventHandler(this.createAccountToolStripMenuItem_Click);
+            // 
+            // verifyAccountToolStripMenuItem
+            // 
+            this.verifyAccountToolStripMenuItem.Name = "verifyAccountToolStripMenuItem";
+            this.verifyAccountToolStripMenuItem.Size = new System.Drawing.Size(226, 22);
+            this.verifyAccountToolStripMenuItem.Text = "Verifiera konto";
+            this.verifyAccountToolStripMenuItem.Click += new System.EventHandler(this.verifyAccountToolStripMenuItem_Click);
+            // 
+            // resetPasswordToolStripMenuItem
+            // 
+            this.resetPasswordToolStripMenuItem.Name = "resetPasswordToolStripMenuItem";
+            this.resetPasswordToolStripMenuItem.Size = new System.Drawing.Size(226, 22);
+            this.resetPasswordToolStripMenuItem.Text = "Nollställ lösenord";
+            this.resetPasswordToolStripMenuItem.Click += new System.EventHandler(this.resetPasswordToolStripMenuItem_Click);
+            // 
+            // updateAccountInfoToolStripMenuItem
+            // 
+            this.updateAccountInfoToolStripMenuItem.Name = "updateAccountInfoToolStripMenuItem";
+            this.updateAccountInfoToolStripMenuItem.Size = new System.Drawing.Size(226, 22);
+            this.updateAccountInfoToolStripMenuItem.Text = "Uppdatera kontoinformation";
+            this.updateAccountInfoToolStripMenuItem.Click += new System.EventHandler(this.updateAccountInfoToolStripMenuItem_Click);
+            // 
+            // loginToolStripMenuItem1
+            // 
+            this.loginToolStripMenuItem1.Name = "loginToolStripMenuItem1";
+            this.loginToolStripMenuItem1.Size = new System.Drawing.Size(226, 22);
+            this.loginToolStripMenuItem1.Text = "&Logga in";
+            this.loginToolStripMenuItem1.Click += new System.EventHandler(this.loginToolStripMenuItem1_Click);
+            // 
+            // logOutToolStripMenuItem
+            // 
+            this.logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
+            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(226, 22);
+            this.logOutToolStripMenuItem.Text = "Logga &ut";
+            this.logOutToolStripMenuItem.Click += new System.EventHandler(this.logOutToolStripMenuItem_Click);
+            // 
+            // setPermissionsToolStripMenuItem
+            // 
+            this.setPermissionsToolStripMenuItem.Name = "setPermissionsToolStripMenuItem";
+            this.setPermissionsToolStripMenuItem.Size = new System.Drawing.Size(226, 22);
+            this.setPermissionsToolStripMenuItem.Text = "Sätt rättigheter";
+            this.setPermissionsToolStripMenuItem.Click += new System.EventHandler(this.setPermissionsToolStripMenuItem_Click);
+            // 
+            // kontoToolStripMenuItem
+            // 
+            this.kontoToolStripMenuItem.Name = "kontoToolStripMenuItem";
+            this.kontoToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
             // 
             // OpenVenueDialog
             // 
@@ -1499,70 +1565,6 @@
             // 
             this.OpenCSVFileDialog.DefaultExt = "txt";
             this.OpenCSVFileDialog.Filter = "CSV-filer (*.csv, *.txt, *.xls)|*.csv;*.txt;*.xls|Alla filer (*)|*.*";
-            // 
-            // kontoToolStripMenuItem1
-            // 
-            this.kontoToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.createAccountToolStripMenuItem,
-            this.verifyAccountToolStripMenuItem,
-            this.resetPasswordToolStripMenuItem,
-            this.updateAccountInfoToolStripMenuItem,
-            this.loginToolStripMenuItem1,
-            this.logOutToolStripMenuItem,
-            this.setPermissionsToolStripMenuItem});
-            this.kontoToolStripMenuItem1.Name = "kontoToolStripMenuItem1";
-            this.kontoToolStripMenuItem1.Size = new System.Drawing.Size(61, 20);
-            this.kontoToolStripMenuItem1.Text = "&Konto";
-            // 
-            // createAccountToolStripMenuItem
-            // 
-            this.createAccountToolStripMenuItem.Name = "createAccountToolStripMenuItem";
-            this.createAccountToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
-            this.createAccountToolStripMenuItem.Text = "Skapa konto";
-            this.createAccountToolStripMenuItem.Click += new System.EventHandler(this.createAccountToolStripMenuItem_Click);
-            // 
-            // verifyAccountToolStripMenuItem
-            // 
-            this.verifyAccountToolStripMenuItem.Name = "verifyAccountToolStripMenuItem";
-            this.verifyAccountToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
-            this.verifyAccountToolStripMenuItem.Text = "Verifiera konto";
-            this.verifyAccountToolStripMenuItem.Click += new System.EventHandler(this.verifyAccountToolStripMenuItem_Click);
-            // 
-            // resetPasswordToolStripMenuItem
-            // 
-            this.resetPasswordToolStripMenuItem.Name = "resetPasswordToolStripMenuItem";
-            this.resetPasswordToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
-            this.resetPasswordToolStripMenuItem.Text = "Nollställ lösenord";
-            this.resetPasswordToolStripMenuItem.Click += new System.EventHandler(this.resetPasswordToolStripMenuItem_Click);
-            // 
-            // updateAccountInfoToolStripMenuItem
-            // 
-            this.updateAccountInfoToolStripMenuItem.Name = "updateAccountInfoToolStripMenuItem";
-            this.updateAccountInfoToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
-            this.updateAccountInfoToolStripMenuItem.Text = "Uppdatera kontoinformation";
-            this.updateAccountInfoToolStripMenuItem.Click += new System.EventHandler(this.updateAccountInfoToolStripMenuItem_Click);
-            // 
-            // loginToolStripMenuItem1
-            // 
-            this.loginToolStripMenuItem1.Name = "loginToolStripMenuItem1";
-            this.loginToolStripMenuItem1.Size = new System.Drawing.Size(178, 22);
-            this.loginToolStripMenuItem1.Text = "&Logga in";
-            this.loginToolStripMenuItem1.Click += new System.EventHandler(this.loginToolStripMenuItem1_Click);
-            // 
-            // logOutToolStripMenuItem
-            // 
-            this.logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
-            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
-            this.logOutToolStripMenuItem.Text = "Logga &ut";
-            this.logOutToolStripMenuItem.Click += new System.EventHandler(this.logOutToolStripMenuItem_Click);
-            // 
-            // setPermissionsToolStripMenuItem
-            // 
-            this.setPermissionsToolStripMenuItem.Name = "setPermissionsToolStripMenuItem";
-            this.setPermissionsToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
-            this.setPermissionsToolStripMenuItem.Text = "Sätt rättigheter";
-            this.setPermissionsToolStripMenuItem.Click += new System.EventHandler(this.setPermissionsToolStripMenuItem_Click);
-
             // 
             // MainForm
             // 
