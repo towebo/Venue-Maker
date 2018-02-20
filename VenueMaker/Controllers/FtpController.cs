@@ -148,11 +148,17 @@ namespace VenueMaker.Controllers
 
                 foreach (string ulfile in uploadqueue)
                 {
-                    ftp.UploadFile(
-                    ulfile,
-                    remotefolder,
-                    false
-                    );
+                    try
+                    {
+                        ftp.UploadFile(
+                        ulfile,
+                        remotefolder,
+                        false
+                        );
+                    }
+                    catch
+                    {
+                    } // Some error occured
 
                 } // foreach
 

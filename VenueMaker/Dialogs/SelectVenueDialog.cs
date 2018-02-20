@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using VenueMaker.Controllers;
+using VenueMaker.Kwenda;
 
 namespace VenueMaker.Dialogs
 {
@@ -25,13 +26,16 @@ namespace VenueMaker.Dialogs
             {
                 var files = DataController.Me.ListFiles(
                         DataController.Me.Token
+                        ).Where(w =>
+                            w.FileExt.ToLower() == ".venue"
                         );
 
+                
                 VenuesBS.DataSource = files;
 
                 VenuesLB.DataSource = VenuesBS;
-                VenuesLB.DisplayMember = "Name";
-                VenuesLB.ValueMember = "Id";
+                VenuesLB.DisplayMember = "FileName";
+                VenuesLB.ValueMember = "VenueId";
 
             }
             catch (Exception ex)
@@ -49,9 +53,20 @@ namespace VenueMaker.Dialogs
             }
             catch (Exception ex)
             {
-                throw;
+                MessageBox.Show(ex.Message, "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
         }
+
+        public KwendaFileListItem SelectedFile
+        {
+            get
+            {
+                return VenuesBS.Current as KwendaFileListItem;
+            }
+        }
+
+
+
     }
 }

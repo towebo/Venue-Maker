@@ -67,6 +67,39 @@ namespace VenueMaker.Controllers
             }
         }
 
+        public KwendaFileItem GetKwendaFile(string token, KwendaFileId fid)
+        {
+            try
+            {
+                using (KwendaServiceClient cli = new KwendaServiceClient())
+                {
+                    GetKwendaFileRequest req = new GetKwendaFileRequest();
+                    req.Token = token;
+                    req.FileIds = new KwendaFileId[] { fid };
+
+                    GetKwendaFileResponse resp = cli.GetKwendafiles(req);
+
+                    if (resp.Result == GetKwendaFileResponse.MethodResult.OtherError)
+                    {
+                        throw new Exception(resp.Message);
+
+                    } // Got an error
+
+                    return resp.Files.FirstOrDefault();
+                    
+                } // using
+
+            }
+            catch (Exception ex)
+            {
+                string errmsg = string.Format("Shit(): {0}",
+                    ex.Message
+                    );
+                throw new Exception(errmsg);
+
+            }
+        }
+
         public void SetPermissions(string token, KwendaPermissionItem[] permissionItems)
         {
             try

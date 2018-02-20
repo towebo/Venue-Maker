@@ -315,6 +315,7 @@
             this.verifyAccountToolStripMenuItem.Size = new System.Drawing.Size(226, 22);
             this.verifyAccountToolStripMenuItem.Text = "Verifiera konto";
             this.verifyAccountToolStripMenuItem.Click += new System.EventHandler(this.verifyAccountToolStripMenuItem_Click);
+            this.verifyAccountToolStripMenuItem.Visible = false;
             // 
             // resetPasswordToolStripMenuItem
             // 
@@ -322,6 +323,8 @@
             this.resetPasswordToolStripMenuItem.Size = new System.Drawing.Size(226, 22);
             this.resetPasswordToolStripMenuItem.Text = "Nollställ lösenord";
             this.resetPasswordToolStripMenuItem.Click += new System.EventHandler(this.resetPasswordToolStripMenuItem_Click);
+            this.resetPasswordToolStripMenuItem.Visible = false;
+
             // 
             // updateAccountInfoToolStripMenuItem
             // 
@@ -329,6 +332,7 @@
             this.updateAccountInfoToolStripMenuItem.Size = new System.Drawing.Size(226, 22);
             this.updateAccountInfoToolStripMenuItem.Text = "Uppdatera kontoinformation";
             this.updateAccountInfoToolStripMenuItem.Click += new System.EventHandler(this.updateAccountInfoToolStripMenuItem_Click);
+            this.updateAccountInfoToolStripMenuItem.Visible = false;
             // 
             // loginToolStripMenuItem1
             // 

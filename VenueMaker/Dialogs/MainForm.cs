@@ -345,7 +345,7 @@ namespace VenueMaker.Dialogs
                 Cursor.Current = Cursors.WaitCursor;
                 Application.DoEvents();
 
-                DoOpenVenue(OpenVenueDialog.FileName);
+                DoOpenVenue(OpenVenueDialog.FileName, "");
 
                 SystemSounds.Asterisk.Play();
 
@@ -358,14 +358,23 @@ namespace VenueMaker.Dialogs
 
         }
 
-        private void DoOpenVenue(string fileName)
+        private void DoOpenVenue(string fileName, string data)
         {
             try
             {
                 OpenVenueDialog.FileName = fileName;
                 SaveVenueDialog.FileName = fileName;
 
-                Venue = WFVenue.LoadFromFile(fileName);
+                if (string.IsNullOrEmpty(data))
+                {
+                    Venue = WFVenue.LoadFromFile(fileName);
+                }
+                else
+                {
+                    Venue = WFVenue.FromJson(data);
+
+                } // From cloud
+
                 string graphfile = Path.ChangeExtension(
                     fileName,
                     OpenGraphMLDialog.DefaultExt
@@ -442,10 +451,19 @@ namespace VenueMaker.Dialogs
                 } // Found
 
 
-                Venue.NodesGraph.Save(OpenGraphMLDialog.FileName);
+                if (sender == saveVenueFileAsToolStripMenuItem)
+                {
+                    Venue.NodesGraph.Save(OpenGraphMLDialog.FileName);
 
-                Venue.SaveToFile(SaveVenueDialog.FileName);
-                
+                    Venue.SaveToFile(SaveVenueDialog.FileName);
+
+                }
+                else
+                {
+                    PushToCloud();
+
+                } // Just save
+
                 SystemSounds.Asterisk.Play();
 
 
@@ -471,7 +489,7 @@ namespace VenueMaker.Dialogs
                     string vnu = cmdline[1];
                     if (File.Exists(vnu))
                     {
-                        DoOpenVenue(vnu);
+                        DoOpenVenue(vnu, "");
 
                     } // Open it
 
@@ -1535,8 +1553,33 @@ namespace VenueMaker.Dialogs
 
                     } // User cancelled
 
+                    KwendaFileListItem sel = dlg.SelectedFile;
+                    if (sel == null)
+                    {
+                        return;
 
+                    } // Nothing to load
 
+                    KwendaFileId fid = new KwendaFileId();
+                    fid.VenueId = sel.VenueId;
+                    fid.FileName = sel.FileName;
+
+                    KwendaFileItem venuefile = DataController.Me.GetKwendaFile(
+                        DataController.Me.Token,
+                        fid
+                        );
+
+                    if (venuefile == null)
+                    {
+                        throw new Exception("Något gick fel när filen skulle hämtas.");
+
+                    } // Error
+
+                    DoOpenVenue(
+                        venuefile.FileName,
+                        venuefile.Data
+                        );
+                    
 
                 } // using
 
