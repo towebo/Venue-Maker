@@ -331,6 +331,12 @@ namespace VenueMaker.Dialogs
 
         private void openVenueFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (!EnsureLogin())
+            {
+                return;
+
+            } // Not logged in
+
             LoadVenueFromCloud();
             return;
 
@@ -1331,27 +1337,47 @@ namespace VenueMaker.Dialogs
 
         }
 
-        private void setPermissionsToolStripMenuItem_Click(object sender, EventArgs e)
+        private bool EnsureLogin()
         {
             try
             {
-                if (!DataController.Me.IsTokenValid())
+                bool result = DataController.Me.IsTokenValid();
+
+                if (!result)
                 {
                     using (LoginDialog dlg = new LoginDialog())
                     {
                         dlg.Item = new LoginInfoModel();
                         dlg.Item.Email = DataController.Me.Email;
 
-                        if (dlg.ShowDialog() != DialogResult.OK)
-                        {
-                            return;
-
-                        } // User canceled
-
+                        result = dlg.ShowDialog() == DialogResult.OK;
+                        
                     } // using LoginDialog
 
                 } // Not logged in correctly
 
+                return result;
+
+            }
+            catch (Exception ex)
+            {
+                return false;
+
+            }
+
+        }
+
+
+        private void setPermissionsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!EnsureLogin())
+                {
+                    return;
+
+                } // Not logged in
+                
                 using (SetPermissionsDialog dlg = new SetPermissionsDialog())
                 {
                     dlg.VenueId = Venue.Id;

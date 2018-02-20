@@ -270,6 +270,7 @@
             this.pushToCloudMenuItemToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
             this.pushToCloudMenuItemToolStripMenuItem.Text = "Ladda upp till molnet";
             this.pushToCloudMenuItemToolStripMenuItem.Click += new System.EventHandler(this.pushToCloudMenuItemToolStripMenuItem_Click);
+            this.pushToCloudMenuItemToolStripMenuItem.Visible = false;
             // 
             // toolStripSeparator2
             // 

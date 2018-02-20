@@ -112,8 +112,10 @@
             // 
             // LoginDialog
             // 
+            this.AcceptButton = this.LoginBtn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.CancelBtn;
             this.ClientSize = new System.Drawing.Size(199, 211);
             this.Controls.Add(this.VerificationCodeTB);
             this.Controls.Add(this.VerificationCodeLabel);
