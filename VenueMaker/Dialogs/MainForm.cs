@@ -1,4 +1,4 @@
-﻿//#define WITHADMINRIGHTS
+﻿#define WITHADMINRIGHTS
 
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -337,8 +337,18 @@ namespace VenueMaker.Dialogs
 
             } // Not logged in
 
-            LoadVenueFromCloud();
+            bool didload = LoadVenueFromCloud();
+
+#if WITHADMINRIGHTS
+#else
             return;
+#endif
+
+            if (didload)
+            {
+                return;
+
+            } // Loaded from cloud
 
             if (OpenVenueDialog.ShowDialog() != DialogResult.OK)
             {
@@ -1567,7 +1577,7 @@ namespace VenueMaker.Dialogs
             }
         }
 
-        public void LoadVenueFromCloud()
+        public bool LoadVenueFromCloud()
         {
             try
             {
@@ -1575,14 +1585,14 @@ namespace VenueMaker.Dialogs
                 {
                     if (dlg.ShowDialog() != DialogResult.OK)
                     {
-                        return;
+                        return false;
 
                     } // User cancelled
 
                     KwendaFileListItem sel = dlg.SelectedFile;
                     if (sel == null)
                     {
-                        return;
+                        return false;
 
                     } // Nothing to load
 
@@ -1605,7 +1615,8 @@ namespace VenueMaker.Dialogs
                         venuefile.FileName,
                         venuefile.Data
                         );
-                    
+
+                    return true;
 
                 } // using
 
@@ -1613,6 +1624,7 @@ namespace VenueMaker.Dialogs
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
 
             }
         }
