@@ -393,6 +393,19 @@ namespace VenueMaker.Dialogs
                 if (string.IsNullOrEmpty(data))
                 {
                     Venue = WFVenue.LoadFromFile(fileName);
+
+                    string graphfile = Path.ChangeExtension(
+                    fileName,
+                    OpenGraphMLDialog.DefaultExt
+                    );
+                    OpenGraphMLDialog.FileName = graphfile;
+                    if (File.Exists(graphfile))
+                    {
+                        WFGraph g = WFGraph.LoadFromGraphML(graphfile);
+                        Venue.GraphML = g.ToString();
+
+                    }
+
                 }
                 else
                 {
@@ -400,17 +413,6 @@ namespace VenueMaker.Dialogs
 
                 } // From cloud
 
-                string graphfile = Path.ChangeExtension(
-                    fileName,
-                    OpenGraphMLDialog.DefaultExt
-                    );
-                OpenGraphMLDialog.FileName = graphfile;
-                if (File.Exists(graphfile))
-                {
-                    WFGraph g = WFGraph.LoadFromGraphML(graphfile);
-                    Venue.GraphML = g.ToString();
-
-                }
                                 
                 VenueBS.DataSource = Venue;
                 
@@ -478,8 +480,9 @@ namespace VenueMaker.Dialogs
 
                 if (sender == saveVenueFileAsToolStripMenuItem)
                 {
+                    
                     Venue.NodesGraph.Save(OpenGraphMLDialog.FileName);
-
+                    
                     Venue.SaveToFile(SaveVenueDialog.FileName);
 
                 }
@@ -1238,7 +1241,8 @@ namespace VenueMaker.Dialogs
                     Venue.Id,
                     newfn
                     );
-            }
+
+            } // Doesn't start with the Venue Id
 
             mediafile = Path.Combine(mediafile, newfn);
 
@@ -1271,7 +1275,8 @@ namespace VenueMaker.Dialogs
 
             } // Not the same file
 
-            return mediafile;
+            return Path.GetFileName(mediafile);
+            
 
         }
 
