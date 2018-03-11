@@ -12,6 +12,7 @@ namespace VenueMaker.Controllers
     public class FtpController
     {
         private static FtpController me;
+        private List<string> downloadqueue;
         private List<string> uploadqueue;
         private List<string> filesonserver;
 
@@ -25,6 +26,7 @@ namespace VenueMaker.Controllers
 
         public FtpController()
         {
+            downloadqueue = new List<string>();
             uploadqueue = new List<string>();
             filesonserver = new List<string>();
 
@@ -82,6 +84,12 @@ namespace VenueMaker.Controllers
 
         }
 
+        public void AddToDownloadQueue(string fileName)
+        {
+            downloadqueue.Add(fileName);
+            
+        }
+
         public void AddToUploadQueue(string fileName)
         {
             uploadqueue.Add(fileName);
@@ -128,6 +136,63 @@ namespace VenueMaker.Controllers
 
         }
 
+
+        public void DownloadFiles(string destFolder)
+        {
+            try
+            {
+                string remotefolder = FtpRootFolder;
+
+                FtpClient ftp = new FtpClient(
+                    FtpHost,
+                    FtpUser,
+                    FtpPw
+                    );
+
+                foreach (string dlfile in downloadqueue)
+                {
+                    try
+                    {
+                        bool dodownload = true;
+                        string dstfile = Path.Combine(destFolder, dlfile);
+                        if (File.Exists(dstfile))
+                        {
+                            FileInfo fi = new FileInfo(dstfile);
+                            DateTime ftpdate = ftp.FtpFileDate(dlfile, remotefolder);
+
+                            // Local file is newer
+                            if (fi.LastWriteTimeUtc > ftpdate)
+                            {
+                                continue;
+
+                            } // Local is newer
+                            
+                        } // Local file exists
+
+                        ftp.DownloadFile(
+                        dlfile,
+                        remotefolder,
+                        destFolder
+                        );
+
+                    }
+                    catch
+                    {
+                    } // Some error occured
+
+                } // foreach
+
+                downloadqueue.Clear();
+
+            }
+            catch (Exception ex)
+            {
+                string errmsg = string.Format("DownloadFiles(): {0}",
+                    ex.Message
+                    );
+                throw new Exception(errmsg);
+            }
+        }
 
         public void UploadFiles()
         {

@@ -52,6 +52,14 @@ namespace VenueMaker.Dialogs
         {
             try
             {
+                Preferences.Load();
+
+                if (!Directory.Exists(Preferences.Me.DataFolder))
+                {
+                    Directory.CreateDirectory(Preferences.Me.DataFolder);
+
+                } // Create folder for data files
+
                 this.Text = AssemblyInfo.GetProductAndVersion();
 
                 // Disable stuff for nomal users
@@ -346,10 +354,11 @@ namespace VenueMaker.Dialogs
 
             if (didload)
             {
+                SystemSounds.Asterisk.Play();
                 return;
 
             } // Loaded from cloud
-
+    
             if (OpenVenueDialog.ShowDialog() != DialogResult.OK)
             {
                 return;
@@ -1214,7 +1223,14 @@ namespace VenueMaker.Dialogs
 
         public string UseThisFile(string src)
         {
-            string mediafile = Path.GetDirectoryName(SaveVenueDialog.FileName);
+            string mediafile = GetDataFilesFolder();
+
+            if (!Directory.Exists(mediafile))
+            {
+                Directory.CreateDirectory(mediafile);
+
+            } // Create folder if it doesn't exist
+            
             string newfn = Path.GetFileName(src);
             if (!newfn.StartsWith(this.Venue.Id))
             {
@@ -1432,7 +1448,8 @@ namespace VenueMaker.Dialogs
                 } // graphml exists
 
                 // Add the media files
-                string fldr = Path.GetDirectoryName(venuefile);
+                string fldr = GetDataFilesFolder();
+
                 if (Venue.PointsOfInterest != null)
                 {
                     foreach (WFPointOfInterest poi in Venue.PointsOfInterest)
@@ -1589,6 +1606,9 @@ namespace VenueMaker.Dialogs
 
                     } // User cancelled
 
+                    Cursor.Current = Cursors.WaitCursor;
+                    Application.DoEvents();
+
                     KwendaFileListItem sel = dlg.SelectedFile;
                     if (sel == null)
                     {
@@ -1616,6 +1636,25 @@ namespace VenueMaker.Dialogs
                         venuefile.Data
                         );
 
+                    // Download missing files
+                    string fldr = GetDataFilesFolder();
+                    
+                    var files = DataController.Me.ListFiles(
+                        DataController.Me.Token
+                        ).Where(w =>
+                            w.VenueId == Venue.Id &&
+                            w.FileExt.ToLower() != ".venue" &&
+                            w.FileExt.ToLower() != ".graphml"
+                        );
+
+                    foreach (var f in files)
+                    {
+                        FtpController.Me.AddToDownloadQueue(f.FileName);
+
+                    } // foreach file
+
+                    FtpController.Me.DownloadFiles(fldr);
+
                     return true;
 
                 } // using
@@ -1627,12 +1666,53 @@ namespace VenueMaker.Dialogs
                 return false;
 
             }
+            finally
+            {
+                Cursor.Current = Cursors.Default;
+
+            }
+
+        }
+
+        private void selectDataFolderToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DataFolderDialog.SelectedPath = Preferences.Me.DataFolder;
+                if (DialogResult.OK != DataFolderDialog.ShowDialog())
+                {
+                    return;
+
+                } // Cancelled
+
+                Preferences.Me.DataFolder = DataFolderDialog.SelectedPath;
+                Preferences.Me.Save();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+
         }
 
 
+        public string GetDataFilesFolder()
+        {
+            string folder = Path.Combine(
+                Preferences.Me.DataFolder,
+                Venue.Id
+                );
 
+            if (!Directory.Exists(folder))
+            {
+                Directory.CreateDirectory(folder);
 
+            } // Create it
 
+            return folder;
+        }
 
     }
 }

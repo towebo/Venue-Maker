@@ -65,7 +65,7 @@ namespace VenueMaker.Utils
 		}
 
 
-		public void DownloadFile( string aFtpFile, string aFtpFolder, string aLocalFolder )
+		public void DownloadFile(string aFtpFile, string aFtpFolder, string aLocalFolder)
 		{
 			string weburl = this.Host;
 			weburl += aFtpFolder;

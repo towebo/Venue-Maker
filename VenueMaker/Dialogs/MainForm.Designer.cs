@@ -182,6 +182,9 @@
             this.EdgesForPOIBS = new System.Windows.Forms.BindingSource(this.components);
             this.EdgeBS = new System.Windows.Forms.BindingSource(this.components);
             this.NodesBS = new System.Windows.Forms.BindingSource(this.components);
+            this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.selectDataFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.DataFolderDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.MainMenuStrip.SuspendLayout();
             this.Tabs.SuspendLayout();
             this.VenueTab.SuspendLayout();
@@ -205,7 +208,8 @@
             this.MainMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.toolStripMenuItem2,
-            this.kontoToolStripMenuItem1});
+            this.kontoToolStripMenuItem1,
+            this.optionsToolStripMenuItem});
             this.MainMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.MainMenuStrip.Name = "MainMenuStrip";
             this.MainMenuStrip.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
@@ -269,8 +273,8 @@
             this.pushToCloudMenuItemToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.U)));
             this.pushToCloudMenuItemToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
             this.pushToCloudMenuItemToolStripMenuItem.Text = "Ladda upp till molnet";
-            this.pushToCloudMenuItemToolStripMenuItem.Click += new System.EventHandler(this.pushToCloudMenuItemToolStripMenuItem_Click);
             this.pushToCloudMenuItemToolStripMenuItem.Visible = false;
+            this.pushToCloudMenuItemToolStripMenuItem.Click += new System.EventHandler(this.pushToCloudMenuItemToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
@@ -315,25 +319,24 @@
             this.verifyAccountToolStripMenuItem.Name = "verifyAccountToolStripMenuItem";
             this.verifyAccountToolStripMenuItem.Size = new System.Drawing.Size(226, 22);
             this.verifyAccountToolStripMenuItem.Text = "Verifiera konto";
-            this.verifyAccountToolStripMenuItem.Click += new System.EventHandler(this.verifyAccountToolStripMenuItem_Click);
             this.verifyAccountToolStripMenuItem.Visible = false;
+            this.verifyAccountToolStripMenuItem.Click += new System.EventHandler(this.verifyAccountToolStripMenuItem_Click);
             // 
             // resetPasswordToolStripMenuItem
             // 
             this.resetPasswordToolStripMenuItem.Name = "resetPasswordToolStripMenuItem";
             this.resetPasswordToolStripMenuItem.Size = new System.Drawing.Size(226, 22);
             this.resetPasswordToolStripMenuItem.Text = "Nollställ lösenord";
-            this.resetPasswordToolStripMenuItem.Click += new System.EventHandler(this.resetPasswordToolStripMenuItem_Click);
             this.resetPasswordToolStripMenuItem.Visible = false;
-
+            this.resetPasswordToolStripMenuItem.Click += new System.EventHandler(this.resetPasswordToolStripMenuItem_Click);
             // 
             // updateAccountInfoToolStripMenuItem
             // 
             this.updateAccountInfoToolStripMenuItem.Name = "updateAccountInfoToolStripMenuItem";
             this.updateAccountInfoToolStripMenuItem.Size = new System.Drawing.Size(226, 22);
             this.updateAccountInfoToolStripMenuItem.Text = "Uppdatera kontoinformation";
-            this.updateAccountInfoToolStripMenuItem.Click += new System.EventHandler(this.updateAccountInfoToolStripMenuItem_Click);
             this.updateAccountInfoToolStripMenuItem.Visible = false;
+            this.updateAccountInfoToolStripMenuItem.Click += new System.EventHandler(this.updateAccountInfoToolStripMenuItem_Click);
             // 
             // loginToolStripMenuItem1
             // 
@@ -1571,6 +1574,21 @@
             this.OpenCSVFileDialog.DefaultExt = "txt";
             this.OpenCSVFileDialog.Filter = "CSV-filer (*.csv, *.txt, *.xls)|*.csv;*.txt;*.xls|Alla filer (*)|*.*";
             // 
+            // optionsToolStripMenuItem
+            // 
+            this.optionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.selectDataFolderToolStripMenuItem});
+            this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(70, 20);
+            this.optionsToolStripMenuItem.Text = "Alternati&v";
+            // 
+            // selectDataFolderToolStripMenuItem
+            // 
+            this.selectDataFolderToolStripMenuItem.Name = "selectDataFolderToolStripMenuItem";
+            this.selectDataFolderToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.selectDataFolderToolStripMenuItem.Text = "&Välj mapp för datafiler";
+            this.selectDataFolderToolStripMenuItem.Click += new System.EventHandler(this.selectDataFolderToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1768,5 +1786,8 @@
         private System.Windows.Forms.ToolStripMenuItem loginToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem logOutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem setPermissionsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem selectDataFolderToolStripMenuItem;
+        private System.Windows.Forms.FolderBrowserDialog DataFolderDialog;
     }
 }

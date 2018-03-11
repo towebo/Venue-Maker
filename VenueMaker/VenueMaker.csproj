@@ -168,12 +168,14 @@
     <Compile Include="Models\BLEBeacon.cs" />
     <Compile Include="Models\BLEBeaconwCache.cs" />
     <Compile Include="Models\CacheFile.cs" />
+    <Compile Include="Models\Constants.cs" />
     <Compile Include="Models\CreateAccountInfoModel.cs" />
     <Compile Include="Models\DirectionsList.cs" />
     <Compile Include="Models\EdgeForPOI.cs" />
     <Compile Include="Models\InfoCategoryItem.cs" />
     <Compile Include="Models\LoginInfoModel.cs" />
     <Compile Include="Models\NewEdgeItem.cs" />
+    <Compile Include="Models\Preferences.cs" />
     <Compile Include="Models\VenueVisibilityItem.cs" />
     <Compile Include="Models\WFHeadingInfo.cs" />
     <Compile Include="Models\CacheNodeBeacon.cs" />
