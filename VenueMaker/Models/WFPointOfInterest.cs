@@ -22,7 +22,25 @@ namespace WayfindR.Models
         public string BeaconUuid { get; set; }
         public int BeaconMajor { get; set; }
         public int BeaconMinor { get; set; }
+        public string Building { get; set; }
         public string Floor { get; set; }
+
+
+		public void ResetAutoPlayFlags()
+		{
+			if (this.Information == null)
+			{
+				return;
+
+			} // No information
+
+			foreach (WFPOIInformation poii in this.Information)
+			{
+				poii.AlreadyAutoPlayed = false;
+
+			} // forea   }
+
+		}
 
         public string TextInList
         {

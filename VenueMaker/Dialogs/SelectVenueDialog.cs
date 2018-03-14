@@ -9,11 +9,17 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using VenueMaker.Controllers;
 using VenueMaker.Kwenda;
+using System.Linq;
+using VenueMaker.Helpers;
 
 namespace VenueMaker.Dialogs
 {
     public partial class SelectVenueDialog : Form
     {
+        private Dictionary<string,string> listdict;
+        private Dictionary<string, KwendaFileListItem> filesdict;
+
+
         public SelectVenueDialog()
         {
             InitializeComponent();
@@ -29,13 +35,23 @@ namespace VenueMaker.Dialogs
                         ).Where(w =>
                             w.FileExt.ToLower() == ".venue"
                         );
+                filesdict = files.ToDictionary(w => w.VenueId);
+                listdict = new Dictionary<string, string>();
+                files.ToList().ForEach(w =>
+                {
+                    listdict.Add(
+                        w.VenueId,
+                        !string.IsNullOrWhiteSpace(w.FileTitle) ?
+                            w.FileTitle :
+                            w.FileName
+                            );
+                });
 
-                
-                VenuesBS.DataSource = files;
+                VenuesBS.DataSource = listdict;
 
                 VenuesLB.DataSource = VenuesBS;
-                VenuesLB.DisplayMember = "FileName";
-                VenuesLB.ValueMember = "VenueId";
+                VenuesLB.DisplayMember = "Value";
+                VenuesLB.ValueMember = "Key";
 
             }
             catch (Exception ex)
@@ -62,11 +78,11 @@ namespace VenueMaker.Dialogs
         {
             get
             {
-                return VenuesBS.Current as KwendaFileListItem;
+                return filesdict[Convert.ToString(VenuesLB.SelectedValue)];
             }
         }
 
 
-
+        
     }
 }

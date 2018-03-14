@@ -181,6 +181,7 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="FileExt" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="FileName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FileTitle" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="LastModified" type="xs:dateTime" />
       <xs:element minOccurs="0" name="VenueId" nillable="true" type="xs:string" />
     </xs:sequence>
@@ -232,6 +233,7 @@
       <xs:element minOccurs="0" name="Data" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="FileExt" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="FileName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FileTitle" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="LastModified" type="xs:dateTime" />
       <xs:element minOccurs="0" name="VenueId" nillable="true" type="xs:string" />
     </xs:sequence>

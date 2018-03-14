@@ -12,6 +12,7 @@ using System.Reflection;
 using System.Globalization;
 using WayfindR.Helpers;
 using System.Text;
+using Mawingu;
 
 namespace WayfindR.Models
 {
@@ -430,6 +431,7 @@ namespace WayfindR.Models
             }
             catch (Exception ex)
             {
+                LogCenter.Error("PopulateGraphMLKeys", ex.Message);
 
             }
 
@@ -545,8 +547,9 @@ namespace WayfindR.Models
                 } // foreach prop name
                 
             }
-            catch
+            catch (Exception ex)
             {
+                LogCenter.Error("MakeXelementsOfThese", ex.Message);
                 throw;
 
             }
@@ -642,6 +645,7 @@ namespace WayfindR.Models
             }
             catch (Exception ex)
             {
+                LogCenter.Error("GetPropertyValues", ex.Message);
                 throw;
 
             }
@@ -711,7 +715,6 @@ namespace WayfindR.Models
                         }
                         catch
                         {
-                            string nils = "";
                         }
                         
 
@@ -724,6 +727,7 @@ namespace WayfindR.Models
             }
             catch (Exception ex)
             {
+                LogCenter.Error("SetPropertyValues", ex.Message);
                 throw;
 
             }
@@ -1204,7 +1208,8 @@ namespace WayfindR.Models
                 Encoding.UTF8.GetBytes(this.ToString())
                 );
 
-            return result;
+        
+    return result;
 
         }
 

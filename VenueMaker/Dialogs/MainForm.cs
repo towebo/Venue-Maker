@@ -18,9 +18,7 @@ using WayfindR.Models;
 using VenueMaker.Helpers;
 using VenueMaker.Models;
 using WayfindR.Helpers;
-using WayfindR.Helpers;
 using WayfindR;
-using WayfindR.Helpers;
 using Mawingu;
 using VenueMaker.Kwenda;
 
@@ -1441,6 +1439,7 @@ namespace VenueMaker.Dialogs
                 kvenue.FileName = Path.GetFileName(venuefile);
                 kvenue.FileExt = Path.GetExtension(kvenue.FileName);
                 kvenue.Data = Venue.ToString();
+                kvenue.FileTitle = Venue.GetFileTitle();
                 kfiles.Add(kvenue);
 
                 FtpController.Me.AddToUploadQueue(venuefile);

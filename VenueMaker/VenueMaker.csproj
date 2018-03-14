@@ -110,6 +110,7 @@
     <Compile Include="Controllers\DataController.cs" />
     <Compile Include="Controllers\FtpController.cs" />
     <Compile Include="Controllers\GraphController.cs" />
+    <Compile Include="Controllers\LogCenter.cs" />
     <Compile Include="Controllers\SQLiteController.cs" />
     <Compile Include="Controllers\VenueController.cs" />
     <Compile Include="Dialogs\CreateAccountDialog.cs">
@@ -163,8 +164,10 @@
     <Compile Include="Helpers\AssemblyInfo.cs" />
     <Compile Include="Helpers\FloorComparer.cs" />
     <Compile Include="Helpers\HeadingHelper.cs" />
+    <Compile Include="Helpers\KwendaServiceHelper.cs" />
     <Compile Include="Helpers\NumericStringHelper.cs" />
     <Compile Include="Helpers\PasswordHelper.cs" />
+    <Compile Include="Helpers\VenueHelper.cs" />
     <Compile Include="Models\BLEBeacon.cs" />
     <Compile Include="Models\BLEBeaconwCache.cs" />
     <Compile Include="Models\CacheFile.cs" />

@@ -1236,6 +1236,9 @@ namespace VenueMaker.Kwenda {
         private string FileNameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FileTitleField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.DateTime LastModifiedField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -1273,6 +1276,19 @@ namespace VenueMaker.Kwenda {
                 if ((object.ReferenceEquals(this.FileNameField, value) != true)) {
                     this.FileNameField = value;
                     this.RaisePropertyChanged("FileName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FileTitle {
+            get {
+                return this.FileTitleField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FileTitleField, value) != true)) {
+                    this.FileTitleField = value;
+                    this.RaisePropertyChanged("FileTitle");
                 }
             }
         }
@@ -1542,6 +1558,9 @@ namespace VenueMaker.Kwenda {
         private string FileNameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FileTitleField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.DateTime LastModifiedField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -1592,6 +1611,19 @@ namespace VenueMaker.Kwenda {
                 if ((object.ReferenceEquals(this.FileNameField, value) != true)) {
                     this.FileNameField = value;
                     this.RaisePropertyChanged("FileName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FileTitle {
+            get {
+                return this.FileTitleField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FileTitleField, value) != true)) {
+                    this.FileTitleField = value;
+                    this.RaisePropertyChanged("FileTitle");
                 }
             }
         }

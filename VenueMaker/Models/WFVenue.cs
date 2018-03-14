@@ -5,6 +5,7 @@ using Newtonsoft.Json.Linq;
 using System.IO;
 using Newtonsoft.Json;
 using System.Text;
+using Mawingu;
 
 namespace WayfindR.Models
 {
@@ -434,7 +435,7 @@ namespace WayfindR.Models
             }
         }
 
-        public string ToString()
+        public override string ToString()
         {
             try
             {
@@ -486,7 +487,10 @@ namespace WayfindR.Models
 
                 WFPointOfInterest poi = (
                     from x in PointsOfInterest
-                    where x.BeaconUuid == uuid && x.BeaconMajor == major && x.BeaconMinor == minor
+                    where 
+                        x.BeaconUuid .ToLower() == uuid.ToLower() && 
+                        x.BeaconMajor == major && 
+                        x.BeaconMinor == minor
                     select x
                     ).FirstOrDefault();
 
@@ -545,6 +549,7 @@ namespace WayfindR.Models
 
                     poi.Name = node.Name;
                     poi.DescriptiveName = node.DescriptiveName;
+                    poi.Building = node.Building;
                     poi.Floor = node.Floor;
                     
                 } // foreach graph.node
@@ -597,6 +602,7 @@ namespace WayfindR.Models
             }
             catch (Exception ex)
             {
+                LogCenter.Error("RegenerateGraph", ex.Message);
                 throw;
 
             }
