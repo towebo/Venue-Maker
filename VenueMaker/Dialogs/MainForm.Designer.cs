@@ -49,6 +49,8 @@
             this.loginToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.logOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.setPermissionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.selectDataFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.kontoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.OpenVenueDialog = new System.Windows.Forms.OpenFileDialog();
             this.OpenGraphMLDialog = new System.Windows.Forms.OpenFileDialog();
@@ -182,8 +184,6 @@
             this.EdgesForPOIBS = new System.Windows.Forms.BindingSource(this.components);
             this.EdgeBS = new System.Windows.Forms.BindingSource(this.components);
             this.NodesBS = new System.Windows.Forms.BindingSource(this.components);
-            this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.selectDataFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.DataFolderDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.MainMenuStrip.SuspendLayout();
             this.Tabs.SuspendLayout();
@@ -358,6 +358,21 @@
             this.setPermissionsToolStripMenuItem.Size = new System.Drawing.Size(226, 22);
             this.setPermissionsToolStripMenuItem.Text = "Sätt rättigheter";
             this.setPermissionsToolStripMenuItem.Click += new System.EventHandler(this.setPermissionsToolStripMenuItem_Click);
+            // 
+            // optionsToolStripMenuItem
+            // 
+            this.optionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.selectDataFolderToolStripMenuItem});
+            this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(70, 20);
+            this.optionsToolStripMenuItem.Text = "Alternati&v";
+            // 
+            // selectDataFolderToolStripMenuItem
+            // 
+            this.selectDataFolderToolStripMenuItem.Name = "selectDataFolderToolStripMenuItem";
+            this.selectDataFolderToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.selectDataFolderToolStripMenuItem.Text = "&Välj mapp för datafiler";
+            this.selectDataFolderToolStripMenuItem.Click += new System.EventHandler(this.selectDataFolderToolStripMenuItem_Click);
             // 
             // kontoToolStripMenuItem
             // 
@@ -1573,21 +1588,6 @@
             // 
             this.OpenCSVFileDialog.DefaultExt = "txt";
             this.OpenCSVFileDialog.Filter = "CSV-filer (*.csv, *.txt, *.xls)|*.csv;*.txt;*.xls|Alla filer (*)|*.*";
-            // 
-            // optionsToolStripMenuItem
-            // 
-            this.optionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.selectDataFolderToolStripMenuItem});
-            this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(70, 20);
-            this.optionsToolStripMenuItem.Text = "Alternati&v";
-            // 
-            // selectDataFolderToolStripMenuItem
-            // 
-            this.selectDataFolderToolStripMenuItem.Name = "selectDataFolderToolStripMenuItem";
-            this.selectDataFolderToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
-            this.selectDataFolderToolStripMenuItem.Text = "&Välj mapp för datafiler";
-            this.selectDataFolderToolStripMenuItem.Click += new System.EventHandler(this.selectDataFolderToolStripMenuItem_Click);
             // 
             // MainForm
             // 
