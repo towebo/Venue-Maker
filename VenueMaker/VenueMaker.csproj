@@ -167,6 +167,7 @@
     <Compile Include="Helpers\KwendaServiceHelper.cs" />
     <Compile Include="Helpers\NumericStringHelper.cs" />
     <Compile Include="Helpers\PasswordHelper.cs" />
+    <Compile Include="Helpers\TravelTypeHelper.cs" />
     <Compile Include="Helpers\VenueHelper.cs" />
     <Compile Include="Models\BLEBeacon.cs" />
     <Compile Include="Models\BLEBeaconwCache.cs" />
@@ -179,6 +180,7 @@
     <Compile Include="Models\LoginInfoModel.cs" />
     <Compile Include="Models\NewEdgeItem.cs" />
     <Compile Include="Models\Preferences.cs" />
+    <Compile Include="Models\RoutePreferences.cs" />
     <Compile Include="Models\VenueVisibilityItem.cs" />
     <Compile Include="Models\WFHeadingInfo.cs" />
     <Compile Include="Models\CacheNodeBeacon.cs" />
@@ -189,6 +191,7 @@
     <Compile Include="Models\WFPlattform.cs" />
     <Compile Include="Models\WFPOIInformation.cs" />
     <Compile Include="Models\WFPointOfInterest.cs" />
+    <Compile Include="Models\WFTravelType.cs" />
     <Compile Include="Models\WFVenue.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

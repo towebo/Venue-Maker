@@ -215,6 +215,9 @@ namespace VenueMaker.Dialogs
                 EdgeEndHeadingTB.DataBindings.Add("Text", EdgeBS, "EndHeading");
                 EdgeTravelTimeTB.DataBindings.Add("Text", EdgeBS, "TravelTime");
 
+
+                EdgeTravelTypeCombo.DataSource = TravelTypeHelper.ToDictionary().Keys.ToList();
+                
                 EdgeTravelTypeCombo.DataBindings.Add("Text", EdgeBS, "TravelType");
 
 

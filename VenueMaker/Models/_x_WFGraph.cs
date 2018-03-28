@@ -24,7 +24,6 @@ namespace WayfindR.Models
 
 
         public const string GraphMLNameSpace = "http://graphml.graphdrawing.org/xmlns";
-        public const double IrrelevantRouteTravelTime = 1000000000.0;
 
 
 
@@ -1389,38 +1388,7 @@ namespace WayfindR.Models
         {
             IEnumerable<WFEdge<WFNode>> path;
 
-            Func<WFEdge<WFNode>, double> edgeCost = w =>
-            {
-                WFTravelType ttype = w.TravelType.ToTravelType();
-                double ttime = w.TravelTime;
-
-                switch (ttype)
-                {
-                    case WFTravelType.Elevator:
-                        if (!RoutePreferences.Me.Elevators) ttime = IrrelevantRouteTravelTime;
-                        break;
-
-                    case WFTravelType.Escalator:
-                        if (!RoutePreferences.Me.Escalators) ttime = IrrelevantRouteTravelTime;
-                        break;
-
-                    case WFTravelType.Stairs:
-                        if (!RoutePreferences.Me.Stairs) ttime = IrrelevantRouteTravelTime;
-                        break;
-
-                    case WFTravelType.MetalStairs:
-                        if (!RoutePreferences.Me.MetalStairs) ttime = IrrelevantRouteTravelTime;
-                        break;
-
-                    case WFTravelType.Ladder:
-                        if (!RoutePreferences.Me.Ladders) ttime = IrrelevantRouteTravelTime;
-                        break;
-
-                } // switch
-
-                return ttime;
-
-            };
+            Func<WFEdge<WFNode>, double> edgeCost = w => w.TravelTime;
 
             DijkstraShortestPathAlgorithm<WFNode, WFEdge<WFNode>> dijkstra = new DijkstraShortestPathAlgorithm<WFNode, WFEdge<WFNode>>(
                 this,
@@ -1451,6 +1419,9 @@ namespace WayfindR.Models
                 } // using predecessor
                 
             } // using distance observer
+
+            
+            
 
             return path;
 
