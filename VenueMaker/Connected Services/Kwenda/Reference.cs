@@ -103,7 +103,7 @@ namespace VenueMaker.Kwenda {
         private string MessageField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private VenueMaker.Kwenda.CreateAccountResponse.MethodResult ReturnCodeField;
+        private VenueMaker.Kwenda.CreateAccountResponse.MethodResult ResultField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -129,14 +129,14 @@ namespace VenueMaker.Kwenda {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public VenueMaker.Kwenda.CreateAccountResponse.MethodResult ReturnCode {
+        public VenueMaker.Kwenda.CreateAccountResponse.MethodResult Result {
             get {
-                return this.ReturnCodeField;
+                return this.ResultField;
             }
             set {
-                if ((this.ReturnCodeField.Equals(value) != true)) {
-                    this.ReturnCodeField = value;
-                    this.RaisePropertyChanged("ReturnCode");
+                if ((this.ResultField.Equals(value) != true)) {
+                    this.ResultField = value;
+                    this.RaisePropertyChanged("Result");
                 }
             }
         }
@@ -538,7 +538,10 @@ namespace VenueMaker.Kwenda {
             NotLoggedIn = 1,
             
             [System.Runtime.Serialization.EnumMemberAttribute()]
-            OtherError = 2,
+            NotFound = 2,
+            
+            [System.Runtime.Serialization.EnumMemberAttribute()]
+            OtherError = 3,
         }
     }
     
@@ -693,7 +696,13 @@ namespace VenueMaker.Kwenda {
             InvalidCode = 2,
             
             [System.Runtime.Serialization.EnumMemberAttribute()]
-            OtherError = 3,
+            CodeAlreadyUsed = 3,
+            
+            [System.Runtime.Serialization.EnumMemberAttribute()]
+            CodeExpired = 4,
+            
+            [System.Runtime.Serialization.EnumMemberAttribute()]
+            OtherError = 5,
         }
     }
     
@@ -1549,6 +1558,9 @@ namespace VenueMaker.Kwenda {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool ActiveField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string DataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -1573,6 +1585,19 @@ namespace VenueMaker.Kwenda {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool Active {
+            get {
+                return this.ActiveField;
+            }
+            set {
+                if ((this.ActiveField.Equals(value) != true)) {
+                    this.ActiveField = value;
+                    this.RaisePropertyChanged("Active");
+                }
             }
         }
         

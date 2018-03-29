@@ -47,7 +47,7 @@ namespace VenueMaker.Dialogs
                             );
                 });
 
-                VenuesBS.DataSource = listdict;
+                VenuesBS.DataSource = listdict.OrderBy(w => w.Value);
 
                 VenuesLB.DataSource = VenuesBS;
                 VenuesLB.DisplayMember = "Value";

@@ -68,6 +68,7 @@ namespace VenueMaker.Dialogs
                 newVenueToolStripMenuItem.Visible = hasadminrights;
                 saveVenueFileAsToolStripMenuItem.Visible = hasadminrights;
 
+                MakeVenueActiveChk.Visible = hasadminrights;
 
 
 
@@ -1378,10 +1379,15 @@ namespace VenueMaker.Dialogs
         {
             try
             {
+                Cursor.Current = Cursors.WaitCursor;
+                Application.DoEvents();
+
                 bool result = DataController.Me.IsTokenValid();
 
                 if (!result)
                 {
+                    Cursor.Current = Cursors.Default;
+
                     using (LoginDialog dlg = new LoginDialog())
                     {
                         dlg.Item = new LoginInfoModel();
@@ -1399,6 +1405,11 @@ namespace VenueMaker.Dialogs
             catch (Exception ex)
             {
                 return false;
+
+            }
+            finally
+            {
+                Cursor.Current = Cursors.Default;
 
             }
 
@@ -1440,6 +1451,17 @@ namespace VenueMaker.Dialogs
             try
             {
                 string venuefile = SaveVenueDialog.FileName;
+                if (string.IsNullOrWhiteSpace(venuefile))
+                {
+                    string safename = Venue.Name.Replace(" ", "_");
+
+                    venuefile = string.Format("{0}_{1}.{2}",
+                        Venue.Id,
+                        safename,
+                        SaveVenueDialog.DefaultExt
+                        );
+
+                } // No file name
 
                 List<KwendaFileItem> kfiles = new List<KwendaFileItem>();
                 KwendaFileItem kvenue = new KwendaFileItem();
@@ -1448,6 +1470,7 @@ namespace VenueMaker.Dialogs
                 kvenue.FileExt = Path.GetExtension(kvenue.FileName);
                 kvenue.Data = Venue.ToString();
                 kvenue.FileTitle = Venue.GetFileTitle();
+                kvenue.Active = MakeVenueActiveChk.Checked;
                 kfiles.Add(kvenue);
 
                 FtpController.Me.AddToUploadQueue(venuefile);
@@ -1477,6 +1500,7 @@ namespace VenueMaker.Dialogs
                                     kmediafile.FileName = poii.MediaFile;
                                     kmediafile.FileExt = Path.GetExtension(kmediafile.FileName);
                                     kmediafile.Data = "";
+                                    kmediafile.Active = MakeVenueActiveChk.Checked;
                                     kfiles.Add(kmediafile);
 
                                     FtpController.Me.AddToUploadQueue(
@@ -1505,6 +1529,7 @@ namespace VenueMaker.Dialogs
                             kmediafile.FileName = hi.Image;
                             kmediafile.FileExt = Path.GetExtension(kmediafile.FileName);
                             kmediafile.Data = "";
+                            kmediafile.Active = MakeVenueActiveChk.Checked;
                             kfiles.Add(kmediafile);
 
                             FtpController.Me.AddToUploadQueue(
@@ -1523,6 +1548,7 @@ namespace VenueMaker.Dialogs
                             kmediafile.FileName = hi.Image;
                             kmediafile.FileExt = Path.GetExtension(kmediafile.FileName);
                             kmediafile.Data = "";
+                            kmediafile.Active = MakeVenueActiveChk.Checked;
                             kfiles.Add(kmediafile);
 
                             FtpController.Me.AddToUploadQueue(
@@ -1541,6 +1567,7 @@ namespace VenueMaker.Dialogs
                             kmediafile.FileName = hi.Image;
                             kmediafile.FileExt = Path.GetExtension(kmediafile.FileName);
                             kmediafile.Data = "";
+                            kmediafile.Active = MakeVenueActiveChk.Checked;
                             kfiles.Add(kmediafile);
 
                             FtpController.Me.AddToUploadQueue(
@@ -1559,6 +1586,7 @@ namespace VenueMaker.Dialogs
                             kmediafile.FileName = hi.Image;
                             kmediafile.FileExt = Path.GetExtension(kmediafile.FileName);
                             kmediafile.Data = "";
+                            kmediafile.Active = MakeVenueActiveChk.Checked;
                             kfiles.Add(kmediafile);
 
                             FtpController.Me.AddToUploadQueue(
@@ -1577,6 +1605,7 @@ namespace VenueMaker.Dialogs
                             kmediafile.FileName = hi.Image;
                             kmediafile.FileExt = Path.GetExtension(kmediafile.FileName);
                             kmediafile.Data = "";
+                            kmediafile.Active = MakeVenueActiveChk.Checked;
                             kfiles.Add(kmediafile);
 
                             FtpController.Me.AddToUploadQueue(
@@ -1647,6 +1676,7 @@ namespace VenueMaker.Dialogs
                         venuefile.FileName,
                         venuefile.Data
                         );
+                    MakeVenueActiveChk.Checked = venuefile.Active;
 
                     // Download missing files
                     string fldr = GetDataFilesFolder();

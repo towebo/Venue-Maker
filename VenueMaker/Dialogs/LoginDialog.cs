@@ -65,17 +65,32 @@ namespace VenueMaker.Dialogs
 
                         if (pwresp.Result == ChangePasswordResponse.MethodResult.AccountNotFound)
                         {
-                            throw new Exception("Kontot kunde inte hittas.");
+                            MessageBox.Show("Kontot kunde inte hittas.", "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
 
                         }
                         else if (pwresp.Result == ChangePasswordResponse.MethodResult.InvalidCode)
                         {
-                            throw new Exception("Den angivna koden stämmer inte.");
+                            MessageBox.Show("Den angivna koden stämmer inte.", "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+
+                        }
+                        else if (pwresp.Result == ChangePasswordResponse.MethodResult.CodeAlreadyUsed)
+                        {
+                            MessageBox.Show("Den angivna koden har redan använts.", "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+
+                        }
+                        else if (pwresp.Result == ChangePasswordResponse.MethodResult.CodeExpired)
+                        {
+                            MessageBox.Show("Den angivna koden är för gammal.", "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
 
                         }
                         else if (pwresp.Result == ChangePasswordResponse.MethodResult.OtherError)
                         {
-                            throw new Exception(pwresp.Message);
+                            MessageBox.Show(pwresp.Message, "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
 
                         }
                         else if (pwresp.Result == ChangePasswordResponse.MethodResult.Ok)

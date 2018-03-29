@@ -11,7 +11,7 @@
   <xs:complexType name="CreateAccountResponse">
     <xs:sequence>
       <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="ReturnCode" type="tns:CreateAccountResponse.MethodResult" />
+      <xs:element minOccurs="0" name="Result" type="tns:CreateAccountResponse.MethodResult" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="CreateAccountResponse" nillable="true" type="tns:CreateAccountResponse" />
@@ -72,6 +72,7 @@
     <xs:restriction base="xs:string">
       <xs:enumeration value="Ok" />
       <xs:enumeration value="NotLoggedIn" />
+      <xs:enumeration value="NotFound" />
       <xs:enumeration value="OtherError" />
     </xs:restriction>
   </xs:simpleType>
@@ -96,6 +97,8 @@
       <xs:enumeration value="Ok" />
       <xs:enumeration value="AccountNotFound" />
       <xs:enumeration value="InvalidCode" />
+      <xs:enumeration value="CodeAlreadyUsed" />
+      <xs:enumeration value="CodeExpired" />
       <xs:enumeration value="OtherError" />
     </xs:restriction>
   </xs:simpleType>
@@ -230,6 +233,7 @@
   <xs:element name="ArrayOfKwendaFileItem" nillable="true" type="tns:ArrayOfKwendaFileItem" />
   <xs:complexType name="KwendaFileItem">
     <xs:sequence>
+      <xs:element minOccurs="0" name="Active" type="xs:boolean" />
       <xs:element minOccurs="0" name="Data" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="FileExt" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="FileName" nillable="true" type="xs:string" />

@@ -185,6 +185,7 @@
             this.EdgeBS = new System.Windows.Forms.BindingSource(this.components);
             this.NodesBS = new System.Windows.Forms.BindingSource(this.components);
             this.DataFolderDialog = new System.Windows.Forms.FolderBrowserDialog();
+            this.MakeVenueActiveChk = new System.Windows.Forms.CheckBox();
             this.MainMenuStrip.SuspendLayout();
             this.Tabs.SuspendLayout();
             this.VenueTab.SuspendLayout();
@@ -412,6 +413,7 @@
             // 
             // VenueTab
             // 
+            this.VenueTab.Controls.Add(this.MakeVenueActiveChk);
             this.VenueTab.Controls.Add(this.VisibilityCombo);
             this.VenueTab.Controls.Add(this.VisibilityLabel);
             this.VenueTab.Controls.Add(this.VenueDescriptionTB);
@@ -1589,6 +1591,16 @@
             this.OpenCSVFileDialog.DefaultExt = "txt";
             this.OpenCSVFileDialog.Filter = "CSV-filer (*.csv, *.txt, *.xls)|*.csv;*.txt;*.xls|Alla filer (*)|*.*";
             // 
+            // MakeVenueActiveChk
+            // 
+            this.MakeVenueActiveChk.AutoSize = true;
+            this.MakeVenueActiveChk.Location = new System.Drawing.Point(400, 23);
+            this.MakeVenueActiveChk.Name = "MakeVenueActiveChk";
+            this.MakeVenueActiveChk.Size = new System.Drawing.Size(133, 19);
+            this.MakeVenueActiveChk.TabIndex = 33;
+            this.MakeVenueActiveChk.Text = "Aktivera denna plats";
+            this.MakeVenueActiveChk.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1789,5 +1801,6 @@
         private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem selectDataFolderToolStripMenuItem;
         private System.Windows.Forms.FolderBrowserDialog DataFolderDialog;
+        private System.Windows.Forms.CheckBox MakeVenueActiveChk;
     }
 }
