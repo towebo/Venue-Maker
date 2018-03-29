@@ -127,8 +127,10 @@ namespace VenueMaker.Dialogs
                 POIInfosLB.DisplayMember = "Information";
                 POIInfosLB.ValueMember = "Information";
                 POIInformationTB.DataBindings.Add("Text", POIInfosBS, "Information");
-                POIInfoStartsTB.DataBindings.Add("Text", POIInfosBS, "StartsAt", true);
-                POIInfoEndsTB.DataBindings.Add("Text", POIInfosBS, "EndsAt", true);
+                POIInfoStartsTB.DataBindings.Add("Text", POIInfosBS, "StartsAt", true, DataSourceUpdateMode.OnValidation);
+                POIInfoStartsTB.AllowEmptyValue();
+                POIInfoEndsTB.DataBindings.Add("Text", POIInfosBS, "EndsAt", true, DataSourceUpdateMode.OnPropertyChanged);
+                POIInfoEndsTB.AllowEmptyValue();
                 MediaFileTB.DataBindings.Add("Text", POIInfosBS, "MediaFile");
                 MediaDescrTB.DataBindings.Add("Text", POIInfosBS, "MediaDescription");
                 AutoPlayMediaCB.DataBindings.Add("Checked", POIInfosBS, "AutoPlayMedia");
@@ -227,6 +229,7 @@ namespace VenueMaker.Dialogs
                 NodesLB.ValueMember = "Id";
                 
                 NodeNameTB.DataBindings.Add("Text", NodesBS, "Name");
+                NodeWaypointTypeCombo.DataSource = WaypointTypeHelper.ToDictionary().Keys.ToList();
                 NodeWaypointTypeCombo.DataBindings.Add("Text", NodesBS, "WaypointType");
                 NodeAreaTB.DataBindings.Add("Text", NodesBS, "Area");
                 NodeBuildingTB.DataBindings.Add("Text", NodesBS, "Building");
@@ -280,7 +283,9 @@ namespace VenueMaker.Dialogs
                     NodesBS.DataSource = v.NodesGraph.GetNodesAlphabetical().OrderBy(w => w, new FloorComparer()).ToArray();
                     NodesBS.ResetBindings(false);
 
-                    elevators = v.NodesGraph.GetNodesAlphabetical().Where(w => w.WaypointType == "elevator").OrderBy(w => w, new FloorComparer()).ToArray();
+                    elevators = v.NodesGraph.GetNodesAlphabetical().Where(w => 
+                        w.WaypointType == WFWaypointType.Elevator.ToString().ToLower()
+                        ).OrderBy(w => w, new FloorComparer()).ToArray();
                     ElevatorsBS.DataSource = elevators;
                     ElevatorsBS.ResetBindings(false);
 
@@ -820,7 +825,7 @@ namespace VenueMaker.Dialogs
                         edg.StartHeading = startheading;
                         edg.EndHeading = endheading;
                         edg.TravelTime = Math.Abs(idxdst - idxsrc) * ElevatorTravelTime;
-                        edg.TravelType = "elevator";
+                        edg.TravelType = WFTravelType.Elevator.ToString().ToLower();
                         edg.Beginning = string.Format(ElevatorMessageTB.Text,
                             targetelevator.Floor
                             );
@@ -1000,8 +1005,8 @@ namespace VenueMaker.Dialogs
                 for (int idx = elevedges.Count() - 1; idx >= 0; idx--)
                 {
                     WFEdge<WFNode> edge = elevedges[idx];
-                    if (edge.Source.WaypointType == "elevator" &&
-                        edge.Target.WaypointType == "elevator")
+                    if (edge.Source.WaypointType == WFWaypointType.Elevator.ToString().ToLower() &&
+                        edge.Target.WaypointType == WFWaypointType.Elevator.ToString().ToLower())
                     {
                         Venue.NodesGraph.RemoveEdge(edge);
                         

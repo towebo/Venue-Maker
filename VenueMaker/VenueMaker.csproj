@@ -162,6 +162,8 @@
       <DependentUpon>SetPermissionsDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Helpers\AssemblyInfo.cs" />
+    <Compile Include="Helpers\TextBoxBoundHelper.cs" />
+    <Compile Include="Helpers\WaypointTypeHelper.cs" />
     <Compile Include="Helpers\FloorComparer.cs" />
     <Compile Include="Helpers\HeadingHelper.cs" />
     <Compile Include="Helpers\KwendaServiceHelper.cs" />
@@ -193,6 +195,7 @@
     <Compile Include="Models\WFPointOfInterest.cs" />
     <Compile Include="Models\WFTravelType.cs" />
     <Compile Include="Models\WFVenue.cs" />
+    <Compile Include="Models\WFWaypointType.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\FtpUtil.cs" />
