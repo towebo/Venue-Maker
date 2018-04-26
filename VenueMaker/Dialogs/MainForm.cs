@@ -88,6 +88,7 @@ namespace VenueMaker.Dialogs
                 ZipTB.DataBindings.Add("Text", VenueBS, "Zip");
                 CityTB.DataBindings.Add("Text", VenueBS, "City");
                 CountryTB.DataBindings.Add("Text", VenueBS, "Country");
+                VenueGPSTB.DataBindings.Add("Text", VenueBS, "GPSCoordinates", false);
                 VenueDescriptionTB.DataBindings.Add("Text", VenueBS, "Description");
 
                 VisibilityCombo.DataSource = VenueVisibilityItem.GetPossibleVisibilities();
@@ -250,7 +251,9 @@ namespace VenueMaker.Dialogs
                 NodeInfo3HeadingTB.DataBindings.Add("Text", NodesBS, "Heading3Info");
                 NodeInfo4HeadingTB.DataBindings.Add("Text", NodesBS, "Heading4Info");
                 NodeInfo5HeadingTB.DataBindings.Add("Text", NodesBS, "Heading5Info");
-                
+
+                NodeGPSTB.DataBindings.Add("Text", NodesBS, nameof(WFNode.GPSCoordinates), false);
+
 
             }
             catch (Exception ex)
@@ -1755,6 +1758,8 @@ namespace VenueMaker.Dialogs
 
             return folder;
         }
+
+        
 
     }
 }

@@ -96,6 +96,9 @@ namespace WayfindR.Models
         public string CloseByMessage { get; set; }
 
 
+        [XmlAttribute("gpscoordinates")]
+        public string GPSCoordinates { get; set; }
+
         [XmlAttribute("area")]
         public string Area { get; set; }
 

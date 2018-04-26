@@ -57,6 +57,9 @@
             this.SaveVenueDialog = new System.Windows.Forms.SaveFileDialog();
             this.Tabs = new System.Windows.Forms.TabControl();
             this.VenueTab = new System.Windows.Forms.TabPage();
+            this.VenueGPSTB = new System.Windows.Forms.TextBox();
+            this.VenueGPSLabel = new System.Windows.Forms.Label();
+            this.MakeVenueActiveChk = new System.Windows.Forms.CheckBox();
             this.VisibilityCombo = new System.Windows.Forms.ComboBox();
             this.VisibilityLabel = new System.Windows.Forms.Label();
             this.VenueDescriptionTB = new System.Windows.Forms.TextBox();
@@ -74,6 +77,8 @@
             this.VenueNameTB = new System.Windows.Forms.TextBox();
             this.VenueNameLabel = new System.Windows.Forms.Label();
             this.NodesTab = new System.Windows.Forms.TabPage();
+            this.NodeGPSTB = new System.Windows.Forms.TextBox();
+            this.NodeGPSLabel = new System.Windows.Forms.Label();
             this.NodeSpaceTB = new System.Windows.Forms.TextBox();
             this.NodeSpaceLabel = new System.Windows.Forms.Label();
             this.NodeRoomTB = new System.Windows.Forms.TextBox();
@@ -185,7 +190,6 @@
             this.EdgeBS = new System.Windows.Forms.BindingSource(this.components);
             this.NodesBS = new System.Windows.Forms.BindingSource(this.components);
             this.DataFolderDialog = new System.Windows.Forms.FolderBrowserDialog();
-            this.MakeVenueActiveChk = new System.Windows.Forms.CheckBox();
             this.MainMenuStrip.SuspendLayout();
             this.Tabs.SuspendLayout();
             this.VenueTab.SuspendLayout();
@@ -413,6 +417,8 @@
             // 
             // VenueTab
             // 
+            this.VenueTab.Controls.Add(this.VenueGPSTB);
+            this.VenueTab.Controls.Add(this.VenueGPSLabel);
             this.VenueTab.Controls.Add(this.MakeVenueActiveChk);
             this.VenueTab.Controls.Add(this.VisibilityCombo);
             this.VenueTab.Controls.Add(this.VisibilityLabel);
@@ -437,6 +443,32 @@
             this.VenueTab.TabIndex = 4;
             this.VenueTab.Text = "Plats";
             this.VenueTab.UseVisualStyleBackColor = true;
+            // 
+            // VenueGPSTB
+            // 
+            this.VenueGPSTB.Location = new System.Drawing.Point(400, 110);
+            this.VenueGPSTB.Name = "VenueGPSTB";
+            this.VenueGPSTB.Size = new System.Drawing.Size(250, 23);
+            this.VenueGPSTB.TabIndex = 35;
+            // 
+            // VenueGPSLabel
+            // 
+            this.VenueGPSLabel.AutoSize = true;
+            this.VenueGPSLabel.Location = new System.Drawing.Point(397, 90);
+            this.VenueGPSLabel.Name = "VenueGPSLabel";
+            this.VenueGPSLabel.Size = new System.Drawing.Size(94, 15);
+            this.VenueGPSLabel.TabIndex = 34;
+            this.VenueGPSLabel.Text = "&GPS-koordinater";
+            // 
+            // MakeVenueActiveChk
+            // 
+            this.MakeVenueActiveChk.AutoSize = true;
+            this.MakeVenueActiveChk.Location = new System.Drawing.Point(400, 23);
+            this.MakeVenueActiveChk.Name = "MakeVenueActiveChk";
+            this.MakeVenueActiveChk.Size = new System.Drawing.Size(133, 19);
+            this.MakeVenueActiveChk.TabIndex = 33;
+            this.MakeVenueActiveChk.Text = "Aktivera denna plats";
+            this.MakeVenueActiveChk.UseVisualStyleBackColor = true;
             // 
             // VisibilityCombo
             // 
@@ -585,6 +617,8 @@
             // 
             // NodesTab
             // 
+            this.NodesTab.Controls.Add(this.NodeGPSTB);
+            this.NodesTab.Controls.Add(this.NodeGPSLabel);
             this.NodesTab.Controls.Add(this.NodeSpaceTB);
             this.NodesTab.Controls.Add(this.NodeSpaceLabel);
             this.NodesTab.Controls.Add(this.NodeRoomTB);
@@ -641,6 +675,22 @@
             this.NodesTab.TabIndex = 5;
             this.NodesTab.Text = "Noder";
             this.NodesTab.UseVisualStyleBackColor = true;
+            // 
+            // NodeGPSTB
+            // 
+            this.NodeGPSTB.Location = new System.Drawing.Point(332, 505);
+            this.NodeGPSTB.Name = "NodeGPSTB";
+            this.NodeGPSTB.Size = new System.Drawing.Size(203, 23);
+            this.NodeGPSTB.TabIndex = 47;
+            // 
+            // NodeGPSLabel
+            // 
+            this.NodeGPSLabel.AutoSize = true;
+            this.NodeGPSLabel.Location = new System.Drawing.Point(329, 485);
+            this.NodeGPSLabel.Name = "NodeGPSLabel";
+            this.NodeGPSLabel.Size = new System.Drawing.Size(94, 15);
+            this.NodeGPSLabel.TabIndex = 46;
+            this.NodeGPSLabel.Text = "G&PS-koordinater";
             // 
             // NodeSpaceTB
             // 
@@ -1591,16 +1641,6 @@
             this.OpenCSVFileDialog.DefaultExt = "txt";
             this.OpenCSVFileDialog.Filter = "CSV-filer (*.csv, *.txt, *.xls)|*.csv;*.txt;*.xls|Alla filer (*)|*.*";
             // 
-            // MakeVenueActiveChk
-            // 
-            this.MakeVenueActiveChk.AutoSize = true;
-            this.MakeVenueActiveChk.Location = new System.Drawing.Point(400, 23);
-            this.MakeVenueActiveChk.Name = "MakeVenueActiveChk";
-            this.MakeVenueActiveChk.Size = new System.Drawing.Size(133, 19);
-            this.MakeVenueActiveChk.TabIndex = 33;
-            this.MakeVenueActiveChk.Text = "Aktivera denna plats";
-            this.MakeVenueActiveChk.UseVisualStyleBackColor = true;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1802,5 +1842,9 @@
         private System.Windows.Forms.ToolStripMenuItem selectDataFolderToolStripMenuItem;
         private System.Windows.Forms.FolderBrowserDialog DataFolderDialog;
         private System.Windows.Forms.CheckBox MakeVenueActiveChk;
+        private System.Windows.Forms.TextBox VenueGPSTB;
+        private System.Windows.Forms.Label VenueGPSLabel;
+        private System.Windows.Forms.TextBox NodeGPSTB;
+        private System.Windows.Forms.Label NodeGPSLabel;
     }
 }

@@ -21,9 +21,13 @@ namespace WayfindR.Models
         public string City { get; set; }
         public string Zip { get; set; }
         public string Country { get; set; }
+        public string GPSCoordinates { get; set; }
+
         public string Web { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }
+
+        public string Image { get; set; }
 
         public string GraphML
         {
@@ -61,10 +65,14 @@ namespace WayfindR.Models
                 result.Zip = (string)jo["venue"]["zip"];
                 result.City = (string)jo["venue"]["city"];
                 result.Country = (string)jo["venue"]["country"];
+                result.GPSCoordinates = (string)jo["venue"]["gpscoordinates"];
+
                 result.Phone = (string)jo["venue"]["phone"];
                 result.Email = (string)jo["venue"]["email"];result.Address = (string)jo["venue"]["address"];
                 result.Web = (string)jo["venue"]["web"];
-                
+
+                result.Image = (string)jo["venue"]["image"];
+
                 var vis_val = (string)jo["venue"]["visibility"];
                 if (string.IsNullOrEmpty(vis_val))
                 {
@@ -264,6 +272,8 @@ namespace WayfindR.Models
                     writer.WriteValue(City);
                     writer.WritePropertyName("country");
                     writer.WriteValue(Country);
+                    writer.WritePropertyName("gpscoordinates");
+                    writer.WriteValue(GPSCoordinates);
 
                     writer.WritePropertyName("phone");
                     writer.WriteValue(Phone);
@@ -271,6 +281,9 @@ namespace WayfindR.Models
                     writer.WriteValue(Email);
                     writer.WritePropertyName("web");
                     writer.WriteValue(Web);
+
+                    writer.WritePropertyName("image");
+                    writer.WriteValue(Image);
 
                     writer.WritePropertyName("visibility");
                     writer.WriteValue(Visibility);
