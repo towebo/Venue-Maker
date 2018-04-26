@@ -190,6 +190,12 @@
             this.EdgeBS = new System.Windows.Forms.BindingSource(this.components);
             this.NodesBS = new System.Windows.Forms.BindingSource(this.components);
             this.DataFolderDialog = new System.Windows.Forms.FolderBrowserDialog();
+            this.VenuePhoneLabel = new System.Windows.Forms.Label();
+            this.VenuePhoneTB = new System.Windows.Forms.TextBox();
+            this.VenueWebLabel = new System.Windows.Forms.Label();
+            this.VenueWebTB = new System.Windows.Forms.TextBox();
+            this.VenueEmailLabel = new System.Windows.Forms.Label();
+            this.VenueEmailTB = new System.Windows.Forms.TextBox();
             this.MainMenuStrip.SuspendLayout();
             this.Tabs.SuspendLayout();
             this.VenueTab.SuspendLayout();
@@ -417,6 +423,12 @@
             // 
             // VenueTab
             // 
+            this.VenueTab.Controls.Add(this.VenueEmailTB);
+            this.VenueTab.Controls.Add(this.VenueEmailLabel);
+            this.VenueTab.Controls.Add(this.VenueWebTB);
+            this.VenueTab.Controls.Add(this.VenueWebLabel);
+            this.VenueTab.Controls.Add(this.VenuePhoneTB);
+            this.VenueTab.Controls.Add(this.VenuePhoneLabel);
             this.VenueTab.Controls.Add(this.VenueGPSTB);
             this.VenueTab.Controls.Add(this.VenueGPSLabel);
             this.VenueTab.Controls.Add(this.MakeVenueActiveChk);
@@ -1641,6 +1653,54 @@
             this.OpenCSVFileDialog.DefaultExt = "txt";
             this.OpenCSVFileDialog.Filter = "CSV-filer (*.csv, *.txt, *.xls)|*.csv;*.txt;*.xls|Alla filer (*)|*.*";
             // 
+            // VenuePhoneLabel
+            // 
+            this.VenuePhoneLabel.AutoSize = true;
+            this.VenuePhoneLabel.Location = new System.Drawing.Point(397, 135);
+            this.VenuePhoneLabel.Name = "VenuePhoneLabel";
+            this.VenuePhoneLabel.Size = new System.Drawing.Size(46, 15);
+            this.VenuePhoneLabel.TabIndex = 36;
+            this.VenuePhoneLabel.Text = "Telefon";
+            // 
+            // VenuePhoneTB
+            // 
+            this.VenuePhoneTB.Location = new System.Drawing.Point(400, 153);
+            this.VenuePhoneTB.Name = "VenuePhoneTB";
+            this.VenuePhoneTB.Size = new System.Drawing.Size(133, 23);
+            this.VenuePhoneTB.TabIndex = 37;
+            // 
+            // VenueWebLabel
+            // 
+            this.VenueWebLabel.AutoSize = true;
+            this.VenueWebLabel.Location = new System.Drawing.Point(397, 179);
+            this.VenueWebLabel.Name = "VenueWebLabel";
+            this.VenueWebLabel.Size = new System.Drawing.Size(54, 15);
+            this.VenueWebLabel.TabIndex = 38;
+            this.VenueWebLabel.Text = "Hemsida";
+            // 
+            // VenueWebTB
+            // 
+            this.VenueWebTB.Location = new System.Drawing.Point(400, 200);
+            this.VenueWebTB.Name = "VenueWebTB";
+            this.VenueWebTB.Size = new System.Drawing.Size(219, 23);
+            this.VenueWebTB.TabIndex = 39;
+            // 
+            // VenueEmailLabel
+            // 
+            this.VenueEmailLabel.AutoSize = true;
+            this.VenueEmailLabel.Location = new System.Drawing.Point(397, 226);
+            this.VenueEmailLabel.Name = "VenueEmailLabel";
+            this.VenueEmailLabel.Size = new System.Drawing.Size(41, 15);
+            this.VenueEmailLabel.TabIndex = 40;
+            this.VenueEmailLabel.Text = "E-post";
+            // 
+            // VenueEmailTB
+            // 
+            this.VenueEmailTB.Location = new System.Drawing.Point(400, 244);
+            this.VenueEmailTB.Name = "VenueEmailTB";
+            this.VenueEmailTB.Size = new System.Drawing.Size(273, 23);
+            this.VenueEmailTB.TabIndex = 41;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1846,5 +1906,11 @@
         private System.Windows.Forms.Label VenueGPSLabel;
         private System.Windows.Forms.TextBox NodeGPSTB;
         private System.Windows.Forms.Label NodeGPSLabel;
+        private System.Windows.Forms.TextBox VenueEmailTB;
+        private System.Windows.Forms.Label VenueEmailLabel;
+        private System.Windows.Forms.TextBox VenueWebTB;
+        private System.Windows.Forms.Label VenueWebLabel;
+        private System.Windows.Forms.TextBox VenuePhoneTB;
+        private System.Windows.Forms.Label VenuePhoneLabel;
     }
 }

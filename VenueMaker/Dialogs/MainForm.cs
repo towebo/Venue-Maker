@@ -88,7 +88,12 @@ namespace VenueMaker.Dialogs
                 ZipTB.DataBindings.Add("Text", VenueBS, "Zip");
                 CityTB.DataBindings.Add("Text", VenueBS, "City");
                 CountryTB.DataBindings.Add("Text", VenueBS, "Country");
-                VenueGPSTB.DataBindings.Add("Text", VenueBS, "GPSCoordinates", false);
+                VenueGPSTB.DataBindings.Add("Text", VenueBS, nameof(WFVenue.GPSCoordinates), false);
+                VenuePhoneTB.DataBindings.Add("Text", VenueBS, nameof(WFVenue.Phone), false);
+                VenueWebTB.DataBindings.Add("Text", VenueBS, nameof(WFVenue.Web), false);
+                VenueEmailTB.DataBindings.Add("Text", VenueBS, nameof(WFVenue.Email), false);
+
+
                 VenueDescriptionTB.DataBindings.Add("Text", VenueBS, "Description");
 
                 VisibilityCombo.DataSource = VenueVisibilityItem.GetPossibleVisibilities();
