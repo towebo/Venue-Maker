@@ -354,35 +354,42 @@ namespace VenueMaker.Dialogs
 
         private void openVenueFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (!EnsureLogin())
+            try
             {
-                return;
+                Application.UseWaitCursor = true;
+                Application.DoEvents();
 
-            } // Not logged in
+                if (!EnsureLogin())
+                {
+                    return;
 
-            bool didload = LoadVenueFromCloud();
+                } // Not logged in
+
+                Application.UseWaitCursor = true;
+                Application.DoEvents();
+
+                bool didload = LoadVenueFromCloud();
 
 #if WITHADMINRIGHTS
 #else
             return;
 #endif
 
-            if (didload)
-            {
-                SystemSounds.Asterisk.Play();
-                return;
+                if (didload)
+                {
+                    SystemSounds.Asterisk.Play();
+                    return;
 
-            } // Loaded from cloud
-    
-            if (OpenVenueDialog.ShowDialog() != DialogResult.OK)
-            {
-                return;
+                } // Loaded from cloud
 
-            }
+                if (OpenVenueDialog.ShowDialog() != DialogResult.OK)
+                {
+                    return;
 
-            try
-            {
-                Cursor.Current = Cursors.WaitCursor;
+                }
+
+
+                Application.UseWaitCursor = true;
                 Application.DoEvents();
 
                 DoOpenVenue(OpenVenueDialog.FileName, "");
@@ -392,7 +399,7 @@ namespace VenueMaker.Dialogs
             }
             finally
             {
-                Cursor.Current = Cursors.Default;
+                Application.UseWaitCursor = false;
 
             }
 
@@ -717,7 +724,7 @@ namespace VenueMaker.Dialogs
                 } // Has a file name
 
 
-                Cursor.Current = Cursors.WaitCursor;
+                Application.UseWaitCursor = true;
                 Application.DoEvents();
                 
                 try
@@ -743,7 +750,7 @@ namespace VenueMaker.Dialogs
             }
             finally
             {
-                Cursor.Current = Cursors.Default;
+                Application.UseWaitCursor = false;
 
             }
 
@@ -767,7 +774,7 @@ namespace VenueMaker.Dialogs
 
                 } // No file selected
 
-                Cursor.Current = Cursors.WaitCursor;
+                Application.UseWaitCursor = true;
                 Application.DoEvents();
                                                 
                 string mediafile = UseThisFile(OpenMediaFileDialog.FileName);
@@ -785,7 +792,7 @@ namespace VenueMaker.Dialogs
             }
             finally
             {
-                Cursor.Current = Cursors.Default;
+                Application.UseWaitCursor = false;
 
             }
 
@@ -806,7 +813,7 @@ namespace VenueMaker.Dialogs
                     throw new Exception("Du måste ange en kompassriktning mellan 0 och 359 för slutriktningen.");
                 }
 
-                Cursor.Current = Cursors.WaitCursor;
+                Application.UseWaitCursor = true;
                 Application.DoEvents();
 
                 int startheading = Convert.ToInt32(ElevatorStartHeadingTB.Text);
@@ -858,7 +865,7 @@ namespace VenueMaker.Dialogs
             }
             finally
             {
-                Cursor.Current = Cursors.Default;
+                Application.UseWaitCursor = false;
 
             }
         }
@@ -867,7 +874,7 @@ namespace VenueMaker.Dialogs
         {
             try
             {
-                Cursor.Current = Cursors.WaitCursor;
+                Application.UseWaitCursor = true;
                 Application.DoEvents();
 
                 NewEdgeItem nei = new NewEdgeItem();
@@ -931,7 +938,7 @@ namespace VenueMaker.Dialogs
             }
             finally
             {
-                Cursor.Current = Cursors.Default;
+                Application.UseWaitCursor = false;
 
             }
 
@@ -941,7 +948,7 @@ namespace VenueMaker.Dialogs
         {
             try
             {
-                Cursor.Current = Cursors.WaitCursor;
+                Application.UseWaitCursor = true;
                 Application.DoEvents();
 
                 EdgeForPOI efp = EdgesForPOIBS.Current as EdgeForPOI;
@@ -971,7 +978,7 @@ namespace VenueMaker.Dialogs
             }
             finally
             {
-                Cursor.Current = Cursors.Default;
+                Application.UseWaitCursor = false;
 
             }
         }
@@ -1006,7 +1013,7 @@ namespace VenueMaker.Dialogs
 
                 } // Anything but Yes
 
-                Cursor.Current = Cursors.WaitCursor;
+                Application.UseWaitCursor = true;
                 Application.DoEvents();
 
                 WFEdge<WFNode>[] elevedges = Venue.NodesGraph.Edges.ToArray();
@@ -1034,7 +1041,7 @@ namespace VenueMaker.Dialogs
             }
             finally
             {
-                Cursor.Current = Cursors.Default;
+                Application.UseWaitCursor = false;
 
             }
         }
@@ -1102,7 +1109,7 @@ namespace VenueMaker.Dialogs
 
                 } // User cancelled
 
-                Cursor.Current = Cursors.WaitCursor;
+                Application.UseWaitCursor = true;
                 Application.DoEvents();
 
 
@@ -1122,7 +1129,7 @@ namespace VenueMaker.Dialogs
             }
             finally
             {
-                Cursor.Current = Cursors.Default;
+                Application.UseWaitCursor = false;
 
             }
 
@@ -1387,14 +1394,14 @@ namespace VenueMaker.Dialogs
         {
             try
             {
-                Cursor.Current = Cursors.WaitCursor;
+                Application.UseWaitCursor = true;
                 Application.DoEvents();
 
                 bool result = DataController.Me.IsTokenValid();
 
                 if (!result)
                 {
-                    Cursor.Current = Cursors.Default;
+                    Application.UseWaitCursor = false;
 
                     using (LoginDialog dlg = new LoginDialog())
                     {
@@ -1417,7 +1424,7 @@ namespace VenueMaker.Dialogs
             }
             finally
             {
-                Cursor.Current = Cursors.Default;
+                Application.UseWaitCursor = false;
 
             }
 
@@ -1649,13 +1656,16 @@ namespace VenueMaker.Dialogs
             {
                 using (SelectVenueDialog dlg = new SelectVenueDialog())
                 {
+                    Application.UseWaitCursor = false;
+                    Application.DoEvents();
+
                     if (dlg.ShowDialog() != DialogResult.OK)
                     {
                         return false;
 
                     } // User cancelled
 
-                    Cursor.Current = Cursors.WaitCursor;
+                    Application.UseWaitCursor = true;
                     Application.DoEvents();
 
                     KwendaFileListItem sel = dlg.SelectedFile;
@@ -1718,7 +1728,7 @@ namespace VenueMaker.Dialogs
             }
             finally
             {
-                Cursor.Current = Cursors.Default;
+                Application.UseWaitCursor = false;
 
             }
 
