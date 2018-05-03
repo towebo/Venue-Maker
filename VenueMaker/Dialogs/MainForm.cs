@@ -1546,6 +1546,14 @@ namespace VenueMaker.Dialogs
 
                 if (!string.IsNullOrWhiteSpace(Venue.Image))
                 {
+                    KwendaFileItem kmediafile = new KwendaFileItem();
+                    kmediafile.VenueId = Venue.Id;
+                    kmediafile.FileName = Venue.Image;
+                    kmediafile.FileExt = Path.GetExtension(kmediafile.FileName);
+                    kmediafile.Data = "";
+                    kmediafile.Active = MakeVenueActiveChk.Checked;
+                    kfiles.Add(kmediafile);
+
                     FtpController.Me.AddToUploadQueue(
                         Path.Combine(fldr, Venue.Image)
                         );
