@@ -35,18 +35,27 @@ namespace VenueMaker.Dialogs
                         ).Where(w =>
                             w.FileExt.ToLower() == ".venue"
                         );
+
                 filesdict = files.ToDictionary(w => w.VenueId);
                 listdict = new Dictionary<string, string>();
                 files.ToList().ForEach(w =>
                 {
+                    string venid = w.VenueId;
+                    while (listdict.ContainsKey(venid))
+                    {                    
+                        venid = venid + "_";
+
+                    } // while
+
                     listdict.Add(
-                        w.VenueId,
+                        venid,
                         !string.IsNullOrWhiteSpace(w.FileTitle) ?
                             w.FileTitle :
                             w.FileName
                             );
-                });
 
+                });
+                                
                 VenuesBS.DataSource = listdict.OrderBy(w => w.Value);
 
                 VenuesLB.DataSource = VenuesBS;

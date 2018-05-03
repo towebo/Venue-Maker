@@ -92,7 +92,7 @@ namespace VenueMaker.Dialogs
                 VenuePhoneTB.DataBindings.Add("Text", VenueBS, nameof(WFVenue.Phone), false);
                 VenueWebTB.DataBindings.Add("Text", VenueBS, nameof(WFVenue.Web), false);
                 VenueEmailTB.DataBindings.Add("Text", VenueBS, nameof(WFVenue.Email), false);
-
+                VenueImageTB.DataBindings.Add("Text", VenueBS, nameof(WFVenue.Image), false);
 
                 VenueDescriptionTB.DataBindings.Add("Text", VenueBS, "Description");
 
@@ -141,6 +141,9 @@ namespace VenueMaker.Dialogs
                 MediaFileTB.DataBindings.Add("Text", POIInfosBS, "MediaFile");
                 MediaDescrTB.DataBindings.Add("Text", POIInfosBS, "MediaDescription");
                 AutoPlayMediaCB.DataBindings.Add("Checked", POIInfosBS, "AutoPlayMedia");
+
+                POIInfosBS.CurrentChanged += POIInfosBS_CurrentChanged1;
+
 
                 POIInfoCatCombo.DataSource = InfoCategoryItem.GetAll();
                 POIInfoCatCombo.DisplayMember = "Name";
@@ -266,6 +269,47 @@ namespace VenueMaker.Dialogs
                 MessageBox.Show(ex.Message, "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
+        }
+
+        private void POIInfosBS_CurrentChanged1(object sender, EventArgs e)
+        {
+            try
+            {
+                WFPOIInformation poii = POIInfosBS.Current as WFPOIInformation;
+                if (poii == null)
+                {
+                    PoiInfoPB.Image = null;
+                    return;
+
+                } // Is null
+
+                if (string.IsNullOrWhiteSpace(poii.MediaFile))
+                {
+                    PoiInfoPB.Image = null;
+                    return;
+
+                } // No file
+
+                string img = Path.Combine(GetDataFilesFolder(), poii.MediaFile);
+                if (!File.Exists(img))
+                {
+                    PoiInfoPB.Image = null;
+                    return;
+
+                } // Doesn't exists
+
+                PoiInfoPB.Image = Image.FromFile(img);
+
+            }
+            catch
+            {
+            }
+
+        }
+
+        private void POIInfosBS_CurrentChanged(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         private void RefreshUIForVenue(WFVenue v)
@@ -1489,7 +1533,7 @@ namespace VenueMaker.Dialogs
                 kfiles.Add(kvenue);
 
                 FtpController.Me.AddToUploadQueue(venuefile);
-                
+
                 string graphmlfile = Path.ChangeExtension(venuefile, ".graphml");
                 if (File.Exists(graphmlfile))
                 {
@@ -1499,6 +1543,14 @@ namespace VenueMaker.Dialogs
 
                 // Add the media files
                 string fldr = GetDataFilesFolder();
+
+                if (!string.IsNullOrWhiteSpace(Venue.Image))
+                {
+                    FtpController.Me.AddToUploadQueue(
+                        Path.Combine(fldr, Venue.Image)
+                        );
+
+                } // Has image
 
                 if (Venue.PointsOfInterest != null)
                 {
@@ -1709,11 +1761,28 @@ namespace VenueMaker.Dialogs
 
                     foreach (var f in files)
                     {
-                        FtpController.Me.AddToDownloadQueue(f.FileName);
+                        string localfile = Path.Combine(fldr, f.FileName);
+                        FileInfo fi = new FileInfo(localfile);
+                        if (!fi.Exists ||
+                            (fi.Exists &&
+                            fi.LastWriteTimeUtc < f.LastModified)
+                            )
+                        {
+                            FtpController.Me.AddToDownloadQueue(f.FileName);
+
+                        } // Need to be downloaded
 
                     } // foreach file
 
                     FtpController.Me.DownloadFiles(fldr);
+
+                    string img = Path.Combine(GetDataFilesFolder(), Venue.Image);
+                    if (!string.IsNullOrWhiteSpace(Venue.Image) &&
+                        File.Exists(img))
+                    {
+                        VenueImagePB.Image = Image.FromFile(img);
+
+                    } // Image exists
 
                     return true;
 
@@ -1774,7 +1843,34 @@ namespace VenueMaker.Dialogs
             return folder;
         }
 
-        
+        private void SelectVenueImageBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (OpenMediaFileDialog.ShowDialog() != DialogResult.OK)
+                {
+                    return;
 
+                } // No file selected
+
+                Application.UseWaitCursor = true;
+                Application.DoEvents();
+
+                string mediafile = UseThisFile(OpenMediaFileDialog.FileName);
+
+                Venue.Image = mediafile;
+                VenueImageTB.Text = Venue.Image;
+
+                VenueImagePB.Image = Image.FromFile(Path.Combine(GetDataFilesFolder(), mediafile));
+
+                SystemSounds.Asterisk.Play();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+        }
     }
 }

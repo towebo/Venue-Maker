@@ -57,6 +57,12 @@
             this.SaveVenueDialog = new System.Windows.Forms.SaveFileDialog();
             this.Tabs = new System.Windows.Forms.TabControl();
             this.VenueTab = new System.Windows.Forms.TabPage();
+            this.VenueEmailTB = new System.Windows.Forms.TextBox();
+            this.VenueEmailLabel = new System.Windows.Forms.Label();
+            this.VenueWebTB = new System.Windows.Forms.TextBox();
+            this.VenueWebLabel = new System.Windows.Forms.Label();
+            this.VenuePhoneTB = new System.Windows.Forms.TextBox();
+            this.VenuePhoneLabel = new System.Windows.Forms.Label();
             this.VenueGPSTB = new System.Windows.Forms.TextBox();
             this.VenueGPSLabel = new System.Windows.Forms.Label();
             this.MakeVenueActiveChk = new System.Windows.Forms.CheckBox();
@@ -190,12 +196,11 @@
             this.EdgeBS = new System.Windows.Forms.BindingSource(this.components);
             this.NodesBS = new System.Windows.Forms.BindingSource(this.components);
             this.DataFolderDialog = new System.Windows.Forms.FolderBrowserDialog();
-            this.VenuePhoneLabel = new System.Windows.Forms.Label();
-            this.VenuePhoneTB = new System.Windows.Forms.TextBox();
-            this.VenueWebLabel = new System.Windows.Forms.Label();
-            this.VenueWebTB = new System.Windows.Forms.TextBox();
-            this.VenueEmailLabel = new System.Windows.Forms.Label();
-            this.VenueEmailTB = new System.Windows.Forms.TextBox();
+            this.VenueImageLabel = new System.Windows.Forms.Label();
+            this.VenueImageTB = new System.Windows.Forms.TextBox();
+            this.SelectVenueImageBtn = new System.Windows.Forms.Button();
+            this.VenueImagePB = new System.Windows.Forms.PictureBox();
+            this.PoiInfoPB = new System.Windows.Forms.PictureBox();
             this.MainMenuStrip.SuspendLayout();
             this.Tabs.SuspendLayout();
             this.VenueTab.SuspendLayout();
@@ -211,6 +216,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.EdgesForPOIBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EdgeBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NodesBS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VenueImagePB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PoiInfoPB)).BeginInit();
             this.SuspendLayout();
             // 
             // MainMenuStrip
@@ -423,6 +430,10 @@
             // 
             // VenueTab
             // 
+            this.VenueTab.Controls.Add(this.VenueImagePB);
+            this.VenueTab.Controls.Add(this.SelectVenueImageBtn);
+            this.VenueTab.Controls.Add(this.VenueImageTB);
+            this.VenueTab.Controls.Add(this.VenueImageLabel);
             this.VenueTab.Controls.Add(this.VenueEmailTB);
             this.VenueTab.Controls.Add(this.VenueEmailLabel);
             this.VenueTab.Controls.Add(this.VenueWebTB);
@@ -455,6 +466,54 @@
             this.VenueTab.TabIndex = 4;
             this.VenueTab.Text = "Plats";
             this.VenueTab.UseVisualStyleBackColor = true;
+            // 
+            // VenueEmailTB
+            // 
+            this.VenueEmailTB.Location = new System.Drawing.Point(400, 244);
+            this.VenueEmailTB.Name = "VenueEmailTB";
+            this.VenueEmailTB.Size = new System.Drawing.Size(273, 23);
+            this.VenueEmailTB.TabIndex = 41;
+            // 
+            // VenueEmailLabel
+            // 
+            this.VenueEmailLabel.AutoSize = true;
+            this.VenueEmailLabel.Location = new System.Drawing.Point(397, 226);
+            this.VenueEmailLabel.Name = "VenueEmailLabel";
+            this.VenueEmailLabel.Size = new System.Drawing.Size(41, 15);
+            this.VenueEmailLabel.TabIndex = 40;
+            this.VenueEmailLabel.Text = "E-post";
+            // 
+            // VenueWebTB
+            // 
+            this.VenueWebTB.Location = new System.Drawing.Point(400, 197);
+            this.VenueWebTB.Name = "VenueWebTB";
+            this.VenueWebTB.Size = new System.Drawing.Size(219, 23);
+            this.VenueWebTB.TabIndex = 39;
+            // 
+            // VenueWebLabel
+            // 
+            this.VenueWebLabel.AutoSize = true;
+            this.VenueWebLabel.Location = new System.Drawing.Point(397, 179);
+            this.VenueWebLabel.Name = "VenueWebLabel";
+            this.VenueWebLabel.Size = new System.Drawing.Size(54, 15);
+            this.VenueWebLabel.TabIndex = 38;
+            this.VenueWebLabel.Text = "Hemsida";
+            // 
+            // VenuePhoneTB
+            // 
+            this.VenuePhoneTB.Location = new System.Drawing.Point(400, 153);
+            this.VenuePhoneTB.Name = "VenuePhoneTB";
+            this.VenuePhoneTB.Size = new System.Drawing.Size(133, 23);
+            this.VenuePhoneTB.TabIndex = 37;
+            // 
+            // VenuePhoneLabel
+            // 
+            this.VenuePhoneLabel.AutoSize = true;
+            this.VenuePhoneLabel.Location = new System.Drawing.Point(397, 135);
+            this.VenuePhoneLabel.Name = "VenuePhoneLabel";
+            this.VenuePhoneLabel.Size = new System.Drawing.Size(46, 15);
+            this.VenuePhoneLabel.TabIndex = 36;
+            this.VenuePhoneLabel.Text = "Telefon";
             // 
             // VenueGPSTB
             // 
@@ -1414,6 +1473,7 @@
             // 
             // PoiTabPage
             // 
+            this.PoiTabPage.Controls.Add(this.PoiInfoPB);
             this.PoiTabPage.Controls.Add(this.POIInfosLabel);
             this.PoiTabPage.Controls.Add(this.AutoPlayMediaCB);
             this.PoiTabPage.Controls.Add(this.MediaDescrTB);
@@ -1653,53 +1713,49 @@
             this.OpenCSVFileDialog.DefaultExt = "txt";
             this.OpenCSVFileDialog.Filter = "CSV-filer (*.csv, *.txt, *.xls)|*.csv;*.txt;*.xls|Alla filer (*)|*.*";
             // 
-            // VenuePhoneLabel
+            // VenueImageLabel
             // 
-            this.VenuePhoneLabel.AutoSize = true;
-            this.VenuePhoneLabel.Location = new System.Drawing.Point(397, 135);
-            this.VenuePhoneLabel.Name = "VenuePhoneLabel";
-            this.VenuePhoneLabel.Size = new System.Drawing.Size(46, 15);
-            this.VenuePhoneLabel.TabIndex = 36;
-            this.VenuePhoneLabel.Text = "Telefon";
+            this.VenueImageLabel.AutoSize = true;
+            this.VenueImageLabel.Location = new System.Drawing.Point(397, 270);
+            this.VenueImageLabel.Name = "VenueImageLabel";
+            this.VenueImageLabel.Size = new System.Drawing.Size(27, 15);
+            this.VenueImageLabel.TabIndex = 42;
+            this.VenueImageLabel.Text = "Bild";
             // 
-            // VenuePhoneTB
+            // VenueImageTB
             // 
-            this.VenuePhoneTB.Location = new System.Drawing.Point(400, 153);
-            this.VenuePhoneTB.Name = "VenuePhoneTB";
-            this.VenuePhoneTB.Size = new System.Drawing.Size(133, 23);
-            this.VenuePhoneTB.TabIndex = 37;
+            this.VenueImageTB.Location = new System.Drawing.Point(400, 288);
+            this.VenueImageTB.Name = "VenueImageTB";
+            this.VenueImageTB.Size = new System.Drawing.Size(100, 23);
+            this.VenueImageTB.TabIndex = 43;
             // 
-            // VenueWebLabel
+            // SelectVenueImageBtn
             // 
-            this.VenueWebLabel.AutoSize = true;
-            this.VenueWebLabel.Location = new System.Drawing.Point(397, 179);
-            this.VenueWebLabel.Name = "VenueWebLabel";
-            this.VenueWebLabel.Size = new System.Drawing.Size(54, 15);
-            this.VenueWebLabel.TabIndex = 38;
-            this.VenueWebLabel.Text = "Hemsida";
+            this.SelectVenueImageBtn.Location = new System.Drawing.Point(506, 287);
+            this.SelectVenueImageBtn.Name = "SelectVenueImageBtn";
+            this.SelectVenueImageBtn.Size = new System.Drawing.Size(75, 23);
+            this.SelectVenueImageBtn.TabIndex = 44;
+            this.SelectVenueImageBtn.Text = "Välj bild";
+            this.SelectVenueImageBtn.UseVisualStyleBackColor = true;
+            this.SelectVenueImageBtn.Click += new System.EventHandler(this.SelectVenueImageBtn_Click);
             // 
-            // VenueWebTB
+            // VenueImagePB
             // 
-            this.VenueWebTB.Location = new System.Drawing.Point(400, 200);
-            this.VenueWebTB.Name = "VenueWebTB";
-            this.VenueWebTB.Size = new System.Drawing.Size(219, 23);
-            this.VenueWebTB.TabIndex = 39;
+            this.VenueImagePB.Location = new System.Drawing.Point(400, 317);
+            this.VenueImagePB.Name = "VenueImagePB";
+            this.VenueImagePB.Size = new System.Drawing.Size(170, 89);
+            this.VenueImagePB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.VenueImagePB.TabIndex = 45;
+            this.VenueImagePB.TabStop = false;
             // 
-            // VenueEmailLabel
+            // PoiInfoPB
             // 
-            this.VenueEmailLabel.AutoSize = true;
-            this.VenueEmailLabel.Location = new System.Drawing.Point(397, 226);
-            this.VenueEmailLabel.Name = "VenueEmailLabel";
-            this.VenueEmailLabel.Size = new System.Drawing.Size(41, 15);
-            this.VenueEmailLabel.TabIndex = 40;
-            this.VenueEmailLabel.Text = "E-post";
-            // 
-            // VenueEmailTB
-            // 
-            this.VenueEmailTB.Location = new System.Drawing.Point(400, 244);
-            this.VenueEmailTB.Name = "VenueEmailTB";
-            this.VenueEmailTB.Size = new System.Drawing.Size(273, 23);
-            this.VenueEmailTB.TabIndex = 41;
+            this.PoiInfoPB.Location = new System.Drawing.Point(746, 403);
+            this.PoiInfoPB.Name = "PoiInfoPB";
+            this.PoiInfoPB.Size = new System.Drawing.Size(196, 121);
+            this.PoiInfoPB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.PoiInfoPB.TabIndex = 25;
+            this.PoiInfoPB.TabStop = false;
             // 
             // MainForm
             // 
@@ -1736,6 +1792,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.EdgesForPOIBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EdgeBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NodesBS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VenueImagePB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PoiInfoPB)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1912,5 +1970,10 @@
         private System.Windows.Forms.Label VenueWebLabel;
         private System.Windows.Forms.TextBox VenuePhoneTB;
         private System.Windows.Forms.Label VenuePhoneLabel;
+        private System.Windows.Forms.Button SelectVenueImageBtn;
+        private System.Windows.Forms.TextBox VenueImageTB;
+        private System.Windows.Forms.Label VenueImageLabel;
+        private System.Windows.Forms.PictureBox VenueImagePB;
+        private System.Windows.Forms.PictureBox PoiInfoPB;
     }
 }
