@@ -201,6 +201,9 @@
     <Compile Include="Utils\FtpUtil.cs" />
     <Compile Include="Utils\HttpUtil.cs" />
     <Compile Include="Utils\TSVHelper.cs" />
+    <EmbeddedResource Include="Dialogs\CreateAccountDialog.resx">
+      <DependentUpon>CreateAccountDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\EditHeadingInfoDialog.resx">
       <DependentUpon>EditHeadingInfoDialog.cs</DependentUpon>
     </EmbeddedResource>

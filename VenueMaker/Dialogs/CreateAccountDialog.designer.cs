@@ -74,6 +74,7 @@
             this.PwTB.Size = new System.Drawing.Size(155, 23);
             this.PwTB.TabIndex = 3;
             this.PwTB.UseSystemPasswordChar = true;
+            this.PwTB.TextChanged += new System.EventHandler(this.PwTB_TextChanged);
             // 
             // VerifyPwLabel
             // 
@@ -91,6 +92,7 @@
             this.VerifyPwTB.Size = new System.Drawing.Size(100, 23);
             this.VerifyPwTB.TabIndex = 5;
             this.VerifyPwTB.UseSystemPasswordChar = true;
+            this.VerifyPwTB.TextChanged += new System.EventHandler(this.VerifyPwTB_TextChanged);
             // 
             // InfoLabel
             // 

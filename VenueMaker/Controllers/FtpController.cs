@@ -141,6 +141,12 @@ namespace VenueMaker.Controllers
         {
             try
             {
+                if (!downloadqueue.Any())
+                {
+                    return;
+
+                } // No files to download
+
                 string remotefolder = FtpRootFolder;
 
                 FtpClient ftp = new FtpClient(

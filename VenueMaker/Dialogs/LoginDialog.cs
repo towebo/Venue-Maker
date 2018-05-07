@@ -49,126 +49,105 @@ namespace VenueMaker.Dialogs
 
         private void LoginBtn_Click(object sender, EventArgs e)
         {
-
-            using (KwendaServiceClient cli = new KwendaServiceClient())
+            try
             {
-                if (VerificationCodeLabel.Visible)
+                using (KwendaServiceClient cli = new KwendaServiceClient())
                 {
-                    if (VerificationCodeLabel.Tag == "ResetPassword")
+                    if (VerificationCodeLabel.Visible)
                     {
-                        ChangePasswordRequest pwreq = new ChangePasswordRequest();
-                        pwreq.Code = VerificationCodeTB.Text;
-                        pwreq.Email = EmailTB.Text;
-                        pwreq.Password = PwTB.Text.Encrypt();
-
-                        ChangePasswordResponse pwresp = cli.ChangePassword(pwreq);
-
-                        if (pwresp.Result == ChangePasswordResponse.MethodResult.AccountNotFound)
+                        if (VerificationCodeLabel.Tag == "ResetPassword")
                         {
-                            MessageBox.Show("Kontot kunde inte hittas.", "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
+                            ChangePasswordRequest pwreq = new ChangePasswordRequest();
+                            pwreq.Code = VerificationCodeTB.Text;
+                            pwreq.Email = EmailTB.Text;
+                            pwreq.Password = PwTB.Text.Encrypt();
+
+                            ChangePasswordResponse pwresp = cli.ChangePassword(pwreq);
+
+                            if (pwresp.Result == ChangePasswordResponse.MethodResult.AccountNotFound)
+                            {
+                                MessageBox.Show("Kontot kunde inte hittas.", "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+
+                            }
+                            else if (pwresp.Result == ChangePasswordResponse.MethodResult.InvalidCode)
+                            {
+                                MessageBox.Show("Den angivna koden stämmer inte.", "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+
+                            }
+                            else if (pwresp.Result == ChangePasswordResponse.MethodResult.CodeAlreadyUsed)
+                            {
+                                MessageBox.Show("Den angivna koden har redan använts.", "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+
+                            }
+                            else if (pwresp.Result == ChangePasswordResponse.MethodResult.CodeExpired)
+                            {
+                                MessageBox.Show("Den angivna koden är för gammal.", "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+
+                            }
+                            else if (pwresp.Result == ChangePasswordResponse.MethodResult.OtherError)
+                            {
+                                MessageBox.Show(pwresp.Message, "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+
+                            }
+                            else if (pwresp.Result == ChangePasswordResponse.MethodResult.Ok)
+                            {
+                                MessageBox.Show("Ditt lösenord har nu ändrats och du kommer loggas in.", "Lösenordet ändrat", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                            }
 
                         }
-                        else if (pwresp.Result == ChangePasswordResponse.MethodResult.InvalidCode)
+                        else if (VerificationCodeLabel.Tag == "VerifyAccount")
                         {
-                            MessageBox.Show("Den angivna koden stämmer inte.", "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
+                            VerifyAccountRequest vreq = new VerifyAccountRequest();
+                            vreq.Email = Item.Email;
+                            vreq.Code = Convert.ToInt32(VerificationCodeTB.Text);
+                            VerifyAccountResponse vres = cli.VerifyAccount(vreq);
 
-                        }
-                        else if (pwresp.Result == ChangePasswordResponse.MethodResult.CodeAlreadyUsed)
-                        {
-                            MessageBox.Show("Den angivna koden har redan använts.", "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
+                            if (vres.Result == VerifyAccountResponse.MethodResult.Ok)
+                            {
+                                VerificationCodeLabel.Visible = false;
+                                VerificationCodeTB.Visible = VerificationCodeLabel.Visible;
 
-                        }
-                        else if (pwresp.Result == ChangePasswordResponse.MethodResult.CodeExpired)
-                        {
-                            MessageBox.Show("Den angivna koden är för gammal.", "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
+                            }
+                            else
+                            {
+                                MessageBox.Show(vres.Message, "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
 
-                        }
-                        else if (pwresp.Result == ChangePasswordResponse.MethodResult.OtherError)
-                        {
-                            MessageBox.Show(pwresp.Message, "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
+                            } // Not ok
 
-                        }
-                        else if (pwresp.Result == ChangePasswordResponse.MethodResult.Ok)
-                        {
-                            MessageBox.Show("Ditt lösenord har nu ändrats och du kommer loggas in.", "Lösenordet ändrat", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        } // Verify Account
 
-                        }
+                    } // Verify account first
 
-                    }
-                    else if (VerificationCodeLabel.Tag == "VerifyAccount")
+
+                    LoginRequest req = new LoginRequest();
+                    req.Email = Item.Email;
+                    req.Password = Item.Password.Encrypt();
+                    req.AppID = "se.mawingu.venuemaker";
+
+                    LoginResponse res = cli.Login(req);
+
+                    if (res.Result == LoginResponse.MethodResult.Ok)
                     {
-                        VerifyAccountRequest vreq = new VerifyAccountRequest();
-                        vreq.Email = Item.Email;
-                        vreq.Code = Convert.ToInt32(VerificationCodeTB.Text);
-                        VerifyAccountResponse vres = cli.VerifyAccount(vreq);
+                        DataController.Me.Email = Item.Email;
+                        DataController.Me.Password = Item.Password;
+                        DataController.Me.Token = res.Token;
 
-                        if (vres.Result == VerifyAccountResponse.MethodResult.Ok)
-                        {
-                            VerificationCodeLabel.Visible = false;
-                            VerificationCodeTB.Visible = VerificationCodeLabel.Visible;
+                        SystemSounds.Asterisk.Play();
+                        DialogResult = DialogResult.OK;
 
-                        }
-                        else
-                        {
-                            MessageBox.Show(vres.Message, "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
-
-                        } // Not ok
-                    } // Verify Account
-
-                } // Verify account first
-                
-
-                LoginRequest req = new LoginRequest();
-                req.Email = Item.Email;
-                req.Password = Item.Password.Encrypt();
-                req.AppID = "se.mawingu.venuemaker";
-
-                LoginResponse res = cli.Login(req);
-
-                if (res.Result == LoginResponse.MethodResult.Ok)
-                {
-                    DataController.Me.Email = Item.Email;
-                    DataController.Me.Password = Item.Password;
-                    DataController.Me.Token = res.Token;
-
-                    SystemSounds.Asterisk.Play();
-                    DialogResult = DialogResult.OK;
-
-                } // Ok
-                else if (res.Result == LoginResponse.MethodResult.AccountNotVerified)
-                {
-                    cli.RequestVerificationCode(Item.Email);
-                    MessageBox.Show(
-                        "Ditt konto behöver verifieras och en verifikationskod har nu skickats till dig.",
-                        "Information",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Information
-                        );
-
-                    VerificationCodeLabel.Visible = true;
-                    VerificationCodeTB.Visible = VerificationCodeLabel.Visible;
-                    if (VerificationCodeTB.Visible)
-                    {
-                        VerificationCodeTB.Focus();
-
-                    } // Set focus on the verification code
-                        VerificationCodeLabel.Tag = "VerifyAccount";
-
-                } // Not verified
-                else if (res.Result == LoginResponse.MethodResult.InvalidCridentials)
-                {
-                    DialogResult dr = MessageBox.Show("Användarnamnet eller lösenordet är felaktigt. Har du glömt ditt lösenord?", "Felaktiga iloggningsuppgifter", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (DialogResult.Yes == dr)
+                    } // Ok
+                    else if (res.Result == LoginResponse.MethodResult.AccountNotVerified)
                     {
                         cli.RequestVerificationCode(Item.Email);
                         MessageBox.Show(
-                            "En verifikationskod har nu skickats till dig som ska anges när du väljer ett nytt lösenord.",
+                            "Ditt konto behöver verifieras och en verifikationskod har nu skickats till dig.",
                             "Information",
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Information
@@ -176,18 +155,48 @@ namespace VenueMaker.Dialogs
 
                         VerificationCodeLabel.Visible = true;
                         VerificationCodeTB.Visible = VerificationCodeLabel.Visible;
-                        VerificationCodeLabel.Tag = "ResetPassword";
+                        if (VerificationCodeTB.Visible)
+                        {
+                            VerificationCodeTB.Focus();
 
-                        PwTB.Text = string.Empty;
-                        PwTB.Focus();
-                        
-                    } // The user admits!
+                        } // Set focus on the verification code
+                        VerificationCodeLabel.Tag = "VerifyAccount";
 
-                } // Forgotten password
+                    } // Not verified
+
+                    else if (res.Result == LoginResponse.MethodResult.InvalidCridentials)
+                    {
+                        DialogResult dr = MessageBox.Show("Användarnamnet eller lösenordet är felaktigt. Har du glömt ditt lösenord?", "Felaktiga iloggningsuppgifter", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        if (DialogResult.Yes == dr)
+                        {
+                            cli.RequestVerificationCode(Item.Email);
+                            MessageBox.Show(
+                                "En verifikationskod har nu skickats till dig som ska anges när du väljer ett nytt lösenord.",
+                                "Information",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Information
+                                );
+
+                            VerificationCodeLabel.Visible = true;
+                            VerificationCodeTB.Visible = VerificationCodeLabel.Visible;
+                            VerificationCodeLabel.Tag = "ResetPassword";
+
+                            PwTB.Text = string.Empty;
+                            PwTB.Focus();
+
+                        } // The user admits!
+
+                    } // Forgotten password
 
 
-            } // using
+                } // using
 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
         }
 
     }

@@ -1,4 +1,4 @@
-﻿#define WITHADMINRIGHTS
+﻿//#define WITHADMINRIGHTS
 
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -69,6 +69,8 @@ namespace VenueMaker.Dialogs
                 saveVenueFileAsToolStripMenuItem.Visible = hasadminrights;
 
                 MakeVenueActiveChk.Visible = hasadminrights;
+
+                setPermissionsToolStripMenuItem.Visible = hasadminrights;
 
 
 
@@ -1758,14 +1760,15 @@ namespace VenueMaker.Dialogs
 
                     // Download missing files
                     string fldr = GetDataFilesFolder();
-                    
+
                     var files = DataController.Me.ListFiles(
                         DataController.Me.Token
                         ).Where(w =>
                             w.VenueId == Venue.Id &&
                             w.FileExt.ToLower() != ".venue" &&
                             w.FileExt.ToLower() != ".graphml"
-                        );
+                        ).ToArray();
+
 
                     foreach (var f in files)
                     {
@@ -1784,13 +1787,21 @@ namespace VenueMaker.Dialogs
 
                     FtpController.Me.DownloadFiles(fldr);
 
-                    string img = Path.Combine(GetDataFilesFolder(), Venue.Image);
-                    if (!string.IsNullOrWhiteSpace(Venue.Image) &&
-                        File.Exists(img))
+                    if (!string.IsNullOrWhiteSpace(Venue.Image))
                     {
-                        VenueImagePB.Image = Image.FromFile(img);
+                        string img = Path.Combine(GetDataFilesFolder(), Venue.Image);
+                        if (!string.IsNullOrWhiteSpace(Venue.Image) &&
+                            File.Exists(img))
+                        {
+                            VenueImagePB.Image = Image.FromFile(img);
 
-                    } // Image exists
+                        } // Image exists
+                    }
+                    else
+                    {
+                        VenueImagePB.Image = null;
+
+                    }
 
                     return true;
 
