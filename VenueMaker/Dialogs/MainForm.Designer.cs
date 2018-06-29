@@ -57,6 +57,10 @@
             this.SaveVenueDialog = new System.Windows.Forms.SaveFileDialog();
             this.Tabs = new System.Windows.Forms.TabControl();
             this.VenueTab = new System.Windows.Forms.TabPage();
+            this.VenueImagePB = new System.Windows.Forms.PictureBox();
+            this.SelectVenueImageBtn = new System.Windows.Forms.Button();
+            this.VenueImageTB = new System.Windows.Forms.TextBox();
+            this.VenueImageLabel = new System.Windows.Forms.Label();
             this.VenueEmailTB = new System.Windows.Forms.TextBox();
             this.VenueEmailLabel = new System.Windows.Forms.Label();
             this.VenueWebTB = new System.Windows.Forms.TextBox();
@@ -163,6 +167,7 @@
             this.ElevatorsLB = new System.Windows.Forms.ListBox();
             this.ElevatorListLabel = new System.Windows.Forms.Label();
             this.PoiTabPage = new System.Windows.Forms.TabPage();
+            this.PoiInfoPB = new System.Windows.Forms.PictureBox();
             this.POIInfosLabel = new System.Windows.Forms.Label();
             this.AutoPlayMediaCB = new System.Windows.Forms.CheckBox();
             this.MediaDescrTB = new System.Windows.Forms.TextBox();
@@ -196,18 +201,15 @@
             this.EdgeBS = new System.Windows.Forms.BindingSource(this.components);
             this.NodesBS = new System.Windows.Forms.BindingSource(this.components);
             this.DataFolderDialog = new System.Windows.Forms.FolderBrowserDialog();
-            this.VenueImageLabel = new System.Windows.Forms.Label();
-            this.VenueImageTB = new System.Windows.Forms.TextBox();
-            this.SelectVenueImageBtn = new System.Windows.Forms.Button();
-            this.VenueImagePB = new System.Windows.Forms.PictureBox();
-            this.PoiInfoPB = new System.Windows.Forms.PictureBox();
             this.MainMenuStrip.SuspendLayout();
             this.Tabs.SuspendLayout();
             this.VenueTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.VenueImagePB)).BeginInit();
             this.NodesTab.SuspendLayout();
             this.EdgesTab.SuspendLayout();
             this.ElevatorsTab.SuspendLayout();
             this.PoiTabPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PoiInfoPB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.VenueBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.POIsBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.POIInfosBS)).BeginInit();
@@ -216,8 +218,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.EdgesForPOIBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EdgeBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NodesBS)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.VenueImagePB)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PoiInfoPB)).BeginInit();
             this.SuspendLayout();
             // 
             // MainMenuStrip
@@ -467,6 +467,41 @@
             this.VenueTab.Text = "Plats";
             this.VenueTab.UseVisualStyleBackColor = true;
             // 
+            // VenueImagePB
+            // 
+            this.VenueImagePB.Location = new System.Drawing.Point(400, 317);
+            this.VenueImagePB.Name = "VenueImagePB";
+            this.VenueImagePB.Size = new System.Drawing.Size(170, 89);
+            this.VenueImagePB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.VenueImagePB.TabIndex = 45;
+            this.VenueImagePB.TabStop = false;
+            // 
+            // SelectVenueImageBtn
+            // 
+            this.SelectVenueImageBtn.Location = new System.Drawing.Point(506, 287);
+            this.SelectVenueImageBtn.Name = "SelectVenueImageBtn";
+            this.SelectVenueImageBtn.Size = new System.Drawing.Size(75, 23);
+            this.SelectVenueImageBtn.TabIndex = 44;
+            this.SelectVenueImageBtn.Text = "Välj bild";
+            this.SelectVenueImageBtn.UseVisualStyleBackColor = true;
+            this.SelectVenueImageBtn.Click += new System.EventHandler(this.SelectVenueImageBtn_Click);
+            // 
+            // VenueImageTB
+            // 
+            this.VenueImageTB.Location = new System.Drawing.Point(400, 288);
+            this.VenueImageTB.Name = "VenueImageTB";
+            this.VenueImageTB.Size = new System.Drawing.Size(100, 23);
+            this.VenueImageTB.TabIndex = 43;
+            // 
+            // VenueImageLabel
+            // 
+            this.VenueImageLabel.AutoSize = true;
+            this.VenueImageLabel.Location = new System.Drawing.Point(397, 270);
+            this.VenueImageLabel.Name = "VenueImageLabel";
+            this.VenueImageLabel.Size = new System.Drawing.Size(27, 15);
+            this.VenueImageLabel.TabIndex = 42;
+            this.VenueImageLabel.Text = "Bild";
+            // 
             // VenueEmailTB
             // 
             this.VenueEmailTB.Location = new System.Drawing.Point(400, 244);
@@ -527,9 +562,9 @@
             this.VenueGPSLabel.AutoSize = true;
             this.VenueGPSLabel.Location = new System.Drawing.Point(397, 90);
             this.VenueGPSLabel.Name = "VenueGPSLabel";
-            this.VenueGPSLabel.Size = new System.Drawing.Size(94, 15);
+            this.VenueGPSLabel.Size = new System.Drawing.Size(268, 15);
             this.VenueGPSLabel.TabIndex = 34;
-            this.VenueGPSLabel.Text = "&GPS-koordinater";
+            this.VenueGPSLabel.Text = "&GPS-koordinater i decimalform (xx.xxxxx,yy.yyyyy)";
             // 
             // MakeVenueActiveChk
             // 
@@ -1504,6 +1539,15 @@
             this.PoiTabPage.Text = "Points Of Interest";
             this.PoiTabPage.UseVisualStyleBackColor = true;
             // 
+            // PoiInfoPB
+            // 
+            this.PoiInfoPB.Location = new System.Drawing.Point(746, 403);
+            this.PoiInfoPB.Name = "PoiInfoPB";
+            this.PoiInfoPB.Size = new System.Drawing.Size(196, 121);
+            this.PoiInfoPB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.PoiInfoPB.TabIndex = 25;
+            this.PoiInfoPB.TabStop = false;
+            // 
             // POIInfosLabel
             // 
             this.POIInfosLabel.AutoSize = true;
@@ -1713,50 +1757,6 @@
             this.OpenCSVFileDialog.DefaultExt = "txt";
             this.OpenCSVFileDialog.Filter = "CSV-filer (*.csv, *.txt, *.xls)|*.csv;*.txt;*.xls|Alla filer (*)|*.*";
             // 
-            // VenueImageLabel
-            // 
-            this.VenueImageLabel.AutoSize = true;
-            this.VenueImageLabel.Location = new System.Drawing.Point(397, 270);
-            this.VenueImageLabel.Name = "VenueImageLabel";
-            this.VenueImageLabel.Size = new System.Drawing.Size(27, 15);
-            this.VenueImageLabel.TabIndex = 42;
-            this.VenueImageLabel.Text = "Bild";
-            // 
-            // VenueImageTB
-            // 
-            this.VenueImageTB.Location = new System.Drawing.Point(400, 288);
-            this.VenueImageTB.Name = "VenueImageTB";
-            this.VenueImageTB.Size = new System.Drawing.Size(100, 23);
-            this.VenueImageTB.TabIndex = 43;
-            // 
-            // SelectVenueImageBtn
-            // 
-            this.SelectVenueImageBtn.Location = new System.Drawing.Point(506, 287);
-            this.SelectVenueImageBtn.Name = "SelectVenueImageBtn";
-            this.SelectVenueImageBtn.Size = new System.Drawing.Size(75, 23);
-            this.SelectVenueImageBtn.TabIndex = 44;
-            this.SelectVenueImageBtn.Text = "Välj bild";
-            this.SelectVenueImageBtn.UseVisualStyleBackColor = true;
-            this.SelectVenueImageBtn.Click += new System.EventHandler(this.SelectVenueImageBtn_Click);
-            // 
-            // VenueImagePB
-            // 
-            this.VenueImagePB.Location = new System.Drawing.Point(400, 317);
-            this.VenueImagePB.Name = "VenueImagePB";
-            this.VenueImagePB.Size = new System.Drawing.Size(170, 89);
-            this.VenueImagePB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.VenueImagePB.TabIndex = 45;
-            this.VenueImagePB.TabStop = false;
-            // 
-            // PoiInfoPB
-            // 
-            this.PoiInfoPB.Location = new System.Drawing.Point(746, 403);
-            this.PoiInfoPB.Name = "PoiInfoPB";
-            this.PoiInfoPB.Size = new System.Drawing.Size(196, 121);
-            this.PoiInfoPB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.PoiInfoPB.TabIndex = 25;
-            this.PoiInfoPB.TabStop = false;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1776,6 +1776,7 @@
             this.Tabs.ResumeLayout(false);
             this.VenueTab.ResumeLayout(false);
             this.VenueTab.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.VenueImagePB)).EndInit();
             this.NodesTab.ResumeLayout(false);
             this.NodesTab.PerformLayout();
             this.EdgesTab.ResumeLayout(false);
@@ -1784,6 +1785,7 @@
             this.ElevatorsTab.PerformLayout();
             this.PoiTabPage.ResumeLayout(false);
             this.PoiTabPage.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PoiInfoPB)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.VenueBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.POIsBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.POIInfosBS)).EndInit();
@@ -1792,8 +1794,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.EdgesForPOIBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EdgeBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NodesBS)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.VenueImagePB)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PoiInfoPB)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

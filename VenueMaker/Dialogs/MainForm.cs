@@ -404,6 +404,7 @@ namespace VenueMaker.Dialogs
             {
                 Application.UseWaitCursor = true;
                 Application.DoEvents();
+                
 
                 if (!EnsureLogin())
                 {

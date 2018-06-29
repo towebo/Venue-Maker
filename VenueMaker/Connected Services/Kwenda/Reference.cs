@@ -2064,6 +2064,12 @@ namespace VenueMaker.Kwenda {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="Kwenda.IKwendaService")]
     public interface IKwendaService {
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKwendaService/Version", ReplyAction="http://tempuri.org/IKwendaService/VersionResponse")]
+        string Version();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKwendaService/Version", ReplyAction="http://tempuri.org/IKwendaService/VersionResponse")]
+        System.Threading.Tasks.Task<string> VersionAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKwendaService/CreateAccount", ReplyAction="http://tempuri.org/IKwendaService/CreateAccountResponse")]
         VenueMaker.Kwenda.CreateAccountResponse CreateAccount(VenueMaker.Kwenda.CreateAccountRequest aInfo);
         
@@ -2162,6 +2168,14 @@ namespace VenueMaker.Kwenda {
         
         public KwendaServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
+        }
+        
+        public string Version() {
+            return base.Channel.Version();
+        }
+        
+        public System.Threading.Tasks.Task<string> VersionAsync() {
+            return base.Channel.VersionAsync();
         }
         
         public VenueMaker.Kwenda.CreateAccountResponse CreateAccount(VenueMaker.Kwenda.CreateAccountRequest aInfo) {

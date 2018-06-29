@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="98666970-fa5e-4d91-8f26-f9fae1757e63" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="bfb90bb1-0d4c-4f0a-a387-7f4972522fee" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -19,14 +19,14 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://services.mawingu.se/kwenda/kwendaservice.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="https://services.mawingu.se/kwenda/kwendaservice.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="kwendaservice.xsd" MetadataType="Schema" ID="97563986-0cf7-4452-9e57-83fe47cc3081" SourceId="1" SourceUrl="http://services.mawingu.se/kwenda/kwendaservice.svc?xsd=xsd2" />
-    <MetadataFile FileName="kwendaservice1.xsd" MetadataType="Schema" ID="896286ad-710a-4145-8c9c-ebc0bb4c7063" SourceId="1" SourceUrl="http://services.mawingu.se/kwenda/kwendaservice.svc?xsd=xsd0" />
-    <MetadataFile FileName="KwendaService.wsdl" MetadataType="Wsdl" ID="916add55-e465-4019-8672-d522244a6de1" SourceId="1" SourceUrl="http://services.mawingu.se/kwenda/kwendaservice.svc?wsdl" />
-    <MetadataFile FileName="kwendaservice2.xsd" MetadataType="Schema" ID="c032955d-47ab-446c-93d0-ac7e1aa7adfd" SourceId="1" SourceUrl="http://services.mawingu.se/kwenda/kwendaservice.svc?xsd=xsd1" />
-    <MetadataFile FileName="kwendaservice.disco" MetadataType="Disco" ID="eac05da6-3cfa-4beb-a17d-ad303dd212bc" SourceId="1" SourceUrl="http://services.mawingu.se/kwenda/kwendaservice.svc?disco" />
+    <MetadataFile FileName="kwendaservice.xsd" MetadataType="Schema" ID="a7d33238-c831-4ca9-9985-db3b33d81054" SourceId="1" SourceUrl="http://services.mawingu.se/kwenda/kwendaservice.svc?xsd=xsd2" />
+    <MetadataFile FileName="kwendaservice1.xsd" MetadataType="Schema" ID="0fc1ff36-7f51-4a00-bfe2-c3a1bac00131" SourceId="1" SourceUrl="http://services.mawingu.se/kwenda/kwendaservice.svc?xsd=xsd0" />
+    <MetadataFile FileName="KwendaService.wsdl" MetadataType="Wsdl" ID="9b6d3e07-2583-44df-b659-41093b06c859" SourceId="1" SourceUrl="http://services.mawingu.se/kwenda/kwendaservice.svc?wsdl" />
+    <MetadataFile FileName="kwendaservice2.xsd" MetadataType="Schema" ID="71429517-484e-4f20-8ddc-edc087aebb3e" SourceId="1" SourceUrl="http://services.mawingu.se/kwenda/kwendaservice.svc?xsd=xsd1" />
+    <MetadataFile FileName="kwendaservice.disco" MetadataType="Disco" ID="b150a0c2-8408-465e-b216-10b2927753d8" SourceId="1" SourceUrl="http://services.mawingu.se/kwenda/kwendaservice.svc?disco" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
