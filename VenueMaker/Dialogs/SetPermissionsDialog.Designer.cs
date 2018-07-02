@@ -35,6 +35,7 @@
             this.PermitChk = new System.Windows.Forms.CheckBox();
             this.ApplyBtn = new System.Windows.Forms.Button();
             this.CancelBtn = new System.Windows.Forms.Button();
+            this.ReadOnlyChk = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // EmailLabel
@@ -76,36 +77,49 @@
             this.PermitChk.CheckState = System.Windows.Forms.CheckState.Checked;
             this.PermitChk.Location = new System.Drawing.Point(15, 103);
             this.PermitChk.Name = "PermitChk";
-            this.PermitChk.Size = new System.Drawing.Size(121, 19);
+            this.PermitChk.Size = new System.Drawing.Size(83, 19);
             this.PermitChk.TabIndex = 4;
-            this.PermitChk.Text = "&Rätt att uppdatera";
+            this.PermitChk.Text = "&Ge tillgång";
             this.PermitChk.UseVisualStyleBackColor = true;
             // 
             // ApplyBtn
             // 
-            this.ApplyBtn.Location = new System.Drawing.Point(15, 142);
+            this.ApplyBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.ApplyBtn.Location = new System.Drawing.Point(15, 176);
             this.ApplyBtn.Name = "ApplyBtn";
             this.ApplyBtn.Size = new System.Drawing.Size(75, 23);
-            this.ApplyBtn.TabIndex = 5;
+            this.ApplyBtn.TabIndex = 6;
             this.ApplyBtn.Text = "&Ange";
             this.ApplyBtn.UseVisualStyleBackColor = true;
             this.ApplyBtn.Click += new System.EventHandler(this.ApplyBtn_Click);
             // 
             // CancelBtn
             // 
+            this.CancelBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.CancelBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.CancelBtn.Location = new System.Drawing.Point(96, 142);
+            this.CancelBtn.Location = new System.Drawing.Point(96, 176);
             this.CancelBtn.Name = "CancelBtn";
             this.CancelBtn.Size = new System.Drawing.Size(75, 23);
-            this.CancelBtn.TabIndex = 6;
+            this.CancelBtn.TabIndex = 7;
             this.CancelBtn.Text = "Avbryt";
             this.CancelBtn.UseVisualStyleBackColor = true;
+            // 
+            // ReadOnlyChk
+            // 
+            this.ReadOnlyChk.AutoSize = true;
+            this.ReadOnlyChk.Location = new System.Drawing.Point(15, 128);
+            this.ReadOnlyChk.Name = "ReadOnlyChk";
+            this.ReadOnlyChk.Size = new System.Drawing.Size(96, 19);
+            this.ReadOnlyChk.TabIndex = 5;
+            this.ReadOnlyChk.Text = "Får inte &spara";
+            this.ReadOnlyChk.UseVisualStyleBackColor = true;
             // 
             // SetPermissionsDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(180, 177);
+            this.ClientSize = new System.Drawing.Size(180, 211);
+            this.Controls.Add(this.ReadOnlyChk);
             this.Controls.Add(this.CancelBtn);
             this.Controls.Add(this.ApplyBtn);
             this.Controls.Add(this.PermitChk);
@@ -132,5 +146,6 @@
         private System.Windows.Forms.CheckBox PermitChk;
         private System.Windows.Forms.Button ApplyBtn;
         private System.Windows.Forms.Button CancelBtn;
+        private System.Windows.Forms.CheckBox ReadOnlyChk;
     }
 }

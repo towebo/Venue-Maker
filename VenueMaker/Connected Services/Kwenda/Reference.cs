@@ -1921,6 +1921,9 @@ namespace VenueMaker.Kwenda {
         private bool GrantPermissionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool ReadOnlyField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string VenueIdField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
@@ -1955,6 +1958,19 @@ namespace VenueMaker.Kwenda {
                 if ((this.GrantPermissionField.Equals(value) != true)) {
                     this.GrantPermissionField = value;
                     this.RaisePropertyChanged("GrantPermission");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool ReadOnly {
+            get {
+                return this.ReadOnlyField;
+            }
+            set {
+                if ((this.ReadOnlyField.Equals(value) != true)) {
+                    this.ReadOnlyField = value;
+                    this.RaisePropertyChanged("ReadOnly");
                 }
             }
         }

@@ -38,6 +38,7 @@ namespace VenueMaker.Dialogs
                     perm.Email = EmailTB.Text;
                     perm.VenueId = VenueIdTB.Text;
                     perm.GrantPermission = PermitChk.Checked;
+                    perm.ReadOnly = ReadOnlyChk.Checked;
 
                     SetKwendaPermissionsRequest req = new SetKwendaPermissionsRequest();
                     req.Token = DataController.Me.Token;
