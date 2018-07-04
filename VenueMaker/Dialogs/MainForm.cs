@@ -1,4 +1,4 @@
-﻿#define WITHADMINRIGHTS
+﻿//#define WITHADMINRIGHTS
 
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -1881,6 +1881,9 @@ namespace VenueMaker.Dialogs
                 Application.UseWaitCursor = true;
                 Application.DoEvents();
 
+                VenueImagePB.Image.Dispose();
+                VenueImagePB.Image = null;
+
                 string mediafile = UseThisFile(OpenMediaFileDialog.FileName);
 
                 Venue.Image = mediafile;
@@ -1895,6 +1898,10 @@ namespace VenueMaker.Dialogs
             {
                 MessageBox.Show(ex.Message, "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
+            }
+            finally
+            {
+                Application.UseWaitCursor = false;
             }
         }
     }
