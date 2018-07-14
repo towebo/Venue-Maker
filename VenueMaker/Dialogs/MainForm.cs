@@ -1376,7 +1376,7 @@ namespace VenueMaker.Dialogs
                         CreateAccountRequest req = new CreateAccountRequest();
                         req.Email = dlg.Item.Email;
                         req.Organization = dlg.Item.Organization;
-                        req.Password = dlg.Item.Password.Encrypt();
+                        req.Password = dlg.Item.Password;
 
                         CreateAccountResponse result = cli.CreateAccount(req);
 

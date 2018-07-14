@@ -168,7 +168,6 @@
     <Compile Include="Helpers\HeadingHelper.cs" />
     <Compile Include="Helpers\KwendaServiceHelper.cs" />
     <Compile Include="Helpers\NumericStringHelper.cs" />
-    <Compile Include="Helpers\PasswordHelper.cs" />
     <Compile Include="Helpers\TravelTypeHelper.cs" />
     <Compile Include="Helpers\VenueHelper.cs" />
     <Compile Include="Models\BLEBeacon.cs" />

@@ -60,7 +60,7 @@ namespace VenueMaker.Dialogs
                             ChangePasswordRequest pwreq = new ChangePasswordRequest();
                             pwreq.Code = VerificationCodeTB.Text;
                             pwreq.Email = EmailTB.Text;
-                            pwreq.Password = PwTB.Text.Encrypt();
+                            pwreq.Password = PwTB.Text;
 
                             ChangePasswordResponse pwresp = cli.ChangePassword(pwreq);
 
@@ -128,7 +128,7 @@ namespace VenueMaker.Dialogs
 
                     LoginRequest req = new LoginRequest();
                     req.Email = Item.Email;
-                    req.Password = Item.Password.Encrypt();
+                    req.Password = Item.Password;
                     req.AppID = "se.mawingu.venuemaker";
 
                     LoginResponse res = cli.Login(req);
