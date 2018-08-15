@@ -209,7 +209,7 @@ namespace VenueMaker.Controllers
                     req.Token = Token;
 
                     ValidateTokenResponse response = cli.ValidateToken(req);
-                    
+
                     switch (response.Result)
                     {
                         case ValidateTokenResponse.MethodResult.Expired:
@@ -240,7 +240,26 @@ namespace VenueMaker.Controllers
 
         }
 
+        public string ServiceVersion()
+        {
+            try
+            {
+                using (KwendaServiceClient cli = new KwendaServiceClient())
+                {
+                    string result = cli.Version();
 
+                    return result;
+
+                } // using
+
+            }
+            catch (Exception ex)
+            {
+                throw;
+
+            }
+
+        }
 
 
 

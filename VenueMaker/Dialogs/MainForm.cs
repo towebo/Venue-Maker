@@ -592,10 +592,11 @@ namespace VenueMaker.Dialogs
 
                 } // Perhaps?
 
+                
                 Task t = Task.Run(() =>
                 {
                     // Initialize the web service for better performance.
-                    DataController.Me.IsTokenValid();
+                    DataController.Me.ServiceVersion();
 
                 });
                 

@@ -66,7 +66,8 @@ namespace VenueMaker.Dialogs
 
                             if (pwresp.Result == ChangePasswordResponse.MethodResult.AccountNotFound)
                             {
-                                MessageBox.Show("Kontot kunde inte hittas.", "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                //tmp MessageBox.Show("Kontot kunde inte hittas.", "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show(pwresp.Message, "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
 
                             }
@@ -133,6 +134,12 @@ namespace VenueMaker.Dialogs
 
                     LoginResponse res = cli.Login(req);
 
+                    if (res == null)
+                    {
+                        throw new Exception(cli.Version());
+                    }
+
+                    
                     if (res.Result == LoginResponse.MethodResult.Ok)
                     {
                         DataController.Me.Email = Item.Email;
@@ -166,7 +173,7 @@ namespace VenueMaker.Dialogs
 
                     else if (res.Result == LoginResponse.MethodResult.InvalidCridentials)
                     {
-                        DialogResult dr = MessageBox.Show("Användarnamnet eller lösenordet är felaktigt. Har du glömt ditt lösenord?", "Felaktiga iloggningsuppgifter", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        DialogResult dr = MessageBox.Show("Användarnamnet eller lösenordet är felaktigt. Har du glömt ditt lösenord?", "Felaktiga inloggningsuppgifter", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         if (DialogResult.Yes == dr)
                         {
                             cli.RequestVerificationCode(Item.Email);
