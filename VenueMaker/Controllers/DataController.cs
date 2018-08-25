@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using VenueMaker.Kwenda;
@@ -17,8 +18,6 @@ namespace VenueMaker.Controllers
         public string Password { get; set; }
         public string Token { get; set; }
 
-
-
         public static DataController Me
         {
             get
@@ -33,6 +32,13 @@ namespace VenueMaker.Controllers
         } // Me
 
 
+        public DataController()
+        {
+            // Make sure we use a newer version of SSL.
+            // https://stackoverflow.com/questions/6232746/c-sharp-httpwebrequest-sec-i-renegotiate-intermittent-errors
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
+        }
 
 
         public KwendaFileListItem[] ListFiles(string token)
