@@ -963,6 +963,7 @@ namespace VenueMaker.Dialogs
                     nei.Target
                     );
                 edge.TravelTime = nei.TravelTime;
+                edge.TravelType = nei.TravelType;
                 edge.StartHeading = nei.StartHeading;
                 edge.EndHeading = nei.EndHeading;
                 edge.Beginning = nei.Beginning;
@@ -974,6 +975,7 @@ namespace VenueMaker.Dialogs
                     nei.Source
                     );
                 returnedge.TravelTime = nei.TravelTime;
+                returnedge.TravelType = nei.TravelType;
                 returnedge.StartHeading = HeadingHelper.ValidHeading(nei.EndHeading - 180);
                 returnedge.EndHeading = HeadingHelper.ValidHeading(nei.StartHeading - 180);
                 returnedge.Beginning = nei.Beginning;

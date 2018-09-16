@@ -15,6 +15,7 @@ namespace VenueMaker.Models
         public int StartHeading { get; set; }
         public int EndHeading { get; set; }
         public int TravelTime { get; set; }
+        public string TravelType { get; set; }
         
     }
 }

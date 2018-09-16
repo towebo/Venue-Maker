@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using VenueMaker.Models;
+using WayfindR.Helpers;
 using WayfindR.Models;
 
 namespace VenueMaker.Dialogs
@@ -47,6 +48,11 @@ namespace VenueMaker.Dialogs
                 StartHeadingTB.DataBindings.Add("Text", InfoBS, "StartHeading");
                 EndHeadingTB.DataBindings.Add("Text", InfoBS, "EndHeading");
                 TravelTimeTB.DataBindings.Add("Text", InfoBS, "TravelTime");
+
+                TravelTypeCombo.DataSource = TravelTypeHelper.ToDictionary().Keys.ToList();
+                TravelTypeCombo.DataBindings.Add("Text", InfoBS, "TravelType");
+
+
 
                 InfoBS.ResetBindings(true);
 

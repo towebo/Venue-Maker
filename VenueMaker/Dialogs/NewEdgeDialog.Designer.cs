@@ -46,6 +46,8 @@
             this.InfoBS = new System.Windows.Forms.BindingSource(this.components);
             this.SourcesBS = new System.Windows.Forms.BindingSource(this.components);
             this.TargetsBS = new System.Windows.Forms.BindingSource(this.components);
+            this.TravelTypeLabel = new System.Windows.Forms.Label();
+            this.TravelTypeCombo = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.InfoBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SourcesBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TargetsBS)).BeginInit();
@@ -153,30 +155,51 @@
             // 
             // AddButton
             // 
-            this.AddButton.Location = new System.Drawing.Point(172, 210);
+            this.AddButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.AddButton.Location = new System.Drawing.Point(172, 289);
             this.AddButton.Name = "AddButton";
             this.AddButton.Size = new System.Drawing.Size(75, 23);
-            this.AddButton.TabIndex = 12;
+            this.AddButton.TabIndex = 16;
             this.AddButton.Text = "L&ä\'gg till";
             this.AddButton.UseVisualStyleBackColor = true;
             this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
             // CancelButton
             // 
+            this.CancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.CancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.CancelButton.Location = new System.Drawing.Point(253, 210);
+            this.CancelButton.Location = new System.Drawing.Point(253, 289);
             this.CancelButton.Name = "CancelButton";
             this.CancelButton.Size = new System.Drawing.Size(75, 23);
-            this.CancelButton.TabIndex = 13;
+            this.CancelButton.TabIndex = 17;
             this.CancelButton.Text = "Avbryt";
             this.CancelButton.UseVisualStyleBackColor = true;
+            // 
+            // TravelTypeLabel
+            // 
+            this.TravelTypeLabel.AutoSize = true;
+            this.TravelTypeLabel.Location = new System.Drawing.Point(12, 188);
+            this.TravelTypeLabel.Name = "TravelTypeLabel";
+            this.TravelTypeLabel.Size = new System.Drawing.Size(49, 15);
+            this.TravelTypeLabel.TabIndex = 14;
+            this.TravelTypeLabel.Text = "F&ärdsätt";
+            // 
+            // TravelTypeCombo
+            // 
+            this.TravelTypeCombo.FormattingEnabled = true;
+            this.TravelTypeCombo.Location = new System.Drawing.Point(15, 206);
+            this.TravelTypeCombo.Name = "TravelTypeCombo";
+            this.TravelTypeCombo.Size = new System.Drawing.Size(121, 23);
+            this.TravelTypeCombo.TabIndex = 15;
             // 
             // NewEdgeDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(336, 239);
+            this.ClientSize = new System.Drawing.Size(336, 318);
             this.ControlBox = false;
+            this.Controls.Add(this.TravelTypeCombo);
+            this.Controls.Add(this.TravelTypeLabel);
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.AddButton);
             this.Controls.Add(this.TravelTimeTB);
@@ -226,5 +249,7 @@
         private System.Windows.Forms.BindingSource InfoBS;
         private System.Windows.Forms.BindingSource SourcesBS;
         private System.Windows.Forms.BindingSource TargetsBS;
+        private System.Windows.Forms.Label TravelTypeLabel;
+        private System.Windows.Forms.ComboBox TravelTypeCombo;
     }
 }
