@@ -30,8 +30,8 @@ namespace WayfindR.Helpers
                 WFTravelType.Stairs
                 );
             result.Add(
-                WFTravelType.MetalStairs.ToString().ToLower(),
-                WFTravelType.MetalStairs
+                WFTravelType.GridStairs.ToString().ToLower(),
+                WFTravelType.GridStairs
                 );
             result.Add(
                 WFTravelType.Ladder.ToString().ToLower(),

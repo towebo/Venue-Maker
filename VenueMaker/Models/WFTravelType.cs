@@ -10,7 +10,7 @@ namespace WayfindR.Models
         Elevator,
         Escalator,
         Stairs,
-        MetalStairs,
+        GridStairs,
         Ladder
     } // Enum
 
