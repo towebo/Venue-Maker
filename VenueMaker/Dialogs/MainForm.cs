@@ -1,4 +1,4 @@
-﻿//tmp #define WITHADMINRIGHTS
+﻿#define WITHADMINRIGHTS
 
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -596,10 +596,13 @@ namespace VenueMaker.Dialogs
                 Task t = Task.Run(() =>
                 {
                     // Initialize the web service for better performance.
-                    DataController.Me.ServiceVersion();
+                    Invoke((MethodInvoker)delegate
+                    {
+                        ServiceVersionLabel .Text = $"Serviceversion: {DataController.Me.ServiceVersion()}";
 
-                });
-                
+                    });
+
+                });                                
             }
             catch (Exception ex)
             {
@@ -1906,6 +1909,30 @@ namespace VenueMaker.Dialogs
             {
                 Application.UseWaitCursor = false;
             }
+        }
+
+        private void checkForUpdateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Application.UseWaitCursor = false;
+                Application.DoEvents();
+
+
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+
+            }
+            finally
+            {
+                Application.UseWaitCursor = false;
+            }
+
         }
     }
 }

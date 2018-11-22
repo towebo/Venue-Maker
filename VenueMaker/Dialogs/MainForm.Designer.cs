@@ -51,6 +51,8 @@
             this.setPermissionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.selectDataFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.checkForUpdateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.kontoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.OpenVenueDialog = new System.Windows.Forms.OpenFileDialog();
             this.OpenGraphMLDialog = new System.Windows.Forms.OpenFileDialog();
@@ -201,6 +203,9 @@
             this.EdgeBS = new System.Windows.Forms.BindingSource(this.components);
             this.NodesBS = new System.Windows.Forms.BindingSource(this.components);
             this.DataFolderDialog = new System.Windows.Forms.FolderBrowserDialog();
+            this.statusStrip = new System.Windows.Forms.StatusStrip();
+            this.ServiceVersionLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.ActiveUserLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.MainMenuStrip.SuspendLayout();
             this.Tabs.SuspendLayout();
             this.VenueTab.SuspendLayout();
@@ -218,6 +223,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.EdgesForPOIBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EdgeBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NodesBS)).BeginInit();
+            this.statusStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // MainMenuStrip
@@ -227,7 +233,8 @@
             this.fileToolStripMenuItem,
             this.toolStripMenuItem2,
             this.kontoToolStripMenuItem1,
-            this.optionsToolStripMenuItem});
+            this.optionsToolStripMenuItem,
+            this.helpToolStripMenuItem});
             this.MainMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.MainMenuStrip.Name = "MainMenuStrip";
             this.MainMenuStrip.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
@@ -391,6 +398,21 @@
             this.selectDataFolderToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
             this.selectDataFolderToolStripMenuItem.Text = "&Välj mapp för datafiler";
             this.selectDataFolderToolStripMenuItem.Click += new System.EventHandler(this.selectDataFolderToolStripMenuItem_Click);
+            // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.checkForUpdateToolStripMenuItem});
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
+            this.helpToolStripMenuItem.Text = "&Hjälp";
+            // 
+            // checkForUpdateToolStripMenuItem
+            // 
+            this.checkForUpdateToolStripMenuItem.Name = "checkForUpdateToolStripMenuItem";
+            this.checkForUpdateToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.checkForUpdateToolStripMenuItem.Text = "&Leta efter uppdatering";
+            this.checkForUpdateToolStripMenuItem.Click += new System.EventHandler(this.checkForUpdateToolStripMenuItem_Click);
             // 
             // kontoToolStripMenuItem
             // 
@@ -1757,12 +1779,35 @@
             this.OpenCSVFileDialog.DefaultExt = "txt";
             this.OpenCSVFileDialog.Filter = "CSV-filer (*.csv, *.txt, *.xls)|*.csv;*.txt;*.xls|Alla filer (*)|*.*";
             // 
+            // statusStrip
+            // 
+            this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ServiceVersionLabel,
+            this.ActiveUserLabel});
+            this.statusStrip.Location = new System.Drawing.Point(0, 690);
+            this.statusStrip.Name = "statusStrip";
+            this.statusStrip.Size = new System.Drawing.Size(1129, 22);
+            this.statusStrip.TabIndex = 18;
+            this.statusStrip.Text = "statusStrip1";
+            // 
+            // ServiceVersionLabel
+            // 
+            this.ServiceVersionLabel.Name = "ServiceVersionLabel";
+            this.ServiceVersionLabel.Size = new System.Drawing.Size(88, 17);
+            this.ServiceVersionLabel.Text = "Serviceversion: ";
+            // 
+            // ActiveUserLabel
+            // 
+            this.ActiveUserLabel.Name = "ActiveUserLabel";
+            this.ActiveUserLabel.Size = new System.Drawing.Size(0, 17);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1129, 712);
+            this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.Tabs);
             this.Controls.Add(this.MainMenuStrip);
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1794,6 +1839,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.EdgesForPOIBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EdgeBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NodesBS)).EndInit();
+            this.statusStrip.ResumeLayout(false);
+            this.statusStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1975,5 +2022,10 @@
         private System.Windows.Forms.Label VenueImageLabel;
         private System.Windows.Forms.PictureBox VenueImagePB;
         private System.Windows.Forms.PictureBox PoiInfoPB;
+        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem checkForUpdateToolStripMenuItem;
+        private System.Windows.Forms.StatusStrip statusStrip;
+        private System.Windows.Forms.ToolStripStatusLabel ServiceVersionLabel;
+        private System.Windows.Forms.ToolStripStatusLabel ActiveUserLabel;
     }
 }
