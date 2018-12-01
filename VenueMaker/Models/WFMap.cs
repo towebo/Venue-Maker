@@ -8,7 +8,8 @@ namespace WayfindR.Models
 {
     public enum WFMapType
     {
-        Jpg = 0
+        Jpg = 0,
+        Png = 1
     } // Enum
 
     public class WFMap

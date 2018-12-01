@@ -82,7 +82,33 @@ namespace VenueMaker.Dialogs
 
                 };
 
+                MapsBS.DataSource = new WFMap[] { };
+                MapsBS.CurrentChanged += (s2, e2) =>
+                {
+                    WFMap m = MapsBS.Current as WFMap;
+
+                    if (MapPB.Image != null)
+                    {
+                        MapPB.Image.Dispose();
+                        MapPB.Image = null;
+
+                    } // Has image
+
+                    string img = Path.Combine(GetDataFilesFolder(), m.FileName);
+                    if (!File.Exists(img))
+                    {
+                        return;
+
+                    } // Doesn't exists
+
+                    MapPB.Image = Image.FromFile(img);
+                    
+                };
                 
+                MapsLB.DisplayMember = "Title";
+                MapsLB.ValueMember = "Id";
+                MapsLB.DataSource = MapsBS;
+
 
                 VenueNameTB.DataBindings.Add("Text", VenueBS, "Name");
                 VenueIDTB.DataBindings.Add("Text", VenueBS, "Id");
@@ -334,6 +360,21 @@ namespace VenueMaker.Dialogs
                         EdgesPOIsBS.DataSource = v.PointsOfInterest;
 
                     } // Pois is null
+
+
+
+                    if (v.Maps != null)
+                    {
+                        MapsBS.DataSource = v.Maps;
+                        MapsBS.ResetBindings(false);
+
+                    }
+                    else
+                    {
+                        MapsBS.DataSource = new WFMap[] { };
+                        MapsBS.ResetBindings(false);
+
+                    } // Maps is null
 
                     NodesBS.DataSource = v.NodesGraph.GetNodesAlphabetical().OrderBy(w => w, new FloorComparer()).ToArray();
                     NodesBS.ResetBindings(false);
@@ -1706,6 +1747,32 @@ namespace VenueMaker.Dialogs
                     
                 } // foreach node
 
+                
+                if (Venue.Maps != null)
+                {
+                    foreach (WFMap m in Venue.Maps)
+                    {
+                        if (!string.IsNullOrWhiteSpace(m.FileName))
+                        {
+                            KwendaFileItem kmediafile = new KwendaFileItem();
+                            kmediafile.VenueId = Venue.Id;
+                            kmediafile.FileName = m.FileName;
+                            kmediafile.FileExt = Path.GetExtension(kmediafile.FileName);
+                            kmediafile.Data = "";
+                            kmediafile.Active = MakeVenueActiveChk.Checked;
+                            kfiles.Add(kmediafile);
+
+                            FtpController.Me.AddToUploadQueue(
+                                Path.Combine(fldr, m.FileName)
+                                );
+
+                        } // Has file name
+
+                    } // foreach Map
+
+                } // Has Maps
+
+
                 DataController.Me.UpdateKwendaFiles(
                     DataController.Me.Token,
                     kfiles.ToArray()
@@ -1933,6 +2000,98 @@ namespace VenueMaker.Dialogs
                 Application.UseWaitCursor = false;
             }
 
+        }
+
+        private void AddMapBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (OpenMediaFileDialog.ShowDialog() != DialogResult.OK)
+                {
+                    return;
+
+                } // No file selected
+
+                Application.UseWaitCursor = true;
+                Application.DoEvents();
+
+                string mediafile = UseThisFile(OpenMediaFileDialog.FileName);
+
+                List<WFMap> mapsl = new List<WFMap>();
+                if (Venue.Maps != null)
+                {
+                    mapsl.AddRange(Venue.Maps);
+
+                } // Not nulls
+                WFMap m = new WFMap();
+                m.FileName = mediafile;
+                m.Id = Guid.NewGuid().ToString();
+                m.Title = m.FileName;
+                m.Language = "svSE";
+                m.MapType = WFMapType.Png;
+
+                mapsl.Add(m);
+
+                Venue.Maps = mapsl.ToArray();
+                MapsBS.DataSource = Venue.Maps;
+                MapsBS.ResetBindings(false);
+
+                SystemSounds.Asterisk.Play();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            finally
+            {
+                Application.UseWaitCursor = false;
+
+            }
+        }
+
+        private void DeleteMapBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Delete map
+                WFMap m = MapsBS.Current as WFMap;
+                if (m == null)
+                {
+                    return;
+
+                } // Is null
+
+                DialogResult dr = MessageBox.Show($"Vill du ta bort \"{m.Title}\"?", "Radera karta", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (DialogResult.Yes != dr)
+                {
+                    return;
+
+                } // Don't sdelete
+
+                Application.UseWaitCursor = true;
+                Application.DoEvents();
+
+                List<WFMap> mapsl = Venue.Maps.ToList();
+                mapsl.Remove(m);
+
+                Venue.Maps = mapsl.ToArray();
+                MapsBS.DataSource = Venue.Maps;
+                MapsBS.ResetBindings(false);
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            finally
+            {
+                Application.UseWaitCursor = false;
+
+            }
         }
     }
 }

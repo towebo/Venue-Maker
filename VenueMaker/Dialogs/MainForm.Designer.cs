@@ -206,6 +206,12 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.ServiceVersionLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.ActiveUserLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.MapsLabel = new System.Windows.Forms.Label();
+            this.MapsLB = new System.Windows.Forms.ListBox();
+            this.AddMapBtn = new System.Windows.Forms.Button();
+            this.DeleteMapBtn = new System.Windows.Forms.Button();
+            this.MapPB = new System.Windows.Forms.PictureBox();
+            this.MapsBS = new System.Windows.Forms.BindingSource(this.components);
             this.MainMenuStrip.SuspendLayout();
             this.Tabs.SuspendLayout();
             this.VenueTab.SuspendLayout();
@@ -224,6 +230,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.EdgeBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NodesBS)).BeginInit();
             this.statusStrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MapPB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MapsBS)).BeginInit();
             this.SuspendLayout();
             // 
             // MainMenuStrip
@@ -452,6 +460,11 @@
             // 
             // VenueTab
             // 
+            this.VenueTab.Controls.Add(this.MapPB);
+            this.VenueTab.Controls.Add(this.DeleteMapBtn);
+            this.VenueTab.Controls.Add(this.AddMapBtn);
+            this.VenueTab.Controls.Add(this.MapsLB);
+            this.VenueTab.Controls.Add(this.MapsLabel);
             this.VenueTab.Controls.Add(this.VenueImagePB);
             this.VenueTab.Controls.Add(this.SelectVenueImageBtn);
             this.VenueTab.Controls.Add(this.VenueImageTB);
@@ -1801,6 +1814,53 @@
             this.ActiveUserLabel.Name = "ActiveUserLabel";
             this.ActiveUserLabel.Size = new System.Drawing.Size(0, 17);
             // 
+            // MapsLabel
+            // 
+            this.MapsLabel.AutoSize = true;
+            this.MapsLabel.Location = new System.Drawing.Point(397, 417);
+            this.MapsLabel.Name = "MapsLabel";
+            this.MapsLabel.Size = new System.Drawing.Size(39, 15);
+            this.MapsLabel.TabIndex = 46;
+            this.MapsLabel.Text = "Kartor";
+            // 
+            // MapsLB
+            // 
+            this.MapsLB.FormattingEnabled = true;
+            this.MapsLB.ItemHeight = 15;
+            this.MapsLB.Location = new System.Drawing.Point(400, 435);
+            this.MapsLB.Name = "MapsLB";
+            this.MapsLB.Size = new System.Drawing.Size(170, 124);
+            this.MapsLB.TabIndex = 47;
+            // 
+            // AddMapBtn
+            // 
+            this.AddMapBtn.Location = new System.Drawing.Point(400, 565);
+            this.AddMapBtn.Name = "AddMapBtn";
+            this.AddMapBtn.Size = new System.Drawing.Size(75, 23);
+            this.AddMapBtn.TabIndex = 48;
+            this.AddMapBtn.Text = "Lägg till";
+            this.AddMapBtn.UseVisualStyleBackColor = true;
+            this.AddMapBtn.Click += new System.EventHandler(this.AddMapBtn_Click);
+            // 
+            // DeleteMapBtn
+            // 
+            this.DeleteMapBtn.Location = new System.Drawing.Point(481, 565);
+            this.DeleteMapBtn.Name = "DeleteMapBtn";
+            this.DeleteMapBtn.Size = new System.Drawing.Size(75, 23);
+            this.DeleteMapBtn.TabIndex = 49;
+            this.DeleteMapBtn.Text = "Ta bort";
+            this.DeleteMapBtn.UseVisualStyleBackColor = true;
+            this.DeleteMapBtn.Click += new System.EventHandler(this.DeleteMapBtn_Click);
+            // 
+            // MapPB
+            // 
+            this.MapPB.Location = new System.Drawing.Point(588, 317);
+            this.MapPB.Name = "MapPB";
+            this.MapPB.Size = new System.Drawing.Size(392, 303);
+            this.MapPB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.MapPB.TabIndex = 50;
+            this.MapPB.TabStop = false;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1841,6 +1901,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.NodesBS)).EndInit();
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MapPB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MapsBS)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2027,5 +2089,11 @@
         private System.Windows.Forms.StatusStrip statusStrip;
         private System.Windows.Forms.ToolStripStatusLabel ServiceVersionLabel;
         private System.Windows.Forms.ToolStripStatusLabel ActiveUserLabel;
+        private System.Windows.Forms.Button DeleteMapBtn;
+        private System.Windows.Forms.Button AddMapBtn;
+        private System.Windows.Forms.ListBox MapsLB;
+        private System.Windows.Forms.Label MapsLabel;
+        private System.Windows.Forms.PictureBox MapPB;
+        private System.Windows.Forms.BindingSource MapsBS;
     }
 }
