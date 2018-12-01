@@ -74,6 +74,8 @@ namespace WayfindR.Models
             set { SetHeadingInfo(4, value); }
         }
 
+        [XmlAttribute("map_point")]
+        public WFMapPoint MapPoint { get; set; }
 
         [XmlAttribute("in_range_accuracy")]
         public double? InRangeAccuracy { get; set; }

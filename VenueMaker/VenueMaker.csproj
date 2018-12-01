@@ -188,6 +188,9 @@
     <Compile Include="Models\WFEdge.cs" />
     <Compile Include="Models\WFExit.cs" />
     <Compile Include="Models\WFGraph.cs" />
+    <Compile Include="Models\WFMap.cs" />
+    <Compile Include="Models\WFMapEdge.cs" />
+    <Compile Include="Models\WFMapPoint.cs" />
     <Compile Include="Models\WFNode.cs" />
     <Compile Include="Models\WFPlattform.cs" />
     <Compile Include="Models\WFPOIInformation.cs" />

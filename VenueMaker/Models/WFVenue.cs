@@ -50,6 +50,7 @@ namespace WayfindR.Models
 
         public WFGraph NodesGraph { get; set; }
 
+        public WFMap[] Maps { get; set; }
 
         public static WFVenue FromJson(string jsonData)
         {
@@ -214,6 +215,36 @@ namespace WayfindR.Models
                 catch
                 {
                     // No points of interest
+                }
+
+                try
+                {
+                    var jmaps = jo["venue"]["maps"].Children();
+                    List<WFMap> wfmaps = new List<WFMap>();
+                    foreach (var jm in jmaps)
+                    {
+                        WFMap wfm = new WFMap();
+                        wfm.Id = (string)jm["id"];
+                        wfm.Title = (string)jm["title"];
+                        wfm.Language = (string)jm["language"];
+                        wfm.FileName = (string)jm["filename"];
+                        int mtype = (int)jm["map_type"];
+                        try
+                        {
+                            wfm.MapType = (WFMapType)mtype;
+                        }
+                        catch
+                        {
+                        }
+
+                        wfmaps.Add(wfm);
+
+                    } // foreach exit
+                    result.Maps = wfmaps.ToArray();
+                }
+                catch
+                {
+                    // No maps
                 }
 
 
@@ -420,6 +451,35 @@ namespace WayfindR.Models
                         writer.WriteEnd();
 
                     } // Has points of interest
+
+
+                    if (Maps != null &&
+                        Maps.Length > 0)
+                    {
+                        writer.WritePropertyName("maps");
+                        writer.WriteStartArray();
+                        foreach (WFMap wfm in Maps)
+                        {
+                            writer.WriteStartObject();
+
+                            writer.WritePropertyName("id");
+                            writer.WriteValue(wfm.Id);
+                            writer.WritePropertyName("title");
+                            writer.WriteValue(wfm.Title);
+                            writer.WritePropertyName("language");
+                            writer.WriteValue(wfm.Language);
+                            writer.WritePropertyName("filename");
+                            writer.WriteValue(wfm.FileName);
+                            writer.WritePropertyName("map_type");
+                            writer.WriteValue((int)wfm.MapType);
+                            
+                            writer.WriteEndObject();
+
+                        } // foreach map
+                        writer.WriteEnd();
+
+                    } // Has maps
+
 
                     writer.WriteEndObject(); // venue
                     writer.WriteEndObject();
