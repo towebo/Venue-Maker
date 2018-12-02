@@ -59,6 +59,11 @@
             this.SaveVenueDialog = new System.Windows.Forms.SaveFileDialog();
             this.Tabs = new System.Windows.Forms.TabControl();
             this.VenueTab = new System.Windows.Forms.TabPage();
+            this.MapPB = new System.Windows.Forms.PictureBox();
+            this.DeleteMapBtn = new System.Windows.Forms.Button();
+            this.AddMapBtn = new System.Windows.Forms.Button();
+            this.MapsLB = new System.Windows.Forms.ListBox();
+            this.MapsLabel = new System.Windows.Forms.Label();
             this.VenueImagePB = new System.Windows.Forms.PictureBox();
             this.SelectVenueImageBtn = new System.Windows.Forms.Button();
             this.VenueImageTB = new System.Windows.Forms.TextBox();
@@ -206,15 +211,11 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.ServiceVersionLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.ActiveUserLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.MapsLabel = new System.Windows.Forms.Label();
-            this.MapsLB = new System.Windows.Forms.ListBox();
-            this.AddMapBtn = new System.Windows.Forms.Button();
-            this.DeleteMapBtn = new System.Windows.Forms.Button();
-            this.MapPB = new System.Windows.Forms.PictureBox();
             this.MapsBS = new System.Windows.Forms.BindingSource(this.components);
             this.MainMenuStrip.SuspendLayout();
             this.Tabs.SuspendLayout();
             this.VenueTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MapPB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.VenueImagePB)).BeginInit();
             this.NodesTab.SuspendLayout();
             this.EdgesTab.SuspendLayout();
@@ -230,7 +231,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.EdgeBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NodesBS)).BeginInit();
             this.statusStrip.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.MapPB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MapsBS)).BeginInit();
             this.SuspendLayout();
             // 
@@ -501,6 +501,54 @@
             this.VenueTab.TabIndex = 4;
             this.VenueTab.Text = "Plats";
             this.VenueTab.UseVisualStyleBackColor = true;
+            // 
+            // MapPB
+            // 
+            this.MapPB.Location = new System.Drawing.Point(588, 317);
+            this.MapPB.Name = "MapPB";
+            this.MapPB.Size = new System.Drawing.Size(392, 303);
+            this.MapPB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.MapPB.TabIndex = 50;
+            this.MapPB.TabStop = false;
+            // 
+            // DeleteMapBtn
+            // 
+            this.DeleteMapBtn.Location = new System.Drawing.Point(481, 565);
+            this.DeleteMapBtn.Name = "DeleteMapBtn";
+            this.DeleteMapBtn.Size = new System.Drawing.Size(75, 23);
+            this.DeleteMapBtn.TabIndex = 49;
+            this.DeleteMapBtn.Text = "Ta bort";
+            this.DeleteMapBtn.UseVisualStyleBackColor = true;
+            this.DeleteMapBtn.Click += new System.EventHandler(this.DeleteMapBtn_Click);
+            // 
+            // AddMapBtn
+            // 
+            this.AddMapBtn.Location = new System.Drawing.Point(400, 565);
+            this.AddMapBtn.Name = "AddMapBtn";
+            this.AddMapBtn.Size = new System.Drawing.Size(75, 23);
+            this.AddMapBtn.TabIndex = 48;
+            this.AddMapBtn.Text = "Lägg till";
+            this.AddMapBtn.UseVisualStyleBackColor = true;
+            this.AddMapBtn.Click += new System.EventHandler(this.AddMapBtn_Click);
+            // 
+            // MapsLB
+            // 
+            this.MapsLB.FormattingEnabled = true;
+            this.MapsLB.ItemHeight = 15;
+            this.MapsLB.Location = new System.Drawing.Point(400, 435);
+            this.MapsLB.Name = "MapsLB";
+            this.MapsLB.Size = new System.Drawing.Size(170, 124);
+            this.MapsLB.TabIndex = 47;
+            this.MapsLB.DoubleClick += new System.EventHandler(this.MapsLB_DoubleClick);
+            // 
+            // MapsLabel
+            // 
+            this.MapsLabel.AutoSize = true;
+            this.MapsLabel.Location = new System.Drawing.Point(397, 417);
+            this.MapsLabel.Name = "MapsLabel";
+            this.MapsLabel.Size = new System.Drawing.Size(39, 15);
+            this.MapsLabel.TabIndex = 46;
+            this.MapsLabel.Text = "Kartor";
             // 
             // VenueImagePB
             // 
@@ -1814,53 +1862,6 @@
             this.ActiveUserLabel.Name = "ActiveUserLabel";
             this.ActiveUserLabel.Size = new System.Drawing.Size(0, 17);
             // 
-            // MapsLabel
-            // 
-            this.MapsLabel.AutoSize = true;
-            this.MapsLabel.Location = new System.Drawing.Point(397, 417);
-            this.MapsLabel.Name = "MapsLabel";
-            this.MapsLabel.Size = new System.Drawing.Size(39, 15);
-            this.MapsLabel.TabIndex = 46;
-            this.MapsLabel.Text = "Kartor";
-            // 
-            // MapsLB
-            // 
-            this.MapsLB.FormattingEnabled = true;
-            this.MapsLB.ItemHeight = 15;
-            this.MapsLB.Location = new System.Drawing.Point(400, 435);
-            this.MapsLB.Name = "MapsLB";
-            this.MapsLB.Size = new System.Drawing.Size(170, 124);
-            this.MapsLB.TabIndex = 47;
-            // 
-            // AddMapBtn
-            // 
-            this.AddMapBtn.Location = new System.Drawing.Point(400, 565);
-            this.AddMapBtn.Name = "AddMapBtn";
-            this.AddMapBtn.Size = new System.Drawing.Size(75, 23);
-            this.AddMapBtn.TabIndex = 48;
-            this.AddMapBtn.Text = "Lägg till";
-            this.AddMapBtn.UseVisualStyleBackColor = true;
-            this.AddMapBtn.Click += new System.EventHandler(this.AddMapBtn_Click);
-            // 
-            // DeleteMapBtn
-            // 
-            this.DeleteMapBtn.Location = new System.Drawing.Point(481, 565);
-            this.DeleteMapBtn.Name = "DeleteMapBtn";
-            this.DeleteMapBtn.Size = new System.Drawing.Size(75, 23);
-            this.DeleteMapBtn.TabIndex = 49;
-            this.DeleteMapBtn.Text = "Ta bort";
-            this.DeleteMapBtn.UseVisualStyleBackColor = true;
-            this.DeleteMapBtn.Click += new System.EventHandler(this.DeleteMapBtn_Click);
-            // 
-            // MapPB
-            // 
-            this.MapPB.Location = new System.Drawing.Point(588, 317);
-            this.MapPB.Name = "MapPB";
-            this.MapPB.Size = new System.Drawing.Size(392, 303);
-            this.MapPB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.MapPB.TabIndex = 50;
-            this.MapPB.TabStop = false;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1881,6 +1882,7 @@
             this.Tabs.ResumeLayout(false);
             this.VenueTab.ResumeLayout(false);
             this.VenueTab.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MapPB)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.VenueImagePB)).EndInit();
             this.NodesTab.ResumeLayout(false);
             this.NodesTab.PerformLayout();
@@ -1901,7 +1903,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.NodesBS)).EndInit();
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.MapPB)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MapsBS)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -102,9 +102,9 @@ namespace VenueMaker.Dialogs
                     } // Doesn't exists
 
                     MapPB.Image = Image.FromFile(img);
-                    
+
                 };
-                
+
                 MapsLB.DisplayMember = "Title";
                 MapsLB.ValueMember = "Id";
                 MapsLB.DataSource = MapsBS;
@@ -128,7 +128,7 @@ namespace VenueMaker.Dialogs
                 VisibilityCombo.DisplayMember = "Title";
                 VisibilityCombo.ValueMember = "Visibility";
                 VisibilityCombo.DataBindings.Add("SelectedValue", VenueBS, "Visibility");
-                               
+
 
 
                 POIsBS.DataSource = new WFPointOfInterest[] { };
@@ -139,12 +139,12 @@ namespace VenueMaker.Dialogs
                     p.Information != null)
                     {
                         POIInfosBS.DataSource = p.Information;
-                                                
+
                     }
                     else
                     {
                         POIInfosBS.DataSource = new WFPOIInformation[] { };
-                        
+
                     }
                     POIInfosBS.ResetBindings(false);
 
@@ -156,7 +156,7 @@ namespace VenueMaker.Dialogs
 
 
                 POIInfosBS.DataSource = new WFPOIInformation[] { };
-                
+
 
                 POIInfosLB.DataSource = POIInfosBS;
                 POIInfosLB.DisplayMember = "Information";
@@ -200,7 +200,7 @@ namespace VenueMaker.Dialogs
                             var nodeedges = Venue.NodesGraph.GetEdgesFor(node);
 
                             EdgesForPOIBS.DataSource = EdgeForPOI.EdgesFor(nodeedges);
-                                
+
 
                         } // Node not null
                         else
@@ -208,7 +208,7 @@ namespace VenueMaker.Dialogs
                             EdgesForPOIBS.DataSource = new EdgeForPOI[] { };
 
                         }
-                        
+
 
                     }
                     else
@@ -228,7 +228,7 @@ namespace VenueMaker.Dialogs
                 EdgesForPOIBS.CurrentChanged += (s4, e4) =>
                 {
                     EdgeForPOI efp = EdgesForPOIBS.Current as EdgeForPOI;
-                    
+
                     if (efp != null)
                     {
                         WFEdge<WFNode> edge = efp.Edge;
@@ -257,7 +257,7 @@ namespace VenueMaker.Dialogs
 
 
                 EdgeTravelTypeCombo.DataSource = TravelTypeHelper.ToDictionary().Keys.ToList();
-                
+
                 EdgeTravelTypeCombo.DataBindings.Add("Text", EdgeBS, "TravelType");
 
 
@@ -265,7 +265,7 @@ namespace VenueMaker.Dialogs
                 NodesLB.DataSource = NodesBS;
                 NodesLB.DisplayMember = "TextInList";
                 NodesLB.ValueMember = "Id";
-                
+
                 NodeNameTB.DataBindings.Add("Text", NodesBS, "Name");
                 NodeWaypointTypeCombo.DataSource = WaypointTypeHelper.ToDictionary().Keys.ToList();
                 NodeWaypointTypeCombo.DataBindings.Add("Text", NodesBS, "WaypointType");
@@ -379,7 +379,7 @@ namespace VenueMaker.Dialogs
                     NodesBS.DataSource = v.NodesGraph.GetNodesAlphabetical().OrderBy(w => w, new FloorComparer()).ToArray();
                     NodesBS.ResetBindings(false);
 
-                    elevators = v.NodesGraph.GetNodesAlphabetical().Where(w => 
+                    elevators = v.NodesGraph.GetNodesAlphabetical().Where(w =>
                         w.WaypointType == WFWaypointType.Elevator.ToString().ToLower()
                         ).OrderBy(w => w, new FloorComparer()).ToArray();
                     ElevatorsBS.DataSource = elevators;
@@ -397,7 +397,7 @@ namespace VenueMaker.Dialogs
 
 
                 }
-                                
+
             }
             catch (Exception ex)
             {
@@ -445,7 +445,7 @@ namespace VenueMaker.Dialogs
             {
                 Application.UseWaitCursor = true;
                 Application.DoEvents();
-                
+
 
                 if (!EnsureLogin())
                 {
@@ -523,9 +523,9 @@ namespace VenueMaker.Dialogs
 
                 } // From cloud
 
-                                
+
                 VenueBS.DataSource = Venue;
-                
+
             }
             catch (Exception ex)
             {
@@ -561,7 +561,7 @@ namespace VenueMaker.Dialogs
 
                 } // Save as or not saved
 
-                
+
                 // Set properties based on venue properties.
                 Venue.NodesGraph.VenueId = Venue.Id;
                 Venue.NodesGraph.VenueName = Venue.Name;
@@ -575,7 +575,7 @@ namespace VenueMaker.Dialogs
                 if (gkuuid != null)
                 {
                     gkuuid.DefaultValue = "bc8c0035-823e-4948-8695-1e11a1954211";
-                    
+
                 } // Found
                 var gkmajor = Venue.NodesGraph.GraphMLKeys.Where(w =>
                     w.ForType == "node" &&
@@ -590,9 +590,9 @@ namespace VenueMaker.Dialogs
 
                 if (sender == saveVenueFileAsToolStripMenuItem)
                 {
-                    
+
                     Venue.NodesGraph.Save(OpenGraphMLDialog.FileName);
-                    
+
                     Venue.SaveToFile(SaveVenueDialog.FileName);
 
                 }
@@ -633,17 +633,17 @@ namespace VenueMaker.Dialogs
 
                 } // Perhaps?
 
-                
+
                 Task t = Task.Run(() =>
                 {
                     // Initialize the web service for better performance.
                     Invoke((MethodInvoker)delegate
                     {
-                        ServiceVersionLabel .Text = $"Serviceversion: {DataController.Me.ServiceVersion()}";
+                        ServiceVersionLabel.Text = $"Serviceversion: {DataController.Me.ServiceVersion()}";
 
                     });
 
-                });                                
+                });
             }
             catch (Exception ex)
             {
@@ -685,7 +685,7 @@ namespace VenueMaker.Dialogs
                 POIInfosBS.DataSource = p.Information;
                 POIInfosBS.MoveLast();
                 POIInfosBS.ResetBindings(false);
-                
+
             }
             catch (Exception ex)
             {
@@ -705,7 +705,7 @@ namespace VenueMaker.Dialogs
 
                 }
 
-                
+
                 WFPOIInformation poii = POIInfosBS.Current as WFPOIInformation;
                 if (poii == null)
                 {
@@ -727,13 +727,13 @@ namespace VenueMaker.Dialogs
                     return;
 
                 } // Anything but Yes
-                
+
                 List<WFPOIInformation> poiis;
                 poiis = p.Information.ToList();
                 poiis.Remove(poii);
                 p.Information = poiis.ToArray();
                 POIsBS.ResetBindings(false);
-            
+
             }
             catch (Exception ex)
             {
@@ -762,11 +762,11 @@ namespace VenueMaker.Dialogs
                 }
 
                 int swapidx;
-                
+
                 if (sender == MoveInfoUpButton)
                 {
                     swapidx = selidx - 1;
-                                        
+
                 }
                 else
                 {
@@ -785,7 +785,7 @@ namespace VenueMaker.Dialogs
                 WFPOIInformation swapone = items[swapidx];
                 items[swapidx] = selone;
                 items[selidx] = swapone;
-                
+
                 POIInfosBS.ResetBindings(false);
                 if (sender == MoveInfoUpButton)
                 {
@@ -823,7 +823,7 @@ namespace VenueMaker.Dialogs
 
                 Application.UseWaitCursor = true;
                 Application.DoEvents();
-                
+
                 try
                 {
                     string[] currentfiles = FtpController.Me.DownloadFileList();
@@ -834,7 +834,7 @@ namespace VenueMaker.Dialogs
                     Console.WriteLine(dlex.Message);
 
                 }
-                
+
                 PushToCloud();
 
                 SystemSounds.Asterisk.Play();
@@ -873,14 +873,14 @@ namespace VenueMaker.Dialogs
 
                 Application.UseWaitCursor = true;
                 Application.DoEvents();
-                                                
+
                 string mediafile = UseThisFile(OpenMediaFileDialog.FileName);
-                
+
                 poii.MediaFile = mediafile;
                 MediaFileTB.Text = poii.MediaFile;
-                
+
                 SystemSounds.Asterisk.Play();
-                
+
             }
             catch (Exception ex)
             {
@@ -915,10 +915,10 @@ namespace VenueMaker.Dialogs
 
                 int startheading = Convert.ToInt32(ElevatorStartHeadingTB.Text);
                 int endheading = Convert.ToInt32(ElevatorEndHeadingTB.Text);
-                
+
 
                 int idxsrc = 0;
-                
+
                 foreach (WFNode sourceelevator in elevators)
                 {
                     idxsrc++;
@@ -933,7 +933,7 @@ namespace VenueMaker.Dialogs
                             continue;
 
                         } // The same elevator
-                                                
+
                         WFEdge<WFNode> edg = Venue.NodesGraph.NewEdge(sourceelevator, targetelevator);
                         edg.StartHeading = startheading;
                         edg.EndHeading = endheading;
@@ -942,18 +942,18 @@ namespace VenueMaker.Dialogs
                         edg.Beginning = string.Format(ElevatorMessageTB.Text,
                             targetelevator.Floor
                             );
-                        
+
                         Venue.NodesGraph.AddEdge(edg);
-                        
+
                     } // foreach target
-                    
+
                 } // foreach source elevator
 
-                
+
                 SystemSounds.Asterisk.Play();
 
 
-                
+
             }
             catch (Exception ex)
             {
@@ -987,7 +987,7 @@ namespace VenueMaker.Dialogs
                     nei.Target = nei.Source;
 
                 } // Not null
-                                
+
                 nei.TravelTime = 15;
 
                 NewEdgeDialog dlg = new NewEdgeDialog();
@@ -1001,7 +1001,7 @@ namespace VenueMaker.Dialogs
 
                 } // User canceled
 
-                
+
                 WFEdge<WFNode> edge = Venue.NodesGraph.NewEdge(
                     nei.Source,
                     nei.Target
@@ -1013,7 +1013,7 @@ namespace VenueMaker.Dialogs
                 edge.Beginning = nei.Beginning;
 
                 Venue.NodesGraph.AddEdge(edge);
-                                
+
                 WFEdge<WFNode> returnedge = Venue.NodesGraph.NewEdge(
                     nei.Target,
                     nei.Source
@@ -1124,8 +1124,8 @@ namespace VenueMaker.Dialogs
                         edge.Target.WaypointType == WFWaypointType.Elevator.ToString().ToLower())
                     {
                         Venue.NodesGraph.RemoveEdge(edge);
-                        
-                        
+
+
                     } // Is elevator edge
 
                 } // for
@@ -1185,7 +1185,7 @@ namespace VenueMaker.Dialogs
                     return;
 
                 } // Anything but Yes
-                
+
                 Venue.NodesGraph.RemoveVertex(thenode);
                 NodesBS.DataSource = Venue.NodesGraph.GetNodesAlphabetical().OrderBy(w => w, new FloorComparer()).ToArray();
                 NodesBS.ResetBindings(false);
@@ -1261,7 +1261,7 @@ namespace VenueMaker.Dialogs
                     n.Name = n.IdTag;
 
                     Venue.NodesGraph.AddVertex(n);
-                    
+
 
                 } // for all lines
 
@@ -1280,7 +1280,7 @@ namespace VenueMaker.Dialogs
         private void Tabs_Deselecting(object sender, TabControlCancelEventArgs e)
         {
             try
-            {                
+            {
                 // Refresh stuff?
                 if (e.TabPage == NodesTab)
                 {
@@ -1289,7 +1289,7 @@ namespace VenueMaker.Dialogs
 
 
                 } // Nodes
-                
+
             }
             catch (Exception ex)
             {
@@ -1303,7 +1303,7 @@ namespace VenueMaker.Dialogs
             try
             {
                 TextBox tb = null;
-                
+
                 if (sender == EditHeadingInfo1Btn)
                 {
                     tb = NodeInfo1HeadingTB;
@@ -1324,7 +1324,7 @@ namespace VenueMaker.Dialogs
                 {
                     tb = NodeInfo5HeadingTB;
                 }
-                
+
                 EditHeadingInfoDialog dlg = new EditHeadingInfoDialog();
                 dlg.HeadingInfo = new WFHeadingInfo(tb.Text);
                 if (dlg.ShowDialog() != DialogResult.OK)
@@ -1354,7 +1354,7 @@ namespace VenueMaker.Dialogs
                 Directory.CreateDirectory(mediafile);
 
             } // Create folder if it doesn't exist
-            
+
             string newfn = Path.GetFileName(src);
             if (!newfn.StartsWith(this.Venue.Id))
             {
@@ -1397,13 +1397,13 @@ namespace VenueMaker.Dialogs
             } // Not the same file
 
             return Path.GetFileName(mediafile);
-            
+
 
         }
 
-        
 
-        
+
+
         private void createAccountToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
@@ -1472,7 +1472,7 @@ namespace VenueMaker.Dialogs
                     } // User canceled
 
                     SystemSounds.Asterisk.Play();
-                    
+
                 } // using
 
             }
@@ -1508,7 +1508,7 @@ namespace VenueMaker.Dialogs
                         dlg.Item.Email = DataController.Me.Email;
 
                         result = dlg.ShowDialog() == DialogResult.OK;
-                        
+
                     } // using LoginDialog
 
                 } // Not logged in correctly
@@ -1539,7 +1539,7 @@ namespace VenueMaker.Dialogs
                     return;
 
                 } // Not logged in
-                
+
                 using (SetPermissionsDialog dlg = new SetPermissionsDialog())
                 {
                     dlg.VenueId = Venue.Id;
@@ -1547,7 +1547,7 @@ namespace VenueMaker.Dialogs
                     dlg.ShowDialog();
 
                 } // using
-                
+
             }
             catch (Exception ex)
             {
@@ -1744,10 +1744,10 @@ namespace VenueMaker.Dialogs
                         } // Image assigned
 
                     } // Has Headinginfo
-                    
+
                 } // foreach node
 
-                
+
                 if (Venue.Maps != null)
                 {
                     foreach (WFMap m in Venue.Maps)
@@ -2028,7 +2028,6 @@ namespace VenueMaker.Dialogs
                 m.Id = Guid.NewGuid().ToString();
                 m.Title = m.FileName;
                 m.Language = "svSE";
-                m.MapType = WFMapType.Png;
 
                 mapsl.Add(m);
 
@@ -2093,5 +2092,39 @@ namespace VenueMaker.Dialogs
 
             }
         }
-    }
+
+        private void MapsLB_DoubleClick(object sender, EventArgs e)
+        {
+            try
+            {
+                WFMap m = MapsBS.Current as WFMap;
+                if (m == null)
+                {
+                    return;
+
+                } // Is null
+
+                using (MapPropertiesDialog dlg = new MapPropertiesDialog())
+                {
+                    dlg.Map = m;
+                    if (DialogResult.OK != dlg.ShowDialog())
+                    {
+                        return;
+
+                    } // Cancelled
+
+                } // using
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+        }
+
+
+
+    } // class
 }
