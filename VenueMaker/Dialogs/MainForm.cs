@@ -288,8 +288,8 @@ namespace VenueMaker.Dialogs
                 NodeInfo4HeadingTB.DataBindings.Add("Text", NodesBS, "Heading4Info");
                 NodeInfo5HeadingTB.DataBindings.Add("Text", NodesBS, "Heading5Info");
 
-                NodeGPSTB.DataBindings.Add("Text", NodesBS, nameof(WFNode.GPSCoordinates), false);
-
+                NodeGPSTB.DataBindings.Add("Text", NodesBS, nameof(WFNode.GPSCoordinates), false, DataSourceUpdateMode.OnPropertyChanged);
+                
 
             }
             catch (Exception ex)
@@ -2124,7 +2124,25 @@ namespace VenueMaker.Dialogs
             }
         }
 
+        private void NodeMapPointBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (EditMapPointsAndEdgesDialog dlg = new EditMapPointsAndEdgesDialog())
+                {
+                    dlg.Venue = Venue;
+                    dlg.Node = NodesBS.Current as WFNode;
 
+                    dlg.ShowDialog();
 
+                } // using
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+        }
     } // class
 }

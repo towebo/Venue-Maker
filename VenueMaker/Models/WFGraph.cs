@@ -195,6 +195,14 @@ namespace WayfindR.Models
                 graphmlkeys.Add(new GraphMLKey()
                 {
                     Id = string.Format("d{0}", gkid++),
+                    Name = "map_point",
+                    DataType = "string",
+                    ForType = "node",
+                    DefaultValue = ""
+                });
+                graphmlkeys.Add(new GraphMLKey()
+                {
+                    Id = string.Format("d{0}", gkid++),
                     Name = "area",
                     DataType = "string",
                     ForType = "node",

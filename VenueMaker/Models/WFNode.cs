@@ -75,7 +75,7 @@ namespace WayfindR.Models
         }
 
         [XmlAttribute("map_point")]
-        public WFMapPoint MapPoint { get; set; }
+        public string MapPointStr { get; set; }
 
         [XmlAttribute("in_range_accuracy")]
         public double? InRangeAccuracy { get; set; }
@@ -164,7 +164,18 @@ namespace WayfindR.Models
 
         } // HeadingInfos
 
+        public WFMapPoint MapPoint
+        {
+            get
+            {
+                return WFMapPoint.FromString(MapPointStr);
+            } // get
+            set
+            {
+                MapPointStr = value.ToString();
 
+            } // set
+        } // MapPoint
 
 
         public WFNode()
