@@ -289,12 +289,44 @@ namespace VenueMaker.Dialogs
                 NodeInfo5HeadingTB.DataBindings.Add("Text", NodesBS, "Heading5Info");
 
                 NodeGPSTB.DataBindings.Add("Text", NodesBS, nameof(WFNode.GPSCoordinates), false, DataSourceUpdateMode.OnPropertyChanged);
-                
+
+                NodesBS.CurrentChanged += NodesBS_CurrentChanged;
+
+
 
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+        }
+
+        private void NodesBS_CurrentChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                WFNode n = NodesBS.Current as WFNode;
+                if (n == null)
+                {
+                    return;
+
+                } // Is null
+
+                WFMap m = Venue.Maps.Where(w => w.Id == n.MapPoint.MapId).FirstOrDefault();
+                if (m == null)
+                {
+                    NodeMapPointTB.Text = "";
+                    return;
+
+                } // No map
+
+                NodeMapPointTB.Text = $"{m.Title} / x: {n.MapPoint.X}, y: {n.MapPoint.Y}";
+
+            }
+            catch
+            {
+                NodeMapPointTB.Text = "";
 
             }
         }

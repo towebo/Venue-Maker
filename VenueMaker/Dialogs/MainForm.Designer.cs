@@ -94,6 +94,9 @@
             this.VenueNameTB = new System.Windows.Forms.TextBox();
             this.VenueNameLabel = new System.Windows.Forms.Label();
             this.NodesTab = new System.Windows.Forms.TabPage();
+            this.NodeMapPointBtn = new System.Windows.Forms.Button();
+            this.NodeMapPointTB = new System.Windows.Forms.TextBox();
+            this.NodeMapPointLabel = new System.Windows.Forms.Label();
             this.NodeGPSTB = new System.Windows.Forms.TextBox();
             this.NodeGPSLabel = new System.Windows.Forms.Label();
             this.NodeSpaceTB = new System.Windows.Forms.TextBox();
@@ -212,9 +215,6 @@
             this.ServiceVersionLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.ActiveUserLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.MapsBS = new System.Windows.Forms.BindingSource(this.components);
-            this.NodeMapPointLabel = new System.Windows.Forms.Label();
-            this.NodeMapPointTB = new System.Windows.Forms.TextBox();
-            this.NodeMapPointBtn = new System.Windows.Forms.Button();
             this.MainMenuStrip.SuspendLayout();
             this.Tabs.SuspendLayout();
             this.VenueTab.SuspendLayout();
@@ -871,6 +871,33 @@
             this.NodesTab.Text = "Noder";
             this.NodesTab.UseVisualStyleBackColor = true;
             // 
+            // NodeMapPointBtn
+            // 
+            this.NodeMapPointBtn.Location = new System.Drawing.Point(571, 548);
+            this.NodeMapPointBtn.Name = "NodeMapPointBtn";
+            this.NodeMapPointBtn.Size = new System.Drawing.Size(97, 23);
+            this.NodeMapPointBtn.TabIndex = 50;
+            this.NodeMapPointBtn.Text = "&Välj på karta";
+            this.NodeMapPointBtn.UseVisualStyleBackColor = true;
+            this.NodeMapPointBtn.Click += new System.EventHandler(this.NodeMapPointBtn_Click);
+            // 
+            // NodeMapPointTB
+            // 
+            this.NodeMapPointTB.Location = new System.Drawing.Point(332, 549);
+            this.NodeMapPointTB.Name = "NodeMapPointTB";
+            this.NodeMapPointTB.ReadOnly = true;
+            this.NodeMapPointTB.Size = new System.Drawing.Size(226, 23);
+            this.NodeMapPointTB.TabIndex = 49;
+            // 
+            // NodeMapPointLabel
+            // 
+            this.NodeMapPointLabel.AutoSize = true;
+            this.NodeMapPointLabel.Location = new System.Drawing.Point(329, 531);
+            this.NodeMapPointLabel.Name = "NodeMapPointLabel";
+            this.NodeMapPointLabel.Size = new System.Drawing.Size(91, 15);
+            this.NodeMapPointLabel.TabIndex = 48;
+            this.NodeMapPointLabel.Text = "Kart&information";
+            // 
             // NodeGPSTB
             // 
             this.NodeGPSTB.Location = new System.Drawing.Point(332, 505);
@@ -1182,7 +1209,7 @@
             this.NodeActiveChk.Name = "NodeActiveChk";
             this.NodeActiveChk.Size = new System.Drawing.Size(53, 19);
             this.NodeActiveChk.TabIndex = 26;
-            this.NodeActiveChk.Text = "A&ktiv";
+            this.NodeActiveChk.Text = "Ak&tiv";
             this.NodeActiveChk.UseVisualStyleBackColor = true;
             // 
             // NodeIdTagTB
@@ -1867,33 +1894,6 @@
             // 
             this.ActiveUserLabel.Name = "ActiveUserLabel";
             this.ActiveUserLabel.Size = new System.Drawing.Size(0, 17);
-            // 
-            // NodeMapPointLabel
-            // 
-            this.NodeMapPointLabel.AutoSize = true;
-            this.NodeMapPointLabel.Location = new System.Drawing.Point(329, 531);
-            this.NodeMapPointLabel.Name = "NodeMapPointLabel";
-            this.NodeMapPointLabel.Size = new System.Drawing.Size(49, 15);
-            this.NodeMapPointLabel.TabIndex = 91;
-            this.NodeMapPointLabel.Text = "Kartinfo";
-            // 
-            // NodeMapPointTB
-            // 
-            this.NodeMapPointTB.Location = new System.Drawing.Point(332, 549);
-            this.NodeMapPointTB.Name = "NodeMapPointTB";
-            this.NodeMapPointTB.ReadOnly = true;
-            this.NodeMapPointTB.Size = new System.Drawing.Size(100, 23);
-            this.NodeMapPointTB.TabIndex = 92;
-            // 
-            // NodeMapPointBtn
-            // 
-            this.NodeMapPointBtn.Location = new System.Drawing.Point(438, 548);
-            this.NodeMapPointBtn.Name = "NodeMapPointBtn";
-            this.NodeMapPointBtn.Size = new System.Drawing.Size(75, 23);
-            this.NodeMapPointBtn.TabIndex = 93;
-            this.NodeMapPointBtn.Text = "Välj";
-            this.NodeMapPointBtn.UseVisualStyleBackColor = true;
-            this.NodeMapPointBtn.Click += new System.EventHandler(this.NodeMapPointBtn_Click);
             // 
             // MainForm
             // 

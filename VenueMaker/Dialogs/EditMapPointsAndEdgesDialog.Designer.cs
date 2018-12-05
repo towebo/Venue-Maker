@@ -37,6 +37,7 @@
             this.MapsBS = new System.Windows.Forms.BindingSource(this.components);
             this.MapPanel = new System.Windows.Forms.Panel();
             this.MapPB = new System.Windows.Forms.PictureBox();
+            this.DoneBtn = new System.Windows.Forms.Button();
             this.ToolbarPanel.SuspendLayout();
             this.Statusbar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MapsBS)).BeginInit();
@@ -47,6 +48,7 @@
             // ToolbarPanel
             // 
             this.ToolbarPanel.BackColor = System.Drawing.SystemColors.Control;
+            this.ToolbarPanel.Controls.Add(this.DoneBtn);
             this.ToolbarPanel.Controls.Add(this.MapCombo);
             this.ToolbarPanel.Controls.Add(this.MapLabel);
             this.ToolbarPanel.Dock = System.Windows.Forms.DockStyle.Top;
@@ -91,6 +93,7 @@
             // 
             // MapPanel
             // 
+            this.MapPanel.AutoScroll = true;
             this.MapPanel.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.MapPanel.Controls.Add(this.MapPB);
             this.MapPanel.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -111,6 +114,17 @@
             this.MapPB.Paint += new System.Windows.Forms.PaintEventHandler(this.MapPB_Paint);
             this.MapPB.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MapPB_MouseDown);
             this.MapPB.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MapPB_MouseMove);
+            // 
+            // DoneBtn
+            // 
+            this.DoneBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.DoneBtn.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.DoneBtn.Location = new System.Drawing.Point(713, 17);
+            this.DoneBtn.Name = "DoneBtn";
+            this.DoneBtn.Size = new System.Drawing.Size(75, 23);
+            this.DoneBtn.TabIndex = 2;
+            this.DoneBtn.Text = "&Klar";
+            this.DoneBtn.UseVisualStyleBackColor = true;
             // 
             // EditMapPointsAndEdgesDialog
             // 
@@ -147,5 +161,6 @@
         private System.Windows.Forms.Label MapLabel;
         private System.Windows.Forms.Panel MapPanel;
         private System.Windows.Forms.PictureBox MapPB;
+        private System.Windows.Forms.Button DoneBtn;
     }
 }

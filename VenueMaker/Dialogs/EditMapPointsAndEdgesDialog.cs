@@ -38,6 +38,8 @@ namespace VenueMaker.Dialogs
                 MapCombo.DisplayMember = nameof(WFMap.Title);
                 MapCombo.ValueMember = nameof(WFMap.Id);
 
+                Text = $"Välj plats på karta för {Node.Name}";
+
                 WFMapPoint mp = Node.MapPoint;
                 if (!string.IsNullOrWhiteSpace(mp.MapId))
                 {
@@ -139,7 +141,7 @@ namespace VenueMaker.Dialogs
 
                 } // Is null
 
-                float radius = 7;
+                float radius = 10;
 
                 RectangleF r = new RectangleF(
                     (float)(Node.MapPoint.X - radius),
