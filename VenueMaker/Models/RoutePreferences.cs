@@ -14,7 +14,7 @@ namespace WayfindR.Models
         public bool Elevators { get; set; }
         public bool Escalators { get; set; }
         public bool Stairs { get; set; }
-        public bool MetalStairs { get; set; }
+        public bool GridStairs { get; set; }
         public bool Ladders { get; set; }
         
 
@@ -37,7 +37,7 @@ namespace WayfindR.Models
             Elevators = true;
             Escalators = true;
             Stairs = true;
-            MetalStairs = true;
+            GridStairs = true;
 
         }
 

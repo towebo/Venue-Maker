@@ -1425,7 +1425,7 @@ namespace WayfindR.Models
                         break;
 
                     case WFTravelType.GridStairs:
-                        if (!RoutePreferences.Me.MetalStairs) ttime = IrrelevantRouteTravelTime;
+                        if (!RoutePreferences.Me.GridStairs) ttime = IrrelevantRouteTravelTime;
                         break;
 
                     case WFTravelType.Ladder:
