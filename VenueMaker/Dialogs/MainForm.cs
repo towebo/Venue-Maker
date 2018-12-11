@@ -261,6 +261,17 @@ namespace VenueMaker.Dialogs
                 EdgeTravelTypeCombo.DataBindings.Add("Text", EdgeBS, "TravelType");
 
 
+
+                NodesFilterBS.DataSource = NodesFilterItem.GetAll();
+                NodesFilterBS.CurrentChanged += (sF, eF) =>
+                {
+                    RefreshNodes();
+
+                }; // Nodes Filter Changed
+                NodesFilterCombo.DataSource = NodesFilterBS;
+                NodesFilterCombo.DisplayMember = nameof(NodesFilterItem.Name);
+                NodesFilterCombo.ValueMember = nameof(NodesFilterItem.Filter);
+
                 NodesBS.DataSource = new WFNode[] { };
                 NodesLB.DataSource = NodesBS;
                 NodesLB.DisplayMember = "TextInList";
@@ -408,8 +419,7 @@ namespace VenueMaker.Dialogs
 
                     } // Maps is null
 
-                    NodesBS.DataSource = v.NodesGraph.GetNodesAlphabetical().OrderBy(w => w, new FloorComparer()).ToArray();
-                    NodesBS.ResetBindings(false);
+                    RefreshNodes();
 
                     elevators = v.NodesGraph.GetNodesAlphabetical().Where(w =>
                         w.WaypointType == WFWaypointType.Elevator.ToString().ToLower()
@@ -443,6 +453,52 @@ namespace VenueMaker.Dialogs
         {
             Close();
         }
+
+
+        private void RefreshNodes()
+        {
+            try
+            {
+                NodesFilterItem fi = NodesFilterBS.Current as NodesFilterItem;
+                if (fi != null)
+                {
+                    switch (fi.Filter)
+                    {
+                        case NodesFilter.All:
+                            NodesBS.DataSource = Venue.NodesGraph.GetNodesAlphabetical().OrderBy(w => w, new FloorComparer()).ToArray();
+                            break;
+
+                        case NodesFilter.Active:
+                            NodesBS.DataSource = Venue.NodesGraph.GetNodesAlphabetical().Where(w => w.Active == "true").OrderBy(w => w, new FloorComparer()).ToArray();
+                            break;
+
+
+                        case NodesFilter.Inactive:
+                            NodesBS.DataSource = Venue.NodesGraph.GetNodesAlphabetical().Where(w => w.Active != "true").OrderBy(w => w, new FloorComparer()).ToArray();
+                            break;
+
+                        default:
+                            NodesBS.DataSource = Venue.NodesGraph.GetNodesAlphabetical().OrderBy(w => w, new FloorComparer()).ToArray();
+                            break;
+
+                    } // switch
+                }
+                else
+                {
+                    NodesBS.DataSource = Venue.NodesGraph.GetNodesAlphabetical().OrderBy(w => w, new FloorComparer()).ToArray();
+
+                } // Nodes Filter
+
+                NodesBS.ResetBindings(false);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+        }
+
 
         private void newVenueToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -2188,6 +2244,14 @@ namespace VenueMaker.Dialogs
         {
             try
             {
+                if (Venue.Maps == null ||
+                    Venue.Maps.Length == 0)
+                {
+                    MessageBox.Show("Det finns inga kartor inlagda.", "Fel", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+
+                } // No maps
+
                 using (EditMapPointsAndEdgesDialog dlg = new EditMapPointsAndEdgesDialog())
                 {
                     dlg.Venue = Venue;
@@ -2204,5 +2268,73 @@ namespace VenueMaker.Dialogs
 
             }
         }
+
+        private void MapPB_Paint(object sender, PaintEventArgs e)
+        {
+            try
+            {
+                WFMap currentmap = MapsBS.Current as WFMap;
+                if (currentmap == null)
+                {
+                    return;
+
+                } // No map
+
+                float radius = 10;
+                Font f = new Font("Arial", 9);
+
+                foreach (WFNode n in Venue.NodesGraph.GetNodesAlphabetical())
+                {
+                    Brush b = Brushes.ForestGreen;
+
+                    if (n.MapPoint.MapId != currentmap.Id)
+                    {
+                        continue;
+
+                    } // Not on the same map
+
+                    RectangleF r = new RectangleF(
+                        (float)(n.MapPoint.X - radius),
+                        (float)(n.MapPoint.Y - radius),
+                        radius * 2,
+                        radius * 2
+                        );
+
+                    e.Graphics.FillEllipse(b, r);
+                    if (ShowNodeNamesOnMapChk.Checked)
+                    {
+                        e.Graphics.DrawString(
+                            n.Name,
+                            f,
+                            b,
+                            r.Right + 2,
+                            r.Top
+                            );
+
+                    } // Show node names
+
+                } // foreach
+
+            }
+            catch
+            {
+            }
+
+        }
+
+        private void ShowNodeNamesOnMapChk_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                MapPB.Refresh();
+            }
+            catch (Exception ex)
+            {
+                string errmsg = $"Fel när kartan skulle ritas om: {ex.Message}";
+                MessageBox.Show(errmsg, "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+        }
     } // class
 }
+

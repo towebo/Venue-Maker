@@ -192,6 +192,7 @@
     <Compile Include="Models\InfoCategoryItem.cs" />
     <Compile Include="Models\LoginInfoModel.cs" />
     <Compile Include="Models\NewEdgeItem.cs" />
+    <Compile Include="Models\NodesFilterItem.cs" />
     <Compile Include="Models\Preferences.cs" />
     <Compile Include="Models\RoutePreferences.cs" />
     <Compile Include="Models\VenueVisibilityItem.cs" />

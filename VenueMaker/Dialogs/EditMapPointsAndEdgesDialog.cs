@@ -135,14 +135,6 @@ namespace VenueMaker.Dialogs
         {
             try
             {
-                /*tmp
-                if (Node.MapPoint == null)
-                {
-                    return;
-
-                } // Is null
-                */
-
                 WFMap currentmap = MapsBS.Current as WFMap;
                 if (currentmap == null)
                 {

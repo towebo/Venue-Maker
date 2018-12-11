@@ -59,7 +59,6 @@
             this.SaveVenueDialog = new System.Windows.Forms.SaveFileDialog();
             this.Tabs = new System.Windows.Forms.TabControl();
             this.VenueTab = new System.Windows.Forms.TabPage();
-            this.MapPB = new System.Windows.Forms.PictureBox();
             this.DeleteMapBtn = new System.Windows.Forms.Button();
             this.AddMapBtn = new System.Windows.Forms.Button();
             this.MapsLB = new System.Windows.Forms.ListBox();
@@ -215,10 +214,15 @@
             this.ServiceVersionLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.ActiveUserLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.MapsBS = new System.Windows.Forms.BindingSource(this.components);
+            this.NodesFilterBS = new System.Windows.Forms.BindingSource(this.components);
+            this.NodesFilterLabel = new System.Windows.Forms.Label();
+            this.NodesFilterCombo = new System.Windows.Forms.ComboBox();
+            this.MapPanel = new System.Windows.Forms.Panel();
+            this.MapPB = new System.Windows.Forms.PictureBox();
+            this.ShowNodeNamesOnMapChk = new System.Windows.Forms.CheckBox();
             this.MainMenuStrip.SuspendLayout();
             this.Tabs.SuspendLayout();
             this.VenueTab.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.MapPB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.VenueImagePB)).BeginInit();
             this.NodesTab.SuspendLayout();
             this.EdgesTab.SuspendLayout();
@@ -235,6 +239,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.NodesBS)).BeginInit();
             this.statusStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MapsBS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NodesFilterBS)).BeginInit();
+            this.MapPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MapPB)).BeginInit();
             this.SuspendLayout();
             // 
             // MainMenuStrip
@@ -454,16 +461,18 @@
             this.Tabs.Controls.Add(this.EdgesTab);
             this.Tabs.Controls.Add(this.ElevatorsTab);
             this.Tabs.Controls.Add(this.PoiTabPage);
-            this.Tabs.Location = new System.Drawing.Point(12, 43);
+            this.Tabs.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Tabs.Location = new System.Drawing.Point(0, 24);
             this.Tabs.Name = "Tabs";
             this.Tabs.SelectedIndex = 0;
-            this.Tabs.Size = new System.Drawing.Size(1110, 657);
+            this.Tabs.Size = new System.Drawing.Size(1129, 688);
             this.Tabs.TabIndex = 17;
             this.Tabs.Deselecting += new System.Windows.Forms.TabControlCancelEventHandler(this.Tabs_Deselecting);
             // 
             // VenueTab
             // 
-            this.VenueTab.Controls.Add(this.MapPB);
+            this.VenueTab.Controls.Add(this.ShowNodeNamesOnMapChk);
+            this.VenueTab.Controls.Add(this.MapPanel);
             this.VenueTab.Controls.Add(this.DeleteMapBtn);
             this.VenueTab.Controls.Add(this.AddMapBtn);
             this.VenueTab.Controls.Add(this.MapsLB);
@@ -500,19 +509,10 @@
             this.VenueTab.Location = new System.Drawing.Point(4, 24);
             this.VenueTab.Name = "VenueTab";
             this.VenueTab.Padding = new System.Windows.Forms.Padding(3);
-            this.VenueTab.Size = new System.Drawing.Size(1102, 629);
+            this.VenueTab.Size = new System.Drawing.Size(1121, 660);
             this.VenueTab.TabIndex = 4;
             this.VenueTab.Text = "Plats";
             this.VenueTab.UseVisualStyleBackColor = true;
-            // 
-            // MapPB
-            // 
-            this.MapPB.Location = new System.Drawing.Point(588, 317);
-            this.MapPB.Name = "MapPB";
-            this.MapPB.Size = new System.Drawing.Size(392, 303);
-            this.MapPB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.MapPB.TabIndex = 50;
-            this.MapPB.TabStop = false;
             // 
             // DeleteMapBtn
             // 
@@ -540,7 +540,7 @@
             this.MapsLB.ItemHeight = 15;
             this.MapsLB.Location = new System.Drawing.Point(400, 435);
             this.MapsLB.Name = "MapsLB";
-            this.MapsLB.Size = new System.Drawing.Size(170, 124);
+            this.MapsLB.Size = new System.Drawing.Size(219, 124);
             this.MapsLB.TabIndex = 47;
             this.MapsLB.DoubleClick += new System.EventHandler(this.MapsLB_DoubleClick);
             // 
@@ -551,7 +551,7 @@
             this.MapsLabel.Name = "MapsLabel";
             this.MapsLabel.Size = new System.Drawing.Size(39, 15);
             this.MapsLabel.TabIndex = 46;
-            this.MapsLabel.Text = "Kartor";
+            this.MapsLabel.Text = "Ka&rtor";
             // 
             // VenueImagePB
             // 
@@ -592,7 +592,7 @@
             // 
             this.VenueEmailTB.Location = new System.Drawing.Point(400, 244);
             this.VenueEmailTB.Name = "VenueEmailTB";
-            this.VenueEmailTB.Size = new System.Drawing.Size(273, 23);
+            this.VenueEmailTB.Size = new System.Drawing.Size(219, 23);
             this.VenueEmailTB.TabIndex = 41;
             // 
             // VenueEmailLabel
@@ -640,7 +640,7 @@
             // 
             this.VenueGPSTB.Location = new System.Drawing.Point(400, 110);
             this.VenueGPSTB.Name = "VenueGPSTB";
-            this.VenueGPSTB.Size = new System.Drawing.Size(250, 23);
+            this.VenueGPSTB.Size = new System.Drawing.Size(219, 23);
             this.VenueGPSTB.TabIndex = 35;
             // 
             // VenueGPSLabel
@@ -809,6 +809,8 @@
             // 
             // NodesTab
             // 
+            this.NodesTab.Controls.Add(this.NodesFilterCombo);
+            this.NodesTab.Controls.Add(this.NodesFilterLabel);
             this.NodesTab.Controls.Add(this.NodeMapPointBtn);
             this.NodesTab.Controls.Add(this.NodeMapPointTB);
             this.NodesTab.Controls.Add(this.NodeMapPointLabel);
@@ -877,7 +879,7 @@
             this.NodeMapPointBtn.Name = "NodeMapPointBtn";
             this.NodeMapPointBtn.Size = new System.Drawing.Size(97, 23);
             this.NodeMapPointBtn.TabIndex = 50;
-            this.NodeMapPointBtn.Text = "&Välj på karta";
+            this.NodeMapPointBtn.Text = "Vä&lj på karta";
             this.NodeMapPointBtn.UseVisualStyleBackColor = true;
             this.NodeMapPointBtn.Click += new System.EventHandler(this.NodeMapPointBtn_Click);
             // 
@@ -1336,11 +1338,13 @@
             // 
             // NodesLB
             // 
+            this.NodesLB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.NodesLB.FormattingEnabled = true;
             this.NodesLB.ItemHeight = 15;
             this.NodesLB.Location = new System.Drawing.Point(11, 21);
             this.NodesLB.Name = "NodesLB";
-            this.NodesLB.Size = new System.Drawing.Size(310, 589);
+            this.NodesLB.Size = new System.Drawing.Size(310, 529);
             this.NodesLB.TabIndex = 1;
             // 
             // NodesListLabel
@@ -1895,6 +1899,62 @@
             this.ActiveUserLabel.Name = "ActiveUserLabel";
             this.ActiveUserLabel.Size = new System.Drawing.Size(0, 17);
             // 
+            // NodesFilterLabel
+            // 
+            this.NodesFilterLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.NodesFilterLabel.AutoSize = true;
+            this.NodesFilterLabel.Location = new System.Drawing.Point(8, 557);
+            this.NodesFilterLabel.Name = "NodesFilterLabel";
+            this.NodesFilterLabel.Size = new System.Drawing.Size(77, 15);
+            this.NodesFilterLabel.TabIndex = 91;
+            this.NodesFilterLabel.Text = "Filtrera n&oder";
+            // 
+            // NodesFilterCombo
+            // 
+            this.NodesFilterCombo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.NodesFilterCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.NodesFilterCombo.FormattingEnabled = true;
+            this.NodesFilterCombo.Location = new System.Drawing.Point(11, 575);
+            this.NodesFilterCombo.Name = "NodesFilterCombo";
+            this.NodesFilterCombo.Size = new System.Drawing.Size(146, 23);
+            this.NodesFilterCombo.TabIndex = 92;
+            // 
+            // MapPanel
+            // 
+            this.MapPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.MapPanel.AutoScroll = true;
+            this.MapPanel.BackColor = System.Drawing.SystemColors.Control;
+            this.MapPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.MapPanel.Controls.Add(this.MapPB);
+            this.MapPanel.Location = new System.Drawing.Point(639, 90);
+            this.MapPanel.Name = "MapPanel";
+            this.MapPanel.Size = new System.Drawing.Size(476, 529);
+            this.MapPanel.TabIndex = 50;
+            // 
+            // MapPB
+            // 
+            this.MapPB.BackColor = System.Drawing.Color.Transparent;
+            this.MapPB.Location = new System.Drawing.Point(0, 0);
+            this.MapPB.Name = "MapPB";
+            this.MapPB.Size = new System.Drawing.Size(392, 303);
+            this.MapPB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.MapPB.TabIndex = 51;
+            this.MapPB.TabStop = false;
+            this.MapPB.Paint += new System.Windows.Forms.PaintEventHandler(this.MapPB_Paint);
+            // 
+            // ShowNodeNamesOnMapChk
+            // 
+            this.ShowNodeNamesOnMapChk.AutoSize = true;
+            this.ShowNodeNamesOnMapChk.Location = new System.Drawing.Point(639, 594);
+            this.ShowNodeNamesOnMapChk.Name = "ShowNodeNamesOnMapChk";
+            this.ShowNodeNamesOnMapChk.Size = new System.Drawing.Size(133, 19);
+            this.ShowNodeNamesOnMapChk.TabIndex = 51;
+            this.ShowNodeNamesOnMapChk.Text = "V&isa nodernas namn";
+            this.ShowNodeNamesOnMapChk.UseVisualStyleBackColor = true;
+            this.ShowNodeNamesOnMapChk.CheckedChanged += new System.EventHandler(this.ShowNodeNamesOnMapChk_CheckedChanged);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1915,7 +1975,6 @@
             this.Tabs.ResumeLayout(false);
             this.VenueTab.ResumeLayout(false);
             this.VenueTab.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.MapPB)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.VenueImagePB)).EndInit();
             this.NodesTab.ResumeLayout(false);
             this.NodesTab.PerformLayout();
@@ -1937,6 +1996,10 @@
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MapsBS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NodesFilterBS)).EndInit();
+            this.MapPanel.ResumeLayout(false);
+            this.MapPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MapPB)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2127,10 +2190,15 @@
         private System.Windows.Forms.Button AddMapBtn;
         private System.Windows.Forms.ListBox MapsLB;
         private System.Windows.Forms.Label MapsLabel;
-        private System.Windows.Forms.PictureBox MapPB;
         private System.Windows.Forms.BindingSource MapsBS;
         private System.Windows.Forms.Button NodeMapPointBtn;
         private System.Windows.Forms.TextBox NodeMapPointTB;
         private System.Windows.Forms.Label NodeMapPointLabel;
+        private System.Windows.Forms.BindingSource NodesFilterBS;
+        private System.Windows.Forms.ComboBox NodesFilterCombo;
+        private System.Windows.Forms.Label NodesFilterLabel;
+        private System.Windows.Forms.Panel MapPanel;
+        private System.Windows.Forms.PictureBox MapPB;
+        private System.Windows.Forms.CheckBox ShowNodeNamesOnMapChk;
     }
 }
