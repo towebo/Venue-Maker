@@ -58,7 +58,9 @@ namespace VenueMaker.Dialogs
 
                 } // Create folder for data files
 
-                this.Text = AssemblyInfo.GetProductAndVersion();
+                Text = AssemblyInfo.GetProductAndVersion();
+                WindowState = FormWindowState.Maximized;
+
 
                 // Disable stuff for nomal users
                 bool hasadminrights = false;
