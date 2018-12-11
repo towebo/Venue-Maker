@@ -246,6 +246,80 @@ namespace VenueMaker.Controllers
 
         }
 
+        public bool AutoLogin()
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(Email) ||
+                    string.IsNullOrWhiteSpace(Password))
+                {
+                    return false;
+
+                } // Haven't logged in yet
+                using (KwendaServiceClient cli = new KwendaServiceClient())
+                {
+                    LoginRequest req = new LoginRequest();
+                    req.Email = Email;
+                    req.Password = Password;
+                    req.AppID = "se.mawingu.venuemaker";
+
+                    LoginResponse res = cli.Login(req);
+
+                    if (res.Result == LoginResponse.MethodResult.Ok)
+                    {
+                        Token = res.Token;
+                        return true;
+                    } // Ok
+                    else
+                    {
+                        return false;
+                    } // Unlucky
+
+                } // using
+
+
+            }
+            catch (Exception ex)
+            {
+                string errmsg = $"Det gick inte att logga in automatiskt med e-postadressen {Email} och det angivna lösenordet.";
+                throw new Exception(errmsg);
+
+            }
+        }
+
+        public bool LogOut()
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(Email) ||
+                    string.IsNullOrWhiteSpace(Password))
+                {
+                    return true;
+
+                } // Haven't logged in yet
+
+                using (KwendaServiceClient cli = new KwendaServiceClient())
+                {
+                    LogoutRequest req = new LogoutRequest();
+                    req.Email = Email;
+                    req.Token = Token;
+                    bool result = cli.Logout(req);
+
+                    return result;
+                    
+                } // using
+
+
+            }
+            catch (Exception ex)
+            {
+                string errmsg = $"Det gick inte att logga in automatiskt med e-postadressen {Email} och det angivna lösenordet.";
+                throw new Exception(errmsg);
+
+            }
+        }
+
+
         public string ServiceVersion()
         {
             try

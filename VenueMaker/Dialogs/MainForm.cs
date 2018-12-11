@@ -1518,6 +1518,24 @@ namespace VenueMaker.Dialogs
 
         private void logOutToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            try
+            {
+                Application.UseWaitCursor = true;
+                Application.DoEvents();
+
+                DataController.Me.LogOut();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            finally
+            {
+                Application.UseWaitCursor = false;
+
+            }
 
         }
 
@@ -1530,7 +1548,8 @@ namespace VenueMaker.Dialogs
 
                 bool result = DataController.Me.IsTokenValid();
 
-                if (!result)
+                if (!result &&
+                    !DataController.Me.AutoLogin())
                 {
                     Application.UseWaitCursor = false;
 
@@ -1803,6 +1822,15 @@ namespace VenueMaker.Dialogs
                     } // foreach Map
 
                 } // Has Maps
+
+
+                // Ensure we're logged in.
+                if (!EnsureLogin())
+                {
+                    MessageBox.Show("Kunde inte spara ändringarna eftersom du inte är inloggad.", "Inte inloggad", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+
+                }
 
 
                 DataController.Me.UpdateKwendaFiles(

@@ -173,7 +173,7 @@ namespace VenueMaker.Dialogs
 
                     else if (res.Result == LoginResponse.MethodResult.InvalidCridentials)
                     {
-                        DialogResult dr = MessageBox.Show("Användarnamnet eller lösenordet är felaktigt. Har du glömt ditt lösenord?", "Felaktiga inloggningsuppgifter", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        DialogResult dr = MessageBox.Show("Användarnamnet eller lösenordet är felaktigt. Har du glömt ditt lösenord?", "Felaktiga inloggningsuppgifter", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
                         if (DialogResult.Yes == dr)
                         {
                             cli.RequestVerificationCode(Item.Email);

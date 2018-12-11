@@ -135,22 +135,63 @@ namespace VenueMaker.Dialogs
         {
             try
             {
+                /*tmp
                 if (Node.MapPoint == null)
                 {
                     return;
 
                 } // Is null
+                */
+
+                WFMap currentmap = MapsBS.Current as WFMap;
+                if (currentmap == null)
+                {
+                    return;
+
+                } // No map
 
                 float radius = 10;
 
-                RectangleF r = new RectangleF(
-                    (float)(Node.MapPoint.X - radius),
-                    (float)(Node.MapPoint.Y - radius),
-                    radius * 2,
-                    radius * 2
-                    );
+                Font f = new Font("Arial", 9);
 
-                e.Graphics.FillEllipse(Brushes.Red, r);
+
+                foreach (WFNode n in Venue.NodesGraph.GetNodesAlphabetical())
+                {
+                    Brush b = Brushes.ForestGreen;
+
+                    if (n == Node)
+                    {
+                        b = Brushes.Red;
+
+                    } // The node we edit
+
+                    if (n.MapPoint.MapId != currentmap.Id)
+                    {
+                        continue;
+
+                    } // Not on the same map
+
+                    RectangleF r = new RectangleF(
+                        (float)(n.MapPoint.X - radius),
+                        (float)(n.MapPoint.Y - radius),
+                        radius * 2,
+                        radius * 2
+                        );
+
+                    e.Graphics.FillEllipse(b, r);
+                    if (ShowNamesChk.Checked)
+                    {
+                        e.Graphics.DrawString(
+                            n.Name,
+                            f,
+                            b,
+                            r.Right + 2,
+                            r.Top
+                            );
+
+                    } // Show node names
+
+                } // foreach
 
             }
             catch
@@ -189,8 +230,19 @@ namespace VenueMaker.Dialogs
             return folder;
         }
 
+        private void ShowNamesChk_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                MapPB.Refresh();
+            }
+            catch (Exception ex)
+            {
+                string errmsg = $"Fel när kartan skulle ritas om: {ex.Message}";
+                MessageBox.Show(errmsg, "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
+            }
 
-
+        }
     }
 }

@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.ToolbarPanel = new System.Windows.Forms.Panel();
+            this.DoneBtn = new System.Windows.Forms.Button();
             this.MapCombo = new System.Windows.Forms.ComboBox();
             this.MapLabel = new System.Windows.Forms.Label();
             this.Statusbar = new System.Windows.Forms.StatusStrip();
@@ -37,7 +38,7 @@
             this.MapsBS = new System.Windows.Forms.BindingSource(this.components);
             this.MapPanel = new System.Windows.Forms.Panel();
             this.MapPB = new System.Windows.Forms.PictureBox();
-            this.DoneBtn = new System.Windows.Forms.Button();
+            this.ShowNamesChk = new System.Windows.Forms.CheckBox();
             this.ToolbarPanel.SuspendLayout();
             this.Statusbar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MapsBS)).BeginInit();
@@ -48,6 +49,7 @@
             // ToolbarPanel
             // 
             this.ToolbarPanel.BackColor = System.Drawing.SystemColors.Control;
+            this.ToolbarPanel.Controls.Add(this.ShowNamesChk);
             this.ToolbarPanel.Controls.Add(this.DoneBtn);
             this.ToolbarPanel.Controls.Add(this.MapCombo);
             this.ToolbarPanel.Controls.Add(this.MapLabel);
@@ -56,6 +58,17 @@
             this.ToolbarPanel.Name = "ToolbarPanel";
             this.ToolbarPanel.Size = new System.Drawing.Size(800, 53);
             this.ToolbarPanel.TabIndex = 0;
+            // 
+            // DoneBtn
+            // 
+            this.DoneBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.DoneBtn.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.DoneBtn.Location = new System.Drawing.Point(713, 17);
+            this.DoneBtn.Name = "DoneBtn";
+            this.DoneBtn.Size = new System.Drawing.Size(75, 23);
+            this.DoneBtn.TabIndex = 2;
+            this.DoneBtn.Text = "&Klar";
+            this.DoneBtn.UseVisualStyleBackColor = true;
             // 
             // MapCombo
             // 
@@ -115,16 +128,16 @@
             this.MapPB.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MapPB_MouseDown);
             this.MapPB.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MapPB_MouseMove);
             // 
-            // DoneBtn
+            // ShowNamesChk
             // 
-            this.DoneBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.DoneBtn.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.DoneBtn.Location = new System.Drawing.Point(713, 17);
-            this.DoneBtn.Name = "DoneBtn";
-            this.DoneBtn.Size = new System.Drawing.Size(75, 23);
-            this.DoneBtn.TabIndex = 2;
-            this.DoneBtn.Text = "&Klar";
-            this.DoneBtn.UseVisualStyleBackColor = true;
+            this.ShowNamesChk.AutoSize = true;
+            this.ShowNamesChk.Location = new System.Drawing.Point(147, 21);
+            this.ShowNamesChk.Name = "ShowNamesChk";
+            this.ShowNamesChk.Size = new System.Drawing.Size(122, 17);
+            this.ShowNamesChk.TabIndex = 3;
+            this.ShowNamesChk.Text = "&Visa nodernas namn";
+            this.ShowNamesChk.UseVisualStyleBackColor = true;
+            this.ShowNamesChk.CheckedChanged += new System.EventHandler(this.ShowNamesChk_CheckedChanged);
             // 
             // EditMapPointsAndEdgesDialog
             // 
@@ -162,5 +175,6 @@
         private System.Windows.Forms.Panel MapPanel;
         private System.Windows.Forms.PictureBox MapPB;
         private System.Windows.Forms.Button DoneBtn;
+        private System.Windows.Forms.CheckBox ShowNamesChk;
     }
 }

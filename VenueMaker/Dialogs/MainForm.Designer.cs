@@ -1467,7 +1467,7 @@
             // 
             this.EdgeBeginningTB.Location = new System.Drawing.Point(206, 237);
             this.EdgeBeginningTB.Name = "EdgeBeginningTB";
-            this.EdgeBeginningTB.Size = new System.Drawing.Size(480, 23);
+            this.EdgeBeginningTB.Size = new System.Drawing.Size(864, 23);
             this.EdgeBeginningTB.TabIndex = 5;
             // 
             // EdgeBeginningLabel
@@ -1678,9 +1678,9 @@
             this.AutoPlayMediaCB.AutoSize = true;
             this.AutoPlayMediaCB.Location = new System.Drawing.Point(333, 477);
             this.AutoPlayMediaCB.Name = "AutoPlayMediaCB";
-            this.AutoPlayMediaCB.Size = new System.Drawing.Size(184, 19);
+            this.AutoPlayMediaCB.Size = new System.Drawing.Size(180, 19);
             this.AutoPlayMediaCB.TabIndex = 20;
-            this.AutoPlayMediaCB.Text = "Spela upp medua automatiskt";
+            this.AutoPlayMediaCB.Text = "Spela upp media automatiskt";
             this.AutoPlayMediaCB.UseVisualStyleBackColor = true;
             // 
             // MediaDescrTB
