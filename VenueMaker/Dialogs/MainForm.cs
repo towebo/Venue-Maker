@@ -46,6 +46,30 @@ namespace VenueMaker.Dialogs
 
 
 
+        private void InitRibbon()
+        {
+            try
+            {
+                RibbonController.Init(MyRibbon);
+
+                // File
+                RibbonController.Me.Button(RibbonMarkupCommands.ButtonNew).ExecuteEvent += (s1, e1) => CreateNewVenue();
+                RibbonController.Me.Button(RibbonMarkupCommands.ButtonOpen).ExecuteEvent += (s2, e2) => OpenVenue();
+                RibbonController.Me.Button(RibbonMarkupCommands.ButtonSave).ExecuteEvent += (s3, e3) => SaveVenue(false);
+                RibbonController.Me.Button(RibbonMarkupCommands.ButtonSaveAs).ExecuteEvent += (s3, e3) => SaveVenue(true);
+
+                // Account
+                RibbonController.Me.Button(RibbonMarkupCommands.ButtonLogin).ExecuteEvent += (s4, e4) => EnsureLogin(true);
+                RibbonController.Me.Button(RibbonMarkupCommands.ButtonLogOut).ExecuteEvent += (s5, e5) => LogOut();
+
+            }
+            catch (Exception ex)
+            {
+                string errmsg = $"Fel när verktygsfältet skulle initieras: {ex.Message}";
+                throw new Exception(errmsg);
+            }
+        }
+
         private void InitUI()
         {
             try
@@ -60,19 +84,23 @@ namespace VenueMaker.Dialogs
 
                 Text = AssemblyInfo.GetProductAndVersion();
                 WindowState = FormWindowState.Maximized;
-
+                InitRibbon();
+                
 
                 // Disable stuff for nomal users
                 bool hasadminrights = false;
+                MyRibbon.SetModes(0);
 #if WITHADMINRIGHTS
                 hasadminrights = true;
+                MyRibbon.SetModes(1);
 #endif
-                newVenueToolStripMenuItem.Visible = hasadminrights;
-                saveVenueFileAsToolStripMenuItem.Visible = hasadminrights;
+
+                //tmp newVenueToolStripMenuItem.Visible = hasadminrights;
+                //tmp saveVenueFileAsToolStripMenuItem.Visible = hasadminrights;
 
                 MakeVenueActiveChk.Visible = hasadminrights;
 
-                setPermissionsToolStripMenuItem.Visible = hasadminrights;
+                //tmp setPermissionsToolStripMenuItem.Visible = hasadminrights;
 
 
 
@@ -502,12 +530,6 @@ namespace VenueMaker.Dialogs
         }
 
 
-        private void newVenueToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            CreateNewVenue();
-
-        }
-
         private void CreateNewVenue()
         {
             try
@@ -529,7 +551,7 @@ namespace VenueMaker.Dialogs
             }
         }
 
-        private void openVenueFileToolStripMenuItem_Click(object sender, EventArgs e)
+        private void OpenVenue()
         {
             try
             {
@@ -624,11 +646,11 @@ namespace VenueMaker.Dialogs
             }
         }
 
-        private void SaveMenuItems_Click(object sender, EventArgs e)
+        private void SaveVenue(bool asFile)
         {
             try
             {
-                if (sender == saveVenueFileAsToolStripMenuItem ||
+                if (asFile||
                     string.IsNullOrEmpty(SaveVenueDialog.FileName))
                 {
 #if WITHADMINRIGHTS
@@ -678,7 +700,7 @@ namespace VenueMaker.Dialogs
                 } // Found
 
 
-                if (sender == saveVenueFileAsToolStripMenuItem)
+                if (asFile)
                 {
 
                     Venue.NodesGraph.Save(OpenGraphMLDialog.FileName);
@@ -901,7 +923,7 @@ namespace VenueMaker.Dialogs
         {
             try
             {
-                SaveMenuItems_Click(sender, new EventArgs());
+                SaveVenue(false);
 
                 if (string.IsNullOrEmpty(SaveVenueDialog.FileName))
                 {
@@ -1574,7 +1596,7 @@ namespace VenueMaker.Dialogs
 
         }
 
-        private void logOutToolStripMenuItem_Click(object sender, EventArgs e)
+        private void LogOut()
         {
             try
             {
@@ -1597,17 +1619,23 @@ namespace VenueMaker.Dialogs
 
         }
 
-        private bool EnsureLogin()
+        private bool EnsureLogin(bool forceDialog = false)
         {
             try
             {
                 Application.UseWaitCursor = true;
                 Application.DoEvents();
 
-                bool result = DataController.Me.IsTokenValid();
+                bool result = false;
 
-                if (!result &&
-                    !DataController.Me.AutoLogin())
+                if (!forceDialog)
+                {
+                    result = DataController.Me.IsTokenValid() ||
+                        DataController.Me.AutoLogin();
+
+                } // Don't use the force Luke.
+
+                if (!result)
                 {
                     Application.UseWaitCursor = false;
 

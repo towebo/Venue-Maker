@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Application xmlns="http://schemas.microsoft.com/windows/2009/Ribbon">
+  <Application.Commands>
+    <Command Name="CmdTabHome" Id="2001" LabelTitle="Start"/>
+    <Command Name="CmdApplicationMenu" LabelTitle="Main Menu"/>
+    <Command Name="CmdGroupFileActions" Id="3001"/>
+    <Command Name="CmdNew" Id="1001" LabelTitle="&amp;Ny" TooltipTitle="Ny (Ctrl+N)" TooltipDescription="Skapa en ny venue">
+      <Command.SmallImages>
+        <Image>Res/New_S096.bmp</Image>
+        <Image MinDPI="120">Res/New_S120.bmp</Image>
+        <Image MinDPI="144">Res/New_S144.bmp</Image>
+        <Image MinDPI="192">Res/New_S192.bmp</Image>
+      </Command.SmallImages>
+      <Command.LargeImages>
+        <Image>Res/New_L096.bmp</Image>
+        <Image MinDPI="120">Res/New_L120.bmp</Image>
+        <Image MinDPI="144">Res/New_L144.bmp</Image>
+        <Image MinDPI="192">Res/New_L192.bmp</Image>
+      </Command.LargeImages>
+    </Command>
+    <Command Name="CmdOpen" Id="1002" LabelTitle="&amp;Öppna" TooltipTitle="Öppna (Ctrl+O)" TooltipDescription="Öppna en venue">
+      <Command.SmallImages>
+        <Image>Res/Open_S096.bmp</Image>
+        <Image MinDPI="120">Res/Open_S120.bmp</Image>
+        <Image MinDPI="144">Res/Open_S144.bmp</Image>
+        <Image MinDPI="192">Res/Open_S192.bmp</Image>
+      </Command.SmallImages>
+      <Command.LargeImages>
+        <Image>Res/Open_L096.bmp</Image>
+        <Image MinDPI="120">Res/Open_L120.bmp</Image>
+        <Image MinDPI="144">Res/Open_L144.bmp</Image>
+        <Image MinDPI="192">Res/Open_L192.bmp</Image>
+      </Command.LargeImages>
+    </Command>
+    <Command Name="CmdSave" Id="1003" LabelTitle="&amp;Spara" TooltipTitle="Spara (Ctrl+S)" TooltipDescription="Spara ändringarna i venue">
+      <Command.SmallImages>
+        <Image>Res/Save_S096.bmp</Image>
+        <Image MinDPI="120">Res/Save_S120.bmp</Image>
+        <Image MinDPI="144">Res/Save_S144.bmp</Image>
+        <Image MinDPI="192">Res/Save_S192.bmp</Image>
+      </Command.SmallImages>
+      <Command.LargeImages>
+        <Image>Res/Save_L096.bmp</Image>
+        <Image MinDPI="120">Res/Save_L120.bmp</Image>
+        <Image MinDPI="144">Res/Save_L144.bmp</Image>
+        <Image MinDPI="192">Res/Save_L192.bmp</Image>
+      </Command.LargeImages>
+    </Command>
+    <Command Name="CmdSaveAs" Id="1004" LabelTitle="Spara som" TooltipDescription="Spara venue som fil">
+      <Command.LargeImages>
+        <Image>Res/SaveAs_L096.bmp</Image>
+        <Image MinDPI="120">Res/SaveAs_L120.bmp</Image>
+        <Image MinDPI="144">Res/SaveAs_L144.bmp</Image>
+        <Image MinDPI="192">Res/SaveAs_L192.bmp</Image>
+      </Command.LargeImages>
+    </Command>
+    <Command Name="CmdTabAccount" Id="2002" LabelTitle="Konto"/>
+    <Command Name="CmdGroupAccount" Id="3002"/>
+    <Command Name="CmdCreateAccount" Id="1011" LabelTitle="Skapa konto"/>
+    <Command Name="CmdVerifyAccount" Id="1012" LabelTitle="Verifiera konto"/>
+    <Command Name="CmdLogin" Id="1013" LabelTitle="Logga in"/>
+    <Command Name="CmdLogOut" Id="1014" LabelTitle="Logga ut"/>
+    <Command Name="CmdSetPermissions" Id="1015" LabelTitle="Sätt rättigheter" LabelDescription="Sätt rättigheter för en venue för en användare"/>
+  </Application.Commands>
+  <Application.Views>
+    <Ribbon Name="Ribbon">
+      <Ribbon.ApplicationMenu>
+        <ApplicationMenu CommandName="CmdApplicationMenu">
+          <ApplicationMenu.RecentItems>
+            <RecentItems EnablePinning="false"/>
+          </ApplicationMenu.RecentItems>
+          <MenuGroup>
+            <Button CommandName="CmdNew" ApplicationModes="0,1"/>
+            <Button CommandName="CmdOpen" ApplicationModes="0,1"/>
+            <Button CommandName="CmdSave" ApplicationModes="0,1"/>
+          </MenuGroup>
+        </ApplicationMenu>
+      </Ribbon.ApplicationMenu>
+      <Ribbon.QuickAccessToolbar>
+        <QuickAccessToolbar/>
+      </Ribbon.QuickAccessToolbar>
+      <Ribbon.Tabs>
+        <Tab CommandName="CmdTabHome" ApplicationModes="0,1">
+          <Group CommandName="CmdGroupAccount" ApplicationModes="0,1" SizeDefinition="OneButton">
+            <Button CommandName="CmdLogin"/>
+          </Group>
+          <Group CommandName="CmdGroupFileActions" ApplicationModes="1" SizeDefinition="FourButtons">
+            <Button CommandName="CmdNew"/>
+            <Button CommandName="CmdOpen"/>
+            <Button CommandName="CmdSave"/>
+            <Button CommandName="CmdSaveAs"/>
+          </Group>
+          <Group CommandName="CmdGroupFileActions" ApplicationModes="0" SizeDefinition="TwoButtons">
+            <Button CommandName="CmdOpen"/>
+            <Button CommandName="CmdSave"/>
+          </Group>
+        </Tab>
+        <Tab CommandName="CmdTabAccount" ApplicationModes="0,1">
+          <Group CommandName="CmdGroupAccount" ApplicationModes="1" SizeDefinition="FiveButtons">
+            <Button CommandName="CmdCreateAccount"/>
+            <Button CommandName="CmdVerifyAccount"/>
+            <Button CommandName="CmdLogin"/>
+            <Button CommandName="CmdLogOut"/>
+            <Button CommandName="CmdSetPermissions"/>
+          </Group>
+          <Group CommandName="CmdGroupAccount" ApplicationModes="0" SizeDefinition="FourButtons">
+            <Button CommandName="CmdCreateAccount"/>
+            <Button CommandName="CmdVerifyAccount"/>
+            <Button CommandName="CmdLogin"/>
+            <Button CommandName="CmdLogOut"/>
+          </Group>
+        </Tab>
+      </Ribbon.Tabs>
+    </Ribbon>
+    <ContextPopup/>
+  </Application.Views>
+</Application>
