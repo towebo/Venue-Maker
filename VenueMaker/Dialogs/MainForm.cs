@@ -57,10 +57,48 @@ namespace VenueMaker.Dialogs
                 RibbonController.Me.Button(RibbonMarkupCommands.ButtonOpen).ExecuteEvent += (s2, e2) => OpenVenue();
                 RibbonController.Me.Button(RibbonMarkupCommands.ButtonSave).ExecuteEvent += (s3, e3) => SaveVenue(false);
                 RibbonController.Me.Button(RibbonMarkupCommands.ButtonSaveAs).ExecuteEvent += (s3, e3) => SaveVenue(true);
+                RibbonController.Me.Button(RibbonMarkupCommands.ButtonSelectDataFolder).ExecuteEvent += (s9, e9) => SelectDataFolder();
 
                 // Account
                 RibbonController.Me.Button(RibbonMarkupCommands.ButtonLogin).ExecuteEvent += (s4, e4) => EnsureLogin(true);
                 RibbonController.Me.Button(RibbonMarkupCommands.ButtonLogOut).ExecuteEvent += (s5, e5) => LogOut();
+                RibbonController.Me.Button(RibbonMarkupCommands.ButtonCreateAccount).ExecuteEvent += (s6, e6) => createAccount();
+                RibbonController.Me.Button(RibbonMarkupCommands.ButtonVerifyAccount).ExecuteEvent += (s7, e7) => verifyAccount();
+                RibbonController.Me.Button(RibbonMarkupCommands.ButtonSetPermissions).ExecuteEvent += (s8, e8) => SetPermissions();
+
+                // Venue
+                RibbonController.Me.Button(RibbonMarkupCommands.ButtonViewVenue).ExecuteEvent += (s14, e14) => SwitchToTab(VenueTab);
+                RibbonController.Me.Button(RibbonMarkupCommands.ButtonVenueSetPhoto).ExecuteEvent += (s10, e10) => SelectVenueImage();
+                RibbonController.Me.Button(RibbonMarkupCommands.ButtonVenueMapAdd).ExecuteEvent += (s11, e11) => AddMap();
+                RibbonController.Me.Button(RibbonMarkupCommands.ButtonVenueMapDelete).ExecuteEvent += (s12, e12) => DeleteMap();
+                RibbonController.Me.Button(RibbonMarkupCommands.ButtonVenueMapProperties).ExecuteEvent += (s13, e13) => MapsLB_DoubleClick(this, new EventArgs());
+
+                // Nodes
+                RibbonController.Me.Button(RibbonMarkupCommands.ButtonViewNodes).ExecuteEvent += (s15, e15) => SwitchToTab(NodesTab);
+                RibbonController.Me.Button(RibbonMarkupCommands.ButtonNodeAdd).ExecuteEvent += (s16, e16) => AddNode();
+                RibbonController.Me.Button(RibbonMarkupCommands.ButtonNodeDelete).ExecuteEvent += (s17, e17) => DeleteNode();
+                RibbonController.Me.Button(RibbonMarkupCommands.ButtonNodeImport).ExecuteEvent += (s18, e18) => ImportBeacons();
+
+                // Directions
+                RibbonController.Me.Button(RibbonMarkupCommands.ButtonViewDirections).ExecuteEvent += (s19, e19) => SwitchToTab(EdgesTab);
+                RibbonController.Me.Button(RibbonMarkupCommands.ButtonDirectionAdd).ExecuteEvent += (s20, e20) => AddEdge();
+                RibbonController.Me.Button(RibbonMarkupCommands.ButtonDirectionDelete).ExecuteEvent += (s21, e21) => DeleteEdge();
+                //tmp RibbonController.Me.Button(RibbonMarkupCommands.ButtonDirectionEdit).ExecuteEvent += (s22, e22) => ();
+
+                // Elevators
+                RibbonController.Me.Button(RibbonMarkupCommands.ButtonViewElevators).ExecuteEvent += (s23, e23) => SwitchToTab(ElevatorsTab);
+                RibbonController.Me.Button(RibbonMarkupCommands.ButtonElevatorsGenerate).ExecuteEvent += (s24, e24) => CreateElevatorEdges();
+                RibbonController.Me.Button(RibbonMarkupCommands.ButtonElevatorDelete).ExecuteEvent += (s25, e25) => DeleteAllElevatorEdges();
+
+                // Points Of Interest
+                RibbonController.Me.Button(RibbonMarkupCommands.ButtonViewPOIs).ExecuteEvent += (s26, e26) => SwitchToTab(PoiTabPage);
+                RibbonController.Me.Button(RibbonMarkupCommands.ButtonPOIInfoAdd).ExecuteEvent += (s27, e27) => AddPOIInfo();
+                RibbonController.Me.Button(RibbonMarkupCommands.ButtonPOIInfoDelete).ExecuteEvent += (s28, e28) => DeletePOI_Info();
+                RibbonController.Me.Button(RibbonMarkupCommands.ButtonPOIInfoMoveUp).ExecuteEvent += (s29, e29) => MovePOIInfoUpOrDown(true);
+                RibbonController.Me.Button(RibbonMarkupCommands.ButtonPOIInfoMoveDown).ExecuteEvent += (s30, e30) => MovePOIInfoUpOrDown(false);
+                RibbonController.Me.Button(RibbonMarkupCommands.ButtonPOIInfoSelectMediaFile).ExecuteEvent += (s31, e31) => PickMediaFile();
+
+                //karl-otto
 
             }
             catch (Exception ex)
@@ -84,6 +122,8 @@ namespace VenueMaker.Dialogs
 
                 Text = AssemblyInfo.GetProductAndVersion();
                 WindowState = FormWindowState.Maximized;
+                Tabs.Alignment = TabAlignment.Bottom;
+                Tabs.TabStop = false;
                 InitRibbon();
                 
 
@@ -95,14 +135,7 @@ namespace VenueMaker.Dialogs
                 MyRibbon.SetModes(1);
 #endif
 
-                //tmp newVenueToolStripMenuItem.Visible = hasadminrights;
-                //tmp saveVenueFileAsToolStripMenuItem.Visible = hasadminrights;
-
                 MakeVenueActiveChk.Visible = hasadminrights;
-
-                //tmp setPermissionsToolStripMenuItem.Visible = hasadminrights;
-
-
 
                 VenueBS.DataSource = new WFVenue();
                 VenueBS.CurrentChanged += (s1, e1) =>
@@ -765,7 +798,7 @@ namespace VenueMaker.Dialogs
 
         }
 
-        private void AddPOIInfoButton_Click(object sender, EventArgs e)
+        private void AddPOIInfo()
         {
             try
             {
@@ -806,7 +839,7 @@ namespace VenueMaker.Dialogs
             }
         }
 
-        private void RemovePOIInfoButton_Click(object sender, EventArgs e)
+        private void DeletePOI_Info()
         {
             try
             {
@@ -854,7 +887,7 @@ namespace VenueMaker.Dialogs
             }
         }
 
-        private void MoveInfoUpButton_Click(object sender, EventArgs e)
+        private void MovePOIInfoUpOrDown(bool moveUp)
         {
             try
             {
@@ -875,7 +908,7 @@ namespace VenueMaker.Dialogs
 
                 int swapidx;
 
-                if (sender == MoveInfoUpButton)
+                if (moveUp)
                 {
                     swapidx = selidx - 1;
 
@@ -899,7 +932,7 @@ namespace VenueMaker.Dialogs
                 items[selidx] = swapone;
 
                 POIInfosBS.ResetBindings(false);
-                if (sender == MoveInfoUpButton)
+                if (moveUp)
                 {
                     POIInfosBS.MovePrevious();
 
@@ -965,7 +998,7 @@ namespace VenueMaker.Dialogs
 
         }
 
-        private void PickMediaFileButton_Click(object sender, EventArgs e)
+        private void PickMediaFile()
         {
             try
             {
@@ -1007,7 +1040,7 @@ namespace VenueMaker.Dialogs
 
         }
 
-        private void CreateElevatorEdgesButton_Click(object sender, EventArgs e)
+        private void CreateElevatorEdges()
         {
             try
             {
@@ -1079,7 +1112,7 @@ namespace VenueMaker.Dialogs
             }
         }
 
-        private void AddEdgeButton_Click(object sender, EventArgs e)
+        private void AddEdge()
         {
             try
             {
@@ -1155,7 +1188,7 @@ namespace VenueMaker.Dialogs
 
         }
 
-        private void DeleteEdgeButton_Click(object sender, EventArgs e)
+        private void DeleteEdge()
         {
             try
             {
@@ -1212,7 +1245,7 @@ namespace VenueMaker.Dialogs
 
         }
 
-        private void DeleteAllElevatorEdgesButton_Click(object sender, EventArgs e)
+        private void DeleteAllElevatorEdges()
         {
             try
             {
@@ -1257,7 +1290,7 @@ namespace VenueMaker.Dialogs
             }
         }
 
-        private void AddNodeButton_Click(object sender, EventArgs e)
+        private void AddNode()
         {
             try
             {
@@ -1277,7 +1310,7 @@ namespace VenueMaker.Dialogs
 
         }
 
-        private void DeleteNodeButton_Click(object sender, EventArgs e)
+        private void DeleteNode()
         {
             try
             {
@@ -1310,7 +1343,7 @@ namespace VenueMaker.Dialogs
 
         }
 
-        private void ImportBeaconsBtn_Click(object sender, EventArgs e)
+        private void ImportBeacons()
         {
             try
             {
@@ -1516,7 +1549,8 @@ namespace VenueMaker.Dialogs
 
 
 
-        private void createAccountToolStripMenuItem_Click(object sender, EventArgs e)
+        
+        private void createAccount()
         {
             try
             {
@@ -1554,47 +1588,10 @@ namespace VenueMaker.Dialogs
 
         }
 
-        private void verifyAccountToolStripMenuItem_Click(object sender, EventArgs e)
+        private void verifyAccount()
         {
-
         }
 
-        private void resetPasswordToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void updateAccountInfoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void loginToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                using (LoginDialog dlg = new LoginDialog())
-                {
-                    dlg.Item = new LoginInfoModel();
-
-                    if (dlg.ShowDialog() != DialogResult.OK)
-                    {
-                        return;
-
-                    } // User canceled
-
-                    SystemSounds.Asterisk.Play();
-
-                } // using
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-            }
-
-        }
 
         private void LogOut()
         {
@@ -1667,12 +1664,13 @@ namespace VenueMaker.Dialogs
         }
 
 
-        private void setPermissionsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void SetPermissions()
         {
             try
             {
                 if (!EnsureLogin())
                 {
+                    MessageBox.Show("Du mådate vara inloggad för att utföra denna funktion.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
 
                 } // Not logged in
@@ -1693,9 +1691,6 @@ namespace VenueMaker.Dialogs
             }
 
         }
-
-
-
 
         public void PushToCloud()
         {
@@ -2047,7 +2042,7 @@ namespace VenueMaker.Dialogs
 
         }
 
-        private void selectDataFolderToolStripMenuItem_Click(object sender, EventArgs e)
+        private void SelectDataFolder()
         {
             try
             {
@@ -2070,7 +2065,6 @@ namespace VenueMaker.Dialogs
 
         }
 
-
         public string GetDataFilesFolder()
         {
             string folder = Path.Combine(
@@ -2087,7 +2081,23 @@ namespace VenueMaker.Dialogs
             return folder;
         }
 
-        private void SelectVenueImageBtn_Click(object sender, EventArgs e)
+
+        private void SwitchToTab(TabPage tab)
+        {
+            try
+            {
+                Tabs.SelectedTab = tab;
+
+            }
+            catch (Exception ex)
+            {
+                string errmsg = $"Kunde inte växla till fliken {tab.Text}";
+                MessageBox.Show(errmsg, "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+        }
+
+        private void SelectVenueImage()
         {
             try
             {
@@ -2148,7 +2158,7 @@ namespace VenueMaker.Dialogs
 
         }
 
-        private void AddMapBtn_Click(object sender, EventArgs e)
+        private void AddMap()
         {
             try
             {
@@ -2196,7 +2206,7 @@ namespace VenueMaker.Dialogs
             }
         }
 
-        private void DeleteMapBtn_Click(object sender, EventArgs e)
+        private void DeleteMap()
         {
             try
             {

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Application xmlns="http://schemas.microsoft.com/windows/2009/Ribbon">
   <Application.Commands>
-    <Command Name="CmdTabHome" Id="2001" LabelTitle="Start"/>
-    <Command Name="CmdApplicationMenu" LabelTitle="Main Menu"/>
-    <Command Name="CmdGroupFileActions" Id="3001"/>
-    <Command Name="CmdNew" Id="1001" LabelTitle="&amp;Ny" TooltipTitle="Ny (Ctrl+N)" TooltipDescription="Skapa en ny venue">
+    <Command Name="CmdTabHome" Id="2001" LabelTitle="Start" Keytip="S"/>
+    <Command Name="CmdApplicationMenu" LabelTitle="Arkiv" Keytip="A"/>
+    <Command Name="CmdGroupFileActions" Id="3001" Keytip="A"/>
+    <Command Name="CmdNew" Id="1001" LabelTitle="&amp;Ny" TooltipTitle="Ny (Ctrl+N)" TooltipDescription="Skapa en ny venue" Keytip="AN">
       <Command.SmallImages>
         <Image>Res/New_S096.bmp</Image>
         <Image MinDPI="120">Res/New_S120.bmp</Image>
@@ -18,7 +18,7 @@
         <Image MinDPI="192">Res/New_L192.bmp</Image>
       </Command.LargeImages>
     </Command>
-    <Command Name="CmdOpen" Id="1002" LabelTitle="&amp;Öppna" TooltipTitle="Öppna (Ctrl+O)" TooltipDescription="Öppna en venue">
+    <Command Name="CmdOpen" Id="1002" LabelTitle="&amp;Öppna" TooltipTitle="Öppna (Ctrl+O)" TooltipDescription="Öppna en venue" Keytip="AO">
       <Command.SmallImages>
         <Image>Res/Open_S096.bmp</Image>
         <Image MinDPI="120">Res/Open_S120.bmp</Image>
@@ -32,7 +32,7 @@
         <Image MinDPI="192">Res/Open_L192.bmp</Image>
       </Command.LargeImages>
     </Command>
-    <Command Name="CmdSave" Id="1003" LabelTitle="&amp;Spara" TooltipTitle="Spara (Ctrl+S)" TooltipDescription="Spara ändringarna i venue">
+    <Command Name="CmdSave" Id="1003" LabelTitle="&amp;Spara" TooltipTitle="Spara (Ctrl+S)" TooltipDescription="Spara ändringarna i venue" Keytip="AS">
       <Command.SmallImages>
         <Image>Res/Save_S096.bmp</Image>
         <Image MinDPI="120">Res/Save_S120.bmp</Image>
@@ -46,7 +46,7 @@
         <Image MinDPI="192">Res/Save_L192.bmp</Image>
       </Command.LargeImages>
     </Command>
-    <Command Name="CmdSaveAs" Id="1004" LabelTitle="Spara som" TooltipDescription="Spara venue som fil">
+    <Command Name="CmdSaveAs" Id="1004" LabelTitle="Spara som" TooltipDescription="Spara venue som fil" Keytip="AA">
       <Command.LargeImages>
         <Image>Res/SaveAs_L096.bmp</Image>
         <Image MinDPI="120">Res/SaveAs_L120.bmp</Image>
@@ -54,25 +54,100 @@
         <Image MinDPI="192">Res/SaveAs_L192.bmp</Image>
       </Command.LargeImages>
     </Command>
-    <Command Name="CmdTabAccount" Id="2002" LabelTitle="Konto"/>
-    <Command Name="CmdGroupAccount" Id="3002"/>
-    <Command Name="CmdCreateAccount" Id="1011" LabelTitle="Skapa konto"/>
-    <Command Name="CmdVerifyAccount" Id="1012" LabelTitle="Verifiera konto"/>
-    <Command Name="CmdLogin" Id="1013" LabelTitle="Logga in"/>
-    <Command Name="CmdLogOut" Id="1014" LabelTitle="Logga ut"/>
-    <Command Name="CmdSetPermissions" Id="1015" LabelTitle="Sätt rättigheter" LabelDescription="Sätt rättigheter för en venue för en användare"/>
+    <Command Name="CmdSelectDataFolder" Id="1005" LabelTitle="Välj mapp för data"/>
+    <Command Name="CmdTabAccount" Id="2002" LabelTitle="Konto" Keytip="K"/>
+    <Command Name="CmdGroupAccount" Id="3002" Keytip="K"/>
+    <Command Name="CmdCreateAccount" Id="1011" LabelTitle="Skapa konto" Keytip="KN"/>
+    <Command Name="CmdVerifyAccount" Id="1012" LabelTitle="Verifiera konto" Keytip="KV"/>
+    <Command Name="CmdLogin" Id="1013" LabelTitle="Logga in" Keytip="KL"/>
+    <Command Name="CmdLogOut" Id="1014" LabelTitle="Logga ut" Keytip="KO"/>
+    <Command Name="CmdSetPermissions" Id="1015" LabelTitle="Sätt rättigheter" LabelDescription="Sätt rättigheter för en venue för en användare" Keytip="KR"/>
+    <Command Name="CmdGroupMap" LabelTitle="Kartor" Keytip="K"/>
+    <Command Name="CmdMapAdd" Id="1042" LabelTitle="Lägg till" Keytip="KL">
+      <Command.SmallImages>
+        <Image>Res/MapAdd_S096.bmp</Image>
+        <Image MinDPI="120">Res/MapAdd_S120.bmp</Image>
+        <Image MinDPI="144">Res/MapAdd_S144.bmp</Image>
+        <Image MinDPI="192">Res/MapAdd_S192.bmp</Image>
+      </Command.SmallImages>
+      <Command.LargeImages>
+        <Image>Res/MapAdd_L096.bmp</Image>
+        <Image MinDPI="120">Res/MapAdd_L120.bmp</Image>
+        <Image MinDPI="144">Res/MapAdd_L144.bmp</Image>
+        <Image MinDPI="192">Res/MapAdd_L192.bmp</Image>
+      </Command.LargeImages>
+    </Command>
+    <Command Name="CmdMapDelete" Id="1043" LabelTitle="Ta bort" Keytip="KT"/>
+    <Command Name="CmdMapProperties" Id="1044" LabelTitle="Egenskaper" Keytip="KE"/>
+    <Command Name="CmdTabNodes" Id="2004" LabelTitle="Noder" Keytip="N"/>
+    <Command Name="CmdGroupBeacon" LabelTitle="Noder" Keytip="N"/>
+    <Command Name="CmdBeaconAdd" Id="1061" LabelTitle="Lägg till" Keytip="NL"/>
+    <Command Name="CmdBeaconDelete" Id="1062" LabelTitle="Ta bort" Keytip="NT"/>
+    <Command Name="CmdBeaconImport" Id="1063" LabelTitle="Importera" Keytip="NI"/>
+    <Command Name="CmdBeaconPinOnMap" Id="1064" LabelTitle="Välj på karta" Keytip="NK"/>
+    <Command Name="CmdTabElevators" Id="2006" LabelTitle="Hissar" Keytip="H"/>
+    <Command Name="CmdGroupElevators"/>
+    <Command Name="CmdViewElevators" Id="1080" LabelTitle="Hissar" Keytip="HV"/>
+    <Command Name="CmdElevatorGenerate" Id="1081" LabelTitle="Skapa hissar" Keytip="HS"/>
+    <Command Name="CmdElevatorsDelete" Id="1082" LabelTitle="Ta bort alla" Keytip="HT"/>
+    <Command Name="CmdTabPointsOfInterest" Id="2007" LabelTitle="Points Of Interest" Keytip="P"/>
+    <Command Name="CmdGroupPOIInfo" LabelTitle="Information" Keytip="I"/>
+    <Command Name="CmdPOIInfoAdd" Id="1121" LabelTitle="Lägg till" Keytip="IL"/>
+    <Command Name="CmdPOIInfoDelete" Id="1122" LabelTitle="Ta bort" Keytip="IT"/>
+    <Command Name="CmdPOIInfoSelectMediaFile" Id="1125" LabelTitle="Välj media" Keytip="IM"/>
+    <Command Name="CmdPOIInfoMoveUp" Id="1123" LabelTitle="Flytta upp" Keytip="IU"/>
+    <Command Name="CmdPOIInfoMoveDown" Id="1124" LabelTitle="Flytta ner" Keytip="IN"/>
+    <Command Name="CmdTabDirections" Id="2005" LabelTitle="Vägbeskrivningar" Keytip="G"/>
+    <Command Name="CmdGroupDirections" LabelTitle="Vägbeskrivningar" Keytip="V"/>
+    <Command Name="CmdViewDirections" Id="1140" LabelTitle="Vägbeskrivningar" Keytip="VV"/>
+    <Command Name="CmdDirectionAdd" Id="1141" LabelTitle="Lägg till" Keytip="VL"/>
+    <Command Name="CmdDirectionDelete" Id="1142" LabelTitle="Ta bort" Keytip="VT"/>
+    <Command Name="CmdDirectionEdit" Id="1143" LabelTitle="Ändra" Keytip="VÄ"/>
+    <Command Name="CmdDirectionPinOnMap" Id="1144" LabelTitle="Välj på karta" Keytip="VK"/>
+    <Command Name="CmdTabVenue" Id="2003" LabelTitle="Venue" Keytip="V"/>
+    <Command Name="CmdGroupVenue" Keytip="V"/>
+    <Command Name="CmdViewVenue" Id="1040" LabelTitle="Venue" Keytip="VV">
+      <Command.SmallImages>
+        <Image>Res/Venue_S096.bmp</Image>
+        <Image MinDPI="120">Res/Venue_S120.bmp</Image>
+        <Image MinDPI="144">Res/Venue_S144.bmp</Image>
+        <Image MinDPI="192">Res/Venue_S192.bmp</Image>
+        <Image MinDPI="192">Res/VenuePhoto_L096.bmp</Image>
+      </Command.SmallImages>
+      <Command.LargeImages>
+        <Image>Res/Venue_L096.bmp</Image>
+        <Image MinDPI="120">Res/Venue_L120.bmp</Image>
+        <Image MinDPI="144">Res/Venue_L144.bmp</Image>
+        <Image MinDPI="192">Res/Venue_L192.bmp</Image>
+        <Image>Res/Venue_S096.bmp</Image>
+      </Command.LargeImages>
+    </Command>
+    <Command Name="CmdVenueSetPhoto" Id="1041" LabelTitle="Välj foto" Keytip="VF">
+      <Command.SmallImages>
+        <Image>Res/VenuePhoto_S096.bmp</Image>
+        <Image MinDPI="120">Res/VenuePhoto_S120.bmp</Image>
+        <Image MinDPI="144">Res/VenuePhoto_S144.bmp</Image>
+        <Image MinDPI="192">Res/VenuePhoto_S192.bmp</Image>
+      </Command.SmallImages>
+      <Command.LargeImages>
+        <Image>Res/VenuePhoto_L096.bmp</Image>
+        <Image MinDPI="120">Res/VenuePhoto_L120.bmp</Image>
+        <Image MinDPI="144">Res/VenuePhoto_L144.bmp</Image>
+        <Image MinDPI="192">Res/VenuePhoto_L192.bmp</Image>
+        <Image>Res/VenuePhoto_S096.bmp</Image>
+      </Command.LargeImages>
+    </Command>
+    <Command Name="CmdViewNodes" Id="1060" LabelTitle="Noder" Keytip="NV"/>
+    <Command Name="CmdExit" Id="1999" LabelTitle="Avsluta"/>
+    <Command Name="CmdGroupPOI" Keytip="P"/>
+    <Command Name="CmdViewPOIs" Id="1100" LabelTitle="POIs" Keytip="PV"/>
   </Application.Commands>
   <Application.Views>
     <Ribbon Name="Ribbon">
       <Ribbon.ApplicationMenu>
         <ApplicationMenu CommandName="CmdApplicationMenu">
-          <ApplicationMenu.RecentItems>
-            <RecentItems EnablePinning="false"/>
-          </ApplicationMenu.RecentItems>
           <MenuGroup>
-            <Button CommandName="CmdNew" ApplicationModes="0,1"/>
-            <Button CommandName="CmdOpen" ApplicationModes="0,1"/>
-            <Button CommandName="CmdSave" ApplicationModes="0,1"/>
+            <Button CommandName="CmdExit" ApplicationModes="0,1"/>
           </MenuGroup>
         </ApplicationMenu>
       </Ribbon.ApplicationMenu>
@@ -84,26 +159,80 @@
           <Group CommandName="CmdGroupAccount" ApplicationModes="0,1" SizeDefinition="OneButton">
             <Button CommandName="CmdLogin"/>
           </Group>
-          <Group CommandName="CmdGroupFileActions" ApplicationModes="1" SizeDefinition="FourButtons">
+          <Group CommandName="CmdGroupFileActions" ApplicationModes="1" SizeDefinition="FiveButtons">
             <Button CommandName="CmdNew"/>
             <Button CommandName="CmdOpen"/>
             <Button CommandName="CmdSave"/>
             <Button CommandName="CmdSaveAs"/>
+            <Button CommandName="CmdSelectDataFolder"/>
           </Group>
-          <Group CommandName="CmdGroupFileActions" ApplicationModes="0" SizeDefinition="TwoButtons">
+          <Group CommandName="CmdGroupFileActions" ApplicationModes="0" SizeDefinition="ThreeButtons">
             <Button CommandName="CmdOpen"/>
             <Button CommandName="CmdSave"/>
+            <Button CommandName="CmdSelectDataFolder"/>
+          </Group>
+        </Tab>
+        <Tab CommandName="CmdTabVenue" ApplicationModes="0,1">
+          <Group CommandName="CmdGroupVenue" ApplicationModes="0,1" SizeDefinition="TwoButtons">
+            <Button CommandName="CmdViewVenue"/>
+            <Button CommandName="CmdVenueSetPhoto"/>
+          </Group>
+          <Group CommandName="CmdGroupMap" ApplicationModes="0,1" SizeDefinition="ThreeButtons">
+            <Button CommandName="CmdMapAdd"/>
+            <Button CommandName="CmdMapDelete"/>
+            <Button CommandName="CmdMapProperties"/>
+          </Group>
+        </Tab>
+        <Tab CommandName="CmdTabNodes" ApplicationModes="0,1">
+          <Group CommandName="CmdGroupBeacon" ApplicationModes="0" SizeDefinition="FourButtons">
+            <Button CommandName="CmdViewNodes"/>
+            <Button CommandName="CmdBeaconAdd"/>
+            <Button CommandName="CmdBeaconDelete"/>
+            <Button CommandName="CmdBeaconPinOnMap"/>
+          </Group>
+          <Group CommandName="CmdGroupBeacon" ApplicationModes="1" SizeDefinition="FiveButtons">
+            <Button CommandName="CmdViewNodes"/>
+            <Button CommandName="CmdBeaconAdd"/>
+            <Button CommandName="CmdBeaconDelete"/>
+            <Button CommandName="CmdBeaconImport"/>
+            <Button CommandName="CmdBeaconPinOnMap"/>
+          </Group>
+        </Tab>
+        <Tab CommandName="CmdTabDirections" ApplicationModes="0,1">
+          <Group CommandName="CmdGroupDirections" ApplicationModes="0,1" SizeDefinition="ThreeButtons">
+            <Button CommandName="CmdViewDirections"/>
+            <Button CommandName="CmdDirectionAdd"/>
+            <Button CommandName="CmdDirectionDelete"/>
+          </Group>
+        </Tab>
+        <Tab CommandName="CmdTabElevators" ApplicationModes="0,1">
+          <Group CommandName="CmdGroupElevators" ApplicationModes="0,1" SizeDefinition="ThreeButtons">
+            <Button CommandName="CmdViewElevators"/>
+            <Button CommandName="CmdElevatorGenerate"/>
+            <Button CommandName="CmdElevatorsDelete"/>
+          </Group>
+        </Tab>
+        <Tab CommandName="CmdTabPointsOfInterest" ApplicationModes="0,1">
+          <Group CommandName="CmdGroupPOI" ApplicationModes="0,1" SizeDefinition="OneButton">
+            <Button CommandName="CmdViewPOIs"/>
+          </Group>
+          <Group CommandName="CmdGroupPOIInfo" ApplicationModes="0,1" SizeDefinition="FiveButtons">
+            <Button CommandName="CmdPOIInfoAdd"/>
+            <Button CommandName="CmdPOIInfoDelete"/>
+            <Button CommandName="CmdPOIInfoSelectMediaFile"/>
+            <Button CommandName="CmdPOIInfoMoveUp"/>
+            <Button CommandName="CmdPOIInfoMoveDown"/>
           </Group>
         </Tab>
         <Tab CommandName="CmdTabAccount" ApplicationModes="0,1">
-          <Group CommandName="CmdGroupAccount" ApplicationModes="1" SizeDefinition="FiveOrSixButtons">
+          <Group CommandName="CmdGroupAccount" ApplicationModes="1" SizeDefinition="FiveButtons">
             <Button CommandName="CmdCreateAccount"/>
             <Button CommandName="CmdVerifyAccount"/>
             <Button CommandName="CmdLogin"/>
             <Button CommandName="CmdLogOut"/>
             <Button CommandName="CmdSetPermissions"/>
           </Group>
-          <Group CommandName="CmdGroupAccount" ApplicationModes="0">
+          <Group CommandName="CmdGroupAccount" ApplicationModes="0" SizeDefinition="FourButtons">
             <Button CommandName="CmdCreateAccount"/>
             <Button CommandName="CmdVerifyAccount"/>
             <Button CommandName="CmdLogin"/>
