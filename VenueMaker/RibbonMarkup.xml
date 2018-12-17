@@ -57,14 +57,74 @@
     <Command Name="CmdSelectDataFolder" Id="1005" LabelTitle="Välj mapp för data"/>
     <Command Name="CmdTabAccount" Id="2002" LabelTitle="Konto" Keytip="K"/>
     <Command Name="CmdGroupAccount" Id="3002" Keytip="K"/>
-    <Command Name="CmdCreateAccount" Id="1021" LabelTitle="Skapa konto" Keytip="KN"/>
-    <Command Name="CmdVerifyAccount" Id="1022" LabelTitle="Verifiera konto" Keytip="KV"/>
-    <Command Name="CmdLogin" Id="1023" LabelTitle="Logga in" Keytip="KL"/>
+    <Command Name="CmdCreateAccount" Id="1021" LabelTitle="Skapa konto" Keytip="KN">
+      <Command.SmallImages>
+        <Image>Res/AccountAdd_S096.bmp</Image>
+        <Image MinDPI="120">Res/AccountAdd_S120.bmp</Image>
+        <Image MinDPI="144">Res/AccountAdd_S144.bmp</Image>
+        <Image MinDPI="192">Res/AccountAdd_S192.bmp</Image>
+        <Image MinDPI="192">Res/AccountVerify_L096.bmp</Image>
+      </Command.SmallImages>
+      <Command.LargeImages>
+        <Image>Res/AccountAdd_L096.bmp</Image>
+        <Image MinDPI="120">Res/AccountAdd_L120.bmp</Image>
+        <Image MinDPI="144">Res/AccountAdd_L144.bmp</Image>
+        <Image MinDPI="192">Res/AccountAdd_L192.bmp</Image>
+      </Command.LargeImages>
+    </Command>
+    <Command Name="CmdVerifyAccount" Id="1022" LabelTitle="Verifiera konto" Keytip="KV">
+      <Command.SmallImages>
+        <Image>Res/AccountVerify_S096.bmp</Image>
+        <Image MinDPI="120">Res/AccountVerify_S120.bmp</Image>
+        <Image MinDPI="144">Res/AccountVerify_S144.bmp</Image>
+        <Image MinDPI="192">Res/AccountVerify_S192.bmp</Image>
+      </Command.SmallImages>
+      <Command.LargeImages>
+        <Image>Res/AccountAdd_S192.bmp</Image>
+        <Image>Res/AccountVerify_L096.bmp</Image>
+        <Image MinDPI="120">Res/AccountVerify_L120.bmp</Image>
+        <Image MinDPI="144">Res/AccountVerify_L144.bmp</Image>
+        <Image MinDPI="192">Res/AccountVerify_L192.bmp</Image>
+      </Command.LargeImages>
+    </Command>
+    <Command Name="CmdLogin" Id="1023" LabelTitle="Logga in" Keytip="KL">
+      <Command.SmallImages>
+        <Image>Res/LogIn_S096.bmp</Image>
+        <Image MinDPI="120">Res/LogIn_S120.bmp</Image>
+        <Image MinDPI="144">Res/LogIn_S144.bmp</Image>
+        <Image MinDPI="192">Res/LogIn_S192.bmp</Image>
+        <Image MinDPI="192">Res/Map_L096.bmp</Image>
+      </Command.SmallImages>
+      <Command.LargeImages>
+        <Image>Res/LogIn_L096.bmp</Image>
+        <Image MinDPI="120">Res/LogIn_L120.bmp</Image>
+        <Image MinDPI="144">Res/LogIn_L144.bmp</Image>
+        <Image MinDPI="192">Res/LogIn_L192.bmp</Image>
+        <Image>Res/LogIn_S096.bmp</Image>
+      </Command.LargeImages>
+    </Command>
     <Command Name="CmdLogOut" Id="1024" LabelTitle="Logga ut" Keytip="KO"/>
-    <Command Name="CmdSetPermissions" Id="1025" LabelTitle="Sätt rättigheter" LabelDescription="Sätt rättigheter för en venue för en användare" Keytip="KR"/>
+    <Command Name="CmdSetPermissions" Id="1025" LabelTitle="Sätt rättigheter" LabelDescription="Sätt rättigheter för en venue för en användare" Keytip="KR">
+      <Command.SmallImages>
+        <Image>Res/SetPermissions_S096.bmp</Image>
+        <Image MinDPI="120">Res/SetPermissions_S120.bmp</Image>
+        <Image MinDPI="144">Res/SetPermissions_S144.bmp</Image>
+        <Image MinDPI="192">Res/SetPermissions_S192.bmp</Image>
+      </Command.SmallImages>
+      <Command.LargeImages>
+        <Image>Res/SetPermissions_L096.bmp</Image>
+        <Image MinDPI="120">Res/SetPermissions_L120.bmp</Image>
+        <Image MinDPI="144">Res/SetPermissions_L144.bmp</Image>
+        <Image MinDPI="192">Res/SetPermissions_L192.bmp</Image>
+      </Command.LargeImages>
+    </Command>
     <Command Name="CmdGroupMap" LabelTitle="Kartor" Keytip="K"/>
     <Command Name="CmdMapAdd" Id="1042" LabelTitle="Lägg till" Keytip="KL">
       <Command.SmallImages>
+        <Image>Res/MapAdd_S096.bmp</Image>
+        <Image MinDPI="120">Res/MapAdd_S120.bmp</Image>
+        <Image MinDPI="144">Res/MapAdd_S144.bmp</Image>
+        <Image MinDPI="192">Res/MapAdd_S192.bmp</Image>
         <Image>Res/MapAdd_S096.bmp</Image>
         <Image MinDPI="120">Res/MapAdd_S120.bmp</Image>
         <Image MinDPI="144">Res/MapAdd_S144.bmp</Image>
@@ -75,35 +135,236 @@
         <Image MinDPI="120">Res/MapAdd_L120.bmp</Image>
         <Image MinDPI="144">Res/MapAdd_L144.bmp</Image>
         <Image MinDPI="192">Res/MapAdd_L192.bmp</Image>
+        <Image>Res/MapAdd_L096.bmp</Image>
+        <Image MinDPI="120">Res/MapAdd_L120.bmp</Image>
+        <Image MinDPI="144">Res/MapAdd_L144.bmp</Image>
+        <Image MinDPI="192">Res/MapAdd_L192.bmp</Image>
       </Command.LargeImages>
     </Command>
-    <Command Name="CmdMapDelete" Id="1043" LabelTitle="Ta bort" Keytip="KT"/>
+    <Command Name="CmdMapDelete" Id="1043" LabelTitle="Ta bort" Keytip="KT">
+      <Command.SmallImages>
+        <Image>Res/MapDelete_S096.bmp</Image>
+        <Image MinDPI="120">Res/MapDelete_S120.bmp</Image>
+        <Image MinDPI="144">Res/MapDelete_S144.bmp</Image>
+        <Image MinDPI="192">Res/MapDelete_S192.bmp</Image>
+      </Command.SmallImages>
+      <Command.LargeImages>
+        <Image>Res/MapDelete_L096.bmp</Image>
+        <Image MinDPI="120">Res/MapDelete_L120.bmp</Image>
+        <Image MinDPI="144">Res/MapDelete_L144.bmp</Image>
+        <Image MinDPI="192">Res/MapDelete_L192.bmp</Image>
+      </Command.LargeImages>
+    </Command>
     <Command Name="CmdMapProperties" Id="1044" LabelTitle="Egenskaper" Keytip="KE"/>
     <Command Name="CmdTabNodes" Id="2004" LabelTitle="Noder" Keytip="N"/>
     <Command Name="CmdGroupBeacon" LabelTitle="Noder" Keytip="N"/>
-    <Command Name="CmdBeaconAdd" Id="1061" LabelTitle="Lägg till" Keytip="NL"/>
-    <Command Name="CmdBeaconDelete" Id="1062" LabelTitle="Ta bort" Keytip="NT"/>
+    <Command Name="CmdBeaconAdd" Id="1061" LabelTitle="Lägg till" Keytip="NL">
+      <Command.SmallImages>
+        <Image>Res/BeaconAdd_S096.bmp</Image>
+        <Image MinDPI="120">Res/BeaconAdd_S120.bmp</Image>
+        <Image MinDPI="144">Res/BeaconAdd_S144.bmp</Image>
+        <Image MinDPI="192">Res/BeaconAdd_S192.bmp</Image>
+      </Command.SmallImages>
+      <Command.LargeImages>
+        <Image>Res/BeaconAdd_L096.bmp</Image>
+        <Image MinDPI="120">Res/BeaconAdd_L120.bmp</Image>
+        <Image MinDPI="144">Res/BeaconAdd_L144.bmp</Image>
+        <Image MinDPI="192">Res/BeaconAdd_L192.bmp</Image>
+      </Command.LargeImages>
+    </Command>
+    <Command Name="CmdBeaconDelete" Id="1062" LabelTitle="Ta bort" Keytip="NT">
+      <Command.SmallImages>
+        <Image>Res/BeaconDelete_S096.bmp</Image>
+        <Image MinDPI="120">Res/BeaconDelete_S120.bmp</Image>
+        <Image MinDPI="144">Res/BeaconDelete_S144.bmp</Image>
+        <Image MinDPI="192">Res/BeaconDelete_S192.bmp</Image>
+      </Command.SmallImages>
+      <Command.LargeImages>
+        <Image>Res/BeaconDelete_L096.bmp</Image>
+        <Image MinDPI="120">Res/BeaconDelete_L120.bmp</Image>
+        <Image MinDPI="144">Res/BeaconDelete_L144.bmp</Image>
+        <Image MinDPI="192">Res/BeaconDelete_L192.bmp</Image>
+      </Command.LargeImages>
+    </Command>
     <Command Name="CmdBeaconImport" Id="1063" LabelTitle="Importera" Keytip="NI"/>
-    <Command Name="CmdBeaconPinOnMap" Id="1064" LabelTitle="Välj på karta" Keytip="NK"/>
+    <Command Name="CmdBeaconPinOnMap" Id="1064" LabelTitle="Välj på karta" Keytip="NK">
+      <Command.SmallImages>
+        <Image>Res/BeaconPinOnMap_S096.bmp</Image>
+        <Image MinDPI="120">Res/BeaconPinOnMap_S120.bmp</Image>
+        <Image MinDPI="144">Res/BeaconPinOnMap_S144.bmp</Image>
+        <Image MinDPI="192">Res/BeaconPinOnMap_S192.bmp</Image>
+      </Command.SmallImages>
+      <Command.LargeImages>
+        <Image>Res/BeaconPinOnMap_L096.bmp</Image>
+        <Image MinDPI="120">Res/BeaconPinOnMap_L120.bmp</Image>
+        <Image MinDPI="144">Res/BeaconPinOnMap_L144.bmp</Image>
+        <Image MinDPI="192">Res/BeaconPinOnMap_L192.bmp</Image>
+      </Command.LargeImages>
+    </Command>
     <Command Name="CmdTabElevators" Id="2006" LabelTitle="Hissar" Keytip="H"/>
     <Command Name="CmdGroupElevators"/>
-    <Command Name="CmdViewElevators" Id="1080" LabelTitle="Hissar" Keytip="HV"/>
-    <Command Name="CmdElevatorGenerate" Id="1081" LabelTitle="Skapa hissar" Keytip="HS"/>
+    <Command Name="CmdViewElevators" Id="1080" LabelTitle="Hissar" Keytip="HV">
+      <Command.SmallImages>
+        <Image>Res/Elevators_S096.bmp</Image>
+        <Image MinDPI="120">Res/Elevators_S120.bmp</Image>
+        <Image MinDPI="144">Res/Elevators_S144.bmp</Image>
+        <Image MinDPI="192">Res/Elevators_S192.bmp</Image>
+      </Command.SmallImages>
+      <Command.LargeImages>
+        <Image>Res/Elevators_L096.bmp</Image>
+        <Image MinDPI="120">Res/Elevators_L120.bmp</Image>
+        <Image MinDPI="144">Res/Elevators_L144.bmp</Image>
+        <Image MinDPI="192">Res/Elevators_L192.bmp</Image>
+      </Command.LargeImages>
+    </Command>
+    <Command Name="CmdElevatorGenerate" Id="1081" LabelTitle="Skapa hissar" Keytip="HS">
+      <Command.SmallImages>
+        <Image>Res/ElevatorsGenerate_S096.bmp</Image>
+        <Image MinDPI="120">Res/ElevatorsGenerate_S120.bmp</Image>
+        <Image MinDPI="144">Res/ElevatorsGenerate_S144.bmp</Image>
+        <Image MinDPI="192">Res/ElevatorsGenerate_S192.bmp</Image>
+      </Command.SmallImages>
+      <Command.LargeImages>
+        <Image>Res/ElevatorsGenerate_L096.bmp</Image>
+        <Image MinDPI="120">Res/ElevatorsGenerate_L120.bmp</Image>
+        <Image MinDPI="144">Res/ElevatorsGenerate_L144.bmp</Image>
+        <Image MinDPI="192">Res/ElevatorsGenerate_L192.bmp</Image>
+      </Command.LargeImages>
+    </Command>
     <Command Name="CmdElevatorsDelete" Id="1082" LabelTitle="Ta bort alla" Keytip="HT"/>
     <Command Name="CmdTabPointsOfInterest" Id="2007" LabelTitle="Points Of Interest" Keytip="P"/>
     <Command Name="CmdGroupPOIInfo" LabelTitle="Information" Keytip="I"/>
-    <Command Name="CmdPOIInfoAdd" Id="1121" LabelTitle="Lägg till" Keytip="IL"/>
-    <Command Name="CmdPOIInfoDelete" Id="1122" LabelTitle="Ta bort" Keytip="IT"/>
-    <Command Name="CmdPOIInfoSelectMediaFile" Id="1125" LabelTitle="Välj media" Keytip="IM"/>
-    <Command Name="CmdPOIInfoMoveUp" Id="1123" LabelTitle="Flytta upp" Keytip="IU"/>
-    <Command Name="CmdPOIInfoMoveDown" Id="1124" LabelTitle="Flytta ner" Keytip="IN"/>
+    <Command Name="CmdPOIInfoAdd" Id="1121" LabelTitle="Lägg till" Keytip="IL">
+      <Command.SmallImages>
+        <Image>Res/POIInfoAdd_S096.bmp</Image>
+        <Image MinDPI="120">Res/POIInfoAdd_S120.bmp</Image>
+        <Image MinDPI="144">Res/POIInfoAdd_S144.bmp</Image>
+        <Image MinDPI="192">Res/POIInfoAdd_S192.bmp</Image>
+      </Command.SmallImages>
+      <Command.LargeImages>
+        <Image>Res/POIInfoAdd_L096.bmp</Image>
+        <Image MinDPI="120">Res/POIInfoAdd_L120.bmp</Image>
+        <Image MinDPI="144">Res/POIInfoAdd_L144.bmp</Image>
+        <Image MinDPI="192">Res/POIInfoAdd_L192.bmp</Image>
+      </Command.LargeImages>
+    </Command>
+    <Command Name="CmdPOIInfoDelete" Id="1122" LabelTitle="Ta bort" Keytip="IT">
+      <Command.SmallImages>
+        <Image>Res/POIInfoDelete_S096.bmp</Image>
+        <Image MinDPI="120">Res/POIInfoDelete_S120.bmp</Image>
+        <Image MinDPI="144">Res/POIInfoDelete_S144.bmp</Image>
+        <Image MinDPI="192">Res/POIInfoDelete_S192.bmp</Image>
+      </Command.SmallImages>
+      <Command.LargeImages>
+        <Image>Res/POIInfoDelete_L096.bmp</Image>
+        <Image MinDPI="120">Res/POIInfoDelete_L120.bmp</Image>
+        <Image MinDPI="144">Res/POIInfoDelete_L144.bmp</Image>
+        <Image MinDPI="192">Res/POIInfoDelete_L192.bmp</Image>
+      </Command.LargeImages>
+    </Command>
+    <Command Name="CmdPOIInfoSelectMediaFile" Id="1125" LabelTitle="Välj media" Keytip="IM">
+      <Command.SmallImages>
+        <Image>Res/POIInfoMediaFile_S096.bmp</Image>
+        <Image MinDPI="120">Res/POIInfoMediaFile_S120.bmp</Image>
+        <Image MinDPI="144">Res/POIInfoMediaFile_S144.bmp</Image>
+        <Image MinDPI="192">Res/POIInfoMediaFile_S192.bmp</Image>
+      </Command.SmallImages>
+      <Command.LargeImages>
+        <Image>Res/POIInfoMediaFile_L096.bmp</Image>
+        <Image MinDPI="120">Res/POIInfoMediaFile_L120.bmp</Image>
+        <Image MinDPI="144">Res/POIInfoMediaFile_L144.bmp</Image>
+        <Image MinDPI="192">Res/POIInfoMediaFile_L192.bmp</Image>
+      </Command.LargeImages>
+    </Command>
+    <Command Name="CmdPOIInfoMoveUp" Id="1123" LabelTitle="Flytta upp" Keytip="IU">
+      <Command.SmallImages>
+        <Image>Res/ArrowUp_S096.bmp</Image>
+        <Image MinDPI="120">Res/ArrowUp_S120.bmp</Image>
+        <Image MinDPI="144">Res/ArrowUp_S144.bmp</Image>
+        <Image MinDPI="192">Res/ArrowUp_S192.bmp</Image>
+      </Command.SmallImages>
+      <Command.LargeImages>
+        <Image MinDPI="192">Res/ArrowUp_L192.bmp</Image>
+        <Image>Res/ArrowUp_L096.bmp</Image>
+        <Image MinDPI="120">Res/ArrowUp_L120.bmp</Image>
+        <Image MinDPI="144">Res/ArrowUp_L144.bmp</Image>
+        <Image MinDPI="192">Res/ArrowUp_L192.bmp</Image>
+      </Command.LargeImages>
+    </Command>
+    <Command Name="CmdPOIInfoMoveDown" Id="1124" LabelTitle="Flytta ner" Keytip="IN">
+      <Command.SmallImages>
+        <Image>Res/ArrowDown_S096.bmp</Image>
+        <Image MinDPI="120">Res/ArrowDown_S120.bmp</Image>
+        <Image MinDPI="144">Res/ArrowDown_S144.bmp</Image>
+        <Image MinDPI="192">Res/ArrowDown_S192.bmp</Image>
+      </Command.SmallImages>
+      <Command.LargeImages>
+        <Image>Res/ArrowDown_L096.bmp</Image>
+        <Image MinDPI="120">Res/ArrowDown_L120.bmp</Image>
+        <Image MinDPI="144">Res/ArrowDown_L144.bmp</Image>
+        <Image MinDPI="192">Res/ArrowDown_L192.bmp</Image>
+      </Command.LargeImages>
+    </Command>
     <Command Name="CmdTabDirections" Id="2005" LabelTitle="Vägbeskrivningar" Keytip="G"/>
     <Command Name="CmdGroupDirections" LabelTitle="Vägbeskrivningar" Keytip="V"/>
-    <Command Name="CmdViewDirections" Id="1140" LabelTitle="Vägbeskrivningar" Keytip="VV"/>
-    <Command Name="CmdDirectionAdd" Id="1141" LabelTitle="Lägg till" Keytip="VL"/>
-    <Command Name="CmdDirectionDelete" Id="1142" LabelTitle="Ta bort" Keytip="VT"/>
+    <Command Name="CmdViewDirections" Id="1140" LabelTitle="Vägbeskrivningar" Keytip="VV">
+      <Command.SmallImages>
+        <Image>Res/Directions_S096.bmp</Image>
+        <Image MinDPI="120">Res/Directions_S120.bmp</Image>
+        <Image MinDPI="144">Res/Directions_S144.bmp</Image>
+        <Image MinDPI="192">Res/Directions_S192.bmp</Image>
+      </Command.SmallImages>
+      <Command.LargeImages>
+        <Image>Res/Directions_L096.bmp</Image>
+        <Image MinDPI="120">Res/Directions_L120.bmp</Image>
+        <Image MinDPI="144">Res/Directions_L144.bmp</Image>
+        <Image MinDPI="192">Res/Directions_L192.bmp</Image>
+      </Command.LargeImages>
+    </Command>
+    <Command Name="CmdDirectionAdd" Id="1141" LabelTitle="Lägg till" Keytip="VL">
+      <Command.SmallImages>
+        <Image>Res/DirectionAdd_S096.bmp</Image>
+        <Image MinDPI="120">Res/DirectionAdd_S120.bmp</Image>
+        <Image MinDPI="144">Res/DirectionAdd_S144.bmp</Image>
+        <Image MinDPI="192">Res/DirectionAdd_S192.bmp</Image>
+        <Image MinDPI="192">Res/DirectionDelete_L096.bmp</Image>
+      </Command.SmallImages>
+      <Command.LargeImages>
+        <Image>Res/DirectionAdd_S096.bmp</Image>
+        <Image>Res/DirectionAdd_S120.bmp</Image>
+        <Image>Res/DirectionAdd_S144.bmp</Image>
+        <Image>Res/DirectionAdd_S192.bmp</Image>
+      </Command.LargeImages>
+    </Command>
+    <Command Name="CmdDirectionDelete" Id="1142" LabelTitle="Ta bort" Keytip="VT">
+      <Command.SmallImages>
+        <Image>Res/DirectionDelete_S096.bmp</Image>
+        <Image MinDPI="120">Res/DirectionDelete_S120.bmp</Image>
+        <Image MinDPI="144">Res/DirectionDelete_S144.bmp</Image>
+        <Image MinDPI="192">Res/DirectionDelete_S192.bmp</Image>
+      </Command.SmallImages>
+      <Command.LargeImages>
+        <Image>Res/DirectionDelete_L096.bmp</Image>
+        <Image MinDPI="120">Res/DirectionDelete_L120.bmp</Image>
+        <Image MinDPI="144">Res/DirectionDelete_L144.bmp</Image>
+        <Image MinDPI="192">Res/DirectionDelete_L192.bmp</Image>
+      </Command.LargeImages>
+    </Command>
     <Command Name="CmdDirectionEdit" Id="1143" LabelTitle="Ändra" Keytip="VÄ"/>
-    <Command Name="CmdDirectionPinOnMap" Id="1144" LabelTitle="Välj på karta" Keytip="VK"/>
+    <Command Name="CmdDirectionPinOnMap" Id="1144" LabelTitle="Välj på karta" Keytip="VK">
+      <Command.SmallImages>
+        <Image>Res/DirectionPinOnMap_S096.bmp</Image>
+        <Image MinDPI="120">Res/DirectionPinOnMap_S120.bmp</Image>
+        <Image MinDPI="144">Res/DirectionPinOnMap_S144.bmp</Image>
+        <Image MinDPI="192">Res/DirectionPinOnMap_S192.bmp</Image>
+      </Command.SmallImages>
+      <Command.LargeImages>
+        <Image>Res/DirectionPinOnMap_L096.bmp</Image>
+        <Image MinDPI="120">Res/DirectionPinOnMap_L120.bmp</Image>
+        <Image MinDPI="144">Res/DirectionPinOnMap_L144.bmp</Image>
+        <Image MinDPI="192">Res/DirectionPinOnMap_L192.bmp</Image>
+      </Command.LargeImages>
+    </Command>
     <Command Name="CmdTabVenue" Id="2003" LabelTitle="Venue" Keytip="V"/>
     <Command Name="CmdGroupVenue" Keytip="V"/>
     <Command Name="CmdViewVenue" Id="1040" LabelTitle="Venue" Keytip="VV">
@@ -137,10 +398,36 @@
         <Image>Res/VenuePhoto_S096.bmp</Image>
       </Command.LargeImages>
     </Command>
-    <Command Name="CmdViewNodes" Id="1060" LabelTitle="Noder" Keytip="NV"/>
+    <Command Name="CmdViewNodes" Id="1060" LabelTitle="Noder" Keytip="NV">
+      <Command.SmallImages>
+        <Image>Res/Beacon_S096.bmp</Image>
+        <Image MinDPI="120">Res/Beacon_S120.bmp</Image>
+        <Image MinDPI="144">Res/Beacon_S144.bmp</Image>
+        <Image MinDPI="192">Res/Beacon_S192.bmp</Image>
+      </Command.SmallImages>
+      <Command.LargeImages>
+        <Image>Res/Beacon_L096.bmp</Image>
+        <Image MinDPI="120">Res/Beacon_L120.bmp</Image>
+        <Image MinDPI="144">Res/Beacon_L144.bmp</Image>
+        <Image MinDPI="192">Res/Beacon_L192.bmp</Image>
+      </Command.LargeImages>
+    </Command>
     <Command Name="CmdExit" Id="1999" LabelTitle="Avsluta"/>
     <Command Name="CmdGroupPOI" Keytip="P"/>
-    <Command Name="CmdViewPOIs" Id="1100" LabelTitle="POIs" Keytip="PV"/>
+    <Command Name="CmdViewPOIs" Id="1100" LabelTitle="POIs" Keytip="PV">
+      <Command.SmallImages>
+        <Image>Res/POIs_S096.bmp</Image>
+        <Image MinDPI="120">Res/POIs_S120.bmp</Image>
+        <Image MinDPI="144">Res/POIs_S144.bmp</Image>
+        <Image MinDPI="192">Res/POIs_S192.bmp</Image>
+      </Command.SmallImages>
+      <Command.LargeImages>
+        <Image>Res/POIs_L096.bmp</Image>
+        <Image MinDPI="120">Res/POIs_L120.bmp</Image>
+        <Image MinDPI="144">Res/POIs_L144.bmp</Image>
+        <Image MinDPI="192">Res/POIs_L192.bmp</Image>
+      </Command.LargeImages>
+    </Command>
   </Application.Commands>
   <Application.Views>
     <Ribbon Name="Ribbon">

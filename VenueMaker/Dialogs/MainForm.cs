@@ -122,8 +122,13 @@ namespace VenueMaker.Dialogs
 
                 Text = AssemblyInfo.GetProductAndVersion();
                 WindowState = FormWindowState.Maximized;
-                Tabs.Alignment = TabAlignment.Bottom;
-                Tabs.TabStop = false;
+                // Tabs.Alignment = TabAlignment.Bottom;
+                // Tabs.TabStop = false;
+                // Tabs.Appearance = TabAppearance.Buttons;
+                // Tabs.ItemSize = new Size(0, 1);
+                // Tabs.SizeMode = TabSizeMode.Fixed;
+                // Tabs.Multiline = true;
+
                 InitRibbon();
                 
 
