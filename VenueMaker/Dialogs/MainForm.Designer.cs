@@ -728,7 +728,6 @@
             this.NodeMapPointBtn.Text = "Vä&lj på karta";
             this.NodeMapPointBtn.UseVisualStyleBackColor = true;
             this.NodeMapPointBtn.Visible = false;
-            this.NodeMapPointBtn.Click += new System.EventHandler(this.NodeMapPointBtn_Click);
             // 
             // NodeMapPointTB
             // 

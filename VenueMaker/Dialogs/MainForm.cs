@@ -51,6 +51,7 @@ namespace VenueMaker.Dialogs
             try
             {
                 RibbonController.Init(MyRibbon);
+                //tmp MyRibbon.SetColors(Color.Control, Color.Red, Color.Black);
 
                 // File
                 RibbonController.Me.Button(RibbonMarkupCommands.ButtonNew).ExecuteEvent += (s1, e1) => CreateNewVenue();
@@ -78,6 +79,8 @@ namespace VenueMaker.Dialogs
                 RibbonController.Me.Button(RibbonMarkupCommands.ButtonNodeAdd).ExecuteEvent += (s16, e16) => AddNode();
                 RibbonController.Me.Button(RibbonMarkupCommands.ButtonNodeDelete).ExecuteEvent += (s17, e17) => DeleteNode();
                 RibbonController.Me.Button(RibbonMarkupCommands.ButtonNodeImport).ExecuteEvent += (s18, e18) => ImportBeacons();
+                RibbonController.Me.Button(RibbonMarkupCommands.ButtonNodePinOnMap).ExecuteEvent += (s32, e32) => PinNodeOnMap();
+
 
                 // Directions
                 RibbonController.Me.Button(RibbonMarkupCommands.ButtonViewDirections).ExecuteEvent += (s19, e19) => SwitchToTab(EdgesTab);
@@ -2285,7 +2288,7 @@ namespace VenueMaker.Dialogs
             }
         }
 
-        private void NodeMapPointBtn_Click(object sender, EventArgs e)
+        private void PinNodeOnMap()
         {
             try
             {
