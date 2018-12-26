@@ -122,8 +122,6 @@
     <Command Name="CmdMapAdd" Id="1042" LabelTitle="Lägg till" Keytip="KL">
       <Command.SmallImages>
         <Image>Res/MapAdd_S096.bmp</Image>
-        <Image MinDPI="120">Res/MapAdd_S120.bmp</Image>
-        <Image MinDPI="144">Res/MapAdd_S144.bmp</Image>
         <Image MinDPI="192">Res/MapAdd_S192.bmp</Image>
         <Image>Res/MapAdd_S096.bmp</Image>
         <Image MinDPI="120">Res/MapAdd_S120.bmp</Image>
@@ -131,10 +129,6 @@
         <Image MinDPI="192">Res/MapAdd_S192.bmp</Image>
       </Command.SmallImages>
       <Command.LargeImages>
-        <Image>Res/MapAdd_L096.bmp</Image>
-        <Image MinDPI="120">Res/MapAdd_L120.bmp</Image>
-        <Image MinDPI="144">Res/MapAdd_L144.bmp</Image>
-        <Image MinDPI="192">Res/MapAdd_L192.bmp</Image>
         <Image>Res/MapAdd_L096.bmp</Image>
         <Image MinDPI="120">Res/MapAdd_L120.bmp</Image>
         <Image MinDPI="144">Res/MapAdd_L144.bmp</Image>
