@@ -24,6 +24,8 @@ Source: ..\VenueMaker\bin\Release\SQLite-net.dll; DestDir: {app}
 Source: ..\VenueMaker\bin\Release\SQLite-net.xml; DestDir: {app}
 Source: ..\VenueMaker\bin\Release\x64\e_sqlite3.dll; DestDir: {app}\x64\
 Source: ..\VenueMaker\bin\Release\x86\e_sqlite3.dll; DestDir: {app}\x86\
+Source: ..\VenueMaker\bin\Release\RibbonLib.dll; DestDir: {app}
+
 [Dirs]
 Name: {app}\x64
 Name: {app}\x86
@@ -43,9 +45,9 @@ AlwaysShowComponentsList=false
 DisableReadyPage=true
 ShowLanguageDialog=auto
 AppPublisher={#CompanyName}
-AppPublisherURL=http://mawingu.se/
-AppSupportURL=http://mawingu.se/
-AppUpdatesURL=http://mawingu.se/
+AppPublisherURL=https://mawingu.se/
+AppSupportURL=https://mawingu.se/
+AppUpdatesURL=https://mawingu.se/
 AppID={{261C8BD3-34E8-40EE-AD36-030BEF9D48EB}
 OutputBaseFilename=setup_{#AppName}_{#AppVersion}
 UninstallDisplayName={#AppName}
