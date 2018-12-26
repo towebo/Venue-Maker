@@ -366,7 +366,7 @@
             this.MapsLB.ItemHeight = 15;
             this.MapsLB.Location = new System.Drawing.Point(400, 435);
             this.MapsLB.Name = "MapsLB";
-            this.MapsLB.Size = new System.Drawing.Size(219, 109);
+            this.MapsLB.Size = new System.Drawing.Size(219, 94);
             this.MapsLB.TabIndex = 47;
             this.MapsLB.DoubleClick += new System.EventHandler(this.MapsLB_DoubleClick);
             // 
@@ -1191,7 +1191,7 @@
             this.NodesLB.ItemHeight = 15;
             this.NodesLB.Location = new System.Drawing.Point(11, 21);
             this.NodesLB.Name = "NodesLB";
-            this.NodesLB.Size = new System.Drawing.Size(310, 544);
+            this.NodesLB.Size = new System.Drawing.Size(310, 514);
             this.NodesLB.TabIndex = 1;
             // 
             // NodesListLabel
@@ -1337,7 +1337,7 @@
             this.EdgesForPOILB.ItemHeight = 15;
             this.EdgesForPOILB.Location = new System.Drawing.Point(206, 21);
             this.EdgesForPOILB.Name = "EdgesForPOILB";
-            this.EdgesForPOILB.Size = new System.Drawing.Size(480, 169);
+            this.EdgesForPOILB.Size = new System.Drawing.Size(480, 154);
             this.EdgesForPOILB.TabIndex = 3;
             // 
             // EdgesListLabel
@@ -1354,15 +1354,15 @@
             this.EdgesPOIsLB.AccessibleName = "Lista över noder";
             this.EdgesPOIsLB.FormattingEnabled = true;
             this.EdgesPOIsLB.ItemHeight = 15;
-            this.EdgesPOIsLB.Location = new System.Drawing.Point(6, 21);
+            this.EdgesPOIsLB.Location = new System.Drawing.Point(11, 21);
             this.EdgesPOIsLB.Name = "EdgesPOIsLB";
-            this.EdgesPOIsLB.Size = new System.Drawing.Size(191, 454);
+            this.EdgesPOIsLB.Size = new System.Drawing.Size(186, 439);
             this.EdgesPOIsLB.TabIndex = 1;
             // 
             // EdgesPOIListLabel
             // 
             this.EdgesPOIListLabel.AutoSize = true;
-            this.EdgesPOIListLabel.Location = new System.Drawing.Point(3, 3);
+            this.EdgesPOIListLabel.Location = new System.Drawing.Point(8, 3);
             this.EdgesPOIListLabel.Name = "EdgesPOIListLabel";
             this.EdgesPOIListLabel.Size = new System.Drawing.Size(98, 15);
             this.EdgesPOIListLabel.TabIndex = 0;
@@ -1390,7 +1390,7 @@
             // 
             // DeleteAllElevatorEdgesButton
             // 
-            this.DeleteAllElevatorEdgesButton.Location = new System.Drawing.Point(194, 201);
+            this.DeleteAllElevatorEdgesButton.Location = new System.Drawing.Point(194, 123);
             this.DeleteAllElevatorEdgesButton.Name = "DeleteAllElevatorEdgesButton";
             this.DeleteAllElevatorEdgesButton.Size = new System.Drawing.Size(75, 23);
             this.DeleteAllElevatorEdgesButton.TabIndex = 10;
@@ -1400,7 +1400,7 @@
             // 
             // ElevatorMessageTB
             // 
-            this.ElevatorMessageTB.Location = new System.Drawing.Point(191, 126);
+            this.ElevatorMessageTB.Location = new System.Drawing.Point(191, 65);
             this.ElevatorMessageTB.Name = "ElevatorMessageTB";
             this.ElevatorMessageTB.Size = new System.Drawing.Size(162, 23);
             this.ElevatorMessageTB.TabIndex = 8;
@@ -1409,7 +1409,7 @@
             // ElevatorMessageLabel
             // 
             this.ElevatorMessageLabel.AutoSize = true;
-            this.ElevatorMessageLabel.Location = new System.Drawing.Point(188, 108);
+            this.ElevatorMessageLabel.Location = new System.Drawing.Point(188, 47);
             this.ElevatorMessageLabel.Name = "ElevatorMessageLabel";
             this.ElevatorMessageLabel.Size = new System.Drawing.Size(73, 15);
             this.ElevatorMessageLabel.TabIndex = 7;
@@ -1417,7 +1417,7 @@
             // 
             // ElevatorEndHeadingTB
             // 
-            this.ElevatorEndHeadingTB.Location = new System.Drawing.Point(275, 78);
+            this.ElevatorEndHeadingTB.Location = new System.Drawing.Point(275, 21);
             this.ElevatorEndHeadingTB.Name = "ElevatorEndHeadingTB";
             this.ElevatorEndHeadingTB.Size = new System.Drawing.Size(78, 23);
             this.ElevatorEndHeadingTB.TabIndex = 6;
@@ -1425,7 +1425,7 @@
             // ElevatorEndHeadingLabel
             // 
             this.ElevatorEndHeadingLabel.AutoSize = true;
-            this.ElevatorEndHeadingLabel.Location = new System.Drawing.Point(272, 60);
+            this.ElevatorEndHeadingLabel.Location = new System.Drawing.Point(272, 3);
             this.ElevatorEndHeadingLabel.Name = "ElevatorEndHeadingLabel";
             this.ElevatorEndHeadingLabel.Size = new System.Drawing.Size(68, 15);
             this.ElevatorEndHeadingLabel.TabIndex = 5;
@@ -1433,7 +1433,7 @@
             // 
             // ElevatorStartHeadingTB
             // 
-            this.ElevatorStartHeadingTB.Location = new System.Drawing.Point(191, 78);
+            this.ElevatorStartHeadingTB.Location = new System.Drawing.Point(191, 21);
             this.ElevatorStartHeadingTB.Name = "ElevatorStartHeadingTB";
             this.ElevatorStartHeadingTB.Size = new System.Drawing.Size(78, 23);
             this.ElevatorStartHeadingTB.TabIndex = 4;
@@ -1441,7 +1441,7 @@
             // ElevatorStartHeadingLabel
             // 
             this.ElevatorStartHeadingLabel.AutoSize = true;
-            this.ElevatorStartHeadingLabel.Location = new System.Drawing.Point(188, 60);
+            this.ElevatorStartHeadingLabel.Location = new System.Drawing.Point(188, 3);
             this.ElevatorStartHeadingLabel.Name = "ElevatorStartHeadingLabel";
             this.ElevatorStartHeadingLabel.Size = new System.Drawing.Size(72, 15);
             this.ElevatorStartHeadingLabel.TabIndex = 3;
@@ -1449,7 +1449,7 @@
             // 
             // CreateElevatorEdgesButton
             // 
-            this.CreateElevatorEdgesButton.Location = new System.Drawing.Point(191, 172);
+            this.CreateElevatorEdgesButton.Location = new System.Drawing.Point(191, 94);
             this.CreateElevatorEdgesButton.Name = "CreateElevatorEdgesButton";
             this.CreateElevatorEdgesButton.Size = new System.Drawing.Size(170, 23);
             this.CreateElevatorEdgesButton.TabIndex = 9;
@@ -1462,15 +1462,15 @@
             this.ElevatorsLB.AccessibleName = "Lista över hissar";
             this.ElevatorsLB.FormattingEnabled = true;
             this.ElevatorsLB.ItemHeight = 15;
-            this.ElevatorsLB.Location = new System.Drawing.Point(15, 29);
+            this.ElevatorsLB.Location = new System.Drawing.Point(11, 21);
             this.ElevatorsLB.Name = "ElevatorsLB";
-            this.ElevatorsLB.Size = new System.Drawing.Size(151, 439);
+            this.ElevatorsLB.Size = new System.Drawing.Size(151, 409);
             this.ElevatorsLB.TabIndex = 1;
             // 
             // ElevatorListLabel
             // 
             this.ElevatorListLabel.AutoSize = true;
-            this.ElevatorListLabel.Location = new System.Drawing.Point(12, 12);
+            this.ElevatorListLabel.Location = new System.Drawing.Point(8, 3);
             this.ElevatorListLabel.Name = "ElevatorListLabel";
             this.ElevatorListLabel.Size = new System.Drawing.Size(39, 15);
             this.ElevatorListLabel.TabIndex = 0;
@@ -1694,7 +1694,7 @@
             this.POIInfosLB.ItemHeight = 15;
             this.POIInfosLB.Location = new System.Drawing.Point(333, 21);
             this.POIInfosLB.Name = "POIInfosLB";
-            this.POIInfosLB.Size = new System.Drawing.Size(397, 124);
+            this.POIInfosLB.Size = new System.Drawing.Size(397, 94);
             this.POIInfosLB.TabIndex = 2;
             // 
             // POIsListLabel
@@ -1715,7 +1715,7 @@
             this.POIsLB.ItemHeight = 15;
             this.POIsLB.Location = new System.Drawing.Point(11, 21);
             this.POIsLB.Name = "POIsLB";
-            this.POIsLB.Size = new System.Drawing.Size(315, 544);
+            this.POIsLB.Size = new System.Drawing.Size(315, 514);
             this.POIsLB.TabIndex = 0;
             // 
             // OpenMediaFileDialog
@@ -1731,6 +1731,7 @@
             // 
             // statusStrip
             // 
+            this.statusStrip.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ServiceVersionLabel,
             this.ActiveUserLabel});
