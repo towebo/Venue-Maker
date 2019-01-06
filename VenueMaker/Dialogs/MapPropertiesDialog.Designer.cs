@@ -34,6 +34,10 @@
             this.MapBS = new System.Windows.Forms.BindingSource(this.components);
             this.SaveBtn = new System.Windows.Forms.Button();
             this.CancelBtn = new System.Windows.Forms.Button();
+            this.FileNameLabel = new System.Windows.Forms.Label();
+            this.FileNameTB = new System.Windows.Forms.TextBox();
+            this.SelectMapImageBtn = new System.Windows.Forms.Button();
+            this.OpenMapDialog = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.MapBS)).BeginInit();
             this.SuspendLayout();
             // 
@@ -57,10 +61,10 @@
             // 
             this.SaveBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.SaveBtn.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.SaveBtn.Location = new System.Drawing.Point(72, 105);
+            this.SaveBtn.Location = new System.Drawing.Point(138, 135);
             this.SaveBtn.Name = "SaveBtn";
             this.SaveBtn.Size = new System.Drawing.Size(75, 23);
-            this.SaveBtn.TabIndex = 2;
+            this.SaveBtn.TabIndex = 5;
             this.SaveBtn.Text = "&Spara";
             this.SaveBtn.UseVisualStyleBackColor = true;
             // 
@@ -68,12 +72,45 @@
             // 
             this.CancelBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.CancelBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.CancelBtn.Location = new System.Drawing.Point(153, 105);
+            this.CancelBtn.Location = new System.Drawing.Point(219, 135);
             this.CancelBtn.Name = "CancelBtn";
             this.CancelBtn.Size = new System.Drawing.Size(75, 23);
-            this.CancelBtn.TabIndex = 3;
+            this.CancelBtn.TabIndex = 6;
             this.CancelBtn.Text = "Avbryt";
             this.CancelBtn.UseVisualStyleBackColor = true;
+            // 
+            // FileNameLabel
+            // 
+            this.FileNameLabel.AutoSize = true;
+            this.FileNameLabel.Location = new System.Drawing.Point(12, 56);
+            this.FileNameLabel.Name = "FileNameLabel";
+            this.FileNameLabel.Size = new System.Drawing.Size(50, 15);
+            this.FileNameLabel.TabIndex = 2;
+            this.FileNameLabel.Text = "&Filnamn";
+            // 
+            // FileNameTB
+            // 
+            this.FileNameTB.Location = new System.Drawing.Point(15, 74);
+            this.FileNameTB.Name = "FileNameTB";
+            this.FileNameTB.ReadOnly = true;
+            this.FileNameTB.Size = new System.Drawing.Size(151, 23);
+            this.FileNameTB.TabIndex = 3;
+            // 
+            // SelectMapImageBtn
+            // 
+            this.SelectMapImageBtn.Location = new System.Drawing.Point(172, 73);
+            this.SelectMapImageBtn.Name = "SelectMapImageBtn";
+            this.SelectMapImageBtn.Size = new System.Drawing.Size(75, 23);
+            this.SelectMapImageBtn.TabIndex = 4;
+            this.SelectMapImageBtn.Text = "&Välj";
+            this.SelectMapImageBtn.UseVisualStyleBackColor = true;
+            this.SelectMapImageBtn.Click += new System.EventHandler(this.SelectMapImageBtn_Click);
+            // 
+            // OpenMapDialog
+            // 
+            this.OpenMapDialog.DefaultExt = "png";
+            this.OpenMapDialog.Filter = "Kartbilder (*.png, *.jpg)|*.png;*.jpg|Alla filer (*.*)|*.*";
+            this.OpenMapDialog.Title = "Välj kartbild";
             // 
             // MapPropertiesDialog
             // 
@@ -81,7 +118,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.CancelBtn;
-            this.ClientSize = new System.Drawing.Size(240, 140);
+            this.ClientSize = new System.Drawing.Size(306, 170);
+            this.Controls.Add(this.SelectMapImageBtn);
+            this.Controls.Add(this.FileNameTB);
+            this.Controls.Add(this.FileNameLabel);
             this.Controls.Add(this.CancelBtn);
             this.Controls.Add(this.SaveBtn);
             this.Controls.Add(this.MapTitleTB);
@@ -105,5 +145,9 @@
         private System.Windows.Forms.BindingSource MapBS;
         private System.Windows.Forms.Button SaveBtn;
         private System.Windows.Forms.Button CancelBtn;
+        private System.Windows.Forms.Label FileNameLabel;
+        private System.Windows.Forms.TextBox FileNameTB;
+        private System.Windows.Forms.Button SelectMapImageBtn;
+        private System.Windows.Forms.OpenFileDialog OpenMapDialog;
     }
 }

@@ -43,6 +43,7 @@ namespace VenueMaker.Dialogs
                 //MapBS.DataSource = new WFMap();
 
                 MapTitleTB.DataBindings.Add("Text", MapBS, nameof(WFMap.Title), false, DataSourceUpdateMode.OnPropertyChanged);
+                FileNameTB.DataBindings.Add("Text", MapBS, nameof(WFMap.FileName), false, DataSourceUpdateMode.OnPropertyChanged);
 
 
             }
@@ -66,6 +67,30 @@ namespace VenueMaker.Dialogs
                 MessageBox.Show(ex.Message, "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
+        }
+
+        private void SelectMapImageBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //karl-otto
+                OpenMapDialog.FileName = Map.FileName;
+                if (DialogResult.OK != OpenMapDialog.ShowDialog())
+                {
+                    return;
+
+                } // Cancelled
+
+                Map.FileName = MainForm.Me.UseThisFile(OpenMapDialog.FileName);
+                MapBS.ResetBindings(false);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+
         }
     }
 }

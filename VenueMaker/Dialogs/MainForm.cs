@@ -1536,7 +1536,7 @@ namespace VenueMaker.Dialogs
 
                 } // Don't replace
 
-                File.Delete(mediafile);
+            File.Delete(mediafile);
 
             } // Replace old file
 
