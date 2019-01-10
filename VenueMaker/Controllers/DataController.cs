@@ -335,7 +335,7 @@ namespace VenueMaker.Controllers
             }
             catch (Exception ex)
             {
-                throw;
+                return ex.Message;
 
             }
 
