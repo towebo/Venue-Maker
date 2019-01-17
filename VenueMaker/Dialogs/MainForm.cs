@@ -28,6 +28,7 @@ namespace VenueMaker.Dialogs
     {
         private static MainForm me;
 
+        private bool loadguard;
         private WFNode[] elevators;
         private const double ElevatorTravelTime = 20.0;
 
@@ -162,7 +163,8 @@ namespace VenueMaker.Dialogs
                     {
                         MapPB.Image.Dispose();
                         MapPB.Image = null;
-
+                        Application.DoEvents();
+                        
                     } // Has image
 
                     string img = Path.Combine(GetDataFilesFolder(), m.FileName);
@@ -172,7 +174,11 @@ namespace VenueMaker.Dialogs
 
                     } // Doesn't exists
 
-                    MapPB.Image = Image.FromFile(img);
+                    if (!loadguard)
+                    {
+                        MapPB.Image = Image.FromFile(img);
+
+                    } // Not loading
 
                 };
 
@@ -460,6 +466,31 @@ namespace VenueMaker.Dialogs
             {
                 if (v != null)
                 {
+
+                    if (VenueImagePB.Image != null)
+                    {
+                        VenueImagePB.Image.Dispose();
+                        VenueImagePB.Image = null;
+                        Application.DoEvents();
+
+                    } // Clear image
+
+                    if (!string.IsNullOrWhiteSpace(v.Image))
+                    {
+                        string img = Path.Combine(GetDataFilesFolder(), v.Image);
+                        if (!string.IsNullOrWhiteSpace(v.Image) &&
+                            File.Exists(img))
+                        {
+                            if (!loadguard)
+                            {
+                                VenueImagePB.Image = Image.FromFile(img);
+
+                            } // Not loading
+
+                        } // Image exists
+                    }
+
+
                     if (v.PointsOfInterest != null)
                     {
                         POIsBS.DataSource = v.PointsOfInterest.OrderBy(w => w, new FloorComparer()).ToArray();
@@ -474,8 +505,14 @@ namespace VenueMaker.Dialogs
                         EdgesPOIsBS.DataSource = v.PointsOfInterest;
 
                     } // Pois is null
+                    
+                    if (MapPB.Image != null)
+                    {
+                        MapPB.Image.Dispose();
+                        MapPB.Image = null;
+                        Application.DoEvents();
 
-
+                    } // Release image
 
                     if (v.Maps != null)
                     {
@@ -530,6 +567,14 @@ namespace VenueMaker.Dialogs
         {
             try
             {
+                if (Venue == null ||
+                    Venue.NodesGraph == null)
+                {
+                    return;
+
+                } // No venue or graph
+
+
                 NodesFilterItem fi = NodesFilterBS.Current as NodesFilterItem;
                 if (fi != null)
                 {
@@ -633,6 +678,8 @@ namespace VenueMaker.Dialogs
                 Application.UseWaitCursor = true;
                 Application.DoEvents();
 
+                VenueBS.SuspendBinding();
+
                 DoOpenVenue(OpenVenueDialog.FileName, "");
 
                 SystemSounds.Asterisk.Play();
@@ -640,6 +687,8 @@ namespace VenueMaker.Dialogs
             }
             finally
             {
+                VenueBS.ResumeBinding();
+
                 Application.UseWaitCursor = false;
 
             }
@@ -780,7 +829,18 @@ namespace VenueMaker.Dialogs
                     string vnu = cmdline[1];
                     if (File.Exists(vnu))
                     {
-                        DoOpenVenue(vnu, "");
+                        try
+                        {
+                            VenueBS.SuspendBinding();
+
+                            DoOpenVenue(vnu, "");
+
+                        }
+                        finally
+                        {
+                            VenueBS.ResumeBinding();
+
+                        }
 
                     } // Open it
 
@@ -792,7 +852,22 @@ namespace VenueMaker.Dialogs
                     // Initialize the web service for better performance.
                     Invoke((MethodInvoker)delegate
                     {
-                        ServiceVersionLabel.Text = $"Serviceversion: {DataController.Me.ServiceVersion()}";
+                        string svcver = string.Empty;
+                        try
+                        {
+                            svcver = DataController.Me.ServiceVersion();
+
+                            ServiceVersionLabel.BackColor = SystemColors.Control;
+                            ServiceVersionLabel.ForeColor = SystemColors.ControlText;
+
+                        }
+                        catch (Exception verex)
+                        {
+                            svcver = $"Fel - {verex.Message}";
+                            ServiceVersionLabel.BackColor = Color.Red;
+                            ServiceVersionLabel.ForeColor = Color.White;
+                        }
+                        ServiceVersionLabel.Text = $"Serviceversion: {svcver}";
 
                     });
 
@@ -1958,6 +2033,12 @@ namespace VenueMaker.Dialogs
                     Application.UseWaitCursor = true;
                     Application.DoEvents();
 
+                    // Clear the UI and release files that might be locked
+                    Venue = new WFVenue();
+                    VenueBS.ResetBindings(false);
+
+                    loadguard = true;
+
                     KwendaFileListItem sel = dlg.SelectedFile;
                     if (sel == null)
                     {
@@ -1980,6 +2061,7 @@ namespace VenueMaker.Dialogs
 
                     } // Error
 
+                    //här
                     DoOpenVenue(
                         venuefile.FileName,
                         venuefile.Data
@@ -2015,22 +2097,6 @@ namespace VenueMaker.Dialogs
 
                     FtpController.Me.DownloadFiles(fldr);
 
-                    if (!string.IsNullOrWhiteSpace(Venue.Image))
-                    {
-                        string img = Path.Combine(GetDataFilesFolder(), Venue.Image);
-                        if (!string.IsNullOrWhiteSpace(Venue.Image) &&
-                            File.Exists(img))
-                        {
-                            VenueImagePB.Image = Image.FromFile(img);
-
-                        } // Image exists
-                    }
-                    else
-                    {
-                        VenueImagePB.Image = null;
-
-                    }
-
                     return true;
 
                 } // using
@@ -2044,6 +2110,8 @@ namespace VenueMaker.Dialogs
             }
             finally
             {
+                loadguard = false;
+                VenueBS.ResetBindings(false);
                 Application.UseWaitCursor = false;
 
             }
@@ -2126,7 +2194,11 @@ namespace VenueMaker.Dialogs
                 Venue.Image = mediafile;
                 VenueImageTB.Text = Venue.Image;
 
-                VenueImagePB.Image = Image.FromFile(Path.Combine(GetDataFilesFolder(), mediafile));
+                if (!loadguard)
+                {
+                    VenueImagePB.Image = Image.FromFile(Path.Combine(GetDataFilesFolder(), mediafile));
+
+                } // Not loading
 
                 SystemSounds.Asterisk.Play();
 

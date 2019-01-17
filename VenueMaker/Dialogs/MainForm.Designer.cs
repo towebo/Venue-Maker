@@ -74,7 +74,6 @@
             this.VenueNameLabel = new System.Windows.Forms.Label();
             this.NodesTab = new System.Windows.Forms.TabPage();
             this.NodesFilterCombo = new System.Windows.Forms.ComboBox();
-            this.NodesFilterLabel = new System.Windows.Forms.Label();
             this.NodeMapPointBtn = new System.Windows.Forms.Button();
             this.NodeMapPointTB = new System.Windows.Forms.TextBox();
             this.NodeMapPointLabel = new System.Windows.Forms.Label();
@@ -198,6 +197,7 @@
             this.MapsBS = new System.Windows.Forms.BindingSource(this.components);
             this.NodesFilterBS = new System.Windows.Forms.BindingSource(this.components);
             this.MyRibbon = new RibbonLib.Ribbon();
+            this.NodesFilterLabel = new System.Windows.Forms.Label();
             this.Tabs.SuspendLayout();
             this.VenueTab.SuspendLayout();
             this.MapPanel.SuspendLayout();
@@ -307,6 +307,8 @@
             // 
             this.ShowNodeNamesOnMapChk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.ShowNodeNamesOnMapChk.AutoSize = true;
+            this.ShowNodeNamesOnMapChk.Checked = true;
+            this.ShowNodeNamesOnMapChk.CheckState = System.Windows.Forms.CheckState.Checked;
             this.ShowNodeNamesOnMapChk.Location = new System.Drawing.Point(639, 601);
             this.ShowNodeNamesOnMapChk.Name = "ShowNodeNamesOnMapChk";
             this.ShowNodeNamesOnMapChk.Size = new System.Drawing.Size(133, 19);
@@ -635,8 +637,8 @@
             // 
             // NodesTab
             // 
-            this.NodesTab.Controls.Add(this.NodesFilterCombo);
             this.NodesTab.Controls.Add(this.NodesFilterLabel);
+            this.NodesTab.Controls.Add(this.NodesFilterCombo);
             this.NodesTab.Controls.Add(this.NodeMapPointBtn);
             this.NodesTab.Controls.Add(this.NodeMapPointTB);
             this.NodesTab.Controls.Add(this.NodeMapPointLabel);
@@ -708,16 +710,6 @@
             this.NodesFilterCombo.Name = "NodesFilterCombo";
             this.NodesFilterCombo.Size = new System.Drawing.Size(146, 23);
             this.NodesFilterCombo.TabIndex = 94;
-            // 
-            // NodesFilterLabel
-            // 
-            this.NodesFilterLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.NodesFilterLabel.AutoSize = true;
-            this.NodesFilterLabel.Location = new System.Drawing.Point(8, 572);
-            this.NodesFilterLabel.Name = "NodesFilterLabel";
-            this.NodesFilterLabel.Size = new System.Drawing.Size(77, 15);
-            this.NodesFilterLabel.TabIndex = 93;
-            this.NodesFilterLabel.Text = "Filtrera n&oder";
             // 
             // NodeMapPointBtn
             // 
@@ -1731,6 +1723,7 @@
             // 
             // statusStrip
             // 
+            this.statusStrip.AccessibleName = "Statusrad";
             this.statusStrip.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ServiceVersionLabel,
@@ -1762,6 +1755,17 @@
             this.MyRibbon.ShortcutTableResourceName = null;
             this.MyRibbon.Size = new System.Drawing.Size(1129, 50);
             this.MyRibbon.TabIndex = 20;
+            // 
+            // NodesFilterLabel
+            // 
+            this.NodesFilterLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.NodesFilterLabel.AutoSize = true;
+            this.NodesFilterLabel.Location = new System.Drawing.Point(8, 553);
+            this.NodesFilterLabel.Name = "NodesFilterLabel";
+            this.NodesFilterLabel.Size = new System.Drawing.Size(77, 15);
+            this.NodesFilterLabel.TabIndex = 93;
+            this.NodesFilterLabel.Text = "Filtrera n&oder";
+            this.NodesFilterLabel.Visible = false;
             // 
             // MainForm
             // 

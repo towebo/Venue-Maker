@@ -328,14 +328,15 @@ namespace VenueMaker.Controllers
                 {
                     string result = cli.Version();
 
+                    //throw new Exception("Artificiellt fel.");
                     return result;
 
                 } // using
 
             }
-            catch (Exception ex)
+            catch
             {
-                return ex.Message;
+                throw;
 
             }
 

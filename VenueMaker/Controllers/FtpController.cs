@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Mawingu;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -172,19 +173,22 @@ namespace VenueMaker.Controllers
                                 continue;
 
                             } // Local is newer
-                            
+
                         } // Local file exists
 
+                        
                         ftp.DownloadFile(
                         dlfile,
                         remotefolder,
                         destFolder
                         );
+                        
 
                     }
-                    catch
+                    catch (Exception ftpex)
                     {
-                    } // Some error occured
+                        LogCenter.Error("FtpDownload", ftpex.Message);
+                    }
 
                 } // foreach
 
