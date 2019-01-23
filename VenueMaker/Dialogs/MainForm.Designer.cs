@@ -73,6 +73,7 @@
             this.VenueNameTB = new System.Windows.Forms.TextBox();
             this.VenueNameLabel = new System.Windows.Forms.Label();
             this.NodesTab = new System.Windows.Forms.TabPage();
+            this.NodesFilterLabel = new System.Windows.Forms.Label();
             this.NodesFilterCombo = new System.Windows.Forms.ComboBox();
             this.NodeMapPointBtn = new System.Windows.Forms.Button();
             this.NodeMapPointTB = new System.Windows.Forms.TextBox();
@@ -182,6 +183,13 @@
             this.POIsLB = new System.Windows.Forms.ListBox();
             this.OpenMediaFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.OpenCSVFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.DataFolderDialog = new System.Windows.Forms.FolderBrowserDialog();
+            this.statusStrip = new System.Windows.Forms.StatusStrip();
+            this.ServiceVersionLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.ActiveUserLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.MyRibbon = new RibbonLib.Ribbon();
+            this.POIInfoStartBtn = new System.Windows.Forms.Button();
+            this.POIInfoEndsBtn = new System.Windows.Forms.Button();
             this.VenueBS = new System.Windows.Forms.BindingSource(this.components);
             this.POIsBS = new System.Windows.Forms.BindingSource(this.components);
             this.POIInfosBS = new System.Windows.Forms.BindingSource(this.components);
@@ -190,14 +198,8 @@
             this.EdgesForPOIBS = new System.Windows.Forms.BindingSource(this.components);
             this.EdgeBS = new System.Windows.Forms.BindingSource(this.components);
             this.NodesBS = new System.Windows.Forms.BindingSource(this.components);
-            this.DataFolderDialog = new System.Windows.Forms.FolderBrowserDialog();
-            this.statusStrip = new System.Windows.Forms.StatusStrip();
-            this.ServiceVersionLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.ActiveUserLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.MapsBS = new System.Windows.Forms.BindingSource(this.components);
             this.NodesFilterBS = new System.Windows.Forms.BindingSource(this.components);
-            this.MyRibbon = new RibbonLib.Ribbon();
-            this.NodesFilterLabel = new System.Windows.Forms.Label();
             this.Tabs.SuspendLayout();
             this.VenueTab.SuspendLayout();
             this.MapPanel.SuspendLayout();
@@ -208,6 +210,7 @@
             this.ElevatorsTab.SuspendLayout();
             this.PoiTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PoiInfoPB)).BeginInit();
+            this.statusStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VenueBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.POIsBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.POIInfosBS)).BeginInit();
@@ -216,7 +219,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.EdgesForPOIBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EdgeBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NodesBS)).BeginInit();
-            this.statusStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MapsBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NodesFilterBS)).BeginInit();
             this.SuspendLayout();
@@ -309,7 +311,7 @@
             this.ShowNodeNamesOnMapChk.AutoSize = true;
             this.ShowNodeNamesOnMapChk.Checked = true;
             this.ShowNodeNamesOnMapChk.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ShowNodeNamesOnMapChk.Location = new System.Drawing.Point(639, 601);
+            this.ShowNodeNamesOnMapChk.Location = new System.Drawing.Point(639, 599);
             this.ShowNodeNamesOnMapChk.Name = "ShowNodeNamesOnMapChk";
             this.ShowNodeNamesOnMapChk.Size = new System.Drawing.Size(133, 19);
             this.ShowNodeNamesOnMapChk.TabIndex = 51;
@@ -328,7 +330,7 @@
             this.MapPanel.Controls.Add(this.MapPB);
             this.MapPanel.Location = new System.Drawing.Point(639, 90);
             this.MapPanel.Name = "MapPanel";
-            this.MapPanel.Size = new System.Drawing.Size(476, 505);
+            this.MapPanel.Size = new System.Drawing.Size(476, 503);
             this.MapPanel.TabIndex = 50;
             // 
             // MapPB
@@ -700,6 +702,17 @@
             this.NodesTab.TabIndex = 5;
             this.NodesTab.Text = "Noder";
             this.NodesTab.UseVisualStyleBackColor = true;
+            // 
+            // NodesFilterLabel
+            // 
+            this.NodesFilterLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.NodesFilterLabel.AutoSize = true;
+            this.NodesFilterLabel.Location = new System.Drawing.Point(8, 553);
+            this.NodesFilterLabel.Name = "NodesFilterLabel";
+            this.NodesFilterLabel.Size = new System.Drawing.Size(77, 15);
+            this.NodesFilterLabel.TabIndex = 93;
+            this.NodesFilterLabel.Text = "Filtrera n&oder";
+            this.NodesFilterLabel.Visible = false;
             // 
             // NodesFilterCombo
             // 
@@ -1470,6 +1483,8 @@
             // 
             // PoiTabPage
             // 
+            this.PoiTabPage.Controls.Add(this.POIInfoEndsBtn);
+            this.PoiTabPage.Controls.Add(this.POIInfoStartBtn);
             this.PoiTabPage.Controls.Add(this.PoiInfoPB);
             this.PoiTabPage.Controls.Add(this.POIInfosLabel);
             this.PoiTabPage.Controls.Add(this.AutoPlayMediaCB);
@@ -1613,10 +1628,11 @@
             // 
             // POIInfoEndsTB
             // 
-            this.POIInfoEndsTB.Location = new System.Drawing.Point(509, 360);
+            this.POIInfoEndsTB.BackColor = System.Drawing.SystemColors.Window;
+            this.POIInfoEndsTB.Location = new System.Drawing.Point(527, 360);
             this.POIInfoEndsTB.Name = "POIInfoEndsTB";
-            this.POIInfoEndsTB.Size = new System.Drawing.Size(100, 23);
-            this.POIInfoEndsTB.TabIndex = 10;
+            this.POIInfoEndsTB.Size = new System.Drawing.Size(175, 23);
+            this.POIInfoEndsTB.TabIndex = 11;
             // 
             // POIInfoEndsLabel
             // 
@@ -1624,12 +1640,13 @@
             this.POIInfoEndsLabel.Location = new System.Drawing.Point(506, 342);
             this.POIInfoEndsLabel.Name = "POIInfoEndsLabel";
             this.POIInfoEndsLabel.Size = new System.Drawing.Size(100, 15);
-            this.POIInfoEndsLabel.TabIndex = 9;
+            this.POIInfoEndsLabel.TabIndex = 10;
             this.POIInfoEndsLabel.Text = "Aktiv till och med";
             // 
             // POIInfoStartsTB
             // 
-            this.POIInfoStartsTB.Location = new System.Drawing.Point(333, 360);
+            this.POIInfoStartsTB.BackColor = System.Drawing.SystemColors.Window;
+            this.POIInfoStartsTB.Location = new System.Drawing.Point(320, 360);
             this.POIInfoStartsTB.Name = "POIInfoStartsTB";
             this.POIInfoStartsTB.Size = new System.Drawing.Size(170, 23);
             this.POIInfoStartsTB.TabIndex = 8;
@@ -1756,16 +1773,31 @@
             this.MyRibbon.Size = new System.Drawing.Size(1129, 50);
             this.MyRibbon.TabIndex = 20;
             // 
-            // NodesFilterLabel
+            // POIInfoStartBtn
             // 
-            this.NodesFilterLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.NodesFilterLabel.AutoSize = true;
-            this.NodesFilterLabel.Location = new System.Drawing.Point(8, 553);
-            this.NodesFilterLabel.Name = "NodesFilterLabel";
-            this.NodesFilterLabel.Size = new System.Drawing.Size(77, 15);
-            this.NodesFilterLabel.TabIndex = 93;
-            this.NodesFilterLabel.Text = "Filtrera n&oder";
-            this.NodesFilterLabel.Visible = false;
+            this.POIInfoStartBtn.AccessibleName = "Välj Aktiv från och med";
+            this.POIInfoStartBtn.BackColor = System.Drawing.SystemColors.Highlight;
+            this.POIInfoStartBtn.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.POIInfoStartBtn.Location = new System.Drawing.Point(490, 359);
+            this.POIInfoStartBtn.Name = "POIInfoStartBtn";
+            this.POIInfoStartBtn.Size = new System.Drawing.Size(23, 23);
+            this.POIInfoStartBtn.TabIndex = 9;
+            this.POIInfoStartBtn.Text = "...";
+            this.POIInfoStartBtn.UseVisualStyleBackColor = false;
+            this.POIInfoStartBtn.Click += new System.EventHandler(this.POIInfoStartBtn_Click);
+            // 
+            // POIInfoEndsBtn
+            // 
+            this.POIInfoEndsBtn.AccessibleName = "Välj Aktiv till och med";
+            this.POIInfoEndsBtn.BackColor = System.Drawing.SystemColors.Highlight;
+            this.POIInfoEndsBtn.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.POIInfoEndsBtn.Location = new System.Drawing.Point(708, 359);
+            this.POIInfoEndsBtn.Name = "POIInfoEndsBtn";
+            this.POIInfoEndsBtn.Size = new System.Drawing.Size(23, 23);
+            this.POIInfoEndsBtn.TabIndex = 12;
+            this.POIInfoEndsBtn.Text = "...";
+            this.POIInfoEndsBtn.UseVisualStyleBackColor = false;
+            this.POIInfoEndsBtn.Click += new System.EventHandler(this.POIInfoStartBtn_Click);
             // 
             // MainForm
             // 
@@ -1798,6 +1830,8 @@
             this.PoiTabPage.ResumeLayout(false);
             this.PoiTabPage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PoiInfoPB)).EndInit();
+            this.statusStrip.ResumeLayout(false);
+            this.statusStrip.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VenueBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.POIsBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.POIInfosBS)).EndInit();
@@ -1806,8 +1840,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.EdgesForPOIBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EdgeBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NodesBS)).EndInit();
-            this.statusStrip.ResumeLayout(false);
-            this.statusStrip.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MapsBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NodesFilterBS)).EndInit();
             this.ResumeLayout(false);
@@ -1987,5 +2019,7 @@
         private RibbonLib.Ribbon MyRibbon;
         private System.Windows.Forms.ComboBox NodesFilterCombo;
         private System.Windows.Forms.Label NodesFilterLabel;
+        private System.Windows.Forms.Button POIInfoStartBtn;
+        private System.Windows.Forms.Button POIInfoEndsBtn;
     }
 }

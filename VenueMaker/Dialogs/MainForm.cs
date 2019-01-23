@@ -846,32 +846,8 @@ namespace VenueMaker.Dialogs
 
                 } // Perhaps?
 
-
-                Task t = Task.Run(() =>
-                {
-                    // Initialize the web service for better performance.
-                    Invoke((MethodInvoker)delegate
-                    {
-                        string svcver = string.Empty;
-                        try
-                        {
-                            svcver = DataController.Me.ServiceVersion();
-
-                            ServiceVersionLabel.BackColor = SystemColors.Control;
-                            ServiceVersionLabel.ForeColor = SystemColors.ControlText;
-
-                        }
-                        catch (Exception verex)
-                        {
-                            svcver = $"Fel - {verex.Message}";
-                            ServiceVersionLabel.BackColor = Color.Red;
-                            ServiceVersionLabel.ForeColor = Color.White;
-                        }
-                        ServiceVersionLabel.Text = $"Serviceversion: {svcver}";
-
-                    });
-
-                });
+                InitWebService();
+                
             }
             catch (Exception ex)
             {
@@ -880,6 +856,43 @@ namespace VenueMaker.Dialogs
             }
 
         }
+
+        async private void InitWebService()
+        {
+            try
+            {
+                string svcver = string.Empty;
+
+                await Task.Run(async () =>
+                {
+                    // Initialize the web service for better performance.
+                    svcver = DataController.Me.ServiceVersion();
+
+                }); // Task
+
+                Invoke((MethodInvoker)delegate
+                {
+                    try
+                    {
+                        ServiceVersionLabel.BackColor = SystemColors.Control;
+                        ServiceVersionLabel.ForeColor = SystemColors.ControlText;
+
+                    }
+                    catch (Exception verex)
+                    {
+                        svcver = $"Fel - {verex.Message}";
+                        ServiceVersionLabel.BackColor = Color.Red;
+                        ServiceVersionLabel.ForeColor = Color.White;
+                    }
+                    ServiceVersionLabel.Text = $"Serviceversion: {svcver}";
+
+                });
+            }
+            catch
+            {
+            }
+        }
+
 
         private void AddPOIInfo()
         {
@@ -2452,6 +2465,71 @@ namespace VenueMaker.Dialogs
             {
                 string errmsg = $"Fel när kartan skulle ritas om: {ex.Message}";
                 MessageBox.Show(errmsg, "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+        }
+
+        
+
+        private void POIInfoStartBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                WFPOIInformation poii = POIInfosBS.Current as WFPOIInformation;
+                if (poii == null)
+                {
+                    return;
+
+                } // Nothing theres
+
+                using (PickDateAndTimeDialog dlg = new PickDateAndTimeDialog())
+                {
+                    if (sender == POIInfoStartBtn)
+                    {
+                        dlg.SelectedDateTime = poii.StartsAt;
+
+                    }
+                    else
+                    {
+                        dlg.SelectedDateTime = poii.EndsAt;
+
+                    } // else
+
+                    DateTime? val = null;
+                    DialogResult dr = dlg.ShowDialog();
+
+                    switch (dr)
+                    {
+                        case DialogResult.Cancel:
+                            return;
+
+                        case DialogResult.Yes:
+                            val = dlg.SelectedDateTime;
+                            break;
+
+                        case DialogResult.No:
+                            val = null;
+                            break;
+                    } // switch
+                    
+                    if (sender == POIInfoStartBtn)
+                    {
+                        poii.StartsAt = val;
+
+                    }
+                    else
+                    {
+                        poii.EndsAt = val;
+
+                    } // else
+                    POIInfosBS.ResetBindings(false);
+
+                } // using
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
         }

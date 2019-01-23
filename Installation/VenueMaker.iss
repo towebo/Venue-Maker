@@ -34,6 +34,7 @@ Name: {app}\x86
 Name: {group}\{#AppName}; Filename: {app}\VenueMaker.exe
 
 [Setup]
+SignTool=Standard
 AppCopyright={#CopyrightText}
 AppName={#AppName}
 AppVerName={#AppName} {#AppVersion}
