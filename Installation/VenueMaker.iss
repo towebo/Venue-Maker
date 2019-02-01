@@ -33,7 +33,7 @@ Name: {app}\x86
 [Icons]
 Name: {group}\{#AppName}; Filename: {app}\VenueMaker.exe
 
-[Setup]
+[setup]
 SignTool=Standard
 AppCopyright={#CopyrightText}
 AppName={#AppName}
