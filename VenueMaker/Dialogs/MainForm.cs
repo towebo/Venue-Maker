@@ -367,7 +367,7 @@ namespace VenueMaker.Dialogs
                 NodeMajorTB.DataBindings.Add("Text", NodesBS, "Major");
                 NodeMinorTB.DataBindings.Add("Text", NodesBS, "Minor");
                 NodeIdTagTB.DataBindings.Add("Text", NodesBS, "IdTag");
-                NodeActiveChk.DataBindings.Add("Checked", NodesBS, "Active", true);
+                NodeActiveChk.DataBindings.Add("Checked", NodesBS, "Active", true, DataSourceUpdateMode.OnValidation);
                 NodeAccuracyTB.DataBindings.Add("Text", NodesBS, "Accuracy");
                 NodeMagneticOffsetTB.DataBindings.Add("Text", NodesBS, "MagneticOffset");
                 NodeInfo1HeadingTB.DataBindings.Add("Text", NodesBS, "Heading1Info");
@@ -585,12 +585,12 @@ namespace VenueMaker.Dialogs
                             break;
 
                         case NodesFilter.Active:
-                            NodesBS.DataSource = Venue.NodesGraph.GetNodesAlphabetical().Where(w => w.Active == "true").OrderBy(w => w, new FloorComparer()).ToArray();
+                            NodesBS.DataSource = Venue.NodesGraph.GetNodesAlphabetical().Where(w => w.Active.ToLower() == "true").OrderBy(w => w, new FloorComparer()).ToArray();
                             break;
 
 
                         case NodesFilter.Inactive:
-                            NodesBS.DataSource = Venue.NodesGraph.GetNodesAlphabetical().Where(w => w.Active != "true").OrderBy(w => w, new FloorComparer()).ToArray();
+                            NodesBS.DataSource = Venue.NodesGraph.GetNodesAlphabetical().Where(w => w.Active.ToLower() != "true").OrderBy(w => w, new FloorComparer()).ToArray();
                             break;
 
                         default:
