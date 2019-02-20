@@ -9,6 +9,7 @@ namespace WayfindR.Models
     public class WFNode
     {
         private List<WFHeadingInfo> hinfos;
+        private string _active;
 
         
         [XmlAttribute("id")]
@@ -124,7 +125,11 @@ namespace WayfindR.Models
 
 
 		[XmlAttribute("active")]
-		public string Active { get; set; }
+		public string Active
+        {
+            get { return _active.ToLower(); }
+            set { _active = value.ToLower(); }
+        }
 
         [XmlAttribute("magnetic_offset")]
         public int MagneticOffset { get; set; }
