@@ -422,6 +422,7 @@
         <Image MinDPI="192">Res/POIs_L192.bmp</Image>
       </Command.LargeImages>
     </Command>
+    <Command Name="CmdChangeBeaconForNode" Id="1065" LabelTitle="Byt fyr för nod" Keytip="NB"/>
   </Application.Commands>
   <Application.Views>
     <Ribbon Name="Ribbon">
@@ -465,18 +466,20 @@
           </Group>
         </Tab>
         <Tab CommandName="CmdTabNodes" ApplicationModes="0,1">
-          <Group CommandName="CmdGroupBeacon" ApplicationModes="0" SizeDefinition="FourButtons">
+          <Group CommandName="CmdGroupBeacon" ApplicationModes="0" SizeDefinition="FiveButtons">
             <Button CommandName="CmdViewNodes"/>
             <Button CommandName="CmdBeaconAdd"/>
             <Button CommandName="CmdBeaconDelete"/>
             <Button CommandName="CmdBeaconPinOnMap"/>
+            <Button CommandName="CmdChangeBeaconForNode"/>
           </Group>
-          <Group CommandName="CmdGroupBeacon" ApplicationModes="1" SizeDefinition="FiveButtons">
+          <Group CommandName="CmdGroupBeacon" ApplicationModes="1" SizeDefinition="FiveOrSixButtons">
             <Button CommandName="CmdViewNodes"/>
             <Button CommandName="CmdBeaconAdd"/>
             <Button CommandName="CmdBeaconDelete"/>
-            <Button CommandName="CmdBeaconImport"/>
             <Button CommandName="CmdBeaconPinOnMap"/>
+            <Button CommandName="CmdBeaconImport"/>
+            <Button CommandName="CmdChangeBeaconForNode"/>
           </Group>
         </Tab>
         <Tab CommandName="CmdTabDirections" ApplicationModes="0,1">

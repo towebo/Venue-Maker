@@ -32,6 +32,7 @@ namespace VenueMaker.Controllers
         ButtonNodeDelete =1062,
         ButtonNodeImport = 1063,
         ButtonNodePinOnMap = 1064,
+        ButtonNodeChangeBeaconForNode = 1065,
 
         ButtonViewElevators = 1080,
         ButtonElevatorsGenerate = 1081,

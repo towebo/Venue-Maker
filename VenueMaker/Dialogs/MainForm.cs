@@ -81,6 +81,7 @@ namespace VenueMaker.Dialogs
                 RibbonController.Me.Button(RibbonMarkupCommands.ButtonNodeDelete).ExecuteEvent += (s17, e17) => DeleteNode();
                 RibbonController.Me.Button(RibbonMarkupCommands.ButtonNodeImport).ExecuteEvent += (s18, e18) => ImportBeacons();
                 RibbonController.Me.Button(RibbonMarkupCommands.ButtonNodePinOnMap).ExecuteEvent += (s32, e32) => PinNodeOnMap();
+                RibbonController.Me.Button(RibbonMarkupCommands.ButtonNodeChangeBeaconForNode).ExecuteEvent += (s33, e33) => ChangeBeaconForNode();
 
 
                 // Directions
@@ -2398,6 +2399,67 @@ namespace VenueMaker.Dialogs
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+        }
+
+        private void ChangeBeaconForNode()
+        {
+            try
+            {
+                using (ChangeBeaconForNodeDialog dlg = new ChangeBeaconForNodeDialog())
+                {
+                    WFNode node = NodesBS.Current as WFNode;
+                    if (node == null)
+                    {
+                        throw new Exception("Ingen fyr vald.");
+                        
+                    } // Null
+
+                    dlg.Info.Uuid = node.Uuid;
+                    dlg.Info.Major = node.Major;
+                    dlg.Info.Minor = node.Minor;
+
+                    if (DialogResult.OK != dlg.ShowDialog())
+                    {
+                        return;
+
+                    } // User cancelled
+
+                    Application.UseWaitCursor = true;
+                    Application.DoEvents();
+
+                    // Do the real work
+                    Venue.PointsOfInterest.Where(w =>
+                        w.BeaconUuid == node.Uuid &&
+                        w.BeaconMajor == node.Major &&
+                        w.BeaconMinor == node.Minor
+                    ).ToList().ForEach(w =>
+                    {
+                        w.BeaconUuid = dlg.Info.Uuid;
+                        w.BeaconMajor = dlg.Info.Major;
+                        w.BeaconMinor = dlg.Info.Minor;
+
+                    });
+
+                    node.Uuid = dlg.Info.Uuid;
+                    node.Major = dlg.Info.Major;
+                    node.Minor = dlg.Info.Minor;
+
+                    SystemSounds.Asterisk.Play();
+
+                } // using
+
+            }
+            catch (Exception ex)
+            {
+                string errmsg = $"Fel när fyr skulle bytas på nod: {ex.Message}";
+                MessageBox.Show(errmsg, "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            finally
+            {
+                Application.UseWaitCursor = false;
 
             }
         }

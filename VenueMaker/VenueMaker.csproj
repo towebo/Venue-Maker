@@ -132,6 +132,12 @@
     <Compile Include="Controllers\RibbonController.cs" />
     <Compile Include="Controllers\SQLiteController.cs" />
     <Compile Include="Controllers\VenueController.cs" />
+    <Compile Include="Dialogs\ChangeBeaconForNodeDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\ChangeBeaconForNodeDialog.Designer.cs">
+      <DependentUpon>ChangeBeaconForNodeDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\CreateAccountDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -241,6 +247,9 @@
     <Compile Include="Utils\FtpUtil.cs" />
     <Compile Include="Utils\HttpUtil.cs" />
     <Compile Include="Utils\TSVHelper.cs" />
+    <EmbeddedResource Include="Dialogs\ChangeBeaconForNodeDialog.resx">
+      <DependentUpon>ChangeBeaconForNodeDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\CreateAccountDialog.resx">
       <DependentUpon>CreateAccountDialog.cs</DependentUpon>
     </EmbeddedResource>

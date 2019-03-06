@@ -392,3 +392,6 @@
 #define CmdViewPOIs_LargeImages_120__RESID 60333
 #define CmdViewPOIs_LargeImages_144__RESID 60334
 #define CmdViewPOIs_LargeImages_192__RESID 60335
+#define CmdChangeBeaconForNode 1065 
+#define CmdChangeBeaconForNode_LabelTitle_RESID 60336
+#define CmdChangeBeaconForNode_Keytip_RESID 60337
