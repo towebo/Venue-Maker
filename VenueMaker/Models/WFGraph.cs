@@ -443,7 +443,15 @@ namespace WayfindR.Models
                     ForType = "edge",
                     DefaultValue = "-1"
                 });
-                
+                graphmlkeys.Add(new GraphMLKey()
+                {
+                    Id = string.Format("d{0}", gkid++),
+                    Name = "map_points",
+                    DataType = "string",
+                    ForType = "edge",
+                    DefaultValue = ""
+                });
+
 
             }
             catch (Exception ex)
