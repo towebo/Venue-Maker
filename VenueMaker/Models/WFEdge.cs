@@ -41,6 +41,32 @@ namespace WayfindR.Models
         public string TravelType { get; set; }
 
 
+        [XmlAttribute("map_points")]
+        public string MapPointsStr { get; set; }
+
+        public WFMapPoint[] MapPoints
+        {
+            get
+            {
+                return WFMapPoint.ArrayFromString(MapPointsStr);
+
+            } // get
+            set
+            {
+                MapPointsStr = WFMapPoint.ArrayToString(value);
+
+            } // set
+        } // MapPoints
+
+        public WFNode Start
+        {
+            get { return this.Source as WFNode; }
+        } // Source
+        public WFNode Destination
+        {
+            get { return this.Target as WFNode; }
+        } // Destination
+
         public string FullDescription
         {
             get

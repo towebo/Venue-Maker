@@ -89,6 +89,7 @@ namespace VenueMaker.Dialogs
                 RibbonController.Me.Button(RibbonMarkupCommands.ButtonDirectionAdd).ExecuteEvent += (s20, e20) => AddEdge();
                 RibbonController.Me.Button(RibbonMarkupCommands.ButtonDirectionDelete).ExecuteEvent += (s21, e21) => DeleteEdge();
                 //tmp RibbonController.Me.Button(RibbonMarkupCommands.ButtonDirectionEdit).ExecuteEvent += (s22, e22) => ();
+                RibbonController.Me.Button(RibbonMarkupCommands.ButtonDirectionPinOnMap).ExecuteEvent += (s34, e34) => PinEdgeOnMap();
 
                 // Elevators
                 RibbonController.Me.Button(RibbonMarkupCommands.ButtonViewElevators).ExecuteEvent += (s23, e23) => SwitchToTab(ElevatorsTab);
@@ -552,7 +553,8 @@ namespace VenueMaker.Dialogs
             }
             catch (Exception ex)
             {
-                throw;
+                LogCenter.Error("RefreshUIForVenue", ex.Message);
+                throw new Exception($"Fel uppstod i RefreshUIForVenue: {ex.Message}");
 
             }
         }
@@ -864,7 +866,7 @@ namespace VenueMaker.Dialogs
             {
                 string svcver = string.Empty;
 
-                await Task.Run(async () =>
+                await Task.Run(() =>
                 {
                     // Initialize the web service for better performance.
                     svcver = DataController.Me.ServiceVersion();
@@ -1749,6 +1751,7 @@ namespace VenueMaker.Dialogs
             }
             catch (Exception ex)
             {
+                LogCenter.Error("EnsureLogin", ex.Message);
                 return false;
 
             }
@@ -2181,7 +2184,7 @@ namespace VenueMaker.Dialogs
             }
             catch (Exception ex)
             {
-                string errmsg = $"Kunde inte växla till fliken {tab.Text}";
+                string errmsg = $"Kunde inte växla till fliken {tab.Text}: {ex.Message}";
                 MessageBox.Show(errmsg, "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
@@ -2390,6 +2393,35 @@ namespace VenueMaker.Dialogs
                 {
                     dlg.Venue = Venue;
                     dlg.Node = NodesBS.Current as WFNode;
+
+                    dlg.ShowDialog();
+
+                } // using
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+        }
+
+        private void PinEdgeOnMap()
+        {
+            try
+            {
+                if (Venue.Maps == null ||
+                    Venue.Maps.Length == 0)
+                {
+                    MessageBox.Show("Det finns inga kartor inlagda.", "Fel", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+
+                } // No maps
+
+                using (EditMapPointsAndEdgesDialog dlg = new EditMapPointsAndEdgesDialog())
+                {
+                    dlg.Venue = Venue;
+                    dlg.Edge = (EdgesForPOIBS.Current as EdgeForPOI).Edge;
 
                     dlg.ShowDialog();
 

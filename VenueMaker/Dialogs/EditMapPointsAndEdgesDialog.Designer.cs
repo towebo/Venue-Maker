@@ -30,6 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             this.ToolbarPanel = new System.Windows.Forms.Panel();
+            this.ClearDirectionPointsBtn = new System.Windows.Forms.Button();
+            this.ShowNamesChk = new System.Windows.Forms.CheckBox();
             this.DoneBtn = new System.Windows.Forms.Button();
             this.MapCombo = new System.Windows.Forms.ComboBox();
             this.MapLabel = new System.Windows.Forms.Label();
@@ -38,7 +40,6 @@
             this.MapsBS = new System.Windows.Forms.BindingSource(this.components);
             this.MapPanel = new System.Windows.Forms.Panel();
             this.MapPB = new System.Windows.Forms.PictureBox();
-            this.ShowNamesChk = new System.Windows.Forms.CheckBox();
             this.ToolbarPanel.SuspendLayout();
             this.Statusbar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MapsBS)).BeginInit();
@@ -49,6 +50,7 @@
             // ToolbarPanel
             // 
             this.ToolbarPanel.BackColor = System.Drawing.SystemColors.Control;
+            this.ToolbarPanel.Controls.Add(this.ClearDirectionPointsBtn);
             this.ToolbarPanel.Controls.Add(this.ShowNamesChk);
             this.ToolbarPanel.Controls.Add(this.DoneBtn);
             this.ToolbarPanel.Controls.Add(this.MapCombo);
@@ -58,6 +60,28 @@
             this.ToolbarPanel.Name = "ToolbarPanel";
             this.ToolbarPanel.Size = new System.Drawing.Size(800, 53);
             this.ToolbarPanel.TabIndex = 0;
+            // 
+            // ClearDirectionPointsBtn
+            // 
+            this.ClearDirectionPointsBtn.Location = new System.Drawing.Point(290, 17);
+            this.ClearDirectionPointsBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ClearDirectionPointsBtn.Name = "ClearDirectionPointsBtn";
+            this.ClearDirectionPointsBtn.Size = new System.Drawing.Size(150, 23);
+            this.ClearDirectionPointsBtn.TabIndex = 4;
+            this.ClearDirectionPointsBtn.Text = "&Rensa vägbeskrivning";
+            this.ClearDirectionPointsBtn.UseVisualStyleBackColor = true;
+            this.ClearDirectionPointsBtn.Click += new System.EventHandler(this.ClearDirectionPointsBtn_Click);
+            // 
+            // ShowNamesChk
+            // 
+            this.ShowNamesChk.AutoSize = true;
+            this.ShowNamesChk.Location = new System.Drawing.Point(147, 21);
+            this.ShowNamesChk.Name = "ShowNamesChk";
+            this.ShowNamesChk.Size = new System.Drawing.Size(122, 17);
+            this.ShowNamesChk.TabIndex = 3;
+            this.ShowNamesChk.Text = "&Visa nodernas namn";
+            this.ShowNamesChk.UseVisualStyleBackColor = true;
+            this.ShowNamesChk.CheckedChanged += new System.EventHandler(this.ShowNamesChk_CheckedChanged);
             // 
             // DoneBtn
             // 
@@ -90,6 +114,7 @@
             // 
             // Statusbar
             // 
+            this.Statusbar.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.Statusbar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MousePositionLabel});
             this.Statusbar.Location = new System.Drawing.Point(0, 428);
@@ -128,17 +153,6 @@
             this.MapPB.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MapPB_MouseDown);
             this.MapPB.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MapPB_MouseMove);
             // 
-            // ShowNamesChk
-            // 
-            this.ShowNamesChk.AutoSize = true;
-            this.ShowNamesChk.Location = new System.Drawing.Point(147, 21);
-            this.ShowNamesChk.Name = "ShowNamesChk";
-            this.ShowNamesChk.Size = new System.Drawing.Size(122, 17);
-            this.ShowNamesChk.TabIndex = 3;
-            this.ShowNamesChk.Text = "&Visa nodernas namn";
-            this.ShowNamesChk.UseVisualStyleBackColor = true;
-            this.ShowNamesChk.CheckedChanged += new System.EventHandler(this.ShowNamesChk_CheckedChanged);
-            // 
             // EditMapPointsAndEdgesDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -176,5 +190,6 @@
         private System.Windows.Forms.PictureBox MapPB;
         private System.Windows.Forms.Button DoneBtn;
         private System.Windows.Forms.CheckBox ShowNamesChk;
+        private System.Windows.Forms.Button ClearDirectionPointsBtn;
     }
 }

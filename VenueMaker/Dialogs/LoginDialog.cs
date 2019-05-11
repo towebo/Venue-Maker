@@ -55,7 +55,7 @@ namespace VenueMaker.Dialogs
                 {
                     if (VerificationCodeLabel.Visible)
                     {
-                        if (VerificationCodeLabel.Tag == "ResetPassword")
+                        if ((string)VerificationCodeLabel.Tag == "ResetPassword")
                         {
                             ChangePasswordRequest pwreq = new ChangePasswordRequest();
                             pwreq.Code = VerificationCodeTB.Text;
@@ -102,7 +102,7 @@ namespace VenueMaker.Dialogs
                             }
 
                         }
-                        else if (VerificationCodeLabel.Tag == "VerifyAccount")
+                        else if ((string)VerificationCodeLabel.Tag == "VerifyAccount")
                         {
                             VerifyAccountRequest vreq = new VerifyAccountRequest();
                             vreq.Email = Item.Email;

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Mawingu;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -81,9 +82,10 @@ namespace VenueMaker.Models
 
         public static Preferences Load()
         {
+            string filename = string.Empty;
             try
             {
-                string filename = PrefsFileName;
+                filename = PrefsFileName;
 
                 if (!File.Exists(filename))
                 {
@@ -115,17 +117,18 @@ namespace VenueMaker.Models
             }
             catch (Exception ex)
             {
-                //tmp LogCenter.Error("Preferences.Load", ex.Message);
-                throw;
+                LogCenter.Error($"Preferences.Load({filename})", ex.Message);
+                throw new Exception($"Fel när inställningar skulle laddas ({filename}): {ex.Message}");
 
             }
         }
 
         public void Save(string fileName = "")
         {
+            string fn = string.Empty;
             try
             {
-                string fn = !string.IsNullOrWhiteSpace(fileName) ?
+                fn = !string.IsNullOrWhiteSpace(fileName) ?
                     fileName :
                     PrefsFileName;
 
@@ -137,8 +140,8 @@ namespace VenueMaker.Models
             }
             catch (Exception ex)
             {
-                //tmp LogCenter.Error("Preferences.Save", ex.Message);
-                throw;
+                LogCenter.Error($"Preferences.Save({fn})", ex.Message);
+                throw new Exception($"Fel när inställningarna skulle sparas ({fn}): {ex.Message}");
 
             }
 

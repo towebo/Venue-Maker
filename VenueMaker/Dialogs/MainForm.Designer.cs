@@ -1971,7 +1971,6 @@
         private System.Windows.Forms.Button EditHeadingInfo2Btn;
         private System.Windows.Forms.Button EditHeadingInfo1Btn;
         private System.Windows.Forms.ToolStripMenuItem kontoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem loginToolStripMenuItem;
         private System.Windows.Forms.TextBox NodeDepartmentTB;
         private System.Windows.Forms.Label NodeDepartmentLabel;
         private System.Windows.Forms.TextBox NodeBuildingTB;
@@ -1982,8 +1981,6 @@
         private System.Windows.Forms.Label NodeSpaceLabel;
         private System.Windows.Forms.TextBox NodeRoomTB;
         private System.Windows.Forms.Label NodeRoomLabel;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemSetPermissions;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.FolderBrowserDialog DataFolderDialog;
         private System.Windows.Forms.CheckBox MakeVenueActiveChk;
         private System.Windows.Forms.TextBox VenueGPSTB;

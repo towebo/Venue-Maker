@@ -160,7 +160,6 @@ namespace VenueMaker.Controllers
                 {
                     try
                     {
-                        bool dodownload = true;
                         string dstfile = Path.Combine(destFolder, dlfile);
                         if (File.Exists(dstfile))
                         {

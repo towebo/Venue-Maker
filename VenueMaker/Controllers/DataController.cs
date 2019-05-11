@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Mawingu;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -122,8 +123,7 @@ namespace VenueMaker.Controllers
                     if (result.Result == SetKwendaPermissionsResponse.MethodResult.Ok)
                     {
                         throw new Exception(result.Message);
-                        return;
-
+                        
                     } // Ok
                     else if (result.Result == SetKwendaPermissionsResponse.MethodResult.NoPermission)
                     {
@@ -240,7 +240,8 @@ namespace VenueMaker.Controllers
             }
             catch (Exception ex)
             {
-                throw;
+                LogCenter.Error("IsTokenValid", ex.Message);
+                throw new Exception($"Fel uppstod i IsTokenValid: {ex.Message}");
 
             }
 
@@ -281,7 +282,7 @@ namespace VenueMaker.Controllers
             }
             catch (Exception ex)
             {
-                string errmsg = $"Det gick inte att logga in automatiskt med e-postadressen {Email} och det angivna lösenordet.";
+                string errmsg = $"Det gick inte att logga in automatiskt med e-postadressen {Email} och det angivna lösenordet. {ex.Message}";
                 throw new Exception(errmsg);
 
             }
@@ -313,7 +314,7 @@ namespace VenueMaker.Controllers
             }
             catch (Exception ex)
             {
-                string errmsg = $"Det gick inte att logga in automatiskt med e-postadressen {Email} och det angivna lösenordet.";
+                string errmsg = $"Det gick inte att logga in automatiskt med e-postadressen {Email} och det angivna lösenordet. {ex.Message}";
                 throw new Exception(errmsg);
 
             }

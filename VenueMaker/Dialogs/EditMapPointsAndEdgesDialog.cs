@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Mawingu;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,6 +20,7 @@ namespace VenueMaker.Dialogs
         
         public WFVenue Venue { get; set; }
         public WFNode Node { get; set; }
+        public WFEdge<WFNode> Edge { get; set; }
         
 
         public EditMapPointsAndEdgesDialog()
@@ -38,14 +40,31 @@ namespace VenueMaker.Dialogs
                 MapCombo.DisplayMember = nameof(WFMap.Title);
                 MapCombo.ValueMember = nameof(WFMap.Id);
 
-                Text = $"Välj plats på karta för {Node.Name}";
-
-                WFMapPoint mp = Node.MapPoint;
-                if (!string.IsNullOrWhiteSpace(mp.MapId))
+                if (Node != null)
                 {
-                    MapCombo.SelectedValue = mp.MapId;
+                    Text = $"Välj plats på karta för {Node.Name}";
+                    WFMapPoint mp = Node.MapPoint;
+                    if (!string.IsNullOrWhiteSpace(mp.MapId))
+                    {
+                        MapCombo.SelectedValue = mp.MapId;
 
-                } // Not null
+                    } // Not null
+                    ClearDirectionPointsBtn.Visible = false;
+
+                }
+                else if (Edge != null)
+                {
+                    Text = $"Markera vägbeskrivning på karta för {Edge.Start.Name} -> {Edge.Destination.Name}";
+                    WFMapPoint mp = Edge.Start.MapPoint;
+                    if (!string.IsNullOrWhiteSpace(mp.MapId))
+                    {
+                        MapCombo.SelectedValue = mp.MapId;
+
+                    } // Not null
+                    ClearDirectionPointsBtn.Visible = true;
+
+                } // What
+
                 
                 MapsBS.ResetBindings(false);
 
@@ -121,7 +140,19 @@ namespace VenueMaker.Dialogs
                     X = e.X,
                     Y = e.Y
                 };
-                Node.MapPoint = mp;
+
+                if (Node != null)
+                {
+                    Node.MapPoint = mp;
+
+                }
+                else if (Edge != null)
+                {
+                    List<WFMapPoint> mps = Edge.MapPoints.ToList();
+                    mps.Add(mp);
+                    Edge.MapPoints = mps.ToArray();
+                    
+                } // What
 
                 MapPB.Refresh();
                 
@@ -156,6 +187,13 @@ namespace VenueMaker.Dialogs
                         b = Brushes.Red;
 
                     } // The node we edit
+                    if (Edge != null &&
+                        (n == Edge.Start ||
+                        n == Edge.Destination))
+                    {
+                        b = Brushes.Red;
+
+                    } // The edge we edit
 
                     if (n.MapPoint.MapId != currentmap.Id)
                     {
@@ -183,7 +221,49 @@ namespace VenueMaker.Dialogs
 
                     } // Show node names
 
-                } // foreach
+                } // foreach Node on Venue
+
+                // Paint the navigation
+                if (Edge != null)
+                {
+                    using (Pen p = new Pen(Color.Red))
+                    {
+                        p.Width = 5;
+                        
+                        
+                        Point fromP = new Point(
+                            Convert.ToInt32(Edge.Start.MapPoint.X),
+                            Convert.ToInt32(Edge.Start.MapPoint.Y)
+                            );
+
+                        foreach (WFMapPoint mp in Edge.MapPoints)
+                        {
+                            if (mp.MapId != currentmap.Id)
+                            {
+                                continue;
+
+                            } // Not on the same map
+
+                            Point toP = new Point(
+                                Convert.ToInt32(mp.X),
+                                Convert.ToInt32(mp.Y)
+                                );
+
+                            e.Graphics.DrawLine(p, fromP, toP);
+                            fromP = toP;
+
+                        } // foreach MapPoint
+
+                        Point destP = new Point(
+                            Convert.ToInt32(Edge.Destination.MapPoint.X),
+                            Convert.ToInt32(Edge.Destination.MapPoint.Y)
+                            );
+                        e.Graphics.DrawLine(p, fromP, destP);
+
+                    } // using Pen
+
+                } // Is edge
+
 
             }
             catch
@@ -231,6 +311,28 @@ namespace VenueMaker.Dialogs
             catch (Exception ex)
             {
                 string errmsg = $"Fel när kartan skulle ritas om: {ex.Message}";
+                MessageBox.Show(errmsg, "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+
+        }
+
+        private void ClearDirectionPointsBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Edge != null)
+                {
+                    Edge.MapPointsStr = string.Empty;
+                    MapPB.Refresh();
+
+                } // Not null
+
+            }
+            catch (Exception ex)
+            {
+                string errmsg = $"Fel när vägbeskrivningarna skulle rensas: {ex.Message}";
+                LogCenter.Error("ClearDirectionsBtnClick", ex.Message);
                 MessageBox.Show(errmsg, "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }

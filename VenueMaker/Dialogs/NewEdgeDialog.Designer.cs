@@ -42,7 +42,7 @@
             this.TravelTimeLabel = new System.Windows.Forms.Label();
             this.TravelTimeTB = new System.Windows.Forms.TextBox();
             this.AddButton = new System.Windows.Forms.Button();
-            this.CancelButton = new System.Windows.Forms.Button();
+            this.CancelBtn = new System.Windows.Forms.Button();
             this.InfoBS = new System.Windows.Forms.BindingSource(this.components);
             this.SourcesBS = new System.Windows.Forms.BindingSource(this.components);
             this.TargetsBS = new System.Windows.Forms.BindingSource(this.components);
@@ -166,14 +166,14 @@
             // 
             // CancelButton
             // 
-            this.CancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.CancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.CancelButton.Location = new System.Drawing.Point(253, 289);
-            this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(75, 23);
-            this.CancelButton.TabIndex = 17;
-            this.CancelButton.Text = "Avbryt";
-            this.CancelButton.UseVisualStyleBackColor = true;
+            this.CancelBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.CancelBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.CancelBtn.Location = new System.Drawing.Point(253, 289);
+            this.CancelBtn.Name = "CancelButton";
+            this.CancelBtn.Size = new System.Drawing.Size(75, 23);
+            this.CancelBtn.TabIndex = 17;
+            this.CancelBtn.Text = "Avbryt";
+            this.CancelBtn.UseVisualStyleBackColor = true;
             // 
             // TravelTypeLabel
             // 
@@ -200,7 +200,7 @@
             this.ControlBox = false;
             this.Controls.Add(this.TravelTypeCombo);
             this.Controls.Add(this.TravelTypeLabel);
-            this.Controls.Add(this.CancelButton);
+            this.Controls.Add(this.CancelBtn);
             this.Controls.Add(this.AddButton);
             this.Controls.Add(this.TravelTimeTB);
             this.Controls.Add(this.TravelTimeLabel);
@@ -245,7 +245,7 @@
         private System.Windows.Forms.Label TravelTimeLabel;
         private System.Windows.Forms.TextBox TravelTimeTB;
         private System.Windows.Forms.Button AddButton;
-        private System.Windows.Forms.Button CancelButton;
+        private System.Windows.Forms.Button CancelBtn;
         private System.Windows.Forms.BindingSource InfoBS;
         private System.Windows.Forms.BindingSource SourcesBS;
         private System.Windows.Forms.BindingSource TargetsBS;

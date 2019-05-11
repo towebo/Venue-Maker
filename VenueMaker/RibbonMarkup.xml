@@ -483,10 +483,11 @@
           </Group>
         </Tab>
         <Tab CommandName="CmdTabDirections" ApplicationModes="0,1">
-          <Group CommandName="CmdGroupDirections" ApplicationModes="0,1" SizeDefinition="ThreeButtons">
+          <Group CommandName="CmdGroupDirections" ApplicationModes="0,1" SizeDefinition="FourButtons">
             <Button CommandName="CmdViewDirections"/>
             <Button CommandName="CmdDirectionAdd"/>
             <Button CommandName="CmdDirectionDelete"/>
+            <Button CommandName="CmdDirectionPinOnMap"/>
           </Group>
         </Tab>
         <Tab CommandName="CmdTabElevators" ApplicationModes="0,1">

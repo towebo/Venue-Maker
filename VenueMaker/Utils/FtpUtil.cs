@@ -3,6 +3,7 @@ using System.Net;
 using System.IO;
 using System.Text;
 using System.Collections.Generic;
+using Mawingu;
 
 namespace VenueMaker.Utils
 {
@@ -57,6 +58,7 @@ namespace VenueMaker.Utils
 			}
 			catch (Exception e)
 			{
+                LogCenter.Error($"FtpClient.GetList({aFolder}", e.Message);
 				return files.ToArray ();
 
 			}
@@ -131,6 +133,7 @@ namespace VenueMaker.Utils
 			}
 			catch (Exception ex)
 			{
+                LogCenter.Error($"FtpFileDate({aFtpFile})", ex.Message);
 				return new DateTime ();
 
 			}
@@ -204,8 +207,9 @@ namespace VenueMaker.Utils
 				request.GetResponse();
 
 			}
-			catch ( Exception e)
+			catch (Exception ex)
 			{
+                LogCenter.Error($"FtpClient.MoveFile({aFrom}, {aTo})", ex.Message);
 
 			}
 

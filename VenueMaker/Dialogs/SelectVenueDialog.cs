@@ -1,16 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using VenueMaker.Controllers;
 using VenueMaker.Kwenda;
-using System.Linq;
-using VenueMaker.Helpers;
+using Mawingu;
 
 namespace VenueMaker.Dialogs
 {
@@ -65,7 +60,8 @@ namespace VenueMaker.Dialogs
             }
             catch (Exception ex)
             {
-                throw;
+                LogCenter.Error("SelectVenueDialog.InitUI", ex.Message);
+                throw new Exception($"Fel när SelectVenueDialog.InitUI kördes: {ex.Message}");
             }
         }
 

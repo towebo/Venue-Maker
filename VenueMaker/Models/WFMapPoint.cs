@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Mawingu;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -49,12 +50,74 @@ namespace WayfindR.Models
 
         }
 
-        public string ToString()
+        public static WFMapPoint[] ArrayFromString(string str)
+        {
+            try
+            {
+                List<WFMapPoint> result = new List<WFMapPoint>();
+                if (string.IsNullOrWhiteSpace(str))
+                {
+                    return result.ToArray();
+
+                } // Empty string
+
+                string[] parts = str.Split('|');
+                foreach (string part in parts)
+                {
+                    result.Add(WFMapPoint.FromString(part));
+
+                } // foreach
+
+                return result.ToArray();
+
+            }
+            catch (Exception ex)
+            {
+                string errmsg = $"WFMapPoint.ArrayFromString({str}): {ex.Message}";
+                LogCenter.Error(
+                    $"WFMapPoint.ArrayFromString({str})",
+                    ex.Message
+                    );
+                throw new Exception(errmsg);
+
+            }
+
+        }
+
+        public new string ToString()
         {
             string result = $"{MapId},{X.ToString().Replace(",", ".")},{Y.ToString().Replace(",", ".")}";
             return result;
 
         }
+
+        public static string ArrayToString(WFMapPoint[] items)
+        {
+            try
+            {
+                StringBuilder result = new StringBuilder();
+
+                foreach (WFMapPoint item in items)
+                {
+                    result.Append(
+                        item.ToString()
+                        );
+                    result.Append("|");
+
+                } // foreach
+
+                return result.ToString();
+
+            }
+            catch (Exception ex)
+            {
+                string errmsg = $"WFMapPoint.ArrayToStringh: {ex.Message}";
+                LogCenter.Error("WFMapPoint.ArrayToString", ex.Message);
+                throw new Exception(errmsg);
+
+            }
+        }
+
 
 
     } // class
