@@ -187,12 +187,17 @@ namespace VenueMaker.Dialogs
                         b = Brushes.Red;
 
                     } // The node we edit
-                    if (Edge != null &&
-                        (n == Edge.Start ||
-                        n == Edge.Destination))
+                    if (Edge != null)
                     {
-                        b = Brushes.Red;
-
+                        if (n == Edge.Start)
+                        {
+                            b = Brushes.Yellow;
+                        }
+                        else if (n == Edge.Destination)
+                        {
+                            b = Brushes.Blue;
+                        } // else
+                    
                     } // The edge we edit
 
                     if (n.MapPoint.MapId != currentmap.Id)
@@ -226,10 +231,9 @@ namespace VenueMaker.Dialogs
                 // Paint the navigation
                 if (Edge != null)
                 {
-                    using (Pen p = new Pen(Color.Red))
+                    using (Pen p = new Pen(Color.Yellow))
                     {
                         p.Width = 5;
-                        
                         
                         Point fromP = new Point(
                             Convert.ToInt32(Edge.Start.MapPoint.X),

@@ -2420,10 +2420,30 @@ namespace VenueMaker.Dialogs
 
                 using (EditMapPointsAndEdgesDialog dlg = new EditMapPointsAndEdgesDialog())
                 {
+                    WFEdge<WFNode> edg = (EdgesForPOIBS.Current as EdgeForPOI).Edge;
+
                     dlg.Venue = Venue;
-                    dlg.Edge = (EdgesForPOIBS.Current as EdgeForPOI).Edge;
+                    dlg.Edge = edg;
 
                     dlg.ShowDialog();
+
+                    EdgeForPOI[] dfpis = EdgesForPOIBS.DataSource as EdgeForPOI[];
+
+                    var retrn = dfpis.Where(w =>
+                        w.Edge.Start == edg.Destination &&
+                        w.Edge.Destination == edg.Start
+                        ).FirstOrDefault();
+                    if (retrn != null)
+                    {
+                        var dr = MessageBox.Show("Är det samma väg tillbaks?", "Returväg", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        if (DialogResult.Yes == dr)
+                        {
+                            retrn.Edge.MapPoints = edg.MapPoints.Reverse().ToArray();
+
+                        } // Yes
+                        
+
+                    } // Has return path
 
                 } // using
 
