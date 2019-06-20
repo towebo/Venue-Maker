@@ -1814,7 +1814,7 @@ namespace VenueMaker.Dialogs
                 kvenue.VenueId = Venue.Id;
                 kvenue.FileName = Path.GetFileName(venuefile);
                 kvenue.FileExt = Path.GetExtension(kvenue.FileName);
-                kvenue.Data = Venue.ToString();
+                kvenue.Data = Encoding.UTF8.GetBytes(Venue.ToString());
                 kvenue.FileTitle = Venue.GetFileTitle();
                 kvenue.Active = MakeVenueActiveChk.Checked;
                 kfiles.Add(kvenue);
@@ -1837,7 +1837,9 @@ namespace VenueMaker.Dialogs
                     kmediafile.VenueId = Venue.Id;
                     kmediafile.FileName = Venue.Image;
                     kmediafile.FileExt = Path.GetExtension(kmediafile.FileName);
-                    kmediafile.Data = "";
+                    kmediafile.Data = File.ReadAllBytes(
+                        Path.Combine(fldr, kmediafile.FileName)
+                        );
                     kmediafile.Active = MakeVenueActiveChk.Checked;
                     kfiles.Add(kmediafile);
 
@@ -1861,7 +1863,11 @@ namespace VenueMaker.Dialogs
                                     kmediafile.VenueId = Venue.Id;
                                     kmediafile.FileName = poii.MediaFile;
                                     kmediafile.FileExt = Path.GetExtension(kmediafile.FileName);
-                                    kmediafile.Data = "";
+                                    
+                                    kmediafile.Data = File.ReadAllBytes(
+                                        Path.Combine(fldr, kmediafile.FileName)
+                                        );
+
                                     kmediafile.Active = MakeVenueActiveChk.Checked;
                                     kfiles.Add(kmediafile);
 
@@ -1890,7 +1896,11 @@ namespace VenueMaker.Dialogs
                             kmediafile.VenueId = Venue.Id;
                             kmediafile.FileName = hi.Image;
                             kmediafile.FileExt = Path.GetExtension(kmediafile.FileName);
-                            kmediafile.Data = "";
+
+                            kmediafile.Data = File.ReadAllBytes(
+                                        Path.Combine(fldr, kmediafile.FileName)
+                                        );
+
                             kmediafile.Active = MakeVenueActiveChk.Checked;
                             kfiles.Add(kmediafile);
 
@@ -1909,7 +1919,11 @@ namespace VenueMaker.Dialogs
                             kmediafile.VenueId = Venue.Id;
                             kmediafile.FileName = hi.Image;
                             kmediafile.FileExt = Path.GetExtension(kmediafile.FileName);
-                            kmediafile.Data = "";
+
+                            kmediafile.Data = File.ReadAllBytes(
+                                        Path.Combine(fldr, kmediafile.FileName)
+                                        );
+
                             kmediafile.Active = MakeVenueActiveChk.Checked;
                             kfiles.Add(kmediafile);
 
@@ -1928,7 +1942,11 @@ namespace VenueMaker.Dialogs
                             kmediafile.VenueId = Venue.Id;
                             kmediafile.FileName = hi.Image;
                             kmediafile.FileExt = Path.GetExtension(kmediafile.FileName);
-                            kmediafile.Data = "";
+
+                            kmediafile.Data = File.ReadAllBytes(
+                                        Path.Combine(fldr, kmediafile.FileName)
+                                        );
+
                             kmediafile.Active = MakeVenueActiveChk.Checked;
                             kfiles.Add(kmediafile);
 
@@ -1947,7 +1965,11 @@ namespace VenueMaker.Dialogs
                             kmediafile.VenueId = Venue.Id;
                             kmediafile.FileName = hi.Image;
                             kmediafile.FileExt = Path.GetExtension(kmediafile.FileName);
-                            kmediafile.Data = "";
+
+                            kmediafile.Data = File.ReadAllBytes(
+                                        Path.Combine(fldr, kmediafile.FileName)
+                                        );
+
                             kmediafile.Active = MakeVenueActiveChk.Checked;
                             kfiles.Add(kmediafile);
 
@@ -1966,7 +1988,11 @@ namespace VenueMaker.Dialogs
                             kmediafile.VenueId = Venue.Id;
                             kmediafile.FileName = hi.Image;
                             kmediafile.FileExt = Path.GetExtension(kmediafile.FileName);
-                            kmediafile.Data = "";
+
+                            kmediafile.Data = File.ReadAllBytes(
+                                        Path.Combine(fldr, kmediafile.FileName)
+                                        );
+
                             kmediafile.Active = MakeVenueActiveChk.Checked;
                             kfiles.Add(kmediafile);
 
@@ -1990,7 +2016,11 @@ namespace VenueMaker.Dialogs
                             kmediafile.VenueId = Venue.Id;
                             kmediafile.FileName = m.FileName;
                             kmediafile.FileExt = Path.GetExtension(kmediafile.FileName);
-                            kmediafile.Data = "";
+
+                            kmediafile.Data = File.ReadAllBytes(
+                                        Path.Combine(fldr, kmediafile.FileName)
+                                        );
+
                             kmediafile.Active = MakeVenueActiveChk.Checked;
                             kfiles.Add(kmediafile);
 
@@ -2081,7 +2111,7 @@ namespace VenueMaker.Dialogs
                     //här
                     DoOpenVenue(
                         venuefile.FileName,
-                        venuefile.Data
+                        Encoding.UTF8.GetString(venuefile.Data)
                         );
                     MakeVenueActiveChk.Checked = venuefile.Active;
 
