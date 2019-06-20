@@ -1561,7 +1561,7 @@ namespace VenueMaker.Kwenda {
         private bool ActiveField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string DataField;
+        private byte[] DataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string FileExtField;
@@ -1602,7 +1602,7 @@ namespace VenueMaker.Kwenda {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Data {
+        public byte[] Data {
             get {
                 return this.DataField;
             }
