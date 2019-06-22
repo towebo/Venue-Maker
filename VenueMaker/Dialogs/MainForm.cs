@@ -1,4 +1,4 @@
-﻿#define WITHADMINRIGHTS
+﻿//#define WITHADMINRIGHTS
 
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -1068,17 +1068,6 @@ namespace VenueMaker.Dialogs
                 Application.UseWaitCursor = true;
                 Application.DoEvents();
 
-                try
-                {
-                    string[] currentfiles = FtpController.Me.DownloadFileList();
-
-                }
-                catch (Exception dlex)
-                {
-                    Console.WriteLine(dlex.Message);
-
-                }
-
                 PushToCloud();
 
                 SystemSounds.Asterisk.Play();
@@ -1819,15 +1808,6 @@ namespace VenueMaker.Dialogs
                 kvenue.Active = MakeVenueActiveChk.Checked;
                 kfiles.Add(kvenue);
 
-                FtpController.Me.AddToUploadQueue(venuefile);
-
-                string graphmlfile = Path.ChangeExtension(venuefile, ".graphml");
-                if (File.Exists(graphmlfile))
-                {
-                    FtpController.Me.AddToUploadQueue(graphmlfile);
-
-                } // graphml exists
-
                 // Add the media files
                 string fldr = GetDataFilesFolder();
 
@@ -1842,10 +1822,6 @@ namespace VenueMaker.Dialogs
                         );
                     kmediafile.Active = MakeVenueActiveChk.Checked;
                     kfiles.Add(kmediafile);
-
-                    FtpController.Me.AddToUploadQueue(
-                        Path.Combine(fldr, Venue.Image)
-                        );
 
                 } // Has image
 
@@ -1870,10 +1846,6 @@ namespace VenueMaker.Dialogs
 
                                     kmediafile.Active = MakeVenueActiveChk.Checked;
                                     kfiles.Add(kmediafile);
-
-                                    FtpController.Me.AddToUploadQueue(
-                                        Path.Combine(fldr, poii.MediaFile)
-                                        );
 
                                 } // Has media file
 
@@ -1904,9 +1876,6 @@ namespace VenueMaker.Dialogs
                             kmediafile.Active = MakeVenueActiveChk.Checked;
                             kfiles.Add(kmediafile);
 
-                            FtpController.Me.AddToUploadQueue(
-                                            Path.Combine(fldr, hi.Image)
-                                            );
                         } // Image assigned
 
                     } // Has Headinginfo
@@ -1927,9 +1896,6 @@ namespace VenueMaker.Dialogs
                             kmediafile.Active = MakeVenueActiveChk.Checked;
                             kfiles.Add(kmediafile);
 
-                            FtpController.Me.AddToUploadQueue(
-                                            Path.Combine(fldr, hi.Image)
-                                            );
                         } // Image assigned
 
                     } // Has Headinginfo
@@ -1950,9 +1916,6 @@ namespace VenueMaker.Dialogs
                             kmediafile.Active = MakeVenueActiveChk.Checked;
                             kfiles.Add(kmediafile);
 
-                            FtpController.Me.AddToUploadQueue(
-                                            Path.Combine(fldr, hi.Image)
-                                            );
                         } // Image assigned
 
                     } // Has Headinginfo
@@ -1973,9 +1936,6 @@ namespace VenueMaker.Dialogs
                             kmediafile.Active = MakeVenueActiveChk.Checked;
                             kfiles.Add(kmediafile);
 
-                            FtpController.Me.AddToUploadQueue(
-                                            Path.Combine(fldr, hi.Image)
-                                            );
                         } // Image assigned
 
                     } // Has Headinginfo
@@ -1996,9 +1956,6 @@ namespace VenueMaker.Dialogs
                             kmediafile.Active = MakeVenueActiveChk.Checked;
                             kfiles.Add(kmediafile);
 
-                            FtpController.Me.AddToUploadQueue(
-                                            Path.Combine(fldr, hi.Image)
-                                            );
                         } // Image assigned
 
                     } // Has Headinginfo
@@ -2024,10 +1981,6 @@ namespace VenueMaker.Dialogs
                             kmediafile.Active = MakeVenueActiveChk.Checked;
                             kfiles.Add(kmediafile);
 
-                            FtpController.Me.AddToUploadQueue(
-                                Path.Combine(fldr, m.FileName)
-                                );
-
                         } // Has file name
 
                     } // foreach Map
@@ -2048,8 +2001,6 @@ namespace VenueMaker.Dialogs
                     DataController.Me.Token,
                     kfiles.ToArray()
                     );
-
-                FtpController.Me.UploadFiles();
 
             }
             catch (Exception ex)
@@ -2136,13 +2087,28 @@ namespace VenueMaker.Dialogs
                             fi.LastWriteTimeUtc < f.LastModified)
                             )
                         {
-                            FtpController.Me.AddToDownloadQueue(f.FileName);
+                            string remotefile = Path.Combine(
+                                DataController.RemoteFileUrl,
+                                f.VenueId,
+                                f.FileName
+                                );
+
+                            HttpClient cli = new HttpClient();
+                            cli.DownloadFile(
+                                remotefile,
+                                localfile
+                                );
 
                         } // Need to be downloaded
 
                     } // foreach file
 
-                    FtpController.Me.DownloadFiles(fldr);
+
+                    while (HttpClient.ActiveDownloads > 0)
+                    {
+                        Application.DoEvents();
+
+                    } // Wait for the downloads to complete
 
                     return true;
 

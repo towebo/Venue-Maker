@@ -24,6 +24,12 @@ namespace VenueMaker.Utils
 		private string filename;
 		private string url;
 		
+
+        public static int ActiveDownloads
+        {
+            get { return activedownloads; }
+        } // ActiveDownloads
+
 		public HttpClient ()//AppDelegate ad)
 		{
 		}

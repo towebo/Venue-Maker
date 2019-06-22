@@ -32,6 +32,7 @@ namespace VenueMaker.Controllers
             } // get
         } // Me
 
+        public const string RemoteFileUrl = "https://services.mawingu.se/kwenda/data/";
 
         public DataController()
         {
