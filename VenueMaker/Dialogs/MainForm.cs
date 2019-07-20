@@ -21,6 +21,7 @@ using WayfindR.Helpers;
 using WayfindR;
 using Mawingu;
 using VenueMaker.Kwenda;
+using Kwenda.Models;
 
 namespace VenueMaker.Dialogs
 {
@@ -531,7 +532,8 @@ namespace VenueMaker.Dialogs
 
                     RefreshNodes();
 
-                    elevators = v.NodesGraph.GetNodesAlphabetical().Where(w =>
+#warning Perhaps we should have a setting instead of just passing "true".
+                    elevators = v.NodesGraph.GetNodesAlphabetical(false).Where(w =>
                         w.WaypointType == WFWaypointType.Elevator.ToString().ToLower()
                         ).OrderBy(w => w, new FloorComparer()).ToArray();
                     ElevatorsBS.DataSource = elevators;
@@ -584,27 +586,27 @@ namespace VenueMaker.Dialogs
                     switch (fi.Filter)
                     {
                         case NodesFilter.All:
-                            NodesBS.DataSource = Venue.NodesGraph.GetNodesAlphabetical().OrderBy(w => w, new FloorComparer()).ToArray();
+                            NodesBS.DataSource = Venue.NodesGraph.GetNodesAlphabetical(false).OrderBy(w => w, new FloorComparer()).ToArray();
                             break;
 
                         case NodesFilter.Active:
-                            NodesBS.DataSource = Venue.NodesGraph.GetNodesAlphabetical().Where(w => w.Active.ToLower() == "true").OrderBy(w => w, new FloorComparer()).ToArray();
+                            NodesBS.DataSource = Venue.NodesGraph.GetNodesAlphabetical(true).OrderBy(w => w, new FloorComparer()).ToArray();
                             break;
 
 
                         case NodesFilter.Inactive:
-                            NodesBS.DataSource = Venue.NodesGraph.GetNodesAlphabetical().Where(w => w.Active.ToLower() != "true").OrderBy(w => w, new FloorComparer()).ToArray();
+                            NodesBS.DataSource = Venue.NodesGraph.GetNodesAlphabetical(false).Where(w => w.Active.ToLower() != "true").OrderBy(w => w, new FloorComparer()).ToArray();
                             break;
 
                         default:
-                            NodesBS.DataSource = Venue.NodesGraph.GetNodesAlphabetical().OrderBy(w => w, new FloorComparer()).ToArray();
+                            NodesBS.DataSource = Venue.NodesGraph.GetNodesAlphabetical(false).OrderBy(w => w, new FloorComparer()).ToArray();
                             break;
 
                     } // switch
                 }
                 else
                 {
-                    NodesBS.DataSource = Venue.NodesGraph.GetNodesAlphabetical().OrderBy(w => w, new FloorComparer()).ToArray();
+                    NodesBS.DataSource = Venue.NodesGraph.GetNodesAlphabetical(false).OrderBy(w => w, new FloorComparer()).ToArray();
 
                 } // Nodes Filter
 
@@ -1225,7 +1227,7 @@ namespace VenueMaker.Dialogs
 
                 NewEdgeDialog dlg = new NewEdgeDialog();
                 dlg.Item = nei;
-                dlg.AvailibleNodes = Venue.NodesGraph.GetNodesAlphabetical().OrderBy(w => w, new FloorComparer()).ToArray();
+                dlg.AvailibleNodes = Venue.NodesGraph.GetNodesAlphabetical(false).OrderBy(w => w, new FloorComparer()).ToArray();
 
 
                 if (dlg.ShowDialog() != DialogResult.OK)
@@ -1386,7 +1388,7 @@ namespace VenueMaker.Dialogs
                 WFNode n = Venue.NodesGraph.NewNode();
                 n.Name = "Ny nod";
                 Venue.NodesGraph.AddVertex(n);
-                NodesBS.DataSource = Venue.NodesGraph.GetNodesAlphabetical().OrderBy(w => w, new FloorComparer()).ToArray();
+                NodesBS.DataSource = Venue.NodesGraph.GetNodesAlphabetical(false).OrderBy(w => w, new FloorComparer()).ToArray();
                 NodesBS.ResetBindings(false);
 
             }
@@ -1420,7 +1422,7 @@ namespace VenueMaker.Dialogs
                 } // Anything but Yes
 
                 Venue.NodesGraph.RemoveVertex(thenode);
-                NodesBS.DataSource = Venue.NodesGraph.GetNodesAlphabetical().OrderBy(w => w, new FloorComparer()).ToArray();
+                NodesBS.DataSource = Venue.NodesGraph.GetNodesAlphabetical(false).OrderBy(w => w, new FloorComparer()).ToArray();
                 NodesBS.ResetBindings(false);
 
             }
@@ -1447,7 +1449,7 @@ namespace VenueMaker.Dialogs
 
                 ImportBeaconsFromCSV(OpenCSVFileDialog.FileName);
 
-                NodesBS.DataSource = Venue.NodesGraph.GetNodesAlphabetical().OrderBy(w => w, new FloorComparer()).ToArray();
+                NodesBS.DataSource = Venue.NodesGraph.GetNodesAlphabetical(false).OrderBy(w => w, new FloorComparer()).ToArray();
                 NodesBS.ResetBindings(false);
 
                 SystemSounds.Asterisk.Play();
@@ -1652,7 +1654,7 @@ namespace VenueMaker.Dialogs
 
                     } // User canceled
 
-                    using (KwendaServiceClient cli = new KwendaServiceClient())
+                    using (KwendaService cli = new KwendaService())
                     {
                         CreateAccountRequest req = new CreateAccountRequest();
                         req.Email = dlg.Item.Email;
@@ -1663,7 +1665,7 @@ namespace VenueMaker.Dialogs
 
                         MessageBox.Show(result.Message);
 
-                    } // using KwendaServiceClient 
+                    } // using KwendaService 
 
                 } // using dialog
 
@@ -2526,7 +2528,7 @@ namespace VenueMaker.Dialogs
                 float radius = 10;
                 Font f = new Font("Arial", 9);
 
-                foreach (WFNode n in Venue.NodesGraph.GetNodesAlphabetical())
+                foreach (WFNode n in Venue.NodesGraph.GetNodesAlphabetical(false))
                 {
                     Brush b = Brushes.ForestGreen;
 

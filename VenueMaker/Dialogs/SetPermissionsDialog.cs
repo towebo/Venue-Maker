@@ -32,7 +32,7 @@ namespace VenueMaker.Dialogs
         {
             try
             {
-                using (KwendaServiceClient cli = new KwendaServiceClient())
+                using (KwendaService cli = new KwendaService())
                 {
                     KwendaPermissionItem perm = new KwendaPermissionItem();
                     perm.Email = EmailTB.Text;
@@ -51,19 +51,19 @@ namespace VenueMaker.Dialogs
 
                     switch (response.Result)
                     {
-                        case SetKwendaPermissionsResponse.MethodResult.NoPermission:
+                        case SetKwendaPermissionsResponseMethodResult.NoPermission:
                             MessageBox.Show("Du har inte behörighet att utföra denna åtgärd. Logga in med en användare som har tillräckliga behörigheter.", "Otillräckliga rättigheter", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             break;
 
-                        case SetKwendaPermissionsResponse.MethodResult.NotLoggedIn:
+                        case SetKwendaPermissionsResponseMethodResult.NotLoggedIn:
                             MessageBox.Show("Du är inte inloggad.", "Inte inloggad", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             break;
 
-                        case SetKwendaPermissionsResponse.MethodResult.Ok:
+                        case SetKwendaPermissionsResponseMethodResult.Ok:
                             DialogResult = DialogResult.OK;
                             break;
 
-                        case SetKwendaPermissionsResponse.MethodResult.OtherError:
+                        case SetKwendaPermissionsResponseMethodResult.OtherError:
                             MessageBox.Show(response.Message, "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             break;
 

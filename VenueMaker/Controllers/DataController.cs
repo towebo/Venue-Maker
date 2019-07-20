@@ -47,14 +47,14 @@ namespace VenueMaker.Controllers
         {
             try
             {
-                using (KwendaServiceClient cli = new KwendaServiceClient())
+                using (KwendaService cli = new KwendaService())
                 {
                     ListKwendaFilesRequest req = new ListKwendaFilesRequest();
                     req.Token = token;
 
                     ListKwendaFilesResponse result = cli.ListKwendaFiles(req);
 
-                    if (result.Result == ListKwendaFilesResponse.MethodResult.OtherError)
+                    if (result.Result == ListKwendaFilesResponseMethodResult.OtherError)
                     {
                         throw new Exception(result.Message);
 
@@ -79,7 +79,7 @@ namespace VenueMaker.Controllers
         {
             try
             {
-                using (KwendaServiceClient cli = new KwendaServiceClient())
+                using (KwendaService cli = new KwendaService())
                 {
                     GetKwendaFileRequest req = new GetKwendaFileRequest();
                     req.Token = token;
@@ -87,7 +87,7 @@ namespace VenueMaker.Controllers
 
                     GetKwendaFileResponse resp = cli.GetKwendafiles(req);
 
-                    if (resp.Result == GetKwendaFileResponse.MethodResult.OtherError)
+                    if (resp.Result == GetKwendaFileResponseMethodResult.OtherError)
                     {
                         throw new Exception(resp.Message);
 
@@ -112,7 +112,7 @@ namespace VenueMaker.Controllers
         {
             try
             {
-                using (KwendaServiceClient cli = new KwendaServiceClient())
+                using (KwendaService cli = new KwendaService())
                 {
                     SetKwendaPermissionsRequest req = new SetKwendaPermissionsRequest();
                     req.Token = token;
@@ -121,22 +121,22 @@ namespace VenueMaker.Controllers
 
                     SetKwendaPermissionsResponse result = cli.SetKwendaPermissions(req);
 
-                    if (result.Result == SetKwendaPermissionsResponse.MethodResult.Ok)
+                    if (result.Result == SetKwendaPermissionsResponseMethodResult.Ok)
                     {
                         throw new Exception(result.Message);
                         
                     } // Ok
-                    else if (result.Result == SetKwendaPermissionsResponse.MethodResult.NoPermission)
+                    else if (result.Result == SetKwendaPermissionsResponseMethodResult.NoPermission)
                     {
                         throw new Exception("Du har inte rättighet att utföra denna åtgärd. Logga in med en användare med tillräckliga rättigheter och försök igen.");
 
                     } // No permissions
-                    else if (result.Result == SetKwendaPermissionsResponse.MethodResult.NotLoggedIn)
+                    else if (result.Result == SetKwendaPermissionsResponseMethodResult.NotLoggedIn)
                     {
                         throw new Exception("Du är inte iloggad.");
 
                     } // Not logged in
-                    else if (result.Result == SetKwendaPermissionsResponse.MethodResult.OtherError)
+                    else if (result.Result == SetKwendaPermissionsResponseMethodResult.OtherError)
                     {
                         throw new Exception(result.Message);
 
@@ -161,7 +161,7 @@ namespace VenueMaker.Controllers
         {
             try
             {
-                using (KwendaServiceClient cli = new KwendaServiceClient())
+                using (KwendaService cli = new KwendaService())
                 {
                     UpdateKwendaFileRequest req = new UpdateKwendaFileRequest();
                     req.Token = token;
@@ -170,22 +170,22 @@ namespace VenueMaker.Controllers
 
                     UpdateKwendaFileResponse response = cli.UpdateKwendaFiles(req);
                                         
-                    if (response.Result == UpdateKwendaFileResponse.MethodResult.Ok)
+                    if (response.Result == UpdateKwendaFileResponseMethodResult.Ok)
                     {
                         return;
 
                     } // Ok
-                    else if (response.Result == UpdateKwendaFileResponse.MethodResult.NoPermission)
+                    else if (response.Result == UpdateKwendaFileResponseMethodResult.NoPermission)
                     {
                         throw new Exception("Du har inte rättighet att utföra denna åtgärd. Logga in med en användare med tillräckliga rättigheter och försök igen.");
 
                     } // No permissions
-                    else if (response.Result == UpdateKwendaFileResponse.MethodResult.NotLoggedIn)
+                    else if (response.Result == UpdateKwendaFileResponseMethodResult.NotLoggedIn)
                     {
                         throw new Exception("Du är inte iloggad.");
 
                     } // Not logged in
-                    else if (response.Result == UpdateKwendaFileResponse.MethodResult.OtherError)
+                    else if (response.Result == UpdateKwendaFileResponseMethodResult.OtherError)
                     {
                         throw new Exception(response.Message);
 
@@ -209,7 +209,7 @@ namespace VenueMaker.Controllers
         {
             try
             {
-                using (KwendaServiceClient cli = new KwendaServiceClient())
+                using (KwendaService cli = new KwendaService())
                 {
                     ValidateTokenRequest req = new ValidateTokenRequest();
                     req.Email = Email;
@@ -219,16 +219,16 @@ namespace VenueMaker.Controllers
 
                     switch (response.Result)
                     {
-                        case ValidateTokenResponse.MethodResult.Expired:
+                        case ValidateTokenResponseMethodResult.Expired:
                             return false;
 
-                        case ValidateTokenResponse.MethodResult.Invalid:
+                        case ValidateTokenResponseMethodResult.Invalid:
                             return false;
 
-                        case ValidateTokenResponse.MethodResult.Ok:
+                        case ValidateTokenResponseMethodResult.Ok:
                             return true;
 
-                        case ValidateTokenResponse.MethodResult.OtherError:
+                        case ValidateTokenResponseMethodResult.OtherError:
                             return false;
 
                         default:
@@ -258,7 +258,7 @@ namespace VenueMaker.Controllers
                     return false;
 
                 } // Haven't logged in yet
-                using (KwendaServiceClient cli = new KwendaServiceClient())
+                using (KwendaService cli = new KwendaService())
                 {
                     LoginRequest req = new LoginRequest();
                     req.Email = Email;
@@ -267,7 +267,7 @@ namespace VenueMaker.Controllers
 
                     LoginResponse res = cli.Login(req);
 
-                    if (res.Result == LoginResponse.MethodResult.Ok)
+                    if (res.Result == LoginResponseMethodResult.Ok)
                     {
                         Token = res.Token;
                         return true;
@@ -300,12 +300,13 @@ namespace VenueMaker.Controllers
 
                 } // Haven't logged in yet
 
-                using (KwendaServiceClient cli = new KwendaServiceClient())
+                using (KwendaService cli = new KwendaService())
                 {
                     LogoutRequest req = new LogoutRequest();
                     req.Email = Email;
                     req.Token = Token;
-                    bool result = cli.Logout(req);
+                    bool result, resspecified;
+                    cli.Logout(req, out result, out resspecified);
 
                     return result;
                     
@@ -326,7 +327,7 @@ namespace VenueMaker.Controllers
         {
             try
             {
-                using (KwendaServiceClient cli = new KwendaServiceClient())
+                using (KwendaService cli = new KwendaService())
                 {
                     string result = cli.Version();
 

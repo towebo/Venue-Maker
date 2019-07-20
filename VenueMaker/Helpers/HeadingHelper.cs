@@ -1,15 +1,21 @@
-﻿//using CoreLocation;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Kwenda;
+using Mawingu;
+#if __IOS__
+using CoreLocation;
+#endif
 
 namespace WayfindR.Helpers
 {
     public class HeadingHelper
     {
-        //private static CLLocationManager locmgr;
+#if __IOS__
+        private static CLLocationManager locmgr;
+#endif
 
         public enum ClockwizeDirection
         {
@@ -32,17 +38,19 @@ namespace WayfindR.Helpers
 
         public enum NaturalDirection
         {
+			Unknown = -1,
             StraightAhead = 0,
             SlightlyRight = 45,
             Right = 90,
-            SharpRight = 135,
+			HardRight = 135,
 
             SlightlyLeft = -45,
             Left = -90,
-            SharpLeft = -135,
+			HardLeft = -135,
 
             TurnAround = 180
         } // NaturalDirection
+
 
         public static string ClockwizeDirectionName(ClockwizeDirection direction)
         {
@@ -94,33 +102,100 @@ namespace WayfindR.Helpers
 
         }
 
+		public static string NaturalDirectionImageName(NaturalDirection direction, bool largeOne)
+		{
+			string result = string.Empty;
+			switch (direction)
+			{
+				case NaturalDirection.Unknown:
+					result = string.Empty;
+					break;
+
+				case NaturalDirection.StraightAhead:
+					result = "nav_forward";
+					break;
+
+				case NaturalDirection.SlightlyRight:
+					result = "nav_right_forward";
+					break;
+
+				case NaturalDirection.Right:
+					result = "nav_turn_right";
+					break;
+
+				case NaturalDirection.HardRight:
+					result = "nav_right_back";
+					break;
+
+				case NaturalDirection.TurnAround:
+					result = "nav_back";
+					break;
+
+				case NaturalDirection.HardLeft:
+					result = "nav_left_back";
+					break;
+
+				case NaturalDirection.Left:
+					result = "nav_turn_left";
+					break;
+
+				case NaturalDirection.SlightlyLeft:
+					result = "nav_left_forward";
+					break;
+
+				default:
+					throw new Exception(string.Format("Unknown natural direction {0}",
+				direction.ToString()
+				));
+
+			} // switch direction  }
+
+			if (!string.IsNullOrWhiteSpace(result))
+			{
+				if (largeOne)
+				{
+					result += "_xl";
+
+				} // xl
+
+				
+			} // result is not empty
+
+			return result;
+
+		}
+
+
         public static string NaturalDirectionName(NaturalDirection direction)
         {
             switch (direction)
             {
+				case NaturalDirection.Unknown:
+					return string.Empty;
+
                 case NaturalDirection.StraightAhead:
-                    return "Rakt fram";
+					return "Straight ahead".Translate();
 
                 case NaturalDirection.SlightlyRight:
-                    return "Svagt åt höger";
+					return "Slightly right".Translate();
 
                 case NaturalDirection.Right:
-                    return "Höger";
+					return "Right".Translate();
 
-                case NaturalDirection.SharpRight:
-                    return "Skarpt åt höger";
+                case NaturalDirection.HardRight:
+					return "Hard right".Translate();
 
                 case NaturalDirection.TurnAround:
-                    return "Vänd om";
+					return "Turn around".Translate();
 
-                case NaturalDirection.SharpLeft:
-                    return "Skarpt åt vänster";
+                case NaturalDirection.HardLeft:
+					return "Hard left".Translate();
 
                 case NaturalDirection.Left:
-                    return "Vänster";
+					return "Left".Translate();
 
                 case NaturalDirection.SlightlyLeft:
-                    return "Svagt åt vänster";
+					return "Slightly left".Translate();
 
                 default:
                     throw new Exception(string.Format("Unknown natural direction {0}",
@@ -131,8 +206,30 @@ namespace WayfindR.Helpers
 
         }
 
+
+		public static string NaturalDirectionTurnName(NaturalDirection direction)
+		{
+			if (direction == NaturalDirection.StraightAhead ||
+			    direction == NaturalDirection.TurnAround)
+			{
+				return NaturalDirectionName(direction);
+
+			}
+			else
+			{
+				return string.Format("Turn {0}".Translate(),
+				                     NaturalDirectionName(direction).ToLower()
+									);
+				
+			}
+
+		}
+
+
+
         public const int ClockwizeSector = 15;
         public const int NaturalSector = 23;
+
 
         public static int TurnHeading(int incomming, int outgoing)
         {
@@ -148,12 +245,38 @@ namespace WayfindR.Helpers
             Incomming 330
             Outgoing 60
             60 - 330 = -270
-            -270 + 180 = +90
+            < -180 = +
+            -270 + 180 = -90
+            
 
             Incomming 60
             Outgoing 330
             330 - 60 = +270
-            180 - 270 = -90
+            > +180 = -
+            +270 - 180 = +90
+            +360 - 270 = +90
+
+			Incomming 0
+			Outgoing 330
+			330 - 0 = +330
+			> +180 = -
+			+330 - 180 = +150
+			+360 - 330 = -30
+
+
+			Incomming 23
+			Outgoing 330
+			330 - 23 = 307
+			> +180 = -
+			+307 - 180 = +127
+			+360 - 307 = -23
+
+
+            Incomming 300
+            Outgoing 30
+            30 - 300 = -270
+            180 + -270 = -90
+
 
             Incomming 0
             Outgoing 270
@@ -166,20 +289,21 @@ namespace WayfindR.Helpers
 
             Incomming 300
             Outgoing 330
-            330 - 300 = + +30
+            330 - 300 = +30
 
             */
 
             int result = outgoing - incomming;
 
-            if (result < -180)
+            // > +180 = -
+            if (result > 180)
             {
-                result += 180;
+				result = -360 + result;
 
             }
-            else if (result > 180)
+            else if (result < -180)
             {
-                result = 180 - result;
+                result += 360;
 
             }
 
@@ -187,7 +311,8 @@ namespace WayfindR.Helpers
 
 
         } // TurnHeading      
-        
+
+
         public static bool InClockwizeSector(int value, ClockwizeDirection direction)
         {
             return value >= ((int)direction - ClockwizeSector) &&
@@ -273,9 +398,9 @@ namespace WayfindR.Helpers
             {
                 return NaturalDirection.Right;
             }
-            else if (InNaturalSector(headingDiff, NaturalDirection.SharpRight))
+            else if (InNaturalSector(headingDiff, NaturalDirection.HardRight))
             {
-                return NaturalDirection.SharpRight;
+                return NaturalDirection.HardRight;
             }
             else if (InNaturalSector(headingDiff, NaturalDirection.SlightlyLeft))
             {
@@ -285,9 +410,9 @@ namespace WayfindR.Helpers
             {
                 return NaturalDirection.Left;
             }
-            else if (InNaturalSector(headingDiff, NaturalDirection.SharpLeft))
+            else if (InNaturalSector(headingDiff, NaturalDirection.HardLeft))
             {
-                return NaturalDirection.SharpLeft;
+                return NaturalDirection.HardLeft;
             }
             else if (InNaturalSector(Math.Abs(headingDiff), NaturalDirection.TurnAround))
             {
@@ -300,29 +425,43 @@ namespace WayfindR.Helpers
                 ));
 
         } // NaturalTurn
-        
-        public static int CurrentHeading()
+
+
+        public static int CurrentHeading(int magneticOffset)
         {
-            /*
-            if (CLLocationManager.HeadingAvailable)
+            try
             {
-                if (locmgr == null)
+                int result = 0;
+
+#if __IOS__
+                if (CLLocationManager.HeadingAvailable)
                 {
-                    locmgr = new CLLocationManager();
-                    locmgr.StartUpdatingHeading();
+                    if (locmgr == null)
+                    {
+                        locmgr = new CLLocationManager();
+                        locmgr.StartUpdatingHeading();
 
-                }
+                    }
 
-                return Convert.ToInt16(
-                    Math.Round(locmgr.Heading.MagneticHeading)
-                );
+                    result = Convert.ToInt16(
+                        Math.Round(locmgr.Heading.MagneticHeading)
+                    );
+
+                } // Heading availible
+#elif __ANDROID__
+#warning Implement this
+#endif
+                result -= magneticOffset;
+                result = ValidHeading(result);
+                return result;
 
             }
-            */
+            catch (Exception ex)
+            {
+                LogCenter.Error("CurrentHeading", ex.Message);
+                return 0;
 
-            return 0;
-
-
+            }
 
 
         }
@@ -330,12 +469,12 @@ namespace WayfindR.Helpers
         public static int ValidHeading(int heading)
         {
             int result = heading;
-            if (result < 0)
+			while (result < 0)
             {
                 result += 360;
 
             }
-            else if (result >= 360)
+			while (result >= 360)
             {
                 result -= 360;
 

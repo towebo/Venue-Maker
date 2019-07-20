@@ -46,8 +46,8 @@ namespace WayfindR
             {
                 this.Text = Venue.Name;
 
-                NodesBS.DataSource = Venue.NodesGraph.GetNodesAlphabetical();
-                TargetNodesBS.DataSource = Venue.NodesGraph.GetNodesAlphabetical();
+                NodesBS.DataSource = Venue.NodesGraph.GetNodesAlphabetical(false);
+                TargetNodesBS.DataSource = Venue.NodesGraph.GetNodesAlphabetical(false);
                                 
 
                 SourceCB.DataSource = NodesBS;

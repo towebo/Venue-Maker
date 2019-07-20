@@ -51,7 +51,7 @@ namespace VenueMaker.Dialogs
         {
             try
             {
-                using (KwendaServiceClient cli = new KwendaServiceClient())
+                using (KwendaService cli = new KwendaService())
                 {
                     if (VerificationCodeLabel.Visible)
                     {
@@ -64,38 +64,38 @@ namespace VenueMaker.Dialogs
 
                             ChangePasswordResponse pwresp = cli.ChangePassword(pwreq);
 
-                            if (pwresp.Result == ChangePasswordResponse.MethodResult.AccountNotFound)
+                            if (pwresp.Result == ChangePasswordResponseMethodResult.AccountNotFound)
                             {
                                 //tmp MessageBox.Show("Kontot kunde inte hittas.", "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 MessageBox.Show(pwresp.Message, "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
 
                             }
-                            else if (pwresp.Result == ChangePasswordResponse.MethodResult.InvalidCode)
+                            else if (pwresp.Result == ChangePasswordResponseMethodResult.InvalidCode)
                             {
                                 MessageBox.Show("Den angivna koden stämmer inte.", "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
 
                             }
-                            else if (pwresp.Result == ChangePasswordResponse.MethodResult.CodeAlreadyUsed)
+                            else if (pwresp.Result == ChangePasswordResponseMethodResult.CodeAlreadyUsed)
                             {
                                 MessageBox.Show("Den angivna koden har redan använts.", "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
 
                             }
-                            else if (pwresp.Result == ChangePasswordResponse.MethodResult.CodeExpired)
+                            else if (pwresp.Result == ChangePasswordResponseMethodResult.CodeExpired)
                             {
                                 MessageBox.Show("Den angivna koden är för gammal.", "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
 
                             }
-                            else if (pwresp.Result == ChangePasswordResponse.MethodResult.OtherError)
+                            else if (pwresp.Result == ChangePasswordResponseMethodResult.OtherError)
                             {
                                 MessageBox.Show(pwresp.Message, "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
 
                             }
-                            else if (pwresp.Result == ChangePasswordResponse.MethodResult.Ok)
+                            else if (pwresp.Result == ChangePasswordResponseMethodResult.Ok)
                             {
                                 MessageBox.Show("Ditt lösenord har nu ändrats och du kommer loggas in.", "Lösenordet ändrat", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -109,7 +109,7 @@ namespace VenueMaker.Dialogs
                             vreq.Code = Convert.ToInt32(VerificationCodeTB.Text);
                             VerifyAccountResponse vres = cli.VerifyAccount(vreq);
 
-                            if (vres.Result == VerifyAccountResponse.MethodResult.Ok)
+                            if (vres.Result == VerifyAccountResponseMethodResult.Ok)
                             {
                                 VerificationCodeLabel.Visible = false;
                                 VerificationCodeTB.Visible = VerificationCodeLabel.Visible;
@@ -140,7 +140,7 @@ namespace VenueMaker.Dialogs
                     }
 
                     
-                    if (res.Result == LoginResponse.MethodResult.Ok)
+                    if (res.Result == LoginResponseMethodResult.Ok)
                     {
                         DataController.Me.Email = Item.Email;
                         DataController.Me.Password = Item.Password;
@@ -150,9 +150,11 @@ namespace VenueMaker.Dialogs
                         DialogResult = DialogResult.OK;
 
                     } // Ok
-                    else if (res.Result == LoginResponse.MethodResult.AccountNotVerified)
+                    else if (res.Result == LoginResponseMethodResult.AccountNotVerified)
                     {
-                        cli.RequestVerificationCode(Item.Email);
+                        bool theresult;
+                        bool resspecified;
+                        cli.RequestVerificationCode(Item.Email, out theresult, out resspecified);
                         MessageBox.Show(
                             "Ditt konto behöver verifieras och en verifikationskod har nu skickats till dig.",
                             "Information",
@@ -171,12 +173,13 @@ namespace VenueMaker.Dialogs
 
                     } // Not verified
 
-                    else if (res.Result == LoginResponse.MethodResult.InvalidCridentials)
+                    else if (res.Result == LoginResponseMethodResult.InvalidCridentials)
                     {
                         DialogResult dr = MessageBox.Show("Användarnamnet eller lösenordet är felaktigt. Har du glömt ditt lösenord?", "Felaktiga inloggningsuppgifter", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
                         if (DialogResult.Yes == dr)
                         {
-                            cli.RequestVerificationCode(Item.Email);
+                            bool callres, resspecified;
+                            cli.RequestVerificationCode(Item.Email, out callres, out resspecified);
                             MessageBox.Show(
                                 "En verifikationskod har nu skickats till dig som ska anges när du väljer ett nytt lösenord.",
                                 "Information",

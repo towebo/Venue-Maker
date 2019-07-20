@@ -119,18 +119,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Connected Services\Kwenda\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="Controllers\BeaconController.cs" />
+    <Compile Include="Kwenda\Controllers\BeaconController.cs" />
     <Compile Include="Controllers\DataController.cs" />
-    <Compile Include="Controllers\GraphController.cs" />
     <Compile Include="Controllers\LogCenter.cs" />
     <Compile Include="Controllers\RibbonController.cs" />
     <Compile Include="Controllers\SQLiteController.cs" />
-    <Compile Include="Controllers\VenueController.cs" />
     <Compile Include="Dialogs\ChangeBeaconForNodeDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -204,6 +197,7 @@
       <DependentUpon>SetPermissionsDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Helpers\AssemblyInfo.cs" />
+    <Compile Include="Helpers\StringTranslationsHelper.cs" />
     <Compile Include="Helpers\TextBoxBoundHelper.cs" />
     <Compile Include="Helpers\WaypointTypeHelper.cs" />
     <Compile Include="Helpers\FloorComparer.cs" />
@@ -212,39 +206,51 @@
     <Compile Include="Helpers\NumericStringHelper.cs" />
     <Compile Include="Helpers\TravelTypeHelper.cs" />
     <Compile Include="Helpers\VenueHelper.cs" />
-    <Compile Include="Models\BLEBeacon.cs" />
-    <Compile Include="Models\BLEBeaconwCache.cs" />
-    <Compile Include="Models\CacheFile.cs" />
+    <Compile Include="Kwenda\Controllers\DataController.cs" />
+    <Compile Include="Kwenda\Controllers\GraphController.cs" />
+    <Compile Include="Kwenda\Controllers\VenueController.cs" />
+    <Compile Include="Kwenda\Models\appMessages.cs" />
+    <Compile Include="Kwenda\Models\BLEBeacon.cs" />
+    <Compile Include="Kwenda\Models\BLEBeaconwCache.cs" />
+    <Compile Include="Kwenda\Models\CacheFile.cs" />
+    <Compile Include="Kwenda\Models\Preferences.cs" />
+    <Compile Include="Kwenda\Utils\HttpUtil.cs" />
     <Compile Include="Models\Constants.cs" />
     <Compile Include="Models\CreateAccountInfoModel.cs" />
-    <Compile Include="Models\DirectionsList.cs" />
+    <Compile Include="Kwenda\Models\DirectionsList.cs" />
     <Compile Include="Models\EdgeForPOI.cs" />
     <Compile Include="Models\InfoCategoryItem.cs" />
     <Compile Include="Models\LoginInfoModel.cs" />
     <Compile Include="Models\NewEdgeItem.cs" />
     <Compile Include="Models\NodesFilterItem.cs" />
+    <Compile Include="Kwenda\Models\POIInfoCategoryPreferences.cs" />
     <Compile Include="Models\Preferences.cs" />
-    <Compile Include="Models\RoutePreferences.cs" />
+    <Compile Include="Kwenda\Models\RoutePreferences.cs" />
     <Compile Include="Models\VenueVisibilityItem.cs" />
-    <Compile Include="Models\WFHeadingInfo.cs" />
-    <Compile Include="Models\CacheNodeBeacon.cs" />
-    <Compile Include="Models\WFEdge.cs" />
-    <Compile Include="Models\WFExit.cs" />
-    <Compile Include="Models\WFGraph.cs" />
-    <Compile Include="Models\WFMap.cs" />
-    <Compile Include="Models\WFMapEdge.cs" />
-    <Compile Include="Models\WFMapPoint.cs" />
-    <Compile Include="Models\WFNode.cs" />
-    <Compile Include="Models\WFPlattform.cs" />
-    <Compile Include="Models\WFPOIInformation.cs" />
-    <Compile Include="Models\WFPointOfInterest.cs" />
-    <Compile Include="Models\WFTravelType.cs" />
-    <Compile Include="Models\WFVenue.cs" />
-    <Compile Include="Models\WFWaypointType.cs" />
+    <Compile Include="Kwenda\Models\WFHeadingInfo.cs" />
+    <Compile Include="Kwenda\Models\CacheNodeBeacon.cs" />
+    <Compile Include="Kwenda\Models\WFEdge.cs" />
+    <Compile Include="Kwenda\Models\WFExit.cs" />
+    <Compile Include="Kwenda\Models\WFGraph.cs" />
+    <Compile Include="Kwenda\Models\WFMap.cs" />
+    <Compile Include="Kwenda\Models\WFMapEdge.cs" />
+    <Compile Include="Kwenda\Models\WFMapPoint.cs" />
+    <Compile Include="Kwenda\Models\WFNode.cs" />
+    <Compile Include="Kwenda\Models\WFPlattform.cs" />
+    <Compile Include="Kwenda\Models\WFPOIInformation.cs" />
+    <Compile Include="Kwenda\Models\WFPointOfInterest.cs" />
+    <Compile Include="Kwenda\Models\WFTravelType.cs" />
+    <Compile Include="Kwenda\Models\WFVenue.cs" />
+    <Compile Include="Kwenda\Models\WFWaypointType.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\HttpUtil.cs" />
     <Compile Include="Utils\TSVHelper.cs" />
+    <Compile Include="Web References\KwendaService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Dialogs\ChangeBeaconForNodeDialog.resx">
       <DependentUpon>ChangeBeaconForNodeDialog.cs</DependentUpon>
     </EmbeddedResource>
@@ -291,46 +297,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="Connected Services\Kwenda\KwendaService.wsdl" />
-    <None Include="Connected Services\Kwenda\kwendaservice.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\Kwenda\kwendaservice1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\Kwenda\kwendaservice2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\Kwenda\VenueMaker.Kwenda.ChangePasswordResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\Kwenda\VenueMaker.Kwenda.CreateAccountResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\Kwenda\VenueMaker.Kwenda.GetKwendaFileResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\Kwenda\VenueMaker.Kwenda.ListKwendaFilesResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\Kwenda\VenueMaker.Kwenda.LoginResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\Kwenda\VenueMaker.Kwenda.SetKwendaPermissionsResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\Kwenda\VenueMaker.Kwenda.UpdateAccountResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\Kwenda\VenueMaker.Kwenda.UpdateKwendaFileResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\Kwenda\VenueMaker.Kwenda.ValidateTokenResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\Kwenda\VenueMaker.Kwenda.VerifyAccountResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -344,21 +310,59 @@
     <EmbeddedResource Include="RibbonMarkup.ribbon">
       <DependentUpon>RibbonMarkup.xml</DependentUpon>
     </EmbeddedResource>
+    <None Include="Web References\KwendaService\ChangePasswordResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\KwendaService\CreateAccountResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\KwendaService\GetKwendaFileResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\KwendaService\KwendaService.wsdl" />
+    <None Include="Web References\KwendaService\kwendaservice.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\KwendaService\kwendaservice0.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\KwendaService\kwendaservice1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\KwendaService\ListKwendaFilesResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\KwendaService\LoginResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\KwendaService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\KwendaService\SetKwendaPermissionsResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\KwendaService\UpdateAccountResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\KwendaService\UpdateKwendaFileResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\KwendaService\ValidateTokenResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\KwendaService\VerifyAccountResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\Kwenda\kwendaservice.disco" />
-    <None Include="Connected Services\Kwenda\configuration91.svcinfo" />
-    <None Include="Connected Services\Kwenda\configuration.svcinfo" />
-    <None Include="Connected Services\Kwenda\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
     <Content Include="RibbonMarkup.xml" />
     <Content Include="kwenda_app_icon.ico" />
     <Content Include="Mawingu.ico" />
+    <None Include="Web References\KwendaService\kwendaservice.disco" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
@@ -379,7 +383,17 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\Kwenda\" />
+    <WebReferenceUrl Include="https://services.mawingu.se/kwenda/kwendaservice.svc">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\KwendaService\</RelPath>
+      <UpdateFromURL>https://services.mawingu.se/kwenda/kwendaservice.svc</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>VenueMaker_KwendaService_KwendaService</CachedSettingsPropName>
+    </WebReferenceUrl>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\SQLitePCLRaw.lib.e_sqlite3.linux.1.1.2\build\SQLitePCLRaw.lib.e_sqlite3.linux.targets" Condition="Exists('..\packages\SQLitePCLRaw.lib.e_sqlite3.linux.1.1.2\build\SQLitePCLRaw.lib.e_sqlite3.linux.targets')" />

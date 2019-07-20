@@ -178,7 +178,7 @@ namespace VenueMaker.Dialogs
                 Font f = new Font("Arial", 9);
 
 
-                foreach (WFNode n in Venue.NodesGraph.GetNodesAlphabetical())
+                foreach (WFNode n in Venue.NodesGraph.GetNodesAlphabetical(false))
                 {
                     Brush b = Brushes.ForestGreen;
 
