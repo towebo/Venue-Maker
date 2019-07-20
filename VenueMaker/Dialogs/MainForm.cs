@@ -661,17 +661,16 @@ namespace VenueMaker.Dialogs
 
                 bool didload = LoadVenueFromCloud();
 
-#if WITHADMINRIGHTS
-#else
-            return;
-#endif
-
                 if (didload)
                 {
                     SystemSounds.Asterisk.Play();
                     return;
 
                 } // Loaded from cloud
+
+#if !WITHADMINRIGHTS
+                return;
+#endif
 
                 if (OpenVenueDialog.ShowDialog() != DialogResult.OK)
                 {
