@@ -121,9 +121,7 @@
   <ItemGroup>
     <Compile Include="Kwenda\Controllers\BeaconController.cs" />
     <Compile Include="Controllers\DataController.cs" />
-    <Compile Include="Controllers\LogCenter.cs" />
     <Compile Include="Controllers\RibbonController.cs" />
-    <Compile Include="Controllers\SQLiteController.cs" />
     <Compile Include="Dialogs\ChangeBeaconForNodeDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -208,6 +206,9 @@
     <Compile Include="Helpers\VenueHelper.cs" />
     <Compile Include="Kwenda\Controllers\DataController.cs" />
     <Compile Include="Kwenda\Controllers\GraphController.cs" />
+    <Compile Include="Kwenda\Controllers\LogCenter.cs" />
+    <Compile Include="Kwenda\Controllers\NavEngine.cs" />
+    <Compile Include="Kwenda\Controllers\SQLiteController.cs" />
     <Compile Include="Kwenda\Controllers\VenueController.cs" />
     <Compile Include="Kwenda\Models\appMessages.cs" />
     <Compile Include="Kwenda\Models\BLEBeacon.cs" />

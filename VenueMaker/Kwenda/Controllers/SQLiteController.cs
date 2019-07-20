@@ -1,5 +1,6 @@
-﻿using SQLite;
-using WayfindR.Models;
+﻿using WayfindR.Models;
+using SQLite;
+using Kwenda;
 
 namespace WayfindR.Controllers
 {
@@ -11,9 +12,9 @@ namespace WayfindR.Controllers
 
         public SQLiteController()
         {
-            db = new SQLiteConnection(
-                @"C:\Users\karl-otto\Documents\src\graphmltest\Data\Data.db3"
-                );
+			db = new SQLiteConnection (
+				DataController.GetAppFile (AppFile.SQLiteDb)
+			);
 
             db.CreateTable<CacheFile>();
             db.CreateTable<CacheNodeBeacon>();
@@ -28,7 +29,7 @@ namespace WayfindR.Controllers
         {
             get
             {
-                if (me == null)
+				if (me == null)
                 {
                     me = new SQLiteController();
                 }

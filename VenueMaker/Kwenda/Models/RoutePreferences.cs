@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 using System.Xml.Serialization;
-using VenueMaker.Controllers;
+using Kwenda;
 
 namespace WayfindR.Models
 {
@@ -16,6 +16,8 @@ namespace WayfindR.Models
         public bool Stairs { get; set; }
         public bool GridStairs { get; set; }
         public bool Ladders { get; set; }
+        public bool RevolvingDoors { get; set; }
+        public bool ConfirmHeading { get; set; }
         
 
         public static RoutePreferences Me
@@ -38,6 +40,8 @@ namespace WayfindR.Models
             Escalators = true;
             Stairs = true;
             GridStairs = true;
+            Ladders = true;
+            ConfirmHeading = true;
 
         }
 
@@ -47,7 +51,7 @@ namespace WayfindR.Models
             RoutePreferences storedprefs;
             try
             {
-                string filename = "";// DataController.GetAppFile(AppFile.RoutePrefs);
+                string filename = DataController.GetAppFile(AppFile.RoutePrefs);
 
                 if (File.Exists(filename))
                 {
@@ -94,7 +98,7 @@ namespace WayfindR.Models
             {
                 RoutePreferences myprefs = Me;
 
-                string filename = ""; //tmp DataController.GetAppFile(AppFile.RoutePrefs);
+                string filename = DataController.GetAppFile(AppFile.RoutePrefs);
                 FileInfo fi = new FileInfo(filename);
                 if (fi.Exists)
                 {
@@ -102,10 +106,21 @@ namespace WayfindR.Models
                 } // Exists
 
                 XmlSerializer serializer = new XmlSerializer(typeof(RoutePreferences));
-                TextWriter textWriter = new StreamWriter(filename);
+                using (TextWriter textWriter = new StreamWriter(filename))
+                {
+                    try
+                    {
+                        serializer.Serialize(textWriter, myprefs);
+                        return myprefs;
 
-                serializer.Serialize(textWriter, myprefs);
-                return myprefs;
+                    }
+                    finally
+                    {
+                        textWriter.Close();
+
+
+                    }
+                } // using
 
             }
             catch (Exception e)
@@ -120,4 +135,5 @@ namespace WayfindR.Models
 
 
     }
+
 }
