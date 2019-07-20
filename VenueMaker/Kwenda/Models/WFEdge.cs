@@ -9,7 +9,9 @@ namespace WayfindR.Models
     {
         public string Id { get; set; }
 
-        
+        [XmlAttribute("guid")]
+        public string Guid { get; set; }
+
         [XmlAttribute("name")]
         public string Name { get; set; }
 
@@ -39,7 +41,6 @@ namespace WayfindR.Models
 
         [XmlAttribute("travel_type")]
         public string TravelType { get; set; }
-
 
         [XmlAttribute("map_points")]
         public string MapPointsStr { get; set; }
@@ -86,7 +87,8 @@ namespace WayfindR.Models
         public WFEdge(TVertex source, TVertex target, string id)
             : base(source, target)
         {
-            this.Id = id;
+            Id = id;
+            Guid = System.Guid.NewGuid().ToString();
 
         }
     }

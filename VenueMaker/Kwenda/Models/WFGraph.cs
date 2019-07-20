@@ -139,6 +139,14 @@ namespace WayfindR.Models
                 graphmlkeys.Add(new GraphMLKey()
                 {
                     Id = string.Format("d{0}", gkid++),
+                    Name = "guid",
+                    DataType = "string",
+                    ForType = "node",
+                    DefaultValue = ""
+                });
+                graphmlkeys.Add(new GraphMLKey()
+                {
+                    Id = string.Format("d{0}", gkid++),
                     Name = "uuid",
                     DataType = "string",
                     ForType = "node",
@@ -223,6 +231,14 @@ namespace WayfindR.Models
                     DataType = "string",
                     ForType = "node",
                     DefaultValue = ""
+                });
+                graphmlkeys.Add(new GraphMLKey()
+                {
+                    Id = string.Format("d{0}", gkid++),
+                    Name = "floor_ordinal",
+                    DataType = "int",
+                    ForType = "node",
+                    DefaultValue = "0"
                 });
                 graphmlkeys.Add(new GraphMLKey()
                 {
@@ -312,7 +328,6 @@ namespace WayfindR.Models
                     ForType = "node",
                     DefaultValue = ""
                 });
-
                 graphmlkeys.Add(new GraphMLKey()
                 {
                     Id = string.Format("d{0}", gkid++),
@@ -371,6 +386,14 @@ namespace WayfindR.Models
                 });
 
                 // Edge
+                graphmlkeys.Add(new GraphMLKey()
+                {
+                    Id = string.Format("d{0}", gkid++),
+                    Name = "guid",
+                    DataType = "string",
+                    ForType = "edge",
+                    DefaultValue = ""
+                });
                 graphmlkeys.Add(new GraphMLKey()
                 {
                     Id = string.Format("d{0}", gkid++),

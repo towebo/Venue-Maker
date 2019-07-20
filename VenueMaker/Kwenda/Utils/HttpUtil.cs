@@ -26,6 +26,7 @@ namespace Kwenda
 		private string url;
         private DateTime? filedate;
 		
+
 		public HttpClient ()//AppDelegate ad)
 		{
 		}
@@ -34,19 +35,21 @@ namespace Kwenda
 
 		public void DownloadFile (string aUrl, string aFileName, DateTime? fileDateToApply = null)
 		{
-			if (HttpClient.activedownloads == 0)
-			{
-				//tmp Application.NetActivity (true);
-			}
-
 			HttpClient.activedownloads++;
 
             filedate = fileDateToApply;
 			filename = aFileName;
 			url = aUrl;
             WebRequest request = WebRequest.Create(url);
-            
-			request.BeginGetResponse (FeedDownloaded, request);
+
+            try
+            {
+                request.BeginGetResponse(FeedDownloaded, request);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
             
 
         }

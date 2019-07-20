@@ -15,6 +15,7 @@ namespace WayfindR.Models
         private string graphml;
 
         public string Id { get; set; }
+        public string Guid { get; set; }
         public string Name { get; set; }
 
         public string Description { get; set; }
@@ -40,7 +41,6 @@ namespace WayfindR.Models
             }
         }
 
-
         public WFPlatform[] Platforms { get; set; }
 
         public WFExit[] Exits { get; set; }
@@ -53,6 +53,12 @@ namespace WayfindR.Models
 
         public WFMap[] Maps { get; set; }
 
+
+        public WFVenue()
+        {
+            Guid= System.Guid.NewGuid().ToString();
+        }
+
         public static WFVenue FromJson(string jsonData)
         {
             try
@@ -61,6 +67,13 @@ namespace WayfindR.Models
 
                 WFVenue result = new WFVenue();
                 result.Id = (string)jo["venue"]["id"];
+
+                string theguid = (string)jo["venue"]["guid"];
+                if (!string.IsNullOrWhiteSpace(theguid))
+                {
+                    result.Guid = theguid;
+                } // Stored Guid
+
                 result.Name = (string)jo["venue"]["name"];
                 result.Description = (string)jo["venue"]["description"];
                 result.Address = (string)jo["venue"]["address"];
@@ -180,6 +193,13 @@ namespace WayfindR.Models
                             {
                                 WFPOIInformation wfinfo = new WFPOIInformation();
 
+                                string infoguid = (string)jinfo["guid"];
+                                if (!string.IsNullOrWhiteSpace(infoguid))
+                                {
+                                    wfinfo.Guid = infoguid;
+
+                                } // Stored Guid
+                                
                                 wfinfo.Information = (string)jinfo["information"];
                                 wfinfo.Category = wfinfo.CategoryFromString(
                                     (string)jinfo["category"]
@@ -291,6 +311,8 @@ namespace WayfindR.Models
 
                     writer.WritePropertyName("id");
                     writer.WriteValue(Id);
+                    writer.WritePropertyName("guid");
+                    writer.WriteValue(Guid);
                     writer.WritePropertyName("name");
                     writer.WriteValue(Name);
                     writer.WritePropertyName("description");
@@ -422,6 +444,8 @@ namespace WayfindR.Models
                                 {
                                     writer.WriteStartObject();
 
+                                    writer.WritePropertyName("guid");
+                                    writer.WriteValue(wfpoinfo.Guid);
                                     writer.WritePropertyName("information");
                                     writer.WriteValue(wfpoinfo.Information);
                                     writer.WritePropertyName("category");
@@ -547,7 +571,6 @@ namespace WayfindR.Models
             }
         }
 
-
         public WFPointOfInterest POIFromBeacon(string uuid, int major, int minor)
         {
             try
@@ -578,7 +601,6 @@ namespace WayfindR.Models
             }
 
         }
-
 
         public void AddPOIsFromGraph(bool removeNonExisting)
         {
@@ -625,7 +647,8 @@ namespace WayfindR.Models
                     poi.DescriptiveName = node.DescriptiveName;
                     poi.Building = node.Building;
                     poi.Floor = node.Floor;
-                    
+                    poi.FloorOrdinal = node.FloorOrdinal;
+
                 } // foreach graph.node
 
                 if (PointsOfInterest != null)
@@ -682,7 +705,6 @@ namespace WayfindR.Models
             }
 
         }
-
 
     } // class
 

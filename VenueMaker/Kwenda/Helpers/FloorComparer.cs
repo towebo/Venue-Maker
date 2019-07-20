@@ -11,10 +11,31 @@ namespace WayfindR.Helpers
     {
         public int Compare(WFPointOfInterest a, WFPointOfInterest b)
         {
-            string floora = a.Floor;
-            string floorb = b.Floor;
+            int result = Compare(a.Building, b.Building);
+            if (result != 0)
+            {
+                return result;
 
-            int result = Compare(floora, floorb);
+            } // Building differs
+
+            int floora_ord = a.FloorOrdinal;
+            int floorb_ord = b.FloorOrdinal;
+
+            // Not set so use the string value instead.
+            if (0 == floora_ord &&
+                0 == floorb_ord)
+            {
+                string floora = a.Floor;
+                string floorb = b.Floor;
+
+                result = Compare(floora, floorb);
+
+            }
+            else
+            {
+                result = floora_ord - floorb_ord;
+
+            } // Compare floors
 
             if (result == 0)
             {
@@ -27,7 +48,25 @@ namespace WayfindR.Helpers
 
         public int Compare(WFNode a, WFNode b)
         {
-            int result = Compare(a.Floor, b.Floor);
+            int result = Compare(a.Building, b.Building);
+            if (result != 0)
+            {
+                return result;
+
+            } // Building differs
+
+            // Not set so use the string value instead
+            if (0 == a.FloorOrdinal &&
+                 0 == b.FloorOrdinal)
+            {
+                result = Compare(a.Floor, b.Floor);
+            }
+            else
+            {
+                result = a.FloorOrdinal - b.FloorOrdinal;
+
+            } // Compare floors
+
             if (result == 0)
             {
                 result = string.Compare(a.Name, b.Name);

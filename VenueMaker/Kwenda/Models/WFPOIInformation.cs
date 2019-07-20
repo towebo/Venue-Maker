@@ -21,6 +21,7 @@ namespace WayfindR.Models
 
     public class WFPOIInformation
     {
+        public string Guid { get; set; }
         public string Information { get; set; }
         public WFInfoCategory Category { get; set; }
         public string MediaFile { get; set; }
@@ -31,7 +32,11 @@ namespace WayfindR.Models
 
         public bool AlreadyAutoPlayed { get; set; }
 
+        public WFPOIInformation()
+        {
+            Guid = System.Guid.NewGuid().ToString();
 
+        }
 
         public WFInfoCategory[] GetAllCategories()
         {

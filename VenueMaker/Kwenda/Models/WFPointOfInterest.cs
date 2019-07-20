@@ -24,9 +24,10 @@ namespace WayfindR.Models
         public int BeaconMinor { get; set; }
         public string Building { get; set; }
         public string Floor { get; set; }
+        public int FloorOrdinal { get; set; }
 
 
-		public void ResetAutoPlayFlags()
+        public void ResetAutoPlayFlags()
 		{
 			if (this.Information == null)
 			{

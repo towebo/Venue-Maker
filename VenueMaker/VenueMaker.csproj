@@ -198,7 +198,6 @@
     <Compile Include="Helpers\StringTranslationsHelper.cs" />
     <Compile Include="Helpers\TextBoxBoundHelper.cs" />
     <Compile Include="Helpers\WaypointTypeHelper.cs" />
-    <Compile Include="Helpers\FloorComparer.cs" />
     <Compile Include="Helpers\HeadingHelper.cs" />
     <Compile Include="Helpers\KwendaServiceHelper.cs" />
     <Compile Include="Helpers\NumericStringHelper.cs" />
@@ -210,6 +209,8 @@
     <Compile Include="Kwenda\Controllers\NavEngine.cs" />
     <Compile Include="Kwenda\Controllers\SQLiteController.cs" />
     <Compile Include="Kwenda\Controllers\VenueController.cs" />
+    <Compile Include="Kwenda\Helpers\FloorComparer.cs" />
+    <Compile Include="Kwenda\Helpers\UrlHelper.cs" />
     <Compile Include="Kwenda\Models\appMessages.cs" />
     <Compile Include="Kwenda\Models\BLEBeacon.cs" />
     <Compile Include="Kwenda\Models\BLEBeaconwCache.cs" />
@@ -245,7 +246,6 @@
     <Compile Include="Kwenda\Models\WFWaypointType.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utils\HttpUtil.cs" />
     <Compile Include="Utils\TSVHelper.cs" />
     <Compile Include="Web References\KwendaService\Reference.cs">
       <AutoGen>True</AutoGen>

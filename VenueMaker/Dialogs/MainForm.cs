@@ -1,4 +1,4 @@
-﻿//#define WITHADMINRIGHTS
+﻿#define WITHADMINRIGHTS
 
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,7 +12,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using VenueMaker.Controllers;
-using VenueMaker.Utils;
 using WayfindR.Controllers;
 using WayfindR.Models;
 using VenueMaker.Helpers;
@@ -22,6 +21,7 @@ using WayfindR;
 using Mawingu;
 using VenueMaker.Kwenda;
 using Kwenda.Models;
+using Kwenda;
 
 namespace VenueMaker.Dialogs
 {
@@ -119,11 +119,11 @@ namespace VenueMaker.Dialogs
         {
             try
             {
-                Preferences.Load();
+                VenueMaker.Models.Preferences.Load();
 
-                if (!Directory.Exists(Preferences.Me.DataFolder))
+                if (!Directory.Exists(VenueMaker.Models.Preferences.Me.DataFolder))
                 {
-                    Directory.CreateDirectory(Preferences.Me.DataFolder);
+                    Directory.CreateDirectory(VenueMaker.Models.Preferences.Me.DataFolder);
 
                 } // Create folder for data files
 
@@ -870,7 +870,7 @@ namespace VenueMaker.Dialogs
                 await Task.Run(() =>
                 {
                     // Initialize the web service for better performance.
-                    svcver = DataController.Me.ServiceVersion();
+                    svcver = Controllers.DataController.Me.ServiceVersion();
 
                 }); // Task
 
@@ -1689,7 +1689,7 @@ namespace VenueMaker.Dialogs
                 Application.UseWaitCursor = true;
                 Application.DoEvents();
 
-                DataController.Me.LogOut();
+                Controllers.DataController.Me.LogOut();
 
             }
             catch (Exception ex)
@@ -1716,8 +1716,8 @@ namespace VenueMaker.Dialogs
 
                 if (!forceDialog)
                 {
-                    result = DataController.Me.IsTokenValid() ||
-                        DataController.Me.AutoLogin();
+                    result = Controllers.DataController.Me.IsTokenValid() ||
+                        Controllers.DataController.Me.AutoLogin();
 
                 } // Don't use the force Luke.
 
@@ -1728,7 +1728,7 @@ namespace VenueMaker.Dialogs
                     using (LoginDialog dlg = new LoginDialog())
                     {
                         dlg.Item = new LoginInfoModel();
-                        dlg.Item.Email = DataController.Me.Email;
+                        dlg.Item.Email = Controllers.DataController.Me.Email;
 
                         result = dlg.ShowDialog() == DialogResult.OK;
 
@@ -1998,8 +1998,8 @@ namespace VenueMaker.Dialogs
                 }
 
 
-                DataController.Me.UpdateKwendaFiles(
-                    DataController.Me.Token,
+                Controllers.DataController.Me.UpdateKwendaFiles(
+                    Controllers.DataController.Me.Token,
                     kfiles.ToArray()
                     );
 
@@ -2049,8 +2049,8 @@ namespace VenueMaker.Dialogs
                     fid.VenueId = sel.VenueId;
                     fid.FileName = sel.FileName;
 
-                    KwendaFileItem venuefile = DataController.Me.GetKwendaFile(
-                        DataController.Me.Token,
+                    KwendaFileItem venuefile = Controllers.DataController.Me.GetKwendaFile(
+                        Controllers.DataController.Me.Token,
                         fid
                         );
 
@@ -2070,8 +2070,8 @@ namespace VenueMaker.Dialogs
                     // Download missing files
                     string fldr = GetDataFilesFolder();
 
-                    var files = DataController.Me.ListFiles(
-                        DataController.Me.Token
+                    var files = Controllers.DataController.Me.ListFiles(
+                        Controllers.DataController.Me.Token
                         ).Where(w =>
                             w.VenueId == Venue.Id &&
                             w.FileExt.ToLower() != ".venue" &&
@@ -2079,8 +2079,13 @@ namespace VenueMaker.Dialogs
                         ).ToArray();
 
 
+
+                    
+
                     foreach (var f in files)
                     {
+                        Application.DoEvents();
+
                         string localfile = Path.Combine(fldr, f.FileName);
                         FileInfo fi = new FileInfo(localfile);
                         if (!fi.Exists ||
@@ -2088,11 +2093,9 @@ namespace VenueMaker.Dialogs
                             fi.LastWriteTimeUtc < f.LastModified)
                             )
                         {
-                            string remotefile = Path.Combine(
-                                DataController.RemoteFileUrl,
-                                f.VenueId,
-                                f.FileName
-                                );
+                            string remotefile = Controllers.DataController.RemoteFileUrl
+                                .AddToUrl(f.VenueId)
+                                .AddToUrl(f.FileName);
 
                             HttpClient cli = new HttpClient();
                             cli.DownloadFile(
@@ -2103,7 +2106,7 @@ namespace VenueMaker.Dialogs
                         } // Need to be downloaded
 
                     } // foreach file
-
+                    
 
                     while (HttpClient.ActiveDownloads > 0)
                     {
@@ -2136,15 +2139,15 @@ namespace VenueMaker.Dialogs
         {
             try
             {
-                DataFolderDialog.SelectedPath = Preferences.Me.DataFolder;
+                DataFolderDialog.SelectedPath = VenueMaker.Models.Preferences.Me.DataFolder;
                 if (DialogResult.OK != DataFolderDialog.ShowDialog())
                 {
                     return;
 
                 } // Cancelled
 
-                Preferences.Me.DataFolder = DataFolderDialog.SelectedPath;
-                Preferences.Me.Save();
+                VenueMaker.Models.Preferences.Me.DataFolder = DataFolderDialog.SelectedPath;
+                VenueMaker.Models.Preferences.Me.Save();
 
             }
             catch (Exception ex)
@@ -2158,7 +2161,7 @@ namespace VenueMaker.Dialogs
         public string GetDataFilesFolder()
         {
             string folder = Path.Combine(
-                Preferences.Me.DataFolder,
+                VenueMaker.Models.Preferences.Me.DataFolder,
                 Venue.Id
                 );
 

@@ -14,12 +14,14 @@ namespace WayfindR.Models
         [XmlAttribute("id")]
         public string Id { get; set; }
 
+        [XmlAttribute("guid")]
+        public string Guid { get; set; }
+
         [XmlAttribute("venue_id")]
         public string VenueId { get; set; }
 
         [XmlAttribute("uuid")]
         public string Uuid { get; set; }
-
 
         [XmlAttribute("major")]
         public int Major { get; set; }
@@ -80,7 +82,6 @@ namespace WayfindR.Models
         [XmlAttribute("in_range_accuracy")]
         public double? InRangeAccuracy { get; set; }
         
-
         [XmlAttribute("in_range_message")]
         public string InRangeMessage { get; set; }
         
@@ -97,7 +98,6 @@ namespace WayfindR.Models
         [XmlAttribute("close_by_message")]
         public string CloseByMessage { get; set; }
 
-
         [XmlAttribute("gpscoordinates")]
         public string GPSCoordinates { get; set; }
 
@@ -109,6 +109,9 @@ namespace WayfindR.Models
         
         [XmlAttribute("floor")]
         public string Floor { get; set; }
+
+        [XmlAttribute("floor_ordinal")]
+        public int FloorOrdinal { get; set; }
 
         [XmlAttribute("department")]
         public string Department { get; set; }
@@ -185,6 +188,7 @@ namespace WayfindR.Models
 
         public WFNode(string id)
         {
+            Guid = System.Guid.NewGuid().ToString();
             hinfos = new List<WFHeadingInfo>();
             this.Id = id;
 
@@ -199,7 +203,6 @@ namespace WayfindR.Models
             return true;
                 
         }
-
 
         private string GetHeadingInfo(int idx)
         {
