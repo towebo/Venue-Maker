@@ -82,8 +82,7 @@ namespace VenueMaker.Dialogs
                 RibbonController.Me.Button(RibbonMarkupCommands.ButtonNodeDelete).ExecuteEvent += (s17, e17) => DeleteNode();
                 RibbonController.Me.Button(RibbonMarkupCommands.ButtonNodeImport).ExecuteEvent += (s18, e18) => ImportBeacons();
                 RibbonController.Me.Button(RibbonMarkupCommands.ButtonNodePinOnMap).ExecuteEvent += (s32, e32) => PinNodeOnMap();
-                RibbonController.Me.Button(RibbonMarkupCommands.ButtonNodeChangeBeaconForNode).ExecuteEvent += (s33, e33) => ChangeBeaconForNode();
-
+                
 
                 // Directions
                 RibbonController.Me.Button(RibbonMarkupCommands.ButtonViewDirections).ExecuteEvent += (s19, e19) => SwitchToTab(EdgesTab);
@@ -231,32 +230,32 @@ namespace VenueMaker.Dialogs
                 }; // Current Changed
 
                 POIsLB.DataSource = POIsBS;
-                POIsLB.DisplayMember = "TextInList";
-                POIsLB.ValueMember = "Name";
+                POIsLB.DisplayMember = nameof(WFPointOfInterest.TextInList);
+                POIsLB.ValueMember = nameof(WFPointOfInterest.Guid);
 
 
                 POIInfosBS.DataSource = new WFPOIInformation[] { };
 
-
                 POIInfosLB.DataSource = POIInfosBS;
-                POIInfosLB.DisplayMember = "Information";
-                POIInfosLB.ValueMember = "Information";
-                POIInformationTB.DataBindings.Add("Text", POIInfosBS, "Information");
-                POIInfoStartsTB.DataBindings.Add("Text", POIInfosBS, "StartsAt", true, DataSourceUpdateMode.OnValidation);
+                POIInfosLB.DisplayMember = nameof(WFPOIInformation.Information);
+                POIInfosLB.ValueMember = nameof(WFPOIInformation.Guid);
+                
+                POIInformationTB.DataBindings.Add("Text", POIInfosBS, nameof(WFPOIInformation.Information));
+                POIInfoStartsTB.DataBindings.Add("Text", POIInfosBS, nameof(WFPOIInformation.StartsAt), true, DataSourceUpdateMode.OnValidation);
                 POIInfoStartsTB.AllowEmptyValue();
-                POIInfoEndsTB.DataBindings.Add("Text", POIInfosBS, "EndsAt", true, DataSourceUpdateMode.OnPropertyChanged);
+                POIInfoEndsTB.DataBindings.Add("Text", POIInfosBS, nameof(WFPOIInformation.EndsAt), true, DataSourceUpdateMode.OnPropertyChanged);
                 POIInfoEndsTB.AllowEmptyValue();
-                MediaFileTB.DataBindings.Add("Text", POIInfosBS, "MediaFile");
-                MediaDescrTB.DataBindings.Add("Text", POIInfosBS, "MediaDescription");
-                AutoPlayMediaCB.DataBindings.Add("Checked", POIInfosBS, "AutoPlayMedia");
+                MediaFileTB.DataBindings.Add("Text", POIInfosBS, nameof(WFPOIInformation.MediaFile));
+                MediaDescrTB.DataBindings.Add("Text", POIInfosBS, nameof(WFPOIInformation.MediaDescription));
+                AutoPlayMediaCB.DataBindings.Add("Checked", POIInfosBS, nameof(WFPOIInformation.AutoPlayMedia));
 
                 POIInfosBS.CurrentChanged += POIInfosBS_CurrentChanged1;
 
 
                 POIInfoCatCombo.DataSource = InfoCategoryItem.GetAll();
-                POIInfoCatCombo.DisplayMember = "Name";
-                POIInfoCatCombo.ValueMember = "Category";
-                POIInfoCatCombo.DataBindings.Add("SelectedValue", POIInfosBS, "Category");
+                POIInfoCatCombo.DisplayMember = nameof(InfoCategoryItem.Name);
+                POIInfoCatCombo.ValueMember = nameof(InfoCategoryItem.Category);
+                POIInfoCatCombo.DataBindings.Add("SelectedValue", POIInfosBS, nameof(WFPOIInformation.Category));
 
                 ElevatorsBS.DataSource = new WFNode[] { };
                 ElevatorsLB.DataSource = ElevatorsBS;
@@ -270,11 +269,15 @@ namespace VenueMaker.Dialogs
                     WFPointOfInterest p = EdgesPOIsBS.Current as WFPointOfInterest;
                     if (p != null)
                     {
+                        WFNode node = p.LinkedNode;
+#warning Delete this when it works.
+                        /*tmp
                         WFNode node = Venue.NodesGraph.FindNode(
                             p.BeaconUuid,
                             p.BeaconMajor,
                             p.BeaconMinor
                             );
+                        */
                         if (node != null)
                         {
                             var nodeedges = Venue.NodesGraph.GetEdgesFor(node);
@@ -301,8 +304,8 @@ namespace VenueMaker.Dialogs
                 }; // Current Changed
 
                 EdgesPOIsLB.DataSource = EdgesPOIsBS;
-                EdgesPOIsLB.DisplayMember = "TextInList";
-                EdgesPOIsLB.ValueMember = "Name";
+                EdgesPOIsLB.DisplayMember = nameof(WFPointOfInterest.TextInList);
+                EdgesPOIsLB.ValueMember = nameof(WFPointOfInterest.Guid);
 
                 EdgesForPOIBS.DataSource = new EdgeForPOI[] { };
                 EdgesForPOIBS.CurrentChanged += (s4, e4) =>
@@ -1213,11 +1216,15 @@ namespace VenueMaker.Dialogs
                 WFPointOfInterest psrc = EdgesPOIsBS.Current as WFPointOfInterest;
                 if (psrc != null)
                 {
+                    nei.Source = psrc.LinkedNode;
+#warning Delete when it works.
+                    /*tmp
                     nei.Source = Venue.NodesGraph.FindNode(
                         psrc.BeaconUuid,
                         psrc.BeaconMajor,
                         psrc.BeaconMinor
                         );
+                    */
                     nei.Target = nei.Source;
 
                 } // Not null
@@ -2454,68 +2461,7 @@ namespace VenueMaker.Dialogs
 
             }
         }
-
-        private void ChangeBeaconForNode()
-        {
-            try
-            {
-                using (ChangeBeaconForNodeDialog dlg = new ChangeBeaconForNodeDialog())
-                {
-                    WFNode node = NodesBS.Current as WFNode;
-                    if (node == null)
-                    {
-                        throw new Exception("Ingen fyr vald.");
-                        
-                    } // Null
-
-                    dlg.Info.Uuid = node.Uuid;
-                    dlg.Info.Major = node.Major;
-                    dlg.Info.Minor = node.Minor;
-
-                    if (DialogResult.OK != dlg.ShowDialog())
-                    {
-                        return;
-
-                    } // User cancelled
-
-                    Application.UseWaitCursor = true;
-                    Application.DoEvents();
-
-                    // Do the real work
-                    Venue.PointsOfInterest.Where(w =>
-                        w.BeaconUuid == node.Uuid &&
-                        w.BeaconMajor == node.Major &&
-                        w.BeaconMinor == node.Minor
-                    ).ToList().ForEach(w =>
-                    {
-                        w.BeaconUuid = dlg.Info.Uuid;
-                        w.BeaconMajor = dlg.Info.Major;
-                        w.BeaconMinor = dlg.Info.Minor;
-
-                    });
-
-                    node.Uuid = dlg.Info.Uuid;
-                    node.Major = dlg.Info.Major;
-                    node.Minor = dlg.Info.Minor;
-
-                    SystemSounds.Asterisk.Play();
-
-                } // using
-
-            }
-            catch (Exception ex)
-            {
-                string errmsg = $"Fel när fyr skulle bytas på nod: {ex.Message}";
-                MessageBox.Show(errmsg, "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-            }
-            finally
-            {
-                Application.UseWaitCursor = false;
-
-            }
-        }
-
+                
         private void MapPB_Paint(object sender, PaintEventArgs e)
         {
             try

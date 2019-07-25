@@ -8,6 +8,9 @@ namespace WayfindR.Models
 {
     public class WFPointOfInterest
     {
+        private WFNode linkednode;
+
+
         public enum POICategory
         {
             General,
@@ -17,48 +20,34 @@ namespace WayfindR.Models
         } // enum
 
         public string Guid { get; set; }
-
-        public string Name { get; set; }
-        public string DescriptiveName { get; set; }
-
         public string BeaconGuid { get; set; }
-        public string BeaconUuid { get; set; }
-        public int BeaconMajor { get; set; }
-        public int BeaconMinor { get; set; }
-        public string Building { get; set; }
-        public string Floor { get; set; }
-        public int FloorOrdinal { get; set; }
+        public POICategory Category { get; set; }
+        public WFPOIInformation[] Information { get; set; }
 
-
-        public void ResetAutoPlayFlags()
-		{
-			if (this.Information == null)
-			{
-				return;
-
-			} // No information
-
-			foreach (WFPOIInformation poii in this.Information)
-			{
-				poii.AlreadyAutoPlayed = false;
-
-			} // forea   }
-
-		}
+        public WFNode LinkedNode
+        {
+            get { return linkednode; }
+        } // LinkedNode
 
         public string TextInList
         {
             get
             {
-                StringBuilder result = new StringBuilder();
-                if (!string.IsNullOrWhiteSpace(Floor))
+                if (linkednode == null)
                 {
-                    result.Append($"{Floor} - {Name}");
+                    return this.Guid;
+
+                } // Not linked
+
+                StringBuilder result = new StringBuilder();
+                if (!string.IsNullOrWhiteSpace(LinkedNode.Floor))
+                {
+                    result.Append($"{LinkedNode.Floor} - {LinkedNode.Name}");
 
                 }
                 else
                 {
-                    result.Append(Name);
+                    result.Append(LinkedNode.Name);
 
                 }
 
@@ -67,12 +56,7 @@ namespace WayfindR.Models
             }
 
         }
-
         
-        public POICategory Category { get; set; }
-
-        public WFPOIInformation[] Information { get; set; }
-
 
         public WFPointOfInterest()
         {
@@ -123,6 +107,30 @@ namespace WayfindR.Models
             return result;
 
         }
+
+        public void LinkTo(WFNode node)
+        {
+            linkednode = node;
+            BeaconGuid = linkednode.Guid;
+
+        }
+
+        public void ResetAutoPlayFlags()
+        {
+            if (this.Information == null)
+            {
+                return;
+
+            } // No information
+
+            foreach (WFPOIInformation poii in this.Information)
+            {
+                poii.AlreadyAutoPlayed = false;
+
+            } // forea   }
+
+        }
+
 
     }
 }

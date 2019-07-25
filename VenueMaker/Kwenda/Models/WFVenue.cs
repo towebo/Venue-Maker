@@ -181,18 +181,10 @@ namespace WayfindR.Models
                             wfpoi.Guid = poi_guid;
 
                         } // Guid exists
-                        wfpoi.Name = (string)jpoi["name"];
-                        wfpoi.DescriptiveName = (string)jpoi["descriptive_name"];
-
                         wfpoi.BeaconGuid = (string)jpoi["beacon_guid"];
-
-                        wfpoi.BeaconUuid = (string)jpoi["beacon_uuid"];
-                        wfpoi.BeaconMajor = (int)jpoi["beacon_major"];
-                        wfpoi.BeaconMinor = (int)jpoi["beacon_minor"];
 
                         string cat = (string)jpoi["category"];
 						wfpoi.Category = WFPointOfInterest.CategoryFromString(cat);
-
 
                         try
                         {
@@ -276,6 +268,25 @@ namespace WayfindR.Models
                 {
                     // No maps
                 }
+
+                // Link the POIs to their nodes.
+                if (result.PointsOfInterest != null &&
+                    result.PointsOfInterest.Any())
+                {
+                    foreach (WFPointOfInterest poi in result.PointsOfInterest)
+                    {
+                        WFNode node = result.NodesGraph.Vertices.Where(w =>
+                            w.Guid == poi.BeaconGuid
+                        ).FirstOrDefault();
+                        if (node != null)
+                        {
+                            poi.LinkTo(node);
+
+                        }
+
+                    } // foreach poi
+
+                } // Has POIs
 
                 return result;
 
@@ -431,19 +442,8 @@ namespace WayfindR.Models
 
                             writer.WritePropertyName("guid");
                             writer.WriteValue(wfpoi.Guid);
-                            writer.WritePropertyName("name");
-                            writer.WriteValue(wfpoi.Name);
-                            writer.WritePropertyName("descriptive_name");
-                            writer.WriteValue(wfpoi.DescriptiveName);
-
                             writer.WritePropertyName("beacon_guid");
                             writer.WriteValue(wfpoi.BeaconGuid);
-                            writer.WritePropertyName("beacon_uuid");
-                            writer.WriteValue(wfpoi.BeaconUuid);
-                            writer.WritePropertyName("beacon_major");
-                            writer.WriteValue(wfpoi.BeaconMajor);
-                            writer.WritePropertyName("beacon_minor");
-                            writer.WriteValue(wfpoi.BeaconMinor);
                             writer.WritePropertyName("category");
                             writer.WriteValue(wfpoi.Category.ToString().ToLower());
 
@@ -597,9 +597,10 @@ namespace WayfindR.Models
                 WFPointOfInterest poi = (
                     from x in PointsOfInterest
                     where 
-                        x.BeaconUuid .ToLower() == uuid.ToLower() && 
-                        x.BeaconMajor == major && 
-                        x.BeaconMinor == minor
+                        x.LinkedNode != null &&
+                        x.LinkedNode.Uuid .ToLower() == uuid.ToLower() && 
+                        x.LinkedNode.Major == major && 
+                        x.LinkedNode.Minor == minor
                     select x
                     ).FirstOrDefault();
 
@@ -655,6 +656,8 @@ namespace WayfindR.Models
                 } // No graph
 
                 // Mark all pois as not touched.
+#warning Is this really necessary?
+                /*tmp
                 if (PointsOfInterest != null)
                 {
                     foreach (WFPointOfInterest poi in PointsOfInterest)
@@ -664,6 +667,7 @@ namespace WayfindR.Models
                     } // foreach poi
 
                 } // Has pois
+                */
 
 
                 List<WFPointOfInterest> newpois = new List<WFPointOfInterest>();
@@ -673,22 +677,12 @@ namespace WayfindR.Models
                     if (poi == null)
                     {
                         poi = new WFPointOfInterest();
-
-                        poi.BeaconGuid = node.Guid;
-                        poi.BeaconUuid = node.Uuid;
-                        poi.BeaconMajor = node.Major;
-                        poi.BeaconMinor = node.Minor;
-
+                        poi.LinkTo(node);
+                        
                         newpois.Add(poi);
 
                     }
                     
-                    poi.Name = node.Name;
-                    poi.DescriptiveName = node.DescriptiveName;
-                    poi.Building = node.Building;
-                    poi.Floor = node.Floor;
-                    poi.FloorOrdinal = node.FloorOrdinal;
-
                 } // foreach graph.node
 
                 if (PointsOfInterest != null)
@@ -699,7 +693,7 @@ namespace WayfindR.Models
                     if (removeNonExisting)
                     {
                         PointsOfInterest = allpois.Where(w =>
-                            !w.Name.StartsWith("***")
+                            !w.BeaconGuid.StartsWith("***")
                         ).ToArray();
 
                     }

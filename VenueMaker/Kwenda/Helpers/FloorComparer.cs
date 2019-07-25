@@ -11,22 +11,29 @@ namespace WayfindR.Helpers
     {
         public int Compare(WFPointOfInterest a, WFPointOfInterest b)
         {
-            int result = Compare(a.Building, b.Building);
+            if (a.LinkedNode == null ||
+                b.LinkedNode == null)
+            {
+                return 0;
+
+            } // Somethings wrong
+
+            int result = Compare(a.LinkedNode.Building, b.LinkedNode.Building);
             if (result != 0)
             {
                 return result;
 
             } // Building differs
 
-            int floora_ord = a.FloorOrdinal;
-            int floorb_ord = b.FloorOrdinal;
+            int floora_ord = a.LinkedNode.FloorOrdinal;
+            int floorb_ord = b.LinkedNode.FloorOrdinal;
 
             // Not set so use the string value instead.
             if (0 == floora_ord &&
                 0 == floorb_ord)
             {
-                string floora = a.Floor;
-                string floorb = b.Floor;
+                string floora = a.LinkedNode.Floor;
+                string floorb = b.LinkedNode.Floor;
 
                 result = Compare(floora, floorb);
 
@@ -39,7 +46,7 @@ namespace WayfindR.Helpers
 
             if (result == 0)
             {
-                result = string.Compare(a.Name, b.Name);
+                result = string.Compare(a.LinkedNode.Name, b.LinkedNode.Name);
 
             } // Same floor
 
