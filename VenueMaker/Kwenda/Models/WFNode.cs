@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Xml.Serialization;
 
 namespace WayfindR.Models
@@ -137,22 +138,30 @@ namespace WayfindR.Models
         {
             get
             {
+                StringBuilder result = new StringBuilder();
+
                 if (!string.IsNullOrWhiteSpace(this.Floor))
                 {
-                    return string.Format("{0} - {1}",
-                        this.Floor,
-                        this.Name
-                        );
+                    result.Append($"{Floor} - {Name}");
+
                 }
                 else
                 {
-                    return this.Name;
+                    result.Append(this.Name);
 
                 }
-            }
 
+                if (!string.IsNullOrWhiteSpace(this.IdTag))
+                {
+                    result.Append($"({this.IdTag})");
 
-        }
+                } // Has IdTag
+
+                return result.ToString();
+
+            } // get
+
+        } // TextInList
 
         public WFHeadingInfo[] HeadingInfos
         {

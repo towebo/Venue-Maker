@@ -16,9 +16,12 @@ namespace WayfindR.Models
 
         } // enum
 
+        public string Guid { get; set; }
+
         public string Name { get; set; }
         public string DescriptiveName { get; set; }
 
+        public string BeaconGuid { get; set; }
         public string BeaconUuid { get; set; }
         public int BeaconMajor { get; set; }
         public int BeaconMinor { get; set; }
@@ -47,20 +50,22 @@ namespace WayfindR.Models
         {
             get
             {
+                StringBuilder result = new StringBuilder();
                 if (!string.IsNullOrWhiteSpace(Floor))
                 {
-                    return string.Format("{0} - {1}",
-                        Floor,
-                        Name
-                        );
+                    result.Append($"{Floor} - {Name}");
+
+                }
+                else
+                {
+                    result.Append(Name);
 
                 }
 
-                return string.Format("{0} ({1})",
-                    Name,
-                    BeaconMinor
-                    );
+                return result.ToString();
+
             }
+
         }
 
         
@@ -68,6 +73,12 @@ namespace WayfindR.Models
 
         public WFPOIInformation[] Information { get; set; }
 
+
+        public WFPointOfInterest()
+        {
+            Guid = System.Guid.NewGuid().ToString();
+
+        }
 
         public static POICategory CategoryFromString(string catName)
         {

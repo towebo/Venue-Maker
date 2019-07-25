@@ -68,10 +68,10 @@ namespace WayfindR.Models
                 WFVenue result = new WFVenue();
                 result.Id = (string)jo["venue"]["id"];
 
-                string theguid = (string)jo["venue"]["guid"];
-                if (!string.IsNullOrWhiteSpace(theguid))
+                string vnu_guid = (string)jo["venue"]["guid"];
+                if (!string.IsNullOrWhiteSpace(vnu_guid))
                 {
-                    result.Guid = theguid;
+                    result.Guid = vnu_guid;
                 } // Stored Guid
 
                 result.Name = (string)jo["venue"]["name"];
@@ -173,9 +173,18 @@ namespace WayfindR.Models
                     List<WFPointOfInterest> wfpois = new List<WFPointOfInterest>();
                     foreach (var jpoi in jpois)
                     {
-                        WFPointOfInterest wfpoi = new WFPointOfInterest();                        
+                        WFPointOfInterest wfpoi = new WFPointOfInterest();
+
+                        string poi_guid = (string)jpoi["guid"];
+                        if (!string.IsNullOrWhiteSpace(poi_guid))
+                        {
+                            wfpoi.Guid = poi_guid;
+
+                        } // Guid exists
                         wfpoi.Name = (string)jpoi["name"];
                         wfpoi.DescriptiveName = (string)jpoi["descriptive_name"];
+
+                        wfpoi.BeaconGuid = (string)jpoi["beacon_guid"];
 
                         wfpoi.BeaconUuid = (string)jpoi["beacon_uuid"];
                         wfpoi.BeaconMajor = (int)jpoi["beacon_major"];
@@ -193,10 +202,10 @@ namespace WayfindR.Models
                             {
                                 WFPOIInformation wfinfo = new WFPOIInformation();
 
-                                string infoguid = (string)jinfo["guid"];
-                                if (!string.IsNullOrWhiteSpace(infoguid))
+                                string poii_guid = (string)jinfo["guid"];
+                                if (!string.IsNullOrWhiteSpace(poii_guid))
                                 {
-                                    wfinfo.Guid = infoguid;
+                                    wfinfo.Guid = poii_guid;
 
                                 } // Stored Guid
                                 
@@ -268,9 +277,7 @@ namespace WayfindR.Models
                     // No maps
                 }
 
-
                 return result;
-
 
             }
             catch (Exception ex)
@@ -422,10 +429,15 @@ namespace WayfindR.Models
                         {
                             writer.WriteStartObject();
 
+                            writer.WritePropertyName("guid");
+                            writer.WriteValue(wfpoi.Guid);
                             writer.WritePropertyName("name");
                             writer.WriteValue(wfpoi.Name);
                             writer.WritePropertyName("descriptive_name");
                             writer.WriteValue(wfpoi.DescriptiveName);
+
+                            writer.WritePropertyName("beacon_guid");
+                            writer.WriteValue(wfpoi.BeaconGuid);
                             writer.WritePropertyName("beacon_uuid");
                             writer.WriteValue(wfpoi.BeaconUuid);
                             writer.WritePropertyName("beacon_major");
@@ -602,6 +614,37 @@ namespace WayfindR.Models
 
         }
 
+        public WFPointOfInterest POIFromBeacon(string guid)
+        {
+            try
+            {
+                if (PointsOfInterest == null ||
+                    PointsOfInterest.Length == 0)
+                {
+                    return null;
+
+                }
+
+                WFPointOfInterest poi = (
+                    from x in PointsOfInterest
+                    where
+                        !string.IsNullOrWhiteSpace(x.BeaconGuid) &&
+                        x.BeaconGuid.ToLower() == guid.ToLower()
+                    select x
+                    ).FirstOrDefault();
+
+                return poi;
+
+            }
+            catch
+            {
+                throw;
+
+            }
+
+        }
+
+
         public void AddPOIsFromGraph(bool removeNonExisting)
         {
             try
@@ -626,15 +669,12 @@ namespace WayfindR.Models
                 List<WFPointOfInterest> newpois = new List<WFPointOfInterest>();
                 foreach (WFNode node in NodesGraph.Vertices)
                 {
-                    WFPointOfInterest poi = POIFromBeacon(
-                        node.Uuid,
-                        node.Major,
-                        node.Minor
-                        );
-
+                    WFPointOfInterest poi = POIFromBeacon(node.Guid);
                     if (poi == null)
                     {
                         poi = new WFPointOfInterest();
+
+                        poi.BeaconGuid = node.Guid;
                         poi.BeaconUuid = node.Uuid;
                         poi.BeaconMajor = node.Major;
                         poi.BeaconMinor = node.Minor;
@@ -642,7 +682,7 @@ namespace WayfindR.Models
                         newpois.Add(poi);
 
                     }
-
+                    
                     poi.Name = node.Name;
                     poi.DescriptiveName = node.DescriptiveName;
                     poi.Building = node.Building;
