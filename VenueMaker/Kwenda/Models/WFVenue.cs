@@ -447,6 +447,22 @@ namespace WayfindR.Models
                             writer.WritePropertyName("category");
                             writer.WriteValue(wfpoi.Category.ToString().ToLower());
 
+                            // Backwards compatibility with the app
+                            if (wfpoi.LinkedNode != null)
+                            {
+                                writer.WritePropertyName("name");
+                                writer.WriteValue(wfpoi.LinkedNode.Name);
+                                writer.WritePropertyName("descriptive_name");
+                                writer.WriteValue(wfpoi.LinkedNode.DescriptiveName);
+                                writer.WritePropertyName("beacon_uuid");
+                                writer.WriteValue(wfpoi.LinkedNode.Uuid);
+                                writer.WritePropertyName("beacon_major");
+                                writer.WriteValue(wfpoi.LinkedNode.Major);
+                                writer.WritePropertyName("beacon_minor");
+                                writer.WriteValue(wfpoi.LinkedNode.Minor);
+
+                            } // Has linked node
+
                             if (wfpoi.Information != null &&
                                 wfpoi.Information.Length > 0)
                             {
