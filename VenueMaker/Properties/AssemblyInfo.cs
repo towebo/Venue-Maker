@@ -5,13 +5,13 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Kwenda Venue Maker")]
-[assembly: AssemblyDescription("Creates venues for Kwenda")]
+[assembly: AssemblyTitle("KWENDA Venue Maker")]
+[assembly: AssemblyDescription("Creates and edits venues for KWENDA")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Mawingu")]
-[assembly: AssemblyProduct("Kwenda Venue Maker")]
-[assembly: AssemblyCopyright("Copyright ©  2017 - 2019 Mawingu")]
-[assembly: AssemblyTrademark("Kwenda")]
+[assembly: AssemblyCompany("MAWINGU")]
+[assembly: AssemblyProduct("KWENDA Venue Maker")]
+[assembly: AssemblyCopyright("Copyright ©  2017 - 2019 MAWINGU")]
+[assembly: AssemblyTrademark("KWENDA")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.1.19311")]
-[assembly: AssemblyFileVersion("1.1.19311")]
+[assembly: AssemblyVersion("1.1.19321")]
+[assembly: AssemblyFileVersion("1.1.19321")]

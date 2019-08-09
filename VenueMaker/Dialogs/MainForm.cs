@@ -1814,6 +1814,7 @@ namespace VenueMaker.Dialogs
                 kvenue.Data = Encoding.UTF8.GetBytes(Venue.ToString());
                 kvenue.FileTitle = Venue.GetFileTitle();
                 kvenue.Active = MakeVenueActiveChk.Checked;
+                
                 kfiles.Add(kvenue);
 
                 // Add the media files
@@ -2088,7 +2089,7 @@ namespace VenueMaker.Dialogs
 
 
                     
-
+                    
                     foreach (var f in files)
                     {
                         Application.DoEvents();

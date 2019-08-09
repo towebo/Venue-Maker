@@ -932,6 +932,7 @@ namespace VenueMaker.Kwenda {
             }
             set {
                 this.activeField = value;
+                this.activeFieldSpecified = true;
             }
         }
         
