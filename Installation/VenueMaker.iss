@@ -32,8 +32,9 @@ Name: {app}\x86
 
 [Icons]
 Name: {group}\{#AppName}; Filename: {app}\VenueMaker.exe
+Name: {commondesktop}\{#AppName}; Filename: {app}\VenueMaker.exe; IconIndex: 0
 
-[setup]
+[Setup]
 SignTool=Standard
 AppCopyright={#CopyrightText}
 AppName={#AppName}
