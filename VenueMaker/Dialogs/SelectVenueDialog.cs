@@ -13,12 +13,21 @@ namespace VenueMaker.Dialogs
     {
         private Dictionary<string,string> listdict;
         private Dictionary<string, KwendaFileListItem> filesdict;
+        private string _venueid;
 
 
         public SelectVenueDialog()
         {
             InitializeComponent();
         }
+
+        public SelectVenueDialog(string venueId)
+            : this()
+        {
+            _venueid = venueId;
+
+        }
+
 
 
         private void InitUI()
@@ -50,12 +59,33 @@ namespace VenueMaker.Dialogs
                             );
 
                 });
-                                
+
                 VenuesBS.DataSource = listdict.OrderBy(w => w.Value);
 
                 VenuesLB.DataSource = VenuesBS;
                 VenuesLB.DisplayMember = "Value";
                 VenuesLB.ValueMember = "Key";
+
+                if (!string.IsNullOrWhiteSpace(_venueid))
+                {
+                    if (listdict.ContainsKey(_venueid))
+                    {
+                        while (VenuesBS.Position < listdict.Count - 1)
+                        {
+                            KeyValuePair<string,string> shit = (KeyValuePair<string, string>)VenuesBS.Current;
+                            if (shit.Key == _venueid)
+                            {
+                                break;
+                            }
+
+                            VenuesBS.MoveNext();
+
+                        } // while
+
+                    } // Found
+                    
+                } // Has value
+
 
             }
             catch (Exception ex)

@@ -51,6 +51,12 @@ namespace WayfindR.Models
 
                 }
 
+                if (!string.IsNullOrWhiteSpace(linkednode.IdTag))
+                {
+                    result.Append($" ({linkednode.IdTag})");
+
+                } // Has tag
+
                 return result.ToString();
 
             }

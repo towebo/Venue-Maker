@@ -28,6 +28,7 @@ namespace VenueMaker.Dialogs
     public partial class MainForm : Form
     {
         private static MainForm me;
+        private bool _modified;
 
         private bool loadguard;
         private WFNode[] elevators;
@@ -46,65 +47,65 @@ namespace VenueMaker.Dialogs
             InitializeComponent();
         }
 
-
-
-        private void InitRibbon()
+        private void InitMenusAndButtons()
         {
             try
             {
-                RibbonController.Init(MyRibbon);
-                //tmp MyRibbon.SetColors(Color.Control, Color.Red, Color.Black);
+                bool hasadminrights = false;
+#if WITHADMINRIGHTS
+                hasadminrights = true;
+#endif
 
                 // File
-                RibbonController.Me.Button(RibbonMarkupCommands.ButtonNew).ExecuteEvent += (s1, e1) => CreateNewVenue();
-                RibbonController.Me.Button(RibbonMarkupCommands.ButtonOpen).ExecuteEvent += (s2, e2) => OpenVenue();
-                RibbonController.Me.Button(RibbonMarkupCommands.ButtonSave).ExecuteEvent += (s3, e3) => SaveVenue(false);
-                RibbonController.Me.Button(RibbonMarkupCommands.ButtonSaveAs).ExecuteEvent += (s3, e3) => SaveVenue(true);
-                RibbonController.Me.Button(RibbonMarkupCommands.ButtonSelectDataFolder).ExecuteEvent += (s9, e9) => SelectDataFolder();
+                newVenueToolStripMenuItem.Click += (s1, e1) => CreateNewVenue();
+                openVenueToolStripMenuItem.Click += (s2, e2) => OpenVenue();
+                saveVenueToolStripMenuItem.Click += (s3, e3) => SaveVenue(false);
+                saveVenueAsToolStripMenuItem.Click += (s3, e3) => SaveVenue(true);
+                saveVenueAsToolStripMenuItem.Visible = hasadminrights;
+                selectDataFolderToolStripMenuItem.Click += (s9, e9) => SelectDataFolder();
 
                 // Account
-                RibbonController.Me.Button(RibbonMarkupCommands.ButtonLogin).ExecuteEvent += (s4, e4) => EnsureLogin(true);
-                RibbonController.Me.Button(RibbonMarkupCommands.ButtonLogOut).ExecuteEvent += (s5, e5) => LogOut();
-                RibbonController.Me.Button(RibbonMarkupCommands.ButtonCreateAccount).ExecuteEvent += (s6, e6) => createAccount();
-                RibbonController.Me.Button(RibbonMarkupCommands.ButtonVerifyAccount).ExecuteEvent += (s7, e7) => verifyAccount();
-                RibbonController.Me.Button(RibbonMarkupCommands.ButtonSetPermissions).ExecuteEvent += (s8, e8) => SetPermissions();
+                logOutToolStripMenuItem.Click += (s5, e5) => LogOut();
 
+                createAccountToolStripMenuItem.Click += (s6, e6) => createAccount();
+                loginToolStripMenuItem.Click += (s4, e4) => EnsureLogin(true);
+                createAccountToolStripMenuItem.Visible = hasadminrights;
+
+                verifyAccountToolStripMenuItem.Click += (s7, e7) => verifyAccount();
+                
+                setPermissionsToolStripMenuItem.Click += (s8, e8) => SetPermissions();
+                setPermissionsToolStripMenuItem.Visible = hasadminrights;
+
+
+                
                 // Venue
-                RibbonController.Me.Button(RibbonMarkupCommands.ButtonViewVenue).ExecuteEvent += (s14, e14) => SwitchToTab(VenueTab);
-                RibbonController.Me.Button(RibbonMarkupCommands.ButtonVenueSetPhoto).ExecuteEvent += (s10, e10) => SelectVenueImage();
-                RibbonController.Me.Button(RibbonMarkupCommands.ButtonVenueMapAdd).ExecuteEvent += (s11, e11) => AddMap();
-                RibbonController.Me.Button(RibbonMarkupCommands.ButtonVenueMapDelete).ExecuteEvent += (s12, e12) => DeleteMap();
-                RibbonController.Me.Button(RibbonMarkupCommands.ButtonVenueMapProperties).ExecuteEvent += (s13, e13) => MapsLB_DoubleClick(this, new EventArgs());
-
+                VenueImagePB.Click += (s10, e10) => SelectVenueImage();
+                
+                AddMapBtn.Click += (s11, e11) => AddMap();
+                DeleteMapBtn.Click += (s12, e12) => DeleteMap();
+                
                 // Nodes
-                RibbonController.Me.Button(RibbonMarkupCommands.ButtonViewNodes).ExecuteEvent += (s15, e15) => SwitchToTab(NodesTab);
-                RibbonController.Me.Button(RibbonMarkupCommands.ButtonNodeAdd).ExecuteEvent += (s16, e16) => AddNode();
-                RibbonController.Me.Button(RibbonMarkupCommands.ButtonNodeDelete).ExecuteEvent += (s17, e17) => DeleteNode();
-                RibbonController.Me.Button(RibbonMarkupCommands.ButtonNodeImport).ExecuteEvent += (s18, e18) => ImportBeacons();
-                RibbonController.Me.Button(RibbonMarkupCommands.ButtonNodePinOnMap).ExecuteEvent += (s32, e32) => PinNodeOnMap();
+                AddNodeButton.Click += (s16, e16) => AddNode();
+                DeleteNodeButton.Click += (s17, e17) => DeleteNode();
+                ImportBeaconsBtn.Click += (s18, e18) => ImportBeacons();
+                NodeMapPointBtn.Click += (s32, e32) => PinNodeOnMap();
                 
 
                 // Directions
-                RibbonController.Me.Button(RibbonMarkupCommands.ButtonViewDirections).ExecuteEvent += (s19, e19) => SwitchToTab(EdgesTab);
-                RibbonController.Me.Button(RibbonMarkupCommands.ButtonDirectionAdd).ExecuteEvent += (s20, e20) => AddEdge();
-                RibbonController.Me.Button(RibbonMarkupCommands.ButtonDirectionDelete).ExecuteEvent += (s21, e21) => DeleteEdge();
-                //tmp RibbonController.Me.Button(RibbonMarkupCommands.ButtonDirectionEdit).ExecuteEvent += (s22, e22) => ();
-                RibbonController.Me.Button(RibbonMarkupCommands.ButtonDirectionPinOnMap).ExecuteEvent += (s34, e34) => PinEdgeOnMap();
+                AddEdgeButton.Click += (s20, e20) => AddEdge();
+                DeleteEdgeButton.Click += (s21, e21) => DeleteEdge();
+                MarkEdgeOnMapBtn.Click += (s34, e34) => PinEdgeOnMap();
 
                 // Elevators
-                RibbonController.Me.Button(RibbonMarkupCommands.ButtonViewElevators).ExecuteEvent += (s23, e23) => SwitchToTab(ElevatorsTab);
-                RibbonController.Me.Button(RibbonMarkupCommands.ButtonElevatorsGenerate).ExecuteEvent += (s24, e24) => CreateElevatorEdges();
-                RibbonController.Me.Button(RibbonMarkupCommands.ButtonElevatorDelete).ExecuteEvent += (s25, e25) => DeleteAllElevatorEdges();
+                CreateElevatorEdgesButton.Click += (s24, e24) => CreateElevatorEdges();
+                DeleteAllElevatorEdgesButton.Click += (s25, e25) => DeleteAllElevatorEdges();
 
                 // Points Of Interest
-                RibbonController.Me.Button(RibbonMarkupCommands.ButtonViewPOIs).ExecuteEvent += (s26, e26) => SwitchToTab(PoiTabPage);
-                RibbonController.Me.Button(RibbonMarkupCommands.ButtonPOIInfoAdd).ExecuteEvent += (s27, e27) => AddPOIInfo();
-                RibbonController.Me.Button(RibbonMarkupCommands.ButtonPOIInfoDelete).ExecuteEvent += (s28, e28) => DeletePOI_Info();
-                RibbonController.Me.Button(RibbonMarkupCommands.ButtonPOIInfoMoveUp).ExecuteEvent += (s29, e29) => MovePOIInfoUpOrDown(true);
-                RibbonController.Me.Button(RibbonMarkupCommands.ButtonPOIInfoMoveDown).ExecuteEvent += (s30, e30) => MovePOIInfoUpOrDown(false);
-                RibbonController.Me.Button(RibbonMarkupCommands.ButtonPOIInfoSelectMediaFile).ExecuteEvent += (s31, e31) => PickMediaFile();
-
-                //karl-otto
+                AddPOIInfoButton.Click += (s27, e27) => AddPOIInfo();
+                RemovePOIInfoButton.Click += (s28, e28) => DeletePOI_Info();
+                MoveInfoUpButton.Click += (s29, e29) => MovePOIInfoUpOrDown(true);
+                MoveInfoDownButton.Click += (s30, e30) => MovePOIInfoUpOrDown(false);
+                PickMediaFileButton.Click += (s31, e31) => PickMediaFile();
 
             }
             catch (Exception ex)
@@ -112,8 +113,8 @@ namespace VenueMaker.Dialogs
                 string errmsg = $"Fel när verktygsfältet skulle initieras: {ex.Message}";
                 throw new Exception(errmsg);
             }
-        }
-
+        } // InitRibbon
+        
         private void InitUI()
         {
             try
@@ -128,6 +129,8 @@ namespace VenueMaker.Dialogs
 
                 Text = AssemblyInfo.GetProductAndVersion();
                 WindowState = FormWindowState.Maximized;
+                Tabs.Dock = DockStyle.Fill;
+
                 // Tabs.Alignment = TabAlignment.Bottom;
                 // Tabs.TabStop = false;
                 // Tabs.Appearance = TabAppearance.Buttons;
@@ -135,18 +138,22 @@ namespace VenueMaker.Dialogs
                 // Tabs.SizeMode = TabSizeMode.Fixed;
                 // Tabs.Multiline = true;
 
-                InitRibbon();
+                InitMenusAndButtons();
                 
 
                 // Disable stuff for nomal users
                 bool hasadminrights = false;
-                MyRibbon.SetModes(0);
 #if WITHADMINRIGHTS
-                hasadminrights = true;
-                MyRibbon.SetModes(1);
+                hasadminrights = true;//tmp MyRibbon.SetModes(1);
 #endif
 
                 MakeVenueActiveChk.Visible = hasadminrights;
+                VenueIDTB.ReadOnly = !hasadminrights;
+                if (VenueIDTB.ReadOnly)
+                {
+                    VenueIDTB.ForeColor = SystemColors.GrayText;
+
+                } // Dim out
 
                 VenueBS.DataSource = new WFVenue();
                 VenueBS.CurrentChanged += (s1, e1) =>
@@ -564,7 +571,6 @@ namespace VenueMaker.Dialogs
             }
         }
 
-
         private void closeAppToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Close();
@@ -623,7 +629,6 @@ namespace VenueMaker.Dialogs
             }
         }
 
-
         private void CreateNewVenue()
         {
             try
@@ -635,7 +640,8 @@ namespace VenueMaker.Dialogs
 
                 VenueBS.DataSource = Venue;
                 RefreshUIForVenue(Venue);
-                //VenueBS.ResetBindings(false);
+
+                _modified = false;
 
             }
             catch (Exception ex)
@@ -735,6 +741,8 @@ namespace VenueMaker.Dialogs
 
                 VenueBS.DataSource = Venue;
 
+                _modified = false;
+
             }
             catch (Exception ex)
             {
@@ -811,6 +819,8 @@ namespace VenueMaker.Dialogs
 
                 } // Just save
 
+                _modified = false;
+
                 SystemSounds.Asterisk.Play();
 
 
@@ -854,7 +864,9 @@ namespace VenueMaker.Dialogs
                 } // Perhaps?
 
                 InitWebService();
-                
+
+                OpenVenue();
+
             }
             catch (Exception ex)
             {
@@ -900,7 +912,6 @@ namespace VenueMaker.Dialogs
             }
         }
 
-
         private void AddPOIInfo()
         {
             try
@@ -913,6 +924,7 @@ namespace VenueMaker.Dialogs
                 }
 
                 WFPOIInformation newinfo = new WFPOIInformation();
+                newinfo.Information = "Skriv text här";
 
                 List<WFPOIInformation> poiis;
                 if (p.Information != null)
@@ -933,6 +945,17 @@ namespace VenueMaker.Dialogs
                 POIInfosBS.DataSource = p.Information;
                 POIInfosBS.MoveLast();
                 POIInfosBS.ResetBindings(false);
+
+                try
+                {
+                    POIInformationTB.Focus();
+
+                }
+                catch
+                {
+                }
+
+                _modified = true;
 
             }
             catch (Exception ex)
@@ -982,6 +1005,8 @@ namespace VenueMaker.Dialogs
                 p.Information = poiis.ToArray();
                 POIsBS.ResetBindings(false);
 
+                _modified = true;
+
             }
             catch (Exception ex)
             {
@@ -1024,7 +1049,7 @@ namespace VenueMaker.Dialogs
 
 
                 if (swapidx < 0 ||
-                    swapidx > items.Length)
+                    swapidx >= items.Length)
                 {
                     return;
 
@@ -1046,6 +1071,7 @@ namespace VenueMaker.Dialogs
 
                 }
 
+                _modified = true;
 
             }
             catch (Exception ex)
@@ -1115,6 +1141,8 @@ namespace VenueMaker.Dialogs
 
                 poii.MediaFile = mediafile;
                 MediaFileTB.Text = poii.MediaFile;
+
+                _modified = true;
 
                 SystemSounds.Asterisk.Play();
 
@@ -1187,6 +1215,8 @@ namespace VenueMaker.Dialogs
                 } // foreach source elevator
 
 
+                _modified = true;
+
                 SystemSounds.Asterisk.Play();
 
 
@@ -1217,14 +1247,6 @@ namespace VenueMaker.Dialogs
                 if (psrc != null)
                 {
                     nei.Source = psrc.LinkedNode;
-#warning Delete when it works.
-                    /*tmp
-                    nei.Source = Venue.NodesGraph.FindNode(
-                        psrc.BeaconUuid,
-                        psrc.BeaconMajor,
-                        psrc.BeaconMinor
-                        );
-                    */
                     nei.Target = nei.Source;
 
                 } // Not null
@@ -1269,6 +1291,8 @@ namespace VenueMaker.Dialogs
 
                 EdgesPOIsBS.ResetBindings(false);
 
+                _modified = true;
+
             }
             catch (Exception ex)
             {
@@ -1309,6 +1333,7 @@ namespace VenueMaker.Dialogs
                 Venue.NodesGraph.RemoveEdge(efp.Edge);
                 EdgesPOIsBS.ResetBindings(false);
 
+                _modified = true;
 
             }
             catch (Exception ex)
@@ -1371,6 +1396,8 @@ namespace VenueMaker.Dialogs
 
                 } // for
 
+                _modified = true;
+
                 SystemSounds.Asterisk.Play();
 
             }
@@ -1396,6 +1423,8 @@ namespace VenueMaker.Dialogs
                 Venue.NodesGraph.AddVertex(n);
                 NodesBS.DataSource = Venue.NodesGraph.GetNodesAlphabetical(false).OrderBy(w => w, new FloorComparer()).ToArray();
                 NodesBS.ResetBindings(false);
+
+                _modified = true;
 
             }
             catch (Exception ex)
@@ -1431,6 +1460,8 @@ namespace VenueMaker.Dialogs
                 NodesBS.DataSource = Venue.NodesGraph.GetNodesAlphabetical(false).OrderBy(w => w, new FloorComparer()).ToArray();
                 NodesBS.ResetBindings(false);
 
+                _modified = true;
+
             }
             catch (Exception ex)
             {
@@ -1458,6 +1489,8 @@ namespace VenueMaker.Dialogs
                 NodesBS.DataSource = Venue.NodesGraph.GetNodesAlphabetical(false).OrderBy(w => w, new FloorComparer()).ToArray();
                 NodesBS.ResetBindings(false);
 
+                _modified = true;
+
                 SystemSounds.Asterisk.Play();
 
 
@@ -1474,7 +1507,6 @@ namespace VenueMaker.Dialogs
             }
 
         }
-
 
         private void ImportBeaconsFromCSV(string fileName)
         {
@@ -1566,15 +1598,19 @@ namespace VenueMaker.Dialogs
                     tb = NodeInfo5HeadingTB;
                 }
 
-                EditHeadingInfoDialog dlg = new EditHeadingInfoDialog();
-                dlg.HeadingInfo = new WFHeadingInfo(tb.Text);
-                if (dlg.ShowDialog() != DialogResult.OK)
+                using (EditHeadingInfoDialog dlg = new EditHeadingInfoDialog())
                 {
-                    return;
+                    dlg.HeadingInfo = new WFHeadingInfo(tb.Text);
+                    if (dlg.ShowDialog() != DialogResult.OK)
+                    {
+                        return;
 
-                } // User canceled
+                    } // User canceled
 
-                tb.Text = dlg.HeadingInfo.ToString();
+                    tb.Text = dlg.HeadingInfo.ToString();
+                    _modified = true;
+
+                } // using dlg
 
             }
             catch (Exception ex)
@@ -1583,8 +1619,6 @@ namespace VenueMaker.Dialogs
 
             }
         }
-
-
 
         public string UseThisFile(string src)
         {
@@ -1642,10 +1676,6 @@ namespace VenueMaker.Dialogs
 
         }
 
-
-
-
-        
         private void createAccount()
         {
             try
@@ -1669,8 +1699,30 @@ namespace VenueMaker.Dialogs
 
                         CreateAccountResponse result = cli.CreateAccount(req);
 
-                        MessageBox.Show(result.Message);
+                        switch (result.Result)
+                        {
+                            case CreateAccountResponseMethodResult.Ok:
+                                MessageBox.Show("Kontot skapat!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                break;
 
+                            case CreateAccountResponseMethodResult.UserAlreadyExists:
+                                MessageBox.Show($"En användare med e-postadress {req.Email} finns redan.", "Användare finns redan", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                break;
+
+                            case CreateAccountResponseMethodResult.RequiredInfoMissing:
+                                MessageBox.Show("Information som krävs saknas. Kontrollera så allt är ifyllt som det ska och prova igen.", "Information saknas", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                break;
+
+                            case CreateAccountResponseMethodResult.OtherError:
+                                MessageBox.Show($"Ett fel inträffade när kontot skulle skapas: {result.Message}", "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                break;
+
+                            default:
+                                MessageBox.Show($"Ett fel som inte hanteras i programmet inträffade när kontot skulle skapas: {result.Result.ToString()}, {result.Message}");
+                                break;
+
+                        } // switch
+                        
                     } // using KwendaService 
 
                 } // using dialog
@@ -1688,11 +1740,26 @@ namespace VenueMaker.Dialogs
         {
         }
 
-
         private void LogOut()
         {
             try
             {
+                if (_modified)
+                {
+                    DialogResult dr = MessageBox.Show("Vill du spara ändringarna som gjorts?", "Spara ändringar", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
+                    if (DialogResult.Cancel == dr)
+                    {
+                        return;
+
+                    } // Chickened out
+                    else if (DialogResult.Yes == dr)
+                    {
+                        SaveVenue(false);
+
+                    }
+
+                } // There are changes
+
                 Application.UseWaitCursor = true;
                 Application.DoEvents();
 
@@ -1759,7 +1826,6 @@ namespace VenueMaker.Dialogs
             }
 
         }
-
 
         private void SetPermissions()
         {
@@ -2026,7 +2092,7 @@ namespace VenueMaker.Dialogs
         {
             try
             {
-                using (SelectVenueDialog dlg = new SelectVenueDialog())
+                using (SelectVenueDialog dlg = new SelectVenueDialog(Venue.Id))
                 {
                     Application.UseWaitCursor = false;
                     Application.DoEvents();
@@ -2182,7 +2248,6 @@ namespace VenueMaker.Dialogs
             return folder;
         }
 
-
         private void SwitchToTab(TabPage tab)
         {
             try
@@ -2224,6 +2289,8 @@ namespace VenueMaker.Dialogs
                     VenueImagePB.Image = Image.FromFile(Path.Combine(GetDataFilesFolder(), mediafile));
 
                 } // Not loading
+
+                _modified = true;
 
                 SystemSounds.Asterisk.Play();
 
@@ -2296,6 +2363,8 @@ namespace VenueMaker.Dialogs
                 MapsBS.DataSource = Venue.Maps;
                 MapsBS.ResetBindings(false);
 
+                _modified = true;
+
                 SystemSounds.Asterisk.Play();
 
             }
@@ -2340,6 +2409,7 @@ namespace VenueMaker.Dialogs
                 MapsBS.DataSource = Venue.Maps;
                 MapsBS.ResetBindings(false);
 
+                _modified = true;
 
             }
             catch (Exception ex)
@@ -2374,6 +2444,8 @@ namespace VenueMaker.Dialogs
 
                     } // Cancelled
 
+                    _modified = true;
+
                 } // using
 
 
@@ -2403,6 +2475,8 @@ namespace VenueMaker.Dialogs
                     dlg.Node = NodesBS.Current as WFNode;
 
                     dlg.ShowDialog();
+
+                    _modified = true;
 
                 } // using
 
@@ -2434,6 +2508,8 @@ namespace VenueMaker.Dialogs
                     dlg.Edge = edg;
 
                     dlg.ShowDialog();
+
+                    _modified = true;
 
                     EdgeForPOI[] dfpis = EdgesForPOIBS.DataSource as EdgeForPOI[];
 
@@ -2530,8 +2606,6 @@ namespace VenueMaker.Dialogs
             }
         }
 
-        
-
         private void POIInfoStartBtn_Click(object sender, EventArgs e)
         {
             try
@@ -2585,6 +2659,8 @@ namespace VenueMaker.Dialogs
                     } // else
                     POIInfosBS.ResetBindings(false);
 
+                    _modified = true;
+
                 } // using
 
             }
@@ -2593,6 +2669,26 @@ namespace VenueMaker.Dialogs
                 MessageBox.Show(ex.Message, "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (_modified)
+            {
+                DialogResult dr = MessageBox.Show("Vill du spara ändringarna som gjorts?", "Spara ändringar", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
+                if (DialogResult.Cancel == dr)
+                {
+                    e.Cancel = true;
+
+                } // Chickened out
+                else if (DialogResult.Yes == dr)
+                {
+                    SaveVenue(false);
+
+                }
+
+            } // There are changes
+
         }
     } // class
 }

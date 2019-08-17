@@ -139,7 +139,6 @@ namespace VenueMaker.Dialogs
                         throw new Exception(cli.Version());
                     }
 
-                    
                     if (res.Result == LoginResponseMethodResult.Ok)
                     {
                         DataController.Me.Email = Item.Email;

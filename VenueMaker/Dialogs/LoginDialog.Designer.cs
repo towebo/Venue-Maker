@@ -38,7 +38,9 @@
             this.InfoBS = new System.Windows.Forms.BindingSource(this.components);
             this.VerificationCodeLabel = new System.Windows.Forms.Label();
             this.VerificationCodeTB = new System.Windows.Forms.TextBox();
+            this.LogoPB = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.InfoBS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LogoPB)).BeginInit();
             this.SuspendLayout();
             // 
             // EmailLabel
@@ -110,13 +112,24 @@
             this.VerificationCodeTB.Size = new System.Drawing.Size(100, 23);
             this.VerificationCodeTB.TabIndex = 5;
             // 
+            // LogoPB
+            // 
+            this.LogoPB.Image = global::VenueMaker.Properties.Resources.KWENDA_128;
+            this.LogoPB.Location = new System.Drawing.Point(185, 12);
+            this.LogoPB.Name = "LogoPB";
+            this.LogoPB.Size = new System.Drawing.Size(128, 128);
+            this.LogoPB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.LogoPB.TabIndex = 8;
+            this.LogoPB.TabStop = false;
+            // 
             // LoginDialog
             // 
             this.AcceptButton = this.LoginBtn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.CancelBtn;
-            this.ClientSize = new System.Drawing.Size(199, 211);
+            this.ClientSize = new System.Drawing.Size(332, 211);
+            this.Controls.Add(this.LogoPB);
             this.Controls.Add(this.VerificationCodeTB);
             this.Controls.Add(this.VerificationCodeLabel);
             this.Controls.Add(this.CancelBtn);
@@ -132,6 +145,7 @@
             this.Text = "Logga in";
             this.Load += new System.EventHandler(this.LoginDialog_Load);
             ((System.ComponentModel.ISupportInitialize)(this.InfoBS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LogoPB)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -148,5 +162,6 @@
         private System.Windows.Forms.BindingSource InfoBS;
         private System.Windows.Forms.Label VerificationCodeLabel;
         private System.Windows.Forms.TextBox VerificationCodeTB;
+        private System.Windows.Forms.PictureBox LogoPB;
     }
 }

@@ -24,7 +24,6 @@ Source: ..\VenueMaker\bin\Release\SQLite-net.dll; DestDir: {app}
 Source: ..\VenueMaker\bin\Release\SQLite-net.xml; DestDir: {app}
 Source: ..\VenueMaker\bin\Release\x64\e_sqlite3.dll; DestDir: {app}\x64\
 Source: ..\VenueMaker\bin\Release\x86\e_sqlite3.dll; DestDir: {app}\x86\
-Source: ..\VenueMaker\bin\Release\RibbonLib.dll; DestDir: {app}
 
 [Dirs]
 Name: {app}\x64

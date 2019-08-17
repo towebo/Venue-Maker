@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyDescription("Creates and edits venues for KWENDA")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("MAWINGU")]
-[assembly: AssemblyProduct("KWENDA Venue Maker")]
+[assembly: AssemblyProduct("KWENDA")]
 [assembly: AssemblyCopyright("Copyright ©  2017 - 2019 MAWINGU")]
 [assembly: AssemblyTrademark("KWENDA")]
 [assembly: AssemblyCulture("")]
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.1.19321")]
-[assembly: AssemblyFileVersion("1.1.19321")]
+[assembly: AssemblyVersion("1.2.19331")]
+[assembly: AssemblyFileVersion("1.2.19331")]
