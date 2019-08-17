@@ -283,7 +283,7 @@ namespace WayfindR.Models
                             poi.LinkTo(node);
 
                         }
-
+                        
                     } // foreach poi
 
                 } // Has POIs

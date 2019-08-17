@@ -308,6 +308,7 @@ namespace VenueMaker.Controllers
                     bool result, resspecified;
                     cli.Logout(req, out result, out resspecified);
 
+                    Password = string.Empty;
                     Token = string.Empty;
 
                     return result;

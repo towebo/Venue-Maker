@@ -1765,6 +1765,9 @@ namespace VenueMaker.Dialogs
 
                 Controllers.DataController.Me.LogOut();
 
+                CreateNewVenue();
+
+
             }
             catch (Exception ex)
             {
