@@ -65,16 +65,15 @@ namespace VenueMaker.Dialogs
                 selectDataFolderToolStripMenuItem.Click += (s9, e9) => SelectDataFolder();
 
                 // Account
-                logOutToolStripMenuItem.Click += (s5, e5) => LogOut();
-
-                createAccountToolStripMenuItem.Click += (s6, e6) => createAccount();
                 loginToolStripMenuItem.Click += (s4, e4) => EnsureLogin(true);
+                logOutToolStripMenuItem.Click += (s5, e5) => LogOut();
+                createAccountToolStripMenuItem.Click += (s6, e6) => createAccount();
                 createAccountToolStripMenuItem.Visible = hasadminrights;
 
                 verifyAccountToolStripMenuItem.Click += (s7, e7) => verifyAccount();
                 
                 setPermissionsToolStripMenuItem.Click += (s8, e8) => SetPermissions();
-                setPermissionsToolStripMenuItem.Visible = hasadminrights;
+                
 
 
                 

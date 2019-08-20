@@ -62,9 +62,15 @@ namespace VenueMaker.Dialogs
 
                 VenuesBS.DataSource = listdict.OrderBy(w => w.Value);
 
-                VenuesLB.DataSource = VenuesBS;
-                VenuesLB.DisplayMember = "Value";
-                VenuesLB.ValueMember = "Key";
+                if (listdict.Any())
+                {
+                    VenuesLB.DataSource = VenuesBS;
+                    VenuesLB.DisplayMember = "Value";
+                    VenuesLB.ValueMember = "Key";
+
+                } // Any venues
+
+                SelectBtn.Enabled = listdict.Any();
 
                 if (!string.IsNullOrWhiteSpace(_venueid))
                 {

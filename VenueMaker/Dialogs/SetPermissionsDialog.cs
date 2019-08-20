@@ -38,10 +38,13 @@ namespace VenueMaker.Dialogs
                     perm.Email = EmailTB.Text;
                     perm.VenueId = VenueIdTB.Text;
                     perm.GrantPermission = PermitChk.Checked;
+                    perm.GrantPermissionSpecified = true;
                     perm.ReadOnly = ReadOnlyChk.Checked;
+                    perm.ReadOnlySpecified = true;
 
                     SetKwendaPermissionsRequest req = new SetKwendaPermissionsRequest();
                     req.Token = DataController.Me.Token;
+                    
                     req.Items = new KwendaPermissionItem[]
                     {
                         perm
@@ -60,6 +63,7 @@ namespace VenueMaker.Dialogs
                             break;
 
                         case SetKwendaPermissionsResponseMethodResult.Ok:
+                            MessageBox.Show("Rättigheter satta.", "Ändra rättigheter", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             DialogResult = DialogResult.OK;
                             break;
 

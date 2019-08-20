@@ -107,6 +107,7 @@ namespace VenueMaker.Dialogs
                             VerifyAccountRequest vreq = new VerifyAccountRequest();
                             vreq.Email = Item.Email;
                             vreq.Code = Convert.ToInt32(VerificationCodeTB.Text);
+                            vreq.CodeSpecified = true;
                             VerifyAccountResponse vres = cli.VerifyAccount(vreq);
 
                             if (vres.Result == VerifyAccountResponseMethodResult.Ok)
