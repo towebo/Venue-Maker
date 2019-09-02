@@ -184,18 +184,18 @@ namespace VenueMaker.Dialogs
 
                     if (n == Node)
                     {
-                        b = Brushes.Red;
+                        b = Brushes.Blue;
 
                     } // The node we edit
                     if (Edge != null)
                     {
                         if (n == Edge.Start)
                         {
-                            b = Brushes.Yellow;
+                            b = Brushes.Orange;
                         }
                         else if (n == Edge.Destination)
                         {
-                            b = Brushes.Blue;
+                            b = Brushes.Red;
                         } // else
                     
                     } // The edge we edit
