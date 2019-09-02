@@ -458,9 +458,9 @@
             // POIInfoStartsTB
             // 
             this.POIInfoStartsTB.BackColor = System.Drawing.SystemColors.Window;
-            this.POIInfoStartsTB.Location = new System.Drawing.Point(320, 360);
+            this.POIInfoStartsTB.Location = new System.Drawing.Point(333, 360);
             this.POIInfoStartsTB.Name = "POIInfoStartsTB";
-            this.POIInfoStartsTB.Size = new System.Drawing.Size(170, 23);
+            this.POIInfoStartsTB.Size = new System.Drawing.Size(151, 23);
             this.POIInfoStartsTB.TabIndex = 8;
             // 
             // POIInfoStartsLabel
@@ -1125,6 +1125,7 @@
             // 
             // EditHeadingInfo5Btn
             // 
+            this.EditHeadingInfo5Btn.AccessibleName = "Ändra riktningsinformation 5";
             this.EditHeadingInfo5Btn.Location = new System.Drawing.Point(659, 458);
             this.EditHeadingInfo5Btn.Name = "EditHeadingInfo5Btn";
             this.EditHeadingInfo5Btn.Size = new System.Drawing.Size(27, 23);
@@ -1135,6 +1136,7 @@
             // 
             // EditHeadingInfo4Btn
             // 
+            this.EditHeadingInfo4Btn.AccessibleName = "Ändra riktningsinformation 4";
             this.EditHeadingInfo4Btn.Location = new System.Drawing.Point(659, 414);
             this.EditHeadingInfo4Btn.Name = "EditHeadingInfo4Btn";
             this.EditHeadingInfo4Btn.Size = new System.Drawing.Size(27, 23);
@@ -1145,6 +1147,7 @@
             // 
             // EditHeadingInfo3Btn
             // 
+            this.EditHeadingInfo3Btn.AccessibleName = "Ändra riktningsinformation 3";
             this.EditHeadingInfo3Btn.Location = new System.Drawing.Point(659, 370);
             this.EditHeadingInfo3Btn.Name = "EditHeadingInfo3Btn";
             this.EditHeadingInfo3Btn.Size = new System.Drawing.Size(27, 23);
@@ -1155,6 +1158,7 @@
             // 
             // EditHeadingInfo2Btn
             // 
+            this.EditHeadingInfo2Btn.AccessibleName = "Ändra riktningsinformation 2";
             this.EditHeadingInfo2Btn.Location = new System.Drawing.Point(659, 326);
             this.EditHeadingInfo2Btn.Name = "EditHeadingInfo2Btn";
             this.EditHeadingInfo2Btn.Size = new System.Drawing.Size(27, 23);
@@ -1165,6 +1169,7 @@
             // 
             // EditHeadingInfo1Btn
             // 
+            this.EditHeadingInfo1Btn.AccessibleName = "Ändra riktningsinformation 1";
             this.EditHeadingInfo1Btn.Location = new System.Drawing.Point(659, 282);
             this.EditHeadingInfo1Btn.Name = "EditHeadingInfo1Btn";
             this.EditHeadingInfo1Btn.Size = new System.Drawing.Size(27, 23);

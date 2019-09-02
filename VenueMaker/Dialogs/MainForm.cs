@@ -1,6 +1,4 @@
-﻿#define WITHADMINRIGHTS
-
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System;
@@ -47,36 +45,44 @@ namespace VenueMaker.Dialogs
             InitializeComponent();
         }
 
+        private void MakeUIReflectUserLevel()
+        {
+            bool hasadminrights = Controllers.DataController.Me.Email == "admin@mawingu.se";
+            MakeVenueActiveChk.Visible = hasadminrights;
+            VenueIDTB.ReadOnly = !hasadminrights;
+            if (VenueIDTB.ReadOnly)
+            {
+                VenueIDTB.ForeColor = SystemColors.GrayText;
+
+            } // Dim out
+
+            saveVenueAsToolStripMenuItem.Visible = hasadminrights;
+            createAccountToolStripMenuItem.Visible = hasadminrights;
+            setPermissionsToolStripMenuItem.Visible = hasadminrights;
+
+        }
+
         private void InitMenusAndButtons()
         {
             try
             {
-                bool hasadminrights = false;
-#if WITHADMINRIGHTS
-                hasadminrights = true;
-#endif
-
                 // File
                 newVenueToolStripMenuItem.Click += (s1, e1) => CreateNewVenue();
                 openVenueToolStripMenuItem.Click += (s2, e2) => OpenVenue();
                 saveVenueToolStripMenuItem.Click += (s3, e3) => SaveVenue(false);
                 saveVenueAsToolStripMenuItem.Click += (s3, e3) => SaveVenue(true);
-                saveVenueAsToolStripMenuItem.Visible = hasadminrights;
+                
                 selectDataFolderToolStripMenuItem.Click += (s9, e9) => SelectDataFolder();
 
                 // Account
                 loginToolStripMenuItem.Click += (s4, e4) => EnsureLogin(true);
                 logOutToolStripMenuItem.Click += (s5, e5) => LogOut();
                 createAccountToolStripMenuItem.Click += (s6, e6) => createAccount();
-                createAccountToolStripMenuItem.Visible = hasadminrights;
-
                 verifyAccountToolStripMenuItem.Click += (s7, e7) => verifyAccount();
-                
                 setPermissionsToolStripMenuItem.Click += (s8, e8) => SetPermissions();
                 
 
 
-                
                 // Venue
                 VenueImagePB.Click += (s10, e10) => SelectVenueImage();
                 
@@ -138,21 +144,6 @@ namespace VenueMaker.Dialogs
                 // Tabs.Multiline = true;
 
                 InitMenusAndButtons();
-                
-
-                // Disable stuff for nomal users
-                bool hasadminrights = false;
-#if WITHADMINRIGHTS
-                hasadminrights = true;//tmp MyRibbon.SetModes(1);
-#endif
-
-                MakeVenueActiveChk.Visible = hasadminrights;
-                VenueIDTB.ReadOnly = !hasadminrights;
-                if (VenueIDTB.ReadOnly)
-                {
-                    VenueIDTB.ForeColor = SystemColors.GrayText;
-
-                } // Dim out
 
                 VenueBS.DataSource = new WFVenue();
                 VenueBS.CurrentChanged += (s1, e1) =>
@@ -676,9 +667,12 @@ namespace VenueMaker.Dialogs
 
                 } // Loaded from cloud
 
-#if !WITHADMINRIGHTS
-                return;
-#endif
+
+                if (!MakeVenueActiveChk.Visible)
+                {
+                    return;
+
+                } // Not an admin
 
                 if (OpenVenueDialog.ShowDialog() != DialogResult.OK)
                 {
@@ -757,12 +751,12 @@ namespace VenueMaker.Dialogs
                 if (asFile||
                     string.IsNullOrEmpty(SaveVenueDialog.FileName))
                 {
-#if WITHADMINRIGHTS
-#else
-                    MessageBox.Show("Du kan bara spara ändringar om du öppnat en fil.", "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-#endif
+                    if (!MakeVenueActiveChk.Visible)
+                    {
+                        MessageBox.Show("Du kan bara spara ändringar om du öppnat en fil.", "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
 
+                    } // Not an admin
 
                     if (SaveVenueDialog.ShowDialog() != DialogResult.OK)
                     {
@@ -1823,6 +1817,7 @@ namespace VenueMaker.Dialogs
             }
             finally
             {
+                MakeUIReflectUserLevel();
                 Application.UseWaitCursor = false;
 
             }
