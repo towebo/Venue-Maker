@@ -216,6 +216,9 @@
     <Compile Include="Models\Constants.cs" />
     <Compile Include="Models\CreateAccountInfoModel.cs" />
     <Compile Include="Kwenda\Models\DirectionsList.cs" />
+    <Compile Include="Models\CueTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Models\EdgeForPOI.cs" />
     <Compile Include="Models\InfoCategoryItem.cs" />
     <Compile Include="Models\LoginInfoModel.cs" />

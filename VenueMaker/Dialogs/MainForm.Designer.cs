@@ -40,22 +40,22 @@
             this.PoiInfoPB = new System.Windows.Forms.PictureBox();
             this.POIInfosLabel = new System.Windows.Forms.Label();
             this.AutoPlayMediaCB = new System.Windows.Forms.CheckBox();
-            this.MediaDescrTB = new System.Windows.Forms.TextBox();
+            this.MediaDescrTB = new VenueMaker.Models.CueTextBox();
             this.MediaDescLabel = new System.Windows.Forms.Label();
             this.PickMediaFileButton = new System.Windows.Forms.Button();
-            this.MediaFileTB = new System.Windows.Forms.TextBox();
+            this.MediaFileTB = new VenueMaker.Models.CueTextBox();
             this.MediaFileLabel = new System.Windows.Forms.Label();
             this.MoveInfoDownButton = new System.Windows.Forms.Button();
             this.MoveInfoUpButton = new System.Windows.Forms.Button();
             this.RemovePOIInfoButton = new System.Windows.Forms.Button();
             this.AddPOIInfoButton = new System.Windows.Forms.Button();
-            this.POIInfoEndsTB = new System.Windows.Forms.TextBox();
+            this.POIInfoEndsTB = new VenueMaker.Models.CueTextBox();
             this.POIInfoEndsLabel = new System.Windows.Forms.Label();
-            this.POIInfoStartsTB = new System.Windows.Forms.TextBox();
+            this.POIInfoStartsTB = new VenueMaker.Models.CueTextBox();
             this.POIInfoStartsLabel = new System.Windows.Forms.Label();
             this.POIInfoCatCombo = new System.Windows.Forms.ComboBox();
             this.POIInfoCatLabel = new System.Windows.Forms.Label();
-            this.POIInformationTB = new System.Windows.Forms.TextBox();
+            this.POIInformationTB = new VenueMaker.Models.CueTextBox();
             this.POIInfoLabel = new System.Windows.Forms.Label();
             this.POIInfosLB = new System.Windows.Forms.ListBox();
             this.POIsListLabel = new System.Windows.Forms.Label();
@@ -70,50 +70,50 @@
             this.MapsLabel = new System.Windows.Forms.Label();
             this.VenueImagePB = new System.Windows.Forms.PictureBox();
             this.SelectVenueImageBtn = new System.Windows.Forms.Button();
-            this.VenueImageTB = new System.Windows.Forms.TextBox();
+            this.VenueImageTB = new VenueMaker.Models.CueTextBox();
             this.VenueImageLabel = new System.Windows.Forms.Label();
-            this.VenueEmailTB = new System.Windows.Forms.TextBox();
+            this.VenueEmailTB = new VenueMaker.Models.CueTextBox();
             this.VenueEmailLabel = new System.Windows.Forms.Label();
-            this.VenueWebTB = new System.Windows.Forms.TextBox();
+            this.VenueWebTB = new VenueMaker.Models.CueTextBox();
             this.VenueWebLabel = new System.Windows.Forms.Label();
-            this.VenuePhoneTB = new System.Windows.Forms.TextBox();
+            this.VenuePhoneTB = new VenueMaker.Models.CueTextBox();
             this.VenuePhoneLabel = new System.Windows.Forms.Label();
-            this.VenueGPSTB = new System.Windows.Forms.TextBox();
+            this.VenueGPSTB = new VenueMaker.Models.CueTextBox();
             this.VenueGPSLabel = new System.Windows.Forms.Label();
             this.MakeVenueActiveChk = new System.Windows.Forms.CheckBox();
             this.VisibilityCombo = new System.Windows.Forms.ComboBox();
             this.VisibilityLabel = new System.Windows.Forms.Label();
-            this.VenueDescriptionTB = new System.Windows.Forms.TextBox();
+            this.VenueDescriptionTB = new VenueMaker.Models.CueTextBox();
             this.VenueDescriptionLabel = new System.Windows.Forms.Label();
-            this.CountryTB = new System.Windows.Forms.TextBox();
+            this.CountryTB = new VenueMaker.Models.CueTextBox();
             this.CountryLabel = new System.Windows.Forms.Label();
-            this.CityTB = new System.Windows.Forms.TextBox();
+            this.CityTB = new VenueMaker.Models.CueTextBox();
             this.CityLabel = new System.Windows.Forms.Label();
-            this.ZipTB = new System.Windows.Forms.TextBox();
+            this.ZipTB = new VenueMaker.Models.CueTextBox();
             this.ZipLabel = new System.Windows.Forms.Label();
-            this.AddressTB = new System.Windows.Forms.TextBox();
+            this.AddressTB = new VenueMaker.Models.CueTextBox();
             this.AddressLabel = new System.Windows.Forms.Label();
-            this.VenueIDTB = new System.Windows.Forms.TextBox();
+            this.VenueIDTB = new VenueMaker.Models.CueTextBox();
             this.VenueIDLabel = new System.Windows.Forms.Label();
-            this.VenueNameTB = new System.Windows.Forms.TextBox();
+            this.VenueNameTB = new VenueMaker.Models.CueTextBox();
             this.VenueNameLabel = new System.Windows.Forms.Label();
             this.NodesTab = new System.Windows.Forms.TabPage();
             this.NodesFilterLabel = new System.Windows.Forms.Label();
             this.NodesFilterCombo = new System.Windows.Forms.ComboBox();
             this.NodeMapPointBtn = new System.Windows.Forms.Button();
-            this.NodeMapPointTB = new System.Windows.Forms.TextBox();
+            this.NodeMapPointTB = new VenueMaker.Models.CueTextBox();
             this.NodeMapPointLabel = new System.Windows.Forms.Label();
-            this.NodeGPSTB = new System.Windows.Forms.TextBox();
+            this.NodeGPSTB = new VenueMaker.Models.CueTextBox();
             this.NodeGPSLabel = new System.Windows.Forms.Label();
-            this.NodeSpaceTB = new System.Windows.Forms.TextBox();
+            this.NodeSpaceTB = new VenueMaker.Models.CueTextBox();
             this.NodeSpaceLabel = new System.Windows.Forms.Label();
-            this.NodeRoomTB = new System.Windows.Forms.TextBox();
+            this.NodeRoomTB = new VenueMaker.Models.CueTextBox();
             this.NodeRoomLabel = new System.Windows.Forms.Label();
-            this.NodeDepartmentTB = new System.Windows.Forms.TextBox();
+            this.NodeDepartmentTB = new VenueMaker.Models.CueTextBox();
             this.NodeDepartmentLabel = new System.Windows.Forms.Label();
-            this.NodeBuildingTB = new System.Windows.Forms.TextBox();
+            this.NodeBuildingTB = new VenueMaker.Models.CueTextBox();
             this.NodeBuildingLabel = new System.Windows.Forms.Label();
-            this.NodeAreaTB = new System.Windows.Forms.TextBox();
+            this.NodeAreaTB = new VenueMaker.Models.CueTextBox();
             this.NodeAreaLabel = new System.Windows.Forms.Label();
             this.EditHeadingInfo5Btn = new System.Windows.Forms.Button();
             this.EditHeadingInfo4Btn = new System.Windows.Forms.Button();
@@ -123,34 +123,34 @@
             this.ImportBeaconsBtn = new System.Windows.Forms.Button();
             this.DeleteNodeButton = new System.Windows.Forms.Button();
             this.AddNodeButton = new System.Windows.Forms.Button();
-            this.NodeFloorTB = new System.Windows.Forms.TextBox();
+            this.NodeFloorTB = new VenueMaker.Models.CueTextBox();
             this.NodeFloorLabel = new System.Windows.Forms.Label();
-            this.NodeInfo5HeadingTB = new System.Windows.Forms.TextBox();
+            this.NodeInfo5HeadingTB = new VenueMaker.Models.CueTextBox();
             this.NodeInfo5HeadingLabel = new System.Windows.Forms.Label();
-            this.NodeInfo4HeadingTB = new System.Windows.Forms.TextBox();
+            this.NodeInfo4HeadingTB = new VenueMaker.Models.CueTextBox();
             this.NodeInfo4HeadingLabel = new System.Windows.Forms.Label();
-            this.NodeInfo3HeadingTB = new System.Windows.Forms.TextBox();
+            this.NodeInfo3HeadingTB = new VenueMaker.Models.CueTextBox();
             this.NodeInfo3HeadingLabel = new System.Windows.Forms.Label();
-            this.NodeInfo2HeadingTB = new System.Windows.Forms.TextBox();
+            this.NodeInfo2HeadingTB = new VenueMaker.Models.CueTextBox();
             this.NodeInfo2HeadingLabel = new System.Windows.Forms.Label();
-            this.NodeInfo1HeadingTB = new System.Windows.Forms.TextBox();
+            this.NodeInfo1HeadingTB = new VenueMaker.Models.CueTextBox();
             this.NodeInfo1HeadingLabel = new System.Windows.Forms.Label();
-            this.NodeMagneticOffsetTB = new System.Windows.Forms.TextBox();
+            this.NodeMagneticOffsetTB = new VenueMaker.Models.CueTextBox();
             this.MagneticOffsetLabel = new System.Windows.Forms.Label();
-            this.NodeAccuracyTB = new System.Windows.Forms.TextBox();
+            this.NodeAccuracyTB = new VenueMaker.Models.CueTextBox();
             this.NodeAccuracyLabel = new System.Windows.Forms.Label();
             this.NodeActiveChk = new System.Windows.Forms.CheckBox();
-            this.NodeIdTagTB = new System.Windows.Forms.TextBox();
+            this.NodeIdTagTB = new VenueMaker.Models.CueTextBox();
             this.IdTabLabel = new System.Windows.Forms.Label();
             this.NodeWaypointTypeCombo = new System.Windows.Forms.ComboBox();
             this.WaypointTypeLabel = new System.Windows.Forms.Label();
-            this.NodeMinorTB = new System.Windows.Forms.TextBox();
+            this.NodeMinorTB = new VenueMaker.Models.CueTextBox();
             this.MinorLabel = new System.Windows.Forms.Label();
-            this.NodeMajorTB = new System.Windows.Forms.TextBox();
+            this.NodeMajorTB = new VenueMaker.Models.CueTextBox();
             this.NodeMajorLabel = new System.Windows.Forms.Label();
-            this.NodeUuidTB = new System.Windows.Forms.TextBox();
+            this.NodeUuidTB = new VenueMaker.Models.CueTextBox();
             this.UuidLabel = new System.Windows.Forms.Label();
-            this.NodeNameTB = new System.Windows.Forms.TextBox();
+            this.NodeNameTB = new VenueMaker.Models.CueTextBox();
             this.NodeNameLabel = new System.Windows.Forms.Label();
             this.NodesLB = new System.Windows.Forms.ListBox();
             this.NodesListLabel = new System.Windows.Forms.Label();
@@ -160,13 +160,13 @@
             this.EdgeTravelTypeLabel = new System.Windows.Forms.Label();
             this.DeleteEdgeButton = new System.Windows.Forms.Button();
             this.AddEdgeButton = new System.Windows.Forms.Button();
-            this.EdgeTravelTimeTB = new System.Windows.Forms.TextBox();
+            this.EdgeTravelTimeTB = new VenueMaker.Models.CueTextBox();
             this.EdgeTravelTimeLabel = new System.Windows.Forms.Label();
-            this.EdgeEndHeadingTB = new System.Windows.Forms.TextBox();
+            this.EdgeEndHeadingTB = new VenueMaker.Models.CueTextBox();
             this.EdgeEndHeadingLabel = new System.Windows.Forms.Label();
-            this.EdgeStartHeadingTB = new System.Windows.Forms.TextBox();
+            this.EdgeStartHeadingTB = new VenueMaker.Models.CueTextBox();
             this.EdgeStartHeadingLabel = new System.Windows.Forms.Label();
-            this.EdgeBeginningTB = new System.Windows.Forms.TextBox();
+            this.EdgeBeginningTB = new VenueMaker.Models.CueTextBox();
             this.EdgeBeginningLabel = new System.Windows.Forms.Label();
             this.EdgesForPOILB = new System.Windows.Forms.ListBox();
             this.EdgesListLabel = new System.Windows.Forms.Label();
@@ -174,11 +174,11 @@
             this.EdgesPOIListLabel = new System.Windows.Forms.Label();
             this.ElevatorsTab = new System.Windows.Forms.TabPage();
             this.DeleteAllElevatorEdgesButton = new System.Windows.Forms.Button();
-            this.ElevatorMessageTB = new System.Windows.Forms.TextBox();
+            this.ElevatorMessageTB = new VenueMaker.Models.CueTextBox();
             this.ElevatorMessageLabel = new System.Windows.Forms.Label();
-            this.ElevatorEndHeadingTB = new System.Windows.Forms.TextBox();
+            this.ElevatorEndHeadingTB = new VenueMaker.Models.CueTextBox();
             this.ElevatorEndHeadingLabel = new System.Windows.Forms.Label();
-            this.ElevatorStartHeadingTB = new System.Windows.Forms.TextBox();
+            this.ElevatorStartHeadingTB = new VenueMaker.Models.CueTextBox();
             this.ElevatorStartHeadingLabel = new System.Windows.Forms.Label();
             this.CreateElevatorEdgesButton = new System.Windows.Forms.Button();
             this.ElevatorsLB = new System.Windows.Forms.ListBox();
@@ -363,6 +363,7 @@
             // 
             // MediaDescrTB
             // 
+            this.MediaDescrTB.Cue = null;
             this.MediaDescrTB.Location = new System.Drawing.Point(333, 448);
             this.MediaDescrTB.Name = "MediaDescrTB";
             this.MediaDescrTB.Size = new System.Drawing.Size(407, 23);
@@ -388,6 +389,7 @@
             // 
             // MediaFileTB
             // 
+            this.MediaFileTB.Cue = null;
             this.MediaFileTB.Location = new System.Drawing.Point(333, 404);
             this.MediaFileTB.Name = "MediaFileTB";
             this.MediaFileTB.Size = new System.Drawing.Size(316, 23);
@@ -441,6 +443,7 @@
             // POIInfoEndsTB
             // 
             this.POIInfoEndsTB.BackColor = System.Drawing.SystemColors.Window;
+            this.POIInfoEndsTB.Cue = null;
             this.POIInfoEndsTB.Location = new System.Drawing.Point(527, 360);
             this.POIInfoEndsTB.Name = "POIInfoEndsTB";
             this.POIInfoEndsTB.Size = new System.Drawing.Size(175, 23);
@@ -458,6 +461,7 @@
             // POIInfoStartsTB
             // 
             this.POIInfoStartsTB.BackColor = System.Drawing.SystemColors.Window;
+            this.POIInfoStartsTB.Cue = null;
             this.POIInfoStartsTB.Location = new System.Drawing.Point(333, 360);
             this.POIInfoStartsTB.Name = "POIInfoStartsTB";
             this.POIInfoStartsTB.Size = new System.Drawing.Size(151, 23);
@@ -492,6 +496,7 @@
             // 
             // POIInformationTB
             // 
+            this.POIInformationTB.Cue = null;
             this.POIInformationTB.Location = new System.Drawing.Point(333, 197);
             this.POIInformationTB.Multiline = true;
             this.POIInformationTB.Name = "POIInformationTB";
@@ -681,6 +686,7 @@
             // 
             // VenueImageTB
             // 
+            this.VenueImageTB.Cue = null;
             this.VenueImageTB.Location = new System.Drawing.Point(400, 288);
             this.VenueImageTB.Name = "VenueImageTB";
             this.VenueImageTB.Size = new System.Drawing.Size(100, 23);
@@ -697,6 +703,7 @@
             // 
             // VenueEmailTB
             // 
+            this.VenueEmailTB.Cue = null;
             this.VenueEmailTB.Location = new System.Drawing.Point(400, 244);
             this.VenueEmailTB.Name = "VenueEmailTB";
             this.VenueEmailTB.Size = new System.Drawing.Size(219, 23);
@@ -713,6 +720,7 @@
             // 
             // VenueWebTB
             // 
+            this.VenueWebTB.Cue = null;
             this.VenueWebTB.Location = new System.Drawing.Point(400, 197);
             this.VenueWebTB.Name = "VenueWebTB";
             this.VenueWebTB.Size = new System.Drawing.Size(219, 23);
@@ -729,6 +737,7 @@
             // 
             // VenuePhoneTB
             // 
+            this.VenuePhoneTB.Cue = null;
             this.VenuePhoneTB.Location = new System.Drawing.Point(400, 153);
             this.VenuePhoneTB.Name = "VenuePhoneTB";
             this.VenuePhoneTB.Size = new System.Drawing.Size(133, 23);
@@ -745,6 +754,7 @@
             // 
             // VenueGPSTB
             // 
+            this.VenueGPSTB.Cue = null;
             this.VenueGPSTB.Location = new System.Drawing.Point(400, 110);
             this.VenueGPSTB.Name = "VenueGPSTB";
             this.VenueGPSTB.Size = new System.Drawing.Size(219, 23);
@@ -790,6 +800,7 @@
             // VenueDescriptionTB
             // 
             this.VenueDescriptionTB.AcceptsReturn = true;
+            this.VenueDescriptionTB.Cue = null;
             this.VenueDescriptionTB.Location = new System.Drawing.Point(8, 246);
             this.VenueDescriptionTB.Multiline = true;
             this.VenueDescriptionTB.Name = "VenueDescriptionTB";
@@ -808,6 +819,7 @@
             // 
             // CountryTB
             // 
+            this.CountryTB.Cue = null;
             this.CountryTB.Location = new System.Drawing.Point(13, 200);
             this.CountryTB.Margin = new System.Windows.Forms.Padding(5);
             this.CountryTB.Name = "CountryTB";
@@ -826,6 +838,7 @@
             // 
             // CityTB
             // 
+            this.CityTB.Cue = null;
             this.CityTB.Location = new System.Drawing.Point(90, 155);
             this.CityTB.Margin = new System.Windows.Forms.Padding(5);
             this.CityTB.Name = "CityTB";
@@ -844,6 +857,7 @@
             // 
             // ZipTB
             // 
+            this.ZipTB.Cue = null;
             this.ZipTB.Location = new System.Drawing.Point(13, 155);
             this.ZipTB.Margin = new System.Windows.Forms.Padding(5);
             this.ZipTB.Name = "ZipTB";
@@ -862,6 +876,7 @@
             // 
             // AddressTB
             // 
+            this.AddressTB.Cue = null;
             this.AddressTB.Location = new System.Drawing.Point(8, 110);
             this.AddressTB.Margin = new System.Windows.Forms.Padding(5);
             this.AddressTB.Name = "AddressTB";
@@ -880,6 +895,7 @@
             // 
             // VenueIDTB
             // 
+            this.VenueIDTB.Cue = null;
             this.VenueIDTB.Location = new System.Drawing.Point(8, 65);
             this.VenueIDTB.Margin = new System.Windows.Forms.Padding(5);
             this.VenueIDTB.Name = "VenueIDTB";
@@ -898,6 +914,7 @@
             // 
             // VenueNameTB
             // 
+            this.VenueNameTB.Cue = null;
             this.VenueNameTB.Location = new System.Drawing.Point(11, 21);
             this.VenueNameTB.Margin = new System.Windows.Forms.Padding(5);
             this.VenueNameTB.Name = "VenueNameTB";
@@ -1012,6 +1029,7 @@
             // 
             // NodeMapPointTB
             // 
+            this.NodeMapPointTB.Cue = null;
             this.NodeMapPointTB.Location = new System.Drawing.Point(332, 549);
             this.NodeMapPointTB.Name = "NodeMapPointTB";
             this.NodeMapPointTB.ReadOnly = true;
@@ -1029,6 +1047,7 @@
             // 
             // NodeGPSTB
             // 
+            this.NodeGPSTB.Cue = null;
             this.NodeGPSTB.Location = new System.Drawing.Point(332, 505);
             this.NodeGPSTB.Name = "NodeGPSTB";
             this.NodeGPSTB.Size = new System.Drawing.Size(203, 23);
@@ -1045,6 +1064,7 @@
             // 
             // NodeSpaceTB
             // 
+            this.NodeSpaceTB.Cue = "Används inte av appen";
             this.NodeSpaceTB.Location = new System.Drawing.Point(447, 109);
             this.NodeSpaceTB.Name = "NodeSpaceTB";
             this.NodeSpaceTB.Size = new System.Drawing.Size(111, 23);
@@ -1061,6 +1081,7 @@
             // 
             // NodeRoomTB
             // 
+            this.NodeRoomTB.Cue = "Används inte av appen";
             this.NodeRoomTB.Location = new System.Drawing.Point(330, 109);
             this.NodeRoomTB.Name = "NodeRoomTB";
             this.NodeRoomTB.Size = new System.Drawing.Size(111, 23);
@@ -1077,6 +1098,7 @@
             // 
             // NodeDepartmentTB
             // 
+            this.NodeDepartmentTB.Cue = "Används inte av appen";
             this.NodeDepartmentTB.Location = new System.Drawing.Point(619, 65);
             this.NodeDepartmentTB.Name = "NodeDepartmentTB";
             this.NodeDepartmentTB.Size = new System.Drawing.Size(111, 23);
@@ -1093,6 +1115,7 @@
             // 
             // NodeBuildingTB
             // 
+            this.NodeBuildingTB.Cue = null;
             this.NodeBuildingTB.Location = new System.Drawing.Point(447, 65);
             this.NodeBuildingTB.Name = "NodeBuildingTB";
             this.NodeBuildingTB.Size = new System.Drawing.Size(111, 23);
@@ -1109,6 +1132,7 @@
             // 
             // NodeAreaTB
             // 
+            this.NodeAreaTB.Cue = "Används inte av appen";
             this.NodeAreaTB.Location = new System.Drawing.Point(330, 65);
             this.NodeAreaTB.Name = "NodeAreaTB";
             this.NodeAreaTB.Size = new System.Drawing.Size(111, 23);
@@ -1207,6 +1231,7 @@
             // 
             // NodeFloorTB
             // 
+            this.NodeFloorTB.Cue = null;
             this.NodeFloorTB.Location = new System.Drawing.Point(564, 65);
             this.NodeFloorTB.Name = "NodeFloorTB";
             this.NodeFloorTB.Size = new System.Drawing.Size(49, 23);
@@ -1223,6 +1248,7 @@
             // 
             // NodeInfo5HeadingTB
             // 
+            this.NodeInfo5HeadingTB.Cue = null;
             this.NodeInfo5HeadingTB.Location = new System.Drawing.Point(330, 459);
             this.NodeInfo5HeadingTB.Name = "NodeInfo5HeadingTB";
             this.NodeInfo5HeadingTB.Size = new System.Drawing.Size(323, 23);
@@ -1239,6 +1265,7 @@
             // 
             // NodeInfo4HeadingTB
             // 
+            this.NodeInfo4HeadingTB.Cue = null;
             this.NodeInfo4HeadingTB.Location = new System.Drawing.Point(330, 415);
             this.NodeInfo4HeadingTB.Name = "NodeInfo4HeadingTB";
             this.NodeInfo4HeadingTB.Size = new System.Drawing.Size(323, 23);
@@ -1255,6 +1282,7 @@
             // 
             // NodeInfo3HeadingTB
             // 
+            this.NodeInfo3HeadingTB.Cue = null;
             this.NodeInfo3HeadingTB.Location = new System.Drawing.Point(330, 371);
             this.NodeInfo3HeadingTB.Name = "NodeInfo3HeadingTB";
             this.NodeInfo3HeadingTB.Size = new System.Drawing.Size(323, 23);
@@ -1271,6 +1299,7 @@
             // 
             // NodeInfo2HeadingTB
             // 
+            this.NodeInfo2HeadingTB.Cue = null;
             this.NodeInfo2HeadingTB.Location = new System.Drawing.Point(330, 327);
             this.NodeInfo2HeadingTB.Name = "NodeInfo2HeadingTB";
             this.NodeInfo2HeadingTB.Size = new System.Drawing.Size(323, 23);
@@ -1287,6 +1316,7 @@
             // 
             // NodeInfo1HeadingTB
             // 
+            this.NodeInfo1HeadingTB.Cue = null;
             this.NodeInfo1HeadingTB.Location = new System.Drawing.Point(330, 283);
             this.NodeInfo1HeadingTB.Name = "NodeInfo1HeadingTB";
             this.NodeInfo1HeadingTB.Size = new System.Drawing.Size(323, 23);
@@ -1303,6 +1333,7 @@
             // 
             // NodeMagneticOffsetTB
             // 
+            this.NodeMagneticOffsetTB.Cue = null;
             this.NodeMagneticOffsetTB.Location = new System.Drawing.Point(418, 239);
             this.NodeMagneticOffsetTB.Name = "NodeMagneticOffsetTB";
             this.NodeMagneticOffsetTB.Size = new System.Drawing.Size(100, 23);
@@ -1319,6 +1350,7 @@
             // 
             // NodeAccuracyTB
             // 
+            this.NodeAccuracyTB.Cue = null;
             this.NodeAccuracyTB.Location = new System.Drawing.Point(330, 239);
             this.NodeAccuracyTB.Name = "NodeAccuracyTB";
             this.NodeAccuracyTB.Size = new System.Drawing.Size(77, 23);
@@ -1345,6 +1377,7 @@
             // 
             // NodeIdTagTB
             // 
+            this.NodeIdTagTB.Cue = null;
             this.NodeIdTagTB.Location = new System.Drawing.Point(330, 197);
             this.NodeIdTagTB.Name = "NodeIdTagTB";
             this.NodeIdTagTB.Size = new System.Drawing.Size(59, 23);
@@ -1403,6 +1436,7 @@
             // 
             // NodeMinorTB
             // 
+            this.NodeMinorTB.Cue = null;
             this.NodeMinorTB.Location = new System.Drawing.Point(677, 153);
             this.NodeMinorTB.Name = "NodeMinorTB";
             this.NodeMinorTB.Size = new System.Drawing.Size(59, 23);
@@ -1419,6 +1453,7 @@
             // 
             // NodeMajorTB
             // 
+            this.NodeMajorTB.Cue = null;
             this.NodeMajorTB.Location = new System.Drawing.Point(609, 153);
             this.NodeMajorTB.Name = "NodeMajorTB";
             this.NodeMajorTB.Size = new System.Drawing.Size(59, 23);
@@ -1435,6 +1470,7 @@
             // 
             // NodeUuidTB
             // 
+            this.NodeUuidTB.Cue = null;
             this.NodeUuidTB.Location = new System.Drawing.Point(330, 153);
             this.NodeUuidTB.Name = "NodeUuidTB";
             this.NodeUuidTB.Size = new System.Drawing.Size(273, 23);
@@ -1451,6 +1487,7 @@
             // 
             // NodeNameTB
             // 
+            this.NodeNameTB.Cue = null;
             this.NodeNameTB.Location = new System.Drawing.Point(330, 21);
             this.NodeNameTB.Name = "NodeNameTB";
             this.NodeNameTB.Size = new System.Drawing.Size(205, 23);
@@ -1559,6 +1596,7 @@
             // 
             // EdgeTravelTimeTB
             // 
+            this.EdgeTravelTimeTB.Cue = "Sekunder";
             this.EdgeTravelTimeTB.Location = new System.Drawing.Point(418, 292);
             this.EdgeTravelTimeTB.Name = "EdgeTravelTimeTB";
             this.EdgeTravelTimeTB.Size = new System.Drawing.Size(100, 23);
@@ -1575,6 +1613,7 @@
             // 
             // EdgeEndHeadingTB
             // 
+            this.EdgeEndHeadingTB.Cue = "0 till 359";
             this.EdgeEndHeadingTB.Location = new System.Drawing.Point(312, 292);
             this.EdgeEndHeadingTB.Name = "EdgeEndHeadingTB";
             this.EdgeEndHeadingTB.Size = new System.Drawing.Size(100, 23);
@@ -1591,6 +1630,7 @@
             // 
             // EdgeStartHeadingTB
             // 
+            this.EdgeStartHeadingTB.Cue = "0 till 359";
             this.EdgeStartHeadingTB.Location = new System.Drawing.Point(206, 292);
             this.EdgeStartHeadingTB.Name = "EdgeStartHeadingTB";
             this.EdgeStartHeadingTB.Size = new System.Drawing.Size(100, 23);
@@ -1607,6 +1647,7 @@
             // 
             // EdgeBeginningTB
             // 
+            this.EdgeBeginningTB.Cue = "Beskriv hur man förflyttar sig mellan beaconsen";
             this.EdgeBeginningTB.Location = new System.Drawing.Point(206, 237);
             this.EdgeBeginningTB.Name = "EdgeBeginningTB";
             this.EdgeBeginningTB.Size = new System.Drawing.Size(864, 23);
@@ -1690,6 +1731,7 @@
             // 
             // ElevatorMessageTB
             // 
+            this.ElevatorMessageTB.Cue = null;
             this.ElevatorMessageTB.Location = new System.Drawing.Point(191, 65);
             this.ElevatorMessageTB.Name = "ElevatorMessageTB";
             this.ElevatorMessageTB.Size = new System.Drawing.Size(162, 23);
@@ -1707,6 +1749,7 @@
             // 
             // ElevatorEndHeadingTB
             // 
+            this.ElevatorEndHeadingTB.Cue = null;
             this.ElevatorEndHeadingTB.Location = new System.Drawing.Point(275, 21);
             this.ElevatorEndHeadingTB.Name = "ElevatorEndHeadingTB";
             this.ElevatorEndHeadingTB.Size = new System.Drawing.Size(78, 23);
@@ -1723,6 +1766,7 @@
             // 
             // ElevatorStartHeadingTB
             // 
+            this.ElevatorStartHeadingTB.Cue = null;
             this.ElevatorStartHeadingTB.Location = new System.Drawing.Point(191, 21);
             this.ElevatorStartHeadingTB.Name = "ElevatorStartHeadingTB";
             this.ElevatorStartHeadingTB.Size = new System.Drawing.Size(78, 23);
@@ -1979,6 +2023,8 @@
         }
 
         #endregion
+
+        // Declarations
         private System.Windows.Forms.OpenFileDialog OpenVenueDialog;
         private System.Windows.Forms.OpenFileDialog OpenGraphMLDialog;
         private System.Windows.Forms.SaveFileDialog SaveVenueDialog;
@@ -1988,25 +2034,25 @@
         private System.Windows.Forms.ListBox POIsLB;
         private System.Windows.Forms.ListBox POIInfosLB;
         private System.Windows.Forms.Label POIsListLabel;
-        private System.Windows.Forms.TextBox POIInformationTB;
+        private Models.CueTextBox  POIInformationTB;
         private System.Windows.Forms.Label POIInfoLabel;
         private System.Windows.Forms.Label POIInfoCatLabel;
         private System.Windows.Forms.ComboBox POIInfoCatCombo;
         private System.Windows.Forms.BindingSource POIsBS;
         private System.Windows.Forms.BindingSource POIInfosBS;
         private System.Windows.Forms.Label POIInfoStartsLabel;
-        private System.Windows.Forms.TextBox POIInfoStartsTB;
+        private Models.CueTextBox  POIInfoStartsTB;
         private System.Windows.Forms.Label POIInfoEndsLabel;
-        private System.Windows.Forms.TextBox POIInfoEndsTB;
+        private Models.CueTextBox POIInfoEndsTB;
         private System.Windows.Forms.Button AddPOIInfoButton;
         private System.Windows.Forms.Button RemovePOIInfoButton;
         private System.Windows.Forms.Button MoveInfoUpButton;
         private System.Windows.Forms.Button MoveInfoDownButton;
         private System.Windows.Forms.Label MediaFileLabel;
-        private System.Windows.Forms.TextBox MediaFileTB;
+        private Models.CueTextBox  MediaFileTB;
         private System.Windows.Forms.Button PickMediaFileButton;
         private System.Windows.Forms.Label MediaDescLabel;
-        private System.Windows.Forms.TextBox MediaDescrTB;
+        private Models.CueTextBox  MediaDescrTB;
         private System.Windows.Forms.OpenFileDialog OpenMediaFileDialog;
         private System.Windows.Forms.CheckBox AutoPlayMediaCB;
         private System.Windows.Forms.TabPage ElevatorsTab;
@@ -2014,11 +2060,11 @@
         private System.Windows.Forms.Label ElevatorListLabel;
         private System.Windows.Forms.BindingSource ElevatorsBS;
         private System.Windows.Forms.Button CreateElevatorEdgesButton;
-        private System.Windows.Forms.TextBox ElevatorEndHeadingTB;
+        private Models.CueTextBox  ElevatorEndHeadingTB;
         private System.Windows.Forms.Label ElevatorEndHeadingLabel;
-        private System.Windows.Forms.TextBox ElevatorStartHeadingTB;
+        private Models.CueTextBox  ElevatorStartHeadingTB;
         private System.Windows.Forms.Label ElevatorStartHeadingLabel;
-        private System.Windows.Forms.TextBox ElevatorMessageTB;
+        private Models.CueTextBox  ElevatorMessageTB;
         private System.Windows.Forms.Label ElevatorMessageLabel;
         private System.Windows.Forms.Label POIInfosLabel;
         private System.Windows.Forms.TabPage EdgesTab;
@@ -2028,13 +2074,13 @@
         private System.Windows.Forms.Label EdgesPOIListLabel;
         private System.Windows.Forms.BindingSource EdgesPOIsBS;
         private System.Windows.Forms.BindingSource EdgesForPOIBS;
-        private System.Windows.Forms.TextBox EdgeTravelTimeTB;
+        private Models.CueTextBox  EdgeTravelTimeTB;
         private System.Windows.Forms.Label EdgeTravelTimeLabel;
-        private System.Windows.Forms.TextBox EdgeEndHeadingTB;
+        private Models.CueTextBox EdgeEndHeadingTB;
         private System.Windows.Forms.Label EdgeEndHeadingLabel;
-        private System.Windows.Forms.TextBox EdgeStartHeadingTB;
+        private Models.CueTextBox EdgeStartHeadingTB;
         private System.Windows.Forms.Label EdgeStartHeadingLabel;
-        private System.Windows.Forms.TextBox EdgeBeginningTB;
+        private Models.CueTextBox EdgeBeginningTB;
         private System.Windows.Forms.Label EdgeBeginningLabel;
         private System.Windows.Forms.Button DeleteEdgeButton;
         private System.Windows.Forms.Button AddEdgeButton;
@@ -2042,19 +2088,19 @@
         private System.Windows.Forms.TabPage VenueTab;
         private System.Windows.Forms.ComboBox VisibilityCombo;
         private System.Windows.Forms.Label VisibilityLabel;
-        private System.Windows.Forms.TextBox VenueDescriptionTB;
+        private Models.CueTextBox VenueDescriptionTB;
         private System.Windows.Forms.Label VenueDescriptionLabel;
-        private System.Windows.Forms.TextBox CountryTB;
+        private Models.CueTextBox CountryTB;
         private System.Windows.Forms.Label CountryLabel;
-        private System.Windows.Forms.TextBox CityTB;
+        private Models.CueTextBox CityTB;
         private System.Windows.Forms.Label CityLabel;
-        private System.Windows.Forms.TextBox ZipTB;
+        private Models.CueTextBox ZipTB;
         private System.Windows.Forms.Label ZipLabel;
-        private System.Windows.Forms.TextBox AddressTB;
+        private Models.CueTextBox AddressTB;
         private System.Windows.Forms.Label AddressLabel;
-        private System.Windows.Forms.TextBox VenueIDTB;
+        private Models.CueTextBox VenueIDTB;
         private System.Windows.Forms.Label VenueIDLabel;
-        private System.Windows.Forms.TextBox VenueNameTB;
+        private Models.CueTextBox VenueNameTB;
         private System.Windows.Forms.Label VenueNameLabel;
         private System.Windows.Forms.Button DeleteAllElevatorEdgesButton;
         private System.Windows.Forms.ComboBox EdgeTravelTypeCombo;
@@ -2062,35 +2108,35 @@
         private System.Windows.Forms.TabPage NodesTab;
         private System.Windows.Forms.ListBox NodesLB;
         private System.Windows.Forms.Label NodesListLabel;
-        private System.Windows.Forms.TextBox NodeNameTB;
+        private Models.CueTextBox NodeNameTB;
         private System.Windows.Forms.Label NodeNameLabel;
         private System.Windows.Forms.BindingSource NodesBS;
-        private System.Windows.Forms.TextBox NodeUuidTB;
+        private Models.CueTextBox NodeUuidTB;
         private System.Windows.Forms.Label UuidLabel;
-        private System.Windows.Forms.TextBox NodeMinorTB;
+        private Models.CueTextBox NodeMinorTB;
         private System.Windows.Forms.Label MinorLabel;
-        private System.Windows.Forms.TextBox NodeMajorTB;
+        private Models.CueTextBox NodeMajorTB;
         private System.Windows.Forms.Label NodeMajorLabel;
         private System.Windows.Forms.ComboBox NodeWaypointTypeCombo;
         private System.Windows.Forms.Label WaypointTypeLabel;
-        private System.Windows.Forms.TextBox NodeIdTagTB;
+        private Models.CueTextBox NodeIdTagTB;
         private System.Windows.Forms.Label IdTabLabel;
-        private System.Windows.Forms.TextBox NodeAccuracyTB;
+        private Models.CueTextBox NodeAccuracyTB;
         private System.Windows.Forms.Label NodeAccuracyLabel;
         private System.Windows.Forms.CheckBox NodeActiveChk;
-        private System.Windows.Forms.TextBox NodeMagneticOffsetTB;
+        private Models.CueTextBox NodeMagneticOffsetTB;
         private System.Windows.Forms.Label MagneticOffsetLabel;
-        private System.Windows.Forms.TextBox NodeInfo5HeadingTB;
+        private Models.CueTextBox NodeInfo5HeadingTB;
         private System.Windows.Forms.Label NodeInfo5HeadingLabel;
-        private System.Windows.Forms.TextBox NodeInfo4HeadingTB;
+        private Models.CueTextBox NodeInfo4HeadingTB;
         private System.Windows.Forms.Label NodeInfo4HeadingLabel;
-        private System.Windows.Forms.TextBox NodeInfo3HeadingTB;
+        private Models.CueTextBox NodeInfo3HeadingTB;
         private System.Windows.Forms.Label NodeInfo3HeadingLabel;
-        private System.Windows.Forms.TextBox NodeInfo2HeadingTB;
+        private Models.CueTextBox NodeInfo2HeadingTB;
         private System.Windows.Forms.Label NodeInfo2HeadingLabel;
-        private System.Windows.Forms.TextBox NodeInfo1HeadingTB;
+        private Models.CueTextBox NodeInfo1HeadingTB;
         private System.Windows.Forms.Label NodeInfo1HeadingLabel;
-        private System.Windows.Forms.TextBox NodeFloorTB;
+        private Models.CueTextBox NodeFloorTB;
         private System.Windows.Forms.Label NodeFloorLabel;
         private System.Windows.Forms.Button AddNodeButton;
         private System.Windows.Forms.Button DeleteNodeButton;
@@ -2101,30 +2147,30 @@
         private System.Windows.Forms.Button EditHeadingInfo3Btn;
         private System.Windows.Forms.Button EditHeadingInfo2Btn;
         private System.Windows.Forms.Button EditHeadingInfo1Btn;
-        private System.Windows.Forms.TextBox NodeDepartmentTB;
+        private Models.CueTextBox NodeDepartmentTB;
         private System.Windows.Forms.Label NodeDepartmentLabel;
-        private System.Windows.Forms.TextBox NodeBuildingTB;
+        private Models.CueTextBox NodeBuildingTB;
         private System.Windows.Forms.Label NodeBuildingLabel;
-        private System.Windows.Forms.TextBox NodeAreaTB;
+        private Models.CueTextBox NodeAreaTB;
         private System.Windows.Forms.Label NodeAreaLabel;
-        private System.Windows.Forms.TextBox NodeSpaceTB;
+        private Models.CueTextBox NodeSpaceTB;
         private System.Windows.Forms.Label NodeSpaceLabel;
-        private System.Windows.Forms.TextBox NodeRoomTB;
+        private Models.CueTextBox NodeRoomTB;
         private System.Windows.Forms.Label NodeRoomLabel;
         private System.Windows.Forms.FolderBrowserDialog DataFolderDialog;
         private System.Windows.Forms.CheckBox MakeVenueActiveChk;
-        private System.Windows.Forms.TextBox VenueGPSTB;
+        private Models.CueTextBox VenueGPSTB;
         private System.Windows.Forms.Label VenueGPSLabel;
-        private System.Windows.Forms.TextBox NodeGPSTB;
+        private Models.CueTextBox NodeGPSTB;
         private System.Windows.Forms.Label NodeGPSLabel;
-        private System.Windows.Forms.TextBox VenueEmailTB;
+        private Models.CueTextBox VenueEmailTB;
         private System.Windows.Forms.Label VenueEmailLabel;
-        private System.Windows.Forms.TextBox VenueWebTB;
+        private Models.CueTextBox VenueWebTB;
         private System.Windows.Forms.Label VenueWebLabel;
-        private System.Windows.Forms.TextBox VenuePhoneTB;
+        private Models.CueTextBox VenuePhoneTB;
         private System.Windows.Forms.Label VenuePhoneLabel;
         private System.Windows.Forms.Button SelectVenueImageBtn;
-        private System.Windows.Forms.TextBox VenueImageTB;
+        private Models.CueTextBox VenueImageTB;
         private System.Windows.Forms.Label VenueImageLabel;
         private System.Windows.Forms.PictureBox VenueImagePB;
         private System.Windows.Forms.PictureBox PoiInfoPB;
@@ -2137,7 +2183,7 @@
         private System.Windows.Forms.Label MapsLabel;
         private System.Windows.Forms.BindingSource MapsBS;
         private System.Windows.Forms.Button NodeMapPointBtn;
-        private System.Windows.Forms.TextBox NodeMapPointTB;
+        private Models.CueTextBox NodeMapPointTB;
         private System.Windows.Forms.Label NodeMapPointLabel;
         private System.Windows.Forms.BindingSource NodesFilterBS;
         private System.Windows.Forms.Panel MapPanel;
