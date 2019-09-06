@@ -1180,11 +1180,23 @@ namespace VenueMaker.Dialogs
 
                 foreach (WFNode sourceelevator in elevators)
                 {
+                    if (!ElevatorsLB.CheckedItems.Contains(sourceelevator))
+                    {
+                        continue;
+
+                    } // Not checked
+
                     idxsrc++;
                     int idxdst = 0;
 
                     foreach (WFNode targetelevator in elevators)
                     {
+                        if (!ElevatorsLB.CheckedItems.Contains(targetelevator))
+                        {
+                            continue;
+
+                        } // Not checked
+
                         idxdst++;
 
                         if (sourceelevator == targetelevator)
@@ -1364,7 +1376,7 @@ namespace VenueMaker.Dialogs
         {
             try
             {
-                string msg = "Vill du ta bort alla vägbeskrivningar mellan hissarna?";
+                string msg = "Vill du ta bort alla vägbeskrivningar mellan de ikryssade hissarna?";
                 DialogResult mr = MessageBox.Show(msg, "Ta bort", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
                 if (DialogResult.Yes != mr)
                 {
@@ -1381,7 +1393,9 @@ namespace VenueMaker.Dialogs
                 {
                     WFEdge<WFNode> edge = elevedges[idx];
                     if (edge.Source.WaypointType == WFWaypointType.Elevator.ToString().ToLower() &&
-                        edge.Target.WaypointType == WFWaypointType.Elevator.ToString().ToLower())
+                        edge.Target.WaypointType == WFWaypointType.Elevator.ToString().ToLower() &&
+                        (ElevatorsLB.CheckedItems.Contains(edge.Source) ||
+                        ElevatorsLB.CheckedItems.Contains(edge.Target)))
                     {
                         Venue.NodesGraph.RemoveEdge(edge);
 
@@ -2688,6 +2702,7 @@ namespace VenueMaker.Dialogs
             } // There are changes
 
         }
+
     } // class
 }
 

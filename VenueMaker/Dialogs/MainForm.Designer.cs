@@ -35,6 +35,8 @@
             this.SaveVenueDialog = new System.Windows.Forms.SaveFileDialog();
             this.Tabs = new System.Windows.Forms.TabControl();
             this.PoiTabPage = new System.Windows.Forms.TabPage();
+            this.POIILinkUrlTB = new VenueMaker.Models.CueTextBox();
+            this.POIILinkUrlLabel = new System.Windows.Forms.Label();
             this.POIInfoEndsBtn = new System.Windows.Forms.Button();
             this.POIInfoStartBtn = new System.Windows.Forms.Button();
             this.PoiInfoPB = new System.Windows.Forms.PictureBox();
@@ -181,7 +183,7 @@
             this.ElevatorStartHeadingTB = new VenueMaker.Models.CueTextBox();
             this.ElevatorStartHeadingLabel = new System.Windows.Forms.Label();
             this.CreateElevatorEdgesButton = new System.Windows.Forms.Button();
-            this.ElevatorsLB = new System.Windows.Forms.ListBox();
+            this.ElevatorsLB = new System.Windows.Forms.CheckedListBox();
             this.ElevatorListLabel = new System.Windows.Forms.Label();
             this.OpenMediaFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.OpenCSVFileDialog = new System.Windows.Forms.OpenFileDialog();
@@ -216,8 +218,6 @@
             this.verifyAccountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.changePasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.setPermissionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.POIILinkUrlLabel = new System.Windows.Forms.Label();
-            this.POIILinkUrlTB = new VenueMaker.Models.CueTextBox();
             this.Tabs.SuspendLayout();
             this.PoiTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PoiInfoPB)).BeginInit();
@@ -310,6 +310,23 @@
             this.PoiTabPage.TabIndex = 0;
             this.PoiTabPage.Text = "Informationspunkter";
             this.PoiTabPage.UseVisualStyleBackColor = true;
+            // 
+            // POIILinkUrlTB
+            // 
+            this.POIILinkUrlTB.Cue = "https://...";
+            this.POIILinkUrlTB.Location = new System.Drawing.Point(333, 517);
+            this.POIILinkUrlTB.Name = "POIILinkUrlTB";
+            this.POIILinkUrlTB.Size = new System.Drawing.Size(407, 23);
+            this.POIILinkUrlTB.TabIndex = 22;
+            // 
+            // POIILinkUrlLabel
+            // 
+            this.POIILinkUrlLabel.AutoSize = true;
+            this.POIILinkUrlLabel.Location = new System.Drawing.Point(330, 499);
+            this.POIILinkUrlLabel.Name = "POIILinkUrlLabel";
+            this.POIILinkUrlLabel.Size = new System.Drawing.Size(157, 15);
+            this.POIILinkUrlLabel.TabIndex = 21;
+            this.POIILinkUrlLabel.Text = "Länk (öppnas i webbläsaren)";
             // 
             // POIInfoEndsBtn
             // 
@@ -1798,10 +1815,9 @@
             // 
             this.ElevatorsLB.AccessibleName = "Lista över hissar";
             this.ElevatorsLB.FormattingEnabled = true;
-            this.ElevatorsLB.ItemHeight = 15;
             this.ElevatorsLB.Location = new System.Drawing.Point(11, 21);
             this.ElevatorsLB.Name = "ElevatorsLB";
-            this.ElevatorsLB.Size = new System.Drawing.Size(151, 409);
+            this.ElevatorsLB.Size = new System.Drawing.Size(151, 400);
             this.ElevatorsLB.TabIndex = 1;
             // 
             // ElevatorListLabel
@@ -1975,23 +1991,6 @@
             this.setPermissionsToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
             this.setPermissionsToolStripMenuItem.Text = "&Ange rättigheter för användare";
             // 
-            // POIILinkUrlLabel
-            // 
-            this.POIILinkUrlLabel.AutoSize = true;
-            this.POIILinkUrlLabel.Location = new System.Drawing.Point(330, 499);
-            this.POIILinkUrlLabel.Name = "POIILinkUrlLabel";
-            this.POIILinkUrlLabel.Size = new System.Drawing.Size(157, 15);
-            this.POIILinkUrlLabel.TabIndex = 21;
-            this.POIILinkUrlLabel.Text = "Länk (öppnas i webbläsaren)";
-            // 
-            // POIILinkUrlTB
-            // 
-            this.POIILinkUrlTB.Cue = "https://...";
-            this.POIILinkUrlTB.Location = new System.Drawing.Point(333, 517);
-            this.POIILinkUrlTB.Name = "POIILinkUrlTB";
-            this.POIILinkUrlTB.Size = new System.Drawing.Size(407, 23);
-            this.POIILinkUrlTB.TabIndex = 22;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -2077,7 +2076,7 @@
         private System.Windows.Forms.OpenFileDialog OpenMediaFileDialog;
         private System.Windows.Forms.CheckBox AutoPlayMediaCB;
         private System.Windows.Forms.TabPage ElevatorsTab;
-        private System.Windows.Forms.ListBox ElevatorsLB;
+        private System.Windows.Forms.CheckedListBox ElevatorsLB;
         private System.Windows.Forms.Label ElevatorListLabel;
         private System.Windows.Forms.BindingSource ElevatorsBS;
         private System.Windows.Forms.Button CreateElevatorEdgesButton;
