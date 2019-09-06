@@ -29,6 +29,7 @@ namespace WayfindR.Models
         public bool AutoPlayMedia { get; set; }
         public DateTime? StartsAt { get; set; }
         public DateTime? EndsAt { get; set; }
+        public string LinkUrl { get; set; }
 
         public bool AlreadyAutoPlayed { get; set; }
 

@@ -216,6 +216,8 @@
             this.verifyAccountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.changePasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.setPermissionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.POIILinkUrlLabel = new System.Windows.Forms.Label();
+            this.POIILinkUrlTB = new VenueMaker.Models.CueTextBox();
             this.Tabs.SuspendLayout();
             this.PoiTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PoiInfoPB)).BeginInit();
@@ -274,6 +276,8 @@
             // 
             // PoiTabPage
             // 
+            this.PoiTabPage.Controls.Add(this.POIILinkUrlTB);
+            this.PoiTabPage.Controls.Add(this.POIILinkUrlLabel);
             this.PoiTabPage.Controls.Add(this.POIInfoEndsBtn);
             this.PoiTabPage.Controls.Add(this.POIInfoStartBtn);
             this.PoiTabPage.Controls.Add(this.PoiInfoPB);
@@ -363,7 +367,7 @@
             // 
             // MediaDescrTB
             // 
-            this.MediaDescrTB.Cue = null;
+            this.MediaDescrTB.Cue = "Skriv en syntolkning för dem som inte ser";
             this.MediaDescrTB.Location = new System.Drawing.Point(333, 448);
             this.MediaDescrTB.Name = "MediaDescrTB";
             this.MediaDescrTB.Size = new System.Drawing.Size(407, 23);
@@ -389,7 +393,7 @@
             // 
             // MediaFileTB
             // 
-            this.MediaFileTB.Cue = null;
+            this.MediaFileTB.Cue = "Bilder (*.jpg, *.png), Ljud (*.mp3, *.m4a)";
             this.MediaFileTB.Location = new System.Drawing.Point(333, 404);
             this.MediaFileTB.Name = "MediaFileTB";
             this.MediaFileTB.Size = new System.Drawing.Size(316, 23);
@@ -409,7 +413,7 @@
             this.MoveInfoDownButton.Location = new System.Drawing.Point(736, 127);
             this.MoveInfoDownButton.Name = "MoveInfoDownButton";
             this.MoveInfoDownButton.Size = new System.Drawing.Size(75, 23);
-            this.MoveInfoDownButton.TabIndex = 24;
+            this.MoveInfoDownButton.TabIndex = 26;
             this.MoveInfoDownButton.Text = "Flytta ner";
             this.MoveInfoDownButton.UseVisualStyleBackColor = true;
             // 
@@ -418,7 +422,7 @@
             this.MoveInfoUpButton.Location = new System.Drawing.Point(736, 98);
             this.MoveInfoUpButton.Name = "MoveInfoUpButton";
             this.MoveInfoUpButton.Size = new System.Drawing.Size(75, 23);
-            this.MoveInfoUpButton.TabIndex = 23;
+            this.MoveInfoUpButton.TabIndex = 25;
             this.MoveInfoUpButton.Text = "Flytta upp";
             this.MoveInfoUpButton.UseVisualStyleBackColor = true;
             // 
@@ -427,7 +431,7 @@
             this.RemovePOIInfoButton.Location = new System.Drawing.Point(736, 53);
             this.RemovePOIInfoButton.Name = "RemovePOIInfoButton";
             this.RemovePOIInfoButton.Size = new System.Drawing.Size(75, 23);
-            this.RemovePOIInfoButton.TabIndex = 22;
+            this.RemovePOIInfoButton.TabIndex = 24;
             this.RemovePOIInfoButton.Text = "&Ta bort";
             this.RemovePOIInfoButton.UseVisualStyleBackColor = true;
             // 
@@ -436,7 +440,7 @@
             this.AddPOIInfoButton.Location = new System.Drawing.Point(736, 21);
             this.AddPOIInfoButton.Name = "AddPOIInfoButton";
             this.AddPOIInfoButton.Size = new System.Drawing.Size(75, 23);
-            this.AddPOIInfoButton.TabIndex = 21;
+            this.AddPOIInfoButton.TabIndex = 23;
             this.AddPOIInfoButton.Text = "L&ägg till";
             this.AddPOIInfoButton.UseVisualStyleBackColor = true;
             // 
@@ -1971,6 +1975,23 @@
             this.setPermissionsToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
             this.setPermissionsToolStripMenuItem.Text = "&Ange rättigheter för användare";
             // 
+            // POIILinkUrlLabel
+            // 
+            this.POIILinkUrlLabel.AutoSize = true;
+            this.POIILinkUrlLabel.Location = new System.Drawing.Point(330, 499);
+            this.POIILinkUrlLabel.Name = "POIILinkUrlLabel";
+            this.POIILinkUrlLabel.Size = new System.Drawing.Size(157, 15);
+            this.POIILinkUrlLabel.TabIndex = 21;
+            this.POIILinkUrlLabel.Text = "Länk (öppnas i webbläsaren)";
+            // 
+            // POIILinkUrlTB
+            // 
+            this.POIILinkUrlTB.Cue = "https://...";
+            this.POIILinkUrlTB.Location = new System.Drawing.Point(333, 517);
+            this.POIILinkUrlTB.Name = "POIILinkUrlTB";
+            this.POIILinkUrlTB.Size = new System.Drawing.Size(407, 23);
+            this.POIILinkUrlTB.TabIndex = 22;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -2211,5 +2232,7 @@
         private System.Windows.Forms.ToolStripMenuItem setPermissionsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem verifyAccountToolStripMenuItem;
         private System.Windows.Forms.Button MarkEdgeOnMapBtn;
+        private Models.CueTextBox POIILinkUrlTB;
+        private System.Windows.Forms.Label POIILinkUrlLabel;
     }
 }

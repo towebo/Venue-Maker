@@ -245,6 +245,7 @@ namespace VenueMaker.Dialogs
                 MediaFileTB.DataBindings.Add("Text", POIInfosBS, nameof(WFPOIInformation.MediaFile));
                 MediaDescrTB.DataBindings.Add("Text", POIInfosBS, nameof(WFPOIInformation.MediaDescription));
                 AutoPlayMediaCB.DataBindings.Add("Checked", POIInfosBS, nameof(WFPOIInformation.AutoPlayMedia));
+                POIILinkUrlTB.DataBindings.Add("Text", POIInfosBS, nameof(WFPOIInformation.LinkUrl));
 
                 POIInfosBS.CurrentChanged += POIInfosBS_CurrentChanged1;
 

@@ -213,6 +213,7 @@ namespace WayfindR.Models
 
                                 wfinfo.StartsAt = (DateTime?)jinfo["starts_at"];
                                 wfinfo.EndsAt = (DateTime?)jinfo["ends_at"];
+                                wfinfo.LinkUrl = (string)jinfo["linkurl"];
 
                                 wfinfos.Add(wfinfo);
 
@@ -485,12 +486,14 @@ namespace WayfindR.Models
                                     writer.WritePropertyName("autoplaymedia");
                                     writer.WriteValue(wfpoinfo.AutoPlayMedia);
 
-
                                     writer.WritePropertyName("starts_at");
                                     writer.WriteValue(wfpoinfo.StartsAt);
                                     writer.WritePropertyName("ends_at");
                                     writer.WriteValue(wfpoinfo.EndsAt);
-                                    
+
+                                    writer.WritePropertyName("linkurl");
+                                    writer.WriteValue(wfpoinfo.LinkUrl);
+
                                     writer.WriteEndObject();
 
                                 } // foreach wfpoinfo
