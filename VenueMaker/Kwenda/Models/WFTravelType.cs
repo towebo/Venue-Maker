@@ -11,7 +11,9 @@ namespace WayfindR.Models
         Escalator,
         Stairs,
         GridStairs,
-        Ladder
+        Ladder,
+        RevolvingDoor,
+        Ramp
     } // Enum
 
     

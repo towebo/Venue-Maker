@@ -37,6 +37,14 @@ namespace WayfindR.Helpers
                 WFTravelType.Ladder.ToString().ToLower(),
                 WFTravelType.Ladder
                 );
+            result.Add(
+                WFTravelType.RevolvingDoor.ToString().ToLower(),
+                WFTravelType.RevolvingDoor
+                );
+            result.Add(
+                WFTravelType.Ramp.ToString().ToLower(),
+                WFTravelType.Ramp
+                );
 
             return result;
 
