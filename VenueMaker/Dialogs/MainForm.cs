@@ -84,6 +84,7 @@ namespace VenueMaker.Dialogs
 
 
                 // Venue
+                SelectVenueImageBtn.Click += (s10, e10) => SelectVenueImage();
                 VenueImagePB.Click += (s10, e10) => SelectVenueImage();
                 
                 AddMapBtn.Click += (s11, e11) => AddMap();
@@ -124,11 +125,11 @@ namespace VenueMaker.Dialogs
         {
             try
             {
-                VenueMaker.Models.Preferences.Load();
+                Models.Preferences.Load();
 
-                if (!Directory.Exists(VenueMaker.Models.Preferences.Me.DataFolder))
+                if (!Directory.Exists(Models.Preferences.Me.DataFolder))
                 {
-                    Directory.CreateDirectory(VenueMaker.Models.Preferences.Me.DataFolder);
+                    Directory.CreateDirectory(Models.Preferences.Me.DataFolder);
 
                 } // Create folder for data files
 
@@ -136,16 +137,18 @@ namespace VenueMaker.Dialogs
                 WindowState = FormWindowState.Maximized;
                 Tabs.Dock = DockStyle.Fill;
 
-                // Tabs.Alignment = TabAlignment.Bottom;
-                // Tabs.TabStop = false;
-                // Tabs.Appearance = TabAppearance.Buttons;
-                // Tabs.ItemSize = new Size(0, 1);
-                // Tabs.SizeMode = TabSizeMode.Fixed;
-                // Tabs.Multiline = true;
-
                 InitMenusAndButtons();
 
                 VenueBS.DataSource = new WFVenue();
+                VenueBS.ListChanged += (o5, e5) =>
+                {
+                    if (e5.ListChangedType == ListChangedType.ItemChanged)
+                    {
+                        _modified = true;
+
+                    } // Changed
+
+                };
                 VenueBS.CurrentChanged += (s1, e1) =>
                 {
                     WFVenue v = VenueBS.Current as WFVenue;
@@ -154,6 +157,15 @@ namespace VenueMaker.Dialogs
                 };
 
                 MapsBS.DataSource = new WFMap[] { };
+                MapsBS.ListChanged += (o6, e6) =>
+                {
+                    if (e6.ListChangedType == ListChangedType.ItemChanged)
+                    {
+                        _modified = true;
+
+                    } // Changed
+
+                };
                 MapsBS.CurrentChanged += (s2, e2) =>
                 {
                     WFMap m = MapsBS.Current as WFMap;
@@ -181,38 +193,46 @@ namespace VenueMaker.Dialogs
 
                 };
 
-                MapsLB.DisplayMember = "Title";
-                MapsLB.ValueMember = "Id";
+                MapsLB.DisplayMember = nameof(WFMap.Title);
+                MapsLB.ValueMember = nameof(WFMap.Id);
                 MapsLB.DataSource = MapsBS;
 
 
-                VenueNameTB.DataBindings.Add("Text", VenueBS, "Name");
-                VenueIDTB.DataBindings.Add("Text", VenueBS, "Id");
-                AddressTB.DataBindings.Add("Text", VenueBS, "Address");
-                ZipTB.DataBindings.Add("Text", VenueBS, "Zip");
-                CityTB.DataBindings.Add("Text", VenueBS, "City");
-                CountryTB.DataBindings.Add("Text", VenueBS, "Country");
-                VenueGPSTB.DataBindings.Add("Text", VenueBS, nameof(WFVenue.GPSCoordinates), false);
-                VenuePhoneTB.DataBindings.Add("Text", VenueBS, nameof(WFVenue.Phone), false);
-                VenueWebTB.DataBindings.Add("Text", VenueBS, nameof(WFVenue.Web), false);
-                VenueEmailTB.DataBindings.Add("Text", VenueBS, nameof(WFVenue.Email), false);
-                VenueImageTB.DataBindings.Add("Text", VenueBS, nameof(WFVenue.Image), false);
+                VenueNameTB.DataBindings.Add("Text", VenueBS, nameof(WFVenue.Name), true, DataSourceUpdateMode.OnPropertyChanged);
+                VenueIDTB.DataBindings.Add("Text", VenueBS, nameof(WFVenue.Id), true, DataSourceUpdateMode.OnPropertyChanged);
+                AddressTB.DataBindings.Add("Text", VenueBS, nameof(WFVenue.Address), true, DataSourceUpdateMode.OnPropertyChanged);
+                ZipTB.DataBindings.Add("Text", VenueBS, nameof(WFVenue.Zip), true, DataSourceUpdateMode.OnPropertyChanged);
+                CityTB.DataBindings.Add("Text", VenueBS, nameof(WFVenue.City), true, DataSourceUpdateMode.OnPropertyChanged);
+                CountryTB.DataBindings.Add("Text", VenueBS, nameof(WFVenue.Country), true, DataSourceUpdateMode.OnPropertyChanged);
+                VenueGPSTB.DataBindings.Add("Text", VenueBS, nameof(WFVenue.GPSCoordinates), false, DataSourceUpdateMode.OnPropertyChanged);
+                VenuePhoneTB.DataBindings.Add("Text", VenueBS, nameof(WFVenue.Phone), false, DataSourceUpdateMode.OnPropertyChanged);
+                VenueWebTB.DataBindings.Add("Text", VenueBS, nameof(WFVenue.Web), false, DataSourceUpdateMode.OnPropertyChanged);
+                VenueEmailTB.DataBindings.Add("Text", VenueBS, nameof(WFVenue.Email), false, DataSourceUpdateMode.OnPropertyChanged);
+                VenueImageTB.DataBindings.Add("Text", VenueBS, nameof(WFVenue.Image), false, DataSourceUpdateMode.OnPropertyChanged);
 
-                VenueDescriptionTB.DataBindings.Add("Text", VenueBS, "Description");
+                VenueDescriptionTB.DataBindings.Add("Text", VenueBS, nameof(WFVenue.Description), false, DataSourceUpdateMode.OnPropertyChanged);
 
                 VisibilityCombo.DataSource = VenueVisibilityItem.GetPossibleVisibilities();
-                VisibilityCombo.DisplayMember = "Title";
-                VisibilityCombo.ValueMember = "Visibility";
-                VisibilityCombo.DataBindings.Add("SelectedValue", VenueBS, "Visibility");
-
+                VisibilityCombo.DisplayMember = nameof(VenueVisibilityItem.Title);
+                VisibilityCombo.ValueMember = nameof(VenueVisibilityItem.Visibility);
+                VisibilityCombo.DataBindings.Add("SelectedValue", VenueBS, nameof(WFVenue.Visibility), false, DataSourceUpdateMode.OnPropertyChanged);
 
 
                 POIsBS.DataSource = new WFPointOfInterest[] { };
+                POIsBS.ListChanged += (o4, e4) =>
+                {
+                    if (e4.ListChangedType == ListChangedType.ItemChanged)
+                    {
+                        _modified = true;
+
+                    } // Changed
+
+                };
                 POIsBS.CurrentChanged += (s2, e2) =>
                 {
                     WFPointOfInterest p = POIsBS.Current as WFPointOfInterest;
                     if (p != null &&
-                    p.Information != null)
+                        p.Information != null)
                     {
                         POIInfosBS.DataSource = p.Information;
 
@@ -224,64 +244,73 @@ namespace VenueMaker.Dialogs
                     }
                     POIInfosBS.ResetBindings(false);
 
-                }; // Current Changed
+                }; // Cusrrent Changed
 
                 POIsLB.DataSource = POIsBS;
                 POIsLB.DisplayMember = nameof(WFPointOfInterest.TextInList);
                 POIsLB.ValueMember = nameof(WFPointOfInterest.Guid);
 
-
                 POIInfosBS.DataSource = new WFPOIInformation[] { };
+                POIInfosBS.ListChanged += (o3, e3) =>
+                {
+                    if (e3.ListChangedType == ListChangedType.ItemChanged ||
+                        e3.ListChangedType == ListChangedType.ItemAdded ||
+                        e3.ListChangedType == ListChangedType.ItemDeleted
+                        )
+                    {
+                        _modified = true;
 
+                    } // Changed
+
+                };
                 POIInfosLB.DataSource = POIInfosBS;
                 POIInfosLB.DisplayMember = nameof(WFPOIInformation.Information);
                 POIInfosLB.ValueMember = nameof(WFPOIInformation.Guid);
                 
-                POIInformationTB.DataBindings.Add("Text", POIInfosBS, nameof(WFPOIInformation.Information));
+                POIInformationTB.DataBindings.Add("Text", POIInfosBS, nameof(WFPOIInformation.Information), false, DataSourceUpdateMode.OnPropertyChanged);
                 POIInfoStartsTB.DataBindings.Add("Text", POIInfosBS, nameof(WFPOIInformation.StartsAt), true, DataSourceUpdateMode.OnValidation);
                 POIInfoStartsTB.AllowEmptyValue();
                 POIInfoEndsTB.DataBindings.Add("Text", POIInfosBS, nameof(WFPOIInformation.EndsAt), true, DataSourceUpdateMode.OnPropertyChanged);
                 POIInfoEndsTB.AllowEmptyValue();
-                MediaFileTB.DataBindings.Add("Text", POIInfosBS, nameof(WFPOIInformation.MediaFile));
-                MediaDescrTB.DataBindings.Add("Text", POIInfosBS, nameof(WFPOIInformation.MediaDescription));
-                AutoPlayMediaCB.DataBindings.Add("Checked", POIInfosBS, nameof(WFPOIInformation.AutoPlayMedia));
-                POIILinkUrlTB.DataBindings.Add("Text", POIInfosBS, nameof(WFPOIInformation.LinkUrl));
-
+                MediaFileTB.DataBindings.Add("Text", POIInfosBS, nameof(WFPOIInformation.MediaFile), false, DataSourceUpdateMode.OnPropertyChanged);
+                MediaDescrTB.DataBindings.Add("Text", POIInfosBS, nameof(WFPOIInformation.MediaDescription), false, DataSourceUpdateMode.OnPropertyChanged);
+                AutoPlayMediaCB.DataBindings.Add("Checked", POIInfosBS, nameof(WFPOIInformation.AutoPlayMedia), false, DataSourceUpdateMode.OnPropertyChanged);
+                POIILinkUrlTB.DataBindings.Add("Text", POIInfosBS, nameof(WFPOIInformation.LinkUrl), false, DataSourceUpdateMode.OnPropertyChanged);
                 POIInfosBS.CurrentChanged += POIInfosBS_CurrentChanged1;
 
 
-                POIInfoCatCombo.DataSource = InfoCategoryItem.GetAll();
-                POIInfoCatCombo.DisplayMember = nameof(InfoCategoryItem.Name);
-                POIInfoCatCombo.ValueMember = nameof(InfoCategoryItem.Category);
-                POIInfoCatCombo.DataBindings.Add("SelectedValue", POIInfosBS, nameof(WFPOIInformation.Category));
+                POIInfoCatCombo.DataSource = InfoCategoryItem.GetActiveOnes();
+                POIInfoCatCombo.DisplayMember = nameof(InfoCategoryItem.DisplayName);
+                POIInfoCatCombo.ValueMember = nameof(InfoCategoryItem.Name);
+                POIInfoCatCombo.DataBindings.Add("SelectedValue", POIInfosBS, nameof(WFPOIInformation.Category), false, DataSourceUpdateMode.OnPropertyChanged);
 
                 ElevatorsBS.DataSource = new WFNode[] { };
                 ElevatorsLB.DataSource = ElevatorsBS;
-                ElevatorsLB.DisplayMember = "TextInList";
-                ElevatorsLB.ValueMember = "Id";
+                ElevatorsLB.DisplayMember = nameof(WFNode.TextInList);
+                ElevatorsLB.ValueMember = nameof(WFNode.Id);
 
 
                 EdgesPOIsBS.DataSource = new WFPointOfInterest[] { };
+                EdgesPOIsBS.ListChanged += (o2, e2) =>
+                {
+                    if (e2.ListChangedType == ListChangedType.ItemChanged)
+                    {
+                        _modified = true;
+
+                    } // Changed
+
+                };
                 EdgesPOIsBS.CurrentChanged += (s3, e3) =>
                 {
                     WFPointOfInterest p = EdgesPOIsBS.Current as WFPointOfInterest;
                     if (p != null)
                     {
                         WFNode node = p.LinkedNode;
-#warning Delete this when it works.
-                        /*tmp
-                        WFNode node = Venue.NodesGraph.FindNode(
-                            p.BeaconUuid,
-                            p.BeaconMajor,
-                            p.BeaconMinor
-                            );
-                        */
                         if (node != null)
                         {
                             var nodeedges = Venue.NodesGraph.GetEdgesFor(node);
 
                             EdgesForPOIBS.DataSource = EdgeForPOI.EdgesFor(nodeedges);
-
 
                         } // Node not null
                         else
@@ -289,7 +318,6 @@ namespace VenueMaker.Dialogs
                             EdgesForPOIBS.DataSource = new EdgeForPOI[] { };
 
                         }
-
 
                     }
                     else
@@ -327,20 +355,19 @@ namespace VenueMaker.Dialogs
 
 
                 EdgesForPOILB.DataSource = EdgesForPOIBS;
-                EdgesForPOILB.DisplayMember = "TextInList";
-                EdgesForPOILB.ValueMember = "Edge";
+                EdgesForPOILB.DisplayMember = nameof(EdgeForPOI.TextInList);
+                EdgesForPOILB.ValueMember = nameof(EdgeForPOI.Edge);
 
                 EdgeBS.DataSource = new WFEdge<WFNode>(new WFNode(), new WFNode(), "");
-                EdgeBeginningTB.DataBindings.Add("Text", EdgeBS, "Beginning");
-                EdgeStartHeadingTB.DataBindings.Add("Text", EdgeBS, "StartHeading");
-                EdgeEndHeadingTB.DataBindings.Add("Text", EdgeBS, "EndHeading");
-                EdgeTravelTimeTB.DataBindings.Add("Text", EdgeBS, "TravelTime");
+                EdgeBeginningTB.DataBindings.Add("Text", EdgeBS, nameof(WFEdge<WFNode>.Beginning), false, DataSourceUpdateMode.OnPropertyChanged);
+                EdgeStartHeadingTB.DataBindings.Add("Text", EdgeBS, nameof(WFEdge<WFNode>.StartHeading), false, DataSourceUpdateMode.OnPropertyChanged);
+                EdgeEndHeadingTB.DataBindings.Add("Text", EdgeBS, nameof(WFEdge<WFNode>.EndHeading), false, DataSourceUpdateMode.OnPropertyChanged);
+                EdgeTravelTimeTB.DataBindings.Add("Text", EdgeBS, nameof(WFEdge<WFNode>.TravelTime), false, DataSourceUpdateMode.OnPropertyChanged);
 
-
-                EdgeTravelTypeCombo.DataSource = TravelTypeHelper.ToDictionary().Keys.ToList();
-
-                EdgeTravelTypeCombo.DataBindings.Add("Text", EdgeBS, "TravelType");
-
+                EdgeTravelTypeCombo.DataSource = TravelTypeHelper.ToDisplayList();
+                EdgeTravelTypeCombo.DisplayMember = nameof(TravelTypeListItem.DisplayName);
+                EdgeTravelTypeCombo.ValueMember = nameof(TravelTypeListItem.Name);
+                EdgeTravelTypeCombo.DataBindings.Add("SelectedValue", EdgeBS, nameof(WFEdge<WFNode>.TravelType), true, DataSourceUpdateMode.OnPropertyChanged);
 
 
                 NodesFilterBS.DataSource = NodesFilterItem.GetAll();
@@ -354,37 +381,47 @@ namespace VenueMaker.Dialogs
                 NodesFilterCombo.ValueMember = nameof(NodesFilterItem.Filter);
 
                 NodesBS.DataSource = new WFNode[] { };
-                NodesLB.DataSource = NodesBS;
-                NodesLB.DisplayMember = "TextInList";
-                NodesLB.ValueMember = "Id";
+                NodesBS.ListChanged += (o1, e1) =>
+                {
+                    if (e1.ListChangedType == ListChangedType.ItemChanged)
+                    {
+                        _modified = true;
 
-                NodeNameTB.DataBindings.Add("Text", NodesBS, "Name");
-                NodeWaypointTypeCombo.DataSource = WaypointTypeHelper.ToDictionary().Keys.ToList();
-                NodeWaypointTypeCombo.DataBindings.Add("Text", NodesBS, "WaypointType");
-                NodeAreaTB.DataBindings.Add("Text", NodesBS, "Area");
-                NodeBuildingTB.DataBindings.Add("Text", NodesBS, "Building");
-                NodeFloorTB.DataBindings.Add("Text", NodesBS, "Floor");
-                NodeDepartmentTB.DataBindings.Add("Text", NodesBS, "Department");
-                NodeRoomTB.DataBindings.Add("Text", NodesBS, "Room");
-                NodeSpaceTB.DataBindings.Add("Text", NodesBS, "Space");
-                NodeUuidTB.DataBindings.Add("Text", NodesBS, "Uuid");
-                NodeMajorTB.DataBindings.Add("Text", NodesBS, "Major");
-                NodeMinorTB.DataBindings.Add("Text", NodesBS, "Minor");
-                NodeIdTagTB.DataBindings.Add("Text", NodesBS, "IdTag");
-                NodeActiveChk.DataBindings.Add("Checked", NodesBS, "Active", true, DataSourceUpdateMode.OnValidation);
-                NodeAccuracyTB.DataBindings.Add("Text", NodesBS, "Accuracy");
-                NodeMagneticOffsetTB.DataBindings.Add("Text", NodesBS, "MagneticOffset");
-                NodeInfo1HeadingTB.DataBindings.Add("Text", NodesBS, "Heading1Info");
-                NodeInfo2HeadingTB.DataBindings.Add("Text", NodesBS, "Heading2Info");
-                NodeInfo3HeadingTB.DataBindings.Add("Text", NodesBS, "Heading3Info");
-                NodeInfo4HeadingTB.DataBindings.Add("Text", NodesBS, "Heading4Info");
-                NodeInfo5HeadingTB.DataBindings.Add("Text", NodesBS, "Heading5Info");
+                    } // Changed
+
+                };
+                NodesLB.DataSource = NodesBS;
+                NodesLB.DisplayMember = nameof(WFNode.TextInList);
+                NodesLB.ValueMember = nameof(WFNode.Id);
+
+                NodeNameTB.DataBindings.Add("Text", NodesBS, nameof(WFNode.Name), false, DataSourceUpdateMode.OnPropertyChanged);
+                NodeWaypointTypeCombo.DataSource = WaypointTypeHelper.ToDisplayList(); //tmp ToDictionary().Keys.ToList();
+                NodeWaypointTypeCombo.DisplayMember = nameof(WaypointTypeListItem.DisplayName);
+                NodeWaypointTypeCombo.ValueMember = nameof(WaypointTypeListItem.Name);
+                NodeWaypointTypeCombo.DataBindings.Add("SelectedValue", NodesBS, nameof(WFNode.WaypointType), false, DataSourceUpdateMode.OnPropertyChanged);
+
+                NodeAreaTB.DataBindings.Add("Text", NodesBS, nameof(WFNode.Area), false, DataSourceUpdateMode.OnPropertyChanged);
+                NodeBuildingTB.DataBindings.Add("Text", NodesBS, nameof(WFNode.Building), false, DataSourceUpdateMode.OnPropertyChanged);
+                NodeFloorTB.DataBindings.Add("Text", NodesBS, nameof(WFNode.Floor), false, DataSourceUpdateMode.OnPropertyChanged);
+                NodeDepartmentTB.DataBindings.Add("Text", NodesBS, nameof(WFNode.Department), false, DataSourceUpdateMode.OnPropertyChanged);
+                NodeRoomTB.DataBindings.Add("Text", NodesBS, nameof(WFNode.Room), false, DataSourceUpdateMode.OnPropertyChanged);
+                NodeSpaceTB.DataBindings.Add("Text", NodesBS, nameof(WFNode.Space), false, DataSourceUpdateMode.OnPropertyChanged);
+                NodeUuidTB.DataBindings.Add("Text", NodesBS, nameof(WFNode.Uuid), false, DataSourceUpdateMode.OnPropertyChanged);
+                NodeMajorTB.DataBindings.Add("Text", NodesBS, nameof(WFNode.Major), false, DataSourceUpdateMode.OnPropertyChanged);
+                NodeMinorTB.DataBindings.Add("Text", NodesBS, nameof(WFNode.Minor), false, DataSourceUpdateMode.OnPropertyChanged);
+                NodeIdTagTB.DataBindings.Add("Text", NodesBS, nameof(WFNode.IdTag), false, DataSourceUpdateMode.OnPropertyChanged);
+                NodeActiveChk.DataBindings.Add("Checked", NodesBS, nameof(WFNode.Active), true, DataSourceUpdateMode.OnValidation);
+                NodeAccuracyTB.DataBindings.Add("Text", NodesBS, nameof(WFNode.Accuracy), false, DataSourceUpdateMode.OnPropertyChanged);
+                NodeMagneticOffsetTB.DataBindings.Add("Text", NodesBS, nameof(WFNode.MagneticOffset), false, DataSourceUpdateMode.OnPropertyChanged);
+                NodeInfo1HeadingTB.DataBindings.Add("Text", NodesBS, nameof(WFNode.Heading1Info), false, DataSourceUpdateMode.OnPropertyChanged);
+                NodeInfo2HeadingTB.DataBindings.Add("Text", NodesBS, nameof(WFNode.Heading2Info), false, DataSourceUpdateMode.OnPropertyChanged);
+                NodeInfo3HeadingTB.DataBindings.Add("Text", NodesBS, nameof(WFNode.Heading3Info), false, DataSourceUpdateMode.OnPropertyChanged);
+                NodeInfo4HeadingTB.DataBindings.Add("Text", NodesBS, nameof(WFNode.Heading4Info), false, DataSourceUpdateMode.OnPropertyChanged);
+                NodeInfo5HeadingTB.DataBindings.Add("Text", NodesBS, nameof(WFNode.Heading5Info), false, DataSourceUpdateMode.OnPropertyChanged);
 
                 NodeGPSTB.DataBindings.Add("Text", NodesBS, nameof(WFNode.GPSCoordinates), false, DataSourceUpdateMode.OnPropertyChanged);
 
                 NodesBS.CurrentChanged += NodesBS_CurrentChanged;
-
-
 
             }
             catch (Exception ex)
@@ -1269,7 +1306,6 @@ namespace VenueMaker.Dialogs
                     return;
 
                 } // User canceled
-
 
                 WFEdge<WFNode> edge = Venue.NodesGraph.NewEdge(
                     nei.Source,
@@ -2486,9 +2522,11 @@ namespace VenueMaker.Dialogs
                     dlg.Venue = Venue;
                     dlg.Node = NodesBS.Current as WFNode;
 
-                    dlg.ShowDialog();
+                    if (DialogResult.OK == dlg.ShowDialog())
+                    {
+                        _modified = true;
 
-                    _modified = true;
+                    } // Save pressed
 
                 } // using
 
@@ -2519,27 +2557,29 @@ namespace VenueMaker.Dialogs
                     dlg.Venue = Venue;
                     dlg.Edge = edg;
 
-                    dlg.ShowDialog();
-
-                    _modified = true;
-
-                    EdgeForPOI[] dfpis = EdgesForPOIBS.DataSource as EdgeForPOI[];
-
-                    var retrn = dfpis.Where(w =>
-                        w.Edge.Start == edg.Destination &&
-                        w.Edge.Destination == edg.Start
-                        ).FirstOrDefault();
-                    if (retrn != null)
+                    if (DialogResult.OK != dlg.ShowDialog())
                     {
-                        var dr = MessageBox.Show("Är det samma väg tillbaks?", "Returväg", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                        if (DialogResult.Yes == dr)
+                        _modified = true;
+
+                        EdgeForPOI[] dfpis = EdgesForPOIBS.DataSource as EdgeForPOI[];
+
+                        var retrn = dfpis.Where(w =>
+                            w.Edge.Start == edg.Destination &&
+                            w.Edge.Destination == edg.Start
+                            ).FirstOrDefault();
+                        if (retrn != null)
                         {
-                            retrn.Edge.MapPoints = edg.MapPoints.Reverse().ToArray();
+                            var dr = MessageBox.Show("Är det samma väg tillbaks?", "Returväg", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                            if (DialogResult.Yes == dr)
+                            {
+                                retrn.Edge.MapPoints = edg.MapPoints.Reverse().ToArray();
 
-                        } // Yes
-                        
+                            } // Yes
 
-                    } // Has return path
+
+                        } // Has return path
+
+                    } // Save pressed
 
                 } // using
 

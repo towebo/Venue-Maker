@@ -17,10 +17,32 @@ namespace VenueMaker.Dialogs
 {
     public partial class EditMapPointsAndEdgesDialog : Form
     {
-        
+        private string _node_map_info;
+        private WFNode _node;
+        private string _edge_map_info;
+        private WFEdge<WFNode> _edge;
+
         public WFVenue Venue { get; set; }
-        public WFNode Node { get; set; }
-        public WFEdge<WFNode> Edge { get; set; }
+        public WFNode Node
+        {
+            get { return _node; }
+            set
+            {
+                _node = value;
+                _node_map_info = value.MapPointStr;
+
+            } // set
+        } // Node
+        public WFEdge<WFNode> Edge
+        {
+            get { return _edge; }
+            set
+            {
+                _edge = value;
+                _edge_map_info = value.MapPointsStr;
+                
+            } // set
+        } // Edge
         
 
         public EditMapPointsAndEdgesDialog()
@@ -342,5 +364,27 @@ namespace VenueMaker.Dialogs
             }
 
         }
+
+        private void EditMapPointsAndEdgesDialog_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (DialogResult.OK != DialogResult)
+            {
+                if (Node != null)
+                {
+                    Node.MapPointStr = _node_map_info;
+
+                } // Not null
+
+                if (Edge != null)
+                {
+                    Edge.MapPointsStr = _edge_map_info;
+
+                } // Not null
+                
+            } // Not OK
+
+        }
+
     }
+
 }

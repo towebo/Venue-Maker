@@ -76,7 +76,7 @@
             this.ToNodeLabel.AutoSize = true;
             this.ToNodeLabel.Location = new System.Drawing.Point(12, 56);
             this.ToNodeLabel.Name = "ToNodeLabel";
-            this.ToNodeLabel.Size = new System.Drawing.Size(23, 15);
+            this.ToNodeLabel.Size = new System.Drawing.Size(22, 15);
             this.ToNodeLabel.TabIndex = 2;
             this.ToNodeLabel.Text = "&Till";
             // 
@@ -164,12 +164,12 @@
             this.AddButton.UseVisualStyleBackColor = true;
             this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
-            // CancelButton
+            // CancelBtn
             // 
             this.CancelBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.CancelBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.CancelBtn.Location = new System.Drawing.Point(253, 289);
-            this.CancelBtn.Name = "CancelButton";
+            this.CancelBtn.Name = "CancelBtn";
             this.CancelBtn.Size = new System.Drawing.Size(75, 23);
             this.CancelBtn.TabIndex = 17;
             this.CancelBtn.Text = "Avbryt";
@@ -186,6 +186,7 @@
             // 
             // TravelTypeCombo
             // 
+            this.TravelTypeCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.TravelTypeCombo.FormattingEnabled = true;
             this.TravelTypeCombo.Location = new System.Drawing.Point(15, 206);
             this.TravelTypeCombo.Name = "TravelTypeCombo";

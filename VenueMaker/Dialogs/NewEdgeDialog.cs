@@ -49,9 +49,10 @@ namespace VenueMaker.Dialogs
                 EndHeadingTB.DataBindings.Add("Text", InfoBS, "EndHeading");
                 TravelTimeTB.DataBindings.Add("Text", InfoBS, "TravelTime");
 
-                TravelTypeCombo.DataSource = TravelTypeHelper.ToDictionary().Keys.ToList();
-                TravelTypeCombo.DataBindings.Add("Text", InfoBS, "TravelType");
-
+                TravelTypeCombo.DataSource = TravelTypeHelper.ToDisplayList();
+                TravelTypeCombo.DisplayMember = nameof(TravelTypeListItem.DisplayName);
+                TravelTypeCombo.ValueMember = nameof(TravelTypeListItem.Name);
+                TravelTypeCombo.DataBindings.Add("SelectedValue", InfoBS, "TravelType", true, DataSourceUpdateMode.OnPropertyChanged);
 
 
                 InfoBS.ResetBindings(true);

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 using WayfindR.Models;
 
@@ -50,6 +51,47 @@ namespace WayfindR.Helpers
 
         }
 
+        public static TravelTypeListItem[] ToDisplayList()
+        {
+            List<TravelTypeListItem> result = new List<TravelTypeListItem>();
+
+            result.Add(new TravelTypeListItem(
+                WFTravelType.Undefined,
+                " "
+                ));
+            result.Add(new TravelTypeListItem(
+                WFTravelType.Elevator,
+                "Hiss"
+                ));
+            result.Add(new TravelTypeListItem(
+                WFTravelType.Escalator,
+                "Rulltrappa"
+                ));
+            result.Add(new TravelTypeListItem(
+                WFTravelType.Stairs,
+                "Trappa"
+                ));
+            result.Add(new TravelTypeListItem(
+                WFTravelType.GridStairs,
+                "Galletrappa"
+                ));
+            result.Add(new TravelTypeListItem(
+                WFTravelType.Ladder,
+                "Stege"
+                ));
+            result.Add(new TravelTypeListItem(
+                WFTravelType.RevolvingDoor,
+                "Roterande dörr"
+                ));
+            result.Add(new TravelTypeListItem(
+                WFTravelType.Ramp,
+                "Ramp"
+                ));
+
+            return result.ToArray();
+
+        }
+
         public static WFTravelType ToTravelType(this string str)
         {
             try
@@ -75,5 +117,39 @@ namespace WayfindR.Helpers
 
 
 
+    } // class
+
+    public class TravelTypeListItem : INotifyPropertyChanged
+    {
+        public WFTravelType TravelType { get; set; }
+        public string Name { get; set; }
+        public string DisplayName { get; set; }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public TravelTypeListItem(WFTravelType travelType, string dispName)
+        {
+            TravelType = travelType;
+            Name = TravelType.ToString().ToLower();
+            DisplayName = dispName;
+
+        }
+
+        private void FirepropertyChanged(string propName)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(
+                    this,
+                    new PropertyChangedEventArgs(
+                        propName
+                        )
+                        );
+            } // Event is hooked up
+        }
+
     }
+
+
+
 }

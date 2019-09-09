@@ -32,7 +32,7 @@
             this.ToolbarPanel = new System.Windows.Forms.Panel();
             this.ClearDirectionPointsBtn = new System.Windows.Forms.Button();
             this.ShowNamesChk = new System.Windows.Forms.CheckBox();
-            this.DoneBtn = new System.Windows.Forms.Button();
+            this.SaveBtn = new System.Windows.Forms.Button();
             this.MapCombo = new System.Windows.Forms.ComboBox();
             this.MapLabel = new System.Windows.Forms.Label();
             this.Statusbar = new System.Windows.Forms.StatusStrip();
@@ -40,6 +40,7 @@
             this.MapsBS = new System.Windows.Forms.BindingSource(this.components);
             this.MapPanel = new System.Windows.Forms.Panel();
             this.MapPB = new System.Windows.Forms.PictureBox();
+            this.CancelBtn = new System.Windows.Forms.Button();
             this.ToolbarPanel.SuspendLayout();
             this.Statusbar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MapsBS)).BeginInit();
@@ -50,9 +51,10 @@
             // ToolbarPanel
             // 
             this.ToolbarPanel.BackColor = System.Drawing.SystemColors.Control;
+            this.ToolbarPanel.Controls.Add(this.CancelBtn);
             this.ToolbarPanel.Controls.Add(this.ClearDirectionPointsBtn);
             this.ToolbarPanel.Controls.Add(this.ShowNamesChk);
-            this.ToolbarPanel.Controls.Add(this.DoneBtn);
+            this.ToolbarPanel.Controls.Add(this.SaveBtn);
             this.ToolbarPanel.Controls.Add(this.MapCombo);
             this.ToolbarPanel.Controls.Add(this.MapLabel);
             this.ToolbarPanel.Dock = System.Windows.Forms.DockStyle.Top;
@@ -64,7 +66,7 @@
             // ClearDirectionPointsBtn
             // 
             this.ClearDirectionPointsBtn.Location = new System.Drawing.Point(290, 17);
-            this.ClearDirectionPointsBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ClearDirectionPointsBtn.Margin = new System.Windows.Forms.Padding(2);
             this.ClearDirectionPointsBtn.Name = "ClearDirectionPointsBtn";
             this.ClearDirectionPointsBtn.Size = new System.Drawing.Size(150, 23);
             this.ClearDirectionPointsBtn.TabIndex = 4;
@@ -83,16 +85,16 @@
             this.ShowNamesChk.UseVisualStyleBackColor = true;
             this.ShowNamesChk.CheckedChanged += new System.EventHandler(this.ShowNamesChk_CheckedChanged);
             // 
-            // DoneBtn
+            // SaveBtn
             // 
-            this.DoneBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.DoneBtn.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.DoneBtn.Location = new System.Drawing.Point(713, 17);
-            this.DoneBtn.Name = "DoneBtn";
-            this.DoneBtn.Size = new System.Drawing.Size(75, 23);
-            this.DoneBtn.TabIndex = 2;
-            this.DoneBtn.Text = "&Klar";
-            this.DoneBtn.UseVisualStyleBackColor = true;
+            this.SaveBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.SaveBtn.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.SaveBtn.Location = new System.Drawing.Point(632, 17);
+            this.SaveBtn.Name = "SaveBtn";
+            this.SaveBtn.Size = new System.Drawing.Size(75, 23);
+            this.SaveBtn.TabIndex = 5;
+            this.SaveBtn.Text = "&Spara";
+            this.SaveBtn.UseVisualStyleBackColor = true;
             // 
             // MapCombo
             // 
@@ -126,7 +128,7 @@
             // MousePositionLabel
             // 
             this.MousePositionLabel.Name = "MousePositionLabel";
-            this.MousePositionLabel.Size = new System.Drawing.Size(27, 17);
+            this.MousePositionLabel.Size = new System.Drawing.Size(28, 17);
             this.MousePositionLabel.Text = "x: y:";
             // 
             // MapPanel
@@ -153,6 +155,17 @@
             this.MapPB.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MapPB_MouseDown);
             this.MapPB.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MapPB_MouseMove);
             // 
+            // CancelBtn
+            // 
+            this.CancelBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.CancelBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.CancelBtn.Location = new System.Drawing.Point(713, 17);
+            this.CancelBtn.Name = "CancelBtn";
+            this.CancelBtn.Size = new System.Drawing.Size(75, 23);
+            this.CancelBtn.TabIndex = 6;
+            this.CancelBtn.Text = "Avbryt";
+            this.CancelBtn.UseVisualStyleBackColor = true;
+            // 
             // EditMapPointsAndEdgesDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -164,6 +177,7 @@
             this.Name = "EditMapPointsAndEdgesDialog";
             this.Text = "EditMapPointsAndEdgesDialog";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.EditMapPointsAndEdgesDialog_FormClosed);
             this.Load += new System.EventHandler(this.EditMapPointsAndEdgesDialog_Load);
             this.ToolbarPanel.ResumeLayout(false);
             this.ToolbarPanel.PerformLayout();
@@ -188,8 +202,9 @@
         private System.Windows.Forms.Label MapLabel;
         private System.Windows.Forms.Panel MapPanel;
         private System.Windows.Forms.PictureBox MapPB;
-        private System.Windows.Forms.Button DoneBtn;
+        private System.Windows.Forms.Button SaveBtn;
         private System.Windows.Forms.CheckBox ShowNamesChk;
         private System.Windows.Forms.Button ClearDirectionPointsBtn;
+        private System.Windows.Forms.Button CancelBtn;
     }
 }
