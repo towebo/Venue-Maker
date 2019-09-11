@@ -35,23 +35,29 @@
             this.SaveVenueDialog = new System.Windows.Forms.SaveFileDialog();
             this.Tabs = new System.Windows.Forms.TabControl();
             this.PoiTabPage = new System.Windows.Forms.TabPage();
+            this.POIILinkUrlTB = new VenueMaker.Models.CueTextBox();
             this.POIILinkUrlLabel = new System.Windows.Forms.Label();
             this.POIInfoEndsBtn = new System.Windows.Forms.Button();
             this.POIInfoStartBtn = new System.Windows.Forms.Button();
             this.PoiInfoPB = new System.Windows.Forms.PictureBox();
             this.POIInfosLabel = new System.Windows.Forms.Label();
             this.AutoPlayMediaCB = new System.Windows.Forms.CheckBox();
+            this.MediaDescrTB = new VenueMaker.Models.CueTextBox();
             this.MediaDescLabel = new System.Windows.Forms.Label();
             this.PickMediaFileButton = new System.Windows.Forms.Button();
+            this.MediaFileTB = new VenueMaker.Models.CueTextBox();
             this.MediaFileLabel = new System.Windows.Forms.Label();
             this.MoveInfoDownButton = new System.Windows.Forms.Button();
             this.MoveInfoUpButton = new System.Windows.Forms.Button();
             this.RemovePOIInfoButton = new System.Windows.Forms.Button();
             this.AddPOIInfoButton = new System.Windows.Forms.Button();
+            this.POIInfoEndsTB = new VenueMaker.Models.CueTextBox();
             this.POIInfoEndsLabel = new System.Windows.Forms.Label();
+            this.POIInfoStartsTB = new VenueMaker.Models.CueTextBox();
             this.POIInfoStartsLabel = new System.Windows.Forms.Label();
             this.POIInfoCatCombo = new System.Windows.Forms.ComboBox();
             this.POIInfoCatLabel = new System.Windows.Forms.Label();
+            this.POIInformationTB = new VenueMaker.Models.CueTextBox();
             this.POIInfoLabel = new System.Windows.Forms.Label();
             this.POIInfosLB = new System.Windows.Forms.ListBox();
             this.POIsListLabel = new System.Windows.Forms.Label();
@@ -81,6 +87,18 @@
             this.AddressLabel = new System.Windows.Forms.Label();
             this.VenueIDLabel = new System.Windows.Forms.Label();
             this.VenueNameLabel = new System.Windows.Forms.Label();
+            this.VenueImageTB = new VenueMaker.Models.CueTextBox();
+            this.VenueEmailTB = new VenueMaker.Models.CueTextBox();
+            this.VenueWebTB = new VenueMaker.Models.CueTextBox();
+            this.VenuePhoneTB = new VenueMaker.Models.CueTextBox();
+            this.VenueGPSTB = new VenueMaker.Models.CueTextBox();
+            this.VenueDescriptionTB = new VenueMaker.Models.CueTextBox();
+            this.CountryTB = new VenueMaker.Models.CueTextBox();
+            this.CityTB = new VenueMaker.Models.CueTextBox();
+            this.ZipTB = new VenueMaker.Models.CueTextBox();
+            this.AddressTB = new VenueMaker.Models.CueTextBox();
+            this.VenueIDTB = new VenueMaker.Models.CueTextBox();
+            this.VenueNameTB = new VenueMaker.Models.CueTextBox();
             this.NodesTab = new System.Windows.Forms.TabPage();
             this.NodesFilterLabel = new System.Windows.Forms.Label();
             this.NodesFilterCombo = new System.Windows.Forms.ComboBox();
@@ -116,6 +134,26 @@
             this.NodeMajorLabel = new System.Windows.Forms.Label();
             this.UuidLabel = new System.Windows.Forms.Label();
             this.NodeNameLabel = new System.Windows.Forms.Label();
+            this.NodeMapPointTB = new VenueMaker.Models.CueTextBox();
+            this.NodeGPSTB = new VenueMaker.Models.CueTextBox();
+            this.NodeSpaceTB = new VenueMaker.Models.CueTextBox();
+            this.NodeRoomTB = new VenueMaker.Models.CueTextBox();
+            this.NodeDepartmentTB = new VenueMaker.Models.CueTextBox();
+            this.NodeBuildingTB = new VenueMaker.Models.CueTextBox();
+            this.NodeAreaTB = new VenueMaker.Models.CueTextBox();
+            this.NodeFloorTB = new VenueMaker.Models.CueTextBox();
+            this.NodeInfo5HeadingTB = new VenueMaker.Models.CueTextBox();
+            this.NodeInfo4HeadingTB = new VenueMaker.Models.CueTextBox();
+            this.NodeInfo3HeadingTB = new VenueMaker.Models.CueTextBox();
+            this.NodeInfo2HeadingTB = new VenueMaker.Models.CueTextBox();
+            this.NodeInfo1HeadingTB = new VenueMaker.Models.CueTextBox();
+            this.NodeMagneticOffsetTB = new VenueMaker.Models.CueTextBox();
+            this.NodeAccuracyTB = new VenueMaker.Models.CueTextBox();
+            this.NodeIdTagTB = new VenueMaker.Models.CueTextBox();
+            this.NodeMinorTB = new VenueMaker.Models.CueTextBox();
+            this.NodeMajorTB = new VenueMaker.Models.CueTextBox();
+            this.NodeUuidTB = new VenueMaker.Models.CueTextBox();
+            this.NodeNameTB = new VenueMaker.Models.CueTextBox();
             this.NodesLB = new System.Windows.Forms.ListBox();
             this.NodesListLabel = new System.Windows.Forms.Label();
             this.EdgesTab = new System.Windows.Forms.TabPage();
@@ -128,6 +166,10 @@
             this.EdgeEndHeadingLabel = new System.Windows.Forms.Label();
             this.EdgeStartHeadingLabel = new System.Windows.Forms.Label();
             this.EdgeBeginningLabel = new System.Windows.Forms.Label();
+            this.EdgeTravelTimeTB = new VenueMaker.Models.CueTextBox();
+            this.EdgeEndHeadingTB = new VenueMaker.Models.CueTextBox();
+            this.EdgeStartHeadingTB = new VenueMaker.Models.CueTextBox();
+            this.EdgeBeginningTB = new VenueMaker.Models.CueTextBox();
             this.EdgesForPOILB = new System.Windows.Forms.ListBox();
             this.EdgesListLabel = new System.Windows.Forms.Label();
             this.EdgesPOIsLB = new System.Windows.Forms.ListBox();
@@ -138,6 +180,9 @@
             this.ElevatorEndHeadingLabel = new System.Windows.Forms.Label();
             this.ElevatorStartHeadingLabel = new System.Windows.Forms.Label();
             this.CreateElevatorEdgesButton = new System.Windows.Forms.Button();
+            this.ElevatorMessageTB = new VenueMaker.Models.CueTextBox();
+            this.ElevatorEndHeadingTB = new VenueMaker.Models.CueTextBox();
+            this.ElevatorStartHeadingTB = new VenueMaker.Models.CueTextBox();
             this.ElevatorsLB = new System.Windows.Forms.CheckedListBox();
             this.ElevatorListLabel = new System.Windows.Forms.Label();
             this.OpenMediaFileDialog = new System.Windows.Forms.OpenFileDialog();
@@ -173,51 +218,6 @@
             this.verifyAccountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.changePasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.setPermissionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.POIILinkUrlTB = new VenueMaker.Models.CueTextBox();
-            this.MediaDescrTB = new VenueMaker.Models.CueTextBox();
-            this.MediaFileTB = new VenueMaker.Models.CueTextBox();
-            this.POIInfoEndsTB = new VenueMaker.Models.CueTextBox();
-            this.POIInfoStartsTB = new VenueMaker.Models.CueTextBox();
-            this.POIInformationTB = new VenueMaker.Models.CueTextBox();
-            this.VenueImageTB = new VenueMaker.Models.CueTextBox();
-            this.VenueEmailTB = new VenueMaker.Models.CueTextBox();
-            this.VenueWebTB = new VenueMaker.Models.CueTextBox();
-            this.VenuePhoneTB = new VenueMaker.Models.CueTextBox();
-            this.VenueGPSTB = new VenueMaker.Models.CueTextBox();
-            this.VenueDescriptionTB = new VenueMaker.Models.CueTextBox();
-            this.CountryTB = new VenueMaker.Models.CueTextBox();
-            this.CityTB = new VenueMaker.Models.CueTextBox();
-            this.ZipTB = new VenueMaker.Models.CueTextBox();
-            this.AddressTB = new VenueMaker.Models.CueTextBox();
-            this.VenueIDTB = new VenueMaker.Models.CueTextBox();
-            this.VenueNameTB = new VenueMaker.Models.CueTextBox();
-            this.NodeMapPointTB = new VenueMaker.Models.CueTextBox();
-            this.NodeGPSTB = new VenueMaker.Models.CueTextBox();
-            this.NodeSpaceTB = new VenueMaker.Models.CueTextBox();
-            this.NodeRoomTB = new VenueMaker.Models.CueTextBox();
-            this.NodeDepartmentTB = new VenueMaker.Models.CueTextBox();
-            this.NodeBuildingTB = new VenueMaker.Models.CueTextBox();
-            this.NodeAreaTB = new VenueMaker.Models.CueTextBox();
-            this.NodeFloorTB = new VenueMaker.Models.CueTextBox();
-            this.NodeInfo5HeadingTB = new VenueMaker.Models.CueTextBox();
-            this.NodeInfo4HeadingTB = new VenueMaker.Models.CueTextBox();
-            this.NodeInfo3HeadingTB = new VenueMaker.Models.CueTextBox();
-            this.NodeInfo2HeadingTB = new VenueMaker.Models.CueTextBox();
-            this.NodeInfo1HeadingTB = new VenueMaker.Models.CueTextBox();
-            this.NodeMagneticOffsetTB = new VenueMaker.Models.CueTextBox();
-            this.NodeAccuracyTB = new VenueMaker.Models.CueTextBox();
-            this.NodeIdTagTB = new VenueMaker.Models.CueTextBox();
-            this.NodeMinorTB = new VenueMaker.Models.CueTextBox();
-            this.NodeMajorTB = new VenueMaker.Models.CueTextBox();
-            this.NodeUuidTB = new VenueMaker.Models.CueTextBox();
-            this.NodeNameTB = new VenueMaker.Models.CueTextBox();
-            this.EdgeTravelTimeTB = new VenueMaker.Models.CueTextBox();
-            this.EdgeEndHeadingTB = new VenueMaker.Models.CueTextBox();
-            this.EdgeStartHeadingTB = new VenueMaker.Models.CueTextBox();
-            this.EdgeBeginningTB = new VenueMaker.Models.CueTextBox();
-            this.ElevatorMessageTB = new VenueMaker.Models.CueTextBox();
-            this.ElevatorEndHeadingTB = new VenueMaker.Models.CueTextBox();
-            this.ElevatorStartHeadingTB = new VenueMaker.Models.CueTextBox();
             this.Tabs.SuspendLayout();
             this.PoiTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PoiInfoPB)).BeginInit();
@@ -311,6 +311,14 @@
             this.PoiTabPage.Text = "Informationspunkter";
             this.PoiTabPage.UseVisualStyleBackColor = true;
             // 
+            // POIILinkUrlTB
+            // 
+            this.POIILinkUrlTB.Cue = "https://...";
+            this.POIILinkUrlTB.Location = new System.Drawing.Point(333, 517);
+            this.POIILinkUrlTB.Name = "POIILinkUrlTB";
+            this.POIILinkUrlTB.Size = new System.Drawing.Size(407, 23);
+            this.POIILinkUrlTB.TabIndex = 22;
+            // 
             // POIILinkUrlLabel
             // 
             this.POIILinkUrlLabel.AutoSize = true;
@@ -374,6 +382,14 @@
             this.AutoPlayMediaCB.Text = "Spela upp media automatiskt";
             this.AutoPlayMediaCB.UseVisualStyleBackColor = true;
             // 
+            // MediaDescrTB
+            // 
+            this.MediaDescrTB.Cue = "Skriv en syntolkning för dem som inte ser";
+            this.MediaDescrTB.Location = new System.Drawing.Point(333, 448);
+            this.MediaDescrTB.Name = "MediaDescrTB";
+            this.MediaDescrTB.Size = new System.Drawing.Size(407, 23);
+            this.MediaDescrTB.TabIndex = 19;
+            // 
             // MediaDescLabel
             // 
             this.MediaDescLabel.AutoSize = true;
@@ -391,6 +407,14 @@
             this.PickMediaFileButton.TabIndex = 17;
             this.PickMediaFileButton.Text = "&Välj";
             this.PickMediaFileButton.UseVisualStyleBackColor = true;
+            // 
+            // MediaFileTB
+            // 
+            this.MediaFileTB.Cue = "Bilder (*.jpg, *.png), Ljud (*.mp3, *.m4a)";
+            this.MediaFileTB.Location = new System.Drawing.Point(333, 404);
+            this.MediaFileTB.Name = "MediaFileTB";
+            this.MediaFileTB.Size = new System.Drawing.Size(316, 23);
+            this.MediaFileTB.TabIndex = 16;
             // 
             // MediaFileLabel
             // 
@@ -437,6 +461,15 @@
             this.AddPOIInfoButton.Text = "L&ägg till";
             this.AddPOIInfoButton.UseVisualStyleBackColor = true;
             // 
+            // POIInfoEndsTB
+            // 
+            this.POIInfoEndsTB.BackColor = System.Drawing.SystemColors.Window;
+            this.POIInfoEndsTB.Cue = null;
+            this.POIInfoEndsTB.Location = new System.Drawing.Point(527, 360);
+            this.POIInfoEndsTB.Name = "POIInfoEndsTB";
+            this.POIInfoEndsTB.Size = new System.Drawing.Size(175, 23);
+            this.POIInfoEndsTB.TabIndex = 11;
+            // 
             // POIInfoEndsLabel
             // 
             this.POIInfoEndsLabel.AutoSize = true;
@@ -445,6 +478,15 @@
             this.POIInfoEndsLabel.Size = new System.Drawing.Size(100, 15);
             this.POIInfoEndsLabel.TabIndex = 10;
             this.POIInfoEndsLabel.Text = "Aktiv till och med";
+            // 
+            // POIInfoStartsTB
+            // 
+            this.POIInfoStartsTB.BackColor = System.Drawing.SystemColors.Window;
+            this.POIInfoStartsTB.Cue = null;
+            this.POIInfoStartsTB.Location = new System.Drawing.Point(333, 360);
+            this.POIInfoStartsTB.Name = "POIInfoStartsTB";
+            this.POIInfoStartsTB.Size = new System.Drawing.Size(151, 23);
+            this.POIInfoStartsTB.TabIndex = 8;
             // 
             // POIInfoStartsLabel
             // 
@@ -472,6 +514,16 @@
             this.POIInfoCatLabel.Size = new System.Drawing.Size(51, 15);
             this.POIInfoCatLabel.TabIndex = 5;
             this.POIInfoCatLabel.Text = "&Kategori";
+            // 
+            // POIInformationTB
+            // 
+            this.POIInformationTB.Cue = null;
+            this.POIInformationTB.Location = new System.Drawing.Point(333, 197);
+            this.POIInformationTB.Multiline = true;
+            this.POIInformationTB.Name = "POIInformationTB";
+            this.POIInformationTB.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.POIInformationTB.Size = new System.Drawing.Size(397, 98);
+            this.POIInformationTB.TabIndex = 4;
             // 
             // POIInfoLabel
             // 
@@ -794,6 +846,111 @@
             this.VenueNameLabel.Size = new System.Drawing.Size(40, 15);
             this.VenueNameLabel.TabIndex = 17;
             this.VenueNameLabel.Text = "&Namn";
+            // 
+            // VenueImageTB
+            // 
+            this.VenueImageTB.Cue = null;
+            this.VenueImageTB.Location = new System.Drawing.Point(400, 288);
+            this.VenueImageTB.Name = "VenueImageTB";
+            this.VenueImageTB.Size = new System.Drawing.Size(100, 23);
+            this.VenueImageTB.TabIndex = 43;
+            // 
+            // VenueEmailTB
+            // 
+            this.VenueEmailTB.Cue = null;
+            this.VenueEmailTB.Location = new System.Drawing.Point(400, 244);
+            this.VenueEmailTB.Name = "VenueEmailTB";
+            this.VenueEmailTB.Size = new System.Drawing.Size(219, 23);
+            this.VenueEmailTB.TabIndex = 41;
+            // 
+            // VenueWebTB
+            // 
+            this.VenueWebTB.Cue = null;
+            this.VenueWebTB.Location = new System.Drawing.Point(400, 197);
+            this.VenueWebTB.Name = "VenueWebTB";
+            this.VenueWebTB.Size = new System.Drawing.Size(219, 23);
+            this.VenueWebTB.TabIndex = 39;
+            // 
+            // VenuePhoneTB
+            // 
+            this.VenuePhoneTB.Cue = null;
+            this.VenuePhoneTB.Location = new System.Drawing.Point(400, 153);
+            this.VenuePhoneTB.Name = "VenuePhoneTB";
+            this.VenuePhoneTB.Size = new System.Drawing.Size(133, 23);
+            this.VenuePhoneTB.TabIndex = 37;
+            // 
+            // VenueGPSTB
+            // 
+            this.VenueGPSTB.Cue = null;
+            this.VenueGPSTB.Location = new System.Drawing.Point(400, 110);
+            this.VenueGPSTB.Name = "VenueGPSTB";
+            this.VenueGPSTB.Size = new System.Drawing.Size(219, 23);
+            this.VenueGPSTB.TabIndex = 35;
+            // 
+            // VenueDescriptionTB
+            // 
+            this.VenueDescriptionTB.AcceptsReturn = true;
+            this.VenueDescriptionTB.Cue = null;
+            this.VenueDescriptionTB.Location = new System.Drawing.Point(8, 246);
+            this.VenueDescriptionTB.Multiline = true;
+            this.VenueDescriptionTB.Name = "VenueDescriptionTB";
+            this.VenueDescriptionTB.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.VenueDescriptionTB.Size = new System.Drawing.Size(278, 222);
+            this.VenueDescriptionTB.TabIndex = 30;
+            // 
+            // CountryTB
+            // 
+            this.CountryTB.Cue = null;
+            this.CountryTB.Location = new System.Drawing.Point(13, 200);
+            this.CountryTB.Margin = new System.Windows.Forms.Padding(5);
+            this.CountryTB.Name = "CountryTB";
+            this.CountryTB.Size = new System.Drawing.Size(163, 23);
+            this.CountryTB.TabIndex = 28;
+            // 
+            // CityTB
+            // 
+            this.CityTB.Cue = null;
+            this.CityTB.Location = new System.Drawing.Point(90, 155);
+            this.CityTB.Margin = new System.Windows.Forms.Padding(5);
+            this.CityTB.Name = "CityTB";
+            this.CityTB.Size = new System.Drawing.Size(183, 23);
+            this.CityTB.TabIndex = 26;
+            // 
+            // ZipTB
+            // 
+            this.ZipTB.Cue = null;
+            this.ZipTB.Location = new System.Drawing.Point(13, 155);
+            this.ZipTB.Margin = new System.Windows.Forms.Padding(5);
+            this.ZipTB.Name = "ZipTB";
+            this.ZipTB.Size = new System.Drawing.Size(72, 23);
+            this.ZipTB.TabIndex = 24;
+            // 
+            // AddressTB
+            // 
+            this.AddressTB.Cue = null;
+            this.AddressTB.Location = new System.Drawing.Point(8, 110);
+            this.AddressTB.Margin = new System.Windows.Forms.Padding(5);
+            this.AddressTB.Name = "AddressTB";
+            this.AddressTB.Size = new System.Drawing.Size(188, 23);
+            this.AddressTB.TabIndex = 22;
+            // 
+            // VenueIDTB
+            // 
+            this.VenueIDTB.Cue = null;
+            this.VenueIDTB.Location = new System.Drawing.Point(8, 65);
+            this.VenueIDTB.Margin = new System.Windows.Forms.Padding(5);
+            this.VenueIDTB.Name = "VenueIDTB";
+            this.VenueIDTB.Size = new System.Drawing.Size(116, 23);
+            this.VenueIDTB.TabIndex = 20;
+            // 
+            // VenueNameTB
+            // 
+            this.VenueNameTB.Cue = null;
+            this.VenueNameTB.Location = new System.Drawing.Point(11, 21);
+            this.VenueNameTB.Margin = new System.Windows.Forms.Padding(5);
+            this.VenueNameTB.Name = "VenueNameTB";
+            this.VenueNameTB.Size = new System.Drawing.Size(226, 23);
+            this.VenueNameTB.TabIndex = 18;
             // 
             // NodesTab
             // 
@@ -1206,6 +1363,173 @@
             this.NodeNameLabel.TabIndex = 2;
             this.NodeNameLabel.Text = "&Namn";
             // 
+            // NodeMapPointTB
+            // 
+            this.NodeMapPointTB.BackColor = System.Drawing.SystemColors.Control;
+            this.NodeMapPointTB.Cue = null;
+            this.NodeMapPointTB.Location = new System.Drawing.Point(332, 549);
+            this.NodeMapPointTB.Name = "NodeMapPointTB";
+            this.NodeMapPointTB.ReadOnly = true;
+            this.NodeMapPointTB.Size = new System.Drawing.Size(226, 23);
+            this.NodeMapPointTB.TabIndex = 49;
+            // 
+            // NodeGPSTB
+            // 
+            this.NodeGPSTB.Cue = "Används inte i appen";
+            this.NodeGPSTB.Location = new System.Drawing.Point(332, 505);
+            this.NodeGPSTB.Name = "NodeGPSTB";
+            this.NodeGPSTB.Size = new System.Drawing.Size(203, 23);
+            this.NodeGPSTB.TabIndex = 47;
+            // 
+            // NodeSpaceTB
+            // 
+            this.NodeSpaceTB.Cue = "Används inte av appen";
+            this.NodeSpaceTB.Location = new System.Drawing.Point(447, 109);
+            this.NodeSpaceTB.Name = "NodeSpaceTB";
+            this.NodeSpaceTB.Size = new System.Drawing.Size(111, 23);
+            this.NodeSpaceTB.TabIndex = 17;
+            // 
+            // NodeRoomTB
+            // 
+            this.NodeRoomTB.Cue = "Används inte av appen";
+            this.NodeRoomTB.Location = new System.Drawing.Point(330, 109);
+            this.NodeRoomTB.Name = "NodeRoomTB";
+            this.NodeRoomTB.Size = new System.Drawing.Size(111, 23);
+            this.NodeRoomTB.TabIndex = 15;
+            // 
+            // NodeDepartmentTB
+            // 
+            this.NodeDepartmentTB.Cue = "Används inte av appen";
+            this.NodeDepartmentTB.Location = new System.Drawing.Point(619, 65);
+            this.NodeDepartmentTB.Name = "NodeDepartmentTB";
+            this.NodeDepartmentTB.Size = new System.Drawing.Size(111, 23);
+            this.NodeDepartmentTB.TabIndex = 13;
+            // 
+            // NodeBuildingTB
+            // 
+            this.NodeBuildingTB.Cue = null;
+            this.NodeBuildingTB.Location = new System.Drawing.Point(447, 65);
+            this.NodeBuildingTB.Name = "NodeBuildingTB";
+            this.NodeBuildingTB.Size = new System.Drawing.Size(111, 23);
+            this.NodeBuildingTB.TabIndex = 9;
+            // 
+            // NodeAreaTB
+            // 
+            this.NodeAreaTB.Cue = "Används inte av appen";
+            this.NodeAreaTB.Location = new System.Drawing.Point(330, 65);
+            this.NodeAreaTB.Name = "NodeAreaTB";
+            this.NodeAreaTB.Size = new System.Drawing.Size(111, 23);
+            this.NodeAreaTB.TabIndex = 7;
+            // 
+            // NodeFloorTB
+            // 
+            this.NodeFloorTB.Cue = null;
+            this.NodeFloorTB.Location = new System.Drawing.Point(564, 65);
+            this.NodeFloorTB.Name = "NodeFloorTB";
+            this.NodeFloorTB.Size = new System.Drawing.Size(49, 23);
+            this.NodeFloorTB.TabIndex = 11;
+            // 
+            // NodeInfo5HeadingTB
+            // 
+            this.NodeInfo5HeadingTB.Cue = null;
+            this.NodeInfo5HeadingTB.Location = new System.Drawing.Point(330, 459);
+            this.NodeInfo5HeadingTB.Name = "NodeInfo5HeadingTB";
+            this.NodeInfo5HeadingTB.ReadOnly = true;
+            this.NodeInfo5HeadingTB.Size = new System.Drawing.Size(323, 23);
+            this.NodeInfo5HeadingTB.TabIndex = 44;
+            // 
+            // NodeInfo4HeadingTB
+            // 
+            this.NodeInfo4HeadingTB.Cue = null;
+            this.NodeInfo4HeadingTB.Location = new System.Drawing.Point(330, 415);
+            this.NodeInfo4HeadingTB.Name = "NodeInfo4HeadingTB";
+            this.NodeInfo4HeadingTB.ReadOnly = true;
+            this.NodeInfo4HeadingTB.Size = new System.Drawing.Size(323, 23);
+            this.NodeInfo4HeadingTB.TabIndex = 41;
+            // 
+            // NodeInfo3HeadingTB
+            // 
+            this.NodeInfo3HeadingTB.Cue = null;
+            this.NodeInfo3HeadingTB.Location = new System.Drawing.Point(330, 371);
+            this.NodeInfo3HeadingTB.Name = "NodeInfo3HeadingTB";
+            this.NodeInfo3HeadingTB.ReadOnly = true;
+            this.NodeInfo3HeadingTB.Size = new System.Drawing.Size(323, 23);
+            this.NodeInfo3HeadingTB.TabIndex = 38;
+            // 
+            // NodeInfo2HeadingTB
+            // 
+            this.NodeInfo2HeadingTB.Cue = null;
+            this.NodeInfo2HeadingTB.Location = new System.Drawing.Point(330, 327);
+            this.NodeInfo2HeadingTB.Name = "NodeInfo2HeadingTB";
+            this.NodeInfo2HeadingTB.ReadOnly = true;
+            this.NodeInfo2HeadingTB.Size = new System.Drawing.Size(323, 23);
+            this.NodeInfo2HeadingTB.TabIndex = 35;
+            // 
+            // NodeInfo1HeadingTB
+            // 
+            this.NodeInfo1HeadingTB.Cue = null;
+            this.NodeInfo1HeadingTB.Location = new System.Drawing.Point(330, 283);
+            this.NodeInfo1HeadingTB.Name = "NodeInfo1HeadingTB";
+            this.NodeInfo1HeadingTB.ReadOnly = true;
+            this.NodeInfo1HeadingTB.Size = new System.Drawing.Size(323, 23);
+            this.NodeInfo1HeadingTB.TabIndex = 32;
+            // 
+            // NodeMagneticOffsetTB
+            // 
+            this.NodeMagneticOffsetTB.Cue = null;
+            this.NodeMagneticOffsetTB.Location = new System.Drawing.Point(418, 239);
+            this.NodeMagneticOffsetTB.Name = "NodeMagneticOffsetTB";
+            this.NodeMagneticOffsetTB.Size = new System.Drawing.Size(100, 23);
+            this.NodeMagneticOffsetTB.TabIndex = 30;
+            // 
+            // NodeAccuracyTB
+            // 
+            this.NodeAccuracyTB.Cue = null;
+            this.NodeAccuracyTB.Location = new System.Drawing.Point(330, 239);
+            this.NodeAccuracyTB.Name = "NodeAccuracyTB";
+            this.NodeAccuracyTB.Size = new System.Drawing.Size(77, 23);
+            this.NodeAccuracyTB.TabIndex = 28;
+            // 
+            // NodeIdTagTB
+            // 
+            this.NodeIdTagTB.Cue = null;
+            this.NodeIdTagTB.Location = new System.Drawing.Point(330, 197);
+            this.NodeIdTagTB.Name = "NodeIdTagTB";
+            this.NodeIdTagTB.Size = new System.Drawing.Size(59, 23);
+            this.NodeIdTagTB.TabIndex = 25;
+            // 
+            // NodeMinorTB
+            // 
+            this.NodeMinorTB.Cue = null;
+            this.NodeMinorTB.Location = new System.Drawing.Point(677, 153);
+            this.NodeMinorTB.Name = "NodeMinorTB";
+            this.NodeMinorTB.Size = new System.Drawing.Size(59, 23);
+            this.NodeMinorTB.TabIndex = 23;
+            // 
+            // NodeMajorTB
+            // 
+            this.NodeMajorTB.Cue = null;
+            this.NodeMajorTB.Location = new System.Drawing.Point(609, 153);
+            this.NodeMajorTB.Name = "NodeMajorTB";
+            this.NodeMajorTB.Size = new System.Drawing.Size(59, 23);
+            this.NodeMajorTB.TabIndex = 21;
+            // 
+            // NodeUuidTB
+            // 
+            this.NodeUuidTB.Cue = null;
+            this.NodeUuidTB.Location = new System.Drawing.Point(330, 153);
+            this.NodeUuidTB.Name = "NodeUuidTB";
+            this.NodeUuidTB.Size = new System.Drawing.Size(273, 23);
+            this.NodeUuidTB.TabIndex = 19;
+            // 
+            // NodeNameTB
+            // 
+            this.NodeNameTB.Cue = null;
+            this.NodeNameTB.Location = new System.Drawing.Point(330, 21);
+            this.NodeNameTB.Name = "NodeNameTB";
+            this.NodeNameTB.Size = new System.Drawing.Size(205, 23);
+            this.NodeNameTB.TabIndex = 3;
+            // 
             // NodesLB
             // 
             this.NodesLB.AccessibleName = "Lista över Beacons";
@@ -1335,6 +1659,38 @@
             this.EdgeBeginningLabel.TabIndex = 4;
             this.EdgeBeginningLabel.Text = "&Information";
             // 
+            // EdgeTravelTimeTB
+            // 
+            this.EdgeTravelTimeTB.Cue = "Sekunder";
+            this.EdgeTravelTimeTB.Location = new System.Drawing.Point(418, 292);
+            this.EdgeTravelTimeTB.Name = "EdgeTravelTimeTB";
+            this.EdgeTravelTimeTB.Size = new System.Drawing.Size(100, 23);
+            this.EdgeTravelTimeTB.TabIndex = 11;
+            // 
+            // EdgeEndHeadingTB
+            // 
+            this.EdgeEndHeadingTB.Cue = "0 till 359";
+            this.EdgeEndHeadingTB.Location = new System.Drawing.Point(312, 292);
+            this.EdgeEndHeadingTB.Name = "EdgeEndHeadingTB";
+            this.EdgeEndHeadingTB.Size = new System.Drawing.Size(100, 23);
+            this.EdgeEndHeadingTB.TabIndex = 9;
+            // 
+            // EdgeStartHeadingTB
+            // 
+            this.EdgeStartHeadingTB.Cue = "0 till 359";
+            this.EdgeStartHeadingTB.Location = new System.Drawing.Point(206, 292);
+            this.EdgeStartHeadingTB.Name = "EdgeStartHeadingTB";
+            this.EdgeStartHeadingTB.Size = new System.Drawing.Size(100, 23);
+            this.EdgeStartHeadingTB.TabIndex = 7;
+            // 
+            // EdgeBeginningTB
+            // 
+            this.EdgeBeginningTB.Cue = "Beskriv hur man förflyttar sig mellan beaconsen";
+            this.EdgeBeginningTB.Location = new System.Drawing.Point(206, 237);
+            this.EdgeBeginningTB.Name = "EdgeBeginningTB";
+            this.EdgeBeginningTB.Size = new System.Drawing.Size(864, 23);
+            this.EdgeBeginningTB.TabIndex = 5;
+            // 
             // EdgesForPOILB
             // 
             this.EdgesForPOILB.AccessibleName = "Lista över vägbeskrivningar";
@@ -1437,6 +1793,31 @@
             this.CreateElevatorEdgesButton.TabIndex = 9;
             this.CreateElevatorEdgesButton.Text = "&Skapa vägbeskrivningar";
             this.CreateElevatorEdgesButton.UseVisualStyleBackColor = true;
+            // 
+            // ElevatorMessageTB
+            // 
+            this.ElevatorMessageTB.Cue = null;
+            this.ElevatorMessageTB.Location = new System.Drawing.Point(191, 65);
+            this.ElevatorMessageTB.Name = "ElevatorMessageTB";
+            this.ElevatorMessageTB.Size = new System.Drawing.Size(162, 23);
+            this.ElevatorMessageTB.TabIndex = 8;
+            this.ElevatorMessageTB.Text = "Ta hissen till plan {0}";
+            // 
+            // ElevatorEndHeadingTB
+            // 
+            this.ElevatorEndHeadingTB.Cue = null;
+            this.ElevatorEndHeadingTB.Location = new System.Drawing.Point(275, 21);
+            this.ElevatorEndHeadingTB.Name = "ElevatorEndHeadingTB";
+            this.ElevatorEndHeadingTB.Size = new System.Drawing.Size(78, 23);
+            this.ElevatorEndHeadingTB.TabIndex = 6;
+            // 
+            // ElevatorStartHeadingTB
+            // 
+            this.ElevatorStartHeadingTB.Cue = null;
+            this.ElevatorStartHeadingTB.Location = new System.Drawing.Point(191, 21);
+            this.ElevatorStartHeadingTB.Name = "ElevatorStartHeadingTB";
+            this.ElevatorStartHeadingTB.Size = new System.Drawing.Size(78, 23);
+            this.ElevatorStartHeadingTB.TabIndex = 4;
             // 
             // ElevatorsLB
             // 
@@ -1617,387 +1998,6 @@
             this.setPermissionsToolStripMenuItem.Name = "setPermissionsToolStripMenuItem";
             this.setPermissionsToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
             this.setPermissionsToolStripMenuItem.Text = "&Ange rättigheter för användare";
-            // 
-            // POIILinkUrlTB
-            // 
-            this.POIILinkUrlTB.Cue = "https://...";
-            this.POIILinkUrlTB.Location = new System.Drawing.Point(333, 517);
-            this.POIILinkUrlTB.Name = "POIILinkUrlTB";
-            this.POIILinkUrlTB.Size = new System.Drawing.Size(407, 23);
-            this.POIILinkUrlTB.TabIndex = 22;
-            // 
-            // MediaDescrTB
-            // 
-            this.MediaDescrTB.Cue = "Skriv en syntolkning för dem som inte ser";
-            this.MediaDescrTB.Location = new System.Drawing.Point(333, 448);
-            this.MediaDescrTB.Name = "MediaDescrTB";
-            this.MediaDescrTB.Size = new System.Drawing.Size(407, 23);
-            this.MediaDescrTB.TabIndex = 19;
-            // 
-            // MediaFileTB
-            // 
-            this.MediaFileTB.Cue = "Bilder (*.jpg, *.png), Ljud (*.mp3, *.m4a)";
-            this.MediaFileTB.Location = new System.Drawing.Point(333, 404);
-            this.MediaFileTB.Name = "MediaFileTB";
-            this.MediaFileTB.Size = new System.Drawing.Size(316, 23);
-            this.MediaFileTB.TabIndex = 16;
-            // 
-            // POIInfoEndsTB
-            // 
-            this.POIInfoEndsTB.BackColor = System.Drawing.SystemColors.Window;
-            this.POIInfoEndsTB.Cue = null;
-            this.POIInfoEndsTB.Location = new System.Drawing.Point(527, 360);
-            this.POIInfoEndsTB.Name = "POIInfoEndsTB";
-            this.POIInfoEndsTB.Size = new System.Drawing.Size(175, 23);
-            this.POIInfoEndsTB.TabIndex = 11;
-            // 
-            // POIInfoStartsTB
-            // 
-            this.POIInfoStartsTB.BackColor = System.Drawing.SystemColors.Window;
-            this.POIInfoStartsTB.Cue = null;
-            this.POIInfoStartsTB.Location = new System.Drawing.Point(333, 360);
-            this.POIInfoStartsTB.Name = "POIInfoStartsTB";
-            this.POIInfoStartsTB.Size = new System.Drawing.Size(151, 23);
-            this.POIInfoStartsTB.TabIndex = 8;
-            // 
-            // POIInformationTB
-            // 
-            this.POIInformationTB.Cue = null;
-            this.POIInformationTB.Location = new System.Drawing.Point(333, 197);
-            this.POIInformationTB.Multiline = true;
-            this.POIInformationTB.Name = "POIInformationTB";
-            this.POIInformationTB.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.POIInformationTB.Size = new System.Drawing.Size(397, 98);
-            this.POIInformationTB.TabIndex = 4;
-            // 
-            // VenueImageTB
-            // 
-            this.VenueImageTB.Cue = null;
-            this.VenueImageTB.Location = new System.Drawing.Point(400, 288);
-            this.VenueImageTB.Name = "VenueImageTB";
-            this.VenueImageTB.Size = new System.Drawing.Size(100, 23);
-            this.VenueImageTB.TabIndex = 43;
-            // 
-            // VenueEmailTB
-            // 
-            this.VenueEmailTB.Cue = null;
-            this.VenueEmailTB.Location = new System.Drawing.Point(400, 244);
-            this.VenueEmailTB.Name = "VenueEmailTB";
-            this.VenueEmailTB.Size = new System.Drawing.Size(219, 23);
-            this.VenueEmailTB.TabIndex = 41;
-            // 
-            // VenueWebTB
-            // 
-            this.VenueWebTB.Cue = null;
-            this.VenueWebTB.Location = new System.Drawing.Point(400, 197);
-            this.VenueWebTB.Name = "VenueWebTB";
-            this.VenueWebTB.Size = new System.Drawing.Size(219, 23);
-            this.VenueWebTB.TabIndex = 39;
-            // 
-            // VenuePhoneTB
-            // 
-            this.VenuePhoneTB.Cue = null;
-            this.VenuePhoneTB.Location = new System.Drawing.Point(400, 153);
-            this.VenuePhoneTB.Name = "VenuePhoneTB";
-            this.VenuePhoneTB.Size = new System.Drawing.Size(133, 23);
-            this.VenuePhoneTB.TabIndex = 37;
-            // 
-            // VenueGPSTB
-            // 
-            this.VenueGPSTB.Cue = null;
-            this.VenueGPSTB.Location = new System.Drawing.Point(400, 110);
-            this.VenueGPSTB.Name = "VenueGPSTB";
-            this.VenueGPSTB.Size = new System.Drawing.Size(219, 23);
-            this.VenueGPSTB.TabIndex = 35;
-            // 
-            // VenueDescriptionTB
-            // 
-            this.VenueDescriptionTB.AcceptsReturn = true;
-            this.VenueDescriptionTB.Cue = null;
-            this.VenueDescriptionTB.Location = new System.Drawing.Point(8, 246);
-            this.VenueDescriptionTB.Multiline = true;
-            this.VenueDescriptionTB.Name = "VenueDescriptionTB";
-            this.VenueDescriptionTB.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.VenueDescriptionTB.Size = new System.Drawing.Size(278, 222);
-            this.VenueDescriptionTB.TabIndex = 30;
-            // 
-            // CountryTB
-            // 
-            this.CountryTB.Cue = null;
-            this.CountryTB.Location = new System.Drawing.Point(13, 200);
-            this.CountryTB.Margin = new System.Windows.Forms.Padding(5);
-            this.CountryTB.Name = "CountryTB";
-            this.CountryTB.Size = new System.Drawing.Size(163, 23);
-            this.CountryTB.TabIndex = 28;
-            // 
-            // CityTB
-            // 
-            this.CityTB.Cue = null;
-            this.CityTB.Location = new System.Drawing.Point(90, 155);
-            this.CityTB.Margin = new System.Windows.Forms.Padding(5);
-            this.CityTB.Name = "CityTB";
-            this.CityTB.Size = new System.Drawing.Size(183, 23);
-            this.CityTB.TabIndex = 26;
-            // 
-            // ZipTB
-            // 
-            this.ZipTB.Cue = null;
-            this.ZipTB.Location = new System.Drawing.Point(13, 155);
-            this.ZipTB.Margin = new System.Windows.Forms.Padding(5);
-            this.ZipTB.Name = "ZipTB";
-            this.ZipTB.Size = new System.Drawing.Size(72, 23);
-            this.ZipTB.TabIndex = 24;
-            // 
-            // AddressTB
-            // 
-            this.AddressTB.Cue = null;
-            this.AddressTB.Location = new System.Drawing.Point(8, 110);
-            this.AddressTB.Margin = new System.Windows.Forms.Padding(5);
-            this.AddressTB.Name = "AddressTB";
-            this.AddressTB.Size = new System.Drawing.Size(188, 23);
-            this.AddressTB.TabIndex = 22;
-            // 
-            // VenueIDTB
-            // 
-            this.VenueIDTB.Cue = null;
-            this.VenueIDTB.Location = new System.Drawing.Point(8, 65);
-            this.VenueIDTB.Margin = new System.Windows.Forms.Padding(5);
-            this.VenueIDTB.Name = "VenueIDTB";
-            this.VenueIDTB.Size = new System.Drawing.Size(116, 23);
-            this.VenueIDTB.TabIndex = 20;
-            // 
-            // VenueNameTB
-            // 
-            this.VenueNameTB.Cue = null;
-            this.VenueNameTB.Location = new System.Drawing.Point(11, 21);
-            this.VenueNameTB.Margin = new System.Windows.Forms.Padding(5);
-            this.VenueNameTB.Name = "VenueNameTB";
-            this.VenueNameTB.Size = new System.Drawing.Size(226, 23);
-            this.VenueNameTB.TabIndex = 18;
-            // 
-            // NodeMapPointTB
-            // 
-            this.NodeMapPointTB.BackColor = System.Drawing.SystemColors.Control;
-            this.NodeMapPointTB.Cue = null;
-            this.NodeMapPointTB.Location = new System.Drawing.Point(332, 549);
-            this.NodeMapPointTB.Name = "NodeMapPointTB";
-            this.NodeMapPointTB.ReadOnly = true;
-            this.NodeMapPointTB.Size = new System.Drawing.Size(226, 23);
-            this.NodeMapPointTB.TabIndex = 49;
-            // 
-            // NodeGPSTB
-            // 
-            this.NodeGPSTB.Cue = "Används inte i appen";
-            this.NodeGPSTB.Location = new System.Drawing.Point(332, 505);
-            this.NodeGPSTB.Name = "NodeGPSTB";
-            this.NodeGPSTB.Size = new System.Drawing.Size(203, 23);
-            this.NodeGPSTB.TabIndex = 47;
-            // 
-            // NodeSpaceTB
-            // 
-            this.NodeSpaceTB.Cue = "Används inte av appen";
-            this.NodeSpaceTB.Location = new System.Drawing.Point(447, 109);
-            this.NodeSpaceTB.Name = "NodeSpaceTB";
-            this.NodeSpaceTB.Size = new System.Drawing.Size(111, 23);
-            this.NodeSpaceTB.TabIndex = 17;
-            // 
-            // NodeRoomTB
-            // 
-            this.NodeRoomTB.Cue = "Används inte av appen";
-            this.NodeRoomTB.Location = new System.Drawing.Point(330, 109);
-            this.NodeRoomTB.Name = "NodeRoomTB";
-            this.NodeRoomTB.Size = new System.Drawing.Size(111, 23);
-            this.NodeRoomTB.TabIndex = 15;
-            // 
-            // NodeDepartmentTB
-            // 
-            this.NodeDepartmentTB.Cue = "Används inte av appen";
-            this.NodeDepartmentTB.Location = new System.Drawing.Point(619, 65);
-            this.NodeDepartmentTB.Name = "NodeDepartmentTB";
-            this.NodeDepartmentTB.Size = new System.Drawing.Size(111, 23);
-            this.NodeDepartmentTB.TabIndex = 13;
-            // 
-            // NodeBuildingTB
-            // 
-            this.NodeBuildingTB.Cue = null;
-            this.NodeBuildingTB.Location = new System.Drawing.Point(447, 65);
-            this.NodeBuildingTB.Name = "NodeBuildingTB";
-            this.NodeBuildingTB.Size = new System.Drawing.Size(111, 23);
-            this.NodeBuildingTB.TabIndex = 9;
-            // 
-            // NodeAreaTB
-            // 
-            this.NodeAreaTB.Cue = "Används inte av appen";
-            this.NodeAreaTB.Location = new System.Drawing.Point(330, 65);
-            this.NodeAreaTB.Name = "NodeAreaTB";
-            this.NodeAreaTB.Size = new System.Drawing.Size(111, 23);
-            this.NodeAreaTB.TabIndex = 7;
-            // 
-            // NodeFloorTB
-            // 
-            this.NodeFloorTB.Cue = null;
-            this.NodeFloorTB.Location = new System.Drawing.Point(564, 65);
-            this.NodeFloorTB.Name = "NodeFloorTB";
-            this.NodeFloorTB.Size = new System.Drawing.Size(49, 23);
-            this.NodeFloorTB.TabIndex = 11;
-            // 
-            // NodeInfo5HeadingTB
-            // 
-            this.NodeInfo5HeadingTB.Cue = null;
-            this.NodeInfo5HeadingTB.Location = new System.Drawing.Point(330, 459);
-            this.NodeInfo5HeadingTB.Name = "NodeInfo5HeadingTB";
-            this.NodeInfo5HeadingTB.ReadOnly = true;
-            this.NodeInfo5HeadingTB.Size = new System.Drawing.Size(323, 23);
-            this.NodeInfo5HeadingTB.TabIndex = 44;
-            // 
-            // NodeInfo4HeadingTB
-            // 
-            this.NodeInfo4HeadingTB.Cue = null;
-            this.NodeInfo4HeadingTB.Location = new System.Drawing.Point(330, 415);
-            this.NodeInfo4HeadingTB.Name = "NodeInfo4HeadingTB";
-            this.NodeInfo4HeadingTB.ReadOnly = true;
-            this.NodeInfo4HeadingTB.Size = new System.Drawing.Size(323, 23);
-            this.NodeInfo4HeadingTB.TabIndex = 41;
-            // 
-            // NodeInfo3HeadingTB
-            // 
-            this.NodeInfo3HeadingTB.Cue = null;
-            this.NodeInfo3HeadingTB.Location = new System.Drawing.Point(330, 371);
-            this.NodeInfo3HeadingTB.Name = "NodeInfo3HeadingTB";
-            this.NodeInfo3HeadingTB.ReadOnly = true;
-            this.NodeInfo3HeadingTB.Size = new System.Drawing.Size(323, 23);
-            this.NodeInfo3HeadingTB.TabIndex = 38;
-            // 
-            // NodeInfo2HeadingTB
-            // 
-            this.NodeInfo2HeadingTB.Cue = null;
-            this.NodeInfo2HeadingTB.Location = new System.Drawing.Point(330, 327);
-            this.NodeInfo2HeadingTB.Name = "NodeInfo2HeadingTB";
-            this.NodeInfo2HeadingTB.ReadOnly = true;
-            this.NodeInfo2HeadingTB.Size = new System.Drawing.Size(323, 23);
-            this.NodeInfo2HeadingTB.TabIndex = 35;
-            // 
-            // NodeInfo1HeadingTB
-            // 
-            this.NodeInfo1HeadingTB.Cue = null;
-            this.NodeInfo1HeadingTB.Location = new System.Drawing.Point(330, 283);
-            this.NodeInfo1HeadingTB.Name = "NodeInfo1HeadingTB";
-            this.NodeInfo1HeadingTB.ReadOnly = true;
-            this.NodeInfo1HeadingTB.Size = new System.Drawing.Size(323, 23);
-            this.NodeInfo1HeadingTB.TabIndex = 32;
-            // 
-            // NodeMagneticOffsetTB
-            // 
-            this.NodeMagneticOffsetTB.Cue = null;
-            this.NodeMagneticOffsetTB.Location = new System.Drawing.Point(418, 239);
-            this.NodeMagneticOffsetTB.Name = "NodeMagneticOffsetTB";
-            this.NodeMagneticOffsetTB.Size = new System.Drawing.Size(100, 23);
-            this.NodeMagneticOffsetTB.TabIndex = 30;
-            // 
-            // NodeAccuracyTB
-            // 
-            this.NodeAccuracyTB.Cue = null;
-            this.NodeAccuracyTB.Location = new System.Drawing.Point(330, 239);
-            this.NodeAccuracyTB.Name = "NodeAccuracyTB";
-            this.NodeAccuracyTB.Size = new System.Drawing.Size(77, 23);
-            this.NodeAccuracyTB.TabIndex = 28;
-            // 
-            // NodeIdTagTB
-            // 
-            this.NodeIdTagTB.Cue = null;
-            this.NodeIdTagTB.Location = new System.Drawing.Point(330, 197);
-            this.NodeIdTagTB.Name = "NodeIdTagTB";
-            this.NodeIdTagTB.Size = new System.Drawing.Size(59, 23);
-            this.NodeIdTagTB.TabIndex = 25;
-            // 
-            // NodeMinorTB
-            // 
-            this.NodeMinorTB.Cue = null;
-            this.NodeMinorTB.Location = new System.Drawing.Point(677, 153);
-            this.NodeMinorTB.Name = "NodeMinorTB";
-            this.NodeMinorTB.Size = new System.Drawing.Size(59, 23);
-            this.NodeMinorTB.TabIndex = 23;
-            // 
-            // NodeMajorTB
-            // 
-            this.NodeMajorTB.Cue = null;
-            this.NodeMajorTB.Location = new System.Drawing.Point(609, 153);
-            this.NodeMajorTB.Name = "NodeMajorTB";
-            this.NodeMajorTB.Size = new System.Drawing.Size(59, 23);
-            this.NodeMajorTB.TabIndex = 21;
-            // 
-            // NodeUuidTB
-            // 
-            this.NodeUuidTB.Cue = null;
-            this.NodeUuidTB.Location = new System.Drawing.Point(330, 153);
-            this.NodeUuidTB.Name = "NodeUuidTB";
-            this.NodeUuidTB.Size = new System.Drawing.Size(273, 23);
-            this.NodeUuidTB.TabIndex = 19;
-            // 
-            // NodeNameTB
-            // 
-            this.NodeNameTB.Cue = null;
-            this.NodeNameTB.Location = new System.Drawing.Point(330, 21);
-            this.NodeNameTB.Name = "NodeNameTB";
-            this.NodeNameTB.Size = new System.Drawing.Size(205, 23);
-            this.NodeNameTB.TabIndex = 3;
-            // 
-            // EdgeTravelTimeTB
-            // 
-            this.EdgeTravelTimeTB.Cue = "Sekunder";
-            this.EdgeTravelTimeTB.Location = new System.Drawing.Point(418, 292);
-            this.EdgeTravelTimeTB.Name = "EdgeTravelTimeTB";
-            this.EdgeTravelTimeTB.Size = new System.Drawing.Size(100, 23);
-            this.EdgeTravelTimeTB.TabIndex = 11;
-            // 
-            // EdgeEndHeadingTB
-            // 
-            this.EdgeEndHeadingTB.Cue = "0 till 359";
-            this.EdgeEndHeadingTB.Location = new System.Drawing.Point(312, 292);
-            this.EdgeEndHeadingTB.Name = "EdgeEndHeadingTB";
-            this.EdgeEndHeadingTB.Size = new System.Drawing.Size(100, 23);
-            this.EdgeEndHeadingTB.TabIndex = 9;
-            // 
-            // EdgeStartHeadingTB
-            // 
-            this.EdgeStartHeadingTB.Cue = "0 till 359";
-            this.EdgeStartHeadingTB.Location = new System.Drawing.Point(206, 292);
-            this.EdgeStartHeadingTB.Name = "EdgeStartHeadingTB";
-            this.EdgeStartHeadingTB.Size = new System.Drawing.Size(100, 23);
-            this.EdgeStartHeadingTB.TabIndex = 7;
-            // 
-            // EdgeBeginningTB
-            // 
-            this.EdgeBeginningTB.Cue = "Beskriv hur man förflyttar sig mellan beaconsen";
-            this.EdgeBeginningTB.Location = new System.Drawing.Point(206, 237);
-            this.EdgeBeginningTB.Name = "EdgeBeginningTB";
-            this.EdgeBeginningTB.Size = new System.Drawing.Size(864, 23);
-            this.EdgeBeginningTB.TabIndex = 5;
-            // 
-            // ElevatorMessageTB
-            // 
-            this.ElevatorMessageTB.Cue = null;
-            this.ElevatorMessageTB.Location = new System.Drawing.Point(191, 65);
-            this.ElevatorMessageTB.Name = "ElevatorMessageTB";
-            this.ElevatorMessageTB.Size = new System.Drawing.Size(162, 23);
-            this.ElevatorMessageTB.TabIndex = 8;
-            this.ElevatorMessageTB.Text = "Ta hissen till plan {0}";
-            // 
-            // ElevatorEndHeadingTB
-            // 
-            this.ElevatorEndHeadingTB.Cue = null;
-            this.ElevatorEndHeadingTB.Location = new System.Drawing.Point(275, 21);
-            this.ElevatorEndHeadingTB.Name = "ElevatorEndHeadingTB";
-            this.ElevatorEndHeadingTB.Size = new System.Drawing.Size(78, 23);
-            this.ElevatorEndHeadingTB.TabIndex = 6;
-            // 
-            // ElevatorStartHeadingTB
-            // 
-            this.ElevatorStartHeadingTB.Cue = null;
-            this.ElevatorStartHeadingTB.Location = new System.Drawing.Point(191, 21);
-            this.ElevatorStartHeadingTB.Name = "ElevatorStartHeadingTB";
-            this.ElevatorStartHeadingTB.Size = new System.Drawing.Size(78, 23);
-            this.ElevatorStartHeadingTB.TabIndex = 4;
             // 
             // MainForm
             // 

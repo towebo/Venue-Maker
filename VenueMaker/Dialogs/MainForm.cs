@@ -279,10 +279,10 @@ namespace VenueMaker.Dialogs
                 POIInfosBS.CurrentChanged += POIInfosBS_CurrentChanged1;
 
 
-                POIInfoCatCombo.DataSource = InfoCategoryItem.GetActiveOnes();
+                POIInfoCatCombo.DataSource = InfoCategoryItem.ToDisplayList();
                 POIInfoCatCombo.DisplayMember = nameof(InfoCategoryItem.DisplayName);
-                POIInfoCatCombo.ValueMember = nameof(InfoCategoryItem.Name);
-                POIInfoCatCombo.DataBindings.Add("SelectedValue", POIInfosBS, nameof(WFPOIInformation.Category), false, DataSourceUpdateMode.OnPropertyChanged);
+                POIInfoCatCombo.ValueMember = nameof(InfoCategoryItem.Category);
+                POIInfoCatCombo.DataBindings.Add("SelectedValue", POIInfosBS, nameof(WFPOIInformation.Category), true, DataSourceUpdateMode.OnPropertyChanged);
 
                 ElevatorsBS.DataSource = new WFNode[] { };
                 ElevatorsLB.DataSource = ElevatorsBS;
@@ -795,6 +795,7 @@ namespace VenueMaker.Dialogs
                         return;
 
                     } // Not an admin
+                    
 
                     if (SaveVenueDialog.ShowDialog() != DialogResult.OK)
                     {

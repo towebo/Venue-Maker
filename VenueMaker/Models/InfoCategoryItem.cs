@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,12 +8,41 @@ using WayfindR.Models;
 
 namespace VenueMaker.Models
 {
-    public class InfoCategoryItem
+    public class InfoCategoryItem : INotifyPropertyChanged
     {
-        public WFInfoCategory Category { get; set; }
-        public string Name { get; set; }
-        public string DisplayName { get; set; }
+        private WFInfoCategory _cat;
+        private string _name;
+        private string _displname;
 
+        public WFInfoCategory Category
+        {
+            get { return _cat; }
+            set
+            {
+                _cat = value;
+                FirepropertyChanged(nameof(Category));
+            }
+        } // Category
+        public string Name
+        {
+            get { return _name; }
+            set
+            {
+                _name = value;
+                FirepropertyChanged(nameof(Name));
+            } // set
+        } // Name} // Name
+        public string DisplayName
+        {
+            get { return _displname; }
+            set
+            {
+                _displname = value;
+                FirepropertyChanged(nameof(DisplayName));
+            } // set
+        } // DisplayName
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public InfoCategoryItem(WFInfoCategory cat, string name, string dispName)
         {
@@ -38,14 +68,14 @@ namespace VenueMaker.Models
 
         }
 
-        public static InfoCategoryItem[] GetActiveOnes()
+        public static InfoCategoryItem[] ToDisplayList()
         {
             List<InfoCategoryItem> result = new List<InfoCategoryItem>();
 
             result.Add(new InfoCategoryItem(
                 WFInfoCategory.Uncategorized,
                 WFInfoCategory.Uncategorized.ToString().ToLower(),
-                " "
+                "(saknar kategori)"
                 ));
 
             result.Add(new InfoCategoryItem(
@@ -100,6 +130,19 @@ namespace VenueMaker.Models
 
             return result.ToArray();
 
+        }
+
+        private void FirepropertyChanged(string propName)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(
+                    this,
+                    new PropertyChangedEventArgs(
+                        propName
+                        )
+                        );
+            } // Event is hooked up
         }
 
 
