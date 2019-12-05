@@ -914,7 +914,7 @@ namespace VenueMaker.Dialogs
             {
                 string svcver = string.Empty;
 
-                await Task.Run(() =>
+                Task.Run(() =>
                 {
                     // Initialize the web service for better performance.
                     svcver = Controllers.DataController.Me.ServiceVersion();
@@ -2325,8 +2325,12 @@ namespace VenueMaker.Dialogs
                 Application.UseWaitCursor = true;
                 Application.DoEvents();
 
-                VenueImagePB.Image.Dispose();
-                VenueImagePB.Image = null;
+                if (VenueImagePB.Image != null)
+                {
+                    VenueImagePB.Image.Dispose();
+                    VenueImagePB.Image = null;
+
+                } // Has image
 
                 string mediafile = UseThisFile(OpenMediaFileDialog.FileName);
 
