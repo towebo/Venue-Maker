@@ -1693,7 +1693,7 @@
             // 
             // EdgesForPOILB
             // 
-            this.EdgesForPOILB.AccessibleName = "Lista över vägbeskrivningar";
+            this.EdgesForPOILB.AccessibleName = "Lista över delsträckor";
             this.EdgesForPOILB.FormattingEnabled = true;
             this.EdgesForPOILB.ItemHeight = 15;
             this.EdgesForPOILB.Location = new System.Drawing.Point(206, 21);
@@ -1708,7 +1708,7 @@
             this.EdgesListLabel.Name = "EdgesListLabel";
             this.EdgesListLabel.Size = new System.Drawing.Size(97, 15);
             this.EdgesListLabel.TabIndex = 2;
-            this.EdgesListLabel.Text = "&Vägbeskrivningar";
+            this.EdgesListLabel.Text = "&Delsträckor";
             // 
             // EdgesPOIsLB
             // 
@@ -1791,7 +1791,7 @@
             this.CreateElevatorEdgesButton.Name = "CreateElevatorEdgesButton";
             this.CreateElevatorEdgesButton.Size = new System.Drawing.Size(170, 23);
             this.CreateElevatorEdgesButton.TabIndex = 9;
-            this.CreateElevatorEdgesButton.Text = "&Skapa vägbeskrivningar";
+            this.CreateElevatorEdgesButton.Text = "&Skapa delsträckor";
             this.CreateElevatorEdgesButton.UseVisualStyleBackColor = true;
             // 
             // ElevatorMessageTB

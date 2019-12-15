@@ -173,7 +173,7 @@
             this.MinimizeBox = false;
             this.Name = "EditHeadingInfoDialog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Riktningsinformation";
+            this.Text = "Vad finns ditåt";
             this.Load += new System.EventHandler(this.EditHeadingInfoDialog_Load);
             ((System.ComponentModel.ISupportInitialize)(this.HeadingInfoBS)).EndInit();
             this.ResumeLayout(false);

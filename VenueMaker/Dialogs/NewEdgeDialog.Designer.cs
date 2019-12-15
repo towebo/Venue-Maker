@@ -221,7 +221,7 @@
             this.MinimizeBox = false;
             this.Name = "NewEdgeDialog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Ny vägbeskrivning";
+            this.Text = "Ny delsträcka";
             this.Load += new System.EventHandler(this.NewEdgeDialog_Load);
             ((System.ComponentModel.ISupportInitialize)(this.InfoBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SourcesBS)).EndInit();

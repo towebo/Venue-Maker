@@ -34,7 +34,7 @@ Name: {group}\{#AppName}; Filename: {app}\VenueMaker.exe
 Name: {commondesktop}\{#AppName}; Filename: {app}\VenueMaker.exe; IconIndex: 0
 
 [Setup]
-SignTool=Standard
+SignTool=MAWINGU
 AppCopyright={#CopyrightText}
 AppName={#AppName}
 AppVerName={#AppName} {#AppVersion}
