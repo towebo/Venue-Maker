@@ -20,6 +20,7 @@ using Mawingu;
 using VenueMaker.Kwenda;
 using Kwenda.Models;
 using Kwenda;
+using Kwenda.Controllers;
 
 namespace VenueMaker.Dialogs
 {
@@ -864,7 +865,7 @@ namespace VenueMaker.Dialogs
             }
         }
 
-        private void MainForm_Load(object sender, EventArgs e)
+        private async void MainForm_Load(object sender, EventArgs e)
         {
             try
             {

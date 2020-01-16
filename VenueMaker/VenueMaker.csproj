@@ -204,6 +204,7 @@
     <Compile Include="Kwenda\Controllers\GraphController.cs" />
     <Compile Include="Kwenda\Controllers\LogCenter.cs" />
     <Compile Include="Kwenda\Controllers\NavEngine.cs" />
+    <Compile Include="Kwenda\Controllers\NotificationController.cs" />
     <Compile Include="Kwenda\Controllers\SQLiteController.cs" />
     <Compile Include="Kwenda\Controllers\VenueController.cs" />
     <Compile Include="Kwenda\Helpers\FloorComparer.cs" />
@@ -212,7 +213,9 @@
     <Compile Include="Kwenda\Models\BLEBeacon.cs" />
     <Compile Include="Kwenda\Models\BLEBeaconwCache.cs" />
     <Compile Include="Kwenda\Models\CacheFile.cs" />
+    <Compile Include="Kwenda\Models\Constants.cs" />
     <Compile Include="Kwenda\Models\Preferences.cs" />
+    <Compile Include="Kwenda\Utils\ConnectionStringUtility.cs" />
     <Compile Include="Kwenda\Utils\HttpUtil.cs" />
     <Compile Include="Models\Constants.cs" />
     <Compile Include="Models\CreateAccountInfoModel.cs" />

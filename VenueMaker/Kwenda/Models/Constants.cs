@@ -47,7 +47,7 @@ namespace Kwenda.Common.Models
         // Azure app-specific connection string and hub path
         public const string ListenConnectionString = "Endpoint=sb://kwenda.servicebus.windows.net/;SharedAccessKeyName=DefaultListenSharedAccessSignature;SharedAccessKey=mFmbgvt72li++gNCQIXyCSMhFjExyxjT1o2aO5m2ogQ=";
         public const string FullAccessConnectionString = "Endpoint=sb://kwenda.servicebus.windows.net/;SharedAccessKeyName=DefaultFullSharedAccessSignature;SharedAccessKey=NiB5Uun8HKtpvNyrG21w/iI1IuN9f8Xy67Bnc8p+Vtg=";
-        public const string NotificationHubName = "KWENDA";
+        public const string NotificationHubName = "mawingu";
 
 
 
