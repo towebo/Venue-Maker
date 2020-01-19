@@ -21,6 +21,7 @@ using VenueMaker.Kwenda;
 using Kwenda.Models;
 using Kwenda;
 using Kwenda.Controllers;
+using System.Threading;
 
 namespace VenueMaker.Dialogs
 {
@@ -61,6 +62,9 @@ namespace VenueMaker.Dialogs
             createAccountToolStripMenuItem.Visible = hasadminrights;
             setPermissionsToolStripMenuItem.Visible = hasadminrights;
 
+            SendPushBtn.Visible = hasadminrights;
+
+
         }
 
         private void InitMenusAndButtons()
@@ -90,7 +94,9 @@ namespace VenueMaker.Dialogs
                 
                 AddMapBtn.Click += (s11, e11) => AddMap();
                 DeleteMapBtn.Click += (s12, e12) => DeleteMap();
-                
+
+                SendPushBtn.Click += (s36, e36) => SendPush();
+
                 // Nodes
                 AddNodeButton.Click += (s16, e16) => AddNode();
                 DeleteNodeButton.Click += (s17, e17) => DeleteNode();
@@ -2502,6 +2508,20 @@ namespace VenueMaker.Dialogs
 
                 } // using
 
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+        }
+
+        private void SendPush()
+        {
+            try
+            {
+                SendNotificationDialog.SendPushNotification(Venue.Id);
 
             }
             catch (Exception ex)

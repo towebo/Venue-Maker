@@ -97,7 +97,7 @@ namespace Kwenda.Controllers
             return null;
         }
                 
-        public static async Task<string> SendTemplateNotificationREST(Dictionary<string, string> messageParams)
+        public static async Task<string> SendTemplateNotificationREST(Dictionary<string, object> messageParams)
         {
             var connectionSaSUtil = new ConnectionStringUtility(
                 Kwenda.Common.Models.Constants.FullAccessConnectionString
@@ -125,7 +125,32 @@ namespace Kwenda.Controllers
 
                 } // Add separator
 
-                body.Append($"\"{key}\": \"{messageParams[key]}\"");
+                Dictionary<string, string> dict = messageParams[key] as Dictionary<string, string>;
+                if (dict != null)
+                {
+                    StringBuilder sb = new StringBuilder();
+                    foreach (string dictkey in dict.Keys)
+                    {
+                        if (sb.Length > 0)
+                        {
+                            sb.Append(", ");
+
+                        } // Add separator
+
+                        sb.Append($"\"{dictkey}\": \"{dict[dictkey]}\"");
+                        
+                    } // foreach
+
+                    body.Append($"\"{key}\": {{ {sb.ToString()} }}");
+
+                }
+                else
+                {
+                    body.Append($"\"{key}\": \"{messageParams[key]}\"");
+
+                }
+
+                
 
             } // foreach
             body.Insert(0, "{");

@@ -117,6 +117,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dialogs\SendNotificationDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\SendNotificationDialog.Designer.cs">
+      <DependentUpon>SendNotificationDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Kwenda\Controllers\BeaconController.cs" />
     <Compile Include="Controllers\DataController.cs" />
     <Compile Include="Dialogs\ChangeBeaconForNodeDialog.cs">
@@ -287,6 +293,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\SelectVenueDialog.resx">
       <DependentUpon>SelectVenueDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\SendNotificationDialog.resx">
+      <DependentUpon>SendNotificationDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\SetPermissionsDialog.resx">
       <DependentUpon>SetPermissionsDialog.cs</DependentUpon>

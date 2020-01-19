@@ -63,6 +63,7 @@
             this.POIsListLabel = new System.Windows.Forms.Label();
             this.POIsLB = new System.Windows.Forms.ListBox();
             this.VenueTab = new System.Windows.Forms.TabPage();
+            this.SendPushBtn = new System.Windows.Forms.Button();
             this.ShowNodeNamesOnMapChk = new System.Windows.Forms.CheckBox();
             this.MapPanel = new System.Windows.Forms.Panel();
             this.MapPB = new System.Windows.Forms.PictureBox();
@@ -567,6 +568,7 @@
             // 
             // VenueTab
             // 
+            this.VenueTab.Controls.Add(this.SendPushBtn);
             this.VenueTab.Controls.Add(this.ShowNodeNamesOnMapChk);
             this.VenueTab.Controls.Add(this.MapPanel);
             this.VenueTab.Controls.Add(this.DeleteMapBtn);
@@ -609,6 +611,15 @@
             this.VenueTab.TabIndex = 4;
             this.VenueTab.Text = "Plats";
             this.VenueTab.UseVisualStyleBackColor = true;
+            // 
+            // SendPushBtn
+            // 
+            this.SendPushBtn.Location = new System.Drawing.Point(400, 610);
+            this.SendPushBtn.Name = "SendPushBtn";
+            this.SendPushBtn.Size = new System.Drawing.Size(156, 23);
+            this.SendPushBtn.TabIndex = 52;
+            this.SendPushBtn.Text = "Skicka p&ushnotis";
+            this.SendPushBtn.UseVisualStyleBackColor = true;
             // 
             // ShowNodeNamesOnMapChk
             // 
@@ -1706,7 +1717,7 @@
             this.EdgesListLabel.AutoSize = true;
             this.EdgesListLabel.Location = new System.Drawing.Point(203, 3);
             this.EdgesListLabel.Name = "EdgesListLabel";
-            this.EdgesListLabel.Size = new System.Drawing.Size(97, 15);
+            this.EdgesListLabel.Size = new System.Drawing.Size(66, 15);
             this.EdgesListLabel.TabIndex = 2;
             this.EdgesListLabel.Text = "&Delsträckor";
             // 
@@ -2241,5 +2252,6 @@
         private System.Windows.Forms.Button MarkEdgeOnMapBtn;
         private Models.CueTextBox POIILinkUrlTB;
         private System.Windows.Forms.Label POIILinkUrlLabel;
+        private System.Windows.Forms.Button SendPushBtn;
     }
 }
