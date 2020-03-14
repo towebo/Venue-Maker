@@ -43,11 +43,19 @@ namespace Kwenda.Common.Models
         public const int StickyBeaconTime = 7000;
 
 
-        
+
         // Azure app-specific connection string and hub path
+#if DEBUG
         public const string ListenConnectionString = "Endpoint=sb://kwenda.servicebus.windows.net/;SharedAccessKeyName=DefaultListenSharedAccessSignature;SharedAccessKey=mFmbgvt72li++gNCQIXyCSMhFjExyxjT1o2aO5m2ogQ=";
         public const string FullAccessConnectionString = "Endpoint=sb://kwenda.servicebus.windows.net/;SharedAccessKeyName=DefaultFullSharedAccessSignature;SharedAccessKey=NiB5Uun8HKtpvNyrG21w/iI1IuN9f8Xy67Bnc8p+Vtg=";
         public const string NotificationHubName = "mawingu";
+#else
+        public const string ListenConnectionString = "Endpoint=sb://mawingu.servicebus.windows.net/;SharedAccessKeyName=DefaultListenSharedAccessSignature;SharedAccessKey=NMLPzxarwlpgQ8/BtitSfYjXsL9P5gspDPXOB13BSr8=";
+        public const string FullAccessConnectionString = "Endpoint=sb://mawingu.servicebus.windows.net/;SharedAccessKeyName=DefaultFullSharedAccessSignature;SharedAccessKey=ZF/yWPL2DXmclTIVm6HD9rF22la6S87dXcm4yehv+WA=";
+        public const string NotificationHubName = "kwenda";
+#endif
+        public const string APNTemplateBody = "{\"aps\":{\"alert\":\"$(message)\"}}";
+        public const string APNComplexTemplateBody = "{\"aps\":{\"alert\":\"$(message)\",\"sound\":\"$(sound)\"}, \"kwenda\": {\"venueId\":\"$(venueId)\",\"beaconId\":\"$(beaconId)\", \"status\": \"$(status)\",\"messageId\":\"$(messageId)\"} }";
 
 
 

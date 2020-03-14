@@ -39,9 +39,9 @@ namespace VenueMaker.Dialogs
 
                     Dictionary<string, object> msgparams = new Dictionary<string, object>();
                     msgparams["message"] = dlg.MessageTB.Text;
-                    msgparams["sound"] = "default";
-                    msgparams["venueId"] = dlg.VenueIdTB.Text;
-                    msgparams["status"] = dlg.StatusCombo.Text;
+                    //msgparams["sound"] = "default";
+                    //msgparams["venueId"] = dlg.VenueIdTB.Text;
+                    //msgparams["status"] = dlg.StatusCombo.Text;
                     NotificationController.SendTemplateNotificationREST(msgparams);
 
                 } // using

@@ -161,9 +161,15 @@ namespace WayfindR.Models
 
                 if (!string.IsNullOrWhiteSpace(this.IdTag))
                 {
-                    result.Append($"({this.IdTag})");
+                    result.Append($" ({this.IdTag})");
 
                 } // Has IdTag
+
+                if (Active.ToLower() != "true")
+                {
+                    result.Append(" *** Inaktiv ***");
+
+                } // Inactive
 
                 return result.ToString();
 

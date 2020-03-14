@@ -166,6 +166,7 @@ namespace VenueMaker.Controllers
                     UpdateKwendaFileRequest req = new UpdateKwendaFileRequest();
                     req.Token = token;
                     req.InactivateAllForVenue = true;
+                    req.InactivateAllForVenueSpecified = true;
                     req.Files = items;
 
                     UpdateKwendaFileResponse response = cli.UpdateKwendaFiles(req);

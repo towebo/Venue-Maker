@@ -57,6 +57,12 @@ namespace WayfindR.Models
 
                 } // Has tag
 
+                if (linkednode.Active.ToLower() != "true")
+                {
+                    result.Append($" *** Inaktiv ***");
+
+                } // Has tag
+
                 return result.ToString();
 
             }

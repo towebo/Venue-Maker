@@ -9,8 +9,6 @@ using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using VenueMaker.Controllers;
-using WayfindR.Controllers;
 using WayfindR.Models;
 using VenueMaker.Helpers;
 using VenueMaker.Models;
@@ -20,8 +18,6 @@ using Mawingu;
 using VenueMaker.Kwenda;
 using Kwenda.Models;
 using Kwenda;
-using Kwenda.Controllers;
-using System.Threading;
 
 namespace VenueMaker.Dialogs
 {
@@ -61,6 +57,8 @@ namespace VenueMaker.Dialogs
             saveVenueAsToolStripMenuItem.Visible = hasadminrights;
             createAccountToolStripMenuItem.Visible = hasadminrights;
             setPermissionsToolStripMenuItem.Visible = hasadminrights;
+
+            toolsToolStripMenuItem.Visible = hasadminrights;
 
             SendPushBtn.Visible = hasadminrights;
 
@@ -1936,7 +1934,9 @@ namespace VenueMaker.Dialogs
                 kvenue.Data = Encoding.UTF8.GetBytes(Venue.ToString());
                 kvenue.FileTitle = Venue.GetFileTitle();
                 kvenue.Active = MakeVenueActiveChk.Checked;
-                
+                kvenue.ActiveSpecified = true;
+
+
                 kfiles.Add(kvenue);
 
                 // Add the media files
@@ -1952,6 +1952,7 @@ namespace VenueMaker.Dialogs
                         Path.Combine(fldr, kmediafile.FileName)
                         );
                     kmediafile.Active = MakeVenueActiveChk.Checked;
+                    kmediafile.ActiveSpecified = true;
                     kfiles.Add(kmediafile);
 
                 } // Has image
@@ -1976,6 +1977,7 @@ namespace VenueMaker.Dialogs
                                         );
 
                                     kmediafile.Active = MakeVenueActiveChk.Checked;
+                                    kmediafile.ActiveSpecified = true;
                                     kfiles.Add(kmediafile);
 
                                 } // Has media file
@@ -2005,6 +2007,7 @@ namespace VenueMaker.Dialogs
                                         );
 
                             kmediafile.Active = MakeVenueActiveChk.Checked;
+                            kmediafile.ActiveSpecified = true;
                             kfiles.Add(kmediafile);
 
                         } // Image assigned
@@ -2025,6 +2028,7 @@ namespace VenueMaker.Dialogs
                                         );
 
                             kmediafile.Active = MakeVenueActiveChk.Checked;
+                            kmediafile.ActiveSpecified = true;
                             kfiles.Add(kmediafile);
 
                         } // Image assigned
@@ -2045,6 +2049,7 @@ namespace VenueMaker.Dialogs
                                         );
 
                             kmediafile.Active = MakeVenueActiveChk.Checked;
+                            kmediafile.ActiveSpecified = true;
                             kfiles.Add(kmediafile);
 
                         } // Image assigned
@@ -2065,6 +2070,7 @@ namespace VenueMaker.Dialogs
                                         );
 
                             kmediafile.Active = MakeVenueActiveChk.Checked;
+                            kmediafile.ActiveSpecified = true;
                             kfiles.Add(kmediafile);
 
                         } // Image assigned
@@ -2085,6 +2091,7 @@ namespace VenueMaker.Dialogs
                                         );
 
                             kmediafile.Active = MakeVenueActiveChk.Checked;
+                            kmediafile.ActiveSpecified = true;
                             kfiles.Add(kmediafile);
 
                         } // Image assigned
@@ -2110,6 +2117,7 @@ namespace VenueMaker.Dialogs
                                         );
 
                             kmediafile.Active = MakeVenueActiveChk.Checked;
+                            kmediafile.ActiveSpecified = true;
                             kfiles.Add(kmediafile);
 
                         } // Has file name
@@ -2769,6 +2777,38 @@ namespace VenueMaker.Dialogs
 
         }
 
+        private void linkPOIToBeaconToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                WFPointOfInterest poi = POIsBS.Current as WFPointOfInterest;
+                if (poi == null)
+                {
+                    return;
+
+                } // No POI selected
+
+                using (SelectNodeDialog dlg = new SelectNodeDialog())
+                {
+                    dlg.Venue = Venue;
+
+                    if (DialogResult.OK != dlg.ShowDialog())
+                    {
+                        return;
+
+                    } // Cancelled
+
+                    poi.LinkTo(dlg.SelectedNode);
+
+                } // using
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+        }
     } // class
 }
 

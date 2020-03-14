@@ -219,6 +219,8 @@
             this.verifyAccountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.changePasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.setPermissionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.linkPOIToBeaconToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Tabs.SuspendLayout();
             this.PoiTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PoiInfoPB)).BeginInit();
@@ -1888,7 +1890,8 @@
             // 
             this.MainMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
-            this.accountToolStripMenuItem});
+            this.accountToolStripMenuItem,
+            this.toolsToolStripMenuItem});
             this.MainMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.MainMenuStrip.Name = "MainMenuStrip";
             this.MainMenuStrip.Size = new System.Drawing.Size(1129, 24);
@@ -2009,6 +2012,21 @@
             this.setPermissionsToolStripMenuItem.Name = "setPermissionsToolStripMenuItem";
             this.setPermissionsToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
             this.setPermissionsToolStripMenuItem.Text = "&Ange rättigheter för användare";
+            // 
+            // toolsToolStripMenuItem
+            // 
+            this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.linkPOIToBeaconToolStripMenuItem});
+            this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
+            this.toolsToolStripMenuItem.Text = "Verkt&yg";
+            // 
+            // linkPOIToBeaconToolStripMenuItem
+            // 
+            this.linkPOIToBeaconToolStripMenuItem.Name = "linkPOIToBeaconToolStripMenuItem";
+            this.linkPOIToBeaconToolStripMenuItem.Size = new System.Drawing.Size(265, 22);
+            this.linkPOIToBeaconToolStripMenuItem.Text = "Länka informationspunkt till beacon";
+            this.linkPOIToBeaconToolStripMenuItem.Click += new System.EventHandler(this.linkPOIToBeaconToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -2253,5 +2271,7 @@
         private Models.CueTextBox POIILinkUrlTB;
         private System.Windows.Forms.Label POIILinkUrlLabel;
         private System.Windows.Forms.Button SendPushBtn;
+        private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem linkPOIToBeaconToolStripMenuItem;
     }
 }
