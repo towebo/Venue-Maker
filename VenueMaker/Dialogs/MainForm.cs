@@ -2492,7 +2492,7 @@ namespace VenueMaker.Dialogs
             }
         }
 
-        private void MapsLB_DoubleClick(object sender, EventArgs e)
+        private void MapPropertiesMenuItem_Click(object sender, EventArgs e)
         {
             try
             {
@@ -2809,6 +2809,73 @@ namespace VenueMaker.Dialogs
 
             }
         }
+
+        private void MapsLB_DragDrop(object sender, DragEventArgs e)
+        {
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+
+        }
+
+        private void MoveMapDownMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                WFMap selmap = MapsBS.Current as WFMap;
+                if (selmap == null)
+                {
+                    return;
+
+                } // Nothing selected
+
+                List<WFMap> maps = Venue.Maps.ToList();
+
+                int idx = maps.IndexOf(selmap);
+                int otheridx = idx;
+
+                if (sender == MoveMapUpMenuItem)
+                {
+                    otheridx--;
+                }
+                else
+                {
+                    otheridx++;
+                }
+
+                if (otheridx < 0 || otheridx >= maps.Count)
+                {
+                    return;
+
+                } // Out of bounds
+
+                maps[idx] = maps[otheridx];
+                maps[otheridx] = selmap;
+
+                Venue.Maps = maps.ToArray();
+
+                MapsBS.Position = otheridx;
+
+                MapsBS.DataSource = Venue.Maps;
+                MapsBS.ResetBindings(false);
+
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+        }
+
+        
     } // class
 }
 

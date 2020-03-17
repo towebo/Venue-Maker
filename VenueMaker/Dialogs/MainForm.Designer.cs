@@ -70,6 +70,11 @@
             this.DeleteMapBtn = new System.Windows.Forms.Button();
             this.AddMapBtn = new System.Windows.Forms.Button();
             this.MapsLB = new System.Windows.Forms.ListBox();
+            this.MapsContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.MoveMapUpMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MoveMapDownMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.MapPropertiesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MapsLabel = new System.Windows.Forms.Label();
             this.VenueImagePB = new System.Windows.Forms.PictureBox();
             this.SelectVenueImageBtn = new System.Windows.Forms.Button();
@@ -227,6 +232,7 @@
             this.VenueTab.SuspendLayout();
             this.MapPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MapPB)).BeginInit();
+            this.MapsContextMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VenueImagePB)).BeginInit();
             this.NodesTab.SuspendLayout();
             this.EdgesTab.SuspendLayout();
@@ -683,13 +689,51 @@
             // 
             // MapsLB
             // 
+            this.MapsLB.ContextMenuStrip = this.MapsContextMenu;
             this.MapsLB.FormattingEnabled = true;
             this.MapsLB.ItemHeight = 15;
             this.MapsLB.Location = new System.Drawing.Point(400, 435);
             this.MapsLB.Name = "MapsLB";
             this.MapsLB.Size = new System.Drawing.Size(219, 124);
             this.MapsLB.TabIndex = 47;
-            this.MapsLB.DoubleClick += new System.EventHandler(this.MapsLB_DoubleClick);
+            this.MapsLB.DragDrop += new System.Windows.Forms.DragEventHandler(this.MapsLB_DragDrop);
+            this.MapsLB.DoubleClick += new System.EventHandler(this.MapPropertiesMenuItem_Click);
+            // 
+            // MapsContextMenu
+            // 
+            this.MapsContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MoveMapUpMenuItem,
+            this.MoveMapDownMenuItem,
+            this.toolStripSeparator3,
+            this.MapPropertiesMenuItem});
+            this.MapsContextMenu.Name = "MapsContextMenu";
+            this.MapsContextMenu.Size = new System.Drawing.Size(135, 76);
+            // 
+            // MoveMapUpMenuItem
+            // 
+            this.MoveMapUpMenuItem.Name = "MoveMapUpMenuItem";
+            this.MoveMapUpMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.MoveMapUpMenuItem.Text = "Flytta &upp";
+            this.MoveMapUpMenuItem.Click += new System.EventHandler(this.MoveMapDownMenuItem_Click);
+            // 
+            // MoveMapDownMenuItem
+            // 
+            this.MoveMapDownMenuItem.Name = "MoveMapDownMenuItem";
+            this.MoveMapDownMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.MoveMapDownMenuItem.Text = "Flytta &ner";
+            this.MoveMapDownMenuItem.Click += new System.EventHandler(this.MoveMapDownMenuItem_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(131, 6);
+            // 
+            // MapPropertiesMenuItem
+            // 
+            this.MapPropertiesMenuItem.Name = "MapPropertiesMenuItem";
+            this.MapPropertiesMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.MapPropertiesMenuItem.Text = "&Egenskaper";
+            this.MapPropertiesMenuItem.Click += new System.EventHandler(this.MapPropertiesMenuItem_Click);
             // 
             // MapsLabel
             // 
@@ -2053,6 +2097,7 @@
             this.MapPanel.ResumeLayout(false);
             this.MapPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MapPB)).EndInit();
+            this.MapsContextMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.VenueImagePB)).EndInit();
             this.NodesTab.ResumeLayout(false);
             this.NodesTab.PerformLayout();
@@ -2273,5 +2318,10 @@
         private System.Windows.Forms.Button SendPushBtn;
         private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem linkPOIToBeaconToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip MapsContextMenu;
+        private System.Windows.Forms.ToolStripMenuItem MoveMapUpMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem MoveMapDownMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripMenuItem MapPropertiesMenuItem;
     }
 }
