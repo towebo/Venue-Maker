@@ -36,10 +36,6 @@ namespace VenueMaker.Controllers
 
         public DataController()
         {
-            // Make sure we use a newer version of SSL.
-            // https://stackoverflow.com/questions/6232746/c-sharp-httpwebrequest-sec-i-renegotiate-intermittent-errors
-            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-
         }
 
 
