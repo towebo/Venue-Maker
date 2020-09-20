@@ -133,9 +133,17 @@ namespace VenueMaker.Models
                     PrefsFileName;
 
                 XmlSerializer serializer = new XmlSerializer(typeof(Preferences));
-                TextWriter textWriter = new StreamWriter(fn);
-
-                serializer.Serialize(textWriter, this);
+                using (TextWriter textWriter = new StreamWriter(fn))
+                {
+                    try
+                    {
+                        serializer.Serialize(textWriter, this);
+                    }
+                    finally
+                    {
+                        textWriter.Close();
+                    }
+                } // using
 
             }
             catch (Exception ex)
