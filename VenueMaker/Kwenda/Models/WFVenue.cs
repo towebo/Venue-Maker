@@ -120,21 +120,25 @@ namespace WayfindR.Models
 
                 try
                 {
-                    var jplatforms = jo["venue"]["platforms"].Children();
                     List<WFPlatform> pfs = new List<WFPlatform>();
-                    foreach (var jp in jplatforms)
+                    var jplatforms = jo["venue"]["platforms"];
+                    if (jplatforms != null)
                     {
-                        WFPlatform pf = new WFPlatform();
-                        pf.Name = (string)jp["name"];
-                        pf.EntranceBeaconMajor = (int)jp["entrance_beacon_major"];
-                        pf.EntranceBeaconMinor = (int)jp["entrance_beacon_minor"];
-                        pf.ExitBeaconMajor = (int)jp["exit_beacon_major"];
-                        pf.ExitBeaconMinor = (int)jp["exit_beacon_minor"];
-                        pf.Destinations = jp["destinations"].Values<string>().ToArray();
+                        foreach (var jp in jplatforms.Children())
+                        {
+                            WFPlatform pf = new WFPlatform();
+                            pf.Name = (string)jp["name"];
+                            pf.EntranceBeaconMajor = (int)jp["entrance_beacon_major"];
+                            pf.EntranceBeaconMinor = (int)jp["entrance_beacon_minor"];
+                            pf.ExitBeaconMajor = (int)jp["exit_beacon_major"];
+                            pf.ExitBeaconMinor = (int)jp["exit_beacon_minor"];
+                            pf.Destinations = jp["destinations"].Values<string>().ToArray();
 
-                        pfs.Add(pf);
+                            pfs.Add(pf);
 
-                    } // foreach
+                        } // foreach
+                    } // Has platforms
+                        
                     result.Platforms = pfs.ToArray();
                 }
                 catch
@@ -144,21 +148,25 @@ namespace WayfindR.Models
 
                 try
                 {
-                    var jexits = jo["venue"]["exits"].Children();
                     List<WFExit> wfes = new List<WFExit>();
-                    foreach (var je in jexits)
+                    var jexits = jo["venue"]["exits"];
+                    if (jexits != null)
                     {
-                        WFExit wfe = new WFExit();
-                        wfe.Name = (string)je["name"];
-                        wfe.EntranceBeaconMajor = (int)je["entrance_beacon_major"];
-                        wfe.EntranceBeaconMinor = (int)je["entrance_beacon_minor"];
-                        wfe.ExitBeaconMajor = (int)je["exit_beacon_major"];
-                        wfe.ExitBeaconMinor = (int)je["exit_beacon_minor"];
-                        wfe.Mode = (string)je["mode"];
+                        foreach (var je in jexits.Children())
+                        {
+                            WFExit wfe = new WFExit();
+                            wfe.Name = (string)je["name"];
+                            wfe.EntranceBeaconMajor = (int)je["entrance_beacon_major"];
+                            wfe.EntranceBeaconMinor = (int)je["entrance_beacon_minor"];
+                            wfe.ExitBeaconMajor = (int)je["exit_beacon_major"];
+                            wfe.ExitBeaconMinor = (int)je["exit_beacon_minor"];
+                            wfe.Mode = (string)je["mode"];
 
-                        wfes.Add(wfe);
+                            wfes.Add(wfe);
 
-                    } // foreach exit
+                        } // foreach exit
+                    } // Has exists
+                        
                     result.Exits = wfes.ToArray();
                 }
                 catch
@@ -169,69 +177,76 @@ namespace WayfindR.Models
                 
                 try
                 {
-                    var jpois = jo["venue"]["pointsofinterest"].Children();
                     List<WFPointOfInterest> wfpois = new List<WFPointOfInterest>();
-                    foreach (var jpoi in jpois)
+                    var jpois = jo["venue"]["pointsofinterest"];
+                    if (jpois != null)
                     {
-                        WFPointOfInterest wfpoi = new WFPointOfInterest();
-
-                        string poi_guid = (string)jpoi["guid"];
-                        if (!string.IsNullOrWhiteSpace(poi_guid))
+                        foreach (var jpoi in jpois.Children())
                         {
-                            wfpoi.Guid = poi_guid;
+                            WFPointOfInterest wfpoi = new WFPointOfInterest();
 
-                        } // Guid exists
-                        wfpoi.BeaconGuid = (string)jpoi["beacon_guid"];
-
-                        string cat = (string)jpoi["category"];
-						wfpoi.Category = WFPointOfInterest.CategoryFromString(cat);
-
-                        try
-                        {
-                            var jinfos = jpoi["information"].Children();
-                            List<WFPOIInformation> wfinfos = new List<WFPOIInformation>();
-                            foreach (var jinfo in jinfos)
+                            string poi_guid = (string)jpoi["guid"];
+                            if (!string.IsNullOrWhiteSpace(poi_guid))
                             {
-                                WFPOIInformation wfinfo = new WFPOIInformation();
+                                wfpoi.Guid = poi_guid;
 
-                                string poii_guid = (string)jinfo["guid"];
-                                if (!string.IsNullOrWhiteSpace(poii_guid))
+                            } // Guid exists
+                            wfpoi.BeaconGuid = (string)jpoi["beacon_guid"];
+
+                            string cat = (string)jpoi["category"];
+                            wfpoi.Category = WFPointOfInterest.CategoryFromString(cat);
+
+                            try
+                            {
+                                List<WFPOIInformation> wfinfos = new List<WFPOIInformation>();
+                                var jinfos = jpoi["information"];
+                                if (jinfos != null)
                                 {
-                                    wfinfo.Guid = poii_guid;
+                                    foreach (var jinfo in jinfos.Children())
+                                    {
+                                        WFPOIInformation wfinfo = new WFPOIInformation();
 
-                                } // Stored Guid
+                                        string poii_guid = (string)jinfo["guid"];
+                                        if (!string.IsNullOrWhiteSpace(poii_guid))
+                                        {
+                                            wfinfo.Guid = poii_guid;
+
+                                        } // Stored Guid
+
+                                        wfinfo.Information = (string)jinfo["information"];
+                                        wfinfo.Category = wfinfo.CategoryFromString(
+                                            (string)jinfo["category"]
+                                            );
+                                        wfinfo.MediaFile = (string)jinfo["mediafile"];
+                                        wfinfo.MediaDescription = (string)jinfo["mediadescription"];
+                                        wfinfo.AutoPlayMedia = Convert.ToBoolean(
+                                            (string)jinfo["autoplaymedia"]
+                                            );
+
+                                        wfinfo.StartsAt = (DateTime?)jinfo["starts_at"];
+                                        wfinfo.EndsAt = (DateTime?)jinfo["ends_at"];
+                                        wfinfo.LinkUrl = (string)jinfo["linkurl"];
+
+                                        wfinfos.Add(wfinfo);
+
+                                    } // foreach jinfo
+                                } // Has value
                                 
-                                wfinfo.Information = (string)jinfo["information"];
-                                wfinfo.Category = wfinfo.CategoryFromString(
-                                    (string)jinfo["category"]
-                                    );                                
-                                wfinfo.MediaFile = (string)jinfo["mediafile"];
-                                wfinfo.MediaDescription = (string)jinfo["mediadescription"];
-                                wfinfo.AutoPlayMedia = Convert.ToBoolean(
-                                    (string)jinfo["autoplaymedia"]
-                                    );
+                                wfpoi.Information = wfinfos.ToArray();
 
-                                wfinfo.StartsAt = (DateTime?)jinfo["starts_at"];
-                                wfinfo.EndsAt = (DateTime?)jinfo["ends_at"];
-                                wfinfo.LinkUrl = (string)jinfo["linkurl"];
-
-                                wfinfos.Add(wfinfo);
-
-                            } // foreach jinfo
-
-                            wfpoi.Information = wfinfos.ToArray();
-
-                        }
-                        catch
-                        {
-                            // No info attached to this poi.
-                        }
+                            }
+                            catch
+                            {
+                                // No info attached to this poi.
+                            }
 
 
 
-                        wfpois.Add(wfpoi);
+                            wfpois.Add(wfpoi);
 
-                    } // foreach pointofinterest
+                        } // foreach pointofinterest
+                    } // Has value
+                        
                     result.PointsOfInterest = wfpois.ToArray();
 
                 }
@@ -242,27 +257,31 @@ namespace WayfindR.Models
 
                 try
                 {
-                    var jmaps = jo["venue"]["maps"].Children();
                     List<WFMap> wfmaps = new List<WFMap>();
-                    foreach (var jm in jmaps)
+                    var jmaps = jo["venue"]["maps"];
+                    if (jmaps != null)
                     {
-                        WFMap wfm = new WFMap();
-                        wfm.Id = (string)jm["id"];
-                        wfm.Title = (string)jm["title"];
-                        wfm.Language = (string)jm["language"];
-                        wfm.FileName = (string)jm["filename"];
-                        int mtype = (int)jm["map_type"];
-                        try
+                        foreach (var jm in jmaps.Children())
                         {
-                            wfm.MapType = (WFMapType)mtype;
-                        }
-                        catch
-                        {
-                        }
+                            WFMap wfm = new WFMap();
+                            wfm.Id = (string)jm["id"];
+                            wfm.Title = (string)jm["title"];
+                            wfm.Language = (string)jm["language"];
+                            wfm.FileName = (string)jm["filename"];
+                            int mtype = (int)jm["map_type"];
+                            try
+                            {
+                                wfm.MapType = (WFMapType)mtype;
+                            }
+                            catch
+                            {
+                            }
 
-                        wfmaps.Add(wfm);
+                            wfmaps.Add(wfm);
 
-                    } // foreach exit
+                        } // foreach exit
+                    } // Has value
+                    
                     result.Maps = wfmaps.ToArray();
                 }
                 catch
