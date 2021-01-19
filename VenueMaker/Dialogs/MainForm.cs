@@ -15,9 +15,10 @@ using VenueMaker.Models;
 using WayfindR.Helpers;
 using WayfindR;
 using Mawingu;
-using VenueMaker.Kwenda;
 using Kwenda.Models;
 using Kwenda;
+using MAWINGU.Logging;
+using KWENDA.DTO;
 
 namespace VenueMaker.Dialogs
 {
@@ -45,7 +46,8 @@ namespace VenueMaker.Dialogs
 
         private void MakeUIReflectUserLevel()
         {
-            bool hasadminrights = Controllers.DataController.Me.Email == "admin@mawingu.se";
+#warning Not the best solution
+            bool hasadminrights = true; // Controllers.DataController.Me.Email == "admin@mawingu.se";
             MakeVenueActiveChk.Visible = hasadminrights;
             VenueIDTB.ReadOnly = !hasadminrights;
             if (VenueIDTB.ReadOnly)
@@ -80,8 +82,8 @@ namespace VenueMaker.Dialogs
                 // Account
                 loginToolStripMenuItem.Click += (s4, e4) => EnsureLogin(true);
                 logOutToolStripMenuItem.Click += (s5, e5) => LogOut();
-                createAccountToolStripMenuItem.Click += (s6, e6) => createAccount();
-                verifyAccountToolStripMenuItem.Click += (s7, e7) => verifyAccount();
+                //tmp createAccountToolStripMenuItem.Click += (s6, e6) => createAccount();
+                //tmp verifyAccountToolStripMenuItem.Click += (s7, e7) => verifyAccount();
                 setPermissionsToolStripMenuItem.Click += (s8, e8) => SetPermissions();
                 
 
@@ -684,7 +686,7 @@ namespace VenueMaker.Dialogs
             }
         }
 
-        private void OpenVenue()
+        private async Task OpenVenue()
         {
             try
             {
@@ -692,7 +694,7 @@ namespace VenueMaker.Dialogs
                 Application.DoEvents();
 
 
-                if (!EnsureLogin())
+                if (! await EnsureLogin())
                 {
                     return;
 
@@ -701,7 +703,7 @@ namespace VenueMaker.Dialogs
                 Application.UseWaitCursor = true;
                 Application.DoEvents();
 
-                bool didload = LoadVenueFromCloud();
+                bool didload = await LoadVenueFromCloud();
 
                 if (didload)
                 {
@@ -711,7 +713,8 @@ namespace VenueMaker.Dialogs
                 } // Loaded from cloud
 
 
-                if (!MakeVenueActiveChk.Visible)
+#warning Not nice at all
+                if (false && !MakeVenueActiveChk.Visible)
                 {
                     return;
 
@@ -1726,6 +1729,8 @@ namespace VenueMaker.Dialogs
 
         }
 
+#warning Delete this code
+        /*
         private void createAccount()
         {
             try
@@ -1789,6 +1794,7 @@ namespace VenueMaker.Dialogs
         private void verifyAccount()
         {
         }
+        */
 
         private void LogOut()
         {
@@ -1832,7 +1838,7 @@ namespace VenueMaker.Dialogs
 
         }
 
-        private bool EnsureLogin(bool forceDialog = false)
+        private async Task<bool> EnsureLogin(bool forceDialog = false)
         {
             try
             {
@@ -1843,8 +1849,8 @@ namespace VenueMaker.Dialogs
 
                 if (!forceDialog)
                 {
-                    result = Controllers.DataController.Me.IsTokenValid() ||
-                        Controllers.DataController.Me.AutoLogin();
+                    result = await Controllers.DataController.Me.IsTokenValid() ||
+                        await Controllers.DataController.Me.AutoLogin();
 
                 } // Don't use the force Luke.
 
@@ -1852,6 +1858,8 @@ namespace VenueMaker.Dialogs
                 {
                     Application.UseWaitCursor = false;
 
+#warning Fix the signing in
+                    /*
                     using (LoginDialog dlg = new LoginDialog())
                     {
                         dlg.Item = new LoginInfoModel();
@@ -1860,6 +1868,7 @@ namespace VenueMaker.Dialogs
                         result = dlg.ShowDialog() == DialogResult.OK;
 
                     } // using LoginDialog
+                    */
 
                 } // Not logged in correctly
 
@@ -1881,11 +1890,11 @@ namespace VenueMaker.Dialogs
 
         }
 
-        private void SetPermissions()
+        private async Task SetPermissions()
         {
             try
             {
-                if (!EnsureLogin())
+                if (! await EnsureLogin())
                 {
                     MessageBox.Show("Du mådate vara inloggad för att utföra denna funktion.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
@@ -1909,7 +1918,7 @@ namespace VenueMaker.Dialogs
 
         }
 
-        public void PushToCloud()
+        public async Task PushToCloud()
         {
             try
             {
@@ -1926,15 +1935,14 @@ namespace VenueMaker.Dialogs
 
                 } // No file name
 
-                List<KwendaFileItem> kfiles = new List<KwendaFileItem>();
-                KwendaFileItem kvenue = new KwendaFileItem();
+                List<KWENDAFileItem> kfiles = new List<KWENDAFileItem>();
+                KWENDAFileItem kvenue = new KWENDAFileItem();
                 kvenue.VenueId = Venue.Id;
                 kvenue.FileName = Path.GetFileName(venuefile);
                 kvenue.FileExt = Path.GetExtension(kvenue.FileName);
                 kvenue.Data = Encoding.UTF8.GetBytes(Venue.ToString());
                 kvenue.FileTitle = Venue.GetFileTitle();
                 kvenue.Active = MakeVenueActiveChk.Checked;
-                kvenue.ActiveSpecified = true;
 
 
                 kfiles.Add(kvenue);
@@ -1944,7 +1952,7 @@ namespace VenueMaker.Dialogs
 
                 if (!string.IsNullOrWhiteSpace(Venue.Image))
                 {
-                    KwendaFileItem kmediafile = new KwendaFileItem();
+                    KWENDAFileItem kmediafile = new KWENDAFileItem();
                     kmediafile.VenueId = Venue.Id;
                     kmediafile.FileName = Venue.Image;
                     kmediafile.FileExt = Path.GetExtension(kmediafile.FileName);
@@ -1952,7 +1960,6 @@ namespace VenueMaker.Dialogs
                         Path.Combine(fldr, kmediafile.FileName)
                         );
                     kmediafile.Active = MakeVenueActiveChk.Checked;
-                    kmediafile.ActiveSpecified = true;
                     kfiles.Add(kmediafile);
 
                 } // Has image
@@ -1967,7 +1974,7 @@ namespace VenueMaker.Dialogs
                             {
                                 if (!string.IsNullOrWhiteSpace(poii.MediaFile))
                                 {
-                                    KwendaFileItem kmediafile = new KwendaFileItem();
+                                    KWENDAFileItem kmediafile = new KWENDAFileItem();
                                     kmediafile.VenueId = Venue.Id;
                                     kmediafile.FileName = poii.MediaFile;
                                     kmediafile.FileExt = Path.GetExtension(kmediafile.FileName);
@@ -1977,7 +1984,6 @@ namespace VenueMaker.Dialogs
                                         );
 
                                     kmediafile.Active = MakeVenueActiveChk.Checked;
-                                    kmediafile.ActiveSpecified = true;
                                     kfiles.Add(kmediafile);
 
                                 } // Has media file
@@ -1997,7 +2003,7 @@ namespace VenueMaker.Dialogs
                         WFHeadingInfo hi = new WFHeadingInfo(n.Heading1Info);
                         if (!string.IsNullOrWhiteSpace(hi.Image))
                         {
-                            KwendaFileItem kmediafile = new KwendaFileItem();
+                            KWENDAFileItem kmediafile = new KWENDAFileItem();
                             kmediafile.VenueId = Venue.Id;
                             kmediafile.FileName = hi.Image;
                             kmediafile.FileExt = Path.GetExtension(kmediafile.FileName);
@@ -2007,7 +2013,6 @@ namespace VenueMaker.Dialogs
                                         );
 
                             kmediafile.Active = MakeVenueActiveChk.Checked;
-                            kmediafile.ActiveSpecified = true;
                             kfiles.Add(kmediafile);
 
                         } // Image assigned
@@ -2018,7 +2023,7 @@ namespace VenueMaker.Dialogs
                         WFHeadingInfo hi = new WFHeadingInfo(n.Heading2Info);
                         if (!string.IsNullOrWhiteSpace(hi.Image))
                         {
-                            KwendaFileItem kmediafile = new KwendaFileItem();
+                            KWENDAFileItem kmediafile = new KWENDAFileItem();
                             kmediafile.VenueId = Venue.Id;
                             kmediafile.FileName = hi.Image;
                             kmediafile.FileExt = Path.GetExtension(kmediafile.FileName);
@@ -2028,7 +2033,6 @@ namespace VenueMaker.Dialogs
                                         );
 
                             kmediafile.Active = MakeVenueActiveChk.Checked;
-                            kmediafile.ActiveSpecified = true;
                             kfiles.Add(kmediafile);
 
                         } // Image assigned
@@ -2039,7 +2043,7 @@ namespace VenueMaker.Dialogs
                         WFHeadingInfo hi = new WFHeadingInfo(n.Heading3Info);
                         if (!string.IsNullOrWhiteSpace(hi.Image))
                         {
-                            KwendaFileItem kmediafile = new KwendaFileItem();
+                            KWENDAFileItem kmediafile = new KWENDAFileItem();
                             kmediafile.VenueId = Venue.Id;
                             kmediafile.FileName = hi.Image;
                             kmediafile.FileExt = Path.GetExtension(kmediafile.FileName);
@@ -2049,7 +2053,6 @@ namespace VenueMaker.Dialogs
                                         );
 
                             kmediafile.Active = MakeVenueActiveChk.Checked;
-                            kmediafile.ActiveSpecified = true;
                             kfiles.Add(kmediafile);
 
                         } // Image assigned
@@ -2060,7 +2063,7 @@ namespace VenueMaker.Dialogs
                         WFHeadingInfo hi = new WFHeadingInfo(n.Heading4Info);
                         if (!string.IsNullOrWhiteSpace(hi.Image))
                         {
-                            KwendaFileItem kmediafile = new KwendaFileItem();
+                            KWENDAFileItem kmediafile = new KWENDAFileItem();
                             kmediafile.VenueId = Venue.Id;
                             kmediafile.FileName = hi.Image;
                             kmediafile.FileExt = Path.GetExtension(kmediafile.FileName);
@@ -2070,7 +2073,6 @@ namespace VenueMaker.Dialogs
                                         );
 
                             kmediafile.Active = MakeVenueActiveChk.Checked;
-                            kmediafile.ActiveSpecified = true;
                             kfiles.Add(kmediafile);
 
                         } // Image assigned
@@ -2081,7 +2083,7 @@ namespace VenueMaker.Dialogs
                         WFHeadingInfo hi = new WFHeadingInfo(n.Heading5Info);
                         if (!string.IsNullOrWhiteSpace(hi.Image))
                         {
-                            KwendaFileItem kmediafile = new KwendaFileItem();
+                            KWENDAFileItem kmediafile = new KWENDAFileItem();
                             kmediafile.VenueId = Venue.Id;
                             kmediafile.FileName = hi.Image;
                             kmediafile.FileExt = Path.GetExtension(kmediafile.FileName);
@@ -2091,7 +2093,6 @@ namespace VenueMaker.Dialogs
                                         );
 
                             kmediafile.Active = MakeVenueActiveChk.Checked;
-                            kmediafile.ActiveSpecified = true;
                             kfiles.Add(kmediafile);
 
                         } // Image assigned
@@ -2107,7 +2108,7 @@ namespace VenueMaker.Dialogs
                     {
                         if (!string.IsNullOrWhiteSpace(m.FileName))
                         {
-                            KwendaFileItem kmediafile = new KwendaFileItem();
+                            KWENDAFileItem kmediafile = new KWENDAFileItem();
                             kmediafile.VenueId = Venue.Id;
                             kmediafile.FileName = m.FileName;
                             kmediafile.FileExt = Path.GetExtension(kmediafile.FileName);
@@ -2117,7 +2118,6 @@ namespace VenueMaker.Dialogs
                                         );
 
                             kmediafile.Active = MakeVenueActiveChk.Checked;
-                            kmediafile.ActiveSpecified = true;
                             kfiles.Add(kmediafile);
 
                         } // Has file name
@@ -2128,7 +2128,7 @@ namespace VenueMaker.Dialogs
 
 
                 // Ensure we're logged in.
-                if (!EnsureLogin())
+                if (! await EnsureLogin())
                 {
                     MessageBox.Show("Kunde inte spara ändringarna eftersom du inte är inloggad.", "Inte inloggad", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
@@ -2152,7 +2152,7 @@ namespace VenueMaker.Dialogs
             }
         }
 
-        public bool LoadVenueFromCloud()
+        public async Task<bool> LoadVenueFromCloud()
         {
             try
             {
@@ -2176,18 +2176,18 @@ namespace VenueMaker.Dialogs
 
                     loadguard = true;
 
-                    KwendaFileListItem sel = dlg.SelectedFile;
+                    KWENDAFileItem sel = dlg.SelectedFile;
                     if (sel == null)
                     {
                         return false;
 
                     } // Nothing to load
 
-                    KwendaFileId fid = new KwendaFileId();
+                    KWENDAFileId fid = new KWENDAFileId();
                     fid.VenueId = sel.VenueId;
                     fid.FileName = sel.FileName;
 
-                    KwendaFileItem venuefile = Controllers.DataController.Me.GetKwendaFile(
+                    KWENDAFileItem venuefile = await Controllers.DataController.Me.GetKwendaFile(
                         Controllers.DataController.Me.Token,
                         fid
                         );
@@ -2208,9 +2208,10 @@ namespace VenueMaker.Dialogs
                     // Download missing files
                     string fldr = GetDataFilesFolder();
 
-                    var files = Controllers.DataController.Me.ListFiles(
+                    KWENDAFileItem[] files = await Controllers.DataController.Me.ListFiles(
                         Controllers.DataController.Me.Token
-                        ).Where(w =>
+                        );
+                    files.Where(w =>
                             w.VenueId == Venue.Id &&
                             w.FileExt.ToLower() != ".venue" &&
                             w.FileExt.ToLower() != ".graphml"

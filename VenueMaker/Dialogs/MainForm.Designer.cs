@@ -1960,49 +1960,49 @@
             // newVenueToolStripMenuItem
             // 
             this.newVenueToolStripMenuItem.Name = "newVenueToolStripMenuItem";
-            this.newVenueToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.newVenueToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.newVenueToolStripMenuItem.Text = "&Ny";
             // 
             // openVenueToolStripMenuItem
             // 
             this.openVenueToolStripMenuItem.Name = "openVenueToolStripMenuItem";
             this.openVenueToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.openVenueToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.openVenueToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.openVenueToolStripMenuItem.Text = "&Öppna";
             // 
             // saveVenueToolStripMenuItem
             // 
             this.saveVenueToolStripMenuItem.Name = "saveVenueToolStripMenuItem";
             this.saveVenueToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.saveVenueToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.saveVenueToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveVenueToolStripMenuItem.Text = "&Spara";
             // 
             // saveVenueAsToolStripMenuItem
             // 
             this.saveVenueAsToolStripMenuItem.Name = "saveVenueAsToolStripMenuItem";
-            this.saveVenueAsToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.saveVenueAsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveVenueAsToolStripMenuItem.Text = "Spara som...";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(150, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
             // selectDataFolderToolStripMenuItem
             // 
             this.selectDataFolderToolStripMenuItem.Name = "selectDataFolderToolStripMenuItem";
-            this.selectDataFolderToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.selectDataFolderToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.selectDataFolderToolStripMenuItem.Text = "Välj datamapp";
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(150, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
             // 
             // closeAppToolStripMenuItem
             // 
             this.closeAppToolStripMenuItem.Name = "closeAppToolStripMenuItem";
-            this.closeAppToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.closeAppToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.closeAppToolStripMenuItem.Text = "&Avsluta";
             this.closeAppToolStripMenuItem.Click += new System.EventHandler(this.closeAppToolStripMenuItem_Click);
             // 

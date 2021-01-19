@@ -1,4 +1,5 @@
 ﻿using Mawingu;
+using MAWINGU.Logging;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

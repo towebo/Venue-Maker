@@ -1,4 +1,6 @@
-﻿using System;
+﻿using KWENDA;
+using KWENDA.DTO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,7 +10,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using VenueMaker.Controllers;
-using VenueMaker.Kwenda;
 
 namespace VenueMaker.Dialogs
 {
@@ -28,51 +29,36 @@ namespace VenueMaker.Dialogs
             InitializeComponent();
         }
 
-        private void ApplyBtn_Click(object sender, EventArgs e)
+        private async void ApplyBtn_Click(object sender, EventArgs e)
         {
             try
             {
-                using (KwendaService cli = new KwendaService())
+                KWENDARestClient cli = new KWENDARestClient();
                 {
-                    KwendaPermissionItem perm = new KwendaPermissionItem();
+                    PermissionItem perm = new PermissionItem();
                     perm.Email = EmailTB.Text;
                     perm.VenueId = VenueIdTB.Text;
                     perm.GrantPermission = PermitChk.Checked;
-                    perm.GrantPermissionSpecified = true;
-                    perm.ReadOnly = ReadOnlyChk.Checked;
-                    perm.ReadOnlySpecified = true;
+                    perm.ReadOnlyAccess = ReadOnlyChk.Checked;
 
-                    SetKwendaPermissionsRequest req = new SetKwendaPermissionsRequest();
-                    req.Token = DataController.Me.Token;
+                    SetKWENDAFilePermissionsRequest req = new SetKWENDAFilePermissionsRequest();
+                    cli.AccountToken = DataController.Me.Token;
                     
-                    req.Items = new KwendaPermissionItem[]
+                    req.Items = new PermissionItem[]
                     {
                         perm
                     };
 
-                    SetKwendaPermissionsResponse response = cli.SetKwendaPermissions(req);
+                    SetKWENDAFilePermissionsResponse response = await cli.SetPermissions(req);
 
-                    switch (response.Result)
+                    if (response.Error != null)
                     {
-                        case SetKwendaPermissionsResponseMethodResult.NoPermission:
-                            MessageBox.Show("Du har inte behörighet att utföra denna åtgärd. Logga in med en användare som har tillräckliga behörigheter.", "Otillräckliga rättigheter", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            break;
+                        throw new Exception(response.Error.Message);
+                    } // Error
 
-                        case SetKwendaPermissionsResponseMethodResult.NotLoggedIn:
-                            MessageBox.Show("Du är inte inloggad.", "Inte inloggad", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            break;
-
-                        case SetKwendaPermissionsResponseMethodResult.Ok:
-                            MessageBox.Show("Rättigheter satta.", "Ändra rättigheter", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            DialogResult = DialogResult.OK;
-                            break;
-
-                        case SetKwendaPermissionsResponseMethodResult.OtherError:
-                            MessageBox.Show(response.Message, "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            break;
-
-                    } // switch
-
+                    MessageBox.Show("Rättigheter satta.", "Ändra rättigheter", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    DialogResult = DialogResult.OK;
+                    
                 } // using
 
             }

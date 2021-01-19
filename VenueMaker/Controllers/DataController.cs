@@ -1,11 +1,15 @@
-﻿using Mawingu;
+﻿using KWENDA;
+using KWENDA.DTO;
+using Mawingu;
+using MAWINGU.Authentication;
+using MAWINGU.Authentication.DTO;
+using MAWINGU.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
-using VenueMaker.Kwenda;
 
 namespace VenueMaker.Controllers
 {
@@ -39,20 +43,19 @@ namespace VenueMaker.Controllers
         }
 
 
-        public KwendaFileListItem[] ListFiles(string token)
+        public async Task<KWENDAFileItem[]> ListFiles(string token)
         {
             try
             {
-                using (KwendaService cli = new KwendaService())
+                KWENDARestClient cli = new KWENDARestClient();
                 {
-                    ListKwendaFilesRequest req = new ListKwendaFilesRequest();
-                    req.Token = token;
+                    ListKWENDAFilesRequest req = new ListKWENDAFilesRequest();
 
-                    ListKwendaFilesResponse result = cli.ListKwendaFiles(req);
+                    ListKWENDAFilesResponse result = await cli.ListFiles(req);
 
-                    if (result.Result == ListKwendaFilesResponseMethodResult.OtherError)
+                    if (result.Error != null)
                     {
-                        throw new Exception(result.Message);
+                        throw new Exception(result.Error.Message);
 
                     } // Got an error
 
@@ -71,21 +74,21 @@ namespace VenueMaker.Controllers
             }
         }
 
-        public KwendaFileItem GetKwendaFile(string token, KwendaFileId fid)
+        public async Task<KWENDAFileItem> GetKwendaFile(string token, KWENDAFileId fid)
         {
             try
             {
-                using (KwendaService cli = new KwendaService())
+                KWENDARestClient cli = new KWENDARestClient();
                 {
-                    GetKwendaFileRequest req = new GetKwendaFileRequest();
-                    req.Token = token;
-                    req.FileIds = new KwendaFileId[] { fid };
+                    cli.AccountToken = token;
+                    GetKWENDAFilesRequest req = new GetKWENDAFilesRequest();
+                    req.FileIds = new KWENDAFileId[] { fid };
 
-                    GetKwendaFileResponse resp = cli.GetKwendafiles(req);
+                    GetKWENDAFilesResponse resp = await cli.GetFiles(req);
 
-                    if (resp.Result == GetKwendaFileResponseMethodResult.OtherError)
+                    if (resp.Error != null)
                     {
-                        throw new Exception(resp.Message);
+                        throw new Exception(resp.Error.Message);
 
                     } // Got an error
 
@@ -104,44 +107,26 @@ namespace VenueMaker.Controllers
             }
         }
 
-        public void SetPermissions(string token, KwendaPermissionItem[] permissionItems)
+        public async Task SetPermissions(string token, PermissionItem[] permissionItems)
         {
             try
             {
-                using (KwendaService cli = new KwendaService())
+                KWENDARestClient cli = new KWENDARestClient();
                 {
-                    SetKwendaPermissionsRequest req = new SetKwendaPermissionsRequest();
-                    req.Token = token;
+                    SetKWENDAFilePermissionsRequest req = new SetKWENDAFilePermissionsRequest();
+                    cli.AccountToken = token;
                     req.Items = permissionItems;
                                         
+                    SetKWENDAFilePermissionsResponse result = await cli.SetPermissions(req);
 
-                    SetKwendaPermissionsResponse result = cli.SetKwendaPermissions(req);
-
-                    if (result.Result == SetKwendaPermissionsResponseMethodResult.Ok)
+                    if (result.Error != null)
                     {
-                        throw new Exception(result.Message);
+                        throw new Exception(result.Error.Message);
                         
-                    } // Ok
-                    else if (result.Result == SetKwendaPermissionsResponseMethodResult.NoPermission)
-                    {
-                        throw new Exception("Du har inte rättighet att utföra denna åtgärd. Logga in med en användare med tillräckliga rättigheter och försök igen.");
-
-                    } // No permissions
-                    else if (result.Result == SetKwendaPermissionsResponseMethodResult.NotLoggedIn)
-                    {
-                        throw new Exception("Du är inte iloggad.");
-
-                    } // Not logged in
-                    else if (result.Result == SetKwendaPermissionsResponseMethodResult.OtherError)
-                    {
-                        throw new Exception(result.Message);
-
-
-                    } // Ok
-                                        
-
+                    } // Error
+                              
                 } // using
-
+            
             }
             catch (Exception ex)
             {
@@ -153,43 +138,25 @@ namespace VenueMaker.Controllers
             }
         }
 
-        public void UpdateKwendaFiles(string token, KwendaFileItem[] items)
+        public async Task UpdateKwendaFiles(string token, KWENDAFileItem[] items)
         {
             try
             {
-                using (KwendaService cli = new KwendaService())
+                KWENDARestClient cli = new KWENDARestClient();
                 {
-                    UpdateKwendaFileRequest req = new UpdateKwendaFileRequest();
-                    req.Token = token;
+                    UpdateKWENDAFilesRequest req = new UpdateKWENDAFilesRequest();
+                    cli.AccountToken = token;
                     req.InactivateAllForVenue = true;
-                    req.InactivateAllForVenueSpecified = true;
                     req.Files = items;
 
-                    UpdateKwendaFileResponse response = cli.UpdateKwendaFiles(req);
+                    UpdateKWENDAFilesResponse response = await cli.UpdateFiles(req);
                                         
-                    if (response.Result == UpdateKwendaFileResponseMethodResult.Ok)
+                    if (response.Error != null)
                     {
-                        return;
+                        throw new Exception(response.Error.Message);
 
                     } // Ok
-                    else if (response.Result == UpdateKwendaFileResponseMethodResult.NoPermission)
-                    {
-                        throw new Exception("Du har inte rättighet att utföra denna åtgärd. Logga in med en användare med tillräckliga rättigheter och försök igen.");
-
-                    } // No permissions
-                    else if (response.Result == UpdateKwendaFileResponseMethodResult.NotLoggedIn)
-                    {
-                        throw new Exception("Du är inte iloggad.");
-
-                    } // Not logged in
-                    else if (response.Result == UpdateKwendaFileResponseMethodResult.OtherError)
-                    {
-                        throw new Exception(response.Message);
-
-
-                    } // Ok
-                    
-                } // using
+                    } // using
 
             }
             catch (Exception ex)
@@ -202,38 +169,12 @@ namespace VenueMaker.Controllers
             }
         }
 
-        public bool IsTokenValid()
+        public async Task<bool> IsTokenValid()
         {
             try
             {
-                using (KwendaService cli = new KwendaService())
-                {
-                    ValidateTokenRequest req = new ValidateTokenRequest();
-                    req.Email = Email;
-                    req.Token = Token;
-
-                    ValidateTokenResponse response = cli.ValidateToken(req);
-
-                    switch (response.Result)
-                    {
-                        case ValidateTokenResponseMethodResult.Expired:
-                            return false;
-
-                        case ValidateTokenResponseMethodResult.Invalid:
-                            return false;
-
-                        case ValidateTokenResponseMethodResult.Ok:
-                            return true;
-
-                        case ValidateTokenResponseMethodResult.OtherError:
-                            return false;
-
-                        default:
-                            return false;
-
-                    } // switch
-
-                } // using
+                return true;
+                
 
             }
             catch (Exception ex)
@@ -245,7 +186,7 @@ namespace VenueMaker.Controllers
 
         }
 
-        public bool AutoLogin()
+        public async Task<bool> AutoLogin()
         {
             try
             {
@@ -255,16 +196,11 @@ namespace VenueMaker.Controllers
                     return false;
 
                 } // Haven't logged in yet
-                using (KwendaService cli = new KwendaService())
+                AccountClient cli = new AccountClient();
                 {
-                    LoginRequest req = new LoginRequest();
-                    req.Email = Email;
-                    req.Password = Password;
-                    req.AppID = "se.mawingu.venuemaker";
-
-                    LoginResponse res = cli.Login(req);
-
-                    if (res.Result == LoginResponseMethodResult.Ok)
+                    AuthenticateResponse res = await cli.AuthenticateAsync(Email, Password);
+                    
+                    if (res.Error == null)
                     {
                         Token = res.Token;
                         return true;
@@ -297,21 +233,8 @@ namespace VenueMaker.Controllers
 
                 } // Haven't logged in yet
 
-                using (KwendaService cli = new KwendaService())
-                {
-                    LogoutRequest req = new LogoutRequest();
-                    req.Email = Email;
-                    req.Token = Token;
-                    bool result, resspecified;
-                    cli.Logout(req, out result, out resspecified);
-
-                    Password = string.Empty;
-                    Token = string.Empty;
-
-                    return result;
-                    
-                } // using
-
+                Token = string.Empty;
+                return true;
 
             }
             catch (Exception ex)
@@ -327,6 +250,9 @@ namespace VenueMaker.Controllers
         {
             try
             {
+#warning This isn't implemented in the service.
+                return "Not Implemented";
+                /*
                 using (KwendaService cli = new KwendaService())
                 {
                     string result = cli.Version();
@@ -335,7 +261,7 @@ namespace VenueMaker.Controllers
                     return result;
 
                 } // using
-
+                */
             }
             catch
             {
@@ -347,5 +273,6 @@ namespace VenueMaker.Controllers
 
 
 
-    }
+    } // class
+
 }

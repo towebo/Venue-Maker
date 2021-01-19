@@ -4,15 +4,16 @@ using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 using VenueMaker.Controllers;
-using VenueMaker.Kwenda;
-using Mawingu;
+using MAWINGU.Logging;
+using KWENDA.DTO;
+using System.Threading.Tasks;
 
 namespace VenueMaker.Dialogs
 {
     public partial class SelectVenueDialog : Form
     {
         private Dictionary<string,string> listdict;
-        private Dictionary<string, KwendaFileListItem> filesdict;
+        private Dictionary<string, KWENDAFileItem> filesdict;
         private string _venueid;
 
 
@@ -30,13 +31,14 @@ namespace VenueMaker.Dialogs
 
 
 
-        private void InitUI()
+        private async Task InitUI()
         {
             try
             {
-                var files = DataController.Me.ListFiles(
+                KWENDAFileItem[] files = await DataController.Me.ListFiles(
                         DataController.Me.Token
-                        ).Where(w =>
+                        );
+                files.Where(w =>
                             w.FileExt.ToLower() == ".venue"
                         );
 
@@ -115,7 +117,7 @@ namespace VenueMaker.Dialogs
             }
         }
 
-        public KwendaFileListItem SelectedFile
+        public KWENDAFileItem SelectedFile
         {
             get
             {

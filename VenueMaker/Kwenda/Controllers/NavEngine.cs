@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 using WayfindR.Models;
+using MAWINGU.Logging;
 #if __IOS__
 using UIKit;
 #endif

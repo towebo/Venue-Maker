@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 using System.Text;
 using Mawingu;
 using Kwenda;
+using MAWINGU.Logging;
 
 namespace WayfindR.Models
 {

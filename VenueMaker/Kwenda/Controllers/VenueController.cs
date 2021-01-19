@@ -6,6 +6,7 @@ using WayfindR.Models;
 using SQLite;
 using Kwenda;
 using Mawingu;
+using MAWINGU.Logging;
 
 namespace WayfindR.Controllers
 {

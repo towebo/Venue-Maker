@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Kwenda;
 using Mawingu;
+using MAWINGU.Logging;
 #if __IOS__
 using CoreLocation;
 #endif

@@ -1,9 +1,9 @@
-﻿using System;
+﻿using KWENDA.DTO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using VenueMaker.Kwenda;
 
 namespace VenueMaker.Helpers
 {
@@ -11,7 +11,7 @@ namespace VenueMaker.Helpers
     {
 
 
-        public static string TitleForList(this KwendaFileItem item)
+        public static string TitleForList(this KWENDAFileItem item)
         {
             if (item == null)
             {

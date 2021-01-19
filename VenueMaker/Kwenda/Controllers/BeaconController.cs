@@ -15,6 +15,7 @@ using Kwenda;
 using SQLite;
 using Kwenda.Models;
 using Mawingu;
+using MAWINGU.Logging;
 
 #if __IOS__
 using Foundation;
@@ -192,7 +193,7 @@ namespace WayfindR.Controllers
             }
             catch (Exception ex)
             {
-                LogCenter.Error("ClearUnreacableBeacons()", ex.Message);
+                LogCenter.Error("ClearUnreachableBeacons()", ex.Message);
 
             }
         }

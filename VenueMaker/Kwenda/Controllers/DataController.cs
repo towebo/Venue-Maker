@@ -10,10 +10,14 @@ using System.Text;
 using Kwenda;
 using Mawingu;
 using Kwenda.Common.Models;
+using MAWINGU.Logging;
+using KWENDA;
+using MAWINGU.Authentication;
+using MAWINGU.Authentication.DTO;
+using KWENDA.DTO;
 #if __IOS__
 using Radar.Kwenda;
 #else
-using VenueMaker.Kwenda;
 #endif
 //tmp using Kwenda.Common.Models;
 using System.Net;
@@ -262,19 +266,16 @@ namespace Kwenda
 		}
         */
 
-        public static void SignIn(string usr, string pw)
+        public static async Task SignIn(string usr, string pw)
         {
             try
             {
-                using (KwendaService cli = new KwendaService())
+                AccountClient cli = new AccountClient();
                 {
-                    LoginRequest req = new LoginRequest();
-                    req.Email = usr;
-                    req.Password = pw;
-                    req.AppID = "se.mawingu.kwenda";
+                    AuthenticateResponse res = await cli.AuthenticateAsync(usr, pw);
 
-                    LoginResponse res = cli.Login(req);
-
+#warning Check this up.
+                    /*
                     if (res == null)
                     {
                         throw new Exception(string.Format("Unable to sign in. Service version is {0}.",
@@ -282,8 +283,9 @@ namespace Kwenda
                             ));
 
                     } // Response is null
+                    */
 
-                    if (res.Result == LoginResponseMethodResult.Ok)
+                    if (res.Error == null)
                     {
                         Preferences.Me.Email = usr;
                         Preferences.Me.Password = pw;
@@ -292,17 +294,10 @@ namespace Kwenda
                         token = res.Token;
 
                     } // Ok
-                    else if (res.Result == LoginResponseMethodResult.AccountNotVerified)
+                    else
                     {
-                        cli.RequestVerificationCodeAsync(usr);
-                        throw new Exception("Your account needs to be verified and a verification code has been sent.");
-                        
-                    } // Not verified
-                    else if (res.Result == LoginResponseMethodResult.InvalidCridentials)
-                    {
-                        throw new Exception("Invalid cridentials. Please try again.");
-                        
-                    } // Forgotten password
+                        throw new Exception(res.Error.Message);
+                    } // Error
 
                 } // using
 
@@ -315,18 +310,21 @@ namespace Kwenda
             }
         }
 
-        public static void DownloadInfrastructure(DownloadInfrastructureArgs args)
+        public static async Task DownloadInfrastructure(DownloadInfrastructureArgs args)
         {
             try
             {
-                using (KwendaService cli = new KwendaService())
+                KWENDARestClient cli = new KWENDARestClient();
                 {
-                    ListKwendaFilesRequest req = new ListKwendaFilesRequest();
-                    req.Token = ""; // List all files
+                    ListKWENDAFilesRequest req = new ListKWENDAFilesRequest();
+                    cli.AccountToken = ""; // List all files
                     req.NewerThan = args.NewerThan;
 
-                    cli.ListKwendaFilesCompleted += Cli_ListKwendaFilesCompleted;
-                    cli.ListKwendaFilesAsync(req, args);
+                    
+                    ListKWENDAFilesResponse resp = await cli.ListFiles(req);
+                    Cli_ListKwendaFilesCompleted(args, resp);
+
+                    
 
                 } // using
 
@@ -349,15 +347,14 @@ namespace Kwenda
 
         }
 
-        private static void Cli_ListKwendaFilesCompleted(object sender, ListKwendaFilesCompletedEventArgs e)
+        private static async Task Cli_ListKwendaFilesCompleted(DownloadInfrastructureArgs args, ListKWENDAFilesResponse resp)
         {
-            DownloadInfrastructureArgs args = e.UserState as DownloadInfrastructureArgs;
             try
             {
-                List<KwendaFileId> fids = new List<KwendaFileId>();
+                List<KWENDAFileId> fids = new List<KWENDAFileId>();
 
-            // Grab missing or newer files.
-            var files = e.Result.Files;
+                // Grab missing or newer files.
+                KWENDAFileItem[] files = resp.Files;
 
             // If we don't get an exception above, it's safe to clear the cache.
             if (args.ClearCache)
@@ -371,7 +368,7 @@ namespace Kwenda
 
                 } // Clear cache
 
-                foreach (var f in e.Result.Files)
+                foreach (var f in resp.Files)
                 {
                     string localfile = Path.Combine(
                         GetAppFile(AppFile.FilesFolder_Local),
@@ -389,7 +386,7 @@ namespace Kwenda
 
                     } // Local file exists
 
-                    KwendaFileId fid = new KwendaFileId();
+                    KWENDAFileId fid = new KWENDAFileId();
                     fid.FileName = f.FileName;
                     fid.VenueId = f.VenueId;
                     
@@ -397,15 +394,15 @@ namespace Kwenda
 
                 } // foreach
 
-                using (KwendaService cli = new KwendaService())
+                KWENDARestClient cli = new KWENDARestClient();
                 {
-                    GetKwendaFileRequest req = new GetKwendaFileRequest();
-                    req.Token = ""; // Get anonymously
+                    GetKWENDAFilesRequest req = new GetKWENDAFilesRequest
+                        ();
+                    cli.AccountToken = ""; // Get anonymously
                     req.FileIds = fids.ToArray();
 
-                    cli.GetKwendafilesCompleted += Cli_GetKwendafilesCompleted;
-                    cli.GetKwendafilesAsync(req, args);
-
+                    GetKWENDAFilesResponse filesresp = await cli.GetFiles(req);
+                    Cli_GetKwendafilesCompleted(filesresp, args);
                 } // using service
 
                 Preferences.Me.LastFileCheck = DateTime.Now.AddSeconds(-30);
@@ -446,14 +443,13 @@ namespace Kwenda
             }
         }
 
-        private static void Cli_GetKwendafilesCompleted(object sender, GetKwendafilesCompletedEventArgs e)
+        private static void Cli_GetKwendafilesCompleted(GetKWENDAFilesResponse resp, DownloadInfrastructureArgs args)
         {
-            DownloadInfrastructureArgs args = e.UserState as DownloadInfrastructureArgs;
             try
             {
                 string folder = GetAppFile(AppFile.FilesFolder_Local);
 
-                foreach (var f in e.Result.Files)
+                foreach (var f in resp.Files)
                 {
                     string localfile = Path.Combine(
                         folder,
@@ -472,7 +468,7 @@ namespace Kwenda
                                 );
 
                             FileInfo fi = new FileInfo(localfile);
-                            fi.LastWriteTimeUtc = f.LastModified.ToUniversalTime();
+                            fi.LastWriteTimeUtc = f.LastModified.Value.ToUniversalTime();
 
                         }
                         catch (Exception fwex)
@@ -525,7 +521,7 @@ namespace Kwenda
 
                 } // foreach file
                 
-                if (e.Result.Files.Any())
+                if (resp.Files.Any())
         {
                     LoadInfrastructure(
                         args.AlertWhenComplete

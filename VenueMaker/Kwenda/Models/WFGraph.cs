@@ -13,6 +13,7 @@ using System.Globalization;
 using WayfindR.Helpers;
 using System.Text;
 using Mawingu;
+using MAWINGU.Logging;
 
 namespace WayfindR.Models
 {
