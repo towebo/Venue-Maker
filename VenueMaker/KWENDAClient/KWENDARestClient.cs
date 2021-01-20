@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
@@ -109,7 +110,7 @@ namespace KWENDA
 
         }
 
-        public async Task SignUp(string eMail)
+        public async Task<WebAPIError> SignUp(string eMail)
         {
             try
             {
@@ -130,7 +131,11 @@ namespace KWENDA
                 HttpResponseMessage response = await _client.GetAsync(builder.ToString());
                 if (response.IsSuccessStatusCode)
                 {
+                    WebAPIError res = await response.Content.ReadAsAsync<WebAPIError>();
+                    return res;
                 }
+
+                throw new Exception(response.ReasonPhrase);
 
             }
             catch (Exception ex)
@@ -171,11 +176,7 @@ namespace KWENDA
 
                 } // Success
 
-                if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
-                {
-                    throw new Exception("Behörighet saknas för att logga in på tjänsten.");
-                     
-                } // Unauthorized
+                HandleStandardErrors(response);
 
                 WebAPIError err = null;
                 string errstr = response.Content.ReadAsStringAsync().Result;
@@ -224,7 +225,10 @@ namespace KWENDA
                     ListKWENDAFilesResponse resp = await response.Content.ReadAsAsync<ListKWENDAFilesResponse>();
                     return resp;
 
-                }
+                } // Success
+
+                HandleStandardErrors(response);
+
 
                 WebAPIError err = null;
                 string errstr = response.Content.ReadAsStringAsync().Result;
@@ -385,6 +389,17 @@ namespace KWENDA
                 throw ex;
 
             }
+
+        }
+
+        public void HandleStandardErrors(HttpResponseMessage response)
+        {
+            switch (response.StatusCode)
+            {
+                case HttpStatusCode.Unauthorized:
+                    throw new Exception("Behörighet saknas.");
+
+            } // switch
 
         }
 

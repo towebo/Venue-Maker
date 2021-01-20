@@ -320,7 +320,6 @@ namespace Kwenda
                     cli.AccountToken = ""; // List all files
                     req.NewerThan = args.NewerThan;
 
-                    
                     ListKWENDAFilesResponse resp = await cli.ListFiles(req);
                     Cli_ListKwendaFilesCompleted(args, resp);
 

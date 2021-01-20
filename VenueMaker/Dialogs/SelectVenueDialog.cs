@@ -38,9 +38,9 @@ namespace VenueMaker.Dialogs
                 KWENDAFileItem[] files = await DataController.Me.ListFiles(
                         DataController.Me.Token
                         );
-                files.Where(w =>
+                files = files.Where(w =>
                             w.FileExt.ToLower() == ".venue"
-                        );
+                        ).ToArray();
 
                 filesdict = files.ToDictionary(w => w.VenueId);
                 listdict = new Dictionary<string, string>();
@@ -103,11 +103,11 @@ namespace VenueMaker.Dialogs
             }
         }
 
-        private void SelectVenueDialog_Load(object sender, EventArgs e)
+        private async void SelectVenueDialog_Load(object sender, EventArgs e)
         {
             try
             {
-                InitUI();
+                await InitUI();
 
             }
             catch (Exception ex)

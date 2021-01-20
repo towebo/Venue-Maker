@@ -19,6 +19,7 @@ using Kwenda.Models;
 using Kwenda;
 using MAWINGU.Logging;
 using KWENDA.DTO;
+using KWENDA.Views;
 
 namespace VenueMaker.Dialogs
 {
@@ -790,7 +791,7 @@ namespace VenueMaker.Dialogs
             }
         }
 
-        private void SaveVenue(bool asFile)
+        private async void SaveVenue(bool asFile)
         {
             try
             {
@@ -1858,18 +1859,22 @@ namespace VenueMaker.Dialogs
                 {
                     Application.UseWaitCursor = false;
 
-#warning Fix the signing in
-                    /*
-                    using (LoginDialog dlg = new LoginDialog())
+                    
+                    using (SignInDialog dlg = new SignInDialog())
                     {
-                        dlg.Item = new LoginInfoModel();
-                        dlg.Item.Email = Controllers.DataController.Me.Email;
+                        dlg.Client = new KWENDA.KWENDARestClient();
+                        dlg.Client.UserName = Controllers.DataController.Me.Email;
+                        dlg.Client.UserName = "admin@mawingu.se";
 
                         result = dlg.ShowDialog() == DialogResult.OK;
 
-                    } // using LoginDialog
-                    */
+                        if (result)
+                        {
+                            Controllers.DataController.Me.Token = dlg.Client.Token;
+                        }
 
+                    } // using LoginDialog
+                    
                 } // Not logged in correctly
 
                 return result;
@@ -2136,7 +2141,7 @@ namespace VenueMaker.Dialogs
                 }
 
 
-                Controllers.DataController.Me.UpdateKwendaFiles(
+                await Controllers.DataController.Me.UpdateKwendaFiles(
                     Controllers.DataController.Me.Token,
                     kfiles.ToArray()
                     );

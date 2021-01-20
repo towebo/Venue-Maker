@@ -8,7 +8,7 @@ namespace KWENDA.DTO
 {
     public class SetKWENDAFilePermissionsRequest
     {
-        [JsonProperty("permissionItems")]
+        [JsonProperty("items")]
         public PermissionItem[] Items { get; set; }
 
     } // class

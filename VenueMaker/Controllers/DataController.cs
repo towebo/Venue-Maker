@@ -49,6 +49,7 @@ namespace VenueMaker.Controllers
             {
                 KWENDARestClient cli = new KWENDARestClient();
                 {
+                    cli.Token = token;
                     ListKWENDAFilesRequest req = new ListKWENDAFilesRequest();
 
                     ListKWENDAFilesResponse result = await cli.ListFiles(req);
@@ -66,7 +67,7 @@ namespace VenueMaker.Controllers
             }
             catch (Exception ex)
             {
-                string errmsg = string.Format("Shit(): {0}",
+                string errmsg = string.Format("ListFiles: {0}",
                     ex.Message
                     );
                 throw new Exception(errmsg);
@@ -99,7 +100,7 @@ namespace VenueMaker.Controllers
             }
             catch (Exception ex)
             {
-                string errmsg = string.Format("Shit(): {0}",
+                string errmsg = string.Format("GetKWENDAFile: {0}",
                     ex.Message
                     );
                 throw new Exception(errmsg);
@@ -173,9 +174,8 @@ namespace VenueMaker.Controllers
         {
             try
             {
-                return true;
+                return !string.IsNullOrWhiteSpace(Token);
                 
-
             }
             catch (Exception ex)
             {
@@ -199,11 +199,33 @@ namespace VenueMaker.Controllers
                 AccountClient cli = new AccountClient();
                 {
                     AuthenticateResponse res = await cli.AuthenticateAsync(Email, Password);
-                    
+
                     if (res.Error == null)
                     {
                         Token = res.Token;
-                        return true;
+
+                        KWENDARestClient kcli = new KWENDARestClient();
+                        kcli.AccountToken = Token;
+                        SignInResponse signin_res = await kcli.SignIn(Email);
+                        if (signin_res.Error == null)
+                        {
+                            Token = signin_res.Token;
+                            return true;
+
+                        } // Null
+
+                        WebAPIError signupres = await kcli.SignUp(Email);
+
+                        signin_res = await kcli.SignIn(Email);
+                        if (signin_res.Error == null)
+                        {
+                            Token = signin_res.Token;
+                            return true;
+
+                        } // Null
+
+                        return false;
+
                     } // Ok
                     else
                     {

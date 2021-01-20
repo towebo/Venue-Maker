@@ -17,7 +17,7 @@ namespace KWENDA.DTO
         [JsonProperty("venueId")]
         public string VenueId { get; set; }
 
-        [JsonProperty("grant_permission")]
+        [JsonProperty("grantPermission")]
         public bool GrantPermission { get; set; }
 
         [JsonProperty("readonly_access")]
