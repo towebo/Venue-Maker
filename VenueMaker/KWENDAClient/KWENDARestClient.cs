@@ -15,6 +15,7 @@ namespace KWENDA
     {
         private static HttpClient _client = new HttpClient();
 
+        private const string ServiceInfoPath = "api/v1/KWENDA/serviceinfo";
         private const string SignupPath = "api/v1/KWENDA/signup";
         private const string SignInPath = "api/v1/KWENDA/signin";
         private const string ListFilesPath = "api/v1/KWENDA/listfiles";
@@ -44,8 +45,8 @@ namespace KWENDA
 
 
         public KWENDARestClient()
-            //: this(StandardBaseUrl, null)
-            : this(Local_BaseAddress, Local_BasePort)
+            : this(StandardBaseUrl, null)
+            //: this(Local_BaseAddress, Local_BasePort)
         {
         }
 
@@ -90,6 +91,35 @@ namespace KWENDA
             } // AppId
 
             return query.ToString();
+
+        }
+
+        public async Task<ServiceInfo> GetServiceInfo()
+        {
+            try
+            {
+                RefreshHeaders();
+
+                UriBuilder builder = new UriBuilder($"{BaseAddress}:{Port}/");
+                builder.Path = ServiceInfoPath;
+                
+                OnStatus?.Invoke(this, new KWENDAClientStatusEventArgs("Signing up..."));
+
+                HttpResponseMessage response = await _client.GetAsync(builder.ToString());
+                if (response.IsSuccessStatusCode)
+                {
+                    ServiceInfo res = await response.Content.ReadAsAsync<ServiceInfo>();
+                    return res;
+                }
+
+                throw new Exception(response.ReasonPhrase);
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+
+            }
 
         }
 
@@ -185,8 +215,9 @@ namespace KWENDA
                     err = JsonConvert.DeserializeObject<WebAPIError>(errstr);
 
                 }
-                catch (Exception cex)
+                catch
                 {
+
                     err = new WebAPIError();
                     err.Message = errstr;
                 }

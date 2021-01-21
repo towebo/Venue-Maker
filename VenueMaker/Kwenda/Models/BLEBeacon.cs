@@ -20,9 +20,6 @@ namespace WayfindR.Models
 
 	public partial class BLEBeacon
 	{
-		private int numzerorssis;
-
-
 		public BLEBeacon ()
 		{
 		}

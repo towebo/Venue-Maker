@@ -207,7 +207,7 @@
             this.NodesBS = new System.Windows.Forms.BindingSource(this.components);
             this.MapsBS = new System.Windows.Forms.BindingSource(this.components);
             this.NodesFilterBS = new System.Windows.Forms.BindingSource(this.components);
-            this.MainMenuStrip = new System.Windows.Forms.MenuStrip();
+            this.MainMenu = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newVenueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openVenueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -220,9 +220,6 @@
             this.accountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loginToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.createAccountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.verifyAccountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.changePasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.setPermissionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.linkPOIToBeaconToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -248,7 +245,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.NodesBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MapsBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NodesFilterBS)).BeginInit();
-            this.MainMenuStrip.SuspendLayout();
+            this.MainMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // OpenVenueDialog
@@ -1930,17 +1927,17 @@
             this.ActiveUserLabel.Name = "ActiveUserLabel";
             this.ActiveUserLabel.Size = new System.Drawing.Size(0, 17);
             // 
-            // MainMenuStrip
+            // MainMenu
             // 
-            this.MainMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.accountToolStripMenuItem,
             this.toolsToolStripMenuItem});
-            this.MainMenuStrip.Location = new System.Drawing.Point(0, 0);
-            this.MainMenuStrip.Name = "MainMenuStrip";
-            this.MainMenuStrip.Size = new System.Drawing.Size(1129, 24);
-            this.MainMenuStrip.TabIndex = 21;
-            this.MainMenuStrip.Text = "menuStrip1";
+            this.MainMenu.Location = new System.Drawing.Point(0, 0);
+            this.MainMenu.Name = "MainMenu";
+            this.MainMenu.Size = new System.Drawing.Size(1129, 24);
+            this.MainMenu.TabIndex = 21;
+            this.MainMenu.Text = "menuStrip1";
             // 
             // fileToolStripMenuItem
             // 
@@ -1960,49 +1957,49 @@
             // newVenueToolStripMenuItem
             // 
             this.newVenueToolStripMenuItem.Name = "newVenueToolStripMenuItem";
-            this.newVenueToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.newVenueToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.newVenueToolStripMenuItem.Text = "&Ny";
             // 
             // openVenueToolStripMenuItem
             // 
             this.openVenueToolStripMenuItem.Name = "openVenueToolStripMenuItem";
             this.openVenueToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.openVenueToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openVenueToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.openVenueToolStripMenuItem.Text = "&Öppna";
             // 
             // saveVenueToolStripMenuItem
             // 
             this.saveVenueToolStripMenuItem.Name = "saveVenueToolStripMenuItem";
             this.saveVenueToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.saveVenueToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveVenueToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.saveVenueToolStripMenuItem.Text = "&Spara";
             // 
             // saveVenueAsToolStripMenuItem
             // 
             this.saveVenueAsToolStripMenuItem.Name = "saveVenueAsToolStripMenuItem";
-            this.saveVenueAsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveVenueAsToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.saveVenueAsToolStripMenuItem.Text = "Spara som...";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(150, 6);
             // 
             // selectDataFolderToolStripMenuItem
             // 
             this.selectDataFolderToolStripMenuItem.Name = "selectDataFolderToolStripMenuItem";
-            this.selectDataFolderToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.selectDataFolderToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.selectDataFolderToolStripMenuItem.Text = "Välj datamapp";
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(150, 6);
             // 
             // closeAppToolStripMenuItem
             // 
             this.closeAppToolStripMenuItem.Name = "closeAppToolStripMenuItem";
-            this.closeAppToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.closeAppToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.closeAppToolStripMenuItem.Text = "&Avsluta";
             this.closeAppToolStripMenuItem.Click += new System.EventHandler(this.closeAppToolStripMenuItem_Click);
             // 
@@ -2011,9 +2008,6 @@
             this.accountToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.loginToolStripMenuItem,
             this.logOutToolStripMenuItem,
-            this.createAccountToolStripMenuItem,
-            this.verifyAccountToolStripMenuItem,
-            this.changePasswordToolStripMenuItem,
             this.setPermissionsToolStripMenuItem});
             this.accountToolStripMenuItem.Name = "accountToolStripMenuItem";
             this.accountToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
@@ -2030,26 +2024,6 @@
             this.logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
             this.logOutToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
             this.logOutToolStripMenuItem.Text = "Logga &ut";
-            // 
-            // createAccountToolStripMenuItem
-            // 
-            this.createAccountToolStripMenuItem.Name = "createAccountToolStripMenuItem";
-            this.createAccountToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
-            this.createAccountToolStripMenuItem.Text = "&Skapa konto";
-            // 
-            // verifyAccountToolStripMenuItem
-            // 
-            this.verifyAccountToolStripMenuItem.Name = "verifyAccountToolStripMenuItem";
-            this.verifyAccountToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
-            this.verifyAccountToolStripMenuItem.Text = "&Verifiera konto";
-            this.verifyAccountToolStripMenuItem.Visible = false;
-            // 
-            // changePasswordToolStripMenuItem
-            // 
-            this.changePasswordToolStripMenuItem.Name = "changePasswordToolStripMenuItem";
-            this.changePasswordToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
-            this.changePasswordToolStripMenuItem.Text = "&Ändra lösenord";
-            this.changePasswordToolStripMenuItem.Visible = false;
             // 
             // setPermissionsToolStripMenuItem
             // 
@@ -2080,7 +2054,7 @@
             this.ClientSize = new System.Drawing.Size(1129, 712);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.Tabs);
-            this.Controls.Add(this.MainMenuStrip);
+            this.Controls.Add(this.MainMenu);
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(5);
@@ -2117,8 +2091,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.NodesBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MapsBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NodesFilterBS)).EndInit();
-            this.MainMenuStrip.ResumeLayout(false);
-            this.MainMenuStrip.PerformLayout();
+            this.MainMenu.ResumeLayout(false);
+            this.MainMenu.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2295,7 +2269,7 @@
         private System.Windows.Forms.Label NodesFilterLabel;
         private System.Windows.Forms.Button POIInfoStartBtn;
         private System.Windows.Forms.Button POIInfoEndsBtn;
-        private System.Windows.Forms.MenuStrip MainMenuStrip;
+        private System.Windows.Forms.MenuStrip MainMenu;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem newVenueToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openVenueToolStripMenuItem;
@@ -2308,10 +2282,7 @@
         private System.Windows.Forms.ToolStripMenuItem accountToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem loginToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem logOutToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem createAccountToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem changePasswordToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem setPermissionsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem verifyAccountToolStripMenuItem;
         private System.Windows.Forms.Button MarkEdgeOnMapBtn;
         private Models.CueTextBox POIILinkUrlTB;
         private System.Windows.Forms.Label POIILinkUrlLabel;

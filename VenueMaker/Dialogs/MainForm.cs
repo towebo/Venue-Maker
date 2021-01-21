@@ -20,6 +20,7 @@ using Kwenda;
 using MAWINGU.Logging;
 using KWENDA.DTO;
 using KWENDA.Views;
+using KWENDA.Helpers;
 
 namespace VenueMaker.Dialogs
 {
@@ -30,6 +31,8 @@ namespace VenueMaker.Dialogs
 
         private bool loadguard;
         private WFNode[] elevators;
+        private KWENDATokenJWTInfo userinfo;
+
         private const double ElevatorTravelTime = 20.0;
 
 
@@ -47,8 +50,8 @@ namespace VenueMaker.Dialogs
 
         private void MakeUIReflectUserLevel()
         {
-#warning Not the best solution
-            bool hasadminrights = true; // Controllers.DataController.Me.Email == "admin@mawingu.se";
+            userinfo = Controllers.DataController.Me.Token.DecodeToken();
+            bool hasadminrights = userinfo.Role == "Manager";
             MakeVenueActiveChk.Visible = hasadminrights;
             VenueIDTB.ReadOnly = !hasadminrights;
             if (VenueIDTB.ReadOnly)
@@ -58,7 +61,6 @@ namespace VenueMaker.Dialogs
             } // Dim out
 
             saveVenueAsToolStripMenuItem.Visible = hasadminrights;
-            createAccountToolStripMenuItem.Visible = hasadminrights;
             setPermissionsToolStripMenuItem.Visible = hasadminrights;
 
             toolsToolStripMenuItem.Visible = hasadminrights;
@@ -74,18 +76,18 @@ namespace VenueMaker.Dialogs
             {
                 // File
                 newVenueToolStripMenuItem.Click += (s1, e1) => CreateNewVenue();
-                openVenueToolStripMenuItem.Click += (s2, e2) => OpenVenue();
-                saveVenueToolStripMenuItem.Click += (s3, e3) => SaveVenue(false);
-                saveVenueAsToolStripMenuItem.Click += (s3, e3) => SaveVenue(true);
+                openVenueToolStripMenuItem.Click += async (s2, e2) => await OpenVenue();
+                saveVenueToolStripMenuItem.Click += async (s3, e3) => await SaveVenue(false);
+                saveVenueAsToolStripMenuItem.Click += async (s3, e3) => await SaveVenue(true);
                 
                 selectDataFolderToolStripMenuItem.Click += (s9, e9) => SelectDataFolder();
 
                 // Account
-                loginToolStripMenuItem.Click += (s4, e4) => EnsureLogin(true);
+                loginToolStripMenuItem.Click += async (s4, e4) => await EnsureLogin(true);
                 logOutToolStripMenuItem.Click += (s5, e5) => LogOut();
                 //tmp createAccountToolStripMenuItem.Click += (s6, e6) => createAccount();
                 //tmp verifyAccountToolStripMenuItem.Click += (s7, e7) => verifyAccount();
-                setPermissionsToolStripMenuItem.Click += (s8, e8) => SetPermissions();
+                setPermissionsToolStripMenuItem.Click += async (s8, e8) => await SetPermissions();
                 
 
 
@@ -191,7 +193,7 @@ namespace VenueMaker.Dialogs
                     {
                         return;
 
-                    } // Doesn't exists
+                    } // Doesn't exist
 
                     if (!loadguard)
                     {
@@ -578,7 +580,6 @@ namespace VenueMaker.Dialogs
 
                     RefreshNodes();
 
-#warning Perhaps we should have a setting instead of just passing "true".
                     elevators = v.NodesGraph.GetNodesAlphabetical(false).Where(w =>
                         w.WaypointType == WFWaypointType.Elevator.ToString().ToLower()
                         ).OrderBy(w => w, new FloorComparer()).ToArray();
@@ -713,9 +714,7 @@ namespace VenueMaker.Dialogs
 
                 } // Loaded from cloud
 
-
-#warning Not nice at all
-                if (false && !MakeVenueActiveChk.Visible)
+                if (userinfo.Role != "Manager")
                 {
                     return;
 
@@ -791,7 +790,7 @@ namespace VenueMaker.Dialogs
             }
         }
 
-        private async void SaveVenue(bool asFile)
+        private async Task SaveVenue(bool asFile)
         {
             try
             {
@@ -823,10 +822,8 @@ namespace VenueMaker.Dialogs
                 // Set properties based on venue properties.
                 Venue.NodesGraph.VenueId = Venue.Id;
                 Venue.NodesGraph.VenueName = Venue.Name;
-                Venue.NodesGraph.GraphId = string.Format("{0}-01",
-                    Venue.Id
-                    );
-                var gkuuid = Venue.NodesGraph.GraphMLKeys.Where(w =>
+                Venue.NodesGraph.GraphId = $"{Venue.Id}-01";
+                GraphMLKey gkuuid = Venue.NodesGraph.GraphMLKeys.Where(w =>
                     w.ForType == "node" &&
                     w.Name == "uuid"
                     ).FirstOrDefault();
@@ -835,7 +832,7 @@ namespace VenueMaker.Dialogs
                     gkuuid.DefaultValue = "bc8c0035-823e-4948-8695-1e11a1954211";
 
                 } // Found
-                var gkmajor = Venue.NodesGraph.GraphMLKeys.Where(w =>
+                GraphMLKey gkmajor = Venue.NodesGraph.GraphMLKeys.Where(w =>
                     w.ForType == "node" &&
                     w.Name == "major"
                     ).FirstOrDefault();
@@ -845,18 +842,15 @@ namespace VenueMaker.Dialogs
 
                 } // Found
 
-
                 if (asFile)
                 {
-
                     Venue.NodesGraph.Save(OpenGraphMLDialog.FileName);
-
                     Venue.SaveToFile(SaveVenueDialog.FileName);
 
                 }
                 else
                 {
-                    PushToCloud();
+                    await PushToCloud();
 
                 } // Just save
 
@@ -906,7 +900,7 @@ namespace VenueMaker.Dialogs
 
                 InitWebService();
 
-                OpenVenue();
+                await OpenVenue();
 
             }
             catch (Exception ex)
@@ -917,18 +911,13 @@ namespace VenueMaker.Dialogs
 
         }
 
-        async private void InitWebService()
+        private async void InitWebService()
         {
             try
             {
                 string svcver = string.Empty;
 
-                Task.Run(() =>
-                {
-                    // Initialize the web service for better performance.
-                    svcver = Controllers.DataController.Me.ServiceVersion();
-
-                }); // Task
+                svcver = await Controllers.DataController.Me.ServiceVersion();
 
                 Invoke((MethodInvoker)delegate
                 {
@@ -1122,11 +1111,11 @@ namespace VenueMaker.Dialogs
             }
         }
 
-        private void pushToCloudMenuItemToolStripMenuItem_Click(object sender, EventArgs e)
+        private async void pushToCloudMenuItemToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
             {
-                SaveVenue(false);
+                await SaveVenue(false);
 
                 if (string.IsNullOrEmpty(SaveVenueDialog.FileName))
                 {
@@ -1139,7 +1128,7 @@ namespace VenueMaker.Dialogs
                 Application.UseWaitCursor = true;
                 Application.DoEvents();
 
-                PushToCloud();
+                await PushToCloud();
 
                 SystemSounds.Asterisk.Play();
 
@@ -1730,74 +1719,7 @@ namespace VenueMaker.Dialogs
 
         }
 
-#warning Delete this code
-        /*
-        private void createAccount()
-        {
-            try
-            {
-                using (CreateAccountDialog dlg = new CreateAccountDialog())
-                {
-                    dlg.Item = new CreateAccountInfoModel();
-
-                    if (dlg.ShowDialog() != DialogResult.OK)
-                    {
-                        return;
-
-                    } // User canceled
-
-                    using (KwendaService cli = new KwendaService())
-                    {
-                        CreateAccountRequest req = new CreateAccountRequest();
-                        req.Email = dlg.Item.Email;
-                        req.Organization = dlg.Item.Organization;
-                        req.Password = dlg.Item.Password;
-
-                        CreateAccountResponse result = cli.CreateAccount(req);
-
-                        switch (result.Result)
-                        {
-                            case CreateAccountResponseMethodResult.Ok:
-                                MessageBox.Show("Kontot skapat!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                break;
-
-                            case CreateAccountResponseMethodResult.UserAlreadyExists:
-                                MessageBox.Show($"En användare med e-postadress {req.Email} finns redan.", "Användare finns redan", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                break;
-
-                            case CreateAccountResponseMethodResult.RequiredInfoMissing:
-                                MessageBox.Show("Information som krävs saknas. Kontrollera så allt är ifyllt som det ska och prova igen.", "Information saknas", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                break;
-
-                            case CreateAccountResponseMethodResult.OtherError:
-                                MessageBox.Show($"Ett fel inträffade när kontot skulle skapas: {result.Message}", "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                break;
-
-                            default:
-                                MessageBox.Show($"Ett fel som inte hanteras i programmet inträffade när kontot skulle skapas: {result.Result.ToString()}, {result.Message}");
-                                break;
-
-                        } // switch
-                        
-                    } // using KwendaService 
-
-                } // using dialog
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Fel", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-            }
-
-        }
-
-        private void verifyAccount()
-        {
-        }
-        */
-
-        private void LogOut()
+        private async void LogOut()
         {
             try
             {
@@ -1811,7 +1733,7 @@ namespace VenueMaker.Dialogs
                     } // Chickened out
                     else if (DialogResult.Yes == dr)
                     {
-                        SaveVenue(false);
+                        await SaveVenue(false);
 
                     }
 
@@ -1850,7 +1772,7 @@ namespace VenueMaker.Dialogs
 
                 if (!forceDialog)
                 {
-                    result = await Controllers.DataController.Me.IsTokenValid() ||
+                    result = Controllers.DataController.Me.IsTokenValid() ||
                         await Controllers.DataController.Me.AutoLogin();
 
                 } // Don't use the force Luke.
@@ -1862,10 +1784,9 @@ namespace VenueMaker.Dialogs
                     
                     using (SignInDialog dlg = new SignInDialog())
                     {
-                        dlg.Client = new KWENDA.KWENDARestClient();
+                        dlg.Client = Controllers.DataController.Me.Client;
                         dlg.Client.UserName = Controllers.DataController.Me.Email;
-                        dlg.Client.UserName = "admin@mawingu.se";
-
+                        
                         result = dlg.ShowDialog() == DialogResult.OK;
 
                         if (result)
@@ -2142,7 +2063,6 @@ namespace VenueMaker.Dialogs
 
 
                 await Controllers.DataController.Me.UpdateKwendaFiles(
-                    Controllers.DataController.Me.Token,
                     kfiles.ToArray()
                     );
 
@@ -2192,10 +2112,7 @@ namespace VenueMaker.Dialogs
                     fid.VenueId = sel.VenueId;
                     fid.FileName = sel.FileName;
 
-                    KWENDAFileItem venuefile = await Controllers.DataController.Me.GetKwendaFile(
-                        Controllers.DataController.Me.Token,
-                        fid
-                        );
+                    KWENDAFileItem venuefile = await Controllers.DataController.Me.GetKwendaFile(fid);
 
                     if (venuefile == null)
                     {
@@ -2213,19 +2130,13 @@ namespace VenueMaker.Dialogs
                     // Download missing files
                     string fldr = GetDataFilesFolder();
 
-                    KWENDAFileItem[] files = await Controllers.DataController.Me.ListFiles(
-                        Controllers.DataController.Me.Token
-                        );
+                    KWENDAFileItem[] files = await Controllers.DataController.Me.ListFiles();
                     files.Where(w =>
-                            w.VenueId == Venue.Id &&
-                            w.FileExt.ToLower() != ".venue" &&
-                            w.FileExt.ToLower() != ".graphml"
-                        ).ToArray();
+                    w.VenueId == Venue.Id &&
+                    w.FileExt.ToLower() != ".venue" &&
+                    w.FileExt.ToLower() != ".graphml"
+                    ).ToArray();
 
-
-
-                    
-                    
                     foreach (var f in files)
                     {
                         Application.DoEvents();
@@ -2237,7 +2148,7 @@ namespace VenueMaker.Dialogs
                             fi.LastWriteTimeUtc < f.LastModified)
                             )
                         {
-                            string remotefile = Controllers.DataController.RemoteFileUrl
+                            string remotefile = Controllers.DataController.Me.RemoteFileUrl
                                 .AddToUrl(f.VenueId)
                                 .AddToUrl(f.FileName);
 
@@ -2531,11 +2442,11 @@ namespace VenueMaker.Dialogs
             }
         }
 
-        private void SendPush()
+        private async void SendPush()
         {
             try
             {
-                SendNotificationDialog.SendPushNotification(Venue.Id);
+                await SendNotificationDialog.SendPushNotification(Venue.Id);
 
             }
             catch (Exception ex)
@@ -2763,7 +2674,7 @@ namespace VenueMaker.Dialogs
             }
         }
 
-        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        private async void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (_modified)
             {
@@ -2775,7 +2686,7 @@ namespace VenueMaker.Dialogs
                 } // Chickened out
                 else if (DialogResult.Yes == dr)
                 {
-                    SaveVenue(false);
+                    await SaveVenue(false);
 
                 }
 

@@ -19,7 +19,7 @@ namespace VenueMaker.Dialogs
         }
 
 
-        public static void SendPushNotification(string venueId)
+        public static async Task SendPushNotification(string venueId)
         {
             try
             {
@@ -42,7 +42,7 @@ namespace VenueMaker.Dialogs
                     //msgparams["sound"] = "default";
                     //msgparams["venueId"] = dlg.VenueIdTB.Text;
                     //msgparams["status"] = dlg.StatusCombo.Text;
-                    NotificationController.SendTemplateNotificationREST(msgparams);
+                    await NotificationController.SendTemplateNotificationREST(msgparams);
 
                 } // using
 

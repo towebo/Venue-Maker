@@ -37,7 +37,7 @@ namespace WayfindR.Controllers
 
         private List<string> uuids;
         private List<BLEBeacon> beacons;
-        private bool? btison;
+        private bool? btison = null;
 
         private BLEBeacon currently_at;
         private DateTime? left_at;

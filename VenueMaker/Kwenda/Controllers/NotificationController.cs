@@ -190,10 +190,8 @@ namespace Kwenda.Controllers
         private static async Task<HttpWebResponse> ExecuteREST(string httpMethod, string uri, string sasToken, WebHeaderCollection headers = null, string body = null, string contentType = "application/json")
         {
             //=== Execute the request 
-
             HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(uri);
             HttpWebResponse response = null;
-
             request.Method = httpMethod;
             request.ContentType = contentType;
             request.ContentLength = 0;
@@ -225,8 +223,7 @@ namespace Kwenda.Controllers
 
             try
             {
-                //response = request.GetResponseAsync();
-                request.GetResponseAsync();
+                await request.GetResponseAsync();
             }
             catch (WebException we)
             {

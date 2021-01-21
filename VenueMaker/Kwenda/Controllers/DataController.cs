@@ -33,23 +33,15 @@ namespace Kwenda
 {
 	public enum AppFile
 	{
-		PoisXml_Included,
-		PoisXml_Local,
-		PoisXml_Remote,
-		FileListXml_Local,
-		FileListXml_Remote,
 		FilesFolder_Local,
 		FilesFolder_Remote,
 		SQLiteDb,
 		Prefs,
         RoutePrefs,
         InfoCatPrefs,
-        DropboxLocal,
-        DropboxRemote,
 		AboutHtml,
 		MediaFolder,
         PingOnServer,
-        ServicesMawinguHost
 	}
 
 	public class DataController
@@ -58,92 +50,57 @@ namespace Kwenda
 
         private static string token;
 
+        private static KWENDARestClient cli = new KWENDARestClient();
+
 
         public DataController ()
-        {            
-		}
-
-
+        {
+        }
 
         public static string GetAppFile(AppFile apf, bool fileNameOnly = false)
 		{
 			string filename = "";
 			string folder = "";
 
-			switch (apf)
-			{
-			case AppFile.PoisXml_Included:
-				filename = "Pois.xml";
-				break;
-
-			case AppFile.PoisXml_Local:
-				filename = "Pois.xml";
-				folder = Environment.GetFolderPath (Environment.SpecialFolder.Personal);
-				break;
-
-			case AppFile.PoisXml_Remote:
-				filename = "http://mawingu.se/radar/pois.xml";
-				break;
-
-			case AppFile.FileListXml_Local:
-				filename = "files.xml";
-				folder = GetAppFile(AppFile.FilesFolder_Local);
-				break;
-
-			case AppFile.FileListXml_Remote:
-				filename = "http://mawingu.se/radar/files.xml";
-				break;
-
-			case AppFile.FilesFolder_Local:
-				folder = Environment.GetFolderPath (Environment.SpecialFolder.MyDocuments);
-				folder = Path.Combine(folder, "Data");
-                if (!Directory.Exists(folder))
-                {
-                    Directory.CreateDirectory(folder);
-                }
-				break;
-
-			case AppFile.FilesFolder_Remote:
-				//tmp filename = "http://mawingu.se/radar/";
-                    filename = "https://services.mawingu.se/kwenda/data/";
-                    break;
-
-			case AppFile.SQLiteDb:
-				filename = "data.db3";
-				folder = Environment.GetFolderPath (Environment.SpecialFolder.Personal);
-				break;
-				
-			case AppFile.Prefs:
-				filename = "Prefs.xml";
-				folder = Environment.GetFolderPath (Environment.SpecialFolder.Personal);
-				break;
-
-                case AppFile.RoutePrefs:
-                    filename = "RoutePrefs.xml";
-                    folder = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-                    break;
-
-                case AppFile.DropboxLocal:
-                    folder = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-                    folder = Path.Combine(folder, "Dropbox");
+            switch (apf)
+            {
+                case AppFile.FilesFolder_Local:
+                    folder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                    folder = Path.Combine(folder, "Data");
                     if (!Directory.Exists(folder))
                     {
                         Directory.CreateDirectory(folder);
                     }
                     break;
 
-                case AppFile.DropboxRemote:
-                    folder = "";
+                case AppFile.FilesFolder_Remote:
+                    //tmp filename = "http://mawingu.se/radar/";
+                    filename = "https://services.mawingu.se/kwenda/data/";
                     break;
-                    
-				case AppFile.AboutHtml:
-					folder = Environment.GetFolderPath (Environment.SpecialFolder.Personal);
-					filename = "About.html";
-					break;
 
-				case AppFile.MediaFolder:
-					folder = GetAppFile(AppFile.FilesFolder_Local);
-					break;
+                case AppFile.SQLiteDb:
+                    filename = "data.db3";
+                    folder = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+                    break;
+
+                case AppFile.Prefs:
+                    filename = "Prefs.xml";
+                    folder = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+                    break;
+
+                case AppFile.RoutePrefs:
+                    filename = "RoutePrefs.xml";
+                    folder = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+                    break;
+
+                case AppFile.AboutHtml:
+                    folder = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+                    filename = "About.html";
+                    break;
+
+                case AppFile.MediaFolder:
+                    folder = GetAppFile(AppFile.FilesFolder_Local);
+                    break;
 
                 case AppFile.InfoCatPrefs:
                     filename = "POICategoriesPrefs.xml";
@@ -151,17 +108,13 @@ namespace Kwenda
                     break;
 
                 case AppFile.PingOnServer:
-                    filename = "https://services.mawingu.se/kwenda/ping.html";
+                    filename = cli.BaseAddress.AddToUrl("ping.html");
                     break;
 
-                case AppFile.ServicesMawinguHost:
-                    filename = "https://services.mawingu.se";
-                    break;
 
             } // switch
 
-
-			if (!fileNameOnly &&
+            if (!fileNameOnly &&
                 !string.IsNullOrEmpty(folder))
 			{
 				filename = Path.Combine (folder, filename);
@@ -172,134 +125,33 @@ namespace Kwenda
 
 		}
 
-
-        /*tmp
-		public static string[] DownloadFiles(string xmlFiles, bool forceDownload)
-		{
-			List<string> result = new List<string> ();
-			try
-			{
-				XDocument xdoc = XDocument.Load(xmlFiles);
-
-                var lmattr = xdoc.Root.Attribute("lastmodified");
-                if (lmattr != null)
-                {
-                    DateTime lastmodified;
-                    if (DateTime.TryParse(lmattr.Value, out lastmodified))
-                    {
-						//Preferences.Load();
-
-						if (lastmodified < Preferences.Me.LastFileCheck &&
-						    !forceDownload)
-                        {
-                            return result.ToArray();
-
-                        } // No new info to download
-                        
-                    } // TryParse
-                    
-                } // Last updated node not null
-
-				Preferences.Me.LastFileCheck = DateTime.Now.ToUniversalTime();
-                Preferences.Save();
-
-				var files = (
-					from x in xdoc.Root.Elements("file")
-					select x.Value
-				);
-
-				foreach (string fn in files)
-				{
-					string webfile = GetAppFile(AppFile.FilesFolder_Remote) + fn;
-					string localfile = Path.Combine(
-						GetAppFile(AppFile.FilesFolder_Local),
-						fn
-					);
-					HttpClient hc = new HttpClient();
-					hc.DownloadComplete += (o, e) =>
-					{
-						result.Add(
-							Path.Combine(
-								GetAppFile(AppFile.FilesFolder_Local),
-								fn
-							)
-						);
-
-					};
-
-					try
-					{
-						hc.DownloadFile(webfile, localfile);
-
-					}
-					catch (Exception ex)
-					{
-                        LogCenter.Error(
-                            string.Format(
-                                "DownloadFile({0})",
-                                webfile
-                                ),
-                            ex.Message
-                            );
-
-					} // catch
-
-				} // foreach file
-
-
-				while (HttpClient.ActiveDownloads > 0)
-				{
-				}
-
-			}
-			catch (Exception ex)
-			{
-                LogCenter.Error(
-                    "DownloadFiles()",
-                    ex.Message
-                    );
-				
-			}
-
-			return result.ToArray();
-
-		}
-        */
-
         public static async Task SignIn(string usr, string pw)
         {
             try
             {
                 AccountClient cli = new AccountClient();
+                AuthenticateResponse res = await cli.AuthenticateAsync(usr, pw);
+                if (res == null)
                 {
-                    AuthenticateResponse res = await cli.AuthenticateAsync(usr, pw);
+                    throw new Exception(string.Format("Unable to sign in."));
 
-#warning Check this up.
-                    /*
-                    if (res == null)
-                    {
-                        throw new Exception(string.Format("Unable to sign in. Service version is {0}.",
-                            cli.Version()
-                            ));
+                } // Response is null
 
-                    } // Response is null
-                    */
+                if (res.Error == null)
+                {
+                    Preferences.Me.Email = usr;
+                    Preferences.Me.Password = pw;
+                    Preferences.Save();
 
-                    if (res.Error == null)
-                    {
-                        Preferences.Me.Email = usr;
-                        Preferences.Me.Password = pw;
-                        Preferences.Save();
+                    token = res.Token;
 
-                        token = res.Token;
+                } // Ok
+                else
+                {
+                    throw new Exception(res.Error.Message);
+                } // Error
 
-                    } // Ok
-                    else
-                    {
-                        throw new Exception(res.Error.Message);
-                    } // Error
 
-                } // using
 
             }
             catch (Exception ex)
@@ -314,56 +166,26 @@ namespace Kwenda
         {
             try
             {
-                KWENDARestClient cli = new KWENDARestClient();
-                {
-                    ListKWENDAFilesRequest req = new ListKWENDAFilesRequest();
-                    cli.AccountToken = ""; // List all files
-                    req.NewerThan = args.NewerThan;
+                ListKWENDAFilesRequest req = new ListKWENDAFilesRequest();
+                //cli.AccountToken = ""; // List all files
+                req.NewerThan = args.NewerThan;
 
-                    ListKWENDAFilesResponse resp = await cli.ListFiles(req);
-                    Cli_ListKwendaFilesCompleted(args, resp);
-
-                    
-
-                } // using
-
-            }
-            catch (Exception ex)
-            {
-                string errmsg = $"{AppMessages.KWERR_DownloadInfrastructureError_Msg}: {ex.Message}";
-                LogCenter.Error("DownloadInfrastructure()", errmsg);
-                if (args.AlertWhenComplete != null)
-                {
-                    args.AlertWhenComplete(
-                        AppMessages.KWERR_DownloadInfrastructureError,
-                        errmsg
-                        );
-
-                } // alertMe
-
-
-            }
-
-        }
-
-        private static async Task Cli_ListKwendaFilesCompleted(DownloadInfrastructureArgs args, ListKWENDAFilesResponse resp)
-        {
-            try
-            {
+                ListKWENDAFilesResponse resp = await cli.ListFiles(req);
+                //otto
                 List<KWENDAFileId> fids = new List<KWENDAFileId>();
 
                 // Grab missing or newer files.
                 KWENDAFileItem[] files = resp.Files;
 
-            // If we don't get an exception above, it's safe to clear the cache.
-            if (args.ClearCache)
-            {
-                GraphController.Me.ClearLocalData(
-                    GetAppFile(AppFile.FilesFolder_Local)
-                    );
-                VenueController.Me.ClearLocalData(
-                    GetAppFile(AppFile.FilesFolder_Local)
-                    );
+                // If we don't get an exception above, it's safe to clear the cache.
+                if (args.ClearCache)
+                {
+                    GraphController.Me.ClearLocalData(
+                        GetAppFile(AppFile.FilesFolder_Local)
+                        );
+                    VenueController.Me.ClearLocalData(
+                        GetAppFile(AppFile.FilesFolder_Local)
+                        );
 
                 } // Clear cache
 
@@ -388,67 +210,19 @@ namespace Kwenda
                     KWENDAFileId fid = new KWENDAFileId();
                     fid.FileName = f.FileName;
                     fid.VenueId = f.VenueId;
-                    
+
                     fids.Add(fid);
 
                 } // foreach
 
-                KWENDARestClient cli = new KWENDARestClient();
-                {
-                    GetKWENDAFilesRequest req = new GetKWENDAFilesRequest
-                        ();
-                    cli.AccountToken = ""; // Get anonymously
-                    req.FileIds = fids.ToArray();
+                GetKWENDAFilesRequest filesreq = new GetKWENDAFilesRequest();
+                //cli.AccountToken = ""; // Get anonymously
+                filesreq.FileIds = fids.ToArray();
+                GetKWENDAFilesResponse filesresp = await cli.GetFiles(filesreq);
 
-                    GetKWENDAFilesResponse filesresp = await cli.GetFiles(req);
-                    Cli_GetKwendafilesCompleted(filesresp, args);
-                } // using service
-
-                Preferences.Me.LastFileCheck = DateTime.Now.AddSeconds(-30);
-                Preferences.Save();
-
-                BeaconController.Me.Clear();
-
-            }
-            catch (Exception ex)
-            {
-                string errmsg = $"{AppMessages.KWERR_ListFilesError_Msg}";
-                LogCenter.Error("ListKwendaFilesCompleted", ex.Message);
-                if (args.AlertWhenComplete != null)
-                {
-                    if (!CheckIfHostReachable())
-                    {
-                        args.AlertWhenComplete(
-                            AppMessages.KWERR_HostUnreachable,
-                            string.Format(AppMessages.KWERR_HostUnreachable_Msg, GetAppFile(AppFile.ServicesMawinguHost))
-                            );
-
-                    }
-                    else
-                    {
-                        args.AlertWhenComplete(
-                        AppMessages.KWERR_ListFilesError,
-                        errmsg
-                        );
-
-                    } // else
-
-
-
-
-
-                    } // alertMe
-
-            }
-        }
-
-        private static void Cli_GetKwendafilesCompleted(GetKWENDAFilesResponse resp, DownloadInfrastructureArgs args)
-        {
-            try
-            {
                 string folder = GetAppFile(AppFile.FilesFolder_Local);
 
-                foreach (var f in resp.Files)
+                foreach (var f in filesresp.Files)
                 {
                     string localfile = Path.Combine(
                         folder,
@@ -484,20 +258,19 @@ namespace Kwenda
                     {
                         string webfile = GetAppFile(AppFile.FilesFolder_Remote);
                         webfile = Path.Combine(webfile, f.VenueId, f.FileName);
-                        
+
                         HttpClient hc = new HttpClient();
 
                         hc.DownloadComplete += (o, e2) =>
                         {
-                            // Do nothing
+                                    // Do nothing
 
-                        };
+                                };
                         hc.DownloadError += (sndr, errargs) =>
                         {
                             LogCenter.Error("DownloadError", hc.Url);
 
                         };
-
 
                         try
                         {
@@ -519,9 +292,9 @@ namespace Kwenda
                     } // Get via http
 
                 } // foreach file
-                
-                if (resp.Files.Any())
-        {
+
+                if (filesresp.Files.Any())
+                {
                     LoadInfrastructure(
                         args.AlertWhenComplete
 #if __IOS__
@@ -538,15 +311,20 @@ namespace Kwenda
 
                 BeaconController.Me.StartMonitoringWaypointType("entrance");
 
+                Preferences.Me.LastFileCheck = DateTime.Now.AddSeconds(-30);
+                Preferences.Save();
+
+                BeaconController.Me.Clear();
+
             }
             catch (Exception ex)
             {
-                string errmsg = $"{AppMessages.KWERR_GetKwendaFilesError_Msg}: {ex.Message}";
-                LogCenter.Error("GetKwendafilesCompleted", errmsg);
+                string errmsg = $"{AppMessages.KWERR_DownloadInfrastructureError_Msg}: {ex.Message}";
+                LogCenter.Error("DownloadInfrastructure()", errmsg);
                 if (args.AlertWhenComplete != null)
                 {
                     args.AlertWhenComplete(
-                        AppMessages.KWERR_GetKwendaFilesError,
+                        AppMessages.KWERR_DownloadInfrastructureError,
                         errmsg
                         );
 
@@ -599,7 +377,6 @@ namespace Kwenda
 
             } // Loading data guard
             
-
             try
             {
                 loadingdata = true;
@@ -621,7 +398,6 @@ namespace Kwenda
 
                 } // foreach graph
                 try
-                
                 {
                     //tmp BeaconController.Me.Clear(true);
 
@@ -679,10 +455,7 @@ namespace Kwenda
             }
             catch (Exception ex)
             {
-                LogCenter.Error(
-                    "LoadInfrastructure()",
-                    ex.Message
-                    );
+                LogCenter.Error("LoadInfrastructure()", ex.Message);
 
             }
             finally

@@ -17,6 +17,8 @@ namespace VenueMaker.Controllers
     {
         private static DataController me;
 
+        private KWENDARestClient cli;
+
 
 
         public string Email { get; set; }
@@ -35,34 +37,41 @@ namespace VenueMaker.Controllers
                 return me;
             } // get
         } // Me
-
-        public const string RemoteFileUrl = "https://services.mawingu.se/kwenda/data/";
-
-        public DataController()
+        public KWENDARestClient Client
         {
+            get { return cli; }
+        }
+
+        public string RemoteFileUrl
+        {
+            get
+            {
+                string url = Client.BaseAddress
+                    .AddToUrl("data");
+                return url;
+            }
         }
 
 
-        public async Task<KWENDAFileItem[]> ListFiles(string token)
+        public DataController()
+        {
+            cli = new KWENDARestClient();
+        }
+
+        public async Task<KWENDAFileItem[]> ListFiles()
         {
             try
             {
-                KWENDARestClient cli = new KWENDARestClient();
+                ListKWENDAFilesRequest req = new ListKWENDAFilesRequest();
+                ListKWENDAFilesResponse result = await Client.ListFiles(req);
+
+                if (result.Error != null)
                 {
-                    cli.Token = token;
-                    ListKWENDAFilesRequest req = new ListKWENDAFilesRequest();
+                    throw new Exception(result.Error.Message);
 
-                    ListKWENDAFilesResponse result = await cli.ListFiles(req);
+                } // Got an error
 
-                    if (result.Error != null)
-                    {
-                        throw new Exception(result.Error.Message);
-
-                    } // Got an error
-
-                    return result.Files;                    
-
-                } // using
+                return result.Files;
 
             }
             catch (Exception ex)
@@ -75,27 +84,22 @@ namespace VenueMaker.Controllers
             }
         }
 
-        public async Task<KWENDAFileItem> GetKwendaFile(string token, KWENDAFileId fid)
+        public async Task<KWENDAFileItem> GetKwendaFile(KWENDAFileId fid)
         {
             try
             {
-                KWENDARestClient cli = new KWENDARestClient();
+                GetKWENDAFilesRequest req = new GetKWENDAFilesRequest();
+                req.FileIds = new KWENDAFileId[] { fid };
+
+                GetKWENDAFilesResponse resp = await Client.GetFiles(req);
+
+                if (resp.Error != null)
                 {
-                    cli.AccountToken = token;
-                    GetKWENDAFilesRequest req = new GetKWENDAFilesRequest();
-                    req.FileIds = new KWENDAFileId[] { fid };
+                    throw new Exception(resp.Error.Message);
 
-                    GetKWENDAFilesResponse resp = await cli.GetFiles(req);
+                } // Got an error
 
-                    if (resp.Error != null)
-                    {
-                        throw new Exception(resp.Error.Message);
-
-                    } // Got an error
-
-                    return resp.Files.FirstOrDefault();
-                    
-                } // using
+                return resp.Files.FirstOrDefault();
 
             }
             catch (Exception ex)
@@ -108,26 +112,21 @@ namespace VenueMaker.Controllers
             }
         }
 
-        public async Task SetPermissions(string token, PermissionItem[] permissionItems)
+        public async Task SetPermissions(PermissionItem[] permissionItems)
         {
             try
             {
-                KWENDARestClient cli = new KWENDARestClient();
-                {
-                    SetKWENDAFilePermissionsRequest req = new SetKWENDAFilePermissionsRequest();
-                    cli.AccountToken = token;
-                    req.Items = permissionItems;
-                                        
-                    SetKWENDAFilePermissionsResponse result = await cli.SetPermissions(req);
+                SetKWENDAFilePermissionsRequest req = new SetKWENDAFilePermissionsRequest();
+                req.Items = permissionItems;
 
-                    if (result.Error != null)
-                    {
-                        throw new Exception(result.Error.Message);
-                        
-                    } // Error
-                              
-                } // using
-            
+                SetKWENDAFilePermissionsResponse result = await Client.SetPermissions(req);
+
+                if (result.Error != null)
+                {
+                    throw new Exception(result.Error.Message);
+
+                } // Error
+
             }
             catch (Exception ex)
             {
@@ -139,25 +138,21 @@ namespace VenueMaker.Controllers
             }
         }
 
-        public async Task UpdateKwendaFiles(string token, KWENDAFileItem[] items)
+        public async Task UpdateKwendaFiles(KWENDAFileItem[] items)
         {
             try
             {
-                KWENDARestClient cli = new KWENDARestClient();
+                UpdateKWENDAFilesRequest req = new UpdateKWENDAFilesRequest();
+                req.InactivateAllForVenue = true;
+                req.Files = items;
+
+                UpdateKWENDAFilesResponse response = await Client.UpdateFiles(req);
+
+                if (response.Error != null)
                 {
-                    UpdateKWENDAFilesRequest req = new UpdateKWENDAFilesRequest();
-                    cli.AccountToken = token;
-                    req.InactivateAllForVenue = true;
-                    req.Files = items;
+                    throw new Exception(response.Error.Message);
 
-                    UpdateKWENDAFilesResponse response = await cli.UpdateFiles(req);
-                                        
-                    if (response.Error != null)
-                    {
-                        throw new Exception(response.Error.Message);
-
-                    } // Ok
-                    } // using
+                } // Ok
 
             }
             catch (Exception ex)
@@ -170,7 +165,7 @@ namespace VenueMaker.Controllers
             }
         }
 
-        public async Task<bool> IsTokenValid()
+        public bool IsTokenValid()
         {
             try
             {
@@ -196,44 +191,38 @@ namespace VenueMaker.Controllers
                     return false;
 
                 } // Haven't logged in yet
+
                 AccountClient cli = new AccountClient();
+                AuthenticateResponse res = await cli.AuthenticateAsync(Email, Password);
+
+                if (res.Error == null)
                 {
-                    AuthenticateResponse res = await cli.AuthenticateAsync(Email, Password);
-
-                    if (res.Error == null)
+                    Client.AccountToken = res.Token;
+                    SignInResponse signin_res = await Client.SignIn(Email);
+                    if (signin_res.Error == null)
                     {
-                        Token = res.Token;
+                        Token = signin_res.Token;
+                        return true;
 
-                        KWENDARestClient kcli = new KWENDARestClient();
-                        kcli.AccountToken = Token;
-                        SignInResponse signin_res = await kcli.SignIn(Email);
-                        if (signin_res.Error == null)
-                        {
-                            Token = signin_res.Token;
-                            return true;
+                    } // Null
 
-                        } // Null
+                    WebAPIError signupres = await Client.SignUp(Email);
 
-                        WebAPIError signupres = await kcli.SignUp(Email);
-
-                        signin_res = await kcli.SignIn(Email);
-                        if (signin_res.Error == null)
-                        {
-                            Token = signin_res.Token;
-                            return true;
-
-                        } // Null
-
-                        return false;
-
-                    } // Ok
-                    else
+                    signin_res = await Client.SignIn(Email);
+                    if (signin_res.Error == null)
                     {
-                        return false;
-                    } // Unlucky
+                        Token = signin_res.Token;
+                        return true;
 
-                } // using
+                    } // Null
 
+                    return false;
+
+                } // Ok
+                else
+                {
+                    return false;
+                } // Unlucky
 
             }
             catch (Exception ex)
@@ -268,22 +257,13 @@ namespace VenueMaker.Controllers
         }
 
 
-        public string ServiceVersion()
+        public async Task<string> ServiceVersion()
         {
             try
             {
-#warning This isn't implemented in the service.
-                return "Not Implemented";
-                /*
-                using (KwendaService cli = new KwendaService())
-                {
-                    string result = cli.Version();
+                ServiceInfo info = await Client.GetServiceInfo();
+                return info.Version;
 
-                    //throw new Exception("Artificiellt fel.");
-                    return result;
-
-                } // using
-                */
             }
             catch
             {

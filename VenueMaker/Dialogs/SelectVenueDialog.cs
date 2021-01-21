@@ -29,15 +29,11 @@ namespace VenueMaker.Dialogs
 
         }
 
-
-
         private async Task InitUI()
         {
             try
             {
-                KWENDAFileItem[] files = await DataController.Me.ListFiles(
-                        DataController.Me.Token
-                        );
+                KWENDAFileItem[] files = await DataController.Me.ListFiles();
                 files = files.Where(w =>
                             w.FileExt.ToLower() == ".venue"
                         ).ToArray();
