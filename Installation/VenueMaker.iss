@@ -1,3 +1,5 @@
+#define AppExeFile "VenueMaker.exe"
+#define ReleaseFilesFolder "..\VenueMaker\bin\Release"
 #define AppVersion GetFileVersion(AddBackslash(SourcePath) + "..\VenueMaker\bin\Release\venuemaker.exe")
 #define AppName GetStringFileInfo(AddBackslash(SourcePath) + "..\VenueMaker\bin\Release\venuemaker.exe", "ProductName")
 #define CompanyName GetStringFileInfo(AddBackslash(SourcePath) + "..\VenueMaker\bin\Release\venuemaker.exe", "CompanyName")
@@ -8,27 +10,66 @@
 
 
 [Files]
-Source: ..\VenueMaker\bin\Release\SQLitePCLRaw.batteries_green.dll; DestDir: {app}
-Source: ..\VenueMaker\bin\Release\SQLitePCLRaw.batteries_v2.dll; DestDir: {app}
-Source: ..\VenueMaker\bin\Release\SQLitePCLRaw.core.dll; DestDir: {app}
-Source: ..\VenueMaker\bin\Release\SQLitePCLRaw.provider.e_sqlite3.dll; DestDir: {app}
-Source: ..\VenueMaker\bin\Release\VenueMaker.exe; DestDir: {app}; Flags: replacesameversion
-Source: ..\VenueMaker\bin\Release\VenueMaker.exe.config; DestDir: {app}; Flags: replacesameversion
-Source: ..\VenueMaker\bin\Release\Newtonsoft.Json.dll; DestDir: {app}
-Source: ..\VenueMaker\bin\Release\Newtonsoft.Json.xml; DestDir: {app}
-Source: ..\VenueMaker\bin\Release\QuickGraph.Data.dll; DestDir: {app}
-Source: ..\VenueMaker\bin\Release\QuickGraph.Data.xml; DestDir: {app}
-Source: ..\VenueMaker\bin\Release\QuickGraph.dll; DestDir: {app}
-Source: ..\VenueMaker\bin\Release\QuickGraph.Graphviz.dll; DestDir: {app}
-Source: ..\VenueMaker\bin\Release\QuickGraph.Graphviz.xml; DestDir: {app}
-Source: ..\VenueMaker\bin\Release\QuickGraph.Serialization.dll; DestDir: {app}
-Source: ..\VenueMaker\bin\Release\QuickGraph.Serialization.xml; DestDir: {app}
-Source: ..\VenueMaker\bin\Release\QuickGraph.xml; DestDir: {app}
-Source: ..\VenueMaker\bin\Release\SQLite-net.dll; DestDir: {app}
-Source: ..\VenueMaker\bin\Release\SQLite-net.xml; DestDir: {app}
-Source: ..\VenueMaker\bin\Release\x64\e_sqlite3.dll; DestDir: {app}\x64\
-Source: ..\VenueMaker\bin\Release\x86\e_sqlite3.dll; DestDir: {app}\x86\
+Source: {#ReleaseFilesFolder}\{#AppExeFile}; DestDir: {app}; Flags: replacesameversion
+
+; Config
+Source: {#ReleaseFilesFolder}\{#AppExeFile}.config; DestDir: {app}; Flags: replacesameversion
+Source: {#ReleaseFilesFolder}\Log4Net.config; DestDir: {app}; Flags: replacesameversion
+
+
+; Third party stuff
+; For token decoding
+Source: {#ReleaseFilesFolder}\jwt.dll; DestDir: {app}; Flags: replacesameversion
+Source: {#ReleaseFilesFolder}\Newtonsoft.Json.dll; DestDir: {app}; Flags: replacesameversion
+Source: {#ReleaseFilesFolder}\Newtonsoft.Json.xml; DestDir: {app};
+
+Source: {#ReleaseFilesFolder}\log4net.dll; DestDir: {app}; Flags: replacesameversion
+Source: {#ReleaseFilesFolder}\log4net.xml; DestDir: {app};
+
+; .NET Framework
 Source: "{#BinariesFolder}\Microsoft\{#DotNETInstallExe}"; DestDir: {tmp}; Flags: deleteafterinstall; Check: not IsRequiredDotNetDetected
+
+; SQLite Net PCL
+Source: {#ReleaseFilesFolder}\SQLite-net.dll; DestDir: {app}; Flags: replacesameversion
+Source: {#ReleaseFilesFolder}\SQLite-net.xml; DestDir: {app}; Flags: replacesameversion
+Source: {#ReleaseFilesFolder}\SQLitePCLRaw.batteries_v2.dll; DestDir: {app}; Flags: replacesameversion
+Source: {#ReleaseFilesFolder}\SQLitePCLRaw.core.dll; DestDir: {app}; Flags: replacesameversion
+Source: {#ReleaseFilesFolder}\SQLitePCLRaw.nativelibrary.dll; DestDir: {app}; Flags: replacesameversion
+Source: {#ReleaseFilesFolder}\SQLitePCLRaw.provider.dynamic_cdecl.dll; DestDir: {app}; Flags: replacesameversion
+; Runtimes
+; win-arm
+Source: {#ReleaseFilesFolder}\runtimes\win-arm\native\e_sqlite3.dll; DestDir: {app}\runtimes\win-arm\native; Flags: replacesameversion
+; win-x64
+Source: {#ReleaseFilesFolder}\runtimes\win-x64\native\e_sqlite3.dll; DestDir: {app}\runtimes\win-x64\native; Flags: replacesameversion
+; win-x86
+Source: {#ReleaseFilesFolder}\runtimes\win-x86\native\e_sqlite3.dll; DestDir: {app}\runtimes\win-x86\native; Flags: replacesameversion
+
+Source: {#ReleaseFilesFolder}\System.Buffers.dll; DestDir: {app}; Flags: replacesameversion
+Source: {#ReleaseFilesFolder}\System.Buffers.xml; DestDir: {app}; Flags: replacesameversion
+Source: {#ReleaseFilesFolder}\System.Memory.dll; DestDir: {app}; Flags: replacesameversion
+Source: {#ReleaseFilesFolder}\System.Memory.xml; DestDir: {app}; Flags: replacesameversion
+Source: {#ReleaseFilesFolder}\System.Numerics.Vectors.dll; DestDir: {app}; Flags: replacesameversion
+Source: {#ReleaseFilesFolder}\System.Numerics.Vectors.xml; DestDir: {app}; Flags: replacesameversion
+Source: {#ReleaseFilesFolder}\System.Runtime.CompilerServices.Unsafe.dll; DestDir: {app}; Flags: replacesameversion
+Source: {#ReleaseFilesFolder}\System.Runtime.CompilerServices.Unsafe.xml; DestDir: {app}; Flags: replacesameversion
+
+; Used when filtering with Linq
+; Source: {#ReleaseFilesFolder}\System.Linq.Dynamic.dll; DestDir: {app}; Flags: replacesameversion
+
+; Used with REST calls
+Source: {#ReleaseFilesFolder}\System.Net.Http.Formatting.dll; DestDir: {app}; Flags: replacesameversion
+Source: {#ReleaseFilesFolder}\System.Net.Http.Formatting.xml; DestDir: {app}; Flags: replacesameversion
+
+; QuickGraph
+Source: {#ReleaseFilesFolder}\QuickGraph.Data.dll; DestDir: {app}
+Source: {#ReleaseFilesFolder}\QuickGraph.Data.xml; DestDir: {app}
+Source: {#ReleaseFilesFolder}\QuickGraph.dll; DestDir: {app}
+Source: {#ReleaseFilesFolder}\QuickGraph.Graphviz.dll; DestDir: {app}
+Source: {#ReleaseFilesFolder}\QuickGraph.Graphviz.xml; DestDir: {app}
+Source: {#ReleaseFilesFolder}\QuickGraph.Serialization.dll; DestDir: {app}
+Source: {#ReleaseFilesFolder}\QuickGraph.Serialization.xml; DestDir: {app}
+Source: {#ReleaseFilesFolder}\QuickGraph.xml; DestDir: {app}
+
 
 [Dirs]
 Name: {app}\x64
