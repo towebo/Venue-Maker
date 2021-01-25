@@ -158,6 +158,7 @@
     <Compile Include="KWENDAClient\Authentication\DTO\PasswordChangeRequest.cs" />
     <Compile Include="KWENDAClient\Authentication\DTO\VerifyAccountRequest.cs" />
     <Compile Include="KWENDAClient\DTO\ServiceInfo.cs" />
+    <Compile Include="KWENDAClient\Helpers\KWENDAFileItemHelper.cs" />
     <Compile Include="KWENDAClient\Helpers\KWENDATokenJWTInfo.cs" />
     <Compile Include="KWENDAClient\Helpers\KWENDATokenDecoderHelper.cs" />
     <Compile Include="KWENDAClient\KWENDARestClient.cs" />

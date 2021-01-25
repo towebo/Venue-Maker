@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -434,6 +435,49 @@ namespace KWENDA
 
         }
 
+        public async Task DownloadFileAsync(string aUrl, string aFileName, DateTime? fileDateToApply = null)
+        {
+            try
+            {
+                Uri uri = new Uri(aUrl);
+                HttpResponseMessage response = await _client.GetAsync(uri);
+
+                if (File.Exists(aFileName))
+                {
+                    File.Delete(aFileName);
+
+                } // Delete existing file
+
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    await response.Content.CopyToAsync(ms);
+
+                    using (var fs = new FileStream(aFileName, FileMode.CreateNew))
+                    {
+                        ms.CopyTo(fs);
+                        //await response.Content.CopyToAsync(fs);
+
+                    } // using
+
+                } // using
+
+                
+
+                if (fileDateToApply.HasValue)
+                {
+                    FileInfo fi = new FileInfo(aFileName);
+                    fi.LastWriteTimeUtc = fileDateToApply.Value.ToUniversalTime();
+
+                } // Set the file date
+
+            }
+            catch (Exception ex)
+            {
+                string msg = $"Fel när fil skulle laddas ned: {ex.Message}";
+
+            }
+
+        }
 
 
     } // class

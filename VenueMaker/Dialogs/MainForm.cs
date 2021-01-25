@@ -2131,13 +2131,13 @@ namespace VenueMaker.Dialogs
                     string fldr = GetDataFilesFolder();
 
                     KWENDAFileItem[] files = await Controllers.DataController.Me.ListFiles();
-                    files.Where(w =>
-                    w.VenueId == Venue.Id &&
-                    w.FileExt.ToLower() != ".venue" &&
-                    w.FileExt.ToLower() != ".graphml"
-                    ).ToArray();
+                    files = files.Where(w =>
+                        w.VenueId == Venue.Id &&
+                        w.FileExt.ToLower() != ".venue" &&
+                        w.FileExt.ToLower() != ".graphml"
+                        ).ToArray();
 
-                    foreach (var f in files)
+                    foreach (KWENDAFileItem f in files)
                     {
                         Application.DoEvents();
 
@@ -2145,18 +2145,48 @@ namespace VenueMaker.Dialogs
                         FileInfo fi = new FileInfo(localfile);
                         if (!fi.Exists ||
                             (fi.Exists &&
-                            fi.LastWriteTimeUtc < f.LastModified)
+                            //fi.LastWriteTimeUtc < f.LastModified)
+                            fi.CreationTime < f.LastModified)
                             )
                         {
+#warning Remove this when ready
+                            /*
                             string remotefile = Controllers.DataController.Me.RemoteFileUrl
                                 .AddToUrl(f.VenueId)
                                 .AddToUrl(f.FileName);
 
-                            HttpClient cli = new HttpClient();
-                            cli.DownloadFile(
+                            await Controllers.DataController.Me.Client.DownloadFileAsync(
                                 remotefile,
                                 localfile
                                 );
+                            */
+
+                            GetKWENDAFilesRequest filerequest = new GetKWENDAFilesRequest();
+
+                            filerequest.FileIds = new KWENDAFileId[]
+                            {
+                                new KWENDAFileId()
+                                {
+                                    VenueId = f.VenueId,
+                                    FileName = f.FileName,
+                                } // FileId
+                            }; // FileIds
+                            filerequest.IncludeData = true;
+
+                            GetKWENDAFilesResponse fileresponse = await Controllers.DataController.Me.Client.GetFiles(filerequest);
+
+                            if (fileresponse.Error != null)
+                            {
+                                throw new Exception(fileresponse.Error.Message);
+                            } // Error
+
+                            foreach (KWENDAFileItem fx in fileresponse.Files)
+                            {
+                                fx.SaveFileTo(fldr);
+
+                            } // foreach
+
+
 
                         } // Need to be downloaded
 

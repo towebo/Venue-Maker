@@ -11,6 +11,8 @@ namespace KWENDA.DTO
         [JsonProperty("fileIds")]
         public KWENDAFileId[] FileIds { get; set; }
 
+        [JsonProperty("includeData")]
+        public bool IncludeData{ get; set; }
 
 
 
