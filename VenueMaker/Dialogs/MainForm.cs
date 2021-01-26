@@ -32,6 +32,7 @@ namespace VenueMaker.Dialogs
         private bool loadguard;
         private WFNode[] elevators;
         private KWENDATokenJWTInfo userinfo;
+        private Dictionary<PictureBox, string> _usedimages;
 
         private const double ElevatorTravelTime = 20.0;
 
@@ -45,6 +46,7 @@ namespace VenueMaker.Dialogs
         public MainForm()
         {
             me = this;
+            _usedimages = new Dictionary<PictureBox, string>();
             InitializeComponent();
         }
 
@@ -184,8 +186,12 @@ namespace VenueMaker.Dialogs
                     {
                         MapPB.Image.Dispose();
                         MapPB.Image = null;
+                        _usedimages[MapPB] = string.Empty;
                         Application.DoEvents();
-                        
+
+                        _usedimages[MapPB] = string.Empty;
+                        ;
+
                     } // Has image
 
                     string img = Path.Combine(GetDataFilesFolder(), m.FileName);
@@ -198,7 +204,7 @@ namespace VenueMaker.Dialogs
                     if (!loadguard)
                     {
                         MapPB.Image = Image.FromFile(img);
-
+                        _usedimages[MapPB] = img;
                     } // Not loading
 
                 };
@@ -478,6 +484,7 @@ namespace VenueMaker.Dialogs
                 if (poii == null)
                 {
                     PoiInfoPB.Image = null;
+                    _usedimages[PoiInfoPB] = string.Empty;
                     return;
 
                 } // Is null
@@ -485,6 +492,7 @@ namespace VenueMaker.Dialogs
                 if (string.IsNullOrWhiteSpace(poii.MediaFile))
                 {
                     PoiInfoPB.Image = null;
+                    _usedimages[PoiInfoPB] = string.Empty;
                     return;
 
                 } // No file
@@ -493,11 +501,13 @@ namespace VenueMaker.Dialogs
                 if (!File.Exists(img))
                 {
                     PoiInfoPB.Image = null;
+                    _usedimages[PoiInfoPB] = string.Empty;
                     return;
 
                 } // Doesn't exists
 
                 PoiInfoPB.Image = Image.FromFile(img);
+                _usedimages[PoiInfoPB] = img;
 
             }
             catch
@@ -522,6 +532,7 @@ namespace VenueMaker.Dialogs
                     {
                         VenueImagePB.Image.Dispose();
                         VenueImagePB.Image = null;
+                        _usedimages[VenueImagePB] = string.Empty;
                         Application.DoEvents();
 
                     } // Clear image
@@ -535,6 +546,7 @@ namespace VenueMaker.Dialogs
                             if (!loadguard)
                             {
                                 VenueImagePB.Image = Image.FromFile(img);
+                                _usedimages[VenueImagePB] = img;
 
                             } // Not loading
 
@@ -561,6 +573,7 @@ namespace VenueMaker.Dialogs
                     {
                         MapPB.Image.Dispose();
                         MapPB.Image = null;
+                        _usedimages[MapPB] = string.Empty;
                         Application.DoEvents();
 
                     } // Release image
@@ -2182,7 +2195,34 @@ namespace VenueMaker.Dialogs
 
                             foreach (KWENDAFileItem fx in fileresponse.Files)
                             {
-                                fx.SaveFileTo(fldr);
+                                try
+                                {
+                                    string img = Path.Combine(fldr, fx.FileName);
+                                    PictureBox pb = WhoHasThisImage(img);
+                                    if (pb != null)
+                                    {
+                                        pb.Image.Dispose();
+                                        pb.Image = null;
+                                        _usedimages[pb] = string.Empty;
+                                        Application.DoEvents();
+
+                                    } // In use
+
+                                    fx.SaveFileTo(fldr);
+
+                                    if (pb != null)
+                                    {
+                                        pb.Image = Image.FromFile(img);
+                                        _usedimages[pb] = img;
+
+                                    } // Was in use
+
+                                }
+                                catch (Exception fileex)
+                                {
+                                    LogCenter.Error(fileex.Message, fileex);
+                                    throw;
+                                }
 
                             } // foreach
 
@@ -2291,6 +2331,7 @@ namespace VenueMaker.Dialogs
                 {
                     VenueImagePB.Image.Dispose();
                     VenueImagePB.Image = null;
+                    _usedimages[VenueImagePB] = string.Empty;
 
                 } // Has image
 
@@ -2301,7 +2342,9 @@ namespace VenueMaker.Dialogs
 
                 if (!loadguard)
                 {
-                    VenueImagePB.Image = Image.FromFile(Path.Combine(GetDataFilesFolder(), mediafile));
+                    string img = Path.Combine(GetDataFilesFolder(), mediafile);
+                    VenueImagePB.Image = Image.FromFile(img);
+                    _usedimages[VenueImagePB] = img;
 
                 } // Not loading
 
@@ -2822,7 +2865,22 @@ namespace VenueMaker.Dialogs
             }
         }
 
+        private PictureBox WhoHasThisImage(string img)
+        {
+            foreach (PictureBox pb in _usedimages.Keys)
+            {
+                string the_img = _usedimages[pb];
+                if (img == the_img)
+                {
+                    return pb;
+                } // Match
+
+            } // foreach
+
+            return null;
+
+        }
+
         
     } // class
 }
-
