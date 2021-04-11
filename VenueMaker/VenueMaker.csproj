@@ -150,6 +150,41 @@
     <Compile Include="Dialogs\SendNotificationDialog.Designer.cs">
       <DependentUpon>SendNotificationDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="KWENDA Common\Controllers\BeaconController.cs" />
+    <Compile Include="KWENDA Common\Controllers\DataController.cs" />
+    <Compile Include="KWENDA Common\Controllers\GraphController.cs" />
+    <Compile Include="KWENDA Common\Controllers\NavEngine.cs" />
+    <Compile Include="KWENDA Common\Controllers\NotificationController.cs" />
+    <Compile Include="KWENDA Common\Controllers\SQLiteController.cs" />
+    <Compile Include="KWENDA Common\Controllers\VenueController.cs" />
+    <Compile Include="KWENDA Common\Helpers\FloorComparer.cs" />
+    <Compile Include="MAWINGU\Helpers\UrlHelper.cs" />
+    <Compile Include="KWENDA Common\Models\appMessages.cs" />
+    <Compile Include="KWENDA Common\Models\BLEBeacon.cs" />
+    <Compile Include="KWENDA Common\Models\BLEBeaconwCache.cs" />
+    <Compile Include="KWENDA Common\Models\CacheFile.cs" />
+    <Compile Include="KWENDA Common\Models\CacheNodeBeacon.cs" />
+    <Compile Include="KWENDA Common\Models\Constants.cs" />
+    <Compile Include="KWENDA Common\Models\DirectionsList.cs" />
+    <Compile Include="KWENDA Common\Models\POIInfoCategoryPreferences.cs" />
+    <Compile Include="KWENDA Common\Models\Preferences.cs" />
+    <Compile Include="KWENDA Common\Models\RoutePreferences.cs" />
+    <Compile Include="KWENDA Common\Models\WFEdge.cs" />
+    <Compile Include="KWENDA Common\Models\WFExit.cs" />
+    <Compile Include="KWENDA Common\Models\WFGraph.cs" />
+    <Compile Include="KWENDA Common\Models\WFHeadingInfo.cs" />
+    <Compile Include="KWENDA Common\Models\WFMap.cs" />
+    <Compile Include="KWENDA Common\Models\WFMapEdge.cs" />
+    <Compile Include="KWENDA Common\Models\WFMapPoint.cs" />
+    <Compile Include="KWENDA Common\Models\WFNode.cs" />
+    <Compile Include="KWENDA Common\Models\WFPlattform.cs" />
+    <Compile Include="KWENDA Common\Models\WFPOIInformation.cs" />
+    <Compile Include="KWENDA Common\Models\WFPointOfInterest.cs" />
+    <Compile Include="KWENDA Common\Models\WFTravelType.cs" />
+    <Compile Include="KWENDA Common\Models\WFVenue.cs" />
+    <Compile Include="KWENDA Common\Models\WFWaypointType.cs" />
+    <Compile Include="KWENDA Common\Utils\ConnectionStringUtility.cs" />
+    <Compile Include="KWENDA Common\Utils\HttpUtil.cs" />
     <Compile Include="KWENDAClient\Authentication\AccountClient.cs" />
     <Compile Include="KWENDAClient\Authentication\DTO\Account.cs" />
     <Compile Include="KWENDAClient\Authentication\DTO\AuthenticateRequest.cs" />
@@ -186,7 +221,6 @@
     <Compile Include="KWENDAClient\Views\SignInDialog.Designer.cs">
       <DependentUpon>SignInDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="Kwenda\Controllers\BeaconController.cs" />
     <Compile Include="Controllers\DataController.cs" />
     <Compile Include="Dialogs\ChangeBeaconForNodeDialog.cs">
       <SubType>Form</SubType>
@@ -263,22 +297,6 @@
     <Compile Include="Helpers\NumericStringHelper.cs" />
     <Compile Include="Helpers\TravelTypeHelper.cs" />
     <Compile Include="Helpers\VenueHelper.cs" />
-    <Compile Include="Kwenda\Controllers\DataController.cs" />
-    <Compile Include="Kwenda\Controllers\GraphController.cs" />
-    <Compile Include="Kwenda\Controllers\NavEngine.cs" />
-    <Compile Include="Kwenda\Controllers\NotificationController.cs" />
-    <Compile Include="Kwenda\Controllers\SQLiteController.cs" />
-    <Compile Include="Kwenda\Controllers\VenueController.cs" />
-    <Compile Include="Kwenda\Helpers\FloorComparer.cs" />
-    <Compile Include="Kwenda\Helpers\UrlHelper.cs" />
-    <Compile Include="Kwenda\Models\appMessages.cs" />
-    <Compile Include="Kwenda\Models\BLEBeacon.cs" />
-    <Compile Include="Kwenda\Models\BLEBeaconwCache.cs" />
-    <Compile Include="Kwenda\Models\CacheFile.cs" />
-    <Compile Include="Kwenda\Models\Constants.cs" />
-    <Compile Include="Kwenda\Models\Preferences.cs" />
-    <Compile Include="Kwenda\Utils\ConnectionStringUtility.cs" />
-    <Compile Include="Kwenda\Utils\HttpUtil.cs" />
     <Compile Include="MAWINGU\Crypto.cs" />
     <Compile Include="MAWINGU\FTP\FtpSettings.cs" />
     <Compile Include="MAWINGU\FTP\FtpUtil.cs" />
@@ -342,7 +360,6 @@
     </Compile>
     <Compile Include="Models\Constants.cs" />
     <Compile Include="Models\CreateAccountInfoModel.cs" />
-    <Compile Include="Kwenda\Models\DirectionsList.cs" />
     <Compile Include="Models\CueTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -351,25 +368,8 @@
     <Compile Include="Models\LoginInfoModel.cs" />
     <Compile Include="Models\NewEdgeItem.cs" />
     <Compile Include="Models\NodesFilterItem.cs" />
-    <Compile Include="Kwenda\Models\POIInfoCategoryPreferences.cs" />
     <Compile Include="Models\Preferences.cs" />
-    <Compile Include="Kwenda\Models\RoutePreferences.cs" />
     <Compile Include="Models\VenueVisibilityItem.cs" />
-    <Compile Include="Kwenda\Models\WFHeadingInfo.cs" />
-    <Compile Include="Kwenda\Models\CacheNodeBeacon.cs" />
-    <Compile Include="Kwenda\Models\WFEdge.cs" />
-    <Compile Include="Kwenda\Models\WFExit.cs" />
-    <Compile Include="Kwenda\Models\WFGraph.cs" />
-    <Compile Include="Kwenda\Models\WFMap.cs" />
-    <Compile Include="Kwenda\Models\WFMapEdge.cs" />
-    <Compile Include="Kwenda\Models\WFMapPoint.cs" />
-    <Compile Include="Kwenda\Models\WFNode.cs" />
-    <Compile Include="Kwenda\Models\WFPlattform.cs" />
-    <Compile Include="Kwenda\Models\WFPOIInformation.cs" />
-    <Compile Include="Kwenda\Models\WFPointOfInterest.cs" />
-    <Compile Include="Kwenda\Models\WFTravelType.cs" />
-    <Compile Include="Kwenda\Models\WFVenue.cs" />
-    <Compile Include="Kwenda\Models\WFWaypointType.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\TSVHelper.cs" />
@@ -437,6 +437,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="KWENDA Common\.git" />
     <None Include="log4net.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

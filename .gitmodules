@@ -1,3 +1,6 @@
 [submodule "VenueMaker/MAWINGU"]
 	path = VenueMaker/MAWINGU
 	url = https://karl-otto_towebo_se@bitbucket.org/towebo/mawingu-csharp-library.git
+[submodule "VenueMaker/KWENDA Common"]
+	path = VenueMaker/KWENDA Common
+	url = https://karl-otto_towebo_se@bitbucket.org/towebo/kwenda-common.git

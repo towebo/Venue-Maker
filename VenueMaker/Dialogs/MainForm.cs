@@ -14,13 +14,13 @@ using VenueMaker.Helpers;
 using VenueMaker.Models;
 using WayfindR.Helpers;
 using WayfindR;
-using Mawingu;
 using Kwenda.Models;
 using Kwenda;
 using MAWINGU.Logging;
 using KWENDA.DTO;
 using KWENDA.Views;
 using KWENDA.Helpers;
+using Mawingu.Helpers;
 
 namespace VenueMaker.Dialogs
 {
