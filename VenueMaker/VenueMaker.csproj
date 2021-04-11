@@ -46,7 +46,7 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
+    <DefineConstants>TRACE;WINFORMS</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -110,6 +110,7 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
     </Reference>
@@ -150,6 +151,41 @@
     <Compile Include="Dialogs\SendNotificationDialog.Designer.cs">
       <DependentUpon>SendNotificationDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="KWENDA Client\Authentication\AccountClient.cs" />
+    <Compile Include="KWENDA Client\Authentication\DTO\Account.cs" />
+    <Compile Include="KWENDA Client\Authentication\DTO\AuthenticateRequest.cs" />
+    <Compile Include="KWENDA Client\Authentication\DTO\AuthenticateResponse.cs" />
+    <Compile Include="KWENDA Client\Authentication\DTO\PasswordChangeRequest.cs" />
+    <Compile Include="KWENDA Client\Authentication\DTO\ServiceInfo.cs" />
+    <Compile Include="KWENDA Client\Authentication\DTO\VerifyAccountRequest.cs" />
+    <Compile Include="KWENDA Client\DTO\DocumentQueryParams.cs" />
+    <Compile Include="KWENDA Client\DTO\GetKWENDAFilesRequest.cs" />
+    <Compile Include="KWENDA Client\DTO\GetKWENDAFilesResponse.cs" />
+    <Compile Include="KWENDA Client\DTO\KWENDAFileId.cs" />
+    <Compile Include="KWENDA Client\DTO\KWENDAFileItem.cs" />
+    <Compile Include="KWENDA Client\DTO\KWENDAUser.cs" />
+    <Compile Include="KWENDA Client\DTO\ListKWENDAFilesRequest.cs" />
+    <Compile Include="KWENDA Client\DTO\ListKWENDAFilesResponse.cs" />
+    <Compile Include="KWENDA Client\DTO\PermissionItem.cs" />
+    <Compile Include="KWENDA Client\DTO\ServiceInfo.cs" />
+    <Compile Include="KWENDA Client\DTO\SetKWENDAFilePermissionsRequest.cs" />
+    <Compile Include="KWENDA Client\DTO\SetKWENDAFilePermissionsResponse.cs" />
+    <Compile Include="KWENDA Client\DTO\SignInRequest.cs" />
+    <Compile Include="KWENDA Client\DTO\SignInResponse.cs" />
+    <Compile Include="KWENDA Client\DTO\UpdateKWENDAFilesRequest.cs" />
+    <Compile Include="KWENDA Client\DTO\UpdateKWENDAFilesResponse.cs" />
+    <Compile Include="KWENDA Client\Helpers\KWENDAFileItemHelper.cs" />
+    <Compile Include="KWENDA Client\Helpers\KWENDATokenDecoderHelper.cs" />
+    <Compile Include="KWENDA Client\Helpers\KWENDATokenJWTInfo.cs" />
+    <Compile Include="KWENDA Client\Helpers\QueryParamsHelper.cs" />
+    <Compile Include="KWENDA Client\KWENDAClientStatusEventArgs.cs" />
+    <Compile Include="KWENDA Client\KWENDARestClient.cs" />
+    <Compile Include="KWENDA Client\Views\SignInDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KWENDA Client\Views\SignInDialog.Designer.cs">
+      <DependentUpon>SignInDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="KWENDA Common\Controllers\BeaconController.cs" />
     <Compile Include="KWENDA Common\Controllers\DataController.cs" />
     <Compile Include="KWENDA Common\Controllers\GraphController.cs" />
@@ -158,6 +194,11 @@
     <Compile Include="KWENDA Common\Controllers\SQLiteController.cs" />
     <Compile Include="KWENDA Common\Controllers\VenueController.cs" />
     <Compile Include="KWENDA Common\Helpers\FloorComparer.cs" />
+    <Compile Include="KWENDA Common\Helpers\WFGraphExtender.cs" />
+    <Compile Include="KWENDA Common\Helpers\WFPointOfInterestExtender.cs" />
+    <Compile Include="MAWINGU\Helpers\ComputerInfo.cs" />
+    <Compile Include="MAWINGU\Helpers\GetMachineInfo.cs" />
+    <Compile Include="MAWINGU\Helpers\NumericStringHelper.cs" />
     <Compile Include="MAWINGU\Helpers\UrlHelper.cs" />
     <Compile Include="KWENDA Common\Models\appMessages.cs" />
     <Compile Include="KWENDA Common\Models\BLEBeacon.cs" />
@@ -185,42 +226,6 @@
     <Compile Include="KWENDA Common\Models\WFWaypointType.cs" />
     <Compile Include="KWENDA Common\Utils\ConnectionStringUtility.cs" />
     <Compile Include="KWENDA Common\Utils\HttpUtil.cs" />
-    <Compile Include="KWENDAClient\Authentication\AccountClient.cs" />
-    <Compile Include="KWENDAClient\Authentication\DTO\Account.cs" />
-    <Compile Include="KWENDAClient\Authentication\DTO\AuthenticateRequest.cs" />
-    <Compile Include="KWENDAClient\Authentication\DTO\AuthenticateResponse.cs" />
-    <Compile Include="KWENDAClient\Authentication\DTO\ErrorResponse.cs" />
-    <Compile Include="KWENDAClient\Authentication\DTO\PasswordChangeRequest.cs" />
-    <Compile Include="KWENDAClient\Authentication\DTO\VerifyAccountRequest.cs" />
-    <Compile Include="KWENDAClient\DTO\ServiceInfo.cs" />
-    <Compile Include="KWENDAClient\Helpers\KWENDAFileItemHelper.cs" />
-    <Compile Include="KWENDAClient\Helpers\KWENDATokenJWTInfo.cs" />
-    <Compile Include="KWENDAClient\Helpers\KWENDATokenDecoderHelper.cs" />
-    <Compile Include="KWENDAClient\KWENDARestClient.cs" />
-    <Compile Include="KWENDAClient\KWENDAClientStatusEventArgs.cs" />
-    <Compile Include="KWENDAClient\DTO\DocumentQueryParams.cs" />
-    <Compile Include="KWENDAClient\DTO\GetKWENDAFilesRequest.cs" />
-    <Compile Include="KWENDAClient\DTO\GetKWENDAFilesResponse.cs" />
-    <Compile Include="KWENDAClient\DTO\KWENDAFileId.cs" />
-    <Compile Include="KWENDAClient\DTO\KWENDAFileItem.cs" />
-    <Compile Include="KWENDAClient\DTO\ListKWENDAFilesRequest.cs" />
-    <Compile Include="KWENDAClient\DTO\ListKWENDAFilesResponse.cs" />
-    <Compile Include="KWENDAClient\DTO\PermissionItem.cs" />
-    <Compile Include="KWENDAClient\DTO\SetKWENDAFilePermissionsRequest.cs" />
-    <Compile Include="KWENDAClient\DTO\SetKWENDAFilePermissionsResponse.cs" />
-    <Compile Include="KWENDAClient\DTO\SignInRequest.cs" />
-    <Compile Include="KWENDAClient\DTO\SignInResponse.cs" />
-    <Compile Include="KWENDAClient\DTO\UpdateKWENDAFilesRequest.cs" />
-    <Compile Include="KWENDAClient\DTO\UpdateKWENDAFilesResponse.cs" />
-    <Compile Include="KWENDAClient\DTO\WebAPIError.cs" />
-    <Compile Include="KWENDAClient\Helpers\Base64Helper.cs" />
-    <Compile Include="KWENDAClient\Helpers\QueryParamsHelper.cs" />
-    <Compile Include="KWENDAClient\Views\SignInDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="KWENDAClient\Views\SignInDialog.Designer.cs">
-      <DependentUpon>SignInDialog.cs</DependentUpon>
-    </Compile>
     <Compile Include="Controllers\DataController.cs" />
     <Compile Include="Dialogs\ChangeBeaconForNodeDialog.cs">
       <SubType>Form</SubType>
@@ -294,7 +299,6 @@
     <Compile Include="Helpers\WaypointTypeHelper.cs" />
     <Compile Include="Helpers\HeadingHelper.cs" />
     <Compile Include="Helpers\KwendaServiceHelper.cs" />
-    <Compile Include="Helpers\NumericStringHelper.cs" />
     <Compile Include="Helpers\TravelTypeHelper.cs" />
     <Compile Include="Helpers\VenueHelper.cs" />
     <Compile Include="MAWINGU\Crypto.cs" />
@@ -324,7 +328,12 @@
     <Compile Include="MAWINGU\Helpers\TaskHelper.cs" />
     <Compile Include="MAWINGU\Helpers\TSVHelper.cs" />
     <Compile Include="MAWINGU\Logging\LogCenter.cs" />
+    <Compile Include="MAWINGU\Web\MAWINGURestClient.cs" />
+    <Compile Include="MAWINGU\Web\WebAPIError.cs" />
+    <Compile Include="MAWINGU\Web\WebAPIException.cs" />
+    <Compile Include="MAWINGU\Web\WebAPIUserAgent.cs" />
     <Compile Include="MAWINGU\Web\WebExceptionHelper.cs" />
+    <Compile Include="MAWINGU\Web\WindowsUserAgent.cs" />
     <Compile Include="MAWINGU\WinForms\AboutDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -340,6 +349,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="MAWINGU\WinForms\IWizardPage.cs" />
+    <Compile Include="MAWINGU\WinForms\RequiredAttribute.cs" />
     <Compile Include="MAWINGU\WinForms\SplashWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -412,7 +422,7 @@
     <EmbeddedResource Include="Dialogs\SetPermissionsDialog.resx">
       <DependentUpon>SetPermissionsDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="KWENDAClient\Views\SignInDialog.resx">
+    <EmbeddedResource Include="KWENDA Client\Views\SignInDialog.resx">
       <DependentUpon>SignInDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MAWINGU\WinForms\AboutDialog.resx">
@@ -437,6 +447,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="KWENDA Client\Authentication\.git" />
     <None Include="KWENDA Common\.git" />
     <None Include="log4net.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -459,15 +470,16 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="KWENDA Client\Authentication\.gitignore" />
+    <Content Include="KWENDA Client\Resources\ConfigBucket_Black.svg" />
+    <Content Include="KWENDA Client\Resources\ConfigBucket_Black_48.png" />
+    <Content Include="KWENDA Client\Resources\ConfigBucket_Blue.svg" />
+    <Content Include="KWENDA Client\Resources\ConfigBucket_Blue_48.png" />
+    <Content Include="KWENDA Client\Resources\ConfigBucket_LightBlue.svg" />
+    <Content Include="KWENDA Client\Resources\ConfigBucket_LightBlue_48.png" />
+    <Content Include="KWENDA Client\Resources\ConfigBucket_White.svg" />
+    <Content Include="KWENDA Client\Resources\ConfigBucket_White_48.png" />
     <Content Include="KWENDA.ico" />
-    <Content Include="KWENDAClient\Resources\ConfigBucket_Black.svg" />
-    <Content Include="KWENDAClient\Resources\ConfigBucket_Black_48.png" />
-    <Content Include="KWENDAClient\Resources\ConfigBucket_Blue.svg" />
-    <Content Include="KWENDAClient\Resources\ConfigBucket_Blue_48.png" />
-    <Content Include="KWENDAClient\Resources\ConfigBucket_LightBlue.svg" />
-    <Content Include="KWENDAClient\Resources\ConfigBucket_LightBlue_48.png" />
-    <Content Include="KWENDAClient\Resources\ConfigBucket_White.svg" />
-    <Content Include="KWENDAClient\Resources\ConfigBucket_White_48.png" />
     <Content Include="kwenda_app_icon.ico" />
     <Content Include="Mawingu.ico" />
     <Content Include="MAWINGU\WinForms\WizardBillboard.png" />

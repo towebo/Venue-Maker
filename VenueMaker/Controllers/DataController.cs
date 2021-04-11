@@ -4,6 +4,7 @@ using MAWINGU.Authentication;
 using MAWINGU.Authentication.DTO;
 using MAWINGU.Helpers;
 using MAWINGU.Logging;
+using MAWINGU.Web.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -55,7 +56,9 @@ namespace VenueMaker.Controllers
 
         public DataController()
         {
-            cli = new KWENDARestClient();
+            cli = new KWENDARestClient(
+                //KWENDARestClient.Local_BaseAddress, KWENDARestClient.Local_BasePort
+                );
         }
 
         public async Task<KWENDAFileItem[]> ListFiles()
@@ -67,7 +70,7 @@ namespace VenueMaker.Controllers
 
                 if (result.Error != null)
                 {
-                    throw new Exception(result.Error.Message);
+                    throw new Exception(result.Error.Title);
 
                 } // Got an error
 
@@ -95,7 +98,7 @@ namespace VenueMaker.Controllers
 
                 if (resp.Error != null)
                 {
-                    throw new Exception(resp.Error.Message);
+                    throw new Exception(resp.Error.Title);
 
                 } // Got an error
 
@@ -123,7 +126,7 @@ namespace VenueMaker.Controllers
 
                 if (result.Error != null)
                 {
-                    throw new Exception(result.Error.Message);
+                    throw new Exception(result.Error.Title);
 
                 } // Error
 
@@ -150,7 +153,7 @@ namespace VenueMaker.Controllers
 
                 if (response.Error != null)
                 {
-                    throw new Exception(response.Error.Message);
+                    throw new Exception(response.Error.Title);
 
                 } // Ok
 
@@ -193,36 +196,27 @@ namespace VenueMaker.Controllers
                 } // Haven't logged in yet
 
                 AccountClient cli = new AccountClient();
-                AuthenticateResponse res = await cli.AuthenticateAsync(Email, Password);
-
-                if (res.Error == null)
+                AuthenticateResponse res = await cli.AuthenticateAsync(new AuthenticateRequest()
                 {
-                    Client.AccountToken = res.Token;
-                    SignInResponse signin_res = await Client.SignIn(Email);
-                    if (signin_res.Error == null)
-                    {
-                        Token = signin_res.Token;
-                        return true;
+                    Email = Email,
+                    Password = Password,
+                });
 
-                    } // Null
-
-                    WebAPIError signupres = await Client.SignUp(Email);
-
+                Client.AccountToken = res.Token;
+                SignInResponse signin_res;
+                try
+                {
                     signin_res = await Client.SignIn(Email);
-                    if (signin_res.Error == null)
-                    {
-                        Token = signin_res.Token;
-                        return true;
-
-                    } // Null
-
-                    return false;
-
-                } // Ok
-                else
+                    Token = signin_res.Token;
+                    return true;
+                }
+                catch
                 {
-                    return false;
-                } // Unlucky
+                    WebAPIError signupres = await Client.SignUp(Email);
+                    signin_res = await Client.SignIn(Email);
+                    Token = signin_res.Token;
+                    return true;
+                }
 
             }
             catch (Exception ex)
@@ -261,7 +255,7 @@ namespace VenueMaker.Controllers
         {
             try
             {
-                ServiceInfo info = await Client.GetServiceInfo();
+                KWENDA.DTO.ServiceInfo info = await Client.GetServiceInfo();
                 return info.Version;
 
             }

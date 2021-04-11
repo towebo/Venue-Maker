@@ -4,3 +4,6 @@
 [submodule "VenueMaker/KWENDA Common"]
 	path = VenueMaker/KWENDA Common
 	url = https://karl-otto_towebo_se@bitbucket.org/towebo/kwenda-common.git
+[submodule "VenueMaker/KWENDA Client"]
+	path = VenueMaker/KWENDA Client
+	url = https://karl-otto_towebo_se@bitbucket.org/towebo/kwenda-rest-client-library.git

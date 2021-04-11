@@ -21,6 +21,7 @@ using KWENDA.DTO;
 using KWENDA.Views;
 using KWENDA.Helpers;
 using Mawingu.Helpers;
+using MAWINGU.Helpers;
 
 namespace VenueMaker.Dialogs
 {
@@ -2190,7 +2191,7 @@ namespace VenueMaker.Dialogs
 
                             if (fileresponse.Error != null)
                             {
-                                throw new Exception(fileresponse.Error.Message);
+                                throw new Exception(fileresponse.Error.Title);
                             } // Error
 
                             foreach (KWENDAFileItem fx in fileresponse.Files)

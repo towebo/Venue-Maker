@@ -53,7 +53,7 @@ namespace VenueMaker.Dialogs
 
                     if (response.Error != null)
                     {
-                        throw new Exception(response.Error.Message);
+                        throw new Exception(response.Error.Title);
                     } // Error
 
                     MessageBox.Show("Rättigheter satta.", "Ändra rättigheter", MessageBoxButtons.OK, MessageBoxIcon.Information);
